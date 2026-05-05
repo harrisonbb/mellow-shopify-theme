@@ -1,0 +1,1079 @@
+{% comment %}
+  Mellow Reflux Patterns
+  Updated:
+  - Huel-inspired bento grid
+  - Large primary After Dinner card
+  - Ownable Mellow wave + dot raft motif in large card
+  - Removed colored top lines from all cards
+  - Supporting Before Bed / On The Go cards
+  - Card 03 uses patient-moment copy
+  - Dark quiz card has softer contrast
+  - Full-height quiz CTA card as natural section conclusion
+  - Typography matched to Mellow Hero system:
+    Fraunces 550 headings, tighter premium spacing, DM Sans body rhythm
+{% endcomment %}
+
+<section
+  class="mellow-patterns mellow-patterns-{{ section.id }}"
+  id="who-its-for"
+>
+  <div class="mellow-patterns__inner">
+
+    <div class="mellow-patterns__top">
+      <div class="mellow-patterns__copy">
+        <span class="mellow-patterns__eyebrow">
+          {% if section.settings.eyebrow != blank %}
+            {{ section.settings.eyebrow }}
+          {% else %}
+            Reflux patterns
+          {% endif %}
+        </span>
+
+        <h2 class="mellow-patterns__headline">
+          {% if section.settings.heading != blank %}
+            {{ section.settings.heading }}
+          {% else %}
+            Reflux has a pattern.
+          {% endif %}
+        </h2>
+      </div>
+
+      <p class="mellow-patterns__subhead">
+        {% if section.settings.subheading != blank %}
+          {{ section.settings.subheading }}
+        {% else %}
+          Mellow is made for the predictable moments: after meals, before bed, and the nights you already know might go sideways.
+        {% endif %}
+      </p>
+    </div>
+
+    <p class="mellow-patterns__cue">
+      Choose the moment you want to get ahead of.
+    </p>
+
+    <div class="mellow-patterns__bento" aria-label="Common reflux patterns">
+
+      <article class="mellow-patterns__card mellow-patterns__card--large mellow-patterns__card--dinner">
+        <span class="mellow-patterns__number" aria-hidden="true">01</span>
+
+        <div class="mellow-patterns__raft-motif" aria-hidden="true">
+          <svg viewBox="0 0 560 260" role="presentation" focusable="false">
+            <path class="mellow-patterns__wave-line mellow-patterns__wave-line--one" d="M34 72 C108 22, 177 121, 253 72 C330 22, 392 122, 526 60" />
+            <path class="mellow-patterns__wave-line mellow-patterns__wave-line--two" d="M18 132 C92 82, 174 178, 252 132 C330 86, 403 176, 542 120" />
+            <path class="mellow-patterns__wave-line mellow-patterns__wave-line--three" d="M44 190 C120 142, 184 232, 260 188 C340 142, 410 224, 516 176" />
+
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--one" cx="98" cy="58" r="10" />
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--two" cx="212" cy="102" r="7" />
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--three" cx="330" cy="72" r="9" />
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--four" cx="440" cy="112" r="6" />
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--five" cx="150" cy="172" r="8" />
+            <circle class="mellow-patterns__raft-dot mellow-patterns__raft-dot--six" cx="384" cy="190" r="7" />
+          </svg>
+        </div>
+
+        <div class="mellow-patterns__card-copy">
+          <span class="mellow-patterns__label">After dinner</span>
+
+          <h3>When the meal ends, but the burning starts.</h3>
+
+          <p>
+            For reflux that shows up after heavier, spicy, acidic, or late meals — the moments you can usually see coming.
+          </p>
+        </div>
+      </article>
+
+      <article class="mellow-patterns__card mellow-patterns__card--support mellow-patterns__card--bed">
+        <span class="mellow-patterns__number" aria-hidden="true">02</span>
+
+        <div class="mellow-patterns__orb mellow-patterns__orb--bed" aria-hidden="true"></div>
+
+        <div class="mellow-patterns__card-copy">
+          <span class="mellow-patterns__label">Before bed</span>
+
+          <h3>When lying down makes everything worse.</h3>
+
+          <p>
+            For nighttime reflux, water brash, sour taste, or waking up burning.
+          </p>
+        </div>
+      </article>
+
+      <article class="mellow-patterns__card mellow-patterns__card--support mellow-patterns__card--go">
+        <span class="mellow-patterns__number" aria-hidden="true">03</span>
+
+        <div class="mellow-patterns__orb mellow-patterns__orb--go" aria-hidden="true"></div>
+
+        <div class="mellow-patterns__card-copy">
+          <span class="mellow-patterns__label">On the go</span>
+
+          <h3>When the burn follows you out the door.</h3>
+
+          <p>
+            Single-serve pouches made for bags, travel, restaurants, and work.
+          </p>
+        </div>
+      </article>
+
+      <article class="mellow-patterns__card mellow-patterns__card--quiz">
+        <span class="mellow-patterns__number" aria-hidden="true">04</span>
+
+        <div class="mellow-patterns__quiz-glow" aria-hidden="true"></div>
+
+        <div class="mellow-patterns__card-copy">
+          <span class="mellow-patterns__label">Not sure?</span>
+
+          <h3>Find your reflux pattern.</h3>
+
+          <p>
+            Take the 60-second quiz and find the routine that fits when reflux shows up for you.
+          </p>
+        </div>
+
+        {% if section.settings.quiz_button_label != blank %}
+          <a
+            class="mellow-patterns__button"
+            href="{{ section.settings.quiz_button_link }}"
+          >
+            {{ section.settings.quiz_button_label }}
+          </a>
+        {% endif %}
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* =========================================================
+     MELLOW — REFLUX PATTERNS SECTION
+     Huel-inspired bento grid
+     ========================================================= */
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,450;0,9..144,500;0,9..144,550;0,9..144,600&family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+  #shopify-section-{{ section.id }},
+  #shopify-section-{{ section.id }} > *,
+  #shopify-section-{{ section.id }} .page-width,
+  #shopify-section-{{ section.id }} .mellow-section,
+  #shopify-section-{{ section.id }} .mellow-container {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} {
+    background: #FBFCF7 !important;
+    background-color: #FBFCF7 !important;
+    margin: 0 !important;
+    padding: 12px 0 !important;
+    overflow: visible !important;
+  }
+
+  #shopify-section-{{ section.id }} > * {
+    background: transparent !important;
+  }
+
+  #who-its-for.mellow-patterns,
+  #shopify-section-{{ section.id }} #who-its-for.mellow-patterns,
+  #shopify-section-{{ section.id }} .mellow-patterns {
+    --mellow-axis-pad: clamp(112px, 7.8vw, 156px);
+    --mellow-axis-max: 1500px;
+
+    --mellow-page: #FBFCF7;
+    --mellow-ivory: #F0EBE0;
+    --mellow-cream: #F6F1E8;
+    --mellow-forest: #1A2D10;
+    --mellow-green: #123A24;
+    --mellow-green-deep: #0B1E08;
+    --mellow-orange: #D04A2A;
+    --mellow-blue: #3D6B8C;
+    --mellow-sage: #87927C;
+    --mellow-gold-line: rgba(177, 145, 92, 0.72);
+
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+
+    padding-top: clamp(78px, 6vw, 112px) !important;
+    padding-bottom: clamp(86px, 7vw, 132px) !important;
+    padding-left: var(--mellow-axis-pad) !important;
+    padding-right: var(--mellow-axis-pad) !important;
+
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    position: relative !important;
+
+    background:
+      radial-gradient(circle at 16% 22%, rgba(61, 107, 140, 0.22), transparent 32%),
+      radial-gradient(circle at 86% 38%, rgba(208, 74, 42, 0.13), transparent 30%),
+      radial-gradient(circle at 52% 76%, rgba(240, 235, 224, 0.055), transparent 38%),
+      linear-gradient(180deg, #14320F 0%, #10280C 100%) !important;
+    color: var(--mellow-ivory) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns,
+  #shopify-section-{{ section.id }} .mellow-patterns * {
+    box-sizing: border-box !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -18% !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    background:
+      radial-gradient(circle at 18% 38%, rgba(61, 107, 140, 0.18), transparent 32%),
+      radial-gradient(circle at 82% 62%, rgba(208, 74, 42, 0.09), transparent 30%),
+      radial-gradient(circle at 52% 84%, rgba(240, 235, 224, 0.075), transparent 34%) !important;
+    opacity: 0.78 !important;
+    animation: mellowPatternsDrift 20s ease-in-out infinite alternate;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 7% !important;
+    right: 7% !important;
+    bottom: clamp(58px, 5vw, 92px) !important;
+    height: clamp(280px, 23vw, 420px) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    background:
+      radial-gradient(ellipse at 42% 50%, rgba(240, 235, 224, 0.11), transparent 58%),
+      radial-gradient(ellipse at 18% 55%, rgba(61, 107, 140, 0.12), transparent 52%),
+      radial-gradient(ellipse at 86% 60%, rgba(208, 74, 42, 0.13), transparent 52%) !important;
+    filter: blur(16px) !important;
+    opacity: 0.78 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__inner {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    max-width: var(--mellow-axis-max) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(30px, 3.35vw, 50px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__top {
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.58fr) !important;
+    gap: clamp(28px, 4.5vw, 68px) !important;
+    align-items: start !important;
+    width: 100% !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__copy {
+    max-width: 900px !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__eyebrow {
+    display: block !important;
+    margin: 0 0 16px !important;
+
+    color: var(--mellow-orange) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__headline {
+    display: block !important;
+    margin: 0 !important;
+    max-width: 900px !important;
+
+    color: var(--mellow-ivory) !important;
+    font-family: var(--font-heading) !important;
+    font-size: clamp(3rem, 4.05vw, 5.25rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.043em !important;
+    font-weight: 550 !important;
+    font-style: normal !important;
+    font-variation-settings: "opsz" 72, "wght" 550 !important;
+    text-align: left !important;
+    text-wrap: balance !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__subhead {
+    max-width: 560px !important;
+    margin: 0 !important;
+    padding-top: 34px !important;
+
+    color: rgba(240, 235, 224, 0.88) !important;
+    font-family: var(--font-body) !important;
+    font-size: clamp(1rem, 1.18vw, 1.18rem) !important;
+    line-height: 1.55 !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__cue {
+    display: block !important;
+    margin: -8px 0 -18px !important;
+    max-width: 520px !important;
+
+    color: rgba(240, 235, 224, 0.76) !important;
+    font-family: var(--font-body) !important;
+    font-size: clamp(0.98rem, 1vw, 1.08rem) !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__bento {
+    position: relative !important;
+    z-index: 2 !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.14fr) minmax(0, 0.86fr) minmax(0, 0.86fr) !important;
+    grid-template-rows: minmax(230px, auto) minmax(230px, auto) !important;
+    gap: 18px !important;
+
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__bento::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -34px -28px -42px !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    background:
+      radial-gradient(ellipse at 38% 52%, rgba(240, 235, 224, 0.12), transparent 62%),
+      radial-gradient(ellipse at 78% 58%, rgba(208, 74, 42, 0.10), transparent 56%) !important;
+    filter: blur(18px) !important;
+    opacity: 0.86 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card {
+    position: relative !important;
+    min-height: 230px !important;
+    padding: clamp(30px, 2.45vw, 40px) clamp(28px, 2.15vw, 38px) !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+
+    background:
+      radial-gradient(circle at 16% 12%, rgba(255,255,255,0.48), transparent 28%),
+      radial-gradient(circle at 88% 90%, rgba(208, 74, 42, 0.045), transparent 38%),
+      linear-gradient(180deg, #F6F1E8 0%, #F0EBE0 100%) !important;
+    color: var(--mellow-forest) !important;
+
+    border: 1px solid rgba(177, 145, 92, 0.34) !important;
+    box-shadow:
+      0 24px 58px rgba(8, 16, 5, 0.23),
+      0 0 0 1px rgba(255, 255, 255, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.70),
+      inset 0 -1px 0 rgba(26, 45, 16, 0.06) !important;
+
+    transition:
+      transform 260ms ease,
+      box-shadow 260ms ease,
+      border-color 260ms ease,
+      background 260ms ease !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    opacity: 0.72 !important;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.14) 28%, transparent 56%),
+      radial-gradient(circle at 18% 12%, rgba(240, 235, 224, 0.48), transparent 26%),
+      radial-gradient(circle at 88% 88%, rgba(208, 74, 42, 0.05), transparent 38%) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card::after {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--large {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 3 !important;
+    min-height: 478px !important;
+    padding: clamp(34px, 3vw, 50px) clamp(32px, 2.6vw, 48px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--bed {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--go {
+    grid-column: 2 / 3 !important;
+    grid-row: 2 / 3 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 3 !important;
+
+    background:
+      radial-gradient(circle at 90% 88%, rgba(208, 74, 42, 0.20), transparent 42%),
+      radial-gradient(circle at 20% 14%, rgba(240, 235, 224, 0.08), transparent 30%),
+      radial-gradient(circle at 24% 70%, rgba(61, 107, 140, 0.09), transparent 42%),
+      linear-gradient(180deg, rgba(31, 56, 23, 0.91) 0%, rgba(14, 31, 9, 0.92) 100%) !important;
+    color: var(--mellow-ivory) !important;
+    border-color: rgba(240, 235, 224, 0.20) !important;
+    box-shadow:
+      0 24px 56px rgba(8, 16, 5, 0.34),
+      0 0 0 1px rgba(240, 235, 224, 0.06),
+      0 0 30px rgba(208, 74, 42, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.13),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.16) !important;
+    backdrop-filter: blur(14px) saturate(1.12) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(1.12) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz::before {
+    opacity: 0.86 !important;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.028) 28%, transparent 56%),
+      radial-gradient(circle at 18% 12%, rgba(240, 235, 224, 0.08), transparent 26%),
+      radial-gradient(circle at 88% 88%, rgba(208, 74, 42, 0.18), transparent 38%) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__number {
+    position: absolute !important;
+    top: clamp(22px, 1.75vw, 30px) !important;
+    right: clamp(24px, 1.9vw, 32px) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+
+    color: rgba(26, 45, 16, 0.046) !important;
+    font-family: var(--font-heading) !important;
+    font-size: clamp(3.65rem, 4.4vw, 5.35rem) !important;
+    line-height: 0.85 !important;
+    letter-spacing: -0.07em !important;
+    font-weight: 550 !important;
+    font-style: normal !important;
+    font-variation-settings: "opsz" 96, "wght" 550 !important;
+
+    transition:
+      transform 260ms ease,
+      opacity 260ms ease !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--large .mellow-patterns__number {
+    font-size: clamp(5rem, 6.2vw, 7.6rem) !important;
+    top: clamp(28px, 2.3vw, 42px) !important;
+    right: clamp(28px, 2.3vw, 42px) !important;
+    color: rgba(26, 45, 16, 0.04) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__number {
+    color: rgba(240, 235, 224, 0.04) !important;
+    font-size: clamp(5rem, 6vw, 7.2rem) !important;
+    top: clamp(28px, 2.3vw, 42px) !important;
+    right: clamp(28px, 2.3vw, 42px) !important;
+  }
+
+  /* Large card packaging-inspired raft motif — no pill/capsule shapes */
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-motif {
+    position: absolute !important;
+    z-index: 1 !important;
+    top: clamp(48px, 5vw, 88px) !important;
+    left: clamp(34px, 4.3vw, 78px) !important;
+    width: clamp(300px, 27vw, 500px) !important;
+    height: clamp(155px, 14vw, 250px) !important;
+    pointer-events: none !important;
+    opacity: 0.72 !important;
+    transform: rotate(-4deg) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-motif svg {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__wave-line {
+    fill: none !important;
+    stroke: rgba(26, 45, 16, 0.17) !important;
+    stroke-width: 8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    vector-effect: non-scaling-stroke !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__wave-line--one {
+    stroke: rgba(26, 45, 16, 0.15) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__wave-line--two {
+    stroke: rgba(177, 145, 92, 0.20) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__wave-line--three {
+    stroke: rgba(208, 74, 42, 0.12) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-dot {
+    fill: rgba(26, 45, 16, 0.13) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-dot--one,
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-dot--five {
+    fill: rgba(208, 74, 42, 0.14) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-dot--three,
+  #shopify-section-{{ section.id }} .mellow-patterns__raft-dot--six {
+    fill: rgba(177, 145, 92, 0.18) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__orb {
+    position: absolute !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    border-radius: 999px !important;
+    opacity: 0.56 !important;
+    filter: blur(0.2px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__orb--bed {
+    width: 76px !important;
+    height: 76px !important;
+    top: 34px !important;
+    left: 34px !important;
+    background: radial-gradient(circle, rgba(177, 145, 92, 0.13), transparent 68%) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__orb--go {
+    width: 76px !important;
+    height: 76px !important;
+    top: 34px !important;
+    left: 34px !important;
+    background: radial-gradient(circle, rgba(177, 145, 92, 0.12), transparent 68%) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__quiz-glow {
+    position: absolute !important;
+    right: -42px !important;
+    bottom: -52px !important;
+    z-index: 1 !important;
+    width: 210px !important;
+    height: 210px !important;
+    pointer-events: none !important;
+    border-radius: 999px !important;
+    background: radial-gradient(circle, rgba(208, 74, 42, 0.20), transparent 62%) !important;
+    opacity: 0.78 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card-copy {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 !important;
+    padding-top: clamp(32px, 3.4vw, 54px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--large .mellow-patterns__card-copy {
+    max-width: 430px !important;
+    padding-top: clamp(170px, 15vw, 255px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__card-copy {
+    max-width: 360px !important;
+    padding-top: clamp(96px, 9vw, 150px) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__label {
+    display: block !important;
+    margin: 0 0 22px !important;
+
+    color: rgba(26, 45, 16, 0.58) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.11em !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card h3 {
+    margin: 0 0 12px !important;
+    max-width: 430px !important;
+
+    color: var(--mellow-forest) !important;
+    font-family: var(--font-heading) !important;
+    font-size: clamp(1.38rem, 1.28vw, 1.6rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.036em !important;
+    font-weight: 550 !important;
+    font-style: normal !important;
+    font-variation-settings: "opsz" 52, "wght" 550 !important;
+    text-align: left !important;
+    text-wrap: balance !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--large h3 {
+    font-size: clamp(2rem, 2.28vw, 3rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.046em !important;
+    max-width: 470px !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card p {
+    margin: 0 !important;
+    max-width: 370px !important;
+
+    color: rgba(26, 45, 16, 0.74) !important;
+    font-family: var(--font-body) !important;
+    font-size: clamp(0.94rem, 0.9vw, 1rem) !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--large p {
+    max-width: 440px !important;
+    font-size: clamp(1rem, 1.02vw, 1.12rem) !important;
+    line-height: 1.52 !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__label {
+    color: rgba(240, 235, 224, 0.74) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz h3 {
+    max-width: 320px !important;
+    color: rgba(240, 235, 224, 0.98) !important;
+    font-size: clamp(1.82rem, 2vw, 2.6rem) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -0.044em !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz p {
+    color: rgba(240, 235, 224, 0.82) !important;
+    max-width: 340px !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(177, 145, 92, 0.52) !important;
+    box-shadow:
+      0 36px 88px rgba(8, 16, 5, 0.32),
+      0 0 0 1px rgba(240, 235, 224, 0.08),
+      0 0 48px rgba(208, 74, 42, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82),
+      inset 0 -1px 0 rgba(26, 45, 16, 0.08) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card--quiz:hover {
+    border-color: rgba(240, 235, 224, 0.30) !important;
+    box-shadow:
+      0 36px 84px rgba(8, 16, 5, 0.42),
+      0 0 0 1px rgba(240, 235, 224, 0.10),
+      0 0 44px rgba(208, 74, 42, 0.13),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.16) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__card:hover .mellow-patterns__number {
+    transform: translate3d(-2px, 1px, 0) scale(1.02) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__button {
+    position: relative !important;
+    z-index: 2 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin-top: 28px !important;
+    min-height: 46px !important;
+    padding: 14px 24px !important;
+    border-radius: 999px !important;
+
+    background: var(--mellow-orange) !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+
+    font-family: var(--font-body) !important;
+    font-size: 0.92rem !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.015em !important;
+
+    box-shadow:
+      0 14px 32px rgba(208, 74, 42, 0.30),
+      inset 0 1px 0 rgba(255, 255, 255, 0.20) !important;
+
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-patterns__button:hover {
+    transform: translateY(-1px) !important;
+    background: #B93F24 !important;
+    box-shadow:
+      0 16px 36px rgba(208, 74, 42, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  }
+
+  @keyframes mellowPatternsDrift {
+    0% {
+      transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+      opacity: 0.56;
+    }
+
+    50% {
+      transform: translate3d(1.2%, 1.5%, 0) scale(1.045);
+      opacity: 0.78;
+    }
+
+    100% {
+      transform: translate3d(2%, -0.5%, 0) scale(1.035);
+      opacity: 0.68;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} .mellow-patterns {
+      --mellow-axis-pad: clamp(124px, 8.3vw, 172px);
+      padding-top: 104px !important;
+      padding-bottom: 138px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__headline {
+      font-size: clamp(3.65rem, 4vw, 5.85rem) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.044em !important;
+      font-weight: 550 !important;
+      font-variation-settings: "opsz" 84, "wght" 550 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__subhead {
+      max-width: 600px !important;
+      font-size: clamp(1.05rem, 1.15vw, 1.22rem) !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__bento {
+      gap: 22px !important;
+      grid-template-rows: minmax(250px, auto) minmax(250px, auto) !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz {
+      min-height: 522px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large h3 {
+      font-size: clamp(2.35rem, 2.35vw, 3.2rem) !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz h3 {
+      font-size: clamp(2rem, 2.02vw, 2.72rem) !important;
+    }
+  }
+
+  @media screen and (max-width: 1180px) {
+    #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} .mellow-patterns {
+      --mellow-axis-pad: 32px;
+      padding-top: 72px !important;
+      padding-bottom: 96px !important;
+      border-radius: 24px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__top {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__headline {
+      max-width: 820px !important;
+      font-size: clamp(2.85rem, 7.5vw, 4.65rem) !important;
+      line-height: 1.03 !important;
+      letter-spacing: -0.036em !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__subhead {
+      max-width: 680px !important;
+      padding-top: 0 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__cue {
+      margin: -4px 0 -10px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      grid-template-rows: auto !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large {
+      grid-column: 1 / 3 !important;
+      grid-row: auto !important;
+      min-height: 390px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--bed,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--go {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      min-height: 286px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz {
+      grid-column: 1 / 3 !important;
+      grid-row: auto !important;
+      min-height: 330px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__raft-motif {
+      top: 42px !important;
+      left: 38px !important;
+      width: 360px !important;
+      height: 190px !important;
+      opacity: 0.58 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large .mellow-patterns__card-copy,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__card-copy {
+      padding-top: 88px !important;
+      max-width: 620px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz h3 {
+      max-width: 520px !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      padding: 8px 0 !important;
+    }
+
+    #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} #who-its-for.mellow-patterns,
+    #shopify-section-{{ section.id }} .mellow-patterns {
+      --mellow-axis-pad: 20px;
+      padding-top: 58px !important;
+      padding-bottom: 72px !important;
+      border-radius: 20px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns::after {
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 36px !important;
+      height: 420px !important;
+      opacity: 0.72 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__inner {
+      gap: 32px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__eyebrow {
+      margin-bottom: 14px !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.115em !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__headline {
+      font-size: clamp(2.35rem, 10vw, 3.55rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.03em !important;
+      font-weight: 550 !important;
+      font-variation-settings: "opsz" 48, "wght" 550 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__subhead {
+      max-width: 100% !important;
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__cue {
+      margin: -2px 0 -8px !important;
+      max-width: 100% !important;
+      font-size: 1rem !important;
+      line-height: 1.42 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__bento {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto !important;
+      gap: 16px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__bento::before {
+      inset: -24px -10px -28px !important;
+      opacity: 0.76 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      min-height: 274px !important;
+      border-radius: 26px !important;
+      padding: 34px 24px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large {
+      min-height: 330px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz {
+      min-height: 310px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card-copy,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large .mellow-patterns__card-copy,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__card-copy {
+      max-width: 100% !important;
+      padding-top: 52px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__label {
+      margin-bottom: 22px !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.105em !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__number,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large .mellow-patterns__number,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz .mellow-patterns__number {
+      top: 24px !important;
+      right: 26px !important;
+      font-size: 3.8rem !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card h3,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large h3,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz h3 {
+      font-size: 1.48rem !important;
+      line-height: 1.06 !important;
+      letter-spacing: -0.034em !important;
+      max-width: 100% !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card p,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--large p,
+    #shopify-section-{{ section.id }} .mellow-patterns__card--quiz p {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+      max-width: 100% !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__raft-motif {
+      top: 54px !important;
+      left: 20px !important;
+      width: 270px !important;
+      height: 135px !important;
+      opacity: 0.48 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__wave-line {
+      stroke-width: 6 !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__quiz-glow {
+      width: 180px !important;
+      height: 180px !important;
+      right: -36px !important;
+      bottom: -44px !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__button {
+      margin-top: 22px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .mellow-patterns::before {
+      animation: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-patterns__card,
+    #shopify-section-{{ section.id }} .mellow-patterns__button,
+    #shopify-section-{{ section.id }} .mellow-patterns__number {
+      transition: none !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mellow Reflux Patterns",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Reflux patterns"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Reflux has a pattern."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Mellow is made for the predictable moments: after meals, before bed, and the nights you already know might go sideways."
+    },
+    {
+      "type": "text",
+      "id": "quiz_button_label",
+      "label": "Quiz button label",
+      "default": "Take the quiz"
+    },
+    {
+      "type": "url",
+      "id": "quiz_button_link",
+      "label": "Quiz button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow Reflux Patterns"
+    }
+  ]
+}
+{% endschema %}

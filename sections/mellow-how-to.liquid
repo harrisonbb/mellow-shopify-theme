@@ -1,0 +1,904 @@
+{% comment %}
+  Mellow — How It Works
+  Updated:
+  - Added secondary Science CTA button
+  - Full code with hard spacing override included
+  - Uses flex row on desktop so card gaps actually change
+  - Matches tighter Science / Who It's For spacing
+  - Keeps large cards and cinematic dark green panel
+{% endcomment %}
+
+<section class="mellow-how-it-works mellow-how-it-works-{{ section.id }}" id="mellow-how-it-works-{{ section.id }}">
+  <div class="mellow-how-it-works__inner">
+
+    <div class="mellow-how-it-works__header">
+      <div class="mellow-how-it-works__header-copy">
+        <p class="mellow-how-it-works__eyebrow">
+          {{ section.settings.eyebrow | default: "How it works" }}
+        </p>
+
+        <h2 class="mellow-how-it-works__heading">
+          {{ section.settings.heading }}
+        </h2>
+
+        <p class="mellow-how-it-works__subheading">
+          {{ section.settings.subheading | default: "Mellow activates in the stomach to form a floating raft where reflux starts." }}
+        </p>
+      </div>
+    </div>
+
+    <div class="mellow-how-it-works__grid">
+
+      <article class="mellow-how-it-works__item">
+        <div class="mellow-how-it-works__media">
+          <span class="mellow-how-it-works__badge">01</span>
+
+          {% if section.settings.image_1 != blank %}
+            {{
+              section.settings.image_1
+              | image_url: width: 1400
+              | image_tag:
+                class: 'mellow-how-it-works__image',
+                loading: 'lazy',
+                alt: section.settings.step_title_1
+            }}
+          {% else %}
+            <div class="mellow-how-it-works__placeholder mellow-how-it-works__placeholder--pouch">
+              <div class="mellow-how-it-works__fake-pouch">Mellow</div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="mellow-how-it-works__content">
+          <span class="mellow-how-it-works__accent" aria-hidden="true"></span>
+          <h3 class="mellow-how-it-works__step-title">{{ section.settings.step_title_1 }}</h3>
+          <p class="mellow-how-it-works__step-text">{{ section.settings.step_text_1 }}</p>
+        </div>
+      </article>
+
+      <article class="mellow-how-it-works__item">
+        <div class="mellow-how-it-works__media">
+          <span class="mellow-how-it-works__badge">02</span>
+
+          {% if section.settings.image_2 != blank %}
+            {{
+              section.settings.image_2
+              | image_url: width: 1400
+              | image_tag:
+                class: 'mellow-how-it-works__image',
+                loading: 'lazy',
+                alt: section.settings.step_title_2
+            }}
+          {% else %}
+            <div class="mellow-how-it-works__placeholder mellow-how-it-works__placeholder--raft">
+              <div class="mellow-how-it-works__raft-visual">
+                <span></span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="mellow-how-it-works__content">
+          <span class="mellow-how-it-works__accent" aria-hidden="true"></span>
+          <h3 class="mellow-how-it-works__step-title">{{ section.settings.step_title_2 }}</h3>
+          <p class="mellow-how-it-works__step-text">{{ section.settings.step_text_2 }}</p>
+        </div>
+      </article>
+
+      <article class="mellow-how-it-works__item">
+        <div class="mellow-how-it-works__media">
+          <span class="mellow-how-it-works__badge">03</span>
+
+          {% if section.settings.image_3 != blank %}
+            {{
+              section.settings.image_3
+              | image_url: width: 1400
+              | image_tag:
+                class: 'mellow-how-it-works__image',
+                loading: 'lazy',
+                alt: section.settings.step_title_3
+            }}
+          {% else %}
+            <div class="mellow-how-it-works__placeholder mellow-how-it-works__placeholder--block">
+              <div class="mellow-how-it-works__block-visual">
+                <span></span>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="mellow-how-it-works__content">
+          <span class="mellow-how-it-works__accent" aria-hidden="true"></span>
+          <h3 class="mellow-how-it-works__step-title">{{ section.settings.step_title_3 }}</h3>
+          <p class="mellow-how-it-works__step-text">{{ section.settings.step_text_3 }}</p>
+        </div>
+      </article>
+
+    </div>
+
+    {% if section.settings.button_label != blank or section.settings.science_button_label != blank %}
+      <div class="mellow-how-it-works__cta-row">
+        {% if section.settings.button_label != blank %}
+          <a href="{{ section.settings.button_link }}" class="mellow-how-it-works__button mellow-how-it-works__button--primary">
+            <span>{{ section.settings.button_label }}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+
+        {% if section.settings.science_button_label != blank %}
+          <a href="{{ section.settings.science_button_link | default: '/pages/science' }}" class="mellow-how-it-works__button mellow-how-it-works__button--secondary">
+            <span>{{ section.settings.science_button_label }}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* =========================================================
+     HOW IT WORKS — FULL-BLEED CINEMATIC PANEL
+     ========================================================= */
+
+  #shopify-section-{{ section.id }},
+  .shopify-section:has(#mellow-how-it-works-{{ section.id }}) {
+    background: #FBFCF7 !important;
+    background-color: #FBFCF7 !important;
+    background-image: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} {
+    --mellow-forest: #1A2D10;
+    --mellow-orange: #D04A2A;
+    --mellow-orange-hover: #B93E24;
+    --mellow-ivory: #F0EBE0;
+    --mellow-page: #FBFCF7;
+    --mellow-blue: #3D6B8C;
+
+    --mellow-hiw-body: rgba(240, 235, 224, 0.82);
+
+    --hiw-side-pad: clamp(86px, 6.2vw, 118px);
+    --hiw-frame-y: 10px;
+    --hiw-radius: 20px;
+
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    color: var(--mellow-ivory) !important;
+
+    background: #FBFCF7 !important;
+    background-color: #FBFCF7 !important;
+    background-image: none !important;
+
+    min-height: calc(100vh + 150px) !important;
+
+    padding-top: calc(var(--hiw-frame-y) + clamp(66px, 5vw, 92px)) !important;
+    padding-bottom: calc(var(--hiw-frame-y) + clamp(180px, 15vh, 260px)) !important;
+    padding-left: var(--hiw-side-pad) !important;
+    padding-right: var(--hiw-side-pad) !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }}::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+
+    top: var(--hiw-frame-y) !important;
+    right: 0 !important;
+    bottom: var(--hiw-frame-y) !important;
+    left: 0 !important;
+
+    border-radius: var(--hiw-radius) !important;
+
+    background:
+      radial-gradient(circle at 14% 26%, rgba(61, 107, 140, 0.42) 0%, rgba(61, 107, 140, 0.22) 26%, rgba(61, 107, 140, 0.04) 56%, rgba(61, 107, 140, 0) 72%),
+      radial-gradient(circle at 80% 36%, rgba(208, 74, 42, 0.13) 0%, rgba(208, 74, 42, 0.055) 28%, rgba(208, 74, 42, 0) 62%),
+      radial-gradient(circle at 50% 92%, rgba(208, 74, 42, 0.11) 0%, rgba(208, 74, 42, 0.035) 26%, rgba(208, 74, 42, 0) 60%),
+      linear-gradient(112deg, #143F32 0%, #123A24 34%, #102F1D 62%, #0B2416 100%) !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }}::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+
+    top: var(--hiw-frame-y) !important;
+    right: 0 !important;
+    bottom: var(--hiw-frame-y) !important;
+    left: 0 !important;
+
+    border-radius: var(--hiw-radius) !important;
+
+    background:
+      linear-gradient(90deg, rgba(9, 35, 27, 0.10) 0%, rgba(9, 35, 27, 0) 34%, rgba(5, 20, 12, 0.16) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 38%),
+      radial-gradient(circle at 50% 118%, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0) 62%) !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} > * {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__inner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__header {
+    display: block;
+    margin-bottom: clamp(58px, 6vh, 78px);
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__header-copy {
+    max-width: 880px;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__eyebrow {
+    margin: 0 0 14px;
+    color: var(--mellow-orange) !important;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 0.74rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 850;
+    text-align: left;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__heading {
+    margin: 0;
+    color: var(--mellow-ivory) !important;
+    text-align: left;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__subheading {
+    max-width: 620px;
+    margin: 16px 0 0;
+    color: rgba(240, 235, 224, 0.76) !important;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: clamp(1rem, 1.05vw, 1.12rem);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+
+  /* =========================================================
+     DESKTOP CARD ROW — FLEX OVERRIDE SO GAP ACTUALLY CHANGES
+     ========================================================= */
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    gap: 24px !important;
+    column-gap: 24px !important;
+    row-gap: 24px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item {
+    flex: 0 1 calc((100% - 48px) / 3) !important;
+    max-width: calc((100% - 48px) / 3) !important;
+    width: calc((100% - 48px) / 3) !important;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+    width: 100% !important;
+    aspect-ratio: 1.42 / 1 !important;
+    min-height: clamp(320px, 22vw, 390px) !important;
+
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--mellow-ivory);
+    background-color: var(--mellow-ivory);
+    background-image: none;
+    border: 1px solid rgba(240, 235, 224, 0.14);
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.18);
+    position: relative;
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item:hover .mellow-how-it-works__media {
+    transform: translateY(-3px);
+    border-color: rgba(208, 74, 42, 0.22);
+    box-shadow: 0 26px 68px rgba(0, 0, 0, 0.24);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 45, 16, 0.92);
+    color: var(--mellow-ivory);
+    border: 1px solid rgba(240, 235, 224, 0.16);
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 0.9rem;
+    font-weight: 850;
+    letter-spacing: 0.02em;
+    box-shadow: 0 12px 28px rgba(8, 16, 5, 0.18);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 260ms ease;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item:hover .mellow-how-it-works__image {
+    transform: scale(1.02);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--mellow-ivory);
+    background-color: var(--mellow-ivory);
+    background-image: none;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__placeholder--pouch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at 52% 42%, rgba(255,255,255,0.72), transparent 38%),
+      var(--mellow-ivory);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__fake-pouch {
+    width: 36%;
+    aspect-ratio: 0.67 / 1;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading, Georgia, serif);
+    font-size: clamp(1.85rem, 2.5vw, 2.8rem);
+    color: var(--mellow-ivory);
+    background: var(--mellow-forest);
+    background-color: var(--mellow-forest);
+    background-image: none;
+    transform: rotate(-6deg);
+    box-shadow: 0 28px 58px rgba(0, 0, 0, 0.18);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__placeholder--raft,
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__placeholder--block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at 50% 44%, rgba(255,255,255,0.74), transparent 36%),
+      linear-gradient(180deg, #F7F1E6 0%, #F0EBE0 100%);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__raft-visual,
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual {
+    width: 68%;
+    height: 44%;
+    border-radius: 999px;
+    background: rgba(208, 151, 42, 0.28);
+    border: 1px solid rgba(26, 45, 16, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__raft-visual span,
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual span {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 18%;
+    height: 22%;
+    border-radius: 999px;
+    background: rgba(250, 250, 248, 0.82);
+    box-shadow: 0 8px 18px rgba(255,255,255,0.22);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual i {
+    position: absolute;
+    bottom: 18%;
+    width: 5px;
+    height: 34%;
+    border-radius: 999px;
+    background: rgba(208, 74, 42, 0.58);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual i:nth-child(2) {
+    left: 34%;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual i:nth-child(3) {
+    left: 50%;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual i:nth-child(4) {
+    left: 66%;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__content {
+    padding-top: 22px;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__accent {
+    display: block;
+    width: 42px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--mellow-orange);
+    margin-bottom: 14px;
+    transition: width 220ms ease, box-shadow 220ms ease;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item:hover .mellow-how-it-works__accent {
+    width: 58px;
+    box-shadow: 0 0 22px rgba(208, 74, 42, 0.18);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__step-title {
+    margin: 0 0 11px;
+    color: var(--mellow-ivory) !important;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: clamp(1.28rem, 1.42vw, 1.62rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    font-weight: 850;
+    text-align: left;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__step-text {
+    margin: 0;
+    color: var(--mellow-hiw-body) !important;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: clamp(0.98rem, 1.04vw, 1.1rem);
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    text-align: left;
+    max-width: 96%;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__cta-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    width: 100%;
+    margin-top: clamp(72px, 8vh, 112px);
+    padding-bottom: clamp(24px, 5vh, 72px);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 56px;
+    padding: 0 34px;
+    border-radius: 999px;
+    border: 2px solid var(--mellow-orange);
+    text-decoration: none;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 0.98rem;
+    font-weight: 850;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    transition:
+      background 180ms ease,
+      transform 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      box-shadow 180ms ease;
+    white-space: nowrap;
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button--primary {
+    background: var(--mellow-orange);
+    background-image: none;
+    color: #FFFFFF;
+    box-shadow: 0 22px 58px rgba(208, 74, 42, 0.24);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button--primary:hover {
+    transform: translateY(-2px);
+    background: var(--mellow-orange-hover);
+    border-color: var(--mellow-orange-hover);
+    color: #FFFFFF;
+    box-shadow: 0 28px 72px rgba(208, 74, 42, 0.30);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button--secondary {
+    background: rgba(240, 235, 224, 0.08);
+    color: var(--mellow-ivory);
+    border-color: rgba(240, 235, 224, 0.32);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button--secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(240, 235, 224, 0.14);
+    border-color: rgba(240, 235, 224, 0.58);
+    color: #FFFFFF;
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.16);
+  }
+
+  /* =========================================================
+     LARGE DESKTOP
+     ========================================================= */
+
+  @media screen and (min-width: 1500px) {
+    #mellow-how-it-works-{{ section.id }} {
+      --hiw-side-pad: clamp(96px, 6.4vw, 132px) !important;
+
+      min-height: calc(100vh + 180px) !important;
+
+      padding-top: calc(var(--hiw-frame-y) + 94px) !important;
+      padding-bottom: calc(var(--hiw-frame-y) + 280px) !important;
+      padding-left: var(--hiw-side-pad) !important;
+      padding-right: var(--hiw-side-pad) !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__header {
+      margin-bottom: 84px;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__grid {
+      gap: 28px !important;
+      column-gap: 28px !important;
+      row-gap: 28px !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item {
+      flex: 0 1 calc((100% - 56px) / 3) !important;
+      max-width: calc((100% - 56px) / 3) !important;
+      width: calc((100% - 56px) / 3) !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+      min-height: clamp(340px, 21vw, 410px) !important;
+      aspect-ratio: 1.42 / 1 !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__fake-pouch {
+      width: 38%;
+    }
+  }
+
+  @media screen and (min-width: 1700px) {
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+      min-height: 430px !important;
+    }
+  }
+
+  /* =========================================================
+     TABLET / MOBILE RESET
+     ========================================================= */
+
+  @media (max-width: 1100px) {
+    #mellow-how-it-works-{{ section.id }} {
+      --hiw-side-pad: 32px;
+      --hiw-frame-y: 10px;
+      --hiw-radius: 18px;
+
+      min-height: calc(100vh + 190px) !important;
+
+      padding-left: var(--hiw-side-pad) !important;
+      padding-right: var(--hiw-side-pad) !important;
+      padding-bottom: calc(var(--hiw-frame-y) + 200px) !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__header {
+      margin-bottom: 56px;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 36px !important;
+      row-gap: 36px !important;
+      column-gap: 36px !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__item {
+      flex: 0 1 auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+      aspect-ratio: 1.8 / 1 !important;
+      min-height: 320px !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__fake-pouch {
+      width: 24%;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__cta-row {
+      justify-content: center;
+      margin-top: 52px;
+      padding-bottom: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #mellow-how-it-works-{{ section.id }} {
+      --hiw-side-pad: 20px;
+      --hiw-frame-y: 8px;
+      --hiw-radius: 16px;
+
+      min-height: calc(100vh + 230px) !important;
+
+      padding-top: calc(var(--hiw-frame-y) + 58px) !important;
+      padding-bottom: calc(var(--hiw-frame-y) + 210px) !important;
+      padding-left: var(--hiw-side-pad) !important;
+      padding-right: var(--hiw-side-pad) !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__cta-row {
+      justify-content: center;
+      margin-top: 48px;
+      padding-bottom: 56px;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__button {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 24px;
+      font-size: 0.95rem;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__content {
+      padding-top: 16px;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+      border-radius: 18px;
+      aspect-ratio: 1.28 / 1 !important;
+      min-height: 280px !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__badge {
+      top: 16px;
+      left: 16px;
+      width: 42px;
+      height: 42px;
+      font-size: 0.82rem;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__fake-pouch {
+      width: 36%;
+      border-radius: 16px;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__step-title {
+      font-size: 1.45rem;
+      color: var(--mellow-ivory) !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__step-text {
+      font-size: 1rem;
+      line-height: 1.55;
+      max-width: 100%;
+      color: var(--mellow-hiw-body) !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__media {
+      min-height: 250px !important;
+      aspect-ratio: 1.18 / 1 !important;
+    }
+
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__raft-visual,
+    #mellow-how-it-works-{{ section.id }} .mellow-how-it-works__block-visual {
+      width: 72%;
+      height: 42%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mellow How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Three steps. Hours of relief."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Mellow activates in the stomach to form a floating raft where reflux starts."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary button label",
+      "default": "Try Mellow"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "science_button_label",
+      "label": "Science button label",
+      "default": "See the science"
+    },
+    {
+      "type": "url",
+      "id": "science_button_link",
+      "label": "Science button link"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Step 1 image"
+    },
+    {
+      "type": "text",
+      "id": "step_title_1",
+      "label": "Step 1 title",
+      "default": "Step 1: Squeeze"
+    },
+    {
+      "type": "textarea",
+      "id": "step_text_1",
+      "label": "Step 1 text",
+      "default": "One pouch. No water. No mixing. No chalky aftertaste."
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Step 2 image"
+    },
+    {
+      "type": "text",
+      "id": "step_title_2",
+      "label": "Step 2 title",
+      "default": "Step 2: Form"
+    },
+    {
+      "type": "textarea",
+      "id": "step_text_2",
+      "label": "Step 2 text",
+      "default": "MellowRaft™ forms a floating gel barrier at the top of your stomach."
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Step 3 image"
+    },
+    {
+      "type": "text",
+      "id": "step_title_3",
+      "label": "Step 3 title",
+      "default": "Step 3: Float + Block"
+    },
+    {
+      "type": "textarea",
+      "id": "step_text_3",
+      "label": "Step 3 text",
+      "default": "The raft holds where reflux starts, helping keep acid down for hours."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow How It Works"
+    }
+  ]
+}
+{% endschema %}

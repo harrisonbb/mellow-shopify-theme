@@ -1,0 +1,693 @@
+{% comment %}
+  Mellow Hero — Hybrid Sans + Italic Serif Mockup
+  Updated:
+  - Hero headline uses acquisition-friendly sans for main line
+  - Italic editorial serif for “before it starts.”
+  - Added social proof line: Trusted by 2,000+ reflux sufferers
+  - Tightened top padding
+  - Enlarged hero image/card for more presence
+{% endcomment %}
+
+<section class="mellow-hero" id="hero">
+  <div class="mellow-hero__container">
+    <div class="mellow-hero__inner">
+
+      <!-- LEFT: Copy -->
+      <div class="mellow-hero__copy">
+        <span class="mellow-hero__eyebrow">
+          {{ section.settings.eyebrow }}
+        </span>
+
+        <h1 class="mellow-hero__headline">
+          <span class="mellow-hero__headline-main">Mellow stops reflux</span>
+          <span class="mellow-hero__headline-accent">before it starts.</span>
+        </h1>
+
+        <p class="mellow-hero__subhead">
+          A smooth gel that works before acid gets the chance.
+        </p>
+
+        <div class="mellow-hero__social-proof" aria-label="Social proof">
+          <span class="mellow-hero__stars" aria-hidden="true">★★★★★</span>
+          <span class="mellow-hero__quote">Trusted by 2,000+ reflux sufferers.</span>
+        </div>
+
+        <div class="mellow-hero__ctas">
+          <a href="{{ section.settings.cta_primary_url }}" class="mellow-hero__btn">
+            {{ section.settings.cta_primary_label }}
+          </a>
+
+          <a href="{{ section.settings.cta_secondary_url }}" class="mellow-hero__link">
+            {{ section.settings.cta_secondary_label }}
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Product image -->
+      <div class="mellow-hero__visual">
+        {% if section.settings.hero_image %}
+          {{
+            section.settings.hero_image
+            | image_url: width: 1800
+            | image_tag:
+              class: 'mellow-hero__img',
+              alt: 'Mellow pouch',
+              loading: 'eager'
+          }}
+        {% else %}
+          <div class="mellow-hero__img-placeholder"></div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,550;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap');
+
+  .mellow-hero,
+  .mellow-hero * {
+    box-sizing: border-box;
+  }
+
+  .mellow-hero {
+    --mellow-forest-local: #1A2D10;
+    --mellow-orange-red-local: #D04A2A;
+    --mellow-albers-blue-local: #3D6B8C;
+    --mellow-ivory-local: #F0EBE0;
+    --mellow-warm-white-local: #FAFAF8;
+
+    position: relative;
+    background: var(--mellow-ivory, var(--mellow-ivory-local)) !important;
+    background-color: var(--mellow-ivory, var(--mellow-ivory-local)) !important;
+    background-image: none !important;
+    border-radius: 0;
+
+    padding: 26px 40px 12px !important;
+
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible;
+  }
+
+  .mellow-hero::before,
+  .mellow-hero::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .mellow-hero__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .mellow-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(520px, 0.95fr);
+    gap: clamp(42px, 5vw, 76px);
+    align-items: center;
+    min-height: auto !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .mellow-hero__copy {
+    max-width: 930px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transform: translateY(0);
+  }
+
+  .mellow-hero__eyebrow {
+    display: block;
+    margin: 0;
+    color: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+
+    font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    font-style: normal !important;
+  }
+
+  .mellow-hero__headline,
+  #hero .mellow-hero__headline {
+    margin: 0 !important;
+    max-width: 1050px !important;
+    color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+    text-wrap: balance;
+  }
+
+  .mellow-hero__headline-main {
+    display: block !important;
+
+    font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-size: clamp(3.45rem, 5.45vw, 7.25rem) !important;
+    line-height: 0.9 !important;
+    letter-spacing: -0.085em !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+  }
+
+  .mellow-hero__headline-accent {
+    display: block !important;
+    margin-top: -0.02em !important;
+
+    font-family: 'Fraunces', Georgia, serif !important;
+    font-size: clamp(3.2rem, 5vw, 6.8rem) !important;
+    line-height: 0.88 !important;
+    letter-spacing: -0.055em !important;
+    font-weight: 300 !important;
+    font-style: italic !important;
+    font-variation-settings: "opsz" 96, "wght" 300 !important;
+    color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+  }
+
+  .mellow-hero__subhead {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(26, 45, 16, 0.84) !important;
+
+    font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
+    font-size: clamp(1rem, 1.08vw, 1.12rem) !important;
+    line-height: 1.55 !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 500 !important;
+  }
+
+  .mellow-hero__social-proof {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 0 0 6px !important;
+
+    font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
+    font-size: 0.94rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+
+    color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+  }
+
+  .mellow-hero__stars {
+    color: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+    font-size: 0.9rem !important;
+    line-height: 1 !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+  }
+
+  .mellow-hero__quote {
+    color: rgba(26, 45, 16, 0.78) !important;
+    white-space: normal !important;
+  }
+
+  .mellow-hero__ctas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 2px;
+  }
+
+  .mellow-hero__btn {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 38px;
+    border-radius: 999px;
+    background: var(--mellow-forest, var(--mellow-forest-local)) !important;
+    background-color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+    color: var(--mellow-ivory, var(--mellow-ivory-local)) !important;
+    font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
+    font-size: 0.96rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    overflow: visible;
+    position: relative;
+    border: 1px solid rgba(26, 45, 16, 0.98);
+    transition:
+      background 0.22s ease,
+      color 0.22s ease,
+      border-color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.22s ease;
+    box-shadow:
+      0 16px 34px rgba(26, 45, 16, 0.20),
+      0 0 0 0 rgba(208, 74, 42, 0);
+  }
+
+  .mellow-hero__btn::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: inherit;
+    border: 1px solid rgba(208, 74, 42, 0.16);
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.26s ease,
+      transform 0.26s ease;
+    pointer-events: none;
+  }
+
+  .mellow-hero__btn::after {
+    content: '→';
+    display: inline-block;
+    opacity: 0;
+    max-width: 0;
+    transform: translateX(-4px) scale(0.75);
+    font-size: 1.18rem;
+    margin-left: 0;
+    transition:
+      opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      max-width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      margin-left 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mellow-hero__btn:hover {
+    background: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+    background-color: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+    border-color: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+    color: var(--mellow-ivory, var(--mellow-ivory-local)) !important;
+    transform: translateY(-2px);
+    box-shadow:
+      0 20px 46px rgba(208, 74, 42, 0.26),
+      0 0 0 6px rgba(208, 74, 42, 0.08);
+    top: auto;
+  }
+
+  .mellow-hero__btn:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mellow-hero__btn:hover::after {
+    opacity: 1;
+    max-width: 30px;
+    transform: translateX(0) scale(1);
+    margin-left: 10px;
+  }
+
+  .mellow-hero__link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--mellow-forest, var(--mellow-forest-local)) !important;
+    font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
+    font-size: 0.94rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 45, 16, 0.35);
+    padding-bottom: 3px;
+    transition: border-color 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .mellow-hero__link:hover {
+    border-color: var(--mellow-forest, var(--mellow-forest-local));
+    color: var(--mellow-orange, var(--mellow-orange-red-local)) !important;
+    opacity: 1;
+  }
+
+  .mellow-hero__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    isolation: isolate;
+  }
+
+  .mellow-hero__visual::before,
+  .mellow-hero__visual::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .mellow-hero__visual img,
+  .mellow-hero__img {
+    display: block !important;
+
+    width: min(660px, 100%) !important;
+    max-width: 660px !important;
+
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    filter: drop-shadow(0 28px 44px rgba(26, 45, 16, 0.16)) !important;
+  }
+
+  .mellow-hero__img-placeholder {
+    width: 100%;
+    min-height: 320px;
+    display: block;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    color: transparent;
+    font-size: 0;
+  }
+
+  #hero .media,
+  #hero .media--transparent,
+  #hero .image-with-text__media,
+  #hero .global-media-settings,
+  #hero .gradient,
+  #hero .deferred-media,
+  #hero .placeholder {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  #hero .media::before,
+  #hero .media::after,
+  #hero .global-media-settings::before,
+  #hero .global-media-settings::after,
+  #hero .gradient::before,
+  #hero .gradient::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  @media (min-width: 1440px) and (min-height: 850px) {
+    .mellow-hero {
+      min-height: auto !important;
+      height: auto !important;
+      padding: 32px 56px 14px !important;
+      display: block !important;
+      align-items: unset !important;
+    }
+
+    .mellow-hero__container {
+      max-width: 1480px;
+      width: 100%;
+    }
+
+    .mellow-hero__inner {
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr) minmax(560px, 0.95fr);
+      gap: clamp(56px, 5vw, 104px);
+      align-items: center;
+      min-height: auto !important;
+    }
+
+    .mellow-hero__copy {
+      max-width: 980px;
+      gap: 15px;
+      transform: translateY(0);
+    }
+
+    .mellow-hero__headline-main {
+      font-size: clamp(4.1rem, 5.1vw, 7.75rem) !important;
+      line-height: 0.89 !important;
+      letter-spacing: -0.088em !important;
+    }
+
+    .mellow-hero__headline-accent {
+      font-size: clamp(3.75rem, 4.7vw, 7.15rem) !important;
+      line-height: 0.88 !important;
+      letter-spacing: -0.058em !important;
+    }
+
+    .mellow-hero__subhead {
+      max-width: 680px;
+    }
+
+    .mellow-hero__ctas {
+      margin-top: 2px;
+    }
+
+    .mellow-hero__visual img,
+    .mellow-hero__img {
+      width: min(740px, 100%) !important;
+      max-width: 740px !important;
+      height: auto !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 34px 54px rgba(26, 45, 16, 0.18)) !important;
+    }
+  }
+
+  @media (min-width: 1700px) and (min-height: 950px) {
+    .mellow-hero {
+      min-height: auto !important;
+      padding-top: 36px !important;
+      padding-bottom: 16px !important;
+    }
+
+    .mellow-hero__container {
+      max-width: 1580px;
+    }
+
+    .mellow-hero__inner {
+      grid-template-columns: minmax(0, 1.02fr) minmax(620px, 0.98fr);
+      gap: clamp(64px, 5vw, 118px);
+    }
+
+    .mellow-hero__headline-main {
+      font-size: clamp(4.35rem, 5vw, 8.05rem) !important;
+    }
+
+    .mellow-hero__headline-accent {
+      font-size: clamp(3.95rem, 4.62vw, 7.45rem) !important;
+    }
+
+    .mellow-hero__subhead {
+      max-width: 700px;
+    }
+
+    .mellow-hero__visual img,
+    .mellow-hero__img {
+      width: min(820px, 100%) !important;
+      max-width: 820px !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .mellow-hero {
+      padding: 30px 32px 24px !important;
+    }
+
+    .mellow-hero__inner {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+
+    .mellow-hero__visual {
+      order: -1;
+    }
+
+    .mellow-hero__visual img,
+    .mellow-hero__img {
+      width: min(560px, 100%) !important;
+      max-width: 560px !important;
+    }
+
+    .mellow-hero__copy {
+      max-width: 760px;
+      transform: translateY(0);
+    }
+
+    .mellow-hero__headline-main {
+      font-size: clamp(3.05rem, 9vw, 5.2rem) !important;
+      line-height: 0.92 !important;
+      letter-spacing: -0.075em !important;
+    }
+
+    .mellow-hero__headline-accent {
+      font-size: clamp(2.85rem, 8.4vw, 4.95rem) !important;
+      line-height: 0.92 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mellow-hero {
+      padding: 24px 20px 24px !important;
+    }
+
+    .mellow-hero__inner {
+      gap: 28px;
+    }
+
+    .mellow-hero__copy {
+      transform: none;
+      gap: 13px;
+    }
+
+    .mellow-hero__headline-main {
+      font-size: clamp(2.55rem, 11.5vw, 3.85rem) !important;
+      line-height: 0.94 !important;
+      letter-spacing: -0.065em !important;
+    }
+
+    .mellow-hero__headline-accent {
+      font-size: clamp(2.4rem, 10.5vw, 3.65rem) !important;
+      line-height: 0.94 !important;
+      letter-spacing: -0.05em !important;
+      font-variation-settings: "opsz" 64, "wght" 300 !important;
+    }
+
+    .mellow-hero__subhead {
+      font-size: 0.98rem;
+    }
+
+    .mellow-hero__social-proof {
+      align-items: flex-start !important;
+      gap: 8px !important;
+      margin: 0 0 4px !important;
+      font-size: 0.9rem !important;
+    }
+
+    .mellow-hero__ctas {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .mellow-hero__btn {
+      min-height: 52px;
+      padding: 0 32px;
+    }
+
+    .mellow-hero__visual img,
+    .mellow-hero__img {
+      width: min(430px, 100%) !important;
+      max-width: 430px !important;
+    }
+
+    .mellow-hero__img-placeholder {
+      min-height: 240px;
+    }
+  }
+
+  /* Layout nudge only */
+  #hero.mellow-hero .mellow-hero__copy,
+  #hero .mellow-hero__copy,
+  .mellow-hero .mellow-hero__copy {
+    transform: translateX(68px) translateY(0);
+  }
+
+  @media (min-width: 1440px) and (min-height: 850px) {
+    #hero.mellow-hero .mellow-hero__copy,
+    #hero .mellow-hero__copy,
+    .mellow-hero .mellow-hero__copy {
+      transform: translateX(68px) translateY(0);
+    }
+  }
+
+  @media (max-width: 980px) {
+    #hero.mellow-hero .mellow-hero__copy,
+    #hero .mellow-hero__copy,
+    .mellow-hero .mellow-hero__copy {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #hero.mellow-hero .mellow-hero__copy,
+    #hero .mellow-hero__copy,
+    .mellow-hero .mellow-hero__copy {
+      transform: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mellow Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "A better kind of reflux relief"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Mellow stops reflux before it starts."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "A smooth gel that works before acid gets the chance."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary CTA label",
+      "default": "Try Mellow"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary CTA label",
+      "default": "Take the 60-Second Quiz"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Product image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow Hero"
+    }
+  ]
+}
+{% endschema %}

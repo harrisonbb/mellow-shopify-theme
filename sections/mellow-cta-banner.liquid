@@ -1,0 +1,271 @@
+{% comment %}
+  HYBRID REBUILD NOTE:
+  This version preserves section-specific layout/design CSS, but removes local
+  headline/eyebrow typography so mellow.css controls global type uniformly.
+{% endcomment %}
+{% comment %} Mellow CTA Banner — Deep Green Square Version {% endcomment %}
+
+<section class="mellow-cta-banner mellow-cta-banner-{{ section.id }}" id="cta-banner-{{ section.id }}">
+  <div class="mellow-cta-banner__inner">
+
+    <span class="mellow-cta-banner__eyebrow mellow-eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2 class="mellow-cta-banner__headline mellow-cta-banner__heading">{{ section.settings.headline }}</h2>
+    <p class="mellow-cta-banner__subhead">{{ section.settings.subhead }}</p>
+
+    <div class="mellow-cta-banner__actions">
+      <a href="{{ section.settings.cta_primary_url }}" class="mellow-cta-banner__btn">
+        {{ section.settings.cta_primary_label }}
+      </a>
+      <a href="{{ section.settings.cta_secondary_url }}" class="mellow-cta-banner__secondary-link">
+        {{ section.settings.cta_secondary_label }}
+      </a>
+    </div>
+
+    <div class="mellow-cta-banner__trust">
+      <span>✓ 30-day guarantee</span>
+      <span>✓ Skip, pause, or cancel anytime</span>
+      <span>✓ Free shipping</span>
+      <span>✓ HSA/FSA eligible</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Force Shopify wrapper/background */
+#shopify-section-{{ section.id }} {
+  background: #1D3828 !important;
+  background-color: #1D3828 !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Force any direct section wrapper children */
+#shopify-section-{{ section.id }} > * {
+  background: #1D3828 !important;
+  background-color: #1D3828 !important;
+  background-image: none !important;
+}
+
+/* CTA section */
+#shopify-section-{{ section.id }} .mellow-cta-banner,
+#cta-banner-{{ section.id }},
+.mellow-cta-banner-{{ section.id }} {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+
+  background: #1D3828 !important;
+  background-color: #1D3828 !important;
+  background-image: none !important;
+
+  padding: 80px 40px;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  color: #F5F0E8;
+  overflow: hidden;
+}
+
+/* Remove possible pseudo-element overlays */
+#shopify-section-{{ section.id }}::before,
+#shopify-section-{{ section.id }}::after,
+#shopify-section-{{ section.id }} .mellow-cta-banner::before,
+#shopify-section-{{ section.id }} .mellow-cta-banner::after,
+#cta-banner-{{ section.id }}::before,
+#cta-banner-{{ section.id }}::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+#shopify-section-{{ section.id }} .mellow-cta-banner *,
+#cta-banner-{{ section.id }} *,
+.mellow-cta-banner-{{ section.id }} * {
+  box-sizing: border-box;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__eyebrow {
+  display: block;
+  color: rgba(245, 240, 232, 0.7) !important;
+  text-align: center !important;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__headline {
+  color: #F5F0E8 !important;
+  margin: 0;
+  max-width: 640px;
+  text-align: center !important;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__subhead {
+  color: rgba(245, 240, 232, 0.78) !important;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0;
+  line-height: 1.65;
+  text-align: center !important;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F0E8 !important;
+  background-color: #F5F0E8 !important;
+  color: #123A24 !important;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__btn:hover {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__secondary-link {
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(245, 240, 232, 0.84) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.48);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__secondary-link:hover {
+  color: #F5F0E8 !important;
+  border-color: #F5F0E8;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 4px;
+}
+
+#cta-banner-{{ section.id }} .mellow-cta-banner__trust span {
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(245, 240, 232, 0.72) !important;
+  letter-spacing: 0.02em;
+  text-align: center !important;
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .mellow-cta-banner,
+  #cta-banner-{{ section.id }},
+  .mellow-cta-banner-{{ section.id }} {
+    padding: 60px 24px;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    background: #1D3828 !important;
+    background-color: #1D3828 !important;
+    background-image: none !important;
+  }
+
+  #cta-banner-{{ section.id }} .mellow-cta-banner__trust {
+    gap: 12px;
+  }
+
+  #cta-banner-{{ section.id }} .mellow-cta-banner__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #cta-banner-{{ section.id }} .mellow-cta-banner__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Mellow CTA Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Start tonight"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "After meals. Before bed. Feel Mellow."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "Make reflux relief part of the moments that matter most — after dinner, before sleep, and anywhere in between."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary CTA label",
+      "default": "Choose My Plan"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary link label",
+      "default": "Try it once for $55 →"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow CTA Banner"
+    }
+  ]
+}
+{% endschema %}
