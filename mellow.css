@@ -489,6 +489,23 @@ main :is(
   color: var(--mellow-ivory) !important;
 }
 
+
+
+/* Hero split headline typography: keep local hero design safe from global heading rules. */
+#hero .mellow-hero__headline-main,
+.mellow-hero .mellow-hero__headline-main {
+  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+}
+
+#hero .mellow-hero__headline-accent,
+.mellow-hero .mellow-hero__headline-accent {
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+}
+
 /* Card titles and small UI titles */
 main [class*="mellow"] :is(
   summary,
@@ -551,6 +568,124 @@ main [class*="mellow"] :is(
 
 
 /* =========================================================
+   8. HERO IMAGE STABILITY + TRUST BAR VISIBILITY FIX
+   ========================================================= */
+
+.mellow-hero,
+.hero,
+.mellow-hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Keeps hero stable without forcing a huge above-the-fold gap */
+.mellow-hero__inner,
+.hero__inner,
+.mellow-hero__container {
+  min-height: 500px !important;
+  display: grid !important;
+  align-items: center !important;
+}
+
+/* Lock the media column so image swaps do not collapse or stretch the hero */
+.mellow-hero__media,
+.hero__media,
+.mellow-hero__image-wrap,
+.hero__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 32vw, 440px) !important;
+  min-height: 340px !important;
+  max-height: 440px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.mellow-hero__media img,
+.hero__media img,
+.mellow-hero__image-wrap img,
+.hero__image-wrapper img,
+.mellow-hero img {
+  width: 100%;
+  height: 100%;
+  max-width: 520px !important;
+  object-fit: contain;
+  display: block;
+}
+
+.mellow-hero__media:empty,
+.hero__media:empty,
+.mellow-hero__image-wrap:empty,
+.hero__image-wrapper:empty {
+  min-height: 340px !important;
+}
+
+/* Important: this intentionally does NOT include .mellow-trust-bar.
+   That was the bug pushing the separate trust bar down. */
+.mellow-hero__trust,
+.hero__trust,
+.mellow-proof-row {
+  margin-top: clamp(24px, 3vw, 40px) !important;
+}
+
+@media screen and (min-width: 990px) {
+  .mellow-hero {
+    padding-top: clamp(58px, 6vh, 82px) !important;
+    padding-bottom: clamp(24px, 3vh, 38px) !important;
+  }
+
+  .mellow-hero__inner,
+  .hero__inner,
+  .mellow-hero__container {
+    min-height: 500px !important;
+  }
+
+  .mellow-hero__media,
+  .hero__media,
+  .mellow-hero__image-wrap,
+  .hero__image-wrapper {
+    height: clamp(340px, 32vw, 440px) !important;
+    min-height: 340px !important;
+    max-height: 440px !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .mellow-hero__inner,
+  .hero__inner,
+  .mellow-hero__container {
+    min-height: auto !important;
+  }
+
+  .mellow-hero__media,
+  .hero__media,
+  .mellow-hero__image-wrap,
+  .hero__image-wrapper {
+    height: clamp(280px, 78vw, 380px) !important;
+    min-height: 280px !important;
+    max-height: 380px !important;
+    margin-top: 28px !important;
+  }
+
+  .mellow-hero__media img,
+  .hero__media img,
+  .mellow-hero__image-wrap img,
+  .hero__image-wrapper img,
+  .mellow-hero img {
+    max-width: 100% !important;
+  }
+
+  .mellow-hero__trust,
+  .hero__trust,
+  .mellow-proof-row {
+    margin-top: 28px !important;
+  }
+}
+
+
+/* =========================================================
    9. BODY COPY
    ========================================================= */
 
@@ -589,6 +724,7 @@ main :is(
    ========================================================= */
 
 main :is(
+  .mellow-hero,
   .mellow-ingredients,
   .mellow-science,
   .mellow-science-section,
@@ -2260,155 +2396,16 @@ main .mellow-pain-point__cta {
 }
 
 /* =========================================================
-   24. ANNOUNCEMENT BAR BRAND COLOR
+   MELLOW — HERO ABOVE-FOLD TRUST + ANNOUNCEMENT FIX
+   Add at very bottom of mellow.css
    ========================================================= */
 
-[id*="announcement"],
-[class*="announcement"],
-.shopify-section:has(.announcement-bar),
-.shopify-section:has(.announcement-bar__message),
-.announcement-bar,
-.announcement-bar.gradient,
-.announcement-bar-section,
-.announcement-bar-slider,
-.announcement-bar-slider .slider,
-.announcement-bar-slider .slider__slide,
-.announcement-bar__announcement,
-.announcement-bar__message,
-.announcement-bar .page-width {
-  background: var(--mellow-announcement-bg) !important;
-  background-color: var(--mellow-announcement-bg) !important;
-}
-
-.announcement-bar,
-.announcement-bar *,
-.announcement-bar__message {
-  color: var(--mellow-announcement-text) !important;
-}
-
-
-/* =========================================================
-   25. REGRESSION REPAIR — RESTORED GLOBAL THEME CHROME
-   =========================================================
-   This block intentionally restores the broad global styling
-   coverage that makes the GitHub-connected draft theme look
-   branded when Dawn section CSS is weak or late-loading.
-   Hero headline typography is excluded so the split sans/serif
-   direction in sections/mellow-hero.liquid remains authoritative.
-   ========================================================= */
-
+/* 1. Brand the announcement bar instead of Shopify-default black */
 :root {
-  --mellow-forest: #1A2D10;
-  --mellow-green: #3F6B2A;
-  --mellow-green-deep: #102018;
-  --mellow-orange: #D04A2A;
-  --mellow-blue: #3D6B8C;
-  --mellow-ivory: #F0EBE0;
-  --mellow-page: #FBFCF7;
-  --mellow-text: #102018;
-  --mellow-text-soft: rgba(16, 32, 24, 0.72);
-  --font-body: 'DM Sans', var(--font-body-family), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --mellow-page-pad: clamp(20px, 5vw, 72px);
-  --mellow-section-y: clamp(56px, 8vw, 112px);
-  --mellow-page-max: 1360px;
-  --radius-pill: 999px;
-  --mellow-nav-height: 58px;
-  --mellow-nav-bg: var(--mellow-page);
-  --mellow-announcement-height: 40px;
   --mellow-announcement-bg: #1F3D2E;
-  --mellow-announcement-text: #F5F0E8;
 }
 
-html,
-body {
-  background: var(--mellow-page) !important;
-  color: var(--mellow-text) !important;
-  font-family: var(--font-body) !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
-}
-
-body :is(p, li, input, textarea, select, button) {
-  font-family: var(--font-body) !important;
-}
-
-body :is(p, li):not(.mellow-hero *):not(.announcement-bar *):not(.footer *) {
-  font-size: var(--mellow-body-size, clamp(0.98rem, 1.05vw, 1.08rem)) !important;
-  line-height: var(--mellow-body-line, 1.62) !important;
-}
-
-body :is(h1, h2, h3, h4):not(.mellow-hero *):not(.header__heading *):not(.footer *) {
-  font-family: var(--font-heading) !important;
-  color: var(--mellow-text) !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em;
-}
-
-main :is(
-  .mellow-who,
-  .mellow-ingredients,
-  .mellow-science,
-  .mellow-science-section,
-  .mellow-science-clean,
-  .mellow-how,
-  .mellow-how-to,
-  .mellow-how-it-works,
-  .mellow-benefits,
-  .mellow-compare,
-  .mellow-compare-section,
-  .mellow-quality,
-  .mellow-testimonials,
-  .mellow-expert-proof,
-  .mellow-early-reviews,
-  .mellow-faq,
-  .mellow-faq-page,
-  .mellow-buybox,
-  .mellow-buy-box,
-  .mellow-buy-section,
-  .mellow-raft-statement,
-  .mellow-page,
-  .mellow-section
-) {
-  padding-top: var(--mellow-section-y) !important;
-  padding-bottom: var(--mellow-section-y) !important;
-  padding-left: var(--mellow-page-pad) !important;
-  padding-right: var(--mellow-page-pad) !important;
-}
-
-main :is(
-  .mellow-who,
-  .mellow-ingredients,
-  .mellow-science,
-  .mellow-science-section,
-  .mellow-science-clean,
-  .mellow-how,
-  .mellow-how-to,
-  .mellow-how-it-works,
-  .mellow-benefits,
-  .mellow-compare,
-  .mellow-compare-section,
-  .mellow-quality,
-  .mellow-testimonials,
-  .mellow-expert-proof,
-  .mellow-early-reviews,
-  .mellow-faq,
-  .mellow-faq-page,
-  .mellow-buybox,
-  .mellow-buy-box,
-  .mellow-buy-section,
-  .mellow-raft-statement,
-  .mellow-page,
-  .mellow-section
-) > :is([class*="container"], [class*="__inner"], .page-width) {
-  max-width: var(--mellow-page-max) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Announcement bar: keep the requested #1F3D2E brand color. */
+/* Make sure every announcement/utility wrapper respects the new color */
 [id*="announcement"],
 [class*="announcement"],
 [id*="announcement_bar"],
@@ -2425,264 +2422,214 @@ main :is(
 .announcement-bar,
 .announcement-bar.gradient,
 .announcement-bar-section,
-.announcement-bar-section *,
-.announcement-bar-wrapper,
-.announcement-bar__wrapper,
+.announcement-bar-slider,
+.announcement-bar-slider .slider,
+.announcement-bar-slider .slider__slide,
 .announcement-bar__announcement,
 .announcement-bar__message,
 .announcement-bar .page-width {
-  min-height: var(--mellow-announcement-height) !important;
-  background: var(--mellow-announcement-bg) !important;
-  background-color: var(--mellow-announcement-bg) !important;
-  color: var(--mellow-announcement-text) !important;
+  background: #1F3D2E !important;
+  background-color: #1F3D2E !important;
 }
 
-.announcement-bar,
-.announcement-bar *,
-.utility-bar,
-.utility-bar * {
-  color: var(--mellow-announcement-text) !important;
-  font-family: var(--font-body) !important;
-  font-size: 0.84rem !important;
-  line-height: 1.2 !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em !important;
-  text-align: center !important;
+/* 2. Tighten hero height more so the proof row has room above fold */
+@media screen and (min-width: 990px) {
+  .mellow-hero {
+    padding-top: clamp(48px, 5vh, 68px) !important;
+    padding-bottom: 10px !important;
+  }
+
+  .mellow-hero__inner,
+  .hero__inner,
+  .mellow-hero__container {
+    min-height: 440px !important;
+    align-items: center !important;
+  }
+
+  .mellow-hero__media,
+  .hero__media,
+  .mellow-hero__image-wrap,
+  .hero__image-wrapper {
+    height: clamp(300px, 28vw, 390px) !important;
+    min-height: 300px !important;
+    max-height: 390px !important;
+  }
+
+  .mellow-hero__media img,
+  .hero__media img,
+  .mellow-hero__image-wrap img,
+  .hero__image-wrapper img,
+  .mellow-hero img {
+    max-width: 480px !important;
+  }
 }
 
-/* Header/nav guardrails in case Dawn defaults win before mellow.css loads. */
-#shopify-section-group-header-group,
-.shopify-section-group-header-group,
-sticky-header,
-sticky-header.header-wrapper,
-.header-wrapper,
-.header-wrapper.gradient,
-.header-wrapper.color-scheme-1,
-.header-wrapper.scrolled-past-header,
-.header-wrapper.scrolled {
-  background: var(--mellow-nav-bg) !important;
-  background-color: var(--mellow-nav-bg) !important;
-  background-image: none !important;
-  border-bottom: 1px solid rgba(16, 32, 24, 0.10) !important;
+/* 3. Pull the full trust bar much higher */
+.mellow-trust-bar,
+.trust-bar,
+.mellow-proof-bar,
+.mellow-hero-trust,
+.mellow-proof-strip {
+  padding-top: 0 !important;
+  padding-bottom: 16px !important;
+  margin-top: 0 !important;
 }
 
-.header,
-.header.page-width,
-header.header,
-sticky-header .header,
-.header-wrapper .header {
-  min-height: var(--mellow-nav-height) !important;
-  height: var(--mellow-nav-height) !important;
-  padding: 0 clamp(20px, 3.2vw, 52px) !important;
-  display: grid !important;
-  grid-template-columns: clamp(104px, 9vw, 144px) 1fr max-content !important;
-  align-items: center !important;
-  column-gap: clamp(14px, 2vw, 32px) !important;
+/* Remove wrapper spacing around trust section */
+main .shopify-section:has(.mellow-trust-bar),
+main .shopify-section:has(.trust-bar),
+main .shopify-section:has(.mellow-proof-bar),
+main .shopify-section:has(.mellow-hero-trust),
+main .shopify-section:has(.mellow-proof-strip) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  position: relative !important;
+  z-index: 8 !important;
 }
 
-.header__heading-link,
-.header__heading-link span,
-.header__heading-link .h2,
-.header__heading .h2,
-.header__heading a,
-.header__heading a span {
-  font-family: var(--font-heading) !important;
-  font-size: clamp(1.42rem, 1.62vw, 1.9rem) !important;
-  line-height: 0.9 !important;
-  letter-spacing: -0.04em !important;
-  font-weight: 600 !important;
-  color: var(--mellow-forest) !important;
-  text-decoration: none !important;
+/* Aggressive desktop pull-up */
+@media screen and (min-width: 990px) {
+  main .shopify-section:has(.mellow-trust-bar),
+  main .shopify-section:has(.trust-bar),
+  main .shopify-section:has(.mellow-proof-bar),
+  main .shopify-section:has(.mellow-hero-trust),
+  main .shopify-section:has(.mellow-proof-strip) {
+    transform: translateY(-76px) !important;
+    margin-bottom: -76px !important;
+  }
 }
 
-.header__inline-menu,
-.header__inline-menu .list-menu,
-.header .list-menu {
-  display: flex !important;
-  align-items: center !important;
-  gap: clamp(18px, 2vw, 34px) !important;
+/* Moderate tablet pull-up */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  main .shopify-section:has(.mellow-trust-bar),
+  main .shopify-section:has(.trust-bar),
+  main .shopify-section:has(.mellow-proof-bar),
+  main .shopify-section:has(.mellow-hero-trust),
+  main .shopify-section:has(.mellow-proof-strip) {
+    transform: translateY(-38px) !important;
+    margin-bottom: -38px !important;
+  }
 }
 
-.header__menu-item,
-.header__inline-menu .list-menu__item,
-.header__inline-menu .list-menu__item span,
-.header__inline-menu a,
-.list-menu__item a,
-.list-menu__item span {
-  font-family: var(--font-body) !important;
-  font-size: clamp(0.84rem, 0.9vw, 0.96rem) !important;
-  line-height: 1 !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  color: var(--mellow-forest) !important;
-  text-decoration: none !important;
-  padding: 0 !important;
+/* Keep mobile clean and not overlapping */
+@media screen and (max-width: 749px) {
+  .mellow-trust-bar,
+  .trust-bar,
+  .mellow-proof-bar,
+  .mellow-hero-trust,
+  .mellow-proof-strip {
+    padding-top: 8px !important;
+    padding-bottom: 18px !important;
+  }
+
+  main .shopify-section:has(.mellow-trust-bar),
+  main .shopify-section:has(.trust-bar),
+  main .shopify-section:has(.mellow-proof-bar),
+  main .shopify-section:has(.mellow-hero-trust),
+  main .shopify-section:has(.mellow-proof-strip) {
+    transform: translateY(-16px) !important;
+    margin-bottom: -16px !important;
+  }
 }
 
-.header__icons,
-.header__icon,
-.header__icon .icon,
-.header__icons svg {
-  color: var(--mellow-forest) !important;
-  stroke: var(--mellow-forest) !important;
+/* 4. Slightly compress trust pills so the row reads above the fold */
+@media screen and (min-width: 990px) {
+  .mellow-trust-bar__inner,
+  .trust-bar__inner,
+  .mellow-proof-bar__inner,
+  .mellow-hero-trust__inner,
+  .mellow-proof-strip__inner {
+    gap: 12px !important;
+  }
+
+  .mellow-trust-bar__item,
+  .trust-bar__item,
+  .mellow-proof-bar__item,
+  .mellow-hero-trust__item,
+  .mellow-proof-strip__item {
+    min-height: 62px !important;
+    padding: 12px 22px !important;
+    gap: 13px !important;
+  }
+
+  .mellow-trust-bar__item svg,
+  .trust-bar__item svg,
+  .mellow-proof-bar__item svg,
+  .mellow-hero-trust__item svg,
+  .mellow-proof-strip__item svg {
+    width: 23px !important;
+    height: 23px !important;
+    min-width: 23px !important;
+    flex-basis: 23px !important;
+  }
+
+  .mellow-trust-bar__title,
+  .trust-bar__title,
+  .mellow-proof-bar__title,
+  .mellow-hero-trust__title,
+  .mellow-proof-strip__title {
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+  }
+
+  .mellow-trust-bar__copy,
+  .trust-bar__copy,
+  .mellow-proof-bar__copy,
+  .mellow-hero-trust__copy,
+  .mellow-proof-strip__copy {
+    font-size: 11.75px !important;
+    line-height: 1.22 !important;
+  }
 }
 
-/* Buttons: restore branded global CTA treatment without touching hero split text. */
-.button,
-.shopify-payment-button__button,
-button[type="submit"],
-input[type="submit"],
-main a[class*="button"],
-main a[class*="btn"],
-.mellow-btn,
-.mellow-button,
-.mellow-cta,
-.mellow-hero__btn {
-  border-radius: var(--radius-pill) !important;
-  font-family: var(--font-body) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.01em !important;
-  text-decoration: none !important;
-}
-
-.button:not(.button--secondary),
-.shopify-payment-button__button,
-button[type="submit"],
-input[type="submit"],
-main a[class*="button"]:not([class*="secondary"]),
-main a[class*="btn"]:not([class*="secondary"]),
-.mellow-btn:not(.mellow-btn--secondary),
-.mellow-button:not(.mellow-button--secondary),
-.mellow-cta:not(.mellow-cta--secondary),
-.mellow-hero__btn {
-  background: var(--mellow-forest) !important;
-  background-color: var(--mellow-forest) !important;
-  color: var(--mellow-ivory) !important;
-  border: 1px solid var(--mellow-forest) !important;
-}
-
-.button:hover,
-.shopify-payment-button__button:hover,
-button[type="submit"]:hover,
-input[type="submit"]:hover,
-main a[class*="button"]:hover,
-main a[class*="btn"]:hover,
-.mellow-btn:hover,
-.mellow-button:hover,
-.mellow-cta:hover,
-.mellow-hero__btn:hover {
-  transform: translateY(-1px);
-}
-
-/* Footer: restore branded footer surface and menu typography. */
-.footer-wrapper,
-footer.footer,
-.footer,
-.shopify-section:has(footer.footer) {
-  background: var(--mellow-green-deep) !important;
-  background-color: var(--mellow-green-deep) !important;
-}
-
-.footer,
-.footer *,
-footer.footer,
-footer.footer * {
-  font-family: var(--font-body) !important;
-  color: rgba(240, 235, 224, 0.8) !important;
-}
-
-.footer a,
-footer.footer a,
-.footer .link,
-.footer .list-menu__item {
-  color: rgba(240, 235, 224, 0.8) !important;
-  text-decoration: none !important;
-}
-
-.footer a:hover,
-footer.footer a:hover {
-  color: var(--mellow-ivory) !important;
-}
-
-.footer-block,
-.footer-block *,
-.footer__content-top,
-.footer__content-top * {
-  text-align: left !important;
-}
-
-.footer-block__heading,
-.footer-block__heading.inline-richtext,
-.footer-block__newsletter h2,
-.footer__newsletter h2 {
-  font-size: 0.72rem !important;
-  line-height: 1.2 !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  color: rgba(240, 235, 224, 0.52) !important;
-}
-
-.footer__copyright,
-.footer__copyright * {
-  color: rgba(240, 235, 224, 0.42) !important;
-  font-size: 0.78rem !important;
-  text-align: center !important;
-}
-
-/* Restore the previously deleted hero/trust stability helpers, but keep
-   section #hero typography from the Liquid section in control. */
-.mellow-hero,
-.hero,
-.mellow-hero-section {
-  position: relative;
-  overflow: visible;
-}
-
-.mellow-hero__media,
-.hero__media,
-.mellow-hero__image-wrap,
-.hero__image-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mellow-hero__trust,
-.hero__trust,
-.mellow-proof-row {
-  margin-top: clamp(24px, 3vw, 40px) !important;
-}
-
+/* 5. Hero social proof line styling.
+   This will activate after we add the Liquid markup. */
 .mellow-hero__social-proof {
   display: inline-flex !important;
   align-items: center !important;
   gap: 10px !important;
+  margin: 2px 0 20px !important;
+
   font-family: var(--font-body) !important;
   font-size: 0.94rem !important;
   line-height: 1.2 !important;
   font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+
   color: var(--mellow-text) !important;
 }
 
 .mellow-hero__stars {
   color: var(--mellow-orange) !important;
+  font-size: 0.9rem !important;
   line-height: 1 !important;
+  letter-spacing: 0.02em !important;
   white-space: nowrap !important;
 }
 
 .mellow-hero__quote {
   color: rgba(16, 32, 24, 0.76) !important;
+  white-space: normal !important;
 }
 
+@media screen and (max-width: 749px) {
+  .mellow-hero__social-proof {
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin: 2px 0 18px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* 6. Hero mini trust row styling.
+   This will activate after we add the Liquid markup. */
 .mellow-hero__mini-trust {
   display: flex !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 8px !important;
   margin-top: 16px !important;
+  max-width: 620px !important;
 }
 
 .mellow-hero__mini-trust span {
@@ -2690,81 +2637,29 @@ footer.footer a:hover {
   align-items: center !important;
   min-height: 32px !important;
   padding: 0 12px !important;
+
   border-radius: var(--radius-pill) !important;
   border: 1px solid rgba(26, 45, 16, 0.12) !important;
   background: rgba(255, 255, 255, 0.52) !important;
+
   font-family: var(--font-body) !important;
   font-size: 0.76rem !important;
   line-height: 1 !important;
   font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
   color: var(--mellow-forest) !important;
-}
-
-#hero .mellow-hero__headline-main,
-.mellow-hero .mellow-hero__headline-main {
-  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-  font-weight: 900 !important;
-  font-style: normal !important;
-}
-
-#hero .mellow-hero__headline-accent,
-.mellow-hero .mellow-hero__headline-accent {
-  font-family: 'Fraunces', Georgia, serif !important;
-  font-weight: 300 !important;
-  font-style: italic !important;
-}
-
-@media screen and (max-width: 989px) {
-  .header,
-  .header.page-width,
-  header.header,
-  sticky-header .header,
-  .header-wrapper .header {
-    grid-template-columns: auto 1fr auto !important;
-    padding-left: 18px !important;
-    padding-right: 18px !important;
-  }
+  white-space: nowrap !important;
 }
 
 @media screen and (max-width: 749px) {
-  main :is(
-    .mellow-who,
-    .mellow-ingredients,
-    .mellow-science,
-    .mellow-science-section,
-    .mellow-science-clean,
-    .mellow-how,
-    .mellow-how-to,
-    .mellow-how-it-works,
-    .mellow-benefits,
-    .mellow-compare,
-    .mellow-compare-section,
-    .mellow-quality,
-    .mellow-testimonials,
-    .mellow-expert-proof,
-    .mellow-early-reviews,
-    .mellow-faq,
-    .mellow-faq-page,
-    .mellow-buybox,
-    .mellow-buy-box,
-    .mellow-buy-section,
-    .mellow-raft-statement,
-    .mellow-page,
-    .mellow-section
-  ) {
-    padding-top: clamp(44px, 12vw, 68px) !important;
-    padding-bottom: clamp(44px, 12vw, 68px) !important;
-    padding-left: clamp(18px, 6vw, 28px) !important;
-    padding-right: clamp(18px, 6vw, 28px) !important;
+  .mellow-hero__mini-trust {
+    margin-top: 14px !important;
+    gap: 7px !important;
   }
 
-  .header__inline-menu {
-    display: none !important;
-  }
-
-  .mellow-hero__social-proof {
-    align-items: flex-start !important;
-    gap: 8px !important;
-    font-size: 0.9rem !important;
+  .mellow-hero__mini-trust span {
+    min-height: 31px !important;
+    padding: 0 10px !important;
+    font-size: 0.73rem !important;
   }
 }
