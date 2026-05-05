@@ -10,8 +10,7 @@
    - Kept motion reveals, no full-section fades/parallax
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
+/* Fonts load once in layout/theme.liquid; avoid CSS @import here so first paint uses the same request path. */
 
 /* =========================================================
    1. DESIGN TOKENS
