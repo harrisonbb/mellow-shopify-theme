@@ -81,18 +81,18 @@
   --mellow-major-header-max: 920px;
 
   /* Card / small title controls */
-  --mellow-card-title-size: clamp(1.1rem, 1.25vw, 1.35rem);
+  --mellow-card-title-size: clamp(1.16rem, 1.3vw, 1.42rem);
   --mellow-card-title-line: 1.22;
   --mellow-card-title-track: 0.002em;
   --mellow-card-title-weight: 500;
 
   /* Eyebrows */
-  --mellow-eyebrow-size: 0.72rem;
+  --mellow-eyebrow-size: 0.76rem;
   --mellow-eyebrow-track: 0.18em;
   --mellow-eyebrow-weight: 800;
 
   /* Body */
-  --mellow-body-size: clamp(0.98rem, 1.05vw, 1.08rem);
+  --mellow-body-size: clamp(1.04rem, 1.12vw, 1.16rem);
   --mellow-body-line: 1.62;
 
   /* Header */
@@ -705,6 +705,14 @@ main :is(
   .mellow-buy-subtitle,
   .mellow-buybox__desc,
   .mellow-buy-box__desc,
+  .mellow-routine__subheading,
+  .mellow-how-it-works__subheading,
+  .mellow-plans-grid__subheading,
+  .mellow-otg__subhead,
+  .mellow-patterns__subhead,
+  .mellow-compare-premium__subtitle,
+  .mellow-cta-banner__subhead,
+  .mellow-liquid__subheading,
   .mellow-raft-statement__body,
   .mellow-page__subhead
 ) {
@@ -716,6 +724,21 @@ main :is(
   max-width: var(--mellow-copy-max) !important;
   margin-left: 0 !important;
   margin-right: auto !important;
+}
+
+
+main [class*="mellow"] :is(
+  [class*="__card-copy"],
+  [class*="__step-text"],
+  [class*="__benefit-text"],
+  [class*="__summary-text"],
+  [class*="__author-copy"],
+  [class*="__note"]
+) {
+  font-family: var(--font-body) !important;
+  font-size: clamp(1rem, 1.04vw, 1.1rem) !important;
+  line-height: 1.58 !important;
+  color: var(--mellow-text-soft) !important;
 }
 
 
@@ -1172,7 +1195,7 @@ main :is(
 .announcement-bar * {
   color: var(--mellow-announcement-text) !important;
   font-family: var(--font-body) !important;
-  font-size: 0.78rem !important;
+  font-size: 0.82rem !important;
   font-weight: 500 !important;
   line-height: 1 !important;
   text-align: center !important;
@@ -1320,7 +1343,7 @@ h1.header__heading {
 .list-menu__item a,
 .list-menu__item span {
   font-family: var(--font-body) !important;
-  font-size: clamp(0.84rem, 0.9vw, 0.96rem) !important;
+  font-size: clamp(0.9rem, 0.94vw, 1rem) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
@@ -1400,7 +1423,7 @@ details-modal.header__search,
   content: 'Sign in' !important;
   display: inline-block !important;
   font-family: var(--font-body) !important;
-  font-size: clamp(0.82rem, 0.88vw, 0.94rem) !important;
+  font-size: clamp(0.88rem, 0.92vw, 0.98rem) !important;
   font-weight: 650 !important;
   color: var(--mellow-forest) !important;
   letter-spacing: -0.005em !important;
@@ -1584,7 +1607,7 @@ main .shopify-section:has(.mellow-proof-strip) {
 .mellow-hero-trust__title,
 .mellow-proof-strip__title {
   font-family: var(--font-body) !important;
-  font-size: 15px !important;
+  font-size: 15.5px !important;
   line-height: 1.15 !important;
   font-weight: 800 !important;
   letter-spacing: -0.02em !important;
@@ -1601,8 +1624,8 @@ main .shopify-section:has(.mellow-proof-strip) {
 .mellow-hero-trust__copy,
 .mellow-proof-strip__copy {
   font-family: var(--font-body) !important;
-  font-size: 12.5px !important;
-  line-height: 1.25 !important;
+  font-size: 13px !important;
+  line-height: 1.28 !important;
   font-weight: 500 !important;
   color: rgba(240, 235, 224, 0.78) !important;
   margin: 0 !important;
@@ -1700,7 +1723,7 @@ footer a:hover {
 .footer__copyright,
 .footer__copyright * {
   color: rgba(240, 235, 224, 0.42) !important;
-  font-size: 0.78rem !important;
+  font-size: 0.84rem !important;
   text-align: center !important;
 }
 
@@ -1710,7 +1733,7 @@ footer a:hover {
 .footer__newsletter h2,
 .footer-block .footer-block__heading {
   font-family: var(--font-body) !important;
-  font-size: 0.72rem !important;
+  font-size: 0.78rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
@@ -1726,7 +1749,8 @@ footer a:hover {
 .footer-block__details-content .link,
 .footer-block__details-content .list-menu__item a {
   color: rgba(240, 235, 224, 0.8) !important;
-  font-size: 0.95rem !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
   font-weight: 400 !important;
 }
 
@@ -1738,7 +1762,7 @@ footer a:hover {
   padding: 14px 20px !important;
   height: 52px !important;
   font-family: var(--font-body) !important;
-  font-size: 0.95rem !important;
+  font-size: 1rem !important;
   box-shadow: none !important;
   outline: none !important;
   width: 100% !important;
@@ -2568,8 +2592,8 @@ main .shopify-section:has(.mellow-proof-strip) {
   .mellow-proof-bar__title,
   .mellow-hero-trust__title,
   .mellow-proof-strip__title {
-    font-size: 14px !important;
-    line-height: 1.1 !important;
+    font-size: 14.5px !important;
+    line-height: 1.12 !important;
   }
 
   .mellow-trust-bar__copy,
@@ -2577,8 +2601,8 @@ main .shopify-section:has(.mellow-proof-strip) {
   .mellow-proof-bar__copy,
   .mellow-hero-trust__copy,
   .mellow-proof-strip__copy {
-    font-size: 11.75px !important;
-    line-height: 1.22 !important;
+    font-size: 13px !important;
+    line-height: 1.26 !important;
   }
 }
 
@@ -2591,8 +2615,8 @@ main .shopify-section:has(.mellow-proof-strip) {
   margin: 2px 0 20px !important;
 
   font-family: var(--font-body) !important;
-  font-size: 0.94rem !important;
-  line-height: 1.2 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.24 !important;
   font-weight: 700 !important;
   letter-spacing: -0.015em !important;
 
@@ -2601,7 +2625,7 @@ main .shopify-section:has(.mellow-proof-strip) {
 
 .mellow-hero__stars {
   color: var(--mellow-orange) !important;
-  font-size: 0.9rem !important;
+  font-size: 0.92rem !important;
   line-height: 1 !important;
   letter-spacing: 0.02em !important;
   white-space: nowrap !important;
@@ -2617,7 +2641,7 @@ main .shopify-section:has(.mellow-proof-strip) {
     align-items: flex-start !important;
     gap: 8px !important;
     margin: 2px 0 18px !important;
-    font-size: 0.9rem !important;
+    font-size: 0.94rem !important;
   }
 }
 
@@ -2643,7 +2667,7 @@ main .shopify-section:has(.mellow-proof-strip) {
   background: rgba(255, 255, 255, 0.52) !important;
 
   font-family: var(--font-body) !important;
-  font-size: 0.76rem !important;
+  font-size: 0.82rem !important;
   line-height: 1 !important;
   font-weight: 800 !important;
   letter-spacing: -0.01em !important;
@@ -2660,6 +2684,6 @@ main .shopify-section:has(.mellow-proof-strip) {
   .mellow-hero__mini-trust span {
     min-height: 31px !important;
     padding: 0 10px !important;
-    font-size: 0.73rem !important;
+    font-size: 0.78rem !important;
   }
 }
