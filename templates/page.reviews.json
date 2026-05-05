@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "mellow-early-reviews-page",
+      "settings": {
+        "microproof": "Early feedback from real reflux routines",
+        "heading": "Real relief moments, from real routines.",
+        "subhead": "Early Mellow users are trying it after meals, before bed, and during the moments reflux usually gets in the way.",
+        "cta_label": "Start with Mellow",
+        "cta_link": "/products/mellow-reflux-relief",
+        "disclaimer": "*Early feedback reflects individual experiences from initial testers. Results may vary."
+      }
+    }
+  },
+  "order": ["main"]
+}
