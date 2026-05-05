@@ -99,7 +99,7 @@
   --mellow-nav-height: 58px;
   --mellow-nav-bg: var(--mellow-page);
   --mellow-announcement-height: 40px;
---mellow-announcement-bg: #1F3D2E;
+  --mellow-announcement-bg: #1F3D2E;
   --mellow-announcement-text: #F5F0E8;
 }
 
@@ -423,14 +423,14 @@ main :is(
    6. GLOBAL MAJOR SECTION HEADERS
    ========================================================= */
 
-main section[class*="mellow"] h1,
-main section[class*="mellow"] h2,
-main div[class*="mellow"] h1,
-main div[class*="mellow"] h2,
-main [class*="mellow"] [class*="__headline"],
-main [class*="mellow"] [class*="__heading"],
-main [class*="mellow"] h3[class*="__headline"],
-main [class*="mellow"] h3[class*="__heading"],
+main section[class*="mellow"]:not(.mellow-hero) h1,
+main section[class*="mellow"]:not(.mellow-hero) h2,
+main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h1,
+main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h2,
+main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__headline"],
+main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__heading"],
+main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__headline"],
+main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__heading"],
 main [class*="mellow"] :is(
   .mellow-buy-title,
   .mellow-compare-title,
@@ -487,16 +487,6 @@ main :is(
   .mellow-main-title
 ) {
   color: var(--mellow-ivory) !important;
-}
-
-main .mellow-hero__headline,
-main section.mellow-hero h1,
-main section.mellow-hero h2 {
-  font-size: var(--mellow-major-header-size) !important;
-  line-height: var(--mellow-major-header-line) !important;
-  letter-spacing: var(--mellow-major-header-track) !important;
-  font-weight: var(--mellow-major-header-weight) !important;
-  max-width: var(--mellow-major-header-max) !important;
 }
 
 /* Card titles and small UI titles */
@@ -561,124 +551,6 @@ main [class*="mellow"] :is(
 
 
 /* =========================================================
-   8. HERO IMAGE STABILITY + TRUST BAR VISIBILITY FIX
-   ========================================================= */
-
-.mellow-hero,
-.hero,
-.mellow-hero-section {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Keeps hero stable without forcing a huge above-the-fold gap */
-.mellow-hero__inner,
-.hero__inner,
-.mellow-hero__container {
-  min-height: 500px !important;
-  display: grid !important;
-  align-items: center !important;
-}
-
-/* Lock the media column so image swaps do not collapse or stretch the hero */
-.mellow-hero__media,
-.hero__media,
-.mellow-hero__image-wrap,
-.hero__image-wrapper {
-  position: relative;
-  width: 100%;
-  height: clamp(340px, 32vw, 440px) !important;
-  min-height: 340px !important;
-  max-height: 440px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.mellow-hero__media img,
-.hero__media img,
-.mellow-hero__image-wrap img,
-.hero__image-wrapper img,
-.mellow-hero img {
-  width: 100%;
-  height: 100%;
-  max-width: 520px !important;
-  object-fit: contain;
-  display: block;
-}
-
-.mellow-hero__media:empty,
-.hero__media:empty,
-.mellow-hero__image-wrap:empty,
-.hero__image-wrapper:empty {
-  min-height: 340px !important;
-}
-
-/* Important: this intentionally does NOT include .mellow-trust-bar.
-   That was the bug pushing the separate trust bar down. */
-.mellow-hero__trust,
-.hero__trust,
-.mellow-proof-row {
-  margin-top: clamp(24px, 3vw, 40px) !important;
-}
-
-@media screen and (min-width: 990px) {
-  .mellow-hero {
-    padding-top: clamp(58px, 6vh, 82px) !important;
-    padding-bottom: clamp(24px, 3vh, 38px) !important;
-  }
-
-  .mellow-hero__inner,
-  .hero__inner,
-  .mellow-hero__container {
-    min-height: 500px !important;
-  }
-
-  .mellow-hero__media,
-  .hero__media,
-  .mellow-hero__image-wrap,
-  .hero__image-wrapper {
-    height: clamp(340px, 32vw, 440px) !important;
-    min-height: 340px !important;
-    max-height: 440px !important;
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .mellow-hero__inner,
-  .hero__inner,
-  .mellow-hero__container {
-    min-height: auto !important;
-  }
-
-  .mellow-hero__media,
-  .hero__media,
-  .mellow-hero__image-wrap,
-  .hero__image-wrapper {
-    height: clamp(280px, 78vw, 380px) !important;
-    min-height: 280px !important;
-    max-height: 380px !important;
-    margin-top: 28px !important;
-  }
-
-  .mellow-hero__media img,
-  .hero__media img,
-  .mellow-hero__image-wrap img,
-  .hero__image-wrapper img,
-  .mellow-hero img {
-    max-width: 100% !important;
-  }
-
-  .mellow-hero__trust,
-  .hero__trust,
-  .mellow-proof-row {
-    margin-top: 28px !important;
-  }
-}
-
-
-/* =========================================================
    9. BODY COPY
    ========================================================= */
 
@@ -717,7 +589,6 @@ main :is(
    ========================================================= */
 
 main :is(
-  .mellow-hero,
   .mellow-ingredients,
   .mellow-science,
   .mellow-science-section,
@@ -1925,14 +1796,14 @@ footer a:hover {
     --mellow-body-line: 1.6;
   }
 
-  main section[class*="mellow"] h1,
-  main section[class*="mellow"] h2,
-  main div[class*="mellow"] h1,
-  main div[class*="mellow"] h2,
-  main [class*="mellow"] [class*="__headline"],
-  main [class*="mellow"] [class*="__heading"],
-  main [class*="mellow"] h3[class*="__headline"],
-  main [class*="mellow"] h3[class*="__heading"],
+  main section[class*="mellow"]:not(.mellow-hero) h1,
+  main section[class*="mellow"]:not(.mellow-hero) h2,
+  main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h1,
+  main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h2,
+  main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__headline"],
+  main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__heading"],
+  main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__headline"],
+  main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__heading"],
   main [class*="mellow"] :is(
     .mellow-buy-title,
     .mellow-compare-title,
@@ -2389,29 +2260,13 @@ main .mellow-pain-point__cta {
 }
 
 /* =========================================================
-   MELLOW — HERO ABOVE-FOLD TRUST + ANNOUNCEMENT FIX
-   Add at very bottom of mellow.css
+   24. ANNOUNCEMENT BAR BRAND COLOR
    ========================================================= */
 
-/* 1. Brand the announcement bar instead of Shopify-default black */
-:root {
-  --mellow-announcement-bg: #1F3D2E;
-}
-
-/* Make sure every announcement/utility wrapper respects the new color */
 [id*="announcement"],
 [class*="announcement"],
-[id*="announcement_bar"],
-[id*="announcement-bar"],
-[class*="announcement_bar"],
-[class*="announcement-bar"],
 .shopify-section:has(.announcement-bar),
 .shopify-section:has(.announcement-bar__message),
-.shopify-section:has(.utility-bar),
-.utility-bar,
-.utility-bar.gradient,
-.utility-bar__grid,
-.utility-bar .page-width,
 .announcement-bar,
 .announcement-bar.gradient,
 .announcement-bar-section,
@@ -2421,238 +2276,12 @@ main .mellow-pain-point__cta {
 .announcement-bar__announcement,
 .announcement-bar__message,
 .announcement-bar .page-width {
-  background: #1F3D2E !important;
-  background-color: #1F3D2E !important;
+  background: var(--mellow-announcement-bg) !important;
+  background-color: var(--mellow-announcement-bg) !important;
 }
 
-/* 2. Tighten hero height more so the proof row has room above fold */
-@media screen and (min-width: 990px) {
-  .mellow-hero {
-    padding-top: clamp(48px, 5vh, 68px) !important;
-    padding-bottom: 10px !important;
-  }
-
-  .mellow-hero__inner,
-  .hero__inner,
-  .mellow-hero__container {
-    min-height: 440px !important;
-    align-items: center !important;
-  }
-
-  .mellow-hero__media,
-  .hero__media,
-  .mellow-hero__image-wrap,
-  .hero__image-wrapper {
-    height: clamp(300px, 28vw, 390px) !important;
-    min-height: 300px !important;
-    max-height: 390px !important;
-  }
-
-  .mellow-hero__media img,
-  .hero__media img,
-  .mellow-hero__image-wrap img,
-  .hero__image-wrapper img,
-  .mellow-hero img {
-    max-width: 480px !important;
-  }
-}
-
-/* 3. Pull the full trust bar much higher */
-.mellow-trust-bar,
-.trust-bar,
-.mellow-proof-bar,
-.mellow-hero-trust,
-.mellow-proof-strip {
-  padding-top: 0 !important;
-  padding-bottom: 16px !important;
-  margin-top: 0 !important;
-}
-
-/* Remove wrapper spacing around trust section */
-main .shopify-section:has(.mellow-trust-bar),
-main .shopify-section:has(.trust-bar),
-main .shopify-section:has(.mellow-proof-bar),
-main .shopify-section:has(.mellow-hero-trust),
-main .shopify-section:has(.mellow-proof-strip) {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  position: relative !important;
-  z-index: 8 !important;
-}
-
-/* Aggressive desktop pull-up */
-@media screen and (min-width: 990px) {
-  main .shopify-section:has(.mellow-trust-bar),
-  main .shopify-section:has(.trust-bar),
-  main .shopify-section:has(.mellow-proof-bar),
-  main .shopify-section:has(.mellow-hero-trust),
-  main .shopify-section:has(.mellow-proof-strip) {
-    transform: translateY(-76px) !important;
-    margin-bottom: -76px !important;
-  }
-}
-
-/* Moderate tablet pull-up */
-@media screen and (min-width: 750px) and (max-width: 989px) {
-  main .shopify-section:has(.mellow-trust-bar),
-  main .shopify-section:has(.trust-bar),
-  main .shopify-section:has(.mellow-proof-bar),
-  main .shopify-section:has(.mellow-hero-trust),
-  main .shopify-section:has(.mellow-proof-strip) {
-    transform: translateY(-38px) !important;
-    margin-bottom: -38px !important;
-  }
-}
-
-/* Keep mobile clean and not overlapping */
-@media screen and (max-width: 749px) {
-  .mellow-trust-bar,
-  .trust-bar,
-  .mellow-proof-bar,
-  .mellow-hero-trust,
-  .mellow-proof-strip {
-    padding-top: 8px !important;
-    padding-bottom: 18px !important;
-  }
-
-  main .shopify-section:has(.mellow-trust-bar),
-  main .shopify-section:has(.trust-bar),
-  main .shopify-section:has(.mellow-proof-bar),
-  main .shopify-section:has(.mellow-hero-trust),
-  main .shopify-section:has(.mellow-proof-strip) {
-    transform: translateY(-16px) !important;
-    margin-bottom: -16px !important;
-  }
-}
-
-/* 4. Slightly compress trust pills so the row reads above the fold */
-@media screen and (min-width: 990px) {
-  .mellow-trust-bar__inner,
-  .trust-bar__inner,
-  .mellow-proof-bar__inner,
-  .mellow-hero-trust__inner,
-  .mellow-proof-strip__inner {
-    gap: 12px !important;
-  }
-
-  .mellow-trust-bar__item,
-  .trust-bar__item,
-  .mellow-proof-bar__item,
-  .mellow-hero-trust__item,
-  .mellow-proof-strip__item {
-    min-height: 62px !important;
-    padding: 12px 22px !important;
-    gap: 13px !important;
-  }
-
-  .mellow-trust-bar__item svg,
-  .trust-bar__item svg,
-  .mellow-proof-bar__item svg,
-  .mellow-hero-trust__item svg,
-  .mellow-proof-strip__item svg {
-    width: 23px !important;
-    height: 23px !important;
-    min-width: 23px !important;
-    flex-basis: 23px !important;
-  }
-
-  .mellow-trust-bar__title,
-  .trust-bar__title,
-  .mellow-proof-bar__title,
-  .mellow-hero-trust__title,
-  .mellow-proof-strip__title {
-    font-size: 14px !important;
-    line-height: 1.1 !important;
-  }
-
-  .mellow-trust-bar__copy,
-  .trust-bar__copy,
-  .mellow-proof-bar__copy,
-  .mellow-hero-trust__copy,
-  .mellow-proof-strip__copy {
-    font-size: 11.75px !important;
-    line-height: 1.22 !important;
-  }
-}
-
-/* 5. Hero social proof line styling.
-   This will activate after we add the Liquid markup. */
-.mellow-hero__social-proof {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  margin: 2px 0 20px !important;
-
-  font-family: var(--font-body) !important;
-  font-size: 0.94rem !important;
-  line-height: 1.2 !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.015em !important;
-
-  color: var(--mellow-text) !important;
-}
-
-.mellow-hero__stars {
-  color: var(--mellow-orange) !important;
-  font-size: 0.9rem !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-  white-space: nowrap !important;
-}
-
-.mellow-hero__quote {
-  color: rgba(16, 32, 24, 0.76) !important;
-  white-space: normal !important;
-}
-
-@media screen and (max-width: 749px) {
-  .mellow-hero__social-proof {
-    align-items: flex-start !important;
-    gap: 8px !important;
-    margin: 2px 0 18px !important;
-    font-size: 0.9rem !important;
-  }
-}
-
-/* 6. Hero mini trust row styling.
-   This will activate after we add the Liquid markup. */
-.mellow-hero__mini-trust {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin-top: 16px !important;
-  max-width: 620px !important;
-}
-
-.mellow-hero__mini-trust span {
-  display: inline-flex !important;
-  align-items: center !important;
-  min-height: 32px !important;
-  padding: 0 12px !important;
-
-  border-radius: var(--radius-pill) !important;
-  border: 1px solid rgba(26, 45, 16, 0.12) !important;
-  background: rgba(255, 255, 255, 0.52) !important;
-
-  font-family: var(--font-body) !important;
-  font-size: 0.76rem !important;
-  line-height: 1 !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.01em !important;
-  color: var(--mellow-forest) !important;
-  white-space: nowrap !important;
-}
-
-@media screen and (max-width: 749px) {
-  .mellow-hero__mini-trust {
-    margin-top: 14px !important;
-    gap: 7px !important;
-  }
-
-  .mellow-hero__mini-trust span {
-    min-height: 31px !important;
-    padding: 0 10px !important;
-    font-size: 0.73rem !important;
-  }
+.announcement-bar,
+.announcement-bar *,
+.announcement-bar__message {
+  color: var(--mellow-announcement-text) !important;
 }
