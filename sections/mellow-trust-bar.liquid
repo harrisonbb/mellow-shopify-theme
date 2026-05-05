@@ -94,8 +94,8 @@
     max-width: none !important;
     margin: 0 !important;
 
-    /* keep trust row down, reduce bottom so green returns into viewport */
-    padding: 112px clamp(32px, 5vw, 80px) 18px !important;
+    /* Keep the trust row close to the hero so it remains above the fold. */
+    padding: 20px clamp(32px, 5vw, 80px) 18px !important;
 
     background: var(--mellow-page, #FBFCF7) !important;
     background-color: var(--mellow-page, #FBFCF7) !important;
@@ -267,7 +267,7 @@
 
   @media screen and (max-width: 980px) {
     #mellow-trust-strip-{{ section.id }} {
-      padding: 92px 28px 16px !important;
+      padding: 20px 28px 16px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__inner {
@@ -302,7 +302,7 @@
 
   @media screen and (max-width: 760px) {
     #mellow-trust-strip-{{ section.id }} {
-      padding: 72px 20px 14px !important;
+      padding: 18px 20px 14px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__inner {
