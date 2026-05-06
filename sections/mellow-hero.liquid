@@ -97,10 +97,12 @@
 
     position: relative;
     isolation: isolate;
-    min-height: clamp(720px, 92vh, 960px);
+    min-height: calc(100vh - var(--header-height, 120px));
     width: 100%;
     overflow: hidden;
-    background: var(--mellow-forest-local);
+    background:
+      radial-gradient(circle at 86% 78%, rgba(208, 74, 42, 0.24) 0 18%, rgba(208, 74, 42, 0) 42%),
+      linear-gradient(135deg, #071209 0%, #0D1D11 48%, #152818 100%);
     color: var(--mellow-ivory-local);
   }
 
@@ -113,18 +115,29 @@
 
   .mellow-hero__bg {
     z-index: 0;
-    background: var(--mellow-forest-local);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 82% 82%, rgba(208, 74, 42, 0.28) 0 16%, rgba(208, 74, 42, 0) 42%),
+      linear-gradient(135deg, #071209 0%, #0D1D11 50%, #152818 100%);
   }
 
   .mellow-hero .mellow-hero__bg-image,
   .mellow-hero__bg-image {
+    position: absolute !important;
+    z-index: 0 !important;
     display: block !important;
-    width: 100% !important;
-    height: 100% !important;
+    width: clamp(320px, 34vw, 560px) !important;
+    height: auto !important;
     max-width: none !important;
-    object-fit: cover !important;
-    object-position: 62% center !important;
-    background-position: 62% center !important;
+    max-height: 82% !important;
+    right: clamp(48px, 8vw, 140px) !important;
+    bottom: clamp(24px, 5vw, 72px) !important;
+    left: auto !important;
+    top: auto !important;
+    object-fit: contain !important;
+    object-position: 70% center !important;
+    background-position: 70% center !important;
+    transform: none !important;
   }
 
   .mellow-hero__bg-overlay {
@@ -132,10 +145,10 @@
     background:
       linear-gradient(
         90deg,
-        rgba(5, 13, 7, 0.88) 0%,
-        rgba(5, 13, 7, 0.72) 30%,
-        rgba(5, 13, 7, 0.34) 52%,
-        rgba(5, 13, 7, 0.08) 100%
+        rgba(5, 13, 7, 0.92) 0%,
+        rgba(5, 13, 7, 0.78) 34%,
+        rgba(5, 13, 7, 0.34) 62%,
+        rgba(5, 13, 7, 0.06) 100%
       );
   }
 
@@ -392,12 +405,18 @@
   @media (max-width: 768px) {
     .mellow-hero {
       --mellow-axis-pad: clamp(20px, 5.8vw, 36px);
-      min-height: clamp(680px, 90vh, 860px);
+      min-height: auto;
     }
 
     .mellow-hero__bg-image {
-      object-position: 66% center !important;
-      background-position: 66% center !important;
+      width: min(78vw, 360px) !important;
+      max-height: 48% !important;
+      right: 50% !important;
+      bottom: clamp(28px, 8vw, 56px) !important;
+      object-fit: contain !important;
+      object-position: 72% center !important;
+      background-position: 72% center !important;
+      transform: translateX(50%) !important;
     }
 
     .mellow-hero__bg-overlay {
@@ -421,7 +440,7 @@
       min-height: clamp(680px, 90vh, 860px);
       align-items: center;
       padding-top: clamp(112px, 15vh, 156px);
-      padding-bottom: clamp(72px, 12vh, 108px);
+      padding-bottom: clamp(280px, 44vh, 390px);
     }
 
     .mellow-hero__copy {
