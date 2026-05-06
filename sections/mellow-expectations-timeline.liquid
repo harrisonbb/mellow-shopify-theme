@@ -141,8 +141,8 @@
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__container {
     width: min(100% - clamp(36px, 8vw, 128px), 1080px);
     margin: 0 auto;
-    padding-top: min({{ section.settings.padding_top | times: 0.75 | round: 0 }}px, 48px);
-    padding-bottom: min({{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px, 48px);
+    padding-top: min({{ section.settings.padding_top | times: 0.75 | round: 0 }}px, 56px);
+    padding-bottom: min({{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px, 52px);
   }
 
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__header {
@@ -151,7 +151,7 @@
   }
 
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__eyebrow {
-    margin: 0 0 18px;
+    margin: 0 0 16px;
     color: var(--mellow-blue);
     font-size: 1.1rem;
     font-weight: 800;
@@ -162,18 +162,18 @@
 
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__heading {
     max-width: 760px;
-    margin: 0 0 24px;
+    margin: 0;
     color: var(--mellow-black);
     font-family: var(--font-heading-family, 'Fraunces', Georgia, serif);
-    font-size: clamp(4rem, 4.5vw, 6.4rem);
+    font-size: clamp(42px, 4.6vw, 72px);
     font-weight: var(--font-heading-weight, 550);
     letter-spacing: -0.045em;
-    line-height: 1.02;
+    line-height: 1;
   }
 
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__subheading {
-    max-width: 660px;
-    margin-top: 0;
+    max-width: 680px;
+    margin-top: 22px;
     color: rgba(26, 45, 16, 0.78);
     font-size: 1.6rem;
     line-height: 1.55;
@@ -187,7 +187,7 @@
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__timeline-wrap {
     position: relative;
     max-width: 720px;
-    margin: 72px auto 0;
+    margin: 56px auto 0;
     padding-left: calc(var(--timeline-side) + var(--timeline-gutter));
   }
 
@@ -221,7 +221,7 @@
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__item {
     position: relative;
     min-height: 0;
-    padding-bottom: 52px;
+    padding-bottom: 44px;
     opacity: 0.48;
     color: var(--mellow-sage);
     transform: translateY(14px);
@@ -289,13 +289,13 @@
     display: inline-flex;
     align-items: center;
     min-height: 0;
-    margin-bottom: 12px;
-    padding: 8px 16px;
+    margin-bottom: 14px;
+    padding: 7px 16px;
     border: 1px solid rgba(201, 206, 195, 0.78);
     border-radius: 999px;
     background: rgba(201, 206, 195, 0.16);
     color: #B9BFB4;
-    font-size: 1.3rem;
+    font-size: clamp(15px, 1.1vw, 16px);
     font-weight: 800;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -324,23 +324,23 @@
     margin: 0;
     color: currentColor;
     font-family: var(--font-heading-family, 'Fraunces', Georgia, serif);
-    font-size: clamp(1.8rem, 1.8vw, 2rem);
+    font-size: clamp(20px, 1.55vw, 22px);
     font-weight: var(--font-heading-weight, 550);
     letter-spacing: -0.02em;
-    line-height: 1.25;
+    line-height: 1.18;
     transition: color 650ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__bullets {
     display: grid;
-    gap: 8px;
+    gap: 9px;
     max-width: 560px;
     margin: 12px 0 0;
     padding: 0;
     list-style: none;
     color: currentColor;
-    font-size: clamp(1.5rem, 1.2vw, 1.6rem);
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.45;
     letter-spacing: -0.01em;
   }
 
@@ -469,8 +469,31 @@
 
   @media screen and (min-width: 750px) {
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__container {
-      padding-top: min({{ section.settings.padding_top }}px, 72px);
-      padding-bottom: min({{ section.settings.padding_bottom }}px, 72px);
+      padding-top: min({{ section.settings.padding_top }}px, 56px);
+      padding-bottom: min({{ section.settings.padding_bottom }}px, 52px);
+    }
+
+    #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__timeline-wrap {
+      margin-top: 40px;
+    }
+
+    #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__item {
+      padding-bottom: 40px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__container {
+      padding-top: min({{ section.settings.padding_top }}px, 64px);
+      padding-bottom: min({{ section.settings.padding_bottom }}px, 56px);
+    }
+
+    #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__timeline-wrap {
+      margin-top: 56px;
+    }
+
+    #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__item {
+      padding-bottom: 44px;
     }
   }
 
@@ -495,7 +518,7 @@
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__timeline-wrap {
       max-width: none;
-      margin-top: 48px;
+      margin-top: 32px;
       padding-left: calc(var(--timeline-side) + var(--timeline-gutter));
     }
 
@@ -505,7 +528,7 @@
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__item {
       min-height: auto;
-      padding-bottom: 42px;
+      padding-bottom: 34px;
     }
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__dot {
@@ -525,18 +548,18 @@
       min-height: 0;
       margin-bottom: 10px;
       padding: 7px 14px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__item-heading {
       font-size: clamp(1.8rem, 5vw, 2rem);
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__bullets {
       gap: 8px;
       font-size: 1.5rem;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     #mellow-expectations-timeline-{{ section.id }} .mellow-expectations-timeline__usage {
