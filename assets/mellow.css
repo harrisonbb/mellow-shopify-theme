@@ -18,7 +18,7 @@
 
 :root {
   /* Brand colors */
-  --mellow-page: #FBFCF7;
+  --mellow-page: #FFFFFF;
   --mellow-warm-white: #FAFAF8;
   --mellow-ivory: #F0EBE0;
 
@@ -1381,7 +1381,7 @@ sticky-header.scrolled-past-header,
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  --color-background: 251, 252, 247 !important;
+  --color-background: 255, 255, 255 !important;
   --gradient-background: transparent !important;
 }
 
