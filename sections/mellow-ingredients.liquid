@@ -22,12 +22,9 @@
           {% endif %}
         </span>
 
-        <h2 class="mellow-ingredients__heading">
-          {% if section.settings.heading != blank %}
-            {{ section.settings.heading }}
-          {% else %}
-            Three active ingredients. One protective raft.
-          {% endif %}
+        <h2 class="mellow-ingredients__heading mellow-heading-split">
+          {% assign split_heading_text = section.settings.heading | default: 'Three active ingredients. One protective raft.' %}
+          {% render 'mellow-split-heading', text: split_heading_text %}
         </h2>
       </div>
 

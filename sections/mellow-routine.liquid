@@ -28,8 +28,8 @@
         {% endif %}
 
         {% if section.settings.heading != blank %}
-          <h2 class="mellow-routine__heading">
-            {{ section.settings.heading }}
+          <h2 class="mellow-routine__heading mellow-heading-split">
+            {% render 'mellow-split-heading', text: section.settings.heading %}
           </h2>
         {% endif %}
 

@@ -29,8 +29,8 @@
         {% endif %}
 
         {% if section.settings.heading != blank %}
-          <h2 class="mellow-otg__headline">
-            {{ section.settings.heading }}
+          <h2 class="mellow-otg__headline mellow-heading-split">
+            {% render 'mellow-split-heading', text: section.settings.heading %}
           </h2>
         {% endif %}
 

@@ -182,6 +182,52 @@ li {
   color: var(--mellow-text-soft) !important;
 }
 
+/* Reusable split-heading system for major homepage section h2s only. */
+.mellow-heading-split {
+  font-family: var(--font-body) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.058em !important;
+}
+
+.mellow-heading-split .mellow-heading-main,
+.mellow-heading-split .mellow-heading-accent {
+  display: inline;
+}
+
+.mellow-heading-split .mellow-heading-main {
+  font-family: var(--font-body) !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  font-variation-settings: normal !important;
+  letter-spacing: -0.065em !important;
+}
+
+.mellow-heading-split .mellow-heading-accent {
+  font-family: var(--font-heading) !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 50 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.mellow-heading-split .mellow-heading-break {
+  display: block;
+}
+
+@media screen and (max-width: 749px) {
+  .mellow-heading-split {
+    letter-spacing: -0.048em !important;
+  }
+
+  .mellow-heading-split .mellow-heading-main {
+    letter-spacing: -0.055em !important;
+  }
+
+  .mellow-heading-split .mellow-heading-accent {
+    letter-spacing: -0.038em !important;
+  }
+}
+
 
 /* =========================================================
    4. GLOBAL SECTION WIDTH / AXIS

@@ -29,12 +29,9 @@
           {% endif %}
         </span>
 
-        <h2 class="mellow-patterns__headline">
-          {% if section.settings.heading != blank %}
-            {{ section.settings.heading }}
-          {% else %}
-            Reflux has a pattern.
-          {% endif %}
+        <h2 class="mellow-patterns__headline mellow-heading-split">
+          {% assign split_heading_text = section.settings.heading | default: 'Reflux has a pattern.' %}
+          {% render 'mellow-split-heading', text: split_heading_text %}
         </h2>
       </div>
 
