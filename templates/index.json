@@ -252,14 +252,6 @@
       "name": "Mellow Buy Box",
       "settings": {}
     },
-    "mellow_day_night_scroll_Ctkp36": {
-      "type": "mellow-day-night-scroll",
-      "name": "Mellow Day Night Scroll",
-      "settings": {
-        "cta_text": "Try Mellow",
-        "cta_link": ""
-      }
-    },
     "mellow_faq_xnW3d6": {
       "type": "mellow-faq",
       "blocks": {
@@ -318,6 +310,14 @@
       "settings": {
         "title": "FAQs"
       }
+    },
+    "mellow_day_night_scroll_Ctkp36": {
+      "type": "mellow-day-night-scroll",
+      "name": "Mellow Day Night Scroll",
+      "settings": {
+        "cta_text": "Try Mellow",
+        "cta_link": ""
+      }
     }
   },
   "order": [
@@ -332,7 +332,7 @@
     "mellow_compare_page_EQzBX8",
     "mellow_expectations_timeline_YieDtT",
     "mellow_buy_box_VGPbf3",
-    "mellow_day_night_scroll_Ctkp36",
-    "mellow_faq_xnW3d6"
+    "mellow_faq_xnW3d6",
+    "mellow_day_night_scroll_Ctkp36"
   ]
 }
