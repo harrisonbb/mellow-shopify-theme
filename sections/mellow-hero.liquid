@@ -97,7 +97,7 @@
 
     position: relative;
     isolation: isolate;
-    min-height: clamp(680px, 92vh, 920px);
+    min-height: clamp(720px, 92vh, 960px);
     width: 100%;
     overflow: hidden;
     background: var(--mellow-forest-local);
@@ -123,7 +123,8 @@
     height: 100% !important;
     max-width: none !important;
     object-fit: cover !important;
-    object-position: center center !important;
+    object-position: 62% center !important;
+    background-position: 62% center !important;
   }
 
   .mellow-hero__bg-overlay {
@@ -131,10 +132,10 @@
     background:
       linear-gradient(
         90deg,
-        rgba(10, 18, 9, 0.82) 0%,
-        rgba(10, 18, 9, 0.62) 34%,
-        rgba(10, 18, 9, 0.26) 62%,
-        rgba(10, 18, 9, 0.08) 100%
+        rgba(5, 13, 7, 0.88) 0%,
+        rgba(5, 13, 7, 0.72) 30%,
+        rgba(5, 13, 7, 0.34) 52%,
+        rgba(5, 13, 7, 0.08) 100%
       );
   }
 
@@ -151,8 +152,7 @@
     max-width: var(--mellow-axis-max);
     min-height: inherit !important;
     margin: 0 auto;
-    padding-left: var(--mellow-axis-pad);
-    padding-right: var(--mellow-axis-pad);
+    padding: clamp(88px, 11vh, 132px) var(--mellow-axis-pad) clamp(104px, 12vh, 148px);
     display: flex;
     align-items: center;
   }
@@ -198,7 +198,8 @@
 
   .mellow-hero__copy {
     width: 100%;
-    max-width: 520px;
+    max-width: 560px;
+    transform: translateY(clamp(-24px, -2vh, -12px));
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -222,9 +223,9 @@
   .mellow-hero__headline,
   #hero .mellow-hero__headline {
     width: 100% !important;
-    max-width: 520px !important;
+    max-width: 560px !important;
     margin: 0 !important;
-    color: var(--mellow-ivory-local) !important;
+    color: #F0EBE0 !important;
     text-align: left !important;
     text-wrap: balance;
   }
@@ -232,7 +233,7 @@
   #hero .mellow-hero__headline-main,
   .mellow-hero__headline-main {
     display: block !important;
-    color: var(--mellow-ivory-local) !important;
+    color: #F0EBE0 !important;
     font-family: var(--mellow-heading-font, 'Test Founders Grotesk', 'Test Untitled Sans', 'Test Söhne', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif) !important;
     font-size: clamp(54px, 5vw, 79px) !important;
     line-height: var(--mellow-heading-line-height, 0.94) !important;
@@ -246,7 +247,7 @@
   .mellow-hero__headline-accent {
     display: block !important;
     margin-top: var(--mellow-heading-accent-offset, -0.02em) !important;
-    color: var(--mellow-ivory-local) !important;
+    color: #F0EBE0 !important;
     font-family: var(--mellow-heading-italic-font, 'Test Tiempos Headline', 'Fraunces', Georgia, serif) !important;
     font-size: clamp(50px, 4.6vw, 72px) !important;
     line-height: var(--mellow-heading-italic-line-height, 0.95) !important;
@@ -259,7 +260,7 @@
   .mellow-hero__subhead {
     max-width: 440px;
     margin: 0;
-    color: rgba(240, 235, 224, 0.82) !important;
+    color: rgba(240, 235, 224, 0.78) !important;
     font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
     font-size: clamp(1.06rem, 1.14vw, 1.2rem) !important;
     line-height: 1.55 !important;
@@ -274,7 +275,7 @@
     justify-content: flex-start !important;
     gap: 10px !important;
     margin: 0 0 2px !important;
-    color: rgba(240, 235, 224, 0.82) !important;
+    color: rgba(240, 235, 224, 0.86) !important;
     font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
     font-size: 0.96rem !important;
     line-height: 1.24 !important;
@@ -292,7 +293,7 @@
   }
 
   .mellow-hero__quote {
-    color: rgba(240, 235, 224, 0.82) !important;
+    color: rgba(240, 235, 224, 0.86) !important;
     white-space: normal !important;
   }
 
@@ -387,51 +388,46 @@
     opacity: 1;
   }
 
-  @media (max-width: 1180px) {
-    .mellow-hero__bg-image {
-      object-position: 58% center !important;
-      background-position: 58% center;
-    }
-  }
 
   @media (max-width: 768px) {
     .mellow-hero {
       --mellow-axis-pad: clamp(20px, 5.8vw, 36px);
-      min-height: clamp(640px, 88vh, 820px);
+      min-height: clamp(680px, 90vh, 860px);
     }
 
     .mellow-hero__bg-image {
-      object-position: 62% center !important;
-      background-position: 62% center;
+      object-position: 66% center !important;
+      background-position: 66% center !important;
     }
 
     .mellow-hero__bg-overlay {
       background:
         linear-gradient(
           90deg,
-          rgba(10, 18, 9, 0.72) 0%,
-          rgba(10, 18, 9, 0.66) 42%,
-          rgba(10, 18, 9, 0.28) 76%,
-          rgba(10, 18, 9, 0.12) 100%
+          rgba(5, 13, 7, 0.82) 0%,
+          rgba(5, 13, 7, 0.74) 46%,
+          rgba(5, 13, 7, 0.38) 78%,
+          rgba(5, 13, 7, 0.16) 100%
         ),
         linear-gradient(
           180deg,
-          rgba(10, 18, 9, 0.32) 0%,
-          rgba(10, 18, 9, 0.08) 38%,
-          rgba(10, 18, 9, 0.64) 100%
+          rgba(5, 13, 7, 0.82) 0%,
+          rgba(5, 13, 7, 0.38) 42%,
+          rgba(5, 13, 7, 0.66) 100%
         );
     }
 
     .mellow-hero__container {
-      min-height: clamp(640px, 88vh, 820px);
-      align-items: flex-end;
-      padding-top: 96px;
-      padding-bottom: clamp(44px, 10vh, 84px);
+      min-height: clamp(680px, 90vh, 860px);
+      align-items: center;
+      padding-top: clamp(112px, 15vh, 156px);
+      padding-bottom: clamp(72px, 12vh, 108px);
     }
 
     .mellow-hero__copy {
-      max-width: min(520px, 100%);
+      max-width: min(560px, 100%);
       gap: 13px;
+      transform: translateY(clamp(-72px, -8vh, -36px));
     }
 
     .mellow-hero__headline-main {
@@ -472,25 +468,25 @@
 
   @media (max-width: 420px) {
     .mellow-hero__container {
-      align-items: flex-start;
-      padding-top: 112px;
-      padding-bottom: 42px;
+      align-items: center;
+      padding-top: 118px;
+      padding-bottom: 64px;
     }
 
     .mellow-hero__bg-overlay {
       background:
         linear-gradient(
           90deg,
-          rgba(10, 18, 9, 0.76) 0%,
-          rgba(10, 18, 9, 0.70) 48%,
-          rgba(10, 18, 9, 0.36) 78%,
-          rgba(10, 18, 9, 0.18) 100%
+          rgba(5, 13, 7, 0.84) 0%,
+          rgba(5, 13, 7, 0.78) 52%,
+          rgba(5, 13, 7, 0.42) 80%,
+          rgba(5, 13, 7, 0.20) 100%
         ),
         linear-gradient(
           180deg,
-          rgba(10, 18, 9, 0.34) 0%,
-          rgba(10, 18, 9, 0.14) 48%,
-          rgba(10, 18, 9, 0.58) 100%
+          rgba(5, 13, 7, 0.84) 0%,
+          rgba(5, 13, 7, 0.42) 50%,
+          rgba(5, 13, 7, 0.62) 100%
         );
     }
 
