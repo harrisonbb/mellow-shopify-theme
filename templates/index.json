@@ -231,14 +231,6 @@
         "title": "FAQs"
       }
     },
-    "mellow_day_night_scroll_Ctkp36": {
-      "type": "mellow-day-night-scroll",
-      "name": "Mellow Day Night Scroll",
-      "settings": {
-        "cta_text": "Try Mellow",
-        "cta_link": ""
-      }
-    },
     "mellow_expectations_timeline_YieDtT": {
       "type": "mellow-expectations-timeline",
       "blocks": {
@@ -311,6 +303,14 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "mellow_day_night_scroll_Ctkp36": {
+      "type": "mellow-day-night-scroll",
+      "name": "Mellow Day Night Scroll",
+      "settings": {
+        "cta_text": "Try Mellow",
+        "cta_link": ""
+      }
     }
   },
   "order": [
@@ -323,9 +323,9 @@
     "mellow_ingredients_ExxTxE",
     "mellow_expert_proof_page_an7NbQ",
     "mellow_compare_page_EQzBX8",
+    "mellow_expectations_timeline_YieDtT",
     "mellow_buy_box_VGPbf3",
-    "mellow_faq_xnW3d6",
     "mellow_day_night_scroll_Ctkp36",
-    "mellow_expectations_timeline_YieDtT"
+    "mellow_faq_xnW3d6"
   ]
 }
