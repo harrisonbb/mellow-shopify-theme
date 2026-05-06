@@ -1,8 +1,8 @@
 {% comment %}
   Mellow split-heading renderer for major homepage section h2 headlines.
-  Pass `text` and this snippet will split known homepage headlines into
-  hero-system roman spans and Tiempos Headline italic accent spans, with a plain fallback
-  for customizer edits that do not match a supported phrase.
+  Pass `text` and this snippet will split only the approved selective italic accents
+  into Founders Grotesk roman spans and Tiempos Headline italic accent spans, with a
+  plain sans fallback for all other major headings.
 {% endcomment %}
 
 {% assign heading_text = text | default: '' | strip %}
@@ -13,31 +13,7 @@
     <span class="mellow-heading-accent">a pattern.</span>
   {% when "You've got enough to think about. Let us handle the rest." %}
     <span class="mellow-heading-main">You've got enough to think about.</span>
-    <br class="mellow-heading-break">
     <span class="mellow-heading-accent">Let us handle the rest.</span>
-  {% when 'Over 50,000 Satisfied Customers and Counting' %}
-    <span class="mellow-heading-main">Over 50,000 Satisfied Customers</span>
-    <span class="mellow-heading-accent">and Counting</span>
-  {% when 'How Mellow fits into your routine.' %}
-    <span class="mellow-heading-main">How Mellow fits</span>
-    <span class="mellow-heading-accent">into your routine.</span>
-  {% when 'Three ingredients that form a single protective barrier.' %}
-    <span class="mellow-heading-main">Three ingredients that form</span>
-    <br class="mellow-heading-break">
-    <span class="mellow-heading-accent">a single protective barrier.</span>
-  {% when 'Reviewed by Physicians, Dietitians, & Real Reflux Sufferers' %}
-    <span class="mellow-heading-main">Reviewed by Physicians, Dietitians,</span>
-    <br class="mellow-heading-break">
-    <span class="mellow-heading-accent">&amp; Real Reflux Sufferers</span>
-  {% when 'Built to stop reflux. Not just neutralize it.' %}
-    <span class="mellow-heading-main">Built to stop reflux.</span>
-    <br class="mellow-heading-break">
-    <span class="mellow-heading-accent">Not just neutralize it.</span>
-  {% when 'Build your reflux routine.' %}
-    <span class="mellow-heading-main">Build your</span>
-    <span class="mellow-heading-accent">reflux routine.</span>
-  {% when 'FAQs' %}
-    <span class="mellow-heading-main">FAQs</span>
   {% else %}
-    {{ heading_text }}
+    <span class="mellow-heading-main">{{ heading_text }}</span>
 {% endcase %}

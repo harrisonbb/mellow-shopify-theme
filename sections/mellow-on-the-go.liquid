@@ -615,12 +615,20 @@
   }
 
   #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-accent {
+    display: block !important;
+    margin-top: clamp(16px, 1.25vw, 24px) !important;
     font-family: var(--mellow-heading-italic-font) !important;
     font-style: italic !important;
     font-weight: var(--mellow-heading-italic-weight) !important;
     letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
     line-height: var(--mellow-heading-italic-line-height) !important;
     font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-accent {
+      margin-top: clamp(10px, 3.2vw, 16px) !important;
+    }
   }
 </style>
 
