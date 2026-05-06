@@ -5,23 +5,27 @@
   - Adds a restrained dark gradient overlay for cream text readability
 {% endcomment %}
 
-<section class="mellow-hero" id="hero" aria-label="Mellow homepage hero">
-  {% if section.settings.hero_image != blank %}
-    <div class="mellow-hero__background" aria-hidden="true">
+{% assign has_full_screen_hero_background = false %}
+{% if section.settings.full_screen_hero_background_image != blank %}
+  {% assign has_full_screen_hero_background = true %}
+{% endif %}
+
+<section class="mellow-hero{% if has_full_screen_hero_background %} mellow-hero--has-bg{% endif %}" id="hero" aria-label="Mellow homepage hero">
+  {% if has_full_screen_hero_background %}
+    <div class="mellow-hero__bg" aria-hidden="true">
       {{
-        section.settings.hero_image
+        section.settings.full_screen_hero_background_image
         | image_url: width: 2400
         | image_tag:
-          class: 'mellow-hero__background-image',
+          class: 'mellow-hero__bg-image',
           alt: '',
           loading: 'eager',
           fetchpriority: 'high',
           sizes: '100vw'
       }}
     </div>
+    <div class="mellow-hero__bg-overlay" aria-hidden="true"></div>
   {% endif %}
-
-  <div class="mellow-hero__overlay" aria-hidden="true"></div>
 
   <div class="mellow-hero__container">
     <div class="mellow-hero__inner">
@@ -54,14 +58,29 @@
           </a>
         </div>
       </div>
+
+      {% if has_full_screen_hero_background == false and section.settings.product_image != blank %}
+        <div class="mellow-hero__media" aria-hidden="true">
+          <div class="mellow-hero__image-wrap">
+            {{
+              section.settings.product_image
+              | image_url: width: 1000
+              | image_tag:
+                class: 'mellow-hero__product',
+                loading: 'eager',
+                fetchpriority: 'high'
+            }}
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
 
 <style>
   #shopify-section-{{ section.id }} {
-    background: #0A1209 !important;
-    background-color: #0A1209 !important;
+    background: #071209 !important;
+    background-color: #071209 !important;
   }
 
   .mellow-hero,
@@ -70,7 +89,7 @@
   }
 
   .mellow-hero {
-    --mellow-forest-local: #0A1209;
+    --mellow-forest-local: #071209;
     --mellow-orange-red-local: #D04A2A;
     --mellow-ivory-local: #F0EBE0;
     --mellow-axis-max: var(--mellow-page-width, 1400px);
@@ -85,48 +104,52 @@
     color: var(--mellow-ivory-local);
   }
 
-  .mellow-hero__background,
-  .mellow-hero__overlay {
+  .mellow-hero__bg,
+  .mellow-hero__bg-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
   }
 
-  .mellow-hero__background {
-    z-index: -3;
+  .mellow-hero__bg {
+    z-index: 0;
     background: var(--mellow-forest-local);
   }
 
-  .mellow-hero__background-image {
+  .mellow-hero .mellow-hero__bg-image,
+  .mellow-hero__bg-image {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
     max-width: none !important;
     object-fit: cover !important;
     object-position: center center !important;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
   }
 
-  .mellow-hero__overlay {
-    z-index: -2;
+  .mellow-hero__bg-overlay {
+    z-index: 1;
     background:
       linear-gradient(
         90deg,
-        rgba(10, 18, 9, 0.78) 0%,
-        rgba(10, 18, 9, 0.56) 34%,
-        rgba(10, 18, 9, 0.18) 62%,
-        rgba(10, 18, 9, 0.04) 100%
+        rgba(10, 18, 9, 0.82) 0%,
+        rgba(10, 18, 9, 0.62) 34%,
+        rgba(10, 18, 9, 0.26) 62%,
+        rgba(10, 18, 9, 0.08) 100%
       );
+  }
+
+  .mellow-hero--has-bg .mellow-hero__media,
+  .mellow-hero--has-bg .mellow-hero__product,
+  .mellow-hero--has-bg .mellow-hero__image-wrap {
+    display: none !important;
   }
 
   .mellow-hero__container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     max-width: var(--mellow-axis-max);
-    min-height: clamp(680px, 92vh, 920px);
+    min-height: inherit !important;
     margin: 0 auto;
     padding-left: var(--mellow-axis-pad);
     padding-right: var(--mellow-axis-pad);
@@ -135,11 +158,42 @@
   }
 
   .mellow-hero__inner {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    display: flex;
-    align-items: flex-start;
+    min-height: inherit !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 520px) minmax(320px, 1fr);
+    align-items: center !important;
     justify-content: flex-start;
+    gap: clamp(32px, 6vw, 96px);
     text-align: left;
+  }
+
+  .mellow-hero--has-bg .mellow-hero__inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start;
+  }
+
+  .mellow-hero__media,
+  .mellow-hero__image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .mellow-hero__image-wrap {
+    width: 100%;
+  }
+
+  .mellow-hero__product {
+    display: block;
+    width: min(100%, 520px) !important;
+    height: auto !important;
+    max-width: 520px !important;
+    object-fit: contain !important;
   }
 
   .mellow-hero__copy {
@@ -334,7 +388,7 @@
   }
 
   @media (max-width: 1180px) {
-    .mellow-hero__background-image {
+    .mellow-hero__bg-image {
       object-position: 58% center !important;
       background-position: 58% center;
     }
@@ -346,12 +400,12 @@
       min-height: clamp(640px, 88vh, 820px);
     }
 
-    .mellow-hero__background-image {
+    .mellow-hero__bg-image {
       object-position: 62% center !important;
       background-position: 62% center;
     }
 
-    .mellow-hero__overlay {
+    .mellow-hero__bg-overlay {
       background:
         linear-gradient(
           90deg,
@@ -423,7 +477,7 @@
       padding-bottom: 42px;
     }
 
-    .mellow-hero__overlay {
+    .mellow-hero__bg-overlay {
       background:
         linear-gradient(
           90deg,
@@ -493,8 +547,13 @@
     },
     {
       "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero background image"
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "image_picker",
+      "id": "full_screen_hero_background_image",
+      "label": "Full-screen hero background image"
     }
   ],
   "presets": [
