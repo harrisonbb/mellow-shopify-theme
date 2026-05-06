@@ -39,8 +39,11 @@
   --mellow-border-strong: rgba(16, 32, 24, 0.18);
 
   /* Fonts */
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mellow-font-heading: 'Test American Grotesk Compressed', Fraunces, serif;
+  --mellow-font-body: 'Test American Grotesk Compressed', 'DM Sans', sans-serif;
+  --mellow-font-accent: Fraunces, serif;
+  --font-heading: var(--mellow-font-heading);
+  --font-body: var(--mellow-font-body);
 
   /* Layout */
   --mellow-page-max: 1480px;
@@ -72,7 +75,7 @@
   --shadow-button: 0 14px 34px rgba(208, 74, 42, 0.22);
 
   /* Major headers */
-  --mellow-major-header-font: var(--font-heading);
+  --mellow-major-header-font: var(--mellow-font-heading);
   --mellow-major-header-size: clamp(2.55rem, 3.65vw, 4.2rem);
   --mellow-major-header-line: 1.16;
   --mellow-major-header-track: 0.012em;
@@ -119,7 +122,7 @@ body {
   padding: 0 !important;
   background: var(--mellow-page) !important;
   color: var(--mellow-text) !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 16px !important;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
@@ -167,7 +170,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--mellow-font-heading) !important;
   color: var(--mellow-text) !important;
   font-weight: 400 !important;
   font-kerning: normal !important;
@@ -176,7 +179,7 @@ h4 {
 
 p,
 li {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: var(--mellow-body-size) !important;
   line-height: var(--mellow-body-line) !important;
   color: var(--mellow-text-soft) !important;
@@ -184,7 +187,7 @@ li {
 
 /* Reusable split-heading system for major homepage section h2s only. */
 .mellow-heading-split {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-heading) !important;
   font-weight: 900 !important;
   letter-spacing: -0.058em !important;
 }
@@ -195,7 +198,7 @@ li {
 }
 
 .mellow-heading-split .mellow-heading-main {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-heading) !important;
   font-style: normal !important;
   font-weight: 900 !important;
   font-variation-settings: normal !important;
@@ -203,7 +206,7 @@ li {
 }
 
 .mellow-heading-split .mellow-heading-accent {
-  font-family: var(--font-heading) !important;
+  font-family: var(--mellow-font-accent) !important;
   font-style: italic !important;
   font-weight: 500 !important;
   font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 50 !important;
@@ -539,14 +542,14 @@ main :is(
 /* Hero split headline typography: keep local hero design safe from global heading rules. */
 #hero .mellow-hero__headline-main,
 .mellow-hero .mellow-hero__headline-main {
-  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-family: var(--mellow-font-heading) !important;
   font-weight: 900 !important;
   font-style: normal !important;
 }
 
 #hero .mellow-hero__headline-accent,
 .mellow-hero .mellow-hero__headline-accent {
-  font-family: 'Fraunces', Georgia, serif !important;
+  font-family: var(--mellow-font-accent) !important;
   font-weight: 300 !important;
   font-style: italic !important;
 }
@@ -562,7 +565,7 @@ main [class*="mellow"] :is(
 ),
 main [class*="mellow"] h3:not([class*="__headline"]):not([class*="__heading"]):not(.mellow-buy-title):not(.mellow-compare-title):not(.mellow-how-it-works__title):not(.mellow-page__title):not(.mellow-quality__title):not(.mellow-quality__hero-title):not(.mellow-section__title):not(.mellow-header__title):not(.mellow-faq-page__title):not(.mellow-product-title):not(.mellow-main-title),
 main [class*="mellow"] [class*="__title"]:not([class*="__headline"]):not([class*="__heading"]):not(.mellow-how-it-works__title):not(.mellow-page__title):not(.mellow-quality__title):not(.mellow-quality__hero-title):not(.mellow-section__title):not(.mellow-header__title):not(.mellow-faq-page__title) {
-  font-family: var(--font-heading) !important;
+  font-family: var(--mellow-font-heading) !important;
   font-size: var(--mellow-card-title-size) !important;
   line-height: var(--mellow-card-title-line) !important;
   letter-spacing: var(--mellow-card-title-track) !important;
@@ -580,7 +583,7 @@ main :is(
   .mellow-eyebrow,
   [class*="mellow"] [class*="__eyebrow"]
 ) {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: var(--mellow-eyebrow-size) !important;
   line-height: 1 !important;
   letter-spacing: var(--mellow-eyebrow-track) !important;
@@ -608,7 +611,7 @@ main [class*="mellow"] :is(
   [class*="__card-eyebrow"],
   [class*="__option-title"]
 ) {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
 }
 
 
@@ -770,7 +773,7 @@ main :is(
   .mellow-raft-statement__body,
   .mellow-page__subhead
 ) {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: var(--mellow-body-size) !important;
   line-height: var(--mellow-body-line) !important;
   letter-spacing: 0.01em !important;
@@ -789,7 +792,7 @@ main [class*="mellow"] :is(
   [class*="__author-copy"],
   [class*="__note"]
 ) {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: clamp(1rem, 1.04vw, 1.1rem) !important;
   line-height: 1.58 !important;
   color: var(--mellow-text-soft) !important;
@@ -942,7 +945,7 @@ main :is(
   background-color: var(--mellow-green) !important;
   color: var(--mellow-ivory) !important;
 
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.94rem !important;
   line-height: 1 !important;
   font-weight: 800 !important;
@@ -1173,7 +1176,7 @@ main :is(
   min-height: 52px !important;
 
   color: var(--mellow-text) !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.94rem !important;
   font-weight: 800 !important;
   letter-spacing: -0.01em !important;
@@ -1248,7 +1251,7 @@ main :is(
 .utility-bar *,
 .announcement-bar * {
   color: var(--mellow-announcement-text) !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.82rem !important;
   font-weight: 500 !important;
   line-height: 1 !important;
@@ -1357,7 +1360,7 @@ h1.header__heading {
 .header__heading .h2,
 .header__heading a,
 .header__heading a span {
-  font-family: var(--font-heading) !important;
+  font-family: var(--mellow-font-heading) !important;
   font-size: clamp(1.42rem, 1.62vw, 1.9rem) !important;
   line-height: 0.9 !important;
   letter-spacing: -0.04em !important;
@@ -1396,7 +1399,7 @@ h1.header__heading {
 .header__inline-menu a,
 .list-menu__item a,
 .list-menu__item span {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: clamp(0.9rem, 0.94vw, 1rem) !important;
   line-height: 1 !important;
   font-weight: 700 !important;
@@ -1476,7 +1479,7 @@ details-modal.header__search,
 .header__icon--account::after {
   content: 'Sign in' !important;
   display: inline-block !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: clamp(0.88rem, 0.92vw, 0.98rem) !important;
   font-weight: 650 !important;
   color: var(--mellow-forest) !important;
@@ -1660,7 +1663,7 @@ main .shopify-section:has(.mellow-proof-strip) {
 .mellow-proof-bar__title,
 .mellow-hero-trust__title,
 .mellow-proof-strip__title {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 15.5px !important;
   line-height: 1.15 !important;
   font-weight: 800 !important;
@@ -1677,7 +1680,7 @@ main .shopify-section:has(.mellow-proof-strip) {
 .mellow-proof-bar__copy,
 .mellow-hero-trust__copy,
 .mellow-proof-strip__copy {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 13px !important;
   line-height: 1.28 !important;
   font-weight: 500 !important;
@@ -1786,7 +1789,7 @@ footer a:hover {
 .footer-block__newsletter h2,
 .footer__newsletter h2,
 .footer-block .footer-block__heading {
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.78rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
@@ -1815,7 +1818,7 @@ footer a:hover {
   color: var(--mellow-ivory) !important;
   padding: 14px 20px !important;
   height: 52px !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 1rem !important;
   box-shadow: none !important;
   outline: none !important;
@@ -2676,7 +2679,7 @@ main .shopify-section:has(.mellow-proof-strip) {
   gap: 10px !important;
   margin: 2px 0 20px !important;
 
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.96rem !important;
   line-height: 1.24 !important;
   font-weight: 700 !important;
@@ -2728,7 +2731,7 @@ main .shopify-section:has(.mellow-proof-strip) {
   border: 1px solid rgba(26, 45, 16, 0.12) !important;
   background: rgba(255, 255, 255, 0.52) !important;
 
-  font-family: var(--font-body) !important;
+  font-family: var(--mellow-font-body) !important;
   font-size: 0.82rem !important;
   line-height: 1 !important;
   font-weight: 800 !important;
