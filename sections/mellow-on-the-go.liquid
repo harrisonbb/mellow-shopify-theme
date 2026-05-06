@@ -10,7 +10,7 @@
   - Removed heavy caption gradient overlay so images speak for themselves
   - Compressed viewport-fit layout
   - Typography matched to Mellow Hero system:
-    Fraunces 550 headings, tighter premium spacing, DM Sans body rhythm
+    Founders Grotesk 600 headings, tighter premium spacing, DM Sans body rhythm
 {% endcomment %}
 
 <section
@@ -167,7 +167,7 @@
     --mellow-orange: #D04A2A;
     --mellow-blue: #3D6B8C;
 
-    --font-heading: 'Fraunces', Georgia, serif;
+    --font-heading: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif);
     --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     width: 100% !important;
@@ -239,7 +239,7 @@
     max-width: 590px !important;
 
     color: var(--mellow-forest) !important;
-    font-family: 'Test Untitled Sans', 'Test Söhne', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif) !important;
     font-size: clamp(3rem, 4.05vw, 5.25rem) !important;
     line-height: 0.94 !important;
     letter-spacing: -0.035em !important;
@@ -251,7 +251,7 @@
 
   #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-main {
     display: block !important;
-    font-family: 'Test Untitled Sans', 'Test Söhne', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif) !important;
     font-weight: 600 !important;
     font-style: normal !important;
     letter-spacing: -0.035em !important;
@@ -261,7 +261,7 @@
 
   #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-accent {
     display: block !important;
-    font-family: 'Test Tiempos Headline', 'Fraunces', Georgia, serif !important;
+    font-family: var(--mellow-font-heading-italic, 'Tiempos Headline', 'Tiempos Headline Italic', Georgia, serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
     letter-spacing: -0.025em !important;
@@ -622,7 +622,7 @@
       "type": "textarea",
       "id": "heading",
       "label": "Heading",
-      "default": "You've got enough to think about. Let us handle the rest."
+      "default": "Relief that moves with you."
     },
     {
       "type": "textarea",

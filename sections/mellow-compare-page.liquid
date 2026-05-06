@@ -21,7 +21,7 @@
           <span class="mellow-compare-premium__eyebrow mellow-eyebrow">THE MELLOW DIFFERENCE</span>
 
           <h2 class="mellow-compare-premium__title mellow-compare-premium__heading mellow-heading-split">
-            {% render 'mellow-split-heading', text: 'Built to stop reflux. Not just neutralize it.' %}
+            {% render 'mellow-split-heading', text: 'Not just different. Built differently.' %}
           </h2>
 
           <p class="mellow-compare-premium__subtitle">
@@ -214,7 +214,7 @@
     --mellow-icon-bg: #D5E5C5;
     --mellow-x-bg: #E8E3D9;
     --mellow-x: #A3AEA6;
-    --font-heading: 'Fraunces', Georgia, serif;
+    --font-heading: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif);
     --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --compare-axis-pad: clamp(28px, 4.7vw, 74px);
     --compare-axis-max: 1520px;
@@ -279,9 +279,9 @@
     font-size: clamp(3rem, 4.05vw, 5.05rem) !important;
     line-height: 1.02 !important;
     letter-spacing: -0.043em !important;
-    font-weight: 550 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
-    font-variation-settings: "opsz" 72, "wght" 550 !important;
+    font-variation-settings: normal !important;
     text-align: left !important;
     text-wrap: balance !important;
   }
@@ -735,7 +735,7 @@
       font-size: clamp(2.35rem, 10vw, 3.35rem) !important;
       line-height: 1.05 !important;
       letter-spacing: -0.03em !important;
-      font-weight: 550 !important;
+      font-weight: 600 !important;
       font-variation-settings: "opsz" 48, "wght" 550 !important;
     }
 

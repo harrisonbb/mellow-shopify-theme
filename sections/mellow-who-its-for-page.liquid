@@ -10,7 +10,7 @@
   - Dark quiz card has softer contrast
   - Full-height quiz CTA card as natural section conclusion
   - Typography matched to Mellow Hero system:
-    Fraunces 550 headings, tighter premium spacing, DM Sans body rhythm
+    Founders Grotesk 600 headings, tighter premium spacing, DM Sans body rhythm
 {% endcomment %}
 
 <section
@@ -189,7 +189,7 @@
     --mellow-sage: #87927C;
     --mellow-gold-line: rgba(177, 145, 92, 0.72);
 
-    --font-heading: 'Fraunces', Georgia, serif;
+    --font-heading: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif);
     --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     width: 100% !important;
@@ -299,7 +299,7 @@
     font-size: clamp(2.9rem, 3.9vw, 5rem) !important;
     line-height: 0.98 !important;
     letter-spacing: -0.038em !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
     font-variation-settings: normal !important;
     text-align: left !important;
@@ -467,7 +467,7 @@
     font-size: clamp(3.65rem, 4.4vw, 5.35rem) !important;
     line-height: 0.85 !important;
     letter-spacing: -0.07em !important;
-    font-weight: 550 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
     font-variation-settings: "opsz" 96, "wght" 550 !important;
 
@@ -625,7 +625,7 @@
     font-size: clamp(1.38rem, 1.28vw, 1.6rem) !important;
     line-height: 1.06 !important;
     letter-spacing: -0.036em !important;
-    font-weight: 550 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
     font-variation-settings: "opsz" 52, "wght" 550 !important;
     text-align: left !important;
@@ -771,7 +771,7 @@
       font-size: clamp(3.4rem, 3.8vw, 5.45rem) !important;
       line-height: 0.98 !important;
       letter-spacing: -0.038em !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-variation-settings: normal !important;
     }
 
@@ -909,7 +909,7 @@
       font-size: clamp(2.25rem, 9.4vw, 3.38rem) !important;
       line-height: 1 !important;
       letter-spacing: -0.034em !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-variation-settings: normal !important;
     }
 
@@ -1032,8 +1032,8 @@
   /* Section-specific Klim font pairing test: Who It's For headline only. */
   #shopify-section-{{ section.id }} .mellow-patterns__headline,
   #shopify-section-{{ section.id }} .mellow-patterns__headline .mellow-heading-main {
-    font-family: 'Test Untitled Sans', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-    font-weight: 700 !important;
+    font-family: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif) !important;
+    font-weight: 600 !important;
     letter-spacing: -0.038em !important;
     line-height: 0.98 !important;
     font-style: normal !important;
@@ -1041,7 +1041,7 @@
   }
 
   #shopify-section-{{ section.id }} .mellow-patterns__headline .mellow-heading-accent {
-    font-family: 'Test Tiempos Headline', 'Fraunces', Georgia, serif !important;
+    font-family: var(--mellow-font-heading-italic, 'Tiempos Headline', 'Tiempos Headline Italic', Georgia, serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
     letter-spacing: -0.028em !important;

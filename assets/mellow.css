@@ -39,9 +39,10 @@
   --mellow-border-strong: rgba(16, 32, 24, 0.18);
 
   /* Fonts */
-  --mellow-font-heading: Fraunces, serif;
-  --mellow-font-body: 'DM Sans', sans-serif;
-  --mellow-font-accent: Fraunces, serif;
+  --mellow-font-heading: 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+  --mellow-font-heading-italic: 'Tiempos Headline', 'Tiempos Headline Italic', Georgia, serif;
+  --mellow-font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --mellow-font-accent: var(--mellow-font-heading-italic);
   --font-heading: var(--mellow-font-heading);
   --font-body: var(--mellow-font-body);
 
@@ -50,7 +51,7 @@ TEMP FONT TEST OPTIONS — uncomment only one line at a time.
 Do not use compressed fonts globally.
 
 :root {
-  --mellow-font-heading: 'Test American Grotesk', Fraunces, serif;
+  --mellow-font-heading: 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
 }
 
 Use compressed only for short labels/eyebrows, never full headlines:
@@ -89,9 +90,9 @@ Use compressed only for short labels/eyebrows, never full headlines:
   /* Major headers */
   --mellow-major-header-font: var(--mellow-font-heading);
   --mellow-major-header-size: clamp(2.55rem, 3.65vw, 4.2rem);
-  --mellow-major-header-line: 1.16;
-  --mellow-major-header-track: 0.012em;
-  --mellow-major-header-weight: 400;
+  --mellow-major-header-line: 0.94;
+  --mellow-major-header-track: -0.055em;
+  --mellow-major-header-weight: 600;
   --mellow-major-header-max: 920px;
 
   /* Card / small title controls */
@@ -184,7 +185,9 @@ h3,
 h4 {
   font-family: var(--mellow-font-heading) !important;
   color: var(--mellow-text) !important;
-  font-weight: 400 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 0.94 !important;
   font-kerning: normal !important;
   font-feature-settings: "kern" 1, "liga" 1 !important;
 }
@@ -198,10 +201,20 @@ li {
 }
 
 /* Reusable split-heading system for major homepage section h2s only. */
-.mellow-heading-split {
+h1,
+h2,
+h3,
+.mellow-hero__heading,
+.mellow-hero__headline,
+.mellow-section-heading,
+.mellow-heading,
+.mellow-heading-split,
+[class*="__heading"],
+[class*="__headline"] {
   font-family: var(--mellow-font-heading) !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.058em !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 0.94 !important;
 }
 
 .mellow-heading-split .mellow-heading-main,
@@ -212,17 +225,25 @@ li {
 .mellow-heading-split .mellow-heading-main {
   font-family: var(--mellow-font-heading) !important;
   font-style: normal !important;
-  font-weight: 900 !important;
+  font-weight: 600 !important;
   font-variation-settings: normal !important;
-  letter-spacing: -0.065em !important;
+  letter-spacing: -0.055em !important;
 }
 
-.mellow-heading-split .mellow-heading-accent {
-  font-family: var(--mellow-font-accent) !important;
+.mellow-heading-italic,
+.mellow-heading em,
+.mellow-section-heading em,
+.mellow-hero__heading em,
+.mellow-hero__headline em,
+.mellow-heading-split em,
+.mellow-heading-split .mellow-heading-accent,
+[class*="__heading"] em,
+[class*="__headline"] em {
+  font-family: var(--mellow-font-heading-italic) !important;
   font-style: italic !important;
-  font-weight: 500 !important;
-  font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 50 !important;
-  letter-spacing: -0.045em !important;
+  font-weight: 400 !important;
+  font-variation-settings: normal !important;
+  letter-spacing: -0.06em !important;
 }
 
 .mellow-heading-split .mellow-heading-break {
@@ -512,7 +533,6 @@ main [class*="mellow"] :is(
   color: var(--mellow-text) !important;
   font-kerning: normal !important;
   font-feature-settings: "kern" 1, "liga" 1 !important;
-  font-variation-settings: "opsz" 72, "wght" 400 !important;
   max-width: var(--mellow-major-header-max) !important;
   margin-left: 0 !important;
   margin-right: auto !important;
@@ -555,14 +575,14 @@ main :is(
 #hero .mellow-hero__headline-main,
 .mellow-hero .mellow-hero__headline-main {
   font-family: var(--mellow-font-heading) !important;
-  font-weight: 900 !important;
+  font-weight: 600 !important;
   font-style: normal !important;
 }
 
 #hero .mellow-hero__headline-accent,
 .mellow-hero .mellow-hero__headline-accent {
-  font-family: var(--mellow-font-accent) !important;
-  font-weight: 300 !important;
+  font-family: var(--mellow-font-heading-italic) !important;
+  font-weight: 400 !important;
   font-style: italic !important;
 }
 

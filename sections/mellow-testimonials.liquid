@@ -6,7 +6,7 @@
   - Removed pale green / warm beige background from this section
   - Kept testimonial cards, avatars, CTA, and layout intact
   - Typography matched to Mellow Hero system:
-    Fraunces 550 heading, hero-like spacing, DM Sans body/card rhythm
+    Founders Grotesk 600 heading, hero-like spacing, DM Sans body/card rhythm
 {% endcomment %}
 
 <section class="mellow-section mellow-section--cream mellow-testimonials mellow-testimonials-{{ section.id }}">
@@ -107,7 +107,7 @@
     --mellow-ivory: #F0EBE0;
     --mellow-warm-white: #FAFAF8;
 
-    --font-heading: 'Fraunces', Georgia, serif;
+    --font-heading: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif);
     --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     --mellow-testimonials-bg: #FBFCF7;
@@ -179,7 +179,7 @@
     font-size: clamp(2.75rem, 3.7vw, 4.8rem) !important;
     line-height: 0.96 !important;
     letter-spacing: -0.035em !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     font-style: normal !important;
     font-variation-settings: normal !important;
     text-align: left !important;
@@ -413,7 +413,7 @@
       font-size: clamp(3.22rem, 3.6vw, 5.22rem) !important;
       line-height: 0.96 !important;
       letter-spacing: -0.035em !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-variation-settings: normal !important;
     }
 
@@ -483,7 +483,7 @@
       font-size: clamp(2.12rem, 8.85vw, 3.18rem) !important;
       line-height: 1 !important;
       letter-spacing: -0.032em !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-variation-settings: normal !important;
     }
 
@@ -539,7 +539,7 @@
   /* Section-specific Klim font pairing test: testimonials headline only. */
   #shopify-section-{{ section.id }} .mellow-testimonials__headline,
   #shopify-section-{{ section.id }} .mellow-testimonials__headline .mellow-heading-main {
-    font-family: 'Test Founders Grotesk', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: var(--mellow-font-heading, 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif) !important;
     font-weight: 600 !important;
     letter-spacing: -0.035em !important;
     line-height: 0.95 !important;
@@ -548,7 +548,7 @@
   }
 
   #shopify-section-{{ section.id }} .mellow-testimonials__headline .mellow-heading-accent {
-    font-family: 'Test Tiempos Headline', 'Fraunces', Georgia, serif !important;
+    font-family: var(--mellow-font-heading-italic, 'Tiempos Headline', 'Tiempos Headline Italic', Georgia, serif) !important;
     font-style: italic !important;
     font-weight: 400 !important;
     letter-spacing: -0.025em !important;
@@ -573,7 +573,7 @@
       "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "From people who know the feeling."
+      "default": "Real routines. Real relief."
     },
     {
       "type": "textarea",

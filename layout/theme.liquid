@@ -4,7 +4,7 @@
     <!-- Mellow Fonts: load the brand families once, before theme CSS, to prevent font-swap jitter. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,450;0,9..144,500;0,9..144,550;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -88,17 +88,20 @@
       }
 
       :root {
-        --font-body-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-body-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
         --font-body-style: normal;
         --font-body-weight: 400;
         --font-body-weight-bold: 700;
 
-        --font-heading-family: 'Fraunces', Georgia, serif;
+        --font-heading-family: 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
         --font-heading-style: normal;
-        --font-heading-weight: 400;
+        --font-heading-weight: 600;
 
         --font-heading: var(--font-heading-family);
         --font-body: var(--font-body-family);
+        --mellow-font-heading: 'Founders Grotesk', 'Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+        --mellow-font-heading-italic: 'Tiempos Headline', 'Tiempos Headline Italic', Georgia, serif;
+        --mellow-font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
 
         --mellow-page: #FBFCF7;
         --mellow-warm-white: #FAFAF8;
@@ -265,6 +268,49 @@
 
     <style>
       /* TEMP KLIM TEST FONT SYSTEM — REMOVE OR REPLACE WITH LICENSED WEB FONTS BEFORE LAUNCH. */
+
+      @font-face {
+        font-family: 'Founders Grotesk';
+        src: url('{{ "test-founders-grotesk-semibold.woff2" | asset_url }}') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Founders Grotesk';
+        src: url('{{ "test-founders-grotesk-regular.woff2" | asset_url }}') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Founders Grotesk Text';
+        src: url('{{ "test-founders-grotesk-text-semibold.woff2" | asset_url }}') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Founders Grotesk Text';
+        src: url('{{ "test-founders-grotesk-text-regular.woff2" | asset_url }}') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Tiempos Headline';
+        src: url('{{ "test-tiempos-headline-regular-italic.woff2" | asset_url }}') format('woff2');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Tiempos Headline Italic';
+        src: url('{{ "test-tiempos-headline-regular-italic.woff2" | asset_url }}') format('woff2');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
       @font-face {
         font-family: 'Test American Grotesk';
         src: url('{{ "test-american-grotesk-black-italic.woff2" | asset_url }}') format('woff2');

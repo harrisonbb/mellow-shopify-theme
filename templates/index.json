@@ -14,7 +14,7 @@
       "name": "Mellow Hero",
       "settings": {
         "eyebrow": "A BETTER KIND OF REFLUX RELIEF",
-        "headline": "Stop reflux before it starts.",
+        "headline": "Built to stop reflux. Before it starts.",
         "subhead": "A smooth gel that works before acid gets the chance.",
         "cta_primary_label": "Try Mellow",
         "cta_primary_url": "shopify://products/mellowraft™-gel-pouches",
@@ -44,7 +44,7 @@
       "name": "Mellow On The Go",
       "settings": {
         "eyebrow": "WHEREVER YOU ARE",
-        "heading": "You've got enough to think about. Let us handle the rest.",
+        "heading": "Relief that moves with you.",
         "subheading": "Mellow goes where you go",
         "button_label": "Get Started",
         "button_link": "",
@@ -99,7 +99,7 @@
       "name": "Mellow Testimonials",
       "settings": {
         "eyebrow": "REAL MOMENTS. REAL RELIEF.",
-        "headline": "Over 50,000 Satisfied Customers and Counting",
+        "headline": "Real routines. Real relief.",
         "subhead": "After dinner. Before sleep. When it matters most.",
         "cta_label": "Try Mellow",
         "cta_url": "",
@@ -111,7 +111,7 @@
       "name": "Mellow Routine",
       "settings": {
         "eyebrow": "How it works",
-        "heading": "How Mellow fits into your routine.",
+        "heading": "A physical barrier, not another antacid.",
         "subheading": "Take one pouch after meals or before bed. Mellow forms a floating barrier so reflux has less chance to interrupt what comes next.",
         "secondary_button_label": "See the science",
         "secondary_button_link": "",
@@ -133,7 +133,7 @@
       "name": "Mellow Ingredients",
       "settings": {
         "eyebrow": "WHAT'S INSIDE",
-        "heading": "Three ingredients that form a single protective barrier.",
+        "heading": "Three ingredients. One protective raft.",
         "subheading": "Each active ingredient has a role in supporting Mellow’s raft-forming system.",
         "button_label": "See all ingredients",
         "button_link": "",
@@ -316,7 +316,7 @@
       ],
       "name": "Mellow FAQ",
       "settings": {
-        "title": "FAQs"
+        "title": "Questions, answered."
       }
     }
   },
