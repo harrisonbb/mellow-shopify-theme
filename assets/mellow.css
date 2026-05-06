@@ -46,17 +46,17 @@
   --font-body: var(--mellow-font-body);
 
   /* Approved hero-derived heading system */
-  --mellow-heading-font: 'Test Founders Grotesk', 'Test Untitled Sans', 'Test Söhne', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mellow-heading-italic-font: 'Test Tiempos Headline', 'Fraunces', Georgia, serif;
-  --mellow-heading-weight: 700;
+  --mellow-heading-font: 'Founders Grotesk', 'Founders Grotesk Text', 'Test Founders Grotesk', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+  --mellow-heading-italic-font: var(--mellow-heading-font);
+  --mellow-heading-weight: 500;
   --mellow-heading-letter-spacing: -0.035em;
   --mellow-heading-line-height: 0.94;
   --mellow-heading-font-variation-settings: normal;
-  --mellow-heading-italic-weight: 400;
-  --mellow-heading-italic-letter-spacing: -0.025em;
-  --mellow-heading-italic-line-height: 0.95;
+  --mellow-heading-italic-weight: var(--mellow-heading-weight);
+  --mellow-heading-italic-letter-spacing: var(--mellow-heading-letter-spacing);
+  --mellow-heading-italic-line-height: var(--mellow-heading-line-height);
   --mellow-heading-italic-font-variation-settings: normal;
-  --mellow-heading-accent-offset: -0.02em;
+  --mellow-heading-accent-offset: 0;
 
 /*
 TEMP FONT TEST OPTIONS — uncomment only one line at a time.
@@ -246,11 +246,11 @@ li {
 .mellow-heading-split i,
 .mellow-heading-split .mellow-heading-accent {
   font-family: var(--mellow-heading-italic-font) !important;
-  font-style: italic !important;
-  font-weight: var(--mellow-heading-italic-weight) !important;
+  font-style: normal !important;
+  font-weight: var(--mellow-heading-weight) !important;
   font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
-  letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
-  line-height: var(--mellow-heading-italic-line-height) !important;
+  letter-spacing: var(--mellow-heading-letter-spacing) !important;
+  line-height: var(--mellow-heading-line-height) !important;
 }
 
 .mellow-heading-split .mellow-heading-break {
@@ -272,7 +272,7 @@ li {
   .mellow-heading-split em,
   .mellow-heading-split i,
   .mellow-heading-split .mellow-heading-accent {
-    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+    letter-spacing: var(--mellow-heading-letter-spacing) !important;
   }
 }
 
@@ -611,12 +611,12 @@ main :is(
 
 #hero .mellow-hero__headline-accent,
 .mellow-hero .mellow-hero__headline-accent {
-  font-family: var(--mellow-heading-italic-font) !important;
-  font-weight: var(--mellow-heading-italic-weight) !important;
-  font-style: italic !important;
-  letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
-  line-height: var(--mellow-heading-italic-line-height) !important;
-  font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
+  font-family: var(--mellow-heading-font) !important;
+  font-weight: var(--mellow-heading-weight) !important;
+  font-style: normal !important;
+  letter-spacing: var(--mellow-heading-letter-spacing) !important;
+  line-height: var(--mellow-heading-line-height) !important;
+  font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
 }
 
 /* Card titles and small UI titles */
