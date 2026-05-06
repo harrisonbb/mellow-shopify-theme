@@ -593,6 +593,38 @@
     }
   }
 
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .mellow-otg__image-panel {
+      overflow: hidden !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-otg__image-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 16px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      overscroll-behavior-inline: contain !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding-inline: 20px !important;
+      margin-inline: -20px !important;
+      scroll-padding-left: 20px !important;
+      scrollbar-width: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-otg__image-grid::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-otg__image-card {
+      flex: 0 0 auto !important;
+      width: min(84vw, 340px) !important;
+      min-width: min(84vw, 340px) !important;
+      scroll-snap-align: start !important;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #shopify-section-{{ section.id }} .mellow-otg__button,
     #shopify-section-{{ section.id }} .mellow-otg__button svg,

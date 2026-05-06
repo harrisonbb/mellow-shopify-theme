@@ -541,6 +541,34 @@
     }
   }
 
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .mellow-testimonials__grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 16px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      overscroll-behavior-inline: contain !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding-inline: var(--mellow-testimonials-axis-pad) !important;
+      margin-inline: calc(var(--mellow-testimonials-axis-pad) * -1) !important;
+      scroll-padding-left: var(--mellow-testimonials-axis-pad) !important;
+      scrollbar-width: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-testimonials__grid::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mellow-testimonials__card {
+      flex: 0 0 auto !important;
+      width: min(84vw, 340px) !important;
+      min-width: min(84vw, 340px) !important;
+      scroll-snap-align: start !important;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #shopify-section-{{ section.id }} .mellow-testimonials__card,
     #shopify-section-{{ section.id }} .mellow-testimonials__cta {
