@@ -1,7 +1,7 @@
 {% comment %}
   Mellow Testimonials
   Edit:
-  - Background changed to match the main site white: #FBFCF7
+  - Background changed to use the shared warm page tone: var(--mellow-page, #FBFCF7)
   - Hard override applied to Shopify wrapper, section, container, and pseudo layers
   - Removed pale green / warm beige background from this section
   - Kept testimonial cards, avatars, CTA, and layout intact
@@ -64,7 +64,7 @@
 
 <style>
   /* =========================================================
-     TESTIMONIALS — MAIN SITE WHITE BACKGROUND MATCH
+     TESTIMONIALS — WARM PAGE BACKGROUND MATCH
      Typography aligned with Mellow Hero system
      ========================================================= */
 
@@ -74,8 +74,8 @@
   #shopify-section-{{ section.id }} .mellow-section--cream,
   #shopify-section-{{ section.id }} .mellow-testimonials,
   .shopify-section:has(.mellow-testimonials-{{ section.id }}) {
-    background: #FBFCF7 !important;
-    background-color: #FBFCF7 !important;
+    background: var(--mellow-page, #FBFCF7) !important;
+    background-color: var(--mellow-page, #FBFCF7) !important;
     background-image: none !important;
     margin: 0 !important;
     padding-left: 0 !important;
@@ -106,11 +106,12 @@
     --mellow-albers-blue: #3D6B8C;
     --mellow-ivory: #F0EBE0;
     --mellow-warm-white: #FAFAF8;
+    --mellow-page: #FBFCF7;
 
     --font-heading: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-    --mellow-testimonials-bg: #FBFCF7;
+    --mellow-testimonials-bg: var(--mellow-page, #FBFCF7);
     --mellow-testimonials-card: #FFFFFF;
 
     --mellow-testimonials-axis-pad: clamp(128px, 8.5vw, 164px);
@@ -125,8 +126,8 @@
     padding-left: var(--mellow-testimonials-axis-pad) !important;
     padding-right: var(--mellow-testimonials-axis-pad) !important;
 
-    background: #FBFCF7 !important;
-    background-color: #FBFCF7 !important;
+    background: var(--mellow-testimonials-bg) !important;
+    background-color: var(--mellow-testimonials-bg) !important;
     background-image: none !important;
 
     color: var(--mellow-forest) !important;

@@ -1,7 +1,7 @@
 {% comment %}
   Mellow Ingredients — Seed-like spacing rhythm
   Fixes:
-  - Background matches main site white #FBFCF7
+  - Background uses shared warm page tone var(--mellow-page, #FBFCF7)
   - Eyebrow uses the same working class path as Compare:
     mellow-compare-premium__eyebrow mellow-eyebrow
   - Removed broken local .mellow-ingredients__eyebrow CSS because that class is no longer used
@@ -258,8 +258,8 @@
   #shopify-section-{{ section.id }},
   #shopify-section-{{ section.id }} > *,
   .shopify-section:has(.mellow-ingredients-{{ section.id }}) {
-    background: #FBFCF7 !important;
-    background-color: #FBFCF7 !important;
+    background: var(--mellow-page, #FBFCF7) !important;
+    background-color: var(--mellow-page, #FBFCF7) !important;
     background-image: none !important;
     margin: 0 !important;
     padding-left: 0 !important;
@@ -287,8 +287,8 @@
 
     width: 100% !important;
     max-width: none !important;
-    background: #FBFCF7 !important;
-    background-color: #FBFCF7 !important;
+    background: var(--mellow-page, #FBFCF7) !important;
+    background-color: var(--mellow-page, #FBFCF7) !important;
     background-image: none !important;
     color: var(--mellow-forest) !important;
     margin: 0 !important;
