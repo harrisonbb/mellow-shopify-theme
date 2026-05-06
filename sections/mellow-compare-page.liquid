@@ -21,15 +21,15 @@
 
         <div class="mellow-compare-premium__visual mellow-compare-premium__visual--mobile">
           <div class="mellow-compare-premium__image-panel">
-            {% if section.settings.science_image != blank %}
-              {{ section.settings.science_image
+            {% if section.settings.right_image != blank %}
+              {{ section.settings.right_image
                 | image_url: width: 1400
                 | image_tag:
                   class: 'mellow-compare-premium__image',
                   loading: 'lazy',
                   widths: '360, 540, 720, 900, 1100, 1400',
                   sizes: '(max-width: 989px) calc(100vw - 40px), 48vw',
-                  alt: section.settings.science_image_alt
+                  alt: section.settings.right_image_alt
               }}
             {% else %}
               <div class="mellow-compare-premium__placeholder" aria-hidden="true">
@@ -148,15 +148,15 @@
 
       <div class="mellow-compare-premium__visual mellow-compare-premium__visual--desktop">
         <div class="mellow-compare-premium__image-panel">
-          {% if section.settings.science_image != blank %}
-            {{ section.settings.science_image
+          {% if section.settings.right_image != blank %}
+            {{ section.settings.right_image
               | image_url: width: 1800
               | image_tag:
                 class: 'mellow-compare-premium__image',
                 loading: 'lazy',
                 widths: '720, 900, 1100, 1400, 1600, 1800',
                 sizes: '(min-width: 1440px) 690px, 48vw',
-                alt: section.settings.science_image_alt
+                alt: section.settings.right_image_alt
             }}
           {% else %}
             <div class="mellow-compare-premium__placeholder" aria-hidden="true">
@@ -316,8 +316,9 @@
     width: 100% !important;
     height: 100% !important;
     min-height: inherit !important;
-    object-fit: {{ section.settings.image_fit | default: 'cover' }} !important;
-    object-position: {{ section.settings.image_position | default: 'center center' }} !important;
+    object-fit: {{ section.settings.right_image_fit | default: 'cover' }} !important;
+    object-position: {{ section.settings.right_image_position | default: 'center center' }} !important;
+    border-radius: inherit !important;
   }
 
   #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__placeholder {
@@ -763,19 +764,19 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "science_image",
-      "label": "Science image"
+      "id": "right_image",
+      "label": "Right side image"
     },
     {
       "type": "text",
-      "id": "science_image_alt",
-      "label": "Science image alt text",
-      "default": "Alginate powder and petri dish"
+      "id": "right_image_alt",
+      "label": "Right image alt text",
+      "default": "Alginate powder in a petri dish"
     },
     {
       "type": "select",
-      "id": "image_fit",
-      "label": "Image fit",
+      "id": "right_image_fit",
+      "label": "Right image fit",
       "default": "cover",
       "options": [
         {
@@ -790,8 +791,8 @@
     },
     {
       "type": "select",
-      "id": "image_position",
-      "label": "Image position",
+      "id": "right_image_position",
+      "label": "Right image position",
       "default": "center center",
       "options": [
         {
@@ -805,6 +806,14 @@
         {
           "value": "center bottom",
           "label": "Bottom"
+        },
+        {
+          "value": "left center",
+          "label": "Left"
+        },
+        {
+          "value": "right center",
+          "label": "Right"
         }
       ]
     },
