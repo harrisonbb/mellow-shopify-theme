@@ -45,6 +45,19 @@
   --font-heading: var(--mellow-font-heading);
   --font-body: var(--mellow-font-body);
 
+  /* Approved hero-derived heading system */
+  --mellow-heading-font: 'Test Founders Grotesk', 'Test Untitled Sans', 'Test Söhne', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mellow-heading-italic-font: 'Test Tiempos Headline', 'Fraunces', Georgia, serif;
+  --mellow-heading-weight: 700;
+  --mellow-heading-letter-spacing: -0.035em;
+  --mellow-heading-line-height: 0.94;
+  --mellow-heading-font-variation-settings: normal;
+  --mellow-heading-italic-weight: 400;
+  --mellow-heading-italic-letter-spacing: -0.025em;
+  --mellow-heading-italic-line-height: 0.95;
+  --mellow-heading-italic-font-variation-settings: normal;
+  --mellow-heading-accent-offset: -0.02em;
+
 /*
 TEMP FONT TEST OPTIONS — uncomment only one line at a time.
 Do not use compressed fonts globally.
@@ -87,11 +100,11 @@ Use compressed only for short labels/eyebrows, never full headlines:
   --shadow-button: 0 14px 34px rgba(208, 74, 42, 0.22);
 
   /* Major headers */
-  --mellow-major-header-font: var(--mellow-font-heading);
+  --mellow-major-header-font: var(--mellow-heading-font);
   --mellow-major-header-size: clamp(2.55rem, 3.65vw, 4.2rem);
-  --mellow-major-header-line: 1.16;
-  --mellow-major-header-track: 0.012em;
-  --mellow-major-header-weight: 400;
+  --mellow-major-header-line: var(--mellow-heading-line-height);
+  --mellow-major-header-track: var(--mellow-heading-letter-spacing);
+  --mellow-major-header-weight: var(--mellow-heading-weight);
   --mellow-major-header-max: 920px;
 
   /* Card / small title controls */
@@ -197,11 +210,16 @@ li {
   color: var(--mellow-text-soft) !important;
 }
 
-/* Reusable split-heading system for major homepage section h2s only. */
+/* Reusable hero-derived split-heading system for major section headlines only. */
+.mellow-section-heading,
+.mellow-section-headline,
 .mellow-heading-split {
-  font-family: var(--mellow-font-heading) !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.058em !important;
+  font-family: var(--mellow-heading-font) !important;
+  font-weight: var(--mellow-heading-weight) !important;
+  letter-spacing: var(--mellow-heading-letter-spacing) !important;
+  line-height: var(--mellow-heading-line-height) !important;
+  font-style: normal !important;
+  font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
 }
 
 .mellow-heading-split .mellow-heading-main,
@@ -210,19 +228,27 @@ li {
 }
 
 .mellow-heading-split .mellow-heading-main {
-  font-family: var(--mellow-font-heading) !important;
+  font-family: var(--mellow-heading-font) !important;
   font-style: normal !important;
-  font-weight: 900 !important;
-  font-variation-settings: normal !important;
-  letter-spacing: -0.065em !important;
+  font-weight: var(--mellow-heading-weight) !important;
+  font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
+  letter-spacing: var(--mellow-heading-letter-spacing) !important;
+  line-height: var(--mellow-heading-line-height) !important;
 }
 
+.mellow-section-heading em,
+.mellow-section-heading i,
+.mellow-section-headline em,
+.mellow-section-headline i,
+.mellow-heading-split em,
+.mellow-heading-split i,
 .mellow-heading-split .mellow-heading-accent {
-  font-family: var(--mellow-font-accent) !important;
+  font-family: var(--mellow-heading-italic-font) !important;
   font-style: italic !important;
-  font-weight: 500 !important;
-  font-variation-settings: "opsz" 72, "wght" 500, "SOFT" 50 !important;
-  letter-spacing: -0.045em !important;
+  font-weight: var(--mellow-heading-italic-weight) !important;
+  font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
+  letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+  line-height: var(--mellow-heading-italic-line-height) !important;
 }
 
 .mellow-heading-split .mellow-heading-break {
@@ -230,16 +256,21 @@ li {
 }
 
 @media screen and (max-width: 749px) {
-  .mellow-heading-split {
-    letter-spacing: -0.048em !important;
-  }
-
+  .mellow-section-heading,
+  .mellow-section-headline,
+  .mellow-heading-split,
   .mellow-heading-split .mellow-heading-main {
-    letter-spacing: -0.055em !important;
+    letter-spacing: var(--mellow-heading-letter-spacing) !important;
   }
 
+  .mellow-section-heading em,
+  .mellow-section-heading i,
+  .mellow-section-headline em,
+  .mellow-section-headline i,
+  .mellow-heading-split em,
+  .mellow-heading-split i,
   .mellow-heading-split .mellow-heading-accent {
-    letter-spacing: -0.038em !important;
+    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
   }
 }
 
@@ -483,26 +514,41 @@ main :is(
    6. GLOBAL MAJOR SECTION HEADERS
    ========================================================= */
 
-main section[class*="mellow"]:not(.mellow-hero) h1,
-main section[class*="mellow"]:not(.mellow-hero) h2,
-main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h1,
-main div[class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h2,
-main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__headline"],
-main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) [class*="__heading"],
-main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__headline"],
-main [class*="mellow"]:not(.mellow-hero):not(.mellow-hero *) h3[class*="__heading"],
-main [class*="mellow"] :is(
+main :is(
+  .mellow-section-heading,
+  .mellow-section-headline,
+  .mellow-heading-split,
+  .mellow-hero__headline,
+  .mellow-patterns__headline,
+  .mellow-otg__headline,
+  .mellow-testimonials__headline,
+  .mellow-routine__heading,
+  .mellow-ingredients__heading,
+  .mellow-expert-proof__heading,
+  .mellow-compare-premium__title,
+  .mellow-expectations-timeline__heading,
   .mellow-buy-title,
-  .mellow-compare-title,
+  .mellow-faq__heading,
+  .mellow-plans-grid__heading,
+  .mellow-how-it-works__heading,
+  .mellow-liquid__heading,
+  .mellow-who__headline,
+  .mellow-ingredients__headline,
+  .mellow-science-section__headline,
+  .mellow-science-clean__heading,
   .mellow-how-it-works__title,
-  .mellow-page__title,
+  .mellow-compare__heading,
+  .mellow-compare-title,
   .mellow-quality__title,
   .mellow-quality__hero-title,
   .mellow-section__title,
   .mellow-header__title,
   .mellow-faq-page__title,
   .mellow-product-title,
-  .mellow-main-title
+  .mellow-main-title,
+  .mellow-raft-statement__headline,
+  .mellow-page h1,
+  .mellow-page h2
 ) {
   font-family: var(--mellow-major-header-font) !important;
   font-size: var(--mellow-major-header-size) !important;
@@ -512,7 +558,7 @@ main [class*="mellow"] :is(
   color: var(--mellow-text) !important;
   font-kerning: normal !important;
   font-feature-settings: "kern" 1, "liga" 1 !important;
-  font-variation-settings: "opsz" 72, "wght" 400 !important;
+  font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
   max-width: var(--mellow-major-header-max) !important;
   margin-left: 0 !important;
   margin-right: auto !important;
@@ -554,16 +600,22 @@ main :is(
 /* Hero split headline typography: keep local hero design safe from global heading rules. */
 #hero .mellow-hero__headline-main,
 .mellow-hero .mellow-hero__headline-main {
-  font-family: var(--mellow-font-heading) !important;
-  font-weight: 900 !important;
+  font-family: var(--mellow-heading-font) !important;
+  font-weight: var(--mellow-heading-weight) !important;
   font-style: normal !important;
+  letter-spacing: var(--mellow-heading-letter-spacing) !important;
+  line-height: var(--mellow-heading-line-height) !important;
+  font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
 }
 
 #hero .mellow-hero__headline-accent,
 .mellow-hero .mellow-hero__headline-accent {
-  font-family: var(--mellow-font-accent) !important;
-  font-weight: 300 !important;
+  font-family: var(--mellow-heading-italic-font) !important;
+  font-weight: var(--mellow-heading-italic-weight) !important;
   font-style: italic !important;
+  letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+  line-height: var(--mellow-heading-italic-line-height) !important;
+  font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
 }
 
 /* Card titles and small UI titles */

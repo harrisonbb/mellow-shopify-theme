@@ -9,8 +9,7 @@
   - Removed text overlays on top of images
   - Removed heavy caption gradient overlay so images speak for themselves
   - Compressed viewport-fit layout
-  - Typography matched to Mellow Hero system:
-    Fraunces 550 headings, tighter premium spacing, DM Sans body rhythm
+  - Typography matched to the approved Mellow hero heading system
 {% endcomment %}
 
 <section
@@ -600,6 +599,27 @@
     #shopify-section-{{ section.id }} .mellow-otg__image-card img {
       transition: none !important;
     }
+  }
+
+
+  /* Use the approved hero heading typography for this major section headline. */
+  #shopify-section-{{ section.id }} .mellow-otg__headline,
+  #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-main {
+    font-family: var(--mellow-heading-font) !important;
+    font-weight: var(--mellow-heading-weight) !important;
+    letter-spacing: var(--mellow-heading-letter-spacing) !important;
+    line-height: var(--mellow-heading-line-height) !important;
+    font-style: normal !important;
+    font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-otg__headline .mellow-heading-accent {
+    font-family: var(--mellow-heading-italic-font) !important;
+    font-style: italic !important;
+    font-weight: var(--mellow-heading-italic-weight) !important;
+    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+    line-height: var(--mellow-heading-italic-line-height) !important;
+    font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
   }
 </style>
 

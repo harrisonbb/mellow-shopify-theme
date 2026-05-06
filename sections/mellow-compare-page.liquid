@@ -783,6 +783,27 @@
       margin-top: 18px !important;
     }
   }
+
+
+  /* Use the approved hero heading typography for this major section headline. */
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__title,
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__title .mellow-heading-main {
+    font-family: var(--mellow-heading-font) !important;
+    font-weight: var(--mellow-heading-weight) !important;
+    letter-spacing: var(--mellow-heading-letter-spacing) !important;
+    line-height: var(--mellow-heading-line-height) !important;
+    font-style: normal !important;
+    font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
+  }
+
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__title .mellow-heading-accent {
+    font-family: var(--mellow-heading-italic-font) !important;
+    font-style: italic !important;
+    font-weight: var(--mellow-heading-italic-weight) !important;
+    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+    line-height: var(--mellow-heading-italic-line-height) !important;
+    font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
+  }
 </style>
 
 {% schema %}
