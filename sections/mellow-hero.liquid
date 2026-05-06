@@ -381,8 +381,8 @@
   .mellow-hero__img {
     display: block !important;
 
-    width: min(600px, 100%) !important;
-    max-width: 600px !important;
+    width: min(510px, 100%) !important;
+    max-width: 510px !important;
 
     height: auto !important;
     object-fit: contain !important;
@@ -402,8 +402,11 @@
     filter:
       drop-shadow(0 18px 22px rgba(26, 45, 16, 0.10))
       drop-shadow(0 38px 54px rgba(26, 45, 16, 0.16)) !important;
-    transform: rotate(-1.5deg) translateY(-2px);
-    transform-origin: center bottom;
+    transform: none !important;
+    transform-origin: center;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
   }
 
   .mellow-hero__img-placeholder {
@@ -493,8 +496,8 @@
 
     .mellow-hero__visual img,
     .mellow-hero__img {
-      width: min(680px, 100%) !important;
-      max-width: 680px !important;
+      width: min(570px, 100%) !important;
+      max-width: 570px !important;
       height: auto !important;
       object-fit: contain !important;
       filter:
@@ -533,8 +536,8 @@
 
     .mellow-hero__visual img,
     .mellow-hero__img {
-      width: min(760px, 100%) !important;
-      max-width: 760px !important;
+      width: min(640px, 100%) !important;
+      max-width: 640px !important;
       height: auto !important;
       object-fit: contain !important;
     }
@@ -558,6 +561,7 @@
     .mellow-hero__img {
       width: min(500px, 100%) !important;
       max-width: 500px !important;
+      transform: none !important;
     }
 
     .mellow-hero__copy {
@@ -630,6 +634,7 @@
     .mellow-hero__img {
       width: min(390px, 100%) !important;
       max-width: 390px !important;
+      transform: none !important;
     }
 
     .mellow-hero__img-placeholder {

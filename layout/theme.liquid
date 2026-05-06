@@ -872,55 +872,13 @@
         counterObserver.observe(headline);
       });
 
-      /* =========================================================
-         4. Subtle hero parallax
-         Pouch moves under 15% offset
-         ========================================================= */
-
-      const hero = main.querySelector('.mellow-hero');
+      /* Hero media intentionally stays still on first load and scroll. */
       const heroImage =
         main.querySelector('.mellow-hero__img') ||
         main.querySelector('.mellow-hero__visual img');
 
-      if (!prefersReducedMotion && hero && heroImage) {
-        let ticking = false;
-
-        function updateHeroParallax() {
-          const rect = hero.getBoundingClientRect();
-          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-          const heroVisible = rect.bottom > 0 && rect.top < windowHeight;
-
-          if (!heroVisible) {
-            ticking = false;
-            return;
-          }
-
-          const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-          const clamped = Math.max(0, Math.min(1, scrollProgress));
-
-          /*
-            Offset stays restrained:
-            - Range roughly -12px to +12px
-            - Feels like 80% scroll speed without obvious parallax
-          */
-          const offset = (clamped - 0.5) * 24;
-
-          heroImage.style.transform = 'translate3d(0, ' + offset.toFixed(2) + 'px, 0)';
-
-          ticking = false;
-        }
-
-        function requestHeroParallax() {
-          if (!ticking) {
-            requestAnimationFrame(updateHeroParallax);
-            ticking = true;
-          }
-        }
-
-        updateHeroParallax();
-        window.addEventListener('scroll', requestHeroParallax, { passive: true });
-        window.addEventListener('resize', requestHeroParallax);
+      if (heroImage) {
+        heroImage.style.transform = 'none';
       }
     });
   })();
