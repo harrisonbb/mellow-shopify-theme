@@ -165,70 +165,9 @@
     "mellow_compare_page_EQzBX8": {
       "type": "mellow-compare-page",
       "name": "Mellow Compare Page",
-      "settings": {}
-    },
-    "mellow_buy_box_VGPbf3": {
-      "type": "mellow-buy-box",
-      "name": "Mellow Buy Box",
-      "settings": {}
-    },
-    "mellow_faq_xnW3d6": {
-      "type": "mellow-faq",
-      "blocks": {
-        "faq_item_zUiQGH": {
-          "type": "faq_item",
-          "settings": {
-            "question": "When should I take MellowRaft™?",
-            "answer": "Take 1–2 pouches after meals and before bed. The raft forms within minutes and holds for 4–5 hours — timed to your post-meal reflux window. Most people take one after dinner around 7pm, which covers them through 11pm and into sleep."
-          }
-        },
-        "faq_item_Y38hXt": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How is this different from Tums or antacids?",
-            "answer": "Tums neutralizes acid after it's already caused discomfort. MellowRaft™ forms a physical gel barrier at the top of your stomach before acid can travel up — it's proactive, not reactive. No acid suppression, no systemic absorption."
-          }
-        },
-        "faq_item_y9K6rG": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is it safe to take every day?",
-            "answer": "Yes. Sodium alginate is a naturally derived ingredient with a strong safety profile, used in clinical settings for decades. MellowRaft™ is formulated as a daily ritual, not an emergency rescue. Always consult your doctor if you have specific health concerns."
-          }
-        },
-        "faq_item_riQhCL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I use my HSA or FSA?",
-            "answer": "Yes — MellowRaft™ is HSA and FSA eligible. You'll see the option to pay with your HSA/FSA card at checkout via Truemed. Digestive health products qualify under most plans."
-          }
-        },
-        "faq_item_3KJi43": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What does it taste like?",
-            "answer": "Salted caramel — smooth, lightly sweet, no chalky aftertaste. We spent a lot of time on this. It's something you'll actually look forward to."
-          }
-        },
-        "faq_item_cwRphN": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I skip, pause, or cancel my subscription?",
-            "answer": "Anytime, no questions asked. Log into your account and manage everything yourself — skip a month, pause, swap frequency, or cancel in under 60 seconds. We're not in the business of trapping people."
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_zUiQGH",
-        "faq_item_Y38hXt",
-        "faq_item_y9K6rG",
-        "faq_item_riQhCL",
-        "faq_item_3KJi43",
-        "faq_item_cwRphN"
-      ],
-      "name": "Mellow FAQ",
       "settings": {
-        "title": "FAQs"
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "mellow_expectations_timeline_YieDtT": {
@@ -304,12 +243,76 @@
         "padding_bottom": 72
       }
     },
+    "mellow_buy_box_VGPbf3": {
+      "type": "mellow-buy-box",
+      "name": "Mellow Buy Box",
+      "settings": {}
+    },
     "mellow_day_night_scroll_Ctkp36": {
       "type": "mellow-day-night-scroll",
       "name": "Mellow Day Night Scroll",
       "settings": {
         "cta_text": "Try Mellow",
         "cta_link": ""
+      }
+    },
+    "mellow_faq_xnW3d6": {
+      "type": "mellow-faq",
+      "blocks": {
+        "faq_item_zUiQGH": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When should I take MellowRaft™?",
+            "answer": "Take 1–2 pouches after meals and before bed. The raft forms within minutes and holds for 4–5 hours — timed to your post-meal reflux window. Most people take one after dinner around 7pm, which covers them through 11pm and into sleep."
+          }
+        },
+        "faq_item_Y38hXt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is this different from Tums or antacids?",
+            "answer": "Tums neutralizes acid after it's already caused discomfort. MellowRaft™ forms a physical gel barrier at the top of your stomach before acid can travel up — it's proactive, not reactive. No acid suppression, no systemic absorption."
+          }
+        },
+        "faq_item_y9K6rG": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it safe to take every day?",
+            "answer": "Yes. Sodium alginate is a naturally derived ingredient with a strong safety profile, used in clinical settings for decades. MellowRaft™ is formulated as a daily ritual, not an emergency rescue. Always consult your doctor if you have specific health concerns."
+          }
+        },
+        "faq_item_riQhCL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use my HSA or FSA?",
+            "answer": "Yes — MellowRaft™ is HSA and FSA eligible. You'll see the option to pay with your HSA/FSA card at checkout via Truemed. Digestive health products qualify under most plans."
+          }
+        },
+        "faq_item_3KJi43": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "Salted caramel — smooth, lightly sweet, no chalky aftertaste. We spent a lot of time on this. It's something you'll actually look forward to."
+          }
+        },
+        "faq_item_cwRphN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I skip, pause, or cancel my subscription?",
+            "answer": "Anytime, no questions asked. Log into your account and manage everything yourself — skip a month, pause, swap frequency, or cancel in under 60 seconds. We're not in the business of trapping people."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_zUiQGH",
+        "faq_item_Y38hXt",
+        "faq_item_y9K6rG",
+        "faq_item_riQhCL",
+        "faq_item_3KJi43",
+        "faq_item_cwRphN"
+      ],
+      "name": "Mellow FAQ",
+      "settings": {
+        "title": "FAQs"
       }
     }
   },
