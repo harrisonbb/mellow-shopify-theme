@@ -828,6 +828,34 @@
     }
   }
 
+  @media screen and (max-width: 749px) {
+    #mellow-ingredients-{{ section.id }} .mellow-ingredients__grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 16px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      overscroll-behavior-inline: contain !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding-inline: var(--ingredients-side-pad) !important;
+      margin-inline: calc(var(--ingredients-side-pad) * -1) !important;
+      scroll-padding-left: var(--ingredients-side-pad) !important;
+      scrollbar-width: none !important;
+    }
+
+    #mellow-ingredients-{{ section.id }} .mellow-ingredients__grid::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    #mellow-ingredients-{{ section.id }} .mellow-ingredients__card {
+      flex: 0 0 auto !important;
+      width: min(84vw, 340px) !important;
+      min-width: min(84vw, 340px) !important;
+      scroll-snap-align: start !important;
+    }
+  }
+
 
   /* Use restrained all-sans heading typography for Ingredients; no italic accent. */
   #mellow-ingredients-{{ section.id }} .mellow-ingredients__heading,
