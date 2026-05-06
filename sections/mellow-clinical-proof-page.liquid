@@ -1,0 +1,739 @@
+{% comment %}
+  Mellow Clinical Proof Page
+  A restrained, data-forward clinical research section focused on published outcomes
+  for alginate-based reflux therapies. Avoids product-specific clinical proof claims.
+{% endcomment %}
+
+<section class="mellow-clinical-proof mellow-clinical-proof-{{ section.id }}">
+  <div class="mellow-clinical-proof__inner">
+    <header class="mellow-clinical-proof__hero">
+      <p class="mellow-clinical-proof__kicker">{{ section.settings.eyebrow }}</p>
+      <div class="mellow-clinical-proof__hero-grid">
+        <h1 class="mellow-clinical-proof__title">
+          Alginate raft therapy has been clinically studied for the reflux moments people <em>actually feel.</em>
+        </h1>
+        <div class="mellow-clinical-proof__intro">
+          <p>{{ section.settings.subhead }}</p>
+          <div class="mellow-clinical-proof__scope-note">
+            Based on published studies of alginate-based reflux therapies.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mellow-clinical-proof__evidence-strip" aria-label="Studied outcome categories">
+      <span>Heartburn relief</span>
+      <span>Regurgitation</span>
+      <span>Breakthrough symptoms</span>
+      <span>Reflux burden</span>
+    </div>
+
+    <div class="mellow-clinical-proof__modules">
+      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--symptom">
+        <div class="mellow-clinical-proof__copy">
+          <p class="mellow-clinical-proof__eyebrow">SYSTEMATIC REVIEW</p>
+          <h2>More likely to relieve reflux symptoms.</h2>
+          <div class="mellow-clinical-proof__stat">
+            <span class="mellow-clinical-proof__stat-number">4.42x</span>
+            <span class="mellow-clinical-proof__stat-label">odds of GERD symptom resolution vs placebo or antacids<sup>1</sup></span>
+          </div>
+          <p>A 2017 systematic review and meta-analysis found that alginate-based therapies increased the odds of GERD symptom resolution compared with placebo or antacid treatment.</p>
+          <p class="mellow-clinical-proof__citation"><sup>1</sup> Leiman et al., <em>Diseases of the Esophagus</em>, 2017.</p>
+        </div>
+
+        <div class="mellow-clinical-proof__visual" aria-label="Placebo or antacid compared with alginate therapy">
+          <div class="mellow-clinical-proof__silhouette-card">
+            <div class="mellow-clinical-proof__silhouette mellow-clinical-proof__silhouette--low" aria-hidden="true">
+              <svg viewBox="0 0 150 210" role="img">
+                <path d="M75 10c17 0 30 13 30 30S92 70 75 70 45 57 45 40 58 10 75 10Z"/>
+                <path d="M75 80c-31 0-52 24-52 61v44c0 8 6 14 14 14h76c8 0 14-6 14-14v-44c0-37-21-61-52-61Z"/>
+                <path class="fill" d="M37 172h76v13H37z"/>
+              </svg>
+            </div>
+            <span>Placebo / antacid</span>
+          </div>
+
+          <div class="mellow-clinical-proof__silhouette-card mellow-clinical-proof__silhouette-card--strong">
+            <div class="mellow-clinical-proof__silhouette mellow-clinical-proof__silhouette--high" aria-hidden="true">
+              <svg viewBox="0 0 150 210" role="img">
+                <path d="M75 10c17 0 30 13 30 30S92 70 75 70 45 57 45 40 58 10 75 10Z"/>
+                <path d="M75 80c-31 0-52 24-52 61v44c0 8 6 14 14 14h76c8 0 14-6 14-14v-44c0-37-21-61-52-61Z"/>
+                <path class="fill" d="M37 118h76v67H37z"/>
+              </svg>
+            </div>
+            <span>Alginate therapy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--breakthrough">
+        <div class="mellow-clinical-proof__copy">
+          <p class="mellow-clinical-proof__eyebrow">RANDOMIZED CLINICAL TRIAL</p>
+          <h2>Studied for reflux that breaks through daily acid control.</h2>
+          <p>In patients with residual reflux symptoms despite once-daily PPI therapy, adding an alginate formulation reduced reflux symptom burden compared with placebo.</p>
+          <p class="mellow-clinical-proof__citation"><sup>2</sup> Reimer et al., <em>Alimentary Pharmacology &amp; Therapeutics</em>, 2016.</p>
+        </div>
+
+        <div class="mellow-clinical-proof__visual mellow-clinical-proof__bar-visual" aria-label="PPI alone versus PPI plus alginate symptom burden comparison">
+          <div class="mellow-clinical-proof__bar-row">
+            <span>PPI alone</span>
+            <div class="mellow-clinical-proof__bar-track"><div class="mellow-clinical-proof__bar mellow-clinical-proof__bar--ppi"></div></div>
+            <strong>Higher burden</strong>
+          </div>
+          <div class="mellow-clinical-proof__bar-row">
+            <span>PPI + alginate</span>
+            <div class="mellow-clinical-proof__bar-track"><div class="mellow-clinical-proof__bar mellow-clinical-proof__bar--alginate"></div></div>
+            <strong>Lower burden</strong>
+          </div>
+          <p>Directionally represented from published add-on alginate research; not a guaranteed individual result.</p>
+        </div>
+      </article>
+
+      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--symptoms">
+        <div class="mellow-clinical-proof__copy">
+          <p class="mellow-clinical-proof__eyebrow">PATIENT-REPORTED OUTCOMES</p>
+          <h2>Research tracks the symptoms people actually feel.</h2>
+          <p>Clinical studies of alginate therapies have evaluated patient-reported reflux symptoms including heartburn, regurgitation, acid taste, and overall symptom burden.</p>
+        </div>
+
+        <div class="mellow-clinical-proof__visual mellow-clinical-proof__symptom-grid" aria-label="Patient-reported symptoms evaluated in research">
+          <div class="mellow-clinical-proof__symptom-card">
+            <span class="mellow-clinical-proof__symptom-icon" aria-hidden="true">01</span>
+            <strong>Heartburn</strong>
+            <small>Studied outcome</small>
+          </div>
+          <div class="mellow-clinical-proof__symptom-card">
+            <span class="mellow-clinical-proof__symptom-icon" aria-hidden="true">02</span>
+            <strong>Regurgitation</strong>
+            <small>Studied outcome</small>
+          </div>
+          <div class="mellow-clinical-proof__symptom-card">
+            <span class="mellow-clinical-proof__symptom-icon" aria-hidden="true">03</span>
+            <strong>Acid taste</strong>
+            <small>Studied outcome</small>
+          </div>
+          <div class="mellow-clinical-proof__symptom-card">
+            <span class="mellow-clinical-proof__symptom-icon" aria-hidden="true">04</span>
+            <strong>Post-meal reflux</strong>
+            <small>Studied outcome</small>
+          </div>
+        </div>
+      </article>
+
+      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--standalone">
+        <div class="mellow-clinical-proof__copy">
+          <p class="mellow-clinical-proof__eyebrow">CLINICAL STUDY</p>
+          <h2>Studied as a standalone reflux-support option.</h2>
+          <p>A randomized clinical study reported that pure sodium alginate may be effective as monotherapy for symptom relief in GERD patients without evidence of reflux esophagitis.</p>
+          <p class="mellow-clinical-proof__citation"><sup>3</sup> Kim et al., <em>Gut and Liver</em>, 2019.</p>
+        </div>
+
+        <div class="mellow-clinical-proof__visual mellow-clinical-proof__scale" aria-label="Before and after alginate period relief scale">
+          <div class="mellow-clinical-proof__scale-line" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="mellow-clinical-proof__scale-item mellow-clinical-proof__scale-item--before">
+            <span>Before alginate</span>
+            <strong>More symptoms</strong>
+          </div>
+          <div class="mellow-clinical-proof__scale-item mellow-clinical-proof__scale-item--after">
+            <span>After alginate period</span>
+            <strong>More relief</strong>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <footer class="mellow-clinical-proof__footer">
+      <div>
+        <p class="mellow-clinical-proof__footer-title">Research scope</p>
+        <p>{{ section.settings.disclaimer }}</p>
+      </div>
+      <a href="{{ section.settings.cta_link | default: '/products/mellow-reflux-relief' }}" class="mellow-clinical-proof__button">{{ section.settings.cta_label }}</a>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .mellow-clinical-proof-{{ section.id }} {
+    --clinical-forest: var(--mellow-forest, #1A2D10);
+    --clinical-green: var(--mellow-green, #123A24);
+    --clinical-blue: var(--mellow-blue, #3D6B8C);
+    --clinical-text-soft: var(--mellow-text-soft, #5B6A60);
+    --clinical-border: rgba(26, 45, 16, 0.14);
+    --clinical-border-strong: rgba(26, 45, 16, 0.24);
+    --clinical-surface: #F7FAF5;
+    --clinical-blue-soft: rgba(61, 107, 140, 0.12);
+    background: #FFFFFF;
+    color: var(--clinical-forest);
+    padding: clamp(72px, 8vw, 128px) 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__inner {
+    width: min(100% - 32px, 1200px);
+    margin: 0 auto;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero {
+    border-bottom: 1px solid var(--clinical-border);
+    padding-bottom: clamp(32px, 5vw, 64px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__kicker,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__eyebrow,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__citation,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scope-note,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer-title,
+  .mellow-clinical-proof-{{ section.id }} small {
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__kicker {
+    color: var(--clinical-blue);
+    margin: 0 0 22px;
+    font-weight: 600;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: clamp(28px, 7vw, 96px);
+    align-items: end;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title,
+  .mellow-clinical-proof-{{ section.id }} h2 {
+    font-family: var(--mellow-heading-font, 'Founders Grotesk', 'Test Founders Grotesk', 'Helvetica Neue', Arial, sans-serif);
+    font-weight: var(--mellow-heading-weight, 500);
+    letter-spacing: -0.045em;
+    color: var(--clinical-forest);
+    margin: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title {
+    font-size: clamp(48px, 7.2vw, 96px);
+    line-height: 0.94;
+    max-width: 930px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title em {
+    font-family: var(--mellow-heading-italic-font, 'Tiempos Headline', Georgia, serif);
+    font-style: italic;
+    font-weight: var(--mellow-heading-italic-weight, 400);
+    letter-spacing: -0.04em;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__intro p,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__copy > p:not(.mellow-clinical-proof__eyebrow):not(.mellow-clinical-proof__citation),
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer p:not(.mellow-clinical-proof__footer-title) {
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--clinical-text-soft);
+    font-size: clamp(17px, 1.45vw, 20px);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__intro {
+    display: grid;
+    gap: 22px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scope-note {
+    width: fit-content;
+    border: 1px solid rgba(61, 107, 140, 0.28);
+    border-radius: 999px;
+    color: var(--clinical-blue);
+    padding: 10px 14px;
+    background: var(--clinical-blue-soft);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--clinical-border);
+    border-radius: 20px;
+    margin: 24px 0;
+    overflow: hidden;
+    background: #FFFFFF;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    text-align: center;
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    border-right: 1px solid var(--clinical-border);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span:last-child {
+    border-right: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__modules {
+    display: grid;
+    gap: 24px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    min-height: 520px;
+    border: 1px solid var(--clinical-border);
+    border-radius: 28px;
+    padding: clamp(24px, 4vw, 56px);
+    background:
+      radial-gradient(circle at 94% 8%, rgba(61, 107, 140, 0.10), transparent 28%),
+      #FFFFFF;
+    overflow: hidden;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even) {
+    grid-template-columns: minmax(320px, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even) .mellow-clinical-proof__copy {
+    order: 2;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__copy {
+    display: grid;
+    gap: 20px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__eyebrow {
+    color: var(--clinical-blue);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} h2 {
+    font-size: clamp(36px, 4.4vw, 64px);
+    line-height: 0.97;
+    max-width: 620px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__stat {
+    border-top: 1px solid var(--clinical-border-strong);
+    border-bottom: 1px solid var(--clinical-border-strong);
+    padding: 22px 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__stat-number {
+    font-family: var(--mellow-heading-font, 'Founders Grotesk', 'Test Founders Grotesk', 'Helvetica Neue', Arial, sans-serif);
+    color: var(--clinical-blue);
+    font-size: clamp(64px, 9vw, 118px);
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__stat-label {
+    max-width: 360px;
+    color: var(--clinical-forest);
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} sup {
+    font-size: 0.58em;
+    line-height: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__citation {
+    color: var(--clinical-forest);
+    opacity: 0.78;
+    margin: 4px 0 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__visual {
+    min-height: 360px;
+    border-radius: 24px;
+    border: 1px solid rgba(61, 107, 140, 0.18);
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--clinical-surface) 100%);
+    padding: clamp(20px, 3vw, 34px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module--symptom .mellow-clinical-proof__visual {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette-card {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 18px;
+    align-items: end;
+    justify-items: center;
+    border: 1px solid var(--clinical-border);
+    border-radius: 20px;
+    padding: 26px 16px 18px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette-card--strong {
+    border-color: rgba(18, 58, 36, 0.30);
+    box-shadow: inset 0 0 0 1px rgba(18, 58, 36, 0.04);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette-card span {
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--clinical-forest);
+    text-align: center;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette {
+    width: min(100%, 150px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette svg {
+    width: 100%;
+    display: block;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette path:not(.fill) {
+    fill: none;
+    stroke: var(--clinical-forest);
+    stroke-width: 3;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette--low .fill {
+    fill: rgba(61, 107, 140, 0.22);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__silhouette--high .fill {
+    fill: rgba(18, 58, 36, 0.74);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-visual {
+    display: grid;
+    align-content: center;
+    gap: 26px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-row {
+    display: grid;
+    grid-template-columns: 112px 1fr 102px;
+    gap: 18px;
+    align-items: center;
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--clinical-forest);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-row strong {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clinical-blue);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-track {
+    height: 52px;
+    border-radius: 999px;
+    background: rgba(26, 45, 16, 0.06);
+    border: 1px solid var(--clinical-border);
+    overflow: hidden;
+    padding: 7px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar {
+    height: 100%;
+    border-radius: 999px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar--ppi {
+    width: 84%;
+    background: rgba(61, 107, 140, 0.34);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar--alginate {
+    width: 52%;
+    background: linear-gradient(90deg, var(--clinical-green), rgba(61, 107, 140, 0.74));
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-visual p {
+    margin: 8px 0 0;
+    color: var(--clinical-text-soft);
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-card {
+    min-height: 148px;
+    display: grid;
+    align-content: space-between;
+    gap: 16px;
+    border: 1px solid var(--clinical-border);
+    border-radius: 18px;
+    padding: 18px;
+    background: #FFFFFF;
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-card strong {
+    font-family: var(--mellow-heading-font, 'Founders Grotesk', 'Test Founders Grotesk', 'Helvetica Neue', Arial, sans-serif);
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--clinical-forest);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-card small {
+    color: var(--clinical-blue);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(61, 107, 140, 0.30);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clinical-blue);
+    background: var(--clinical-blue-soft);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: 34px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-line {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-line span {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(26, 45, 16, 0.12);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-line span:nth-child(n+4) {
+    background: linear-gradient(90deg, var(--clinical-green), var(--clinical-blue));
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item {
+    width: min(100%, 360px);
+    border: 1px solid var(--clinical-border);
+    border-radius: 18px;
+    padding: 18px;
+    background: #FFFFFF;
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item span {
+    display: block;
+    color: var(--clinical-text-soft);
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item strong {
+    display: block;
+    font-family: var(--mellow-heading-font, 'Founders Grotesk', 'Test Founders Grotesk', 'Helvetica Neue', Arial, sans-serif);
+    font-size: 34px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--clinical-forest);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item--after {
+    justify-self: end;
+    border-color: rgba(18, 58, 36, 0.30);
+    box-shadow: 0 18px 50px rgba(18, 58, 36, 0.08);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+    align-items: center;
+    margin-top: 24px;
+    padding: clamp(22px, 3vw, 32px);
+    border: 1px solid var(--clinical-border);
+    border-radius: 24px;
+    background: var(--clinical-surface);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer-title {
+    margin: 0 0 10px;
+    color: var(--clinical-blue);
+    font-weight: 600;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 22px;
+    border: 1px solid var(--clinical-forest);
+    border-radius: 999px;
+    color: var(--clinical-forest);
+    background: #FFFFFF;
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__button:hover {
+    background: var(--clinical-forest);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 900px) {
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-grid,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even),
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer {
+      grid-template-columns: 1fr;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even) .mellow-clinical-proof__copy {
+      order: 0;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span:nth-child(2) {
+      border-right: 0;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span:nth-child(-n+2) {
+      border-bottom: 1px solid var(--clinical-border);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__visual {
+      min-height: auto;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer .mellow-clinical-proof__button {
+      justify-self: start;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .mellow-clinical-proof-{{ section.id }} {
+      padding: 56px 0;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__inner {
+      width: min(100% - 24px, 1200px);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title {
+      font-size: clamp(42px, 14vw, 60px);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module {
+      border-radius: 22px;
+      padding: 22px;
+      min-height: auto;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module--symptom .mellow-clinical-proof__visual,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span {
+      border-right: 0;
+      border-bottom: 1px solid var(--clinical-border);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip span:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mellow clinical proof",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Hero eyebrow",
+      "default": "What the data supports"
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Hero subhead",
+      "default": "Published research on alginate-based reflux therapies has evaluated outcomes like heartburn relief, regurgitation, breakthrough symptoms, and overall GERD symptom burden."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Research cited is based on published studies of alginate-based therapies and related formulations. Mellow’s final formula may differ from products used in individual studies."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Explore Mellow"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow clinical proof"
+    }
+  ]
+}
+{% endschema %}
