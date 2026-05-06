@@ -94,8 +94,8 @@
     max-width: none !important;
     margin: 0 !important;
 
-    /* Keep the trust row close to the hero so it remains above the fold. */
-    padding: 20px clamp(32px, 5vw, 80px) 18px !important;
+    /* Keep the proof row close enough to bridge the hero into the next section. */
+    padding: 24px clamp(28px, 5vw, 80px) 26px !important;
 
     background: var(--mellow-page, #FBFCF7) !important;
     background-color: var(--mellow-page, #FBFCF7) !important;
@@ -111,14 +111,15 @@
 
   #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__inner {
     width: 100% !important;
-    max-width: 1120px !important;
+    max-width: 1160px !important;
     margin: 0 auto !important;
-    padding: 0 !important;
+    padding: 18px clamp(20px, 3vw, 34px) !important;
 
-    background: transparent !important;
-    background-color: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
+    background: rgba(255, 255, 251, 0.48) !important;
+    background-color: rgba(255, 255, 251, 0.48) !important;
+    border: 1px solid rgba(26, 45, 16, 0.08) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 18px 45px rgba(26, 45, 16, 0.045) !important;
     overflow: visible !important;
   }
 
@@ -133,7 +134,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     align-items: center !important;
     justify-items: center !important;
-    column-gap: 32px !important;
+    column-gap: clamp(28px, 4vw, 54px) !important;
     row-gap: 0 !important;
 
     background: transparent !important;
@@ -151,14 +152,14 @@
 
   #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__item {
     width: 100% !important;
-    max-width: 315px !important;
+    max-width: 342px !important;
     min-width: 0 !important;
 
     display: grid !important;
-    grid-template-columns: 38px minmax(0, 1fr) !important;
+    grid-template-columns: 44px minmax(0, 1fr) !important;
     align-items: center !important;
     justify-content: start !important;
-    column-gap: 14px !important;
+    column-gap: 16px !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -193,10 +194,10 @@
   }
 
   #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__icon {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    max-width: 38px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
 
     display: inline-flex !important;
     align-items: center !important;
@@ -204,16 +205,16 @@
 
     border-radius: 999px !important;
     color: var(--mellow-forest, #1A2D10) !important;
-    background: rgba(26, 45, 16, 0.045) !important;
-    border: 1px solid rgba(26, 45, 16, 0.10) !important;
-    box-shadow: none !important;
+    background: rgba(26, 45, 16, 0.055) !important;
+    border: 1px solid rgba(26, 45, 16, 0.12) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42) !important;
 
     flex-shrink: 0 !important;
   }
 
   #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__icon svg {
-    width: 19px !important;
-    height: 19px !important;
+    width: 21px !important;
+    height: 21px !important;
     display: block !important;
     color: currentColor !important;
     stroke: currentColor !important;
@@ -223,11 +224,11 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 4px !important;
+    gap: 5px !important;
 
     min-width: 0 !important;
     width: 100% !important;
-    max-width: 250px !important;
+    max-width: 282px !important;
 
     background: transparent !important;
     text-align: left !important;
@@ -239,10 +240,10 @@
     margin: 0 !important;
 
     font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
-    font-size: 1rem !important;
-    line-height: 1.12 !important;
-    font-weight: 800 !important;
-    letter-spacing: -0.025em !important;
+    font-size: clamp(1.02rem, 0.96rem + 0.22vw, 1.12rem) !important;
+    line-height: 1.08 !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.028em !important;
 
     color: var(--mellow-forest, #1A2D10) !important;
     text-align: left !important;
@@ -255,78 +256,81 @@
     margin: 0 !important;
 
     font-family: var(--font-body, 'DM Sans', system-ui, sans-serif) !important;
-    font-size: 0.82rem !important;
-    line-height: 1.34 !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.002em !important;
+    font-size: clamp(0.86rem, 0.82rem + 0.12vw, 0.91rem) !important;
+    line-height: 1.42 !important;
+    font-weight: 520 !important;
+    letter-spacing: 0 !important;
 
-    color: rgba(26, 45, 16, 0.62) !important;
+    color: rgba(26, 45, 16, 0.68) !important;
     text-align: left !important;
     white-space: normal !important;
   }
 
   @media screen and (max-width: 980px) {
     #mellow-trust-strip-{{ section.id }} {
-      padding: 20px 28px 16px !important;
+      padding: 22px 24px 24px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__inner {
-      max-width: 920px !important;
+      max-width: 940px !important;
+      padding: 16px 20px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__list {
-      column-gap: 20px !important;
+      column-gap: 22px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__item {
-      max-width: 290px !important;
-      grid-template-columns: 36px minmax(0, 1fr) !important;
-      column-gap: 12px !important;
+      max-width: 300px !important;
+      grid-template-columns: 40px minmax(0, 1fr) !important;
+      column-gap: 13px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__icon {
-      width: 36px !important;
-      height: 36px !important;
-      min-width: 36px !important;
-      max-width: 36px !important;
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      max-width: 40px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__label {
-      font-size: 0.96rem !important;
+      font-size: 0.98rem !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__subtext {
-      font-size: 0.8rem !important;
+      font-size: 0.86rem !important;
     }
   }
 
   @media screen and (max-width: 760px) {
     #mellow-trust-strip-{{ section.id }} {
-      padding: 18px 20px 14px !important;
+      padding: 18px 18px 22px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__inner {
       max-width: 520px !important;
+      padding: 18px !important;
+      border-radius: 22px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__list {
       grid-template-columns: 1fr !important;
-      row-gap: 16px !important;
+      row-gap: 18px !important;
       justify-items: start !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__item {
       width: 100% !important;
       max-width: none !important;
-      grid-template-columns: 38px minmax(0, 1fr) !important;
+      grid-template-columns: 40px minmax(0, 1fr) !important;
       column-gap: 14px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__icon {
-      width: 38px !important;
-      height: 38px !important;
-      min-width: 38px !important;
-      max-width: 38px !important;
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      max-width: 40px !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__text {
@@ -334,11 +338,11 @@
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__label {
-      font-size: 0.96rem !important;
+      font-size: 1rem !important;
     }
 
     #mellow-trust-strip-{{ section.id }} .mellow-trust-strip-clean__subtext {
-      font-size: 0.82rem !important;
+      font-size: 0.86rem !important;
     }
   }
 </style>
