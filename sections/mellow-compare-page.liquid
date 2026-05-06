@@ -3,6 +3,16 @@
   Split-screen editorial compare section with a compact comparison table and science/product visual panel.
 {% endcomment %}
 
+{% liquid
+  assign science_image = section.settings.right_image
+  assign science_image_alt = section.settings.right_image_alt
+  assign has_science_image = false
+
+  if science_image != blank
+    assign has_science_image = true
+  endif
+%}
+
 <section class="mellow-compare-premium mellow-compare-premium-{{ section.id }}" id="mellow-compare-premium-{{ section.id }}">
   <div class="mellow-compare-premium__container">
     <div class="mellow-compare-premium__layout">
@@ -19,17 +29,17 @@
           </p>
         </div>
 
-        <div class="mellow-compare-premium__visual mellow-compare-premium__visual--mobile">
-          <div class="mellow-compare-premium__image-panel">
-            {% if section.settings.right_image != blank %}
-              {{ section.settings.right_image
+        <div class="mellow-compare-premium__visual mellow-compare-premium__visual--mobile{% if has_science_image %} has-image{% endif %}">
+          <div class="mellow-compare-premium__image-panel{% if has_science_image %} has-image{% endif %}">
+            {% if has_science_image %}
+              {{ science_image
                 | image_url: width: 1400
                 | image_tag:
                   class: 'mellow-compare-premium__image',
                   loading: 'lazy',
                   widths: '360, 540, 720, 900, 1100, 1400',
                   sizes: '(max-width: 989px) calc(100vw - 40px), 48vw',
-                  alt: section.settings.right_image_alt
+                  alt: science_image_alt
               }}
             {% else %}
               <div class="mellow-compare-premium__placeholder" aria-hidden="true">
@@ -146,17 +156,17 @@
         </div>
       </div>
 
-      <div class="mellow-compare-premium__visual mellow-compare-premium__visual--desktop">
-        <div class="mellow-compare-premium__image-panel">
-          {% if section.settings.right_image != blank %}
-            {{ section.settings.right_image
+      <div class="mellow-compare-premium__visual mellow-compare-premium__visual--desktop{% if has_science_image %} has-image{% endif %}">
+        <div class="mellow-compare-premium__image-panel{% if has_science_image %} has-image{% endif %}">
+          {% if has_science_image %}
+            {{ science_image
               | image_url: width: 1800
               | image_tag:
                 class: 'mellow-compare-premium__image',
                 loading: 'lazy',
                 widths: '720, 900, 1100, 1400, 1600, 1800',
                 sizes: '(min-width: 1440px) 690px, 48vw',
-                alt: section.settings.right_image_alt
+                alt: science_image_alt
             }}
           {% else %}
             <div class="mellow-compare-premium__placeholder" aria-hidden="true">
@@ -311,7 +321,25 @@
     box-shadow: 0 34px 90px rgba(26, 45, 16, 0.08) !important;
   }
 
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__visual.has-image::before,
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__visual.has-image::after,
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__image-panel.has-image::before,
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__image-panel.has-image::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__image-panel.has-image {
+    background: transparent !important;
+  }
+
+  #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__image-panel.has-image .mellow-compare-premium__placeholder {
+    display: none !important;
+  }
+
   #mellow-compare-premium-{{ section.id }} .mellow-compare-premium__image {
+    position: relative !important;
+    z-index: 2 !important;
     display: block !important;
     width: 100% !important;
     height: 100% !important;
@@ -765,18 +793,18 @@
     {
       "type": "image_picker",
       "id": "right_image",
-      "label": "Right side image"
+      "label": "Science image"
     },
     {
       "type": "text",
       "id": "right_image_alt",
-      "label": "Right image alt text",
+      "label": "Science image alt text",
       "default": "Alginate powder in a petri dish"
     },
     {
       "type": "select",
       "id": "right_image_fit",
-      "label": "Right image fit",
+      "label": "Science image fit",
       "default": "cover",
       "options": [
         {
@@ -792,7 +820,7 @@
     {
       "type": "select",
       "id": "right_image_position",
-      "label": "Right image position",
+      "label": "Science image position",
       "default": "center center",
       "options": [
         {
