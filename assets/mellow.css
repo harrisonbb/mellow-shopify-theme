@@ -39,11 +39,23 @@
   --mellow-border-strong: rgba(16, 32, 24, 0.18);
 
   /* Fonts */
-  --mellow-font-heading: 'Test American Grotesk Compressed', Fraunces, serif;
-  --mellow-font-body: 'Test American Grotesk Compressed', 'DM Sans', sans-serif;
+  --mellow-font-heading: Fraunces, serif;
+  --mellow-font-body: 'DM Sans', sans-serif;
   --mellow-font-accent: Fraunces, serif;
   --font-heading: var(--mellow-font-heading);
   --font-body: var(--mellow-font-body);
+
+/*
+TEMP FONT TEST OPTIONS — uncomment only one line at a time.
+Do not use compressed fonts globally.
+
+:root {
+  --mellow-font-heading: 'Test American Grotesk', Fraunces, serif;
+}
+
+Use compressed only for short labels/eyebrows, never full headlines:
+--mellow-font-condensed: 'Test American Grotesk Compressed', 'DM Sans', sans-serif;
+*/
 
   /* Layout */
   --mellow-page-max: 1480px;
