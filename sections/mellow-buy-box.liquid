@@ -2,8 +2,8 @@
   Mellow Buy Section
   Updated:
   - Header typography matched exactly to Mellow Hero / Ingredients system
-  - Fraunces 550 heading, tight line-height, negative tracking
-  - Responsive heading breakpoints matched to Ingredients section
+  - Founders Grotesk roman heading, Tiempos Headline italic accent, approved hero rhythm
+  - Responsive heading scale preserved
   - Eyebrow locked to DM Sans 800 / orange / compact spacing
   - Background changed to match main site white #FBFCF7
   - Hard override applied to Shopify wrapper and section
@@ -607,6 +607,27 @@
       font-size: 0.92rem !important;
       letter-spacing: -0.01em !important;
     }
+  }
+
+
+  /* Use the approved hero heading typography for this major section headline. */
+  #shopify-section-{{ section.id }} .mellow-buy-title,
+  #shopify-section-{{ section.id }} .mellow-buy-title .mellow-heading-main {
+    font-family: var(--mellow-heading-font) !important;
+    font-weight: var(--mellow-heading-weight) !important;
+    letter-spacing: var(--mellow-heading-letter-spacing) !important;
+    line-height: var(--mellow-heading-line-height) !important;
+    font-style: normal !important;
+    font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
+  }
+
+  #shopify-section-{{ section.id }} .mellow-buy-title .mellow-heading-accent {
+    font-family: var(--mellow-heading-italic-font) !important;
+    font-style: italic !important;
+    font-weight: var(--mellow-heading-italic-weight) !important;
+    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+    line-height: var(--mellow-heading-italic-line-height) !important;
+    font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
   }
 </style>
 
