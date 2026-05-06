@@ -237,10 +237,10 @@
 
     color: var(--mellow-ivory) !important;
     font-family: var(--font-heading) !important;
-    font-size: clamp(3.5rem, 6.1vw, 7.35rem) !important;
+    font-size: clamp(52px, 5vw, 76px) !important;
     line-height: 0.98 !important;
     letter-spacing: -0.038em !important;
-    font-weight: 700 !important;
+    font-weight: var(--mellow-major-header-weight, 500) !important;
     font-style: normal !important;
     font-variation-settings: normal !important;
     text-align: left !important;
@@ -609,11 +609,19 @@
   #shopify-section-{{ section.id }} .mellow-patterns__headline,
   #shopify-section-{{ section.id }} .mellow-patterns__headline .mellow-heading-main {
     font-family: var(--mellow-heading-font) !important;
-    font-weight: var(--mellow-heading-weight) !important;
+    font-size: clamp(52px, 5vw, 76px) !important;
+    font-weight: var(--mellow-major-header-weight, 500) !important;
     letter-spacing: var(--mellow-heading-letter-spacing) !important;
     line-height: var(--mellow-heading-line-height) !important;
     font-style: normal !important;
     font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .mellow-patterns__headline,
+    #shopify-section-{{ section.id }} .mellow-patterns__headline .mellow-heading-main {
+      font-size: clamp(40px, 9vw, 52px) !important;
+    }
   }
 
   #shopify-section-{{ section.id }} .mellow-patterns__headline .mellow-heading-accent {
