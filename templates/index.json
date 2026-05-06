@@ -308,8 +308,8 @@
         "usage_heading": "How to use:",
         "usage_text": "<p>Take one pouch during reflux-prone moments, or as directed on pack.</p>",
         "footnote": "Based on studies of alginate and alginate-antacid raft-forming formulations. Individual results may vary.",
-        "padding_top": 104,
-        "padding_bottom": 112
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     }
   },
