@@ -173,6 +173,17 @@
         "padding_bottom": 88
       }
     },
+    "mellow_clinical_proof_page_RiPXMk": {
+      "type": "mellow-clinical-proof-page",
+      "name": "Mellow clinical proof",
+      "settings": {
+        "eyebrow": "What the data supports",
+        "subhead": "Published research on alginate-based reflux therapies has evaluated outcomes like heartburn relief, regurgitation, breakthrough symptoms, and overall GERD symptom burden.",
+        "disclaimer": "Research cited is based on published studies of alginate-based therapies and related formulations. Mellow’s final formula may differ from products used in individual studies.",
+        "cta_label": "Explore Mellow",
+        "cta_link": ""
+      }
+    },
     "mellow_expectations_timeline_YieDtT": {
       "type": "mellow-expectations-timeline",
       "blocks": {
@@ -317,17 +328,6 @@
         "cta_text": "Try Mellow",
         "cta_link": ""
       }
-    },
-    "mellow_clinical_proof_page_RiPXMk": {
-      "type": "mellow-clinical-proof-page",
-      "name": "Mellow clinical proof",
-      "settings": {
-        "eyebrow": "What the data supports",
-        "subhead": "Published research on alginate-based reflux therapies has evaluated outcomes like heartburn relief, regurgitation, breakthrough symptoms, and overall GERD symptom burden.",
-        "disclaimer": "Research cited is based on published studies of alginate-based therapies and related formulations. Mellow’s final formula may differ from products used in individual studies.",
-        "cta_label": "Explore Mellow",
-        "cta_link": ""
-      }
     }
   },
   "order": [
@@ -340,10 +340,10 @@
     "mellow_ingredients_ExxTxE",
     "mellow_expert_proof_page_an7NbQ",
     "mellow_compare_page_EQzBX8",
+    "mellow_clinical_proof_page_RiPXMk",
     "mellow_expectations_timeline_YieDtT",
     "mellow_buy_box_VGPbf3",
     "mellow_faq_xnW3d6",
-    "mellow_day_night_scroll_Ctkp36",
-    "mellow_clinical_proof_page_RiPXMk"
+    "mellow_day_night_scroll_Ctkp36"
   ]
 }
