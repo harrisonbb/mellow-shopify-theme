@@ -166,6 +166,10 @@
       "type": "mellow-compare-page",
       "name": "Mellow Compare Page",
       "settings": {
+        "right_image": "shopify://shop_images/Alginate-powder.png",
+        "right_image_alt": "Alginate powder in a petri dish",
+        "right_image_fit": "cover",
+        "right_image_position": "center center",
         "padding_top": 88,
         "padding_bottom": 88
       }
