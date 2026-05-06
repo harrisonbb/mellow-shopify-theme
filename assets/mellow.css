@@ -47,14 +47,14 @@
 
   /* Approved hero-derived heading system */
   --mellow-heading-font: 'Founders Grotesk', 'Founders Grotesk Text', 'Test Founders Grotesk', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
-  --mellow-heading-italic-font: var(--mellow-heading-font);
   --mellow-heading-weight: 500;
   --mellow-heading-letter-spacing: -0.035em;
-  --mellow-heading-line-height: 0.94;
+  --mellow-heading-line-height: 0.96;
   --mellow-heading-font-variation-settings: normal;
-  --mellow-heading-italic-weight: var(--mellow-heading-weight);
-  --mellow-heading-italic-letter-spacing: var(--mellow-heading-letter-spacing);
-  --mellow-heading-italic-line-height: var(--mellow-heading-line-height);
+  --mellow-heading-italic-font: 'Tiempos Headline', 'Tiempos Headline Italic', 'Test Tiempos Headline', Georgia, serif;
+  --mellow-heading-italic-weight: 400;
+  --mellow-heading-italic-letter-spacing: -0.03em;
+  --mellow-heading-italic-line-height: 0.95;
   --mellow-heading-italic-font-variation-settings: normal;
   --mellow-heading-accent-offset: 0;
 
@@ -101,9 +101,9 @@ Use compressed only for short labels/eyebrows, never full headlines:
 
   /* Major headers: restrained siblings of the approved hero heading. */
   --mellow-major-header-font: var(--mellow-heading-font);
-  --mellow-major-header-size: clamp(40px, 4.4vw, 64px);
-  --mellow-major-header-size-large: clamp(48px, 5vw, 72px);
-  --mellow-major-header-size-compact: clamp(34px, 3.8vw, 54px);
+  --mellow-major-header-size: clamp(40px, 4vw, 60px);
+  --mellow-major-header-size-large: clamp(44px, 4.4vw, 66px);
+  --mellow-major-header-size-compact: clamp(34px, 3.5vw, 52px);
   --mellow-major-header-line: var(--mellow-heading-line-height);
   --mellow-major-header-track: var(--mellow-heading-letter-spacing);
   --mellow-major-header-weight: 500;
@@ -246,11 +246,11 @@ li {
 .mellow-heading-split i,
 .mellow-heading-split .mellow-heading-accent {
   font-family: var(--mellow-heading-italic-font) !important;
-  font-style: normal !important;
-  font-weight: var(--mellow-heading-weight) !important;
+  font-style: italic !important;
+  font-weight: var(--mellow-heading-italic-weight) !important;
   font-variation-settings: var(--mellow-heading-italic-font-variation-settings) !important;
-  letter-spacing: var(--mellow-heading-letter-spacing) !important;
-  line-height: var(--mellow-heading-line-height) !important;
+  letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
+  line-height: var(--mellow-heading-italic-line-height) !important;
 }
 
 .mellow-heading-split .mellow-heading-break {
@@ -272,7 +272,7 @@ li {
   .mellow-heading-split em,
   .mellow-heading-split i,
   .mellow-heading-split .mellow-heading-accent {
-    letter-spacing: var(--mellow-heading-letter-spacing) !important;
+    letter-spacing: var(--mellow-heading-italic-letter-spacing) !important;
   }
 }
 
@@ -2066,9 +2066,9 @@ footer a:hover {
 
 @media screen and (max-width: 768px) {
   :root {
-    --mellow-major-header-size: clamp(34px, 8.5vw, 48px);
-    --mellow-major-header-size-large: clamp(40px, 9vw, 52px);
-    --mellow-major-header-size-compact: clamp(32px, 8vw, 44px);
+    --mellow-major-header-size: clamp(34px, 8.2vw, 46px);
+    --mellow-major-header-size-large: clamp(38px, 8.8vw, 50px);
+    --mellow-major-header-size-compact: clamp(32px, 7.8vw, 42px);
     --mellow-major-header-line: 0.98;
     --mellow-major-header-track: var(--mellow-heading-letter-spacing);
     --mellow-major-header-max: 100%;
@@ -2100,7 +2100,7 @@ footer a:hover {
     letter-spacing: var(--mellow-major-header-track) !important;
     font-weight: var(--mellow-major-header-weight) !important;
     max-width: 100% !important;
-    font-variation-settings: "opsz" 48, "wght" 400 !important;
+    font-variation-settings: var(--mellow-heading-font-variation-settings) !important;
   }
 
   main :is(
