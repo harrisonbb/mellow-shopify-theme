@@ -1251,6 +1251,230 @@
   }
 </style>
 
+<style>
+  /*
+    HARD FIX:
+    Uses unique keyframe names so raft + particles cannot collide with older animation CSS.
+  */
+
+  .mellow-clinical-raft-animation .raft {
+    display: block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    z-index: 999 !important;
+    left: 17% !important;
+    top: var(--raft-birth-top) !important;
+    width: 70% !important;
+    height: 58px !important;
+    opacity: 0;
+    animation: mellowRaftGelSHOW-v2 var(--duration) cubic-bezier(.22,.75,.22,1) infinite !important;
+  }
+
+  .mellow-clinical-raft-animation .raft-haze {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 998 !important;
+    opacity: 0;
+    animation: mellowRaftHazeSHOW-v2 var(--duration) ease-in-out infinite !important;
+  }
+
+  .mellow-clinical-raft-animation .raft-dot {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 1000 !important;
+    opacity: 0;
+    animation: mellowRaftDotsSHOW-v2 var(--duration) cubic-bezier(.22,.75,.22,1) infinite !important;
+  }
+
+  .mellow-clinical-raft-animation .particle,
+  .mellow-clinical-raft-animation .pb {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 997 !important;
+    opacity: 0;
+  }
+
+  .mellow-clinical-raft-animation .particle {
+    animation: mellowRaftParticleSHOW-v2 var(--duration) cubic-bezier(.2,.2,.12,1) infinite !important;
+  }
+
+  .mellow-clinical-raft-animation .pb {
+    animation: mellowRaftBubbleSHOW-v2 var(--duration) cubic-bezier(.18,.28,.12,1) infinite !important;
+  }
+
+  @keyframes mellowRaftParticleSHOW-v2 {
+    0%, 12% {
+      opacity: 0;
+      transform: translate(0, 0) scale(.55);
+    }
+
+    18% {
+      opacity: .95;
+      transform: translate(0, 0) scale(.75);
+    }
+
+    34% {
+      opacity: .9;
+      transform: translate(calc(var(--x) * .45), calc(var(--y) * .58)) scale(1);
+    }
+
+    48% {
+      opacity: .45;
+      transform: translate(var(--x), var(--y)) scale(.75);
+    }
+
+    58%, 100% {
+      opacity: 0;
+      transform: translate(var(--x), var(--y)) scale(.25);
+    }
+  }
+
+  @keyframes mellowRaftBubbleSHOW-v2 {
+    0%, 14% {
+      opacity: 0;
+      transform: translate(0, 0) scale(.32);
+    }
+
+    22% {
+      opacity: .85;
+      transform: translate(0, -20px) scale(.6);
+    }
+
+    38% {
+      opacity: .78;
+      transform: translate(var(--dx1), var(--dy1)) scale(.78);
+    }
+
+    52% {
+      opacity: .66;
+      transform: translate(var(--dx2), var(--dy2)) scale(.60);
+    }
+
+    64% {
+      opacity: .38;
+      transform: translate(var(--dx3), var(--dy3)) scale(.44);
+    }
+
+    72%, 100% {
+      opacity: 0;
+      transform: translate(var(--dx3), var(--dy3)) scale(.12);
+    }
+  }
+
+  @keyframes mellowRaftHazeSHOW-v2 {
+    0%, 38% {
+      opacity: 0;
+      transform: scaleX(.40) scaleY(.35);
+      filter: blur(14px);
+    }
+
+    48% {
+      opacity: .35;
+      transform: scaleX(.78) scaleY(.62);
+      filter: blur(10px);
+    }
+
+    58% {
+      opacity: .52;
+      transform: scaleX(1) scaleY(.88);
+      filter: blur(7px);
+    }
+
+    70% {
+      opacity: .2;
+      transform: scaleX(1) scaleY(1);
+      filter: blur(8px);
+    }
+
+    76%, 100% {
+      opacity: 0;
+      transform: scaleX(1) scaleY(1);
+      filter: blur(10px);
+    }
+  }
+
+  @keyframes mellowRaftGelSHOW-v2 {
+    0%, 44% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scaleX(.12) scaleY(.34);
+      filter: blur(10px);
+    }
+
+    52% {
+      opacity: .45;
+      transform: translate3d(0, 0, 0) scaleX(.44) scaleY(.52);
+      filter: blur(7px);
+    }
+
+    60% {
+      opacity: .85;
+      transform: translate3d(0, 0, 0) scaleX(.88) scaleY(.78);
+      filter: blur(2px);
+    }
+
+    68% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scaleX(1) scaleY(.96);
+      filter: blur(0);
+    }
+
+    78% {
+      opacity: 1;
+      transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1);
+      filter: blur(0);
+    }
+
+    86% {
+      opacity: 1;
+      transform: translate3d(0, 1.5px, 0) scaleX(1) scaleY(1);
+      filter: blur(0);
+    }
+
+    94% {
+      opacity: 1;
+      transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1);
+      filter: blur(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes mellowRaftDotsSHOW-v2 {
+    0%, 54% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(.55);
+    }
+
+    64% {
+      opacity: .45;
+      transform: translate3d(0, 0, 0) scale(.82);
+    }
+
+    72% {
+      opacity: .6;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    78% {
+      opacity: .56;
+      transform: translate3d(0, -1px, 0) scale(1);
+    }
+
+    86% {
+      opacity: .56;
+      transform: translate3d(0, 1.5px, 0) scale(1);
+    }
+
+    100% {
+      opacity: .56;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+</style>
 
 {% schema %}
 {
