@@ -626,25 +626,38 @@
     .mellow-clinical-raft-animation .blocked-callout {
       position: absolute;
       z-index: 1001;
-      right: 84px;
       top: calc(var(--raft-final-top) + 98px);
       display: inline-flex;
       align-items: center;
-      min-height: 30px;
-      padding: 0 14px;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 12px;
       border-radius: 999px;
       background: rgba(255, 255, 255, .78);
       border: 1px solid rgba(208, 74, 42, .12);
       color: rgba(208, 74, 42, .86);
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 800;
-      letter-spacing: .075em;
+      letter-spacing: .065em;
       text-transform: uppercase;
       white-space: nowrap;
       box-shadow: 0 5px 12px rgba(208, 74, 42, .04);
       opacity: 0;
       pointer-events: none;
+      transform: translateX(-50%);
       animation: mellowRaftBlockedCalloutClean var(--duration) ease-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .bc1 {
+      left: 29%;
+    }
+
+    .mellow-clinical-raft-animation .bc2 {
+      left: 50%;
+    }
+
+    .mellow-clinical-raft-animation .bc3 {
+      left: 72%;
     }
 
     @keyframes mellowRaftCalloutAppearClean {
@@ -1082,12 +1095,12 @@
     @keyframes mellowRaftBlockedCalloutClean {
       0%, 88% {
         opacity: 0;
-        transform: translateY(4px) scale(.98);
+        transform: translateX(-50%) translateY(4px) scale(.98);
       }
 
       92%, 100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateX(-50%) translateY(0) scale(1);
       }
     }
 
@@ -1105,8 +1118,21 @@
       }
 
       .mellow-clinical-raft-animation .blocked-callout {
-        right: 32px;
         top: calc(var(--raft-final-top) + 96px);
+        font-size: 8px;
+        padding: 0 9px;
+      }
+
+      .mellow-clinical-raft-animation .bc1 {
+        left: 30%;
+      }
+
+      .mellow-clinical-raft-animation .bc2 {
+        left: 51%;
+      }
+
+      .mellow-clinical-raft-animation .bc3 {
+        left: 72%;
       }
 
       .mellow-clinical-raft-animation .droplet-callout {
@@ -1302,7 +1328,9 @@
         <div class="block-ripple br2"></div>
         <div class="block-ripple br3"></div>
 
-        <div class="blocked-callout">Acid blocked</div>
+        <div class="blocked-callout bc1">Acid blocked</div>
+        <div class="blocked-callout bc2">Acid blocked</div>
+        <div class="blocked-callout bc3">Acid blocked</div>
       </div>
     </div>
   </div>
