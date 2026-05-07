@@ -41,41 +41,113 @@
         <p>Alginate raft therapy is designed to react in the stomach, form a buoyant gel layer, and help block upward reflux movement at the source.</p>
       </div>
 
-      <div class="mellow-clinical-proof__mechanism-visual" aria-label="Animated abstract diagram showing acid, raft formation, and blocked reflux arrows">
-        <div class="mellow-clinical-proof__diagram" aria-hidden="true">
-          <div class="mellow-clinical-proof__diagram-label mellow-clinical-proof__diagram-label--top">MellowRaft™ layer</div>
-          <svg class="mellow-clinical-proof__raft-callout" viewBox="0 0 260 120" focusable="false">
-            <path class="mellow-clinical-proof__raft-callout-line" d="M 22 22 C 72 22 94 44 123 63" pathLength="1"></path>
-            <path class="mellow-clinical-proof__raft-callout-head" d="M 123 63 L 113 62 L 119 54" pathLength="1"></path>
-          </svg>
-          <div class="mellow-clinical-proof__mellow-droplets" aria-hidden="true">
-            <span></span><span></span><span></span>
+      <div class="mellow-clinical-proof__mechanism-visual mellow-raft-animation mellow-raft-animation-{{ section.id }}" aria-label="Animated MellowRaft mechanism showing droplets, particle bloom, gel raft formation, and blocked acid reflux" style="--page: transparent; --forest: #1A2D10; --forest-soft: rgba(26, 45, 16, 0.56); --orange: #D04A2A; --gold: #D6A64A; --raft: #C8D4A5; --raft-deep: #9EAF7C; --cream: #F0EBE0; --ink: #102112; --muted: #667060; --panel-radius: 26px; --duration: 10.6s; --raft-birth-top: 31%; --raft-final-top: 31%;">
+        <div class="mellow-raft-animation__device">
+          <div class="mechanism" data-mellow-raft-mechanism>
+            <div class="label">{{ section.settings.mechanism_label }}</div>
+
+            <svg class="callout" viewBox="0 0 82 48" aria-hidden="true">
+              <path d="M4 8 C 24 8, 36 17, 50 31" />
+              <polyline points="43,30 51,33 48,24" />
+            </svg>
+
+            <div class="acid"></div>
+            <div class="acid-label">{{ section.settings.acid_label }}</div>
+
+            <div class="droplet-callout" aria-hidden="true">
+              <span class="droplet-callout__pill">Mellow enters</span>
+            </div>
+
+            <div class="drop drop-1">
+              <svg viewBox="0 0 100 120" aria-hidden="true">
+                <defs>
+                  <linearGradient id="dg1-{{ section.id }}" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f0ebe0"/>
+                    <stop offset=".55" stop-color="#a9b880"/>
+                    <stop offset="1" stop-color="#d6a64a"/>
+                  </linearGradient>
+                </defs>
+                <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="url(#dg1-{{ section.id }})"/>
+                <path d="M34 36 C24 54 25 76 37 92" fill="none" stroke="rgba(255,255,255,.72)" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="drop drop-2">
+              <svg viewBox="0 0 100 120" aria-hidden="true">
+                <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(184,201,130,.56)"/>
+                <path d="M34 38 C26 55 27 74 38 88" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="drop drop-3">
+              <svg viewBox="0 0 100 120" aria-hidden="true">
+                <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(228,184,90,.54)"/>
+                <path d="M34 38 C26 55 27 74 38 88" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="ripple ripple-1"></div>
+            <div class="ripple ripple-2"></div>
+            <div class="ripple ripple-3"></div>
+
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+            <div class="particle p4"></div>
+            <div class="particle p5"></div>
+            <div class="particle p6"></div>
+
+            <div data-mellow-raft-particles></div>
+
+            <div class="fragment f1"></div>
+            <div class="fragment f2"></div>
+            <div class="fragment f3"></div>
+            <div class="fragment f4"></div>
+
+            <div class="raft-haze"></div>
+            <div class="raft"></div>
+
+            <div class="raft-dot" style="--x:46px;--y:14px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0.000s"></div>
+            <div class="raft-dot" style="--x:117px;--y:33px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:0.018s"></div>
+            <div class="raft-dot" style="--x:188px;--y:28px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:0.036s"></div>
+            <div class="raft-dot" style="--x:259px;--y:23px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:0.054s"></div>
+            <div class="raft-dot" style="--x:330px;--y:18px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0.072s"></div>
+            <div class="raft-dot" style="--x:93px;--y:37px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:0.090s"></div>
+            <div class="raft-dot" style="--x:164px;--y:32px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:0.108s"></div>
+            <div class="raft-dot" style="--x:235px;--y:27px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:0.126s"></div>
+            <div class="raft-dot" style="--x:306px;--y:22px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0.144s"></div>
+            <div class="raft-dot" style="--x:69px;--y:17px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:0.000s"></div>
+            <div class="raft-dot" style="--x:140px;--y:36px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:0.018s"></div>
+            <div class="raft-dot" style="--x:211px;--y:31px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:0.036s"></div>
+            <div class="raft-dot" style="--x:282px;--y:26px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0.054s"></div>
+            <div class="raft-dot" style="--x:353px;--y:21px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:0.072s"></div>
+            <div class="raft-dot" style="--x:116px;--y:16px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:0.090s"></div>
+            <div class="raft-dot" style="--x:187px;--y:35px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:0.108s"></div>
+            <div class="raft-dot" style="--x:258px;--y:30px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0.126s"></div>
+            <div class="raft-dot" style="--x:329px;--y:25px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:0.144s"></div>
+
+            <div class="heat h1"><svg viewBox="0 0 30 170" aria-hidden="true"><path d="M14 166 C24 130, 4 110, 15 78 C24 52, 10 31, 18 4" /></svg></div>
+            <div class="heat h2"><svg viewBox="0 0 30 170" aria-hidden="true"><path d="M14 166 C24 130, 4 110, 15 78 C24 52, 10 31, 18 4" /></svg></div>
+            <div class="heat h3"><svg viewBox="0 0 30 170" aria-hidden="true"><path d="M14 166 C24 130, 4 110, 15 78 C24 52, 10 31, 18 4" /></svg></div>
+
+            <div class="block-ripple br1"></div>
+            <div class="block-ripple br2"></div>
+            <div class="block-ripple br3"></div>
+
+            <div class="blocked-callout" aria-hidden="true">Acid blocked</div>
           </div>
-          <div class="mellow-clinical-proof__acid-splashes" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="mellow-clinical-proof__blocked-arrows">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="mellow-clinical-proof__gel-fragments">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="mellow-clinical-proof__raft-band">
-            <span class="mellow-clinical-proof__raft-highlight"></span>
-            <span class="mellow-clinical-proof__raft-wave"></span>
-            <span class="mellow-clinical-proof__raft-bubble mellow-clinical-proof__raft-bubble--one"></span>
-            <span class="mellow-clinical-proof__raft-bubble mellow-clinical-proof__raft-bubble--two"></span>
-            <span class="mellow-clinical-proof__raft-bubble mellow-clinical-proof__raft-bubble--three"></span>
-          </div>
-          <div class="mellow-clinical-proof__particles">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="mellow-clinical-proof__acid-wave"></div>
-          <div class="mellow-clinical-proof__diagram-label mellow-clinical-proof__diagram-label--bottom">Acid pocket / stomach contents</div>
         </div>
+
+        {% if section.settings.show_animation_controls %}
+          <div class="controls">
+            <button type="button" data-mellow-raft-replay>Replay animation</button>
+            <button type="button" data-mellow-raft-pause>Pause</button>
+            <button type="button" data-mellow-raft-speed>Speed: normal</button>
+            <span class="note">Pure HTML/CSS animation.</span>
+          </div>
+        {% endif %}
       </div>
+
     </section>
 
     <section class="mellow-clinical-proof__steps" aria-label="How alginate raft therapy works">
@@ -244,6 +316,479 @@
 
   .mellow-clinical-proof-{{ section.id }} * {
     box-sizing: border-box;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} {
+    background: var(--page);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .mellow-raft-animation__device {
+    position: relative;
+    aspect-ratio: 1.56 / 1;
+    min-height: 360px;
+    border-radius: var(--panel-radius);
+    padding: clamp(18px, 2.2vw, 28px);
+    background: rgba(255,255,255,.62);
+    border: 1px solid rgba(26, 45, 16, .12);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.58);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .mechanism {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 48% 78%, rgba(208,74,42,.08), transparent 34%),
+      linear-gradient(180deg, #e5dfd2 0%, #eee9dd 72%, #e7e0d1 100%);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .label {
+    position: absolute;
+    z-index: 20;
+    top: 20px;
+    left: 24px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(26,45,16,.08);
+    color: var(--forest);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 18px rgba(26,45,16,.05);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .acid-label {
+    position: absolute;
+    z-index: 20;
+    left: 24px;
+    bottom: 22px;
+    padding: 11px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.74);
+    border: 1px solid rgba(26,45,16,.08);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .callout {
+    position: absolute;
+    z-index: 19;
+    left: 42px;
+    top: 58px;
+    width: 82px;
+    height: 48px;
+    pointer-events: none;
+    opacity: 0;
+    animation: mellowRaftCalloutAppear-{{ section.id }} var(--duration) ease-out infinite;
+  }
+
+  @keyframes mellowRaftCalloutAppear-{{ section.id }} {
+    0%, 66% { opacity: 0; transform: translateY(3px); }
+    72%, 100% { opacity: .9; transform: translateY(0); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .callout path,
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .callout polyline {
+    fill: none;
+    stroke: var(--forest-soft);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .droplet-callout {
+    position: absolute;
+    z-index: 22;
+    top: 95px;
+    right: 72px;
+    display: inline-flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    animation: mellowRaftDropletCallout-{{ section.id }} var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .droplet-callout__pill {
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.68);
+    border: 1px solid rgba(26,45,16,.075);
+    color: rgba(26,45,16,.82);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    box-shadow: 0 5px 12px rgba(26,45,16,.035);
+    white-space: nowrap;
+  }
+
+  @keyframes mellowRaftDropletCallout-{{ section.id }} {
+    0%, 3% { opacity: 0; transform: translateY(-3px) scale(.98); }
+    6%, 17% { opacity: 1; transform: translateY(0) scale(1); }
+    22%, 100% { opacity: 0; transform: translateY(3px) scale(.98); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .acid {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 22%;
+    background: linear-gradient(180deg, rgba(208,74,42,.015), rgba(208,74,42,.12));
+    opacity: .9;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .acid::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    height: 18px;
+    background: linear-gradient(90deg, transparent 0%, rgba(208,74,42,.08) 16%, rgba(208,74,42,.14) 34%, rgba(208,74,42,.08) 52%, rgba(208,74,42,.13) 72%, transparent 100%);
+    opacity: .55;
+    filter: blur(6px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .drop {
+    position: absolute;
+    z-index: 8;
+    width: 26px;
+    height: 34px;
+    opacity: 0;
+    transform-origin: 50% 70%;
+    filter: drop-shadow(0 8px 14px rgba(26,45,16,.12));
+    animation: mellowRaftDropletFall-{{ section.id }} var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .drop svg { width: 100%; height: 100%; display: block; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .drop-1 { left: 27%; top: 18%; animation-delay: 0s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .drop-2 { left: 49%; top: 22%; width: 22px; height: 29px; animation-delay: .18s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .drop-3 { left: 67%; top: 16%; width: 19px; height: 25px; animation-delay: .34s; }
+
+  @keyframes mellowRaftDropletFall-{{ section.id }} {
+    0%, 3% { opacity: 0; transform: translateY(-18px) scale(.82) rotate(-8deg); }
+    6% { opacity: 1; }
+    13% { opacity: 1; transform: translateY(168px) scale(1) rotate(6deg); }
+    15% { opacity: 0; transform: translateY(177px) scale(1.18,.68) rotate(2deg); }
+    100% { opacity: 0; transform: translateY(177px) scale(1.18,.68); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .ripple {
+    position: absolute;
+    z-index: 7;
+    width: 34px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(228,184,90,.54);
+    opacity: 0;
+    animation: mellowRaftRipple-{{ section.id }} var(--duration) ease-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .ripple-1 { left: calc(27% - 4px); bottom: 20%; animation-delay: 0s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .ripple-2 { left: calc(49% - 4px); bottom: 20%; animation-delay: .18s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .ripple-3 { left: calc(67% - 4px); bottom: 20%; animation-delay: .34s; }
+
+  @keyframes mellowRaftRipple-{{ section.id }} {
+    0%, 12% { opacity: 0; transform: scale(.3); }
+    14% { opacity: .75; transform: scale(.7); }
+    21% { opacity: 0; transform: scale(1.8); }
+    100% { opacity: 0; }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .particle,
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .pb {
+    position: absolute;
+    z-index: 9;
+    width: var(--s, 7px);
+    height: var(--s, 7px);
+    border-radius: 999px;
+    background: var(--c, rgba(255,247,232,.68));
+    box-shadow: 0 0 10px rgba(228,184,90,.54);
+    opacity: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .particle {
+    animation: mellowRaftParticleRise-{{ section.id }} var(--duration) cubic-bezier(.2,.2,.12,1) infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p1 { --s: 8px; --c: rgba(255,247,232,.68); left: 28%; bottom: 20%; --x: 10px; --y: -145px; animation-delay: .03s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p2 { --s: 6px; --c: rgba(228,184,90,.54); left: 31%; bottom: 20%; --x: -16px; --y: -128px; animation-delay: .18s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p3 { --s: 5px; --c: rgba(184,201,130,.56); left: 47%; bottom: 20%; --x: 22px; --y: -150px; animation-delay: .25s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p4 { --s: 7px; --c: rgba(255,247,232,.68); left: 51%; bottom: 20%; --x: -8px; --y: -132px; animation-delay: .38s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p5 { --s: 6px; --c: rgba(228,184,90,.54); left: 66%; bottom: 20%; --x: 12px; --y: -152px; animation-delay: .42s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .p6 { --s: 4px; --c: rgba(184,201,130,.56); left: 69%; bottom: 20%; --x: -20px; --y: -126px; animation-delay: .6s; }
+
+  @keyframes mellowRaftParticleRise-{{ section.id }} {
+    0%, 14% { opacity: 0; transform: translate(0, 0) scale(.55); }
+    18% { opacity: .95; }
+    31% { opacity: .85; transform: translate(calc(var(--x) * .45), calc(var(--y) * .58)) scale(1); }
+    43% { opacity: .22; transform: translate(var(--x), var(--y)) scale(.75); }
+    48%, 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(.25); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .pb {
+    left: var(--x0);
+    bottom: 20%;
+    animation: mellowRaftParticleBloom-{{ section.id }} var(--duration) cubic-bezier(.18,.28,.12,1) infinite;
+  }
+
+  @keyframes mellowRaftParticleBloom-{{ section.id }} {
+    0%, 15% { opacity: 0; transform: translate(0, 0) scale(.32); }
+    21% { opacity: .70; }
+    36% { opacity: .74; transform: translate(var(--dx1), var(--dy1)) scale(.78); }
+    48% { opacity: .68; transform: translate(var(--dx2), var(--dy2)) scale(.60); }
+    58% { opacity: .44; transform: translate(var(--dx3), var(--dy3)) scale(.44); }
+    66% { opacity: .10; transform: translate(var(--dx3), var(--dy3)) scale(.20); }
+    71%, 100% { opacity: 0; transform: translate(var(--dx3), var(--dy3)) scale(.12); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .fragment {
+    position: absolute;
+    z-index: 10;
+    height: 18px;
+    top: 49%;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,247,232,.68), rgba(184,201,130,.56));
+    border: 1px solid rgba(26,45,16,.08);
+    filter: blur(4px);
+    opacity: 0;
+    animation: mellowRaftFragmentBuild-{{ section.id }} var(--duration) ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .f1 { left: 24%; width: 58px; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .f2 { left: 38%; width: 74px; animation-delay: .05s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .f3 { left: 53%; width: 88px; animation-delay: .1s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .f4 { left: 69%; width: 60px; animation-delay: .15s; }
+
+  @keyframes mellowRaftFragmentBuild-{{ section.id }} {
+    0%, 30% { opacity: 0; transform: translateY(18px) scaleX(.45); filter: blur(7px); }
+    38% { opacity: .45; transform: translateY(0) scaleX(.9); filter: blur(4px); }
+    48% { opacity: .08; transform: translateY(-8px) scaleX(1.15); filter: blur(6px); }
+    54%, 100% { opacity: 0; transform: translateY(-8px) scaleX(1.15); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft-haze {
+    position: absolute;
+    z-index: 13;
+    left: 17%;
+    top: var(--raft-birth-top);
+    width: 70%;
+    height: 38px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 22% 50%, rgba(255,247,232,.42), transparent 18%), radial-gradient(circle at 46% 48%, rgba(228,184,90,.28), transparent 16%), radial-gradient(circle at 70% 52%, rgba(184,201,130,.34), transparent 18%), linear-gradient(180deg, rgba(255,247,232,.28), rgba(184,201,130,.24));
+    opacity: 0;
+    filter: blur(10px);
+    transform-origin: 50% 50%;
+    animation: mellowRaftHazeCondense-{{ section.id }} var(--duration) ease-in-out infinite;
+  }
+
+  @keyframes mellowRaftHazeCondense-{{ section.id }} {
+    0%, 39% { opacity: 0; transform: scaleX(.40) scaleY(.35); filter: blur(14px); }
+    47% { opacity: .32; transform: scaleX(.78) scaleY(.62); filter: blur(10px); }
+    56% { opacity: .52; transform: scaleX(1) scaleY(.88); filter: blur(7px); }
+    68% { opacity: .16; transform: scaleX(1) scaleY(1); filter: blur(8px); }
+    74%, 100% { opacity: 0; transform: scaleX(1) scaleY(1); filter: blur(10px); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft {
+    position: absolute;
+    z-index: 30;
+    left: 17%;
+    top: var(--raft-birth-top);
+    width: 70%;
+    height: 58px;
+    border-radius: 999px;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,247,232,.20) 38%, rgba(255,247,232,.36) 50%, rgba(255,247,232,.14) 62%, transparent 100%), linear-gradient(180deg, #EEF2D5 0%, #C8D89A 54%, #9FB66F 100%);
+    border: 1px solid rgba(17, 31, 18, 0.18);
+    box-shadow: inset 0 12px 24px rgba(255,247,232,.36), inset 0 -10px 16px rgba(17,31,18,.065), 0 14px 26px rgba(17,31,18,.13);
+    opacity: 0;
+    transform-origin: 50% 50%;
+    animation: mellowRaftFormFloat-{{ section.id }} var(--duration) cubic-bezier(.22,.75,.22,1) infinite;
+    will-change: opacity, transform, filter;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft::before,
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft::after { content: none; }
+
+  @keyframes mellowRaftFormFloat-{{ section.id }} {
+    0%, 50% { opacity: 0; transform: translate3d(0, 0, 0) scaleX(.12) scaleY(.34); filter: blur(10px); }
+    57% { opacity: .38; transform: translate3d(0, 0, 0) scaleX(.44) scaleY(.52); filter: blur(7px); }
+    64% { opacity: .78; transform: translate3d(0, 0, 0) scaleX(.88) scaleY(.78); filter: blur(2.4px); }
+    71% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1) scaleY(.94); filter: blur(0); }
+    76% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1) scaleY(.98); filter: blur(0); }
+    84% { opacity: 1; transform: translate3d(0, -2px, 0) scaleX(1) scaleY(1); filter: blur(0); }
+    90% { opacity: 1; transform: translate3d(0, 2px, 0) scaleX(1) scaleY(1); filter: blur(0); }
+    96% { opacity: 1; transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1); filter: blur(0); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1) scaleY(1); filter: blur(0); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft-dot {
+    position: absolute;
+    z-index: 32;
+    left: calc(17% + var(--x));
+    top: calc(var(--raft-birth-top) + var(--y));
+    width: var(--s, 4px);
+    height: var(--s, 4px);
+    border-radius: 999px;
+    background: var(--c, rgba(255,247,232,.72));
+    box-shadow: 0 0 6px rgba(255,247,232,.18);
+    opacity: 0;
+    animation: mellowRaftDotEmbed-{{ section.id }} var(--duration) cubic-bezier(.22,.75,.22,1) infinite;
+  }
+
+  @keyframes mellowRaftDotEmbed-{{ section.id }} {
+    0%, 58% { opacity: 0; transform: translate3d(0, 0, 0) scale(.55); }
+    68% { opacity: .44; transform: translate3d(0, 0, 0) scale(.82); }
+    77% { opacity: .60; transform: translate3d(0, 0, 0) scale(1); }
+    84% { opacity: .56; transform: translate3d(0, -2px, 0) scale(1); }
+    90% { opacity: .56; transform: translate3d(0, 2px, 0) scale(1); }
+    96% { opacity: .56; transform: translate3d(0, -1px, 0) scale(1); }
+    100% { opacity: .56; transform: translate3d(0, 0, 0) scale(1); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .heat {
+    position: absolute;
+    z-index: 11;
+    top: calc(var(--raft-final-top) + 58px);
+    width: 24px;
+    height: 122px;
+    opacity: 0;
+    overflow: hidden;
+    animation: mellowRaftHeatRise-{{ section.id }} var(--duration) ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .heat svg { width: 100%; height: 100%; overflow: visible; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .heat path { fill: none; stroke: rgba(208,74,42,.66); stroke-width: 2.35; stroke-linecap: round; filter: drop-shadow(0 0 5px rgba(208,74,42,.14)); }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .h1 { left: 29%; animation-delay: .05s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .h2 { left: 50%; animation-delay: .2s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .h3 { left: 72%; animation-delay: .1s; }
+
+  @keyframes mellowRaftHeatRise-{{ section.id }} {
+    0%, 78% { opacity: 0; transform: translateY(36px) scaleY(.18); }
+    82% { opacity: .82; transform: translateY(20px) scaleY(.44); }
+    88% { opacity: .86; transform: translateY(0) scaleY(.88); }
+    93% { opacity: .66; transform: translateY(4px) scaleY(.70); }
+    100% { opacity: .58; transform: translateY(4px) scaleY(.70); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .block-ripple {
+    position: absolute;
+    z-index: 15;
+    top: calc(var(--raft-final-top) + 54px);
+    width: 52px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(208,74,42,.13);
+    opacity: 0;
+    filter: blur(2.4px);
+    animation: mellowRaftBlockRipple-{{ section.id }} var(--duration) ease-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .br1 { left: 27%; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .br2 { left: 48%; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .br3 { left: 70%; }
+
+  @keyframes mellowRaftBlockRipple-{{ section.id }} {
+    0%, 88% { opacity: 0; transform: scaleX(.2); }
+    92% { opacity: .56; transform: scaleX(1); }
+    98%, 100% { opacity: 0; transform: scaleX(1.35); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .blocked-callout {
+    position: absolute;
+    z-index: 42;
+    right: 92px;
+    top: calc(var(--raft-final-top) + 58px);
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.70);
+    border: 1px solid rgba(208,74,42,.12);
+    color: rgba(208,74,42,.86);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 5px 12px rgba(208,74,42,.04);
+    opacity: 0;
+    pointer-events: none;
+    animation: mellowRaftBlockedCallout-{{ section.id }} var(--duration) ease-out infinite;
+  }
+
+  @keyframes mellowRaftBlockedCallout-{{ section.id }} {
+    0%, 88% { opacity: 0; transform: translateY(4px) scale(.98); }
+    94%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .controls {
+    margin: 18px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} button {
+    appearance: none;
+    border: 1px solid rgba(26,45,16,.18);
+    background: #fff;
+    color: var(--forest);
+    border-radius: 999px;
+    padding: 10px 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(26,45,16,.06);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} button:hover { transform: translateY(-1px); }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .note { margin-left: auto; color: #75806f; font-size: 13px; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }}.paused * { animation-play-state: paused !important; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .restart .mechanism { animation: mellowRaftFlash-{{ section.id }} .18s ease; }
+
+  @keyframes mellowRaftFlash-{{ section.id }} {
+    from { filter: brightness(1.04); }
+    to { filter: brightness(1); }
+  }
+
+  @media (max-width: 900px) {
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .mellow-raft-animation__device { min-height: 300px; }
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .note { width: 100%; margin-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} *,
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} *::before,
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }} .raft {
+      opacity: 1;
+      transform: scaleX(1) scaleY(1);
+      filter: blur(0);
+    }
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__inner {
@@ -1542,6 +2087,111 @@
 
 <script>
   (function () {
+    var section = document.querySelector('.mellow-clinical-proof-{{ section.id }} .mellow-raft-animation-{{ section.id }}');
+    if (!section) return;
+
+    var mechanism = section.querySelector('[data-mellow-raft-mechanism]');
+    var particleMount = section.querySelector('[data-mellow-raft-particles]');
+    var replay = section.querySelector('[data-mellow-raft-replay]');
+    var pause = section.querySelector('[data-mellow-raft-pause]');
+    var speed = section.querySelector('[data-mellow-raft-speed]');
+
+    if (particleMount && !particleMount.dataset.generated) {
+      var colors = [
+        'rgba(255,247,232,.68)',
+        'rgba(228,184,90,.54)',
+        'rgba(184,201,130,.56)',
+        'rgba(255,247,232,.58)'
+      ];
+
+      for (var i = 0; i < 72; i += 1) {
+        var pb = document.createElement('div');
+        pb.className = 'pb';
+
+        var baseX = 30 + ((i * 37) % 41);
+        var size = 2 + ((i * 3) % 4);
+        var dx1 = -28 + ((i * 29) % 56);
+        var dy1 = -38 - ((i * 17) % 28);
+        var dx2 = -48 + ((i * 41) % 96);
+        var dy2 = -92 - ((i * 11) % 11);
+        var dx3 = -54 + ((i * 53) % 108);
+        var dy3 = -132 - ((i * 7) % 4);
+        var delay = ((i % 14) * 0.018).toFixed(3);
+
+        pb.style.cssText = [
+          '--x0:' + baseX + '%',
+          '--s:' + size + 'px',
+          '--dx1:' + dx1 + 'px',
+          '--dy1:' + dy1 + 'px',
+          '--dx2:' + dx2 + 'px',
+          '--dy2:' + dy2 + 'px',
+          '--dx3:' + dx3 + 'px',
+          '--dy3:' + dy3 + 'px',
+          '--c:' + colors[i % colors.length],
+          'animation-delay:' + delay + 's'
+        ].join(';');
+
+        particleMount.appendChild(pb);
+      }
+
+      particleMount.dataset.generated = 'true';
+    }
+
+    var paused = false;
+    var speedIndex = 0;
+
+    var restartAnimation = function () {
+      if (!mechanism) return;
+
+      var device = mechanism.parentElement;
+      device.classList.remove('restart');
+
+      mechanism.style.display = 'none';
+      void mechanism.offsetHeight;
+      mechanism.style.display = '';
+
+      device.classList.add('restart');
+
+      window.setTimeout(function () {
+        device.classList.remove('restart');
+      }, 220);
+    };
+
+    if (replay) {
+      replay.addEventListener('click', restartAnimation);
+    }
+
+    if (pause) {
+      pause.addEventListener('click', function () {
+        paused = !paused;
+        section.classList.toggle('paused', paused);
+        pause.textContent = paused ? 'Play' : 'Pause';
+      });
+    }
+
+    if (speed) {
+      speed.addEventListener('click', function () {
+        speedIndex = (speedIndex + 1) % 3;
+
+        if (speedIndex === 0) {
+          section.style.setProperty('--duration', '10.6s');
+          speed.textContent = 'Speed: normal';
+        } else if (speedIndex === 1) {
+          section.style.setProperty('--duration', '8.0s');
+          speed.textContent = 'Speed: faster';
+        } else {
+          section.style.setProperty('--duration', '13.2s');
+          speed.textContent = 'Speed: slower';
+        }
+
+        restartAnimation();
+      });
+    }
+  })();
+</script>
+
+<script>
+  (function () {
     var root = document.querySelector('.mellow-clinical-proof-{{ section.id }}[data-mellow-clinical-proof]');
     if (!root) return;
 
@@ -1618,6 +2268,24 @@
       "id": "disclaimer",
       "label": "Disclaimer",
       "default": "Research cited is based on published studies of alginate-based therapies and related formulations. Mellow’s final formula may differ from products used in individual studies."
+    },
+    {
+      "type": "text",
+      "id": "mechanism_label",
+      "label": "Animation label text",
+      "default": "MellowRaft™ Layer"
+    },
+    {
+      "type": "text",
+      "id": "acid_label",
+      "label": "Acid pocket label",
+      "default": "Acid Pocket / Stomach Contents"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_animation_controls",
+      "label": "Show animation controls",
+      "default": false
     },
     {
       "type": "text",
