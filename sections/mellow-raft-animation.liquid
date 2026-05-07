@@ -129,17 +129,17 @@
       text-transform: uppercase;
     }
 
-   .mellow-clinical-raft-animation .callout {
-  position: absolute;
-  z-index: 59;
-  left: 190px;
-  top: 58px;
-  width: 82px;
-  height: 48px;
-  pointer-events: none;
-  opacity: 0;
-  animation: mellowRaftCalloutAppearClean var(--duration) ease-out infinite;
-}
+    .mellow-clinical-raft-animation .callout {
+      position: absolute;
+      z-index: 59;
+      left: 190px;
+      top: 58px;
+      width: 82px;
+      height: 48px;
+      pointer-events: none;
+      opacity: 0;
+      animation: mellowRaftCalloutAppearClean var(--duration) ease-out infinite;
+    }
 
     .mellow-clinical-raft-animation .callout path,
     .mellow-clinical-raft-animation .callout polyline {
@@ -162,7 +162,20 @@
       animation: mellowRaftMellowEntersClean var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
     }
 
-    .mellow-clinical-raft-animation .droplet-callout__pill {
+    .mellow-clinical-raft-animation .formation-callout {
+      position: absolute;
+      z-index: 70;
+      top: 132px;
+      right: 72px;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftBeginsClean var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .droplet-callout__pill,
+    .mellow-clinical-raft-animation .formation-callout__pill {
       padding: 8px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,.74);
@@ -174,6 +187,11 @@
       text-transform: uppercase;
       box-shadow: 0 6px 14px rgba(26,45,16,.045);
       white-space: nowrap;
+    }
+
+    .mellow-clinical-raft-animation .formation-callout__pill {
+      color: rgba(26,45,16,.78);
+      background: rgba(255,255,255,.70);
     }
 
     .mellow-clinical-raft-animation .acid {
@@ -578,6 +596,23 @@
       }
     }
 
+    @keyframes mellowRaftBeginsClean {
+      0%, 18% {
+        opacity: 0;
+        transform: translateY(4px) scale(.98);
+      }
+
+      23%, 40% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      44%, 100% {
+        opacity: 0;
+        transform: translateY(-3px) scale(.98);
+      }
+    }
+
     @keyframes mellowRaftDropletFallClean {
       0%, 4% {
         opacity: 0;
@@ -906,6 +941,15 @@
         right: 32px;
         top: 86px;
       }
+
+      .mellow-clinical-raft-animation .formation-callout {
+        right: 32px;
+        top: 126px;
+      }
+
+      .mellow-clinical-raft-animation .callout {
+        left: 170px;
+      }
     }
   </style>
 
@@ -923,15 +967,19 @@
         <div class="layer-label">MellowRaft™ Layer</div>
 
         <svg class="callout" viewBox="0 0 82 48" aria-hidden="true">
-  <path d="M4 8 C 24 8, 36 17, 50 31" />
-  <polyline points="43,30 51,33 48,24" />
-</svg>
+          <path d="M4 8 C 24 8, 36 17, 50 31" />
+          <polyline points="43,30 51,33 48,24" />
+        </svg>
 
         <div class="acid"></div>
         <div class="acid-label">Acid Pocket / Stomach Contents</div>
 
         <div class="droplet-callout" aria-hidden="true">
           <span class="droplet-callout__pill">Mellow enters</span>
+        </div>
+
+        <div class="formation-callout" aria-hidden="true">
+          <span class="formation-callout__pill">Raft begins to form</span>
         </div>
 
         <div class="drop drop-1">
