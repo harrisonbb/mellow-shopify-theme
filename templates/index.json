@@ -159,6 +159,21 @@
     },
     "mellow_expert_proof_page_an7NbQ": {
       "type": "mellow-expert-proof-page",
+      "blocks": {
+        "review_AQJ7Yx": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Adams_1504dd.jpg",
+            "initials": "MD",
+            "name": "DR. FIRST LAST",
+            "role": "LICENSED PHYSICIAN",
+            "quote": "Alginate raft technology is a useful mechanical approach because it focuses on helping reduce upward movement of stomach contents."
+          }
+        }
+      },
+      "block_order": [
+        "review_AQJ7Yx"
+      ],
       "name": "Mellow Expert Proof Page",
       "settings": {
         "microproof": "Doctor-reviewed claims for MellowRaft™",
