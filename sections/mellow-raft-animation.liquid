@@ -429,13 +429,13 @@
       height: 58px !important;
       border-radius: 999px;
       background:
-        linear-gradient(105deg, transparent 0%, rgba(255, 247, 232, .20) 38%, rgba(255, 247, 232, .36) 50%, rgba(255, 247, 232, .14) 62%, transparent 100%),
+        linear-gradient(105deg, transparent 0%, rgba(255, 247, 232, .20) 38%, rgba(255, 247, 232, .28) 50%, rgba(255, 247, 232, .10) 62%, transparent 100%),
         linear-gradient(180deg, #EEF2D5 0%, #C8D89A 54%, #9FB66F 100%);
-      border: 1px solid rgba(17, 31, 18, 0.18);
+      border: none;
       box-shadow:
-        inset 0 12px 24px rgba(255, 247, 232, .36),
-        inset 0 -10px 16px rgba(17, 31, 18, .065),
-        0 14px 26px rgba(17, 31, 18, .13);
+        inset 0 10px 22px rgba(255, 247, 232, .28),
+        inset 0 -8px 14px rgba(17, 31, 18, .045),
+        0 12px 24px rgba(17, 31, 18, .08);
       opacity: 0;
       transform-origin: 50% 50%;
       animation: mellowRaftGelSHOWClean var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
@@ -529,13 +529,13 @@
       position: absolute;
       z-index: 1001;
       right: 92px;
-      top: calc(var(--raft-final-top) + 58px);
+      top: calc(var(--raft-final-top) + 72px);
       display: inline-flex;
       align-items: center;
       min-height: 30px;
-      padding: 0 12px;
+      padding: 0 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .76);
+      background: rgba(255, 255, 255, .78);
       border: 1px solid rgba(208, 74, 42, .12);
       color: rgba(208, 74, 42, .86);
       font-size: 10px;
@@ -839,14 +839,19 @@
         transform: translateY(0) scaleY(.88);
       }
 
-      90% {
-        opacity: .45;
-        transform: translateY(10px) scaleY(.38);
+      92% {
+        opacity: .64;
+        transform: translateY(7px) scaleY(.62);
       }
 
-      94%, 100% {
+      97% {
+        opacity: .34;
+        transform: translateY(15px) scaleY(.34);
+      }
+
+      100% {
         opacity: 0;
-        transform: translateY(20px) scaleY(.18);
+        transform: translateY(22px) scaleY(.18);
       }
     }
 
@@ -861,7 +866,7 @@
         transform: scaleX(1);
       }
 
-      94%, 100% {
+      96%, 100% {
         opacity: 0;
         transform: scaleX(1.35);
       }
@@ -873,7 +878,7 @@
         transform: translateY(4px) scale(.98);
       }
 
-      91%, 100% {
+      92%, 100% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
@@ -894,6 +899,7 @@
 
       .mellow-clinical-raft-animation .blocked-callout {
         right: 32px;
+        top: calc(var(--raft-final-top) + 74px);
       }
 
       .mellow-clinical-raft-animation .droplet-callout {
@@ -938,21 +944,18 @@
               </linearGradient>
             </defs>
             <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="url(#mellow-drop-gradient)"/>
-            <path d="M34 36 C24 54 25 76 37 92" fill="none" stroke="rgba(255,255,255,.72)" stroke-width="8" stroke-linecap="round"/>
           </svg>
         </div>
 
         <div class="drop drop-2">
           <svg viewBox="0 0 100 120" aria-hidden="true">
             <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(184,201,130,.56)"/>
-            <path d="M34 38 C26 55 27 74 38 88" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="8" stroke-linecap="round"/>
           </svg>
         </div>
 
         <div class="drop drop-3">
           <svg viewBox="0 0 100 120" aria-hidden="true">
             <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(228,184,90,.54)"/>
-            <path d="M34 38 C26 55 27 74 38 88" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="8" stroke-linecap="round"/>
           </svg>
         </div>
 
