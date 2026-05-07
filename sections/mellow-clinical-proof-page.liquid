@@ -49,7 +49,10 @@
             <span></span>
             <span></span>
           </div>
-          <div class="mellow-clinical-proof__raft-band"></div>
+          <div class="mellow-clinical-proof__raft-band">
+            <span class="mellow-clinical-proof__raft-highlight"></span>
+            <span class="mellow-clinical-proof__raft-wave"></span>
+          </div>
           <div class="mellow-clinical-proof__particles">
             <span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
@@ -777,41 +780,105 @@
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-wave {
     position: absolute;
-    left: -8%;
-    right: -8%;
-    bottom: -20px;
-    height: 44%;
+    left: -7%;
+    right: -7%;
+    bottom: -10px;
+    height: 23%;
     background:
-      radial-gradient(70px 20px at 14% 12%, rgba(255, 255, 255, 0.20), transparent 70%),
-      linear-gradient(180deg, rgba(208, 74, 42, 0.58), rgba(208, 74, 42, 0.20));
-    border-radius: 48% 52% 0 0 / 18% 22% 0 0;
-    animation: mellowClinicalAcid 9s ease-in-out infinite alternate;
+      radial-gradient(95px 24px at 18% 14%, rgba(255, 255, 255, 0.22), transparent 72%),
+      linear-gradient(180deg, rgba(208, 74, 42, 0.10), rgba(208, 74, 42, 0.16));
+    border-top: 1px solid rgba(208, 74, 42, 0.22);
+    border-radius: 48% 52% 0 0 / 22% 26% 0 0;
+    opacity: 0;
+    transform-origin: center bottom;
+    animation: mellowClinicalAcid 10s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-wave::before {
+    content: '';
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 8px;
+    height: 10px;
+    border-top: 1px solid rgba(208, 74, 42, 0.18);
+    border-radius: 50%;
+    opacity: 0.72;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band {
     position: absolute;
-    left: 9%;
-    right: 9%;
-    bottom: 39%;
-    height: 46px;
+    left: 7%;
+    right: 7%;
+    top: 29%;
+    height: 52px;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(240, 235, 224, 0.98), rgba(120, 145, 101, 0.78), rgba(240, 235, 224, 0.98));
-    border: 1px solid rgba(26, 45, 16, 0.18);
-    box-shadow: 0 16px 36px rgba(26, 45, 16, 0.10);
+    background:
+      linear-gradient(180deg, rgba(26, 45, 16, 0.38), rgba(26, 45, 16, 0.16) 32%, rgba(240, 235, 224, 0.24) 100%),
+      linear-gradient(90deg, rgba(240, 235, 224, 0.60), rgba(26, 45, 16, 0.18) 22%, rgba(26, 45, 16, 0.22) 50%, rgba(26, 45, 16, 0.18) 78%, rgba(240, 235, 224, 0.60));
+    border: 1px solid rgba(26, 45, 16, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(240, 235, 224, 0.72),
+      inset 0 -12px 20px rgba(240, 235, 224, 0.22),
+      0 14px 34px rgba(26, 45, 16, 0.12);
+    opacity: 0;
+    overflow: hidden;
     transform-origin: center;
-    animation: mellowClinicalRaft 8.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-    z-index: 3;
+    animation: mellowClinicalRaft 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    z-index: 4;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band::before {
+    content: '';
+    position: absolute;
+    inset: 5px 12px auto;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(240, 235, 224, 0.55);
+    filter: blur(3px);
+    opacity: 0.78;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band::after {
+    content: '';
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 7px;
+    height: 13px;
+    border-bottom: 2px solid rgba(26, 45, 16, 0.20);
+    border-radius: 50%;
+    filter: blur(0.2px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-highlight {
+    position: absolute;
+    inset: 11px 14% auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240, 235, 224, 0.72), transparent);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-wave {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 12px;
+    height: 7px;
+    background: radial-gradient(18px 7px at 12px 0, transparent 10px, rgba(240, 235, 224, 0.42) 11px, rgba(240, 235, 224, 0.42) 12px, transparent 13px) repeat-x;
+    background-size: 32px 8px;
+    opacity: 0.7;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span {
     position: absolute;
-    bottom: 32%;
+    bottom: 22%;
     width: 7px;
     height: 7px;
     border-radius: 999px;
     background: rgba(61, 107, 140, 0.42);
-    animation: mellowClinicalParticle 6.8s ease-in-out infinite;
-    z-index: 2;
+    animation: mellowClinicalParticle 10s ease-in-out infinite;
+    z-index: 3;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(1) { left: 24%; animation-delay: 0.2s; }
@@ -823,19 +890,34 @@
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows {
     position: absolute;
-    inset: 20% 22% 42%;
+    top: calc(29% + 50px);
+    left: 23%;
+    right: 23%;
+    height: 132px;
     display: flex;
     justify-content: space-between;
-    z-index: 4;
+    align-items: flex-start;
+    z-index: 5;
+    pointer-events: none;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span {
     position: relative;
-    width: 1px;
-    height: 92px;
-    background: linear-gradient(180deg, rgba(208, 74, 42, 0), rgba(208, 74, 42, 0.52));
+    width: 2px;
+    height: 112px;
+    border-radius: 999px;
+    background: linear-gradient(0deg, rgba(208, 74, 42, 0), rgba(208, 74, 42, 0.48) 24%, rgba(208, 74, 42, 0.20));
     opacity: 0;
-    animation: mellowClinicalBlockedArrow 8.5s ease-in-out infinite;
+    transform-origin: top center;
+    animation: mellowClinicalBlockedArrow 10s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(3) {
+    animation-delay: 0.32s;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span::before {
@@ -845,22 +927,31 @@
     left: -5px;
     width: 10px;
     height: 10px;
-    border-top: 1px solid rgba(208, 74, 42, 0.58);
-    border-left: 1px solid rgba(208, 74, 42, 0.58);
+    border-top: 1px solid rgba(208, 74, 42, 0.54);
+    border-left: 1px solid rgba(208, 74, 42, 0.54);
     transform: rotate(45deg);
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span::after {
     content: '';
     position: absolute;
-    left: -12px;
-    bottom: 3px;
-    width: 25px;
-    height: 1px;
-    background: var(--clinical-forest);
-    transform: rotate(-12deg);
+    left: -15px;
+    top: -5px;
+    width: 32px;
+    height: 9px;
+    border-top: 1px solid rgba(26, 45, 16, 0.34);
+    border-radius: 50%;
+    transform: scaleX(0.35);
     opacity: 0;
-    animation: mellowClinicalBlockMark 8.5s ease-in-out infinite;
+    animation: mellowClinicalBlockMark 10s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(2)::after {
+    animation-delay: 0.16s;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(3)::after {
+    animation-delay: 0.32s;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram-label {
@@ -958,32 +1049,39 @@
   }
 
   @keyframes mellowClinicalAcid {
-    from { transform: translate3d(-10px, 2px, 0) scaleY(0.98); }
-    to { transform: translate3d(10px, -5px, 0) scaleY(1.02); }
+    0%, 8% { opacity: 0; transform: translate3d(-8px, 12px, 0) scaleY(0.84); }
+    18%, 100% { opacity: 1; }
+    50% { transform: translate3d(5px, 0, 0) scaleY(1); }
+    100% { transform: translate3d(9px, -2px, 0) scaleY(1.02); }
   }
 
   @keyframes mellowClinicalParticle {
-    0%, 28% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.7); }
-    54% { opacity: 0.9; }
-    82%, 100% { opacity: 0; transform: translate3d(0, -92px, 0) scale(1); }
+    0%, 12% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.7); }
+    23% { opacity: 0.78; }
+    42% { opacity: 0.9; transform: translate3d(0, -120px, 0) scale(1); }
+    58%, 100% { opacity: 0.38; transform: translate3d(0, -138px, 0) scale(0.86); }
   }
 
   @keyframes mellowClinicalRaft {
-    0%, 30% { opacity: 0; transform: translate3d(0, 18px, 0) scaleX(0.18); }
-    52% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1); }
-    72%, 100% { opacity: 1; transform: translate3d(0, -4px, 0) scaleX(1); }
+    0%, 25% { opacity: 0; transform: translate3d(0, 10px, 0) scaleX(0.08) scaleY(0.52); }
+    35% { opacity: 0.86; transform: translate3d(0, 3px, 0) scaleX(0.62) scaleY(0.74); }
+    44% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1) scaleY(1); }
+    62% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.04); }
+    80% { opacity: 1; transform: translate3d(0, -2px, 0) scaleX(1) scaleY(1); }
+    100% { opacity: 1; transform: translate3d(0, 1px, 0) scaleX(1) scaleY(1); }
   }
 
   @keyframes mellowClinicalBlockedArrow {
-    0%, 58% { opacity: 0; transform: translate3d(0, 32px, 0); }
-    70%, 88% { opacity: 1; transform: translate3d(0, 0, 0); }
-    100% { opacity: 0; transform: translate3d(0, -8px, 0); }
+    0%, 43% { opacity: 0; transform: translate3d(0, 92px, 0) scaleY(0.24); }
+    56% { opacity: 0.9; transform: translate3d(0, 20px, 0) scaleY(0.82); }
+    64%, 79% { opacity: 0.9; transform: translate3d(0, 0, 0) scaleY(1); }
+    90%, 100% { opacity: 0.24; transform: translate3d(0, 0, 0) scaleY(0.72); }
   }
 
   @keyframes mellowClinicalBlockMark {
-    0%, 68% { opacity: 0; transform: rotate(-12deg) scaleX(0.4); }
-    76%, 94% { opacity: 1; transform: rotate(-12deg) scaleX(1); }
-    100% { opacity: 0; transform: rotate(-12deg) scaleX(1); }
+    0%, 58% { opacity: 0; transform: scaleX(0.35); }
+    66%, 84% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0.45; transform: scaleX(0.78); }
   }
 
   @keyframes mellowClinicalStepWave {
@@ -1176,6 +1274,27 @@
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:hover,
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__button:hover {
       transform: none;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-wave,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span {
+      opacity: 0.72 !important;
+      transform: none !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span::after {
+      opacity: 1 !important;
+      transform: scaleX(1) !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span {
+      opacity: 0.44 !important;
+      transform: translate3d(0, -126px, 0) scale(0.9) !important;
     }
   }
 
