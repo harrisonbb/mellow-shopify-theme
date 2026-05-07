@@ -296,6 +296,77 @@
       animation-delay: .34s;
     }
 
+    .mellow-clinical-raft-animation .splash {
+      position: absolute;
+      z-index: 24;
+      bottom: 20%;
+      width: 44px;
+      height: 28px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-50%);
+      animation: mellowRaftSplashClean var(--duration) ease-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 28px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(228, 184, 90, .24);
+      filter: blur(2px);
+      transform: translateX(-50%) scaleX(.4);
+      opacity: 0;
+      animation: mellowRaftSplashBaseClean var(--duration) ease-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash i {
+      position: absolute;
+      left: 50%;
+      bottom: 2px;
+      width: var(--s, 4px);
+      height: var(--s, 4px);
+      border-radius: 999px;
+      background: var(--c, rgba(255, 247, 232, .70));
+      box-shadow: 0 0 8px rgba(228, 184, 90, .45);
+      opacity: 0;
+      transform: translate(-50%, 0) scale(.4);
+      animation: mellowRaftSplashDotClean var(--duration) cubic-bezier(.2,.4,.12,1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash-1 {
+      left: 28%;
+      animation-delay: 0s;
+    }
+
+    .mellow-clinical-raft-animation .splash-1::before,
+    .mellow-clinical-raft-animation .splash-1 i {
+      animation-delay: 0s;
+    }
+
+    .mellow-clinical-raft-animation .splash-2 {
+      left: 50%;
+      animation-delay: .18s;
+    }
+
+    .mellow-clinical-raft-animation .splash-2::before,
+    .mellow-clinical-raft-animation .splash-2 i {
+      animation-delay: .18s;
+    }
+
+    .mellow-clinical-raft-animation .splash-3 {
+      left: 68%;
+      animation-delay: .34s;
+    }
+
+    .mellow-clinical-raft-animation .splash-3::before,
+    .mellow-clinical-raft-animation .splash-3 i {
+      animation-delay: .34s;
+    }
+
     .mellow-clinical-raft-animation .particle,
     .mellow-clinical-raft-animation .pb {
       display: block !important;
@@ -669,6 +740,74 @@
       }
     }
 
+    @keyframes mellowRaftSplashClean {
+      0%, 16% {
+        opacity: 0;
+      }
+
+      18% {
+        opacity: 1;
+      }
+
+      25%, 100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes mellowRaftSplashBaseClean {
+      0%, 16% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(.3);
+      }
+
+      18% {
+        opacity: .72;
+        transform: translateX(-50%) scaleX(.75);
+      }
+
+      24% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(1.45);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(1.45);
+      }
+    }
+
+    @keyframes mellowRaftSplashDotClean {
+      0%, 16% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(.35);
+      }
+
+      18% {
+        opacity: .9;
+        transform: translate(-50%, 0) scale(.75);
+      }
+
+      24% {
+        opacity: 0;
+        transform:
+          translate(
+            calc(-50% + var(--dx)),
+            var(--dy)
+          )
+          scale(.35);
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translate(
+            calc(-50% + var(--dx)),
+            var(--dy)
+          )
+          scale(.35);
+      }
+    }
+
     @keyframes mellowRaftParticleSHOWClean {
       0%, 12% {
         opacity: 0;
@@ -754,28 +893,34 @@
     }
 
     @keyframes mellowRaftHazeSHOWClean {
-      0%, 38% {
+      0%, 34% {
         opacity: 0;
-        transform: scaleX(.40) scaleY(.35);
+        transform: scaleX(.20) scaleY(.28);
+        filter: blur(16px);
+      }
+
+      44% {
+        opacity: .18;
+        transform: scaleX(.42) scaleY(.42);
         filter: blur(14px);
       }
 
-      48% {
-        opacity: .35;
-        transform: scaleX(.78) scaleY(.62);
-        filter: blur(10px);
+      52% {
+        opacity: .32;
+        transform: scaleX(.64) scaleY(.58);
+        filter: blur(11px);
       }
 
-      58% {
-        opacity: .52;
-        transform: scaleX(1) scaleY(.88);
-        filter: blur(7px);
-      }
-
-      70% {
-        opacity: .2;
-        transform: scaleX(1) scaleY(1);
+      60% {
+        opacity: .46;
+        transform: scaleX(.84) scaleY(.76);
         filter: blur(8px);
+      }
+
+      68% {
+        opacity: .34;
+        transform: scaleX(1) scaleY(.92);
+        filter: blur(7px);
       }
 
       76%, 100% {
@@ -786,45 +931,63 @@
     }
 
     @keyframes mellowRaftGelSHOWClean {
-      0%, 44% {
+      0%, 40% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) scaleX(.12) scaleY(.34);
+        transform: translate3d(0, 0, 0) scaleX(.08) scaleY(.28);
+        filter: blur(12px);
+      }
+
+      46% {
+        opacity: .18;
+        transform: translate3d(0, 0, 0) scaleX(.22) scaleY(.38);
         filter: blur(10px);
       }
 
       52% {
-        opacity: .45;
-        transform: translate3d(0, 0, 0) scaleX(.44) scaleY(.52);
+        opacity: .38;
+        transform: translate3d(0, 0, 0) scaleX(.42) scaleY(.50);
         filter: blur(7px);
       }
 
-      60% {
-        opacity: .85;
-        transform: translate3d(0, 0, 0) scaleX(.88) scaleY(.78);
-        filter: blur(2px);
+      58% {
+        opacity: .62;
+        transform: translate3d(0, 0, 0) scaleX(.64) scaleY(.66);
+        filter: blur(4px);
       }
 
-      68% {
+      64% {
+        opacity: .84;
+        transform: translate3d(0, 0, 0) scaleX(.84) scaleY(.82);
+        filter: blur(1.8px);
+      }
+
+      70% {
         opacity: 1;
-        transform: translate3d(0, 0, 0) scaleX(1) scaleY(.96);
+        transform: translate3d(0, 0, 0) scaleX(.96) scaleY(.94);
+        filter: blur(.6px);
+      }
+
+      74% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scaleX(1) scaleY(.98);
         filter: blur(0);
       }
 
-      78% {
+      80% {
         opacity: 1;
-        transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1);
+        transform: translate3d(0, -0.75px, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
-      86% {
+      88% {
         opacity: 1;
-        transform: translate3d(0, 1.5px, 0) scaleX(1) scaleY(1);
+        transform: translate3d(0, 1.25px, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
-      94% {
+      96% {
         opacity: 1;
-        transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1);
+        transform: translate3d(0, -0.75px, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
@@ -1021,6 +1184,27 @@
         <div class="ripple ripple-1"></div>
         <div class="ripple ripple-2"></div>
         <div class="ripple ripple-3"></div>
+
+        <div class="splash splash-1" aria-hidden="true">
+          <i style="--dx:-18px;--dy:-12px;--s:3px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-7px;--dy:-18px;--s:2px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:8px;--dy:-16px;--s:3px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:19px;--dy:-10px;--s:2px;--c:rgba(255,247,232,.62);"></i>
+        </div>
+
+        <div class="splash splash-2" aria-hidden="true">
+          <i style="--dx:-17px;--dy:-11px;--s:2px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-5px;--dy:-18px;--s:3px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:9px;--dy:-15px;--s:2px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:18px;--dy:-9px;--s:3px;--c:rgba(255,247,232,.62);"></i>
+        </div>
+
+        <div class="splash splash-3" aria-hidden="true">
+          <i style="--dx:-16px;--dy:-10px;--s:3px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-6px;--dy:-17px;--s:2px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:7px;--dy:-15px;--s:3px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:17px;--dy:-8px;--s:2px;--c:rgba(255,247,232,.62);"></i>
+        </div>
 
         <div class="particle p1"></div>
         <div class="particle p2"></div>
