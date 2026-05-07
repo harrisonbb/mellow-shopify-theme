@@ -181,6 +181,9 @@
         "eyebrow": "What the data supports",
         "subhead": "Published research on alginate-based reflux therapies has evaluated outcomes like heartburn relief, regurgitation, breakthrough symptoms, and overall GERD symptom burden.",
         "disclaimer": "Research cited is based on published studies of alginate-based therapies and related formulations. Mellow’s final formula may differ from products used in individual studies.",
+        "mechanism_label": "MellowRaft™ Layer",
+        "acid_label": "Acid Pocket / Stomach Contents",
+        "show_animation_controls": false,
         "cta_label": "Explore Mellow",
         "cta_link": ""
       }
@@ -329,6 +332,11 @@
         "cta_text": "Try Mellow",
         "cta_link": ""
       }
+    },
+    "mellow_raft_animation_Vm9m6z": {
+      "type": "mellow-raft-animation",
+      "name": "Mellow Raft Animation",
+      "settings": {}
     }
   },
   "order": [
@@ -345,6 +353,7 @@
     "mellow_expectations_timeline_YieDtT",
     "mellow_buy_box_VGPbf3",
     "mellow_faq_xnW3d6",
-    "mellow_day_night_scroll_Ctkp36"
+    "mellow_day_night_scroll_Ctkp36",
+    "mellow_raft_animation_Vm9m6z"
   ]
 }
