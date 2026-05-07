@@ -48,7 +48,12 @@
             <path class="mellow-clinical-proof__raft-callout-line" d="M 22 22 C 72 22 94 44 123 63" pathLength="1"></path>
             <path class="mellow-clinical-proof__raft-callout-head" d="M 123 63 L 113 62 L 119 54" pathLength="1"></path>
           </svg>
-          <span class="mellow-clinical-proof__raft-anchor"></span>
+          <div class="mellow-clinical-proof__mellow-droplets" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mellow-clinical-proof__acid-splashes" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
           <div class="mellow-clinical-proof__blocked-arrows">
             <span></span>
             <span></span>
@@ -798,12 +803,12 @@
     background:
       radial-gradient(120px 28px at 20% 12%, rgba(240, 235, 224, 0.24), transparent 74%),
       radial-gradient(180px 58px at 72% 42%, rgba(208, 74, 42, 0.10), transparent 72%),
-      linear-gradient(180deg, rgba(208, 74, 42, 0.10), rgba(208, 74, 42, 0.14) 58%, rgba(208, 74, 42, 0.10));
+      linear-gradient(180deg, rgba(208, 74, 42, 0.10), rgba(208, 74, 42, 0.16) 58%, rgba(208, 74, 42, 0.10));
     border-top: 1px solid rgba(208, 74, 42, 0.18);
     border-radius: 49% 51% 0 0 / 18% 24% 0 0;
-    opacity: 0;
+    opacity: 1;
     transform-origin: center bottom;
-    animation: mellowClinicalAcid 10s ease-in-out infinite;
+    animation: mellowClinicalAcid 8s ease-in-out infinite;
     z-index: 1;
   }
 
@@ -832,6 +837,75 @@
     opacity: 0.86;
   }
 
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets span {
+    position: absolute;
+    top: 10%;
+    left: var(--droplet-left, 50%);
+    width: var(--droplet-size, 13px);
+    height: calc(var(--droplet-size, 13px) * 1.16);
+    border-radius: 64% 58% 70% 55% / 62% 58% 78% 74%;
+    background: var(--droplet-color, rgba(240, 235, 224, 0.9));
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.44), 0 8px 18px rgba(26, 45, 16, 0.08);
+    opacity: 0;
+    transform: translate3d(-50%, -20px, 0) scale(0.74) rotate(-10deg);
+    animation: mellowClinicalDroplet 8s cubic-bezier(0.35, 0, 0.24, 1) infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets span:nth-child(1) {
+    --droplet-left: 30%;
+    --droplet-size: 14px;
+    --droplet-fall: 210px;
+    --droplet-drift: -12px;
+    --droplet-color: rgba(240, 235, 224, 0.9);
+    animation-delay: 0s;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets span:nth-child(2) {
+    --droplet-left: 50%;
+    --droplet-size: 12px;
+    --droplet-fall: 226px;
+    --droplet-drift: 10px;
+    --droplet-color: rgba(169, 184, 128, 0.85);
+    animation-delay: 0.12s;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets span:nth-child(3) {
+    --droplet-left: 68%;
+    --droplet-size: 13px;
+    --droplet-fall: 214px;
+    --droplet-drift: -6px;
+    --droplet-color: rgba(214, 166, 74, 0.75);
+    animation-delay: 0.24s;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes span {
+    position: absolute;
+    left: var(--splash-left, 50%);
+    bottom: 17%;
+    width: 50px;
+    height: 15px;
+    border-radius: 50%;
+    border-top: 1px solid rgba(240, 235, 224, 0.54);
+    border-bottom: 1px solid rgba(208, 74, 42, 0.18);
+    background: radial-gradient(closest-side, rgba(240, 235, 224, 0.22), transparent 72%);
+    filter: blur(0.2px);
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.26);
+    animation: mellowClinicalSplash 8s ease-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes span:nth-child(1) { --splash-left: 28%; animation-delay: 1.02s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes span:nth-child(2) { --splash-left: 52%; animation-delay: 1.14s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes span:nth-child(3) { --splash-left: 67%; animation-delay: 1.26s; }
+
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__gel-fragments {
     position: absolute;
     left: 14%;
@@ -854,7 +928,7 @@
     filter: blur(3px);
     opacity: 0;
     transform: translate3d(0, -50%, 0) scale(0.62);
-    animation: mellowClinicalGelFragment 10s ease-in-out infinite;
+    animation: mellowClinicalGelFragment 8s ease-in-out infinite;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__gel-fragments span:nth-child(1) { left: 2%; width: 44px; animation-delay: 0.02s; }
@@ -887,7 +961,7 @@
     overflow: hidden;
     filter: blur(3px);
     transform-origin: center;
-    animation: mellowClinicalRaft 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: mellowClinicalRaft 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     z-index: 4;
   }
 
@@ -916,7 +990,7 @@
     border-bottom: 2px solid rgba(26, 45, 16, 0.26);
     border-radius: 50%;
     opacity: 0.9;
-    animation: mellowClinicalRaftUnderside 10s ease-in-out infinite;
+    animation: mellowClinicalRaftUnderside 8s ease-in-out infinite;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-highlight {
@@ -959,8 +1033,7 @@
     overflow: visible;
     z-index: 6;
     pointer-events: none;
-    opacity: 0;
-    animation: mellowClinicalCallout 10s ease-in-out infinite;
+    opacity: 1;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-callout-line,
@@ -971,29 +1044,13 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: mellowClinicalCalloutDraw 10s ease-in-out infinite;
+    stroke-dashoffset: 0;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-callout-head {
-    animation-delay: 0.05s;
+    stroke: rgba(26, 45, 16, 0.55);
   }
 
-  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-anchor {
-    position: absolute;
-    left: calc(7% + 33%);
-    top: calc(29% + 5px);
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: rgba(26, 45, 16, 0.56);
-    box-shadow: 0 0 0 4px rgba(26, 45, 16, 0.09);
-    opacity: 0;
-    transform: scale(0.7);
-    animation: mellowClinicalAnchor 10s ease-in-out infinite;
-    z-index: 7;
-    pointer-events: none;
-  }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span {
     position: absolute;
@@ -1005,7 +1062,7 @@
     box-shadow: var(--particle-glow, 0 0 0 transparent);
     opacity: 0;
     transform: translate3d(0, 20px, 0) scale(0.55);
-    animation: mellowClinicalParticle 10s ease-in-out infinite;
+    animation: mellowClinicalParticle 8s ease-in-out infinite;
     z-index: 3;
   }
 
@@ -1039,14 +1096,20 @@
     height: 140px;
     opacity: 0;
     transform-origin: bottom center;
-    animation: mellowClinicalBlockedArrow 10s ease-in-out infinite;
+    animation: mellowClinicalBlockedArrow 8s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(1) {
+    --reflux-deflect: -3px;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(2) {
+    --reflux-deflect: 3px;
     animation-delay: 0.16s;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(3) {
+    --reflux-deflect: -2px;
     animation-delay: 0.32s;
   }
 
@@ -1079,7 +1142,7 @@
     background: radial-gradient(closest-side, rgba(208, 74, 42, 0.16), transparent 72%);
     transform: scaleX(0.34);
     opacity: 0;
-    animation: mellowClinicalBlockMark 10s ease-in-out infinite;
+    animation: mellowClinicalBlockMark 8s ease-in-out infinite;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span:nth-child(2)::after {
@@ -1184,71 +1247,66 @@
     to { transform: translate3d(22px, -10px, 0) scale(1.02); }
   }
 
+  @keyframes mellowClinicalDroplet {
+    0% { opacity: 0; transform: translate3d(-50%, -24px, 0) scale(0.68) rotate(-10deg); }
+    4% { opacity: 0.94; }
+    12.5% { opacity: 0.94; transform: translate3d(calc(-50% + var(--droplet-drift, 0px)), var(--droplet-fall, 214px), 0) scale(1) rotate(8deg); }
+    17%, 100% { opacity: 0; transform: translate3d(calc(-50% + var(--droplet-drift, 0px)), calc(var(--droplet-fall, 214px) + 8px), 0) scale(0.62) rotate(8deg); }
+  }
+
+  @keyframes mellowClinicalSplash {
+    0%, 12% { opacity: 0; transform: translateX(-50%) scaleX(0.22) scaleY(0.74); }
+    16% { opacity: 0.72; transform: translateX(-50%) scaleX(1) scaleY(1); }
+    22%, 100% { opacity: 0; transform: translateX(-50%) scaleX(1.34) scaleY(0.82); }
+  }
+
   @keyframes mellowClinicalAcid {
-    0%, 9% { opacity: 0; transform: translate3d(-8px, 9px, 0) scaleY(0.84); }
-    16%, 100% { opacity: 1; }
+    0%, 100% { opacity: 1; transform: translate3d(-4px, 0, 0) scaleY(1); }
+    16% { transform: translate3d(0, -1px, 0) scaleY(1.02); }
     50% { transform: translate3d(5px, 0, 0) scaleY(1); }
-    100% { transform: translate3d(9px, -2px, 0) scaleY(1.02); }
   }
 
   @keyframes mellowClinicalParticle {
-    0%, 10% { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.42); }
-    18% { opacity: 0.36; transform: translate3d(0, -16px, 0) scale(0.58); }
-    28% { opacity: 0.86; transform: translate3d(var(--particle-drift, 0px), var(--particle-rise-mid, -86px), 0) scale(0.92); }
-    38% { opacity: 0.98; transform: translate3d(var(--particle-drift, 0px), var(--particle-rise-final, -148px), 0) scale(1); }
-    46% { opacity: 0.50; transform: translate3d(var(--particle-drift, 0px), calc(var(--particle-rise-final, -148px) - 6px), 0) scale(0.72); }
-    54%, 100% { opacity: 0.36; transform: translate3d(var(--particle-drift, 0px), calc(var(--particle-rise-final, -148px) - 2px), 0) scale(0.58); }
+    0%, 17% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.42); }
+    24% { opacity: 0.58; transform: translate3d(0, -18px, 0) scale(0.62); }
+    35% { opacity: 0.86; transform: translate3d(var(--particle-drift, 0px), var(--particle-rise-mid, -86px), 0) scale(0.9); }
+    46% { opacity: 0.78; transform: translate3d(var(--particle-drift, 0px), var(--particle-rise-final, -148px), 0) scale(0.86); }
+    58%, 100% { opacity: 0.32; transform: translate3d(var(--particle-drift, 0px), calc(var(--particle-rise-final, -148px) - 4px), 0) scale(0.54); }
   }
 
   @keyframes mellowClinicalGelFragment {
-    0%, 24% { opacity: 0; filter: blur(5px); transform: translate3d(0, -32%, 0) scale(0.44); }
-    30% { opacity: 0.7; filter: blur(2.6px); transform: translate3d(0, -50%, 0) scale(0.8); }
-    38% { opacity: 0.88; filter: blur(1px); transform: translate3d(0, -50%, 0) scale(1); }
-    46%, 100% { opacity: 0; filter: blur(0.5px); transform: translate3d(0, -50%, 0) scaleX(1.42) scaleY(0.86); }
+    0%, 34% { opacity: 0; filter: blur(5px); transform: translate3d(0, -32%, 0) scale(0.44); }
+    43% { opacity: 0.72; filter: blur(2.4px); transform: translate3d(0, -50%, 0) scale(0.78); }
+    52% { opacity: 0.9; filter: blur(0.9px); transform: translate3d(0, -50%, 0) scale(1); }
+    60%, 100% { opacity: 0; filter: blur(0.5px); transform: translate3d(0, -50%, 0) scaleX(1.42) scaleY(0.86); }
   }
 
   @keyframes mellowClinicalRaft {
-    0%, 25% { opacity: 0; filter: blur(5px); transform: translate3d(0, 10px, 0) scaleX(0.18) scaleY(0.46); }
-    32% { opacity: 0.76; filter: blur(2.4px); transform: translate3d(0, 4px, 0) scaleX(0.54) scaleY(0.68); }
-    38% { opacity: 0.92; filter: blur(1.1px); transform: translate3d(0, 1px, 0) scaleX(0.84) scaleY(0.82); }
-    45% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scaleX(1) scaleY(1); }
-    56% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.10); }
-    68% { opacity: 1; filter: blur(0); transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1.06); }
-    100% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.06); }
+    0%, 47% { opacity: 0; filter: blur(5px); transform: translate3d(0, 42px, 0) scaleX(0.18) scaleY(0.46); }
+    55% { opacity: 0.72; filter: blur(2.4px); transform: translate3d(0, 32px, 0) scaleX(0.54) scaleY(0.72); }
+    65% { opacity: 0.96; filter: blur(0.8px); transform: translate3d(0, 20px, 0) scaleX(0.9) scaleY(0.98); }
+    75% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scaleX(1) scaleY(1.06); }
+    88% { opacity: 1; filter: blur(0); transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1.06); }
+    100% { opacity: 1; filter: blur(0); transform: translate3d(0, 1px, 0) scaleX(1) scaleY(1.06); }
   }
 
   @keyframes mellowClinicalRaftUnderside {
-    0%, 62% { opacity: 0.72; filter: none; }
-    66% { opacity: 1; filter: drop-shadow(0 5px 10px rgba(208, 74, 42, 0.16)); }
-    76%, 100% { opacity: 0.92; filter: drop-shadow(0 3px 8px rgba(208, 74, 42, 0.10)); }
-  }
-
-  @keyframes mellowClinicalCallout {
-    0%, 45% { opacity: 0; }
-    50%, 100% { opacity: 1; }
-  }
-
-  @keyframes mellowClinicalCalloutDraw {
-    0%, 45% { stroke-dashoffset: 1; }
-    53%, 100% { stroke-dashoffset: 0; }
-  }
-
-  @keyframes mellowClinicalAnchor {
-    0%, 46% { opacity: 0; transform: scale(0.5); }
-    53%, 100% { opacity: 1; transform: scale(1); }
+    0%, 86% { opacity: 0.76; filter: none; }
+    90% { opacity: 1; filter: drop-shadow(0 5px 10px rgba(208, 74, 42, 0.16)); }
+    100% { opacity: 0.92; filter: drop-shadow(0 3px 8px rgba(208, 74, 42, 0.10)); }
   }
 
   @keyframes mellowClinicalBlockedArrow {
-    0%, 49% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate3d(0, 8px, 0); }
-    56% { opacity: 0.78; clip-path: inset(44% 0 0 0); transform: translate3d(0, 3px, 0); }
-    65% { opacity: 0.96; clip-path: inset(0 0 0 0); transform: translate3d(0, 0, 0); }
-    72%, 100% { opacity: 0.72; clip-path: inset(0 0 12% 0); transform: translate3d(0, 0, 0); }
+    0%, 74% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate3d(0, 10px, 0); }
+    83% { opacity: 0.84; clip-path: inset(42% 0 0 0); transform: translate3d(0, 4px, 0); }
+    90% { opacity: 0.94; clip-path: inset(0 0 0 0); transform: translate3d(0, 0, 0); }
+    100% { opacity: 0.72; clip-path: inset(0 0 13% 0); transform: translate3d(var(--reflux-deflect, 0px), 0, 0); }
   }
 
   @keyframes mellowClinicalBlockMark {
-    0%, 62% { opacity: 0; transform: scaleX(0.28) translateY(1px); }
-    67% { opacity: 1; transform: scaleX(1.08) translateY(0); }
-    82%, 100% { opacity: 0.76; transform: scaleX(0.92) translateY(0); }
+    0%, 86% { opacity: 0; transform: scaleX(0.28) translateY(1px); }
+    91% { opacity: 1; transform: scaleX(1.08) translateY(0); }
+    100% { opacity: 0.76; transform: scaleX(0.92) translateY(0); }
   }
 
   @keyframes mellowClinicalStepWave {
@@ -1445,8 +1503,7 @@
 
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-wave,
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band,
-    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-callout,
-    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-anchor {
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-callout {
       opacity: 1 !important;
       transform: none !important;
       filter: none !important;
@@ -1457,6 +1514,8 @@
       stroke-dashoffset: 0 !important;
     }
 
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mellow-droplets span,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-splashes span,
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__gel-fragments span {
       opacity: 0 !important;
       transform: none !important;
