@@ -150,6 +150,32 @@
       stroke-linejoin: round;
     }
 
+    .mellow-clinical-raft-animation .droplet-callout {
+      position: absolute;
+      z-index: 70;
+      top: 92px;
+      right: 72px;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftMellowEntersClean var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .droplet-callout__pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(26,45,16,.075);
+      color: rgba(26,45,16,.82);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 14px rgba(26,45,16,.045);
+      white-space: nowrap;
+    }
+
     .mellow-clinical-raft-animation .acid {
       position: absolute;
       z-index: 1;
@@ -292,7 +318,7 @@
       bottom: 20%;
       --x: -16px;
       --y: -128px;
-      animation-delay: .18s;
+      animation-delay: .06s;
     }
 
     .mellow-clinical-raft-animation .p3 {
@@ -302,7 +328,7 @@
       bottom: 20%;
       --x: 22px;
       --y: -150px;
-      animation-delay: .25s;
+      animation-delay: .09s;
     }
 
     .mellow-clinical-raft-animation .p4 {
@@ -312,7 +338,7 @@
       bottom: 20%;
       --x: -8px;
       --y: -132px;
-      animation-delay: .38s;
+      animation-delay: .12s;
     }
 
     .mellow-clinical-raft-animation .p5 {
@@ -322,7 +348,7 @@
       bottom: 20%;
       --x: 12px;
       --y: -152px;
-      animation-delay: .42s;
+      animation-delay: .15s;
     }
 
     .mellow-clinical-raft-animation .p6 {
@@ -332,7 +358,7 @@
       bottom: 20%;
       --x: -20px;
       --y: -126px;
-      animation-delay: .6s;
+      animation-delay: .18s;
     }
 
     .mellow-clinical-raft-animation .fragment {
@@ -501,7 +527,7 @@
 
     .mellow-clinical-raft-animation .blocked-callout {
       position: absolute;
-      z-index: 65;
+      z-index: 1001;
       right: 92px;
       top: calc(var(--raft-final-top) + 58px);
       display: inline-flex;
@@ -509,7 +535,7 @@
       min-height: 30px;
       padding: 0 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .70);
+      background: rgba(255, 255, 255, .76);
       border: 1px solid rgba(208, 74, 42, .12);
       color: rgba(208, 74, 42, .86);
       font-size: 10px;
@@ -532,6 +558,23 @@
       72%, 100% {
         opacity: .9;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes mellowRaftMellowEntersClean {
+      0%, 3% {
+        opacity: 0;
+        transform: translateY(-3px) scale(.98);
+      }
+
+      6%, 20% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      25%, 100% {
+        opacity: 0;
+        transform: translateY(3px) scale(.98);
       }
     }
 
@@ -593,53 +636,53 @@
         transform: translate(0, 0) scale(.75);
       }
 
-      34% {
+      30% {
         opacity: .9;
         transform: translate(calc(var(--x) * .45), calc(var(--y) * .58)) scale(1);
       }
 
-      48% {
+      42% {
         opacity: .45;
         transform: translate(var(--x), var(--y)) scale(.75);
       }
 
-      58%, 100% {
+      52%, 100% {
         opacity: 0;
         transform: translate(var(--x), var(--y)) scale(.25);
       }
     }
 
     @keyframes mellowRaftBubbleSHOWClean {
-  0%, 12% {
-    opacity: 0;
-    transform: translate(0, 0) scale(.30);
-  }
+      0%, 12% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.30);
+      }
 
-  17% {
-    opacity: .82;
-    transform: translate(0, -18px) scale(.58);
-  }
+      17% {
+        opacity: .82;
+        transform: translate(0, -18px) scale(.58);
+      }
 
-  27% {
-    opacity: .78;
-    transform: translate(var(--dx1), var(--dy1)) scale(.76);
-  }
+      27% {
+        opacity: .78;
+        transform: translate(var(--dx1), var(--dy1)) scale(.76);
+      }
 
-  39% {
-    opacity: .66;
-    transform: translate(var(--dx2), var(--dy2)) scale(.58);
-  }
+      39% {
+        opacity: .66;
+        transform: translate(var(--dx2), var(--dy2)) scale(.58);
+      }
 
-  48% {
-    opacity: .34;
-    transform: translate(var(--dx3), var(--dy3)) scale(.42);
-  }
+      48% {
+        opacity: .34;
+        transform: translate(var(--dx3), var(--dy3)) scale(.42);
+      }
 
-  56%, 100% {
-    opacity: 0;
-    transform: translate(var(--dx3), var(--dy3)) scale(.12);
-  }
-}
+      56%, 100% {
+        opacity: 0;
+        transform: translate(var(--dx3), var(--dy3)) scale(.12);
+      }
+    }
 
     @keyframes mellowRaftFragmentBuildClean {
       0%, 30% {
@@ -786,46 +829,51 @@
         transform: translateY(36px) scaleY(.18);
       }
 
-      82% {
+      80% {
         opacity: .82;
         transform: translateY(20px) scaleY(.44);
       }
 
-      90% {
+      86% {
         opacity: .86;
         transform: translateY(0) scaleY(.88);
       }
 
-      100% {
-        opacity: .58;
-        transform: translateY(4px) scaleY(.70);
+      90% {
+        opacity: .45;
+        transform: translateY(10px) scaleY(.38);
+      }
+
+      94%, 100% {
+        opacity: 0;
+        transform: translateY(20px) scaleY(.18);
       }
     }
 
     @keyframes mellowRaftBlockRippleClean {
-      0%, 86% {
+      0%, 84% {
         opacity: 0;
         transform: scaleX(.2);
       }
 
-      92% {
+      88% {
         opacity: .56;
         transform: scaleX(1);
       }
 
-      100% {
+      94%, 100% {
         opacity: 0;
         transform: scaleX(1.35);
       }
     }
 
     @keyframes mellowRaftBlockedCalloutClean {
-      0%, 86% {
+      0%, 88% {
         opacity: 0;
         transform: translateY(4px) scale(.98);
       }
 
-      94%, 100% {
+      91%, 100% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
@@ -846,6 +894,11 @@
 
       .mellow-clinical-raft-animation .blocked-callout {
         right: 32px;
+      }
+
+      .mellow-clinical-raft-animation .droplet-callout {
+        right: 32px;
+        top: 86px;
       }
     }
   </style>
@@ -870,6 +923,10 @@
 
         <div class="acid"></div>
         <div class="acid-label">Acid Pocket / Stomach Contents</div>
+
+        <div class="droplet-callout" aria-hidden="true">
+          <span class="droplet-callout__pill">Mellow enters</span>
+        </div>
 
         <div class="drop drop-1">
           <svg viewBox="0 0 100 120" aria-hidden="true">
@@ -911,40 +968,40 @@
         <div class="particle p6"></div>
 
         <div class="pb" style="--x0:30%;--s:3px;--dx1:-28px;--dy1:-38px;--dx2:-48px;--dy2:-92px;--dx3:-54px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:0s"></div>
-        <div class="pb" style="--x0:31%;--s:2px;--dx1:-18px;--dy1:-40px;--dx2:-22px;--dy2:-102px;--dx3:44px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.03s"></div>
-        <div class="pb" style="--x0:33%;--s:4px;--dx1:2px;--dy1:-44px;--dx2:30px;--dy2:-100px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.06s"></div>
-        <div class="pb" style="--x0:35%;--s:5px;--dx1:9px;--dy1:-51px;--dx2:33px;--dy2:-101px;--dx3:-9px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.09s"></div>
-        <div class="pb" style="--x0:36%;--s:4px;--dx1:19px;--dy1:-53px;--dx2:-37px;--dy2:-100px;--dx3:-19px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.12s"></div>
-        <div class="pb" style="--x0:37%;--s:5px;--dx1:-27px;--dy1:-55px;--dx2:-11px;--dy2:-99px;--dx3:-29px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.15s"></div>
-        <div class="pb" style="--x0:39%;--s:5px;--dx1:-7px;--dy1:-59px;--dx2:41px;--dy2:-97px;--dx3:-49px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.18s"></div>
-        <div class="pb" style="--x0:41%;--s:2px;--dx1:0px;--dy1:-38px;--dx2:44px;--dy2:-98px;--dx3:26px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.21s"></div>
-        <div class="pb" style="--x0:42%;--s:4px;--dx1:14px;--dy1:-52px;--dx2:30px;--dy2:-98px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.24s"></div>
-        <div class="pb" style="--x0:43%;--s:2px;--dx1:20px;--dy1:-42px;--dx2:0px;--dy2:-96px;--dx3:6px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.27s"></div>
-        <div class="pb" style="--x0:45%;--s:3px;--dx1:27px;--dy1:-49px;--dx2:3px;--dy2:-97px;--dx3:-27px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.30s"></div>
-        <div class="pb" style="--x0:47%;--s:3px;--dx1:-9px;--dy1:-53px;--dx2:-41px;--dy2:-95px;--dx3:-47px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.33s"></div>
-        <div class="pb" style="--x0:48%;--s:2px;--dx1:-12px;--dy1:-58px;--dx2:32px;--dy2:-97px;--dx3:38px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.36s"></div>
-        <div class="pb" style="--x0:49%;--s:4px;--dx1:-2px;--dy1:-60px;--dx2:-38px;--dy2:-96px;--dx3:28px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.39s"></div>
-        <div class="pb" style="--x0:50%;--s:2px;--dx1:8px;--dy1:-62px;--dx2:-12px;--dy2:-95px;--dx3:18px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.42s"></div>
-        <div class="pb" style="--x0:51%;--s:5px;--dx1:5px;--dy1:-39px;--dx2:-35px;--dy2:-97px;--dx3:-5px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.45s"></div>
-        <div class="pb" style="--x0:52%;--s:3px;--dx1:15px;--dy1:-41px;--dx2:-9px;--dy2:-96px;--dx3:-15px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.48s"></div>
-        <div class="pb" style="--x0:53%;--s:5px;--dx1:25px;--dy1:-43px;--dx2:17px;--dy2:-95px;--dx3:-25px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.51s"></div>
-        <div class="pb" style="--x0:54%;--s:3px;--dx1:-21px;--dy1:-45px;--dx2:43px;--dy2:-94px;--dx3:-35px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.54s"></div>
-        <div class="pb" style="--x0:55%;--s:5px;--dx1:-11px;--dy1:-47px;--dx2:-27px;--dy2:-93px;--dx3:-45px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.57s"></div>
-        <div class="pb" style="--x0:56%;--s:4px;--dx1:-14px;--dy1:-52px;--dx2:46px;--dy2:-95px;--dx3:40px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.60s"></div>
-        <div class="pb" style="--x0:57%;--s:2px;--dx1:-4px;--dy1:-54px;--dx2:-24px;--dy2:-94px;--dx3:30px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.63s"></div>
-        <div class="pb" style="--x0:58%;--s:4px;--dx1:6px;--dy1:-56px;--dx2:2px;--dy2:-93px;--dx3:20px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.66s"></div>
-        <div class="pb" style="--x0:59%;--s:2px;--dx1:16px;--dy1:-58px;--dx2:28px;--dy2:-92px;--dx3:10px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.69s"></div>
-        <div class="pb" style="--x0:60%;--s:3px;--dx1:13px;--dy1:-63px;--dx2:5px;--dy2:-94px;--dx3:-13px;--dy3:-135px;--c:rgba(255,247,232,.58);animation-delay:.72s"></div>
-        <div class="pb" style="--x0:61%;--s:3px;--dx1:23px;--dy1:-65px;--dx2:31px;--dy2:-93px;--dx3:-23px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.75s"></div>
-        <div class="pb" style="--x0:62%;--s:5px;--dx1:-23px;--dy1:-39px;--dx2:-39px;--dy2:-92px;--dx3:-33px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.78s"></div>
-        <div class="pb" style="--x0:63%;--s:3px;--dx1:-13px;--dy1:-41px;--dx2:-13px;--dy2:-102px;--dx3:-43px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.81s"></div>
-        <div class="pb" style="--x0:64%;--s:2px;--dx1:-16px;--dy1:-46px;--dx2:-36px;--dy2:-93px;--dx3:42px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.84s"></div>
-        <div class="pb" style="--x0:65%;--s:4px;--dx1:-6px;--dy1:-48px;--dx2:-10px;--dy2:-92px;--dx3:32px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.87s"></div>
-        <div class="pb" style="--x0:66%;--s:2px;--dx1:4px;--dy1:-50px;--dx2:16px;--dy2:-102px;--dx3:22px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.90s"></div>
-        <div class="pb" style="--x0:67%;--s:5px;--dx1:1px;--dy1:-55px;--dx2:-7px;--dy2:-93px;--dx3:-1px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.93s"></div>
-        <div class="pb" style="--x0:68%;--s:4px;--dx1:11px;--dy1:-57px;--dx2:19px;--dy2:-92px;--dx3:-11px;--dy3:-133px;--c:rgba(184,201,130,.56);animation-delay:.96s"></div>
-        <div class="pb" style="--x0:69%;--s:5px;--dx1:21px;--dy1:-59px;--dx2:45px;--dy2:-102px;--dx3:-21px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.99s"></div>
-        <div class="pb" style="--x0:70%;--s:3px;--dx1:-25px;--dy1:-61px;--dx2:-25px;--dy2:-101px;--dx3:-31px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:1.02s"></div>
+        <div class="pb" style="--x0:31%;--s:2px;--dx1:-18px;--dy1:-40px;--dx2:-22px;--dy2:-102px;--dx3:44px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.01s"></div>
+        <div class="pb" style="--x0:33%;--s:4px;--dx1:2px;--dy1:-44px;--dx2:30px;--dy2:-100px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.02s"></div>
+        <div class="pb" style="--x0:35%;--s:5px;--dx1:9px;--dy1:-51px;--dx2:33px;--dy2:-101px;--dx3:-9px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.03s"></div>
+        <div class="pb" style="--x0:36%;--s:4px;--dx1:19px;--dy1:-53px;--dx2:-37px;--dy2:-100px;--dx3:-19px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.04s"></div>
+        <div class="pb" style="--x0:37%;--s:5px;--dx1:-27px;--dy1:-55px;--dx2:-11px;--dy2:-99px;--dx3:-29px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.05s"></div>
+        <div class="pb" style="--x0:39%;--s:5px;--dx1:-7px;--dy1:-59px;--dx2:41px;--dy2:-97px;--dx3:-49px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.06s"></div>
+        <div class="pb" style="--x0:41%;--s:2px;--dx1:0px;--dy1:-38px;--dx2:44px;--dy2:-98px;--dx3:26px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.07s"></div>
+        <div class="pb" style="--x0:42%;--s:4px;--dx1:14px;--dy1:-52px;--dx2:30px;--dy2:-98px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.08s"></div>
+        <div class="pb" style="--x0:43%;--s:2px;--dx1:20px;--dy1:-42px;--dx2:0px;--dy2:-96px;--dx3:6px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.09s"></div>
+        <div class="pb" style="--x0:45%;--s:3px;--dx1:27px;--dy1:-49px;--dx2:3px;--dy2:-97px;--dx3:-27px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.10s"></div>
+        <div class="pb" style="--x0:47%;--s:3px;--dx1:-9px;--dy1:-53px;--dx2:-41px;--dy2:-95px;--dx3:-47px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.11s"></div>
+        <div class="pb" style="--x0:48%;--s:2px;--dx1:-12px;--dy1:-58px;--dx2:32px;--dy2:-97px;--dx3:38px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.12s"></div>
+        <div class="pb" style="--x0:49%;--s:4px;--dx1:-2px;--dy1:-60px;--dx2:-38px;--dy2:-96px;--dx3:28px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.13s"></div>
+        <div class="pb" style="--x0:50%;--s:2px;--dx1:8px;--dy1:-62px;--dx2:-12px;--dy2:-95px;--dx3:18px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.14s"></div>
+        <div class="pb" style="--x0:51%;--s:5px;--dx1:5px;--dy1:-39px;--dx2:-35px;--dy2:-97px;--dx3:-5px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.15s"></div>
+        <div class="pb" style="--x0:52%;--s:3px;--dx1:15px;--dy1:-41px;--dx2:-9px;--dy2:-96px;--dx3:-15px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.16s"></div>
+        <div class="pb" style="--x0:53%;--s:5px;--dx1:25px;--dy1:-43px;--dx2:17px;--dy2:-95px;--dx3:-25px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.17s"></div>
+        <div class="pb" style="--x0:54%;--s:3px;--dx1:-21px;--dy1:-45px;--dx2:43px;--dy2:-94px;--dx3:-35px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.18s"></div>
+        <div class="pb" style="--x0:55%;--s:5px;--dx1:-11px;--dy1:-47px;--dx2:-27px;--dy2:-93px;--dx3:-45px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.19s"></div>
+        <div class="pb" style="--x0:56%;--s:4px;--dx1:-14px;--dy1:-52px;--dx2:46px;--dy2:-95px;--dx3:40px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.20s"></div>
+        <div class="pb" style="--x0:57%;--s:2px;--dx1:-4px;--dy1:-54px;--dx2:-24px;--dy2:-94px;--dx3:30px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.21s"></div>
+        <div class="pb" style="--x0:58%;--s:4px;--dx1:6px;--dy1:-56px;--dx2:2px;--dy2:-93px;--dx3:20px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.22s"></div>
+        <div class="pb" style="--x0:59%;--s:2px;--dx1:16px;--dy1:-58px;--dx2:28px;--dy2:-92px;--dx3:10px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.23s"></div>
+        <div class="pb" style="--x0:60%;--s:3px;--dx1:13px;--dy1:-63px;--dx2:5px;--dy2:-94px;--dx3:-13px;--dy3:-135px;--c:rgba(255,247,232,.58);animation-delay:.24s"></div>
+        <div class="pb" style="--x0:61%;--s:3px;--dx1:23px;--dy1:-65px;--dx2:31px;--dy2:-93px;--dx3:-23px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.25s"></div>
+        <div class="pb" style="--x0:62%;--s:5px;--dx1:-23px;--dy1:-39px;--dx2:-39px;--dy2:-92px;--dx3:-33px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.26s"></div>
+        <div class="pb" style="--x0:63%;--s:3px;--dx1:-13px;--dy1:-41px;--dx2:-13px;--dy2:-102px;--dx3:-43px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.27s"></div>
+        <div class="pb" style="--x0:64%;--s:2px;--dx1:-16px;--dy1:-46px;--dx2:-36px;--dy2:-93px;--dx3:42px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.28s"></div>
+        <div class="pb" style="--x0:65%;--s:4px;--dx1:-6px;--dy1:-48px;--dx2:-10px;--dy2:-92px;--dx3:32px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.29s"></div>
+        <div class="pb" style="--x0:66%;--s:2px;--dx1:4px;--dy1:-50px;--dx2:16px;--dy2:-102px;--dx3:22px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.30s"></div>
+        <div class="pb" style="--x0:67%;--s:5px;--dx1:1px;--dy1:-55px;--dx2:-7px;--dy2:-93px;--dx3:-1px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.31s"></div>
+        <div class="pb" style="--x0:68%;--s:4px;--dx1:11px;--dy1:-57px;--dx2:19px;--dy2:-92px;--dx3:-11px;--dy3:-133px;--c:rgba(184,201,130,.56);animation-delay:.32s"></div>
+        <div class="pb" style="--x0:69%;--s:5px;--dx1:21px;--dy1:-59px;--dx2:45px;--dy2:-102px;--dx3:-21px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.33s"></div>
+        <div class="pb" style="--x0:70%;--s:3px;--dx1:-25px;--dy1:-61px;--dx2:-25px;--dy2:-101px;--dx3:-31px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.34s"></div>
 
         <div class="fragment f1"></div>
         <div class="fragment f2"></div>
