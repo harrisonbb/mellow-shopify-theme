@@ -130,20 +130,23 @@
     }
 
     /*
-      Original arrow shape, moved to the right side of the MellowRaft label.
-      This places the arrow around the upper-right side of the label area instead of under/left.
+      Arrow fix:
+      Keeps the exact original arrow shape.
+      Moves the whole SVG box to the right side of the MellowRaft™ Layer pill.
     */
     .mellow-clinical-raft-animation .callout {
-  position: absolute;
-  z-index: 59;
-  left: 205px;
-  top: 50px;
-  width: 82px;
-  height: 48px;
-  pointer-events: none;
-  opacity: 0;
-  animation: mellowRaftCalloutAppearClean var(--duration) ease-out infinite;
-}
+      position: absolute;
+      z-index: 59;
+      left: 285px !important;
+      right: auto !important;
+      top: 50px !important;
+      width: 82px !important;
+      height: 48px !important;
+      pointer-events: none;
+      opacity: 0;
+      transform: none !important;
+      animation: mellowRaftCalloutAppearClean var(--duration) ease-out infinite;
+    }
 
     .mellow-clinical-raft-animation .callout path,
     .mellow-clinical-raft-animation .callout polyline {
@@ -554,9 +557,6 @@
       left: 70%;
     }
 
-    /*
-      More space below raft so Acid blocked does not feel crammed.
-    */
     .mellow-clinical-raft-animation .blocked-callout {
       position: absolute;
       z-index: 1001;
@@ -962,8 +962,9 @@
       }
 
       .mellow-clinical-raft-animation .callout {
-        left: 275px;
-        top: 50px;
+        left: 245px !important;
+        right: auto !important;
+        top: 50px !important;
       }
     }
   </style>
