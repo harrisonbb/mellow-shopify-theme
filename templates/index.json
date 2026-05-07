@@ -128,6 +128,11 @@
         "button_link": ""
       }
     },
+    "mellow_raft_animation_Vm9m6z": {
+      "type": "mellow-raft-animation",
+      "name": "Mellow Raft Animation",
+      "settings": {}
+    },
     "mellow_ingredients_ExxTxE": {
       "type": "mellow-ingredients",
       "name": "Mellow Ingredients",
@@ -332,11 +337,6 @@
         "cta_text": "Try Mellow",
         "cta_link": ""
       }
-    },
-    "mellow_raft_animation_Vm9m6z": {
-      "type": "mellow-raft-animation",
-      "name": "Mellow Raft Animation",
-      "settings": {}
     }
   },
   "order": [
@@ -346,6 +346,7 @@
     "mellow_on_the_go_Y3d8XP",
     "mellow_testimonials_4dnNDD",
     "mellow_routine_8fqKwg",
+    "mellow_raft_animation_Vm9m6z",
     "mellow_ingredients_ExxTxE",
     "mellow_expert_proof_page_an7NbQ",
     "mellow_compare_page_EQzBX8",
@@ -353,7 +354,6 @@
     "mellow_expectations_timeline_YieDtT",
     "mellow_buy_box_VGPbf3",
     "mellow_faq_xnW3d6",
-    "mellow_day_night_scroll_Ctkp36",
-    "mellow_raft_animation_Vm9m6z"
+    "mellow_day_night_scroll_Ctkp36"
   ]
 }
