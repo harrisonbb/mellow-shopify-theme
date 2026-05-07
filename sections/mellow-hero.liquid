@@ -12,67 +12,70 @@
 
 <section class="mellow-hero{% if has_full_screen_hero_background %} mellow-hero--has-bg{% endif %}" id="hero" aria-label="Mellow homepage hero">
   {% if has_full_screen_hero_background %}
-    <div class="mellow-hero__bg" aria-hidden="true">
-      {{
-        section.settings.full_screen_hero_background_image
-        | image_url: width: 2400
-        | image_tag:
-          class: 'mellow-hero__bg-image',
-          alt: '',
-          loading: 'eager',
-          fetchpriority: 'high',
-          sizes: '100vw'
-      }}
+    <div class="mellow-hero__media" aria-hidden="true">
+      <div class="mellow-hero__image-wrapper">
+        {{
+          section.settings.full_screen_hero_background_image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'mellow-hero__bg',
+            alt: section.settings.full_screen_hero_background_image.alt,
+            loading: 'eager',
+            fetchpriority: 'high',
+            sizes: '100vw'
+        }}
+      </div>
     </div>
-    <div class="mellow-hero__bg-overlay" aria-hidden="true"></div>
   {% endif %}
 
-  <div class="mellow-hero__container">
-    <div class="mellow-hero__inner">
-      <div class="mellow-hero__copy">
-        <span class="mellow-hero__eyebrow">
-          {{ section.settings.eyebrow }}
-        </span>
+  <div class="mellow-hero__content">
+    <div class="mellow-hero__container">
+      <div class="mellow-hero__inner">
+        <div class="mellow-hero__copy">
+          <span class="mellow-hero__eyebrow">
+            {{ section.settings.eyebrow }}
+          </span>
 
-        <h1 class="mellow-hero__headline">
-          <span class="mellow-hero__headline-main">Mellow stops reflux</span>
-          <span class="mellow-hero__headline-accent">before it starts.</span>
-        </h1>
+          <h1 class="mellow-hero__headline">
+            <span class="mellow-hero__headline-main">Mellow stops reflux</span>
+            <span class="mellow-hero__headline-accent">before it starts.</span>
+          </h1>
 
-        <p class="mellow-hero__subhead">
-          A smooth gel that works before acid gets the chance.
-        </p>
+          <p class="mellow-hero__subhead">
+            A smooth gel that works before acid gets the chance.
+          </p>
 
-        <div class="mellow-hero__social-proof" aria-label="Social proof">
-          <span class="mellow-hero__stars" aria-hidden="true">★★★★★</span>
-          <span class="mellow-hero__quote">Trusted by 2,000+ reflux sufferers.</span>
-        </div>
+          <div class="mellow-hero__social-proof" aria-label="Social proof">
+            <span class="mellow-hero__stars" aria-hidden="true">★★★★★</span>
+            <span class="mellow-hero__quote">Trusted by 2,000+ reflux sufferers.</span>
+          </div>
 
-        <div class="mellow-hero__ctas">
-          <a href="{{ section.settings.cta_primary_url }}" class="mellow-hero__btn">
-            {{ section.settings.cta_primary_label }}
-          </a>
+          <div class="mellow-hero__ctas">
+            <a href="{{ section.settings.cta_primary_url }}" class="mellow-hero__btn">
+              {{ section.settings.cta_primary_label }}
+            </a>
 
-          <a href="{{ section.settings.cta_secondary_url }}" class="mellow-hero__link">
-            {{ section.settings.cta_secondary_label }}
-          </a>
-        </div>
-      </div>
-
-      {% if has_full_screen_hero_background == false and section.settings.product_image != blank %}
-        <div class="mellow-hero__media" aria-hidden="true">
-          <div class="mellow-hero__image-wrap">
-            {{
-              section.settings.product_image
-              | image_url: width: 1000
-              | image_tag:
-                class: 'mellow-hero__product',
-                loading: 'eager',
-                fetchpriority: 'high'
-            }}
+            <a href="{{ section.settings.cta_secondary_url }}" class="mellow-hero__link">
+              {{ section.settings.cta_secondary_label }}
+            </a>
           </div>
         </div>
-      {% endif %}
+
+        {% if has_full_screen_hero_background == false and section.settings.product_image != blank %}
+          <div class="mellow-hero__product-media" aria-hidden="true">
+            <div class="mellow-hero__image-wrap">
+              {{
+                section.settings.product_image
+                | image_url: width: 1000
+                | image_tag:
+                  class: 'mellow-hero__product',
+                  loading: 'eager',
+                  fetchpriority: 'high'
+              }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
@@ -106,56 +109,60 @@
     color: var(--mellow-ivory-local);
   }
 
-  .mellow-hero__bg,
-  .mellow-hero__bg-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  .mellow-hero__media,
+  .mellow-hero__image-wrapper,
+  .mellow-hero__bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 
-  .mellow-hero__bg {
+  .mellow-hero__media {
     z-index: 0;
     overflow: hidden;
+    pointer-events: none;
     background:
       radial-gradient(circle at 82% 82%, rgba(208, 74, 42, 0.28) 0 16%, rgba(208, 74, 42, 0) 42%),
       linear-gradient(135deg, #071209 0%, #0D1D11 50%, #152818 100%);
   }
 
-  .mellow-hero .mellow-hero__bg-image,
-  .mellow-hero__bg-image {
-    position: absolute !important;
-    z-index: 0 !important;
-    display: block !important;
-    width: clamp(320px, 34vw, 560px) !important;
-    height: auto !important;
-    max-width: none !important;
-    max-height: 82% !important;
-    right: clamp(48px, 8vw, 140px) !important;
-    bottom: clamp(24px, 5vw, 72px) !important;
-    left: auto !important;
-    top: auto !important;
-    object-fit: contain !important;
-    object-position: 70% center !important;
-    background-position: 70% center !important;
-    transform: none !important;
-  }
-
-  .mellow-hero__bg-overlay {
+  .mellow-hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     z-index: 1;
     background:
       linear-gradient(
         90deg,
-        rgba(5, 13, 7, 0.92) 0%,
-        rgba(5, 13, 7, 0.78) 34%,
-        rgba(5, 13, 7, 0.34) 62%,
-        rgba(5, 13, 7, 0.06) 100%
+        rgba(26, 45, 16, 0.70) 0%,
+        rgba(26, 45, 16, 0.42) 38%,
+        rgba(26, 45, 16, 0.08) 72%,
+        rgba(26, 45, 16, 0.00) 100%
       );
+    pointer-events: none;
   }
 
-  .mellow-hero--has-bg .mellow-hero__media,
-  .mellow-hero--has-bg .mellow-hero__product,
-  .mellow-hero--has-bg .mellow-hero__image-wrap {
-    display: none !important;
+  .mellow-hero__image-wrapper {
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .mellow-hero .mellow-hero__bg,
+  .mellow-hero__bg {
+    z-index: 0 !important;
+    display: block !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: 68% center !important;
+    transform: none !important;
+  }
+
+  .mellow-hero__content {
+    position: relative;
+    z-index: 2;
+    min-height: inherit;
   }
 
   .mellow-hero__container {
@@ -189,7 +196,7 @@
     justify-content: flex-start;
   }
 
-  .mellow-hero__media,
+  .mellow-hero__product-media,
   .mellow-hero__image-wrap {
     display: flex;
     align-items: center;
@@ -408,18 +415,12 @@
       min-height: auto;
     }
 
-    .mellow-hero__bg-image {
-      width: min(78vw, 360px) !important;
-      max-height: 48% !important;
-      right: 50% !important;
-      bottom: clamp(28px, 8vw, 56px) !important;
-      object-fit: contain !important;
-      object-position: 72% center !important;
-      background-position: 72% center !important;
-      transform: translateX(50%) !important;
+    .mellow-hero .mellow-hero__bg,
+    .mellow-hero__bg {
+      object-position: 68% center !important;
     }
 
-    .mellow-hero__bg-overlay {
+    .mellow-hero__media::after {
       background:
         linear-gradient(
           90deg,
@@ -492,7 +493,7 @@
       padding-bottom: 64px;
     }
 
-    .mellow-hero__bg-overlay {
+    .mellow-hero__media::after {
       background:
         linear-gradient(
           90deg,
