@@ -701,7 +701,7 @@ main [class*="mellow"] :is(
 }
 
 /* Lock the media column so image swaps do not collapse or stretch the hero */
-.mellow-hero__media,
+.mellow-hero__product-media,
 .hero__media,
 .mellow-hero__image-wrap,
 .hero__image-wrapper {
@@ -716,11 +716,10 @@ main [class*="mellow"] :is(
   overflow: visible;
 }
 
-.mellow-hero__media img,
+.mellow-hero__product-media img,
 .hero__media img,
 .mellow-hero__image-wrap img,
-.hero__image-wrapper img,
-.mellow-hero img {
+.hero__image-wrapper img {
   width: 100%;
   height: 100%;
   max-width: 520px !important;
@@ -737,7 +736,7 @@ main [class*="mellow"] :is(
   will-change: auto !important;
 }
 
-.mellow-hero__media:empty,
+.mellow-hero__product-media:empty,
 .hero__media:empty,
 .mellow-hero__image-wrap:empty,
 .hero__image-wrapper:empty {
@@ -764,7 +763,7 @@ main [class*="mellow"] :is(
     min-height: 500px !important;
   }
 
-  .mellow-hero__media,
+  .mellow-hero__product-media,
   .hero__media,
   .mellow-hero__image-wrap,
   .hero__image-wrapper {
@@ -781,7 +780,7 @@ main [class*="mellow"] :is(
     min-height: auto !important;
   }
 
-  .mellow-hero__media,
+  .mellow-hero__product-media,
   .hero__media,
   .mellow-hero__image-wrap,
   .hero__image-wrapper {
@@ -791,11 +790,10 @@ main [class*="mellow"] :is(
     margin-top: 28px !important;
   }
 
-  .mellow-hero__media img,
+  .mellow-hero__product-media img,
   .hero__media img,
   .mellow-hero__image-wrap img,
-  .hero__image-wrapper img,
-  .mellow-hero img {
+  .hero__image-wrapper img {
     max-width: 100% !important;
   }
 
@@ -2588,7 +2586,7 @@ main .mellow-pain-point__cta {
     align-items: center !important;
   }
 
-  .mellow-hero__media,
+  .mellow-hero__product-media,
   .hero__media,
   .mellow-hero__image-wrap,
   .hero__image-wrapper {
@@ -2597,7 +2595,7 @@ main .mellow-pain-point__cta {
     max-height: 390px !important;
   }
 
-  .mellow-hero__media img,
+  .mellow-hero__product-media img,
   .hero__media img,
   .mellow-hero__image-wrap img,
   .hero__image-wrapper img {
