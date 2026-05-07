@@ -4,15 +4,21 @@
   for alginate-based reflux therapies. Avoids product-specific clinical proof claims.
 {% endcomment %}
 
-<section class="mellow-clinical-proof mellow-clinical-proof-{{ section.id }}">
+<section class="mellow-clinical-proof mellow-clinical-proof-{{ section.id }}" data-mellow-clinical-proof>
   <div class="mellow-clinical-proof__inner">
-    <header class="mellow-clinical-proof__hero">
-      <p class="mellow-clinical-proof__kicker">{{ section.settings.eyebrow }}</p>
+    <header class="mellow-clinical-proof__hero mellow-reveal mellow-reveal--fade" data-mellow-reveal>
+      <div class="mellow-clinical-proof__hero-motif" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </div>
+      <p class="mellow-clinical-proof__kicker mellow-reveal mellow-reveal--fade" data-mellow-reveal>{{ section.settings.eyebrow }}</p>
       <div class="mellow-clinical-proof__hero-grid">
-        <h1 class="mellow-clinical-proof__title">
-          Alginate raft therapy has been clinically studied for the reflux moments people <em>actually feel.</em>
+        <h1 class="mellow-clinical-proof__title" aria-label="Alginate raft therapy has been clinically studied for the reflux moments people actually feel.">
+          <span class="mellow-clinical-proof__title-line mellow-reveal mellow-reveal--up" data-mellow-reveal>Alginate raft therapy has been</span>
+          <span class="mellow-clinical-proof__title-line mellow-reveal mellow-reveal--up" data-mellow-reveal>clinically studied for the reflux</span>
+          <span class="mellow-clinical-proof__title-line mellow-reveal mellow-reveal--up" data-mellow-reveal>moments people <em>actually feel.</em></span>
         </h1>
-        <div class="mellow-clinical-proof__intro">
+        <div class="mellow-clinical-proof__intro mellow-reveal mellow-reveal--up" data-mellow-reveal>
           <p>{{ section.settings.subhead }}</p>
           <div class="mellow-clinical-proof__scope-note">
             Based on published studies of alginate-based reflux therapies.
@@ -21,15 +27,61 @@
       </div>
     </header>
 
-    <div class="mellow-clinical-proof__evidence-strip" aria-label="Studied outcome categories">
+    <div class="mellow-clinical-proof__evidence-strip mellow-reveal mellow-reveal--stagger" aria-label="Studied outcome categories" data-mellow-reveal>
       <span>Heartburn relief</span>
       <span>Regurgitation</span>
       <span>Breakthrough symptoms</span>
       <span>Reflux burden</span>
     </div>
 
-    <div class="mellow-clinical-proof__modules">
-      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--symptom">
+    <section class="mellow-clinical-proof__mechanism mellow-reveal mellow-reveal--up" aria-labelledby="mellow-clinical-mechanism-{{ section.id }}" data-mellow-reveal>
+      <div class="mellow-clinical-proof__mechanism-copy">
+        <p class="mellow-clinical-proof__eyebrow">MELLOWRAFT™ MECHANISM</p>
+        <h2 id="mellow-clinical-mechanism-{{ section.id }}">A physical raft barrier, shown simply.</h2>
+        <p>Alginate raft therapy is designed to react in the stomach, form a buoyant gel layer, and help block upward reflux movement at the source.</p>
+      </div>
+
+      <div class="mellow-clinical-proof__mechanism-visual" aria-label="Animated abstract diagram showing acid, raft formation, and blocked reflux arrows">
+        <div class="mellow-clinical-proof__diagram" aria-hidden="true">
+          <div class="mellow-clinical-proof__diagram-label mellow-clinical-proof__diagram-label--top">MellowRaft™ layer</div>
+          <div class="mellow-clinical-proof__blocked-arrows">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mellow-clinical-proof__raft-band"></div>
+          <div class="mellow-clinical-proof__particles">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="mellow-clinical-proof__acid-wave"></div>
+          <div class="mellow-clinical-proof__diagram-label mellow-clinical-proof__diagram-label--bottom">Acid pocket / stomach contents</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mellow-clinical-proof__steps" aria-label="How alginate raft therapy works">
+      <article class="mellow-clinical-proof__step" data-mellow-step>
+        <span class="mellow-clinical-proof__step-number">01</span>
+        <span class="mellow-clinical-proof__step-wave" aria-hidden="true"></span>
+        <h3>Activate</h3>
+        <p>Stomach acid activates the raft-forming ingredients during reflux-prone moments.</p>
+      </article>
+      <article class="mellow-clinical-proof__step" data-mellow-step>
+        <span class="mellow-clinical-proof__step-number">02</span>
+        <span class="mellow-clinical-proof__step-wave" aria-hidden="true"></span>
+        <h3>Form</h3>
+        <p>A cream-green gel band forms across the top of stomach contents.</p>
+      </article>
+      <article class="mellow-clinical-proof__step" data-mellow-step>
+        <span class="mellow-clinical-proof__step-number">03</span>
+        <span class="mellow-clinical-proof__step-wave" aria-hidden="true"></span>
+        <h3>Float + Block</h3>
+        <p>The raft settles, floats, and helps block upward reflux movement.</p>
+      </article>
+    </section>
+
+    <div class="mellow-clinical-proof__modules mellow-reveal--stagger">
+      <article class="mellow-clinical-proof__module mellow-reveal mellow-reveal--up mellow-clinical-proof__module--symptom" data-mellow-reveal>
         <div class="mellow-clinical-proof__copy">
           <p class="mellow-clinical-proof__eyebrow">SYSTEMATIC REVIEW</p>
           <h2>More likely to relieve reflux symptoms.</h2>
@@ -66,7 +118,7 @@
         </div>
       </article>
 
-      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--breakthrough">
+      <article class="mellow-clinical-proof__module mellow-reveal mellow-reveal--up mellow-clinical-proof__module--breakthrough" data-mellow-reveal>
         <div class="mellow-clinical-proof__copy">
           <p class="mellow-clinical-proof__eyebrow">RANDOMIZED CLINICAL TRIAL</p>
           <h2>Studied for reflux that breaks through daily acid control.</h2>
@@ -89,7 +141,7 @@
         </div>
       </article>
 
-      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--symptoms">
+      <article class="mellow-clinical-proof__module mellow-reveal mellow-reveal--up mellow-clinical-proof__module--symptoms" data-mellow-reveal>
         <div class="mellow-clinical-proof__copy">
           <p class="mellow-clinical-proof__eyebrow">PATIENT-REPORTED OUTCOMES</p>
           <h2>Research tracks the symptoms people actually feel.</h2>
@@ -120,7 +172,7 @@
         </div>
       </article>
 
-      <article class="mellow-clinical-proof__module mellow-clinical-proof__module--standalone">
+      <article class="mellow-clinical-proof__module mellow-reveal mellow-reveal--up mellow-clinical-proof__module--standalone" data-mellow-reveal>
         <div class="mellow-clinical-proof__copy">
           <p class="mellow-clinical-proof__eyebrow">CLINICAL STUDY</p>
           <h2>Studied as a standalone reflux-support option.</h2>
@@ -144,7 +196,7 @@
       </article>
     </div>
 
-    <footer class="mellow-clinical-proof__footer">
+    <footer class="mellow-clinical-proof__footer mellow-reveal mellow-reveal--fade" data-mellow-reveal>
       <div>
         <p class="mellow-clinical-proof__footer-title">Research scope</p>
         <p>{{ section.settings.disclaimer }}</p>
@@ -159,6 +211,8 @@
     --clinical-forest: var(--mellow-forest, #1A2D10);
     --clinical-green: var(--mellow-green, #123A24);
     --clinical-blue: var(--mellow-blue, #3D6B8C);
+    --clinical-ivory: #F0EBE0;
+    --clinical-orange: #D04A2A;
     --clinical-text-soft: var(--mellow-text-soft, #5B6A60);
     --clinical-border: rgba(26, 45, 16, 0.14);
     --clinical-border-strong: rgba(26, 45, 16, 0.24);
@@ -178,9 +232,82 @@
     margin: 0 auto;
   }
 
+  .mellow-clinical-proof-{{ section.id }} .mellow-reveal {
+    opacity: 0;
+    transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease, box-shadow 220ms ease;
+    will-change: opacity, transform;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-reveal--up {
+    transform: translate3d(0, 22px, 0);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-reveal--fade {
+    transform: none;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-reveal--stagger > * {
+    transition-delay: calc(var(--mellow-stagger-index, 0) * 90ms);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip.mellow-reveal--stagger > span,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-grid > *,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-row,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1), transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--mellow-stagger-index, 0) * 90ms);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip.mellow-reveal--stagger.is-visible > span,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module.is-visible .mellow-clinical-proof__symptom-grid > *,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module.is-visible .mellow-clinical-proof__bar-row,
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module.is-visible .mellow-clinical-proof__scale-item {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero {
+    position: relative;
     border-bottom: 1px solid var(--clinical-border);
     padding-bottom: clamp(32px, 5vw, 64px);
+    overflow: hidden;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-motif {
+    position: absolute;
+    inset: auto -10% 4% 38%;
+    height: 44%;
+    pointer-events: none;
+    opacity: 0.22;
+    z-index: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-motif span {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(61, 107, 140, 0.34);
+    border-radius: 48% 52% 44% 56% / 58% 42% 54% 46%;
+    transform: translate3d(0, 0, 0);
+    animation: mellowClinicalDrift 18s ease-in-out infinite alternate;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-motif span:nth-child(2) {
+    inset: 18% 6% -14% 10%;
+    border-color: rgba(26, 45, 16, 0.18);
+    animation-duration: 24s;
+    animation-direction: alternate-reverse;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero > *:not(.mellow-clinical-proof__hero-motif) {
+    position: relative;
+    z-index: 1;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__kicker,
@@ -224,6 +351,18 @@
     max-width: 930px;
   }
 
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title-line {
+    display: block;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title-line:nth-child(2) {
+    transition-delay: 140ms;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title-line:nth-child(3) {
+    transition-delay: 280ms;
+  }
+
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title em {
     font-family: var(--mellow-heading-italic-font, 'Tiempos Headline', Georgia, serif);
     font-style: italic;
@@ -244,6 +383,7 @@
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__intro {
     display: grid;
     gap: 22px;
+    transition-delay: 440ms;
   }
 
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scope-note {
@@ -578,6 +718,279 @@
     box-shadow: 0 18px 50px rgba(18, 58, 36, 0.08);
   }
 
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module {
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:hover {
+    border-color: rgba(26, 45, 16, 0.22);
+    box-shadow: 0 24px 70px rgba(26, 45, 16, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    margin: 24px 0;
+    border: 1px solid var(--clinical-border);
+    border-radius: 28px;
+    padding: clamp(24px, 4vw, 56px);
+    background: linear-gradient(135deg, rgba(240, 235, 224, 0.76), rgba(255, 255, 255, 0.96));
+    overflow: hidden;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism-copy {
+    display: grid;
+    gap: 20px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism-copy p:not(.mellow-clinical-proof__eyebrow),
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step p {
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--clinical-text-soft);
+    font-size: clamp(16px, 1.25vw, 18px);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism-visual {
+    min-height: 390px;
+    border: 1px solid rgba(61, 107, 140, 0.18);
+    border-radius: 24px;
+    padding: clamp(16px, 3vw, 30px);
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram {
+    position: relative;
+    height: 100%;
+    min-height: 330px;
+    border-radius: 20px;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(61, 107, 140, 0.08), transparent 42%),
+      var(--clinical-ivory);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__acid-wave {
+    position: absolute;
+    left: -8%;
+    right: -8%;
+    bottom: -20px;
+    height: 44%;
+    background:
+      radial-gradient(70px 20px at 14% 12%, rgba(255, 255, 255, 0.20), transparent 70%),
+      linear-gradient(180deg, rgba(208, 74, 42, 0.58), rgba(208, 74, 42, 0.20));
+    border-radius: 48% 52% 0 0 / 18% 22% 0 0;
+    animation: mellowClinicalAcid 9s ease-in-out infinite alternate;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__raft-band {
+    position: absolute;
+    left: 9%;
+    right: 9%;
+    bottom: 39%;
+    height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(240, 235, 224, 0.98), rgba(120, 145, 101, 0.78), rgba(240, 235, 224, 0.98));
+    border: 1px solid rgba(26, 45, 16, 0.18);
+    box-shadow: 0 16px 36px rgba(26, 45, 16, 0.10);
+    transform-origin: center;
+    animation: mellowClinicalRaft 8.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    z-index: 3;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span {
+    position: absolute;
+    bottom: 32%;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(61, 107, 140, 0.42);
+    animation: mellowClinicalParticle 6.8s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(1) { left: 24%; animation-delay: 0.2s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(2) { left: 34%; animation-delay: 0.8s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(3) { left: 46%; animation-delay: 1.4s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(4) { left: 58%; animation-delay: 0.5s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(5) { left: 68%; animation-delay: 1.1s; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__particles span:nth-child(6) { left: 76%; animation-delay: 1.7s; }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows {
+    position: absolute;
+    inset: 20% 22% 42%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 4;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span {
+    position: relative;
+    width: 1px;
+    height: 92px;
+    background: linear-gradient(180deg, rgba(208, 74, 42, 0), rgba(208, 74, 42, 0.52));
+    opacity: 0;
+    animation: mellowClinicalBlockedArrow 8.5s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid rgba(208, 74, 42, 0.58);
+    border-left: 1px solid rgba(208, 74, 42, 0.58);
+    transform: rotate(45deg);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows span::after {
+    content: '';
+    position: absolute;
+    left: -12px;
+    bottom: 3px;
+    width: 25px;
+    height: 1px;
+    background: var(--clinical-forest);
+    transform: rotate(-12deg);
+    opacity: 0;
+    animation: mellowClinicalBlockMark 8.5s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram-label {
+    position: absolute;
+    left: 18px;
+    z-index: 5;
+    padding: 8px 10px;
+    border: 1px solid rgba(26, 45, 16, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.64);
+    color: var(--clinical-forest);
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram-label--top { top: 18px; }
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram-label--bottom { bottom: 18px; color: var(--clinical-orange); }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0 0 24px;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step {
+    position: relative;
+    display: grid;
+    gap: 14px;
+    min-height: 220px;
+    border: 1px solid var(--clinical-border);
+    border-radius: 22px;
+    padding: 22px;
+    background: #FFFFFF;
+    opacity: 0.64;
+    transition: opacity 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step.is-active {
+    opacity: 1;
+    border-color: rgba(26, 45, 16, 0.26);
+    box-shadow: 0 18px 52px rgba(26, 45, 16, 0.07);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step-number {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(61, 107, 140, 0.28);
+    border-radius: 999px;
+    background: rgba(61, 107, 140, 0.08);
+    color: var(--clinical-blue);
+    font-family: 'Founders Grotesk Text', 'Test Founders Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step.is-active .mellow-clinical-proof__step-number {
+    background: var(--clinical-forest);
+    border-color: var(--clinical-forest);
+    color: var(--clinical-ivory);
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step-wave {
+    width: 58px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(61, 107, 140, 0.16), rgba(26, 45, 16, 0.38), rgba(61, 107, 140, 0.16));
+    transform-origin: left center;
+    opacity: 0.34;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step.is-active .mellow-clinical-proof__step-wave {
+    opacity: 1;
+    animation: mellowClinicalStepWave 3.6s ease-in-out infinite;
+  }
+
+  .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step h3 {
+    margin: auto 0 0;
+    color: var(--clinical-forest);
+    font-family: var(--mellow-heading-font, 'Founders Grotesk', 'Test Founders Grotesk', 'Helvetica Neue', Arial, sans-serif);
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  @keyframes mellowClinicalDrift {
+    from { transform: translate3d(-18px, 10px, 0) scale(0.98); }
+    to { transform: translate3d(22px, -10px, 0) scale(1.02); }
+  }
+
+  @keyframes mellowClinicalAcid {
+    from { transform: translate3d(-10px, 2px, 0) scaleY(0.98); }
+    to { transform: translate3d(10px, -5px, 0) scaleY(1.02); }
+  }
+
+  @keyframes mellowClinicalParticle {
+    0%, 28% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.7); }
+    54% { opacity: 0.9; }
+    82%, 100% { opacity: 0; transform: translate3d(0, -92px, 0) scale(1); }
+  }
+
+  @keyframes mellowClinicalRaft {
+    0%, 30% { opacity: 0; transform: translate3d(0, 18px, 0) scaleX(0.18); }
+    52% { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1); }
+    72%, 100% { opacity: 1; transform: translate3d(0, -4px, 0) scaleX(1); }
+  }
+
+  @keyframes mellowClinicalBlockedArrow {
+    0%, 58% { opacity: 0; transform: translate3d(0, 32px, 0); }
+    70%, 88% { opacity: 1; transform: translate3d(0, 0, 0); }
+    100% { opacity: 0; transform: translate3d(0, -8px, 0); }
+  }
+
+  @keyframes mellowClinicalBlockMark {
+    0%, 68% { opacity: 0; transform: rotate(-12deg) scaleX(0.4); }
+    76%, 94% { opacity: 1; transform: rotate(-12deg) scaleX(1); }
+    100% { opacity: 0; transform: rotate(-12deg) scaleX(1); }
+  }
+
+  @keyframes mellowClinicalStepWave {
+    0%, 100% { transform: scaleX(0.92); }
+    50% { transform: scaleX(1.08); }
+  }
+
   .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -621,6 +1034,7 @@
 
   @media screen and (max-width: 900px) {
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-grid,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism,
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module,
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even),
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer {
@@ -629,6 +1043,10 @@
 
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:nth-child(even) .mellow-clinical-proof__copy {
       order: 0;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__steps {
+      grid-template-columns: 1fr;
     }
 
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip {
@@ -647,6 +1065,11 @@
       min-height: auto;
     }
 
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism-visual,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram {
+      min-height: 300px;
+    }
+
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__footer .mellow-clinical-proof__button {
       justify-self: start;
     }
@@ -663,6 +1086,37 @@
 
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__title {
       font-size: clamp(42px, 14vw, 60px);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-reveal--up {
+      transform: translate3d(0, 12px, 0);
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-motif {
+      inset: auto -24% 8% 22%;
+      opacity: 0.16;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__hero-motif span {
+      animation-name: mellowClinicalMobileDrift;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism {
+      padding: 22px;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__mechanism-visual,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__diagram {
+      min-height: 280px;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__blocked-arrows {
+      inset-inline: 18%;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__step {
+      min-height: 190px;
+      padding: 20px;
     }
 
     .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module {
@@ -694,7 +1148,95 @@
       border-bottom: 0;
     }
   }
+
+  @keyframes mellowClinicalMobileDrift {
+    from { transform: translate3d(0, 6px, 0) scale(0.99); }
+    to { transform: translate3d(0, -6px, 0) scale(1.01); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mellow-clinical-proof-{{ section.id }} *,
+    .mellow-clinical-proof-{{ section.id }} *::before,
+    .mellow-clinical-proof-{{ section.id }} *::after {
+      animation: none !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-reveal,
+    .mellow-clinical-proof-{{ section.id }} .mellow-reveal--up,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__evidence-strip.mellow-reveal--stagger > span,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__symptom-grid > *,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__bar-row,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__scale-item {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__module:hover,
+    .mellow-clinical-proof-{{ section.id }} .mellow-clinical-proof__button:hover {
+      transform: none;
+    }
+  }
+
 </style>
+
+<script>
+  (function () {
+    var root = document.querySelector('.mellow-clinical-proof-{{ section.id }}[data-mellow-clinical-proof]');
+    if (!root) return;
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var revealItems = Array.prototype.slice.call(root.querySelectorAll('[data-mellow-reveal]'));
+    var stepItems = Array.prototype.slice.call(root.querySelectorAll('[data-mellow-step]'));
+
+    root.querySelectorAll('.mellow-reveal--stagger').forEach(function (group) {
+      Array.prototype.slice.call(group.children).forEach(function (child, index) {
+        child.style.setProperty('--mellow-stagger-index', index);
+      });
+    });
+
+    root.querySelectorAll('.mellow-clinical-proof__symptom-grid, .mellow-clinical-proof__bar-visual, .mellow-clinical-proof__scale').forEach(function (group) {
+      Array.prototype.slice.call(group.children).forEach(function (child, index) {
+        child.style.setProperty('--mellow-stagger-index', index);
+      });
+    });
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+      stepItems.forEach(function (item) { item.classList.add('is-active'); });
+      return;
+    }
+
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      rootMargin: '0px 0px -12% 0px',
+      threshold: 0.16
+    });
+
+    revealItems.forEach(function (item) { revealObserver.observe(item); });
+
+    var stepObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-active');
+        } else {
+          entry.target.classList.remove('is-active');
+        }
+      });
+    }, {
+      rootMargin: '-18% 0px -42% 0px',
+      threshold: 0.32
+    });
+
+    stepItems.forEach(function (item) { stepObserver.observe(item); });
+  })();
+</script>
 
 {% schema %}
 {
