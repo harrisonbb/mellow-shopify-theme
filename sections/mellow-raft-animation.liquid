@@ -18,7 +18,7 @@
       /* Acid-block system alignment */
       --acid-line-1: 30%;
       --acid-line-2: 55%;
-      --acid-line-3: 78%;
+      --acid-line-3: 72%;
       --blocked-badge-top: calc(var(--raft-final-top) + 58px);
       --block-ripple-top: calc(var(--raft-final-top) + 56px);
       --acid-line-top: calc(var(--raft-final-top) + 58px);
@@ -623,15 +623,7 @@
     }
 
     .mellow-clinical-raft-animation .br1 {
-      left: calc(var(--acid-line-1) - 23px);
-    }
-
-    .mellow-clinical-raft-animation .br2 {
-      left: calc(var(--acid-line-2) - 23px);
-    }
-
-    .mellow-clinical-raft-animation .br3 {
-      left: calc(var(--acid-line-3) - 23px);
+      left: calc(50% - 23px);
     }
 
     .mellow-clinical-raft-animation .blocked-callout {
@@ -664,15 +656,7 @@
     }
 
     .mellow-clinical-raft-animation .bc1 {
-      left: var(--acid-line-1);
-    }
-
-    .mellow-clinical-raft-animation .bc2 {
-      left: var(--acid-line-2);
-    }
-
-    .mellow-clinical-raft-animation .bc3 {
-      left: var(--acid-line-3);
+      left: 50%;
     }
 
     @keyframes mellowRaftCalloutAppearClean {
@@ -1117,7 +1101,7 @@
         padding: 24px 16px;
         --acid-line-1: 30%;
         --acid-line-2: 55%;
-        --acid-line-3: 78%;
+        --acid-line-3: 72%;
         --blocked-badge-top: calc(var(--raft-final-top) + 58px);
         --block-ripple-top: calc(var(--raft-final-top) + 56px);
         --acid-line-top: calc(var(--raft-final-top) + 58px);
@@ -1351,12 +1335,8 @@
         </div>
 
         <div class="block-ripple br1"></div>
-        <div class="block-ripple br2"></div>
-        <div class="block-ripple br3"></div>
 
         <div class="blocked-callout bc1">Acid blocked</div>
-        <div class="blocked-callout bc2">Acid blocked</div>
-        <div class="blocked-callout bc3">Acid blocked</div>
       </div>
     </div>
   </div>
