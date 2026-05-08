@@ -1079,44 +1079,29 @@
     }
 
     @keyframes mellowAcidWaveRise {
-      /* Invisible during droplet fall and raft formation */
       0%, 72% {
         opacity: 0;
         transform: translateY(100%);
-        animation-timing-function: linear;
       }
 
-      /* Fast rise — raft is now formed, acid surges up */
-      78% {
-        opacity: .52;
-        transform: translateY(58%);
-        animation-timing-function: ease-out;
+      80% {
+        opacity: .65;
+        transform: translateY(42%);
       }
 
-      85% {
-        opacity: .90;
-        transform: translateY(8%);
-        animation-timing-function: ease-out;
-      }
-
-      /* Hit raft */
-      88% {
-        opacity: .96;
+      87% {
+        opacity: .94;
         transform: translateY(2%);
-        animation-timing-function: ease-in;
       }
 
-      /* Deflect — squish then fall away */
-      90% {
-        opacity: .88;
-        transform: translateY(5%) scaleY(.72) scaleX(1.03);
-        animation-timing-function: ease-in;
+      89% {
+        opacity: .90;
+        transform: translateY(4%) scaleY(.76) scaleX(1.02);
       }
 
-      /* Retreat and disappear */
-      96% {
-        opacity: .30;
-        transform: translateY(70%);
+      95% {
+        opacity: .24;
+        transform: translateY(76%);
       }
 
       100% {
