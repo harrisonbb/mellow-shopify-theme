@@ -33,6 +33,46 @@
       box-sizing: border-box;
     }
 
+
+    /* Scroll-triggered: all animations paused until .is-playing is added */
+    .mellow-clinical-raft-animation .drop,
+    .mellow-clinical-raft-animation .ripple,
+    .mellow-clinical-raft-animation .splash,
+    .mellow-clinical-raft-animation .splash::before,
+    .mellow-clinical-raft-animation .splash i,
+    .mellow-clinical-raft-animation .particle,
+    .mellow-clinical-raft-animation .pb,
+    .mellow-clinical-raft-animation .fragment,
+    .mellow-clinical-raft-animation .raft-haze,
+    .mellow-clinical-raft-animation .raft,
+    .mellow-clinical-raft-animation .raft-dot,
+    .mellow-clinical-raft-animation .heat,
+    .mellow-clinical-raft-animation .raft-label,
+    .mellow-clinical-raft-animation .droplet-callout,
+    .mellow-clinical-raft-animation .formation-callout,
+    .mellow-clinical-raft-animation .callout {
+      animation-play-state: paused;
+    }
+
+    .mellow-clinical-raft-animation.is-playing .drop,
+    .mellow-clinical-raft-animation.is-playing .ripple,
+    .mellow-clinical-raft-animation.is-playing .splash,
+    .mellow-clinical-raft-animation.is-playing .splash::before,
+    .mellow-clinical-raft-animation.is-playing .splash i,
+    .mellow-clinical-raft-animation.is-playing .particle,
+    .mellow-clinical-raft-animation.is-playing .pb,
+    .mellow-clinical-raft-animation.is-playing .fragment,
+    .mellow-clinical-raft-animation.is-playing .raft-haze,
+    .mellow-clinical-raft-animation.is-playing .raft,
+    .mellow-clinical-raft-animation.is-playing .raft-dot,
+    .mellow-clinical-raft-animation.is-playing .heat,
+    .mellow-clinical-raft-animation.is-playing .raft-label,
+    .mellow-clinical-raft-animation.is-playing .droplet-callout,
+    .mellow-clinical-raft-animation.is-playing .formation-callout,
+    .mellow-clinical-raft-animation.is-playing .callout {
+      animation-play-state: running;
+    }
+
     .mellow-clinical-raft-animation .raft-shell {
       max-width: 1280px;
       margin: 0 auto;
@@ -1043,8 +1083,8 @@
       font-weight: 800;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .90);
-      text-shadow: 0 1px 4px rgba(26, 45, 16, .18);
+      color: rgba(26, 45, 16, .82);
+      text-shadow: none;
       white-space: nowrap;
     }
 
@@ -1084,7 +1124,47 @@
             --acid-line-top: calc(var(--raft-final-top) + 58px);
       }
 
-      .mellow-clinical-raft-animation .raft-shell {
+  
+    /* Scroll-triggered: all animations paused until .is-playing is added */
+    .mellow-clinical-raft-animation .drop,
+    .mellow-clinical-raft-animation .ripple,
+    .mellow-clinical-raft-animation .splash,
+    .mellow-clinical-raft-animation .splash::before,
+    .mellow-clinical-raft-animation .splash i,
+    .mellow-clinical-raft-animation .particle,
+    .mellow-clinical-raft-animation .pb,
+    .mellow-clinical-raft-animation .fragment,
+    .mellow-clinical-raft-animation .raft-haze,
+    .mellow-clinical-raft-animation .raft,
+    .mellow-clinical-raft-animation .raft-dot,
+    .mellow-clinical-raft-animation .heat,
+    .mellow-clinical-raft-animation .raft-label,
+    .mellow-clinical-raft-animation .droplet-callout,
+    .mellow-clinical-raft-animation .formation-callout,
+    .mellow-clinical-raft-animation .callout {
+      animation-play-state: paused;
+    }
+
+    .mellow-clinical-raft-animation.is-playing .drop,
+    .mellow-clinical-raft-animation.is-playing .ripple,
+    .mellow-clinical-raft-animation.is-playing .splash,
+    .mellow-clinical-raft-animation.is-playing .splash::before,
+    .mellow-clinical-raft-animation.is-playing .splash i,
+    .mellow-clinical-raft-animation.is-playing .particle,
+    .mellow-clinical-raft-animation.is-playing .pb,
+    .mellow-clinical-raft-animation.is-playing .fragment,
+    .mellow-clinical-raft-animation.is-playing .raft-haze,
+    .mellow-clinical-raft-animation.is-playing .raft,
+    .mellow-clinical-raft-animation.is-playing .raft-dot,
+    .mellow-clinical-raft-animation.is-playing .heat,
+    .mellow-clinical-raft-animation.is-playing .raft-label,
+    .mellow-clinical-raft-animation.is-playing .droplet-callout,
+    .mellow-clinical-raft-animation.is-playing .formation-callout,
+    .mellow-clinical-raft-animation.is-playing .callout {
+      animation-play-state: running;
+    }
+
+    .mellow-clinical-raft-animation .raft-shell {
         grid-template-columns: 1fr;
       }
 
@@ -1306,6 +1386,34 @@
       </div>
     </div>
   </div>
+  <script>
+    (function () {
+      function initRaftObserver() {
+        var el = document.querySelector('.mellow-clinical-raft-animation');
+        if (!el) return;
+        if (!('IntersectionObserver' in window)) {
+          el.classList.add('is-playing');
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              el.classList.add('is-playing');
+            } else {
+              el.classList.remove('is-playing');
+            }
+          });
+        }, { threshold: 0.25 });
+        observer.observe(el);
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRaftObserver);
+      } else {
+        initRaftObserver();
+      }
+    })();
+  </script>
+
 </div>
 
 {% schema %}
