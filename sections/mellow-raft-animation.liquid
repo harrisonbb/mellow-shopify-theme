@@ -47,6 +47,8 @@
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
     .mellow-clinical-raft-animation .heat,
+    .mellow-clinical-raft-animation .h4,
+    .mellow-clinical-raft-animation .h5,
     .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
@@ -66,6 +68,8 @@
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
     .mellow-clinical-raft-animation.is-playing .heat,
+    .mellow-clinical-raft-animation.is-playing .h4,
+    .mellow-clinical-raft-animation.is-playing .h5,
     .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
@@ -250,7 +254,7 @@
       right: 0;
       bottom: 0;
       height: 22%;
-      background: linear-gradient(180deg, rgba(210, 45, 18, .02), rgba(210, 45, 18, .18));
+      background: linear-gradient(180deg, rgba(200, 34, 0, .04), rgba(200, 34, 0, .28));
       opacity: .9;
     }
 
@@ -624,28 +628,39 @@
 
     .mellow-clinical-raft-animation .heat path {
       fill: none;
-      stroke: rgba(210, 45, 18, .96);
-      stroke-width: 4.8;
+      stroke: #cc2200;
+      stroke-width: 4.4;
       stroke-linecap: round;
       filter:
-        drop-shadow(0 0 6px rgba(210, 45, 18, .55))
-        drop-shadow(0 0 16px rgba(210, 45, 18, .30))
-        drop-shadow(0 0 28px rgba(210, 45, 18, .14));
+        drop-shadow(0 0 5px rgba(200, 34, 0, .70))
+        drop-shadow(0 0 14px rgba(200, 34, 0, .38));
     }
 
     .mellow-clinical-raft-animation .h1 {
-      left: calc(var(--acid-line-1) - 3px);
-      animation-delay: .05s;
+      left: 22%;
+      animation-delay: .04s;
     }
 
     .mellow-clinical-raft-animation .h2 {
-      left: calc(var(--acid-line-2) - 3px);
-      animation-delay: .2s;
+      left: 36%;
+      height: 108px !important;
+      animation-delay: .18s;
     }
 
     .mellow-clinical-raft-animation .h3 {
-      left: calc(var(--acid-line-3) - 3px);
-      animation-delay: .1s;
+      left: 51%;
+      animation-delay: .08s;
+    }
+
+    .mellow-clinical-raft-animation .h4 {
+      left: 63%;
+      height: 96px !important;
+      animation-delay: .24s;
+    }
+
+    .mellow-clinical-raft-animation .h5 {
+      left: 76%;
+      animation-delay: .13s;
     }
 
 
@@ -1144,6 +1159,8 @@
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
     .mellow-clinical-raft-animation .heat,
+    .mellow-clinical-raft-animation .h4,
+    .mellow-clinical-raft-animation .h5,
     .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
@@ -1163,6 +1180,8 @@
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
     .mellow-clinical-raft-animation.is-playing .heat,
+    .mellow-clinical-raft-animation.is-playing .h4,
+    .mellow-clinical-raft-animation.is-playing .h5,
     .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
@@ -1184,20 +1203,14 @@
       }
 
       .mellow-clinical-raft-animation .heat path {
-        stroke-width: 4.0;
+        stroke-width: 3.6;
       }
 
-      .mellow-clinical-raft-animation .h1 {
-        left: calc(var(--acid-line-1) - 3px);
-      }
-
-      .mellow-clinical-raft-animation .h2 {
-        left: calc(var(--acid-line-2) - 3px);
-      }
-
-      .mellow-clinical-raft-animation .h3 {
-        left: calc(var(--acid-line-3) - 3px);
-      }
+      .mellow-clinical-raft-animation .h1 { left: 22%; }
+      .mellow-clinical-raft-animation .h2 { left: 36%; }
+      .mellow-clinical-raft-animation .h3 { left: 51%; }
+      .mellow-clinical-raft-animation .h4 { left: 63%; }
+      .mellow-clinical-raft-animation .h5 { left: 76%; }
 
       .mellow-clinical-raft-animation .droplet-callout {
         right: 32px;
@@ -1372,19 +1385,31 @@
 
         <div class="heat h1">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
+            <path d="M18 166 C42 150, 1 130, 24 106 C44 82, 2 62, 20 40 C38 20, 8 10, 22 0" />
           </svg>
         </div>
 
         <div class="heat h2">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
+            <path d="M22 166 C4 146, 38 122, 16 96 C2 74, 36 52, 14 30 C4 16, 32 8, 18 0" />
           </svg>
         </div>
 
         <div class="heat h3">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
+            <path d="M16 166 C38 144, 3 120, 26 94 C40 72, 6 50, 24 28 C36 12, 10 4, 20 0" />
+          </svg>
+        </div>
+
+        <div class="heat h4">
+          <svg viewBox="0 0 40 170" aria-hidden="true">
+            <path d="M24 166 C6 148, 36 128, 12 102 C0 78, 34 58, 16 36 C6 18, 30 8, 20 0" />
+          </svg>
+        </div>
+
+        <div class="heat h5">
+          <svg viewBox="0 0 40 170" aria-hidden="true">
+            <path d="M20 166 C40 150, 4 132, 26 108 C42 86, 8 66, 22 44 C34 24, 10 12, 18 0" />
           </svg>
         </div>
 
