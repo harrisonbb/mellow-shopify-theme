@@ -33,7 +33,6 @@
       box-sizing: border-box;
     }
 
-
     /* Scroll-triggered: all animations paused until .is-playing is added */
     .mellow-clinical-raft-animation .drop,
     .mellow-clinical-raft-animation .ripple,
@@ -46,13 +45,9 @@
     .mellow-clinical-raft-animation .raft-haze,
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
-
-
-
-
-
     .mellow-clinical-raft-animation .raft-text,
     .mellow-clinical-raft-animation .acid-wave,
+    .mellow-clinical-raft-animation .acid-wave-inner,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
     .mellow-clinical-raft-animation .callout {
@@ -70,13 +65,9 @@
     .mellow-clinical-raft-animation.is-playing .raft-haze,
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
-
-
-
-
-
     .mellow-clinical-raft-animation.is-playing .raft-text,
     .mellow-clinical-raft-animation.is-playing .acid-wave,
+    .mellow-clinical-raft-animation.is-playing .acid-wave-inner,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
     .mellow-clinical-raft-animation.is-playing .callout {
@@ -615,9 +606,59 @@
       pointer-events: none;
     }
 
+    .mellow-clinical-raft-animation .acid-wave {
+      position: absolute;
+      z-index: 40;
+      left: -2%;
+      right: -2%;
+      bottom: 0;
+      height: 78%;
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: 50% 100%;
+      transform: translateY(105%);
+      animation: mellowAcidWaveRise var(--duration) cubic-bezier(.22,.62,.22,1) infinite;
+      will-change: transform, opacity;
+    }
 
+    .mellow-clinical-raft-animation .acid-wave-inner {
+      width: 100%;
+      height: 100%;
+      transform-origin: 50% 100%;
+      animation: mellowAcidWaveImpact var(--duration) cubic-bezier(.22,.62,.22,1) infinite;
+      will-change: transform;
+    }
 
+    .mellow-clinical-raft-animation .acid-wave svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
+    .mellow-clinical-raft-animation .wave-fill {
+      fill: rgba(208, 74, 42, .58);
+    }
+
+    .mellow-clinical-raft-animation .wave-sheen {
+      fill: rgba(225, 95, 55, .30);
+    }
+
+    .mellow-clinical-raft-animation .raft-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(26, 45, 16, .82);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftTextAppear var(--duration) ease-in-out infinite;
+    }
 
     @keyframes mellowRaftCalloutAppearClean {
       0%, 66% {
@@ -990,43 +1031,73 @@
       }
     }
 
+    @keyframes mellowAcidWaveRise {
+      0%, 70% {
+        opacity: 0;
+        transform: translateY(105%);
+      }
+
       74% {
-        opacity: .72;
-        transform: translateY(28px) scaleY(.58) scaleX(1.1) translateX(-2px);
+        opacity: .28;
+        transform: translateY(72%);
       }
 
-      78% {
+      80% {
+        opacity: .78;
+        transform: translateY(38%);
+      }
+
+      85% {
         opacity: .96;
-        transform: translateY(8px) scaleY(.88) scaleX(.95) translateX(2px);
+        transform: translateY(13%);
       }
 
-      82% {
+      88% {
         opacity: 1;
-        transform: translateY(-4px) scaleY(1.06) scaleX(1.04) translateX(-1px);
+        transform: translateY(4%);
       }
 
-      86% {
-        opacity: 1;
-        transform: translateY(0) scaleY(1) scaleX(1) translateX(0);
+      91% {
+        opacity: .92;
+        transform: translateY(9%);
       }
 
-      90% {
-        opacity: .88;
-        transform: translateY(4px) scaleY(.94) scaleX(1.02) translateX(1px);
-      }
-
-      95% {
-        opacity: .52;
-        transform: translateY(18px) scaleY(.68) scaleX(.9);
+      96% {
+        opacity: .26;
+        transform: translateY(78%);
       }
 
       100% {
         opacity: 0;
-        transform: translateY(38px) scaleY(.28) scaleX(.7);
+        transform: translateY(105%);
       }
     }
 
-      89% {
+    @keyframes mellowAcidWaveImpact {
+      0%, 84% {
+        transform: scaleY(1) scaleX(1);
+      }
+
+      88% {
+        transform: scaleY(.72) scaleX(1.04);
+      }
+
+      91% {
+        transform: scaleY(.58) scaleX(1.08);
+      }
+
+      96%, 100% {
+        transform: scaleY(.86) scaleX(1);
+      }
+    }
+
+    @keyframes mellowRaftTextAppear {
+      0%, 84% {
+        opacity: 0;
+        transform: translateY(2px) scale(.98);
+      }
+
+      88% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
@@ -1036,103 +1107,10 @@
         transform: translateY(0) scale(1);
       }
 
-      98% {
+      98%, 100% {
         opacity: 0;
         transform: translateY(-1px) scale(.99);
       }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    .mellow-clinical-raft-animation .acid-wave {
-      position: absolute;
-      z-index: 30;
-      left: -2%;
-      right: -2%;
-      bottom: 0;
-      height: 58%;
-      pointer-events: none;
-      opacity: 0;
-      transform-origin: 50% 100%;
-      animation: mellowAcidWaveRise var(--duration) linear infinite;
-    }
-
-    .mellow-clinical-raft-animation .acid-wave-inner {
-      width: 100%;
-      height: 100%;
-    }
-
-    .mellow-clinical-raft-animation .acid-wave svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .mellow-clinical-raft-animation .wave-fill {
-      fill: rgba(200, 34, 0, .42);
-    }
-
-    .mellow-clinical-raft-animation .wave-sheen {
-      fill: rgba(225, 60, 15, .20);
-    }
-
-    @keyframes mellowAcidWaveRise {
-      0%, 72% {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-
-      80% {
-        opacity: .65;
-        transform: translateY(42%);
-      }
-
-      87% {
-        opacity: .94;
-        transform: translateY(2%);
-      }
-
-      89% {
-        opacity: .90;
-        transform: translateY(4%) scaleY(.76) scaleX(1.02);
-      }
-
-      95% {
-        opacity: .24;
-        transform: translateY(76%);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-    }
-
-    .mellow-clinical-raft-animation .raft-text {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(26, 45, 16, .82);
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      animation: mellowRaftTextAppear var(--duration) ease-in-out infinite;
-    }
-
-    @keyframes mellowRaftTextAppear {
-      0%, 86% { opacity: 0; }
-      89%      { opacity: 1; }
-      93%      { opacity: 1; }
-      98%      { opacity: 0; }
-      100%     { opacity: 0; }
     }
 
     @media (max-width: 900px) {
@@ -1141,60 +1119,10 @@
         --acid-line-1: 30%;
         --acid-line-2: 55%;
         --acid-line-3: 72%;
-            --acid-line-top: calc(var(--raft-final-top) + 58px);
+        --acid-line-top: calc(var(--raft-final-top) + 58px);
       }
 
-  
-    /* Scroll-triggered: all animations paused until .is-playing is added */
-    .mellow-clinical-raft-animation .drop,
-    .mellow-clinical-raft-animation .ripple,
-    .mellow-clinical-raft-animation .splash,
-    .mellow-clinical-raft-animation .splash::before,
-    .mellow-clinical-raft-animation .splash i,
-    .mellow-clinical-raft-animation .particle,
-    .mellow-clinical-raft-animation .pb,
-    .mellow-clinical-raft-animation .fragment,
-    .mellow-clinical-raft-animation .raft-haze,
-    .mellow-clinical-raft-animation .raft,
-    .mellow-clinical-raft-animation .raft-dot,
-
-
-
-
-
-    .mellow-clinical-raft-animation .raft-text,
-    .mellow-clinical-raft-animation .acid-wave,
-    .mellow-clinical-raft-animation .droplet-callout,
-    .mellow-clinical-raft-animation .formation-callout,
-    .mellow-clinical-raft-animation .callout {
-      animation-play-state: paused;
-    }
-
-    .mellow-clinical-raft-animation.is-playing .drop,
-    .mellow-clinical-raft-animation.is-playing .ripple,
-    .mellow-clinical-raft-animation.is-playing .splash,
-    .mellow-clinical-raft-animation.is-playing .splash::before,
-    .mellow-clinical-raft-animation.is-playing .splash i,
-    .mellow-clinical-raft-animation.is-playing .particle,
-    .mellow-clinical-raft-animation.is-playing .pb,
-    .mellow-clinical-raft-animation.is-playing .fragment,
-    .mellow-clinical-raft-animation.is-playing .raft-haze,
-    .mellow-clinical-raft-animation.is-playing .raft,
-    .mellow-clinical-raft-animation.is-playing .raft-dot,
-
-
-
-
-
-    .mellow-clinical-raft-animation.is-playing .raft-text,
-    .mellow-clinical-raft-animation.is-playing .acid-wave,
-    .mellow-clinical-raft-animation.is-playing .droplet-callout,
-    .mellow-clinical-raft-animation.is-playing .formation-callout,
-    .mellow-clinical-raft-animation.is-playing .callout {
-      animation-play-state: running;
-    }
-
-    .mellow-clinical-raft-animation .raft-shell {
+      .mellow-clinical-raft-animation .raft-shell {
         grid-template-columns: 1fr;
       }
 
@@ -1394,15 +1322,18 @@
       </div>
     </div>
   </div>
+
   <script>
     (function () {
       function initRaftObserver() {
         var el = document.querySelector('.mellow-clinical-raft-animation');
         if (!el) return;
+
         if (!('IntersectionObserver' in window)) {
           el.classList.add('is-playing');
           return;
         }
+
         var observer = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -1412,8 +1343,10 @@
             }
           });
         }, { threshold: 0.25 });
+
         observer.observe(el);
       }
+
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initRaftObserver);
       } else {
@@ -1421,7 +1354,6 @@
       }
     })();
   </script>
-
 </div>
 
 {% schema %}
