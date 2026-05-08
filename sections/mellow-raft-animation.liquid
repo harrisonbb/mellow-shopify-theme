@@ -627,19 +627,19 @@
       position: absolute;
       z-index: 1001;
       top: calc(var(--raft-final-top) + 76px);
-      width: 58px;
-      min-width: 58px;
-      max-width: 58px;
-      height: 19px;
-      min-height: 19px;
+      width: 86px;
+      min-width: 86px;
+      max-width: 86px;
+      height: 20px;
+      min-height: 20px;
       padding: 0;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .64);
+      background: rgba(255, 255, 255, .66);
       border: 1px solid rgba(208, 74, 42, .075);
       color: rgba(208, 74, 42, .78);
-      font-size: 7.2px;
+      font-size: 7px;
       font-weight: 850;
-      letter-spacing: .045em;
+      letter-spacing: .035em;
       line-height: 1;
       text-transform: uppercase;
       text-align: center;
@@ -656,7 +656,7 @@
     }
 
     .mellow-clinical-raft-animation .bc1 {
-      left: 29%;
+      left: 27%;
     }
 
     .mellow-clinical-raft-animation .bc2 {
@@ -664,7 +664,7 @@
     }
 
     .mellow-clinical-raft-animation .bc3 {
-      left: 72%;
+      left: 74%;
     }
 
     @keyframes mellowRaftCalloutAppearClean {
@@ -1126,13 +1126,13 @@
 
       .mellow-clinical-raft-animation .blocked-callout {
         top: calc(var(--raft-final-top) + 72px);
-        width: 50px;
-        min-width: 50px;
-        max-width: 50px;
-        height: 17px;
-        min-height: 17px;
-        font-size: 6.2px;
-        letter-spacing: .035em;
+        width: 74px;
+        min-width: 74px;
+        max-width: 74px;
+        height: 18px;
+        min-height: 18px;
+        font-size: 5.8px;
+        letter-spacing: .02em;
       }
 
       .mellow-clinical-raft-animation .heat {
@@ -1141,7 +1141,7 @@
       }
 
       .mellow-clinical-raft-animation .bc1 {
-        left: 29%;
+        left: 27%;
       }
 
       .mellow-clinical-raft-animation .bc2 {
@@ -1149,7 +1149,7 @@
       }
 
       .mellow-clinical-raft-animation .bc3 {
-        left: 72%;
+        left: 74%;
       }
 
       .mellow-clinical-raft-animation .droplet-callout {
@@ -1168,6 +1168,103 @@
         top: 52px !important;
       }
     }
+
+/* HARD FIX — Acid blocked badges */
+.mellow-clinical-raft-animation .blocked-callout {
+  position: absolute !important;
+  z-index: 1001 !important;
+
+  top: calc(var(--raft-final-top) + 78px) !important;
+
+  width: 104px !important;
+  min-width: 104px !important;
+  max-width: 104px !important;
+  height: 22px !important;
+  min-height: 22px !important;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: rgba(255, 255, 255, .68) !important;
+  border: 1px solid rgba(208, 74, 42, .08) !important;
+  box-shadow: 0 4px 10px rgba(208, 74, 42, .035) !important;
+
+  color: rgba(208, 74, 42, .82) !important;
+  font-size: 7.2px !important;
+  font-weight: 850 !important;
+  letter-spacing: .03em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+
+  opacity: 0;
+  pointer-events: none !important;
+  transform: translateX(-50%);
+  animation: mellowRaftBlockedCalloutClean var(--duration) ease-out infinite !important;
+}
+
+.mellow-clinical-raft-animation .bc1 {
+  left: 25.5% !important;
+}
+
+.mellow-clinical-raft-animation .bc2 {
+  left: 50% !important;
+}
+
+.mellow-clinical-raft-animation .bc3 {
+  left: 75.5% !important;
+}
+
+/* Keep acid lines lower so badges don't cover them */
+.mellow-clinical-raft-animation .heat {
+  top: calc(var(--raft-final-top) + 106px) !important;
+  height: 74px !important;
+}
+
+.mellow-clinical-raft-animation .block-ripple {
+  top: calc(var(--raft-final-top) + 90px) !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .mellow-clinical-raft-animation .blocked-callout {
+    width: 86px !important;
+    min-width: 86px !important;
+    max-width: 86px !important;
+    height: 19px !important;
+    min-height: 19px !important;
+    font-size: 6px !important;
+    letter-spacing: .015em !important;
+    top: calc(var(--raft-final-top) + 76px) !important;
+  }
+
+  .mellow-clinical-raft-animation .bc1 {
+    left: 25% !important;
+  }
+
+  .mellow-clinical-raft-animation .bc2 {
+    left: 50% !important;
+  }
+
+  .mellow-clinical-raft-animation .bc3 {
+    left: 75% !important;
+  }
+
+  .mellow-clinical-raft-animation .heat {
+    top: calc(var(--raft-final-top) + 100px) !important;
+    height: 68px !important;
+  }
+}
+
+
+
+
   </style>
 
   <div class="raft-shell">
@@ -1345,9 +1442,9 @@
         <div class="block-ripple br2"></div>
         <div class="block-ripple br3"></div>
 
-        <div class="blocked-callout bc1" aria-label="Acid blocked">Blocked</div>
-        <div class="blocked-callout bc2" aria-label="Acid blocked">Blocked</div>
-        <div class="blocked-callout bc3" aria-label="Acid blocked">Blocked</div>
+        <div class="blocked-callout bc1">Acid blocked</div>
+        <div class="blocked-callout bc2">Acid blocked</div>
+        <div class="blocked-callout bc3">Acid blocked</div>
       </div>
     </div>
   </div>
