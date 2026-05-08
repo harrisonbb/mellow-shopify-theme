@@ -9,7 +9,7 @@
       --forest: #1A2D10;
       --forest-soft: rgba(26, 45, 16, 0.50);
       --orange: #D04A2A;
-      --gold: #BE9335;
+      --gold: #D6A64A;
       --cream: #F0EBE0;
       --page: #FBFCF7;
       --raft-birth-top: 31%;
@@ -82,12 +82,11 @@
       gap: clamp(28px, 5vw, 72px);
       align-items: center;
       background:
-        radial-gradient(circle at 12% 12%, rgba(190, 147, 53, .08), transparent 32%),
-        radial-gradient(circle at 88% 10%, rgba(26, 45, 16, .035), transparent 34%),
-        linear-gradient(135deg, #FBFAF5 0%, #FFFFFF 56%, #F5EFE3 100%);
-      border: 1px solid rgba(26, 45, 16, .10);
-      border-radius: 38px;
-      box-shadow: 0 30px 90px rgba(26, 45, 16, .07);
+        radial-gradient(circle at 10% 14%, rgba(214, 166, 74, .12), transparent 34%),
+        linear-gradient(135deg, #faf8f2 0%, #ffffff 58%, #f8f5ec 100%);
+      border: 1px solid rgba(26, 45, 16, .12);
+      border-radius: 34px;
+      box-shadow: 0 28px 80px rgba(26, 45, 16, .08);
       padding: clamp(22px, 4vw, 56px);
     }
 
@@ -123,141 +122,59 @@
       position: relative;
       aspect-ratio: 1.56 / 1;
       min-height: 360px;
-      border-radius: 30px;
-      padding: clamp(16px, 1.9vw, 24px);
-      background: rgba(255, 255, 255, .34);
-      border: 1px solid rgba(26, 45, 16, .09);
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .58),
-        0 16px 40px rgba(26, 45, 16, .04);
+      border-radius: 26px;
+      padding: clamp(18px, 2.2vw, 28px);
+      background: rgba(255, 255, 255, .62);
+      border: 1px solid rgba(26, 45, 16, .12);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .58);
     }
 
     .mellow-clinical-raft-animation .mechanism {
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 340px;
+      min-height: 320px;
       overflow: hidden;
-      border-radius: 26px;
+      border-radius: 24px;
       background:
-        radial-gradient(circle at 50% 8%, rgba(255, 255, 255, .76), transparent 42%),
-        radial-gradient(circle at 48% 72%, rgba(218, 115, 93, .06), transparent 34%),
-        linear-gradient(180deg, #FBFAF5 0%, #F2EDE2 74%, #EDE4D6 100%);
-      border: 1px solid rgba(26, 45, 16, .055);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .50);
-    }
-
-    .mellow-clinical-raft-animation .mechanism::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .28;
-      background-image:
-        radial-gradient(rgba(26, 45, 16, .22) .72px, transparent .72px);
-      background-size: 10px 10px;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 88%, transparent 100%);
+        radial-gradient(circle at 48% 78%, rgba(208, 74, 42, .08), transparent 34%),
+        linear-gradient(180deg, #e5dfd2 0%, #eee9dd 72%, #e7e0d1 100%);
     }
 
     .mellow-clinical-raft-animation .layer-label {
       position: absolute;
-      z-index: 80;
-      top: 22px;
-      left: 28px;
+      z-index: 60;
+      top: 20px;
+      left: 24px;
       display: inline-flex;
       align-items: center;
-      min-height: 42px;
-      padding: 0 22px;
+      min-height: 36px;
+      padding: 0 16px;
       border-radius: 999px;
-      background: rgba(251, 250, 245, .72);
-      border: 1px solid rgba(190, 147, 53, .78);
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(26, 45, 16, .08);
       color: var(--forest);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing: .30em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      box-shadow: 0 10px 24px rgba(26, 45, 16, .03);
+      box-shadow: 0 6px 18px rgba(26, 45, 16, .05);
     }
 
-    .mellow-clinical-raft-animation .mockup-callout {
+    .mellow-clinical-raft-animation .acid-label {
       position: absolute;
-      z-index: 85;
-      top: 76px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: grid;
-      justify-items: center;
-      gap: 10px;
-      width: 270px;
-      pointer-events: none;
-    }
-
-    .mellow-clinical-raft-animation .mockup-shield {
-      width: 52px;
-      height: 52px;
+      z-index: 60;
+      left: 24px;
+      bottom: 22px;
+      padding: 11px 16px;
       border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(251, 250, 245, .70);
-      border: 1px solid rgba(190, 147, 53, .78);
-      box-shadow: 0 10px 22px rgba(26, 45, 16, .04);
-    }
-
-    .mellow-clinical-raft-animation .mockup-shield svg {
-      width: 29px;
-      height: 29px;
-      display: block;
-    }
-
-    .mellow-clinical-raft-animation .mockup-shield path {
-      fill: none;
-      stroke: var(--forest);
-      stroke-width: 1.75;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .mellow-clinical-raft-animation .mockup-callout p {
-      margin: 0;
-      color: var(--forest);
-      text-align: center;
-      font-size: 14px;
-      font-weight: 650;
-      line-height: 1.22;
-      letter-spacing: .035em;
-    }
-
-    .mellow-clinical-raft-animation .mockup-guide {
-      position: absolute;
-      z-index: 84;
-      left: 50%;
-      top: 181px;
-      width: 1px;
-      height: 142px;
-      transform: translateX(-50%);
-      background: rgba(190, 147, 53, .72);
-      pointer-events: none;
-    }
-
-    .mellow-clinical-raft-animation .mockup-guide::before,
-    .mellow-clinical-raft-animation .mockup-guide::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      transform: translateX(-50%);
-      background: var(--gold);
-    }
-
-    .mellow-clinical-raft-animation .mockup-guide::before {
-      top: 68px;
-    }
-
-    .mellow-clinical-raft-animation .mockup-guide::after {
-      bottom: -2px;
+      background: rgba(255, 255, 255, .74);
+      border: 1px solid rgba(26, 45, 16, .08);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     .mellow-clinical-raft-animation .callout {
@@ -265,9 +182,9 @@
       z-index: 59;
       left: 230px !important;
       right: auto !important;
-      top: 60px !important;
-      width: 84px !important;
-      height: 52px !important;
+      top: 52px !important;
+      width: 82px !important;
+      height: 48px !important;
       pointer-events: none;
       opacity: 0;
       transform: none !important;
@@ -277,76 +194,10 @@
     .mellow-clinical-raft-animation .callout path,
     .mellow-clinical-raft-animation .callout polyline {
       fill: none;
-      stroke: rgba(190, 147, 53, .78);
-      stroke-width: 1.65;
+      stroke: var(--forest-soft);
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
-    }
-
-    .mellow-clinical-raft-animation .acid {
-      position: absolute;
-      z-index: 2;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 30%;
-      background:
-        linear-gradient(180deg, rgba(243, 162, 139, .78), rgba(218, 115, 93, .88));
-      opacity: 1;
-    }
-
-    .mellow-clinical-raft-animation .acid::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 100%;
-      opacity: .26;
-      filter: none;
-      background-image:
-        radial-gradient(rgba(255, 255, 255, .82) .72px, transparent .72px);
-      background-size: 10px 10px;
-    }
-
-    .mellow-clinical-raft-animation .acid-label {
-      position: absolute;
-      z-index: 86;
-      left: 50%;
-      bottom: 26px;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      min-height: 42px;
-      padding: 0 24px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .17);
-      border: 1px solid rgba(255, 255, 255, .54);
-      color: rgba(26, 45, 16, .88);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      backdrop-filter: blur(2px);
-      box-shadow: none;
-    }
-
-    .mellow-clinical-raft-animation .acid-caption {
-      position: absolute;
-      z-index: 86;
-      left: 50%;
-      bottom: 9px;
-      transform: translateX(-50%);
-      width: calc(100% - 48px);
-      margin: 0;
-      color: rgba(26, 45, 16, .88);
-      font-size: 11px;
-      line-height: 1.25;
-      text-align: center;
-      font-weight: 550;
-      letter-spacing: .01em;
-      pointer-events: none;
     }
 
     .mellow-clinical-raft-animation .droplet-callout {
@@ -377,15 +228,52 @@
     .mellow-clinical-raft-animation .formation-callout__pill {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(251, 250, 245, .70);
-      border: 1px solid rgba(190, 147, 53, .26);
-      color: rgba(26, 45, 16, .68);
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(26,45,16,.075);
+      color: rgba(26,45,16,.82);
       font-size: 10px;
       font-weight: 850;
       letter-spacing: .075em;
       text-transform: uppercase;
-      box-shadow: 0 8px 18px rgba(26, 45, 16, .025);
+      box-shadow: 0 6px 14px rgba(26,45,16,.045);
       white-space: nowrap;
+    }
+
+    .mellow-clinical-raft-animation .formation-callout__pill {
+      color: rgba(26,45,16,.78);
+      background: rgba(255,255,255,.70);
+    }
+
+    .mellow-clinical-raft-animation .acid {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 22%;
+      background: linear-gradient(180deg, rgba(200, 34, 0, .04), rgba(200, 34, 0, .28));
+      opacity: .9;
+    }
+
+    .mellow-clinical-raft-animation .acid::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 18px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(208, 74, 42, .08) 16%,
+          rgba(208, 74, 42, .14) 34%,
+          rgba(208, 74, 42, .08) 52%,
+          rgba(208, 74, 42, .13) 72%,
+          transparent 100%
+        );
+      opacity: .55;
+      filter: blur(6px);
     }
 
     .mellow-clinical-raft-animation .drop {
@@ -433,7 +321,7 @@
       width: 34px;
       height: 10px;
       border-radius: 999px;
-      border: 1.5px solid rgba(190, 147, 53, .42);
+      border: 1.5px solid rgba(228, 184, 90, .54);
       opacity: 0;
       animation: mellowRaftRippleClean var(--duration) ease-out infinite;
     }
@@ -476,7 +364,7 @@
       width: 28px;
       height: 7px;
       border-radius: 999px;
-      background: rgba(190, 147, 53, .18);
+      background: rgba(228, 184, 90, .24);
       filter: blur(2px);
       transform: translateX(-50%) scaleX(.4);
       opacity: 0;
@@ -491,7 +379,7 @@
       height: var(--s, 4px);
       border-radius: 999px;
       background: var(--c, rgba(255, 247, 232, .70));
-      box-shadow: 0 0 6px rgba(190, 147, 53, .28);
+      box-shadow: 0 0 8px rgba(228, 184, 90, .45);
       opacity: 0;
       transform: translate(-50%, 0) scale(.4);
       animation: mellowRaftSplashDotClean var(--duration) cubic-bezier(.2,.4,.12,1) infinite;
@@ -537,7 +425,7 @@
       height: var(--s, 6px);
       border-radius: 999px;
       background: var(--c, rgba(255, 247, 232, .68));
-      box-shadow: 0 0 8px rgba(190, 147, 53, .30);
+      box-shadow: 0 0 13px rgba(228, 184, 90, .72);
       opacity: 0;
       pointer-events: none;
     }
@@ -653,18 +541,18 @@
       visibility: visible !important;
       position: absolute;
       z-index: 998;
-      left: 4%;
+      left: 3%;
       top: var(--raft-birth-top);
-      width: 92%;
-      height: 62px;
+      width: 94%;
+      height: 38px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 24% 50%, rgba(255, 247, 232, .34), transparent 22%),
-        radial-gradient(circle at 52% 50%, rgba(190, 147, 53, .16), transparent 24%),
-        radial-gradient(circle at 76% 50%, rgba(175, 201, 136, .24), transparent 24%),
-        linear-gradient(180deg, rgba(255, 247, 232, .18), rgba(175, 201, 136, .17));
+        radial-gradient(circle at 22% 50%, rgba(255, 247, 232, .38), transparent 18%),
+        radial-gradient(circle at 46% 48%, rgba(228, 184, 90, .22), transparent 16%),
+        radial-gradient(circle at 70% 52%, rgba(184, 201, 130, .28), transparent 18%),
+        linear-gradient(180deg, rgba(255, 247, 232, .22), rgba(184, 201, 130, .18));
       opacity: 0;
-      filter: blur(13px);
+      filter: blur(10px);
       transform-origin: 50% 50%;
       animation: mellowRaftHazeSHOWClean var(--duration) ease-in-out infinite;
     }
@@ -674,72 +562,46 @@
       visibility: visible !important;
       position: absolute !important;
       z-index: 999 !important;
-      left: 4% !important;
+      left: 3% !important;
       top: var(--raft-birth-top) !important;
-      width: 92% !important;
-      height: 72px !important;
+      width: 94% !important;
+      height: 58px !important;
       border-radius: 999px;
       background:
-        linear-gradient(
-          180deg,
-          rgba(238, 245, 216, .98) 0%,
-          rgba(217, 232, 184, .97) 48%,
-          rgba(175, 201, 136, .95) 100%
-        );
-      border: 1px solid rgba(26, 45, 16, .12) !important;
+        linear-gradient(180deg, rgba(242, 248, 214, .96) 0%, rgba(202, 218, 151, .94) 56%, rgba(157, 180, 109, .88) 100%);
+      border: none !important;
       outline: none !important;
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 245, .76),
-        inset 0 -14px 22px rgba(26, 45, 16, .045),
-        0 18px 34px rgba(26, 45, 16, .10);
+        inset 0 12px 18px rgba(255, 255, 235, .25),
+        0 12px 26px rgba(17, 31, 18, .08);
       opacity: 0;
       transform-origin: 50% 50%;
       animation: mellowRaftGelSHOWClean var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
       will-change: opacity, transform, filter;
       pointer-events: none;
-      overflow: hidden;
     }
 
-    .mellow-clinical-raft-animation .raft::before {
-      content: "" !important;
-      display: block !important;
-      position: absolute;
-      inset: 15px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(190, 147, 53, .74);
-      outline: 0 !important;
-      pointer-events: none;
-      opacity: .95;
-    }
-
+    .mellow-clinical-raft-animation .raft::before,
     .mellow-clinical-raft-animation .raft::after {
-      content: "" !important;
-      display: block !important;
-      position: absolute;
-      inset: 0;
+      content: none !important;
+      display: none !important;
       border: 0 !important;
       outline: 0 !important;
-      opacity: .24;
-      pointer-events: none;
-      background-image:
-        radial-gradient(rgba(26, 45, 16, .34) .68px, transparent .68px);
-      background-size: 10px 10px;
-      mask-image: linear-gradient(90deg, transparent 0%, black 9%, black 91%, transparent 100%);
     }
 
     .mellow-clinical-raft-animation .raft-forcefield {
       position: absolute;
       z-index: 996;
-      left: 7%;
+      left: 5%;
       top: calc(var(--raft-birth-top) + 54px);
-      width: 86%;
-      height: 26px;
+      width: 90%;
+      height: 32px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255, 247, 232, .20), transparent 64%),
-        linear-gradient(180deg, rgba(221, 232, 200, .13), rgba(221, 232, 200, 0));
+        radial-gradient(circle at 50% 50%, rgba(255, 247, 232, .34), transparent 62%),
+        linear-gradient(180deg, rgba(242, 248, 214, .25), rgba(242, 248, 214, 0));
       opacity: 0;
-      filter: blur(12px);
+      filter: blur(10px);
       transform-origin: 50% 50%;
       pointer-events: none;
       animation: mellowRaftForcefieldPulse var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
@@ -757,8 +619,8 @@
       width: var(--s, 4px);
       height: var(--s, 4px);
       border-radius: 999px;
-      background: rgba(255, 247, 232, .42);
-      box-shadow: none;
+      background: var(--c, rgba(255, 247, 232, .72));
+      box-shadow: 0 0 6px rgba(255, 247, 232, .18);
       opacity: 0;
       animation: mellowRaftDotsSHOWClean var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
       pointer-events: none;
@@ -766,11 +628,11 @@
 
     .mellow-clinical-raft-animation .acid-wave {
       position: absolute;
-      z-index: 38;
+      z-index: 40;
       left: -2%;
       right: -2%;
       bottom: 0;
-      height: 66%;
+      height: 82%;
       pointer-events: none;
       opacity: 0;
       transform-origin: 50% 100%;
@@ -796,41 +658,28 @@
     }
 
     .mellow-clinical-raft-animation .wave-fill {
-      fill: rgba(218, 115, 93, .72);
+      fill: rgba(208, 74, 42, .50);
     }
 
     .mellow-clinical-raft-animation .wave-sheen {
-      fill: rgba(243, 162, 139, .34);
+      fill: rgba(225, 95, 55, .24);
     }
 
     .mellow-clinical-raft-animation .raft-text {
       position: absolute;
       inset: 0;
-      z-index: 4;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .36em;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(26, 45, 16, .94);
+      color: rgba(26, 45, 16, .82);
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
       animation: mellowRaftTextAppear var(--duration) ease-in-out infinite;
-    }
-
-    .mellow-clinical-raft-animation .raft-text::before,
-    .mellow-clinical-raft-animation .raft-text::after {
-      content: "";
-      width: 7px;
-      height: 7px;
-      margin: 0 18px;
-      border-radius: 999px;
-      background: var(--gold);
-      opacity: .95;
-      flex: 0 0 auto;
     }
 
     @keyframes mellowRaftCalloutAppearClean {
@@ -1334,81 +1183,16 @@
       }
 
       .mellow-clinical-raft-animation .device {
-        min-height: 330px;
-        padding: 14px;
+        min-height: 300px;
       }
 
-      .mellow-clinical-raft-animation .mechanism {
-        min-height: 330px;
+      .mellow-clinical-raft-animation .heat {
+        width: 28px !important;
+        height: 104px !important;
       }
 
-      .mellow-clinical-raft-animation .layer-label {
-        top: 18px;
-        left: 18px;
-        min-height: 36px;
-        padding: 0 15px;
-        font-size: 9px;
-        letter-spacing: .20em;
-      }
-
-      .mellow-clinical-raft-animation .mockup-callout {
-        top: 68px;
-        width: 230px;
-      }
-
-      .mellow-clinical-raft-animation .mockup-shield {
-        width: 44px;
-        height: 44px;
-      }
-
-      .mellow-clinical-raft-animation .mockup-callout p {
-        font-size: 12px;
-      }
-
-      .mellow-clinical-raft-animation .mockup-guide {
-        top: 166px;
-        height: 120px;
-      }
-
-      .mellow-clinical-raft-animation .mockup-guide::before {
-        top: 54px;
-      }
-
-      .mellow-clinical-raft-animation .raft {
-        left: 5% !important;
-        width: 90% !important;
-        height: 64px !important;
-      }
-
-      .mellow-clinical-raft-animation .raft::before {
-        inset: 13px 20px;
-      }
-
-      .mellow-clinical-raft-animation .raft-text {
-        font-size: 10px;
-        letter-spacing: .24em;
-      }
-
-      .mellow-clinical-raft-animation .raft-text::before,
-      .mellow-clinical-raft-animation .raft-text::after {
-        width: 5px;
-        height: 5px;
-        margin: 0 10px;
-      }
-
-      .mellow-clinical-raft-animation .acid-label {
-        max-width: calc(100% - 36px);
-        min-height: 38px;
-        padding: 0 14px;
-        font-size: 8px;
-        letter-spacing: .14em;
-        white-space: normal;
-        text-align: center;
-      }
-
-      .mellow-clinical-raft-animation .acid-caption {
-        font-size: 10px;
-        bottom: 8px;
+      .mellow-clinical-raft-animation .heat path {
+        stroke-width: 3.6;
       }
 
       .mellow-clinical-raft-animation .droplet-callout {
@@ -1427,6 +1211,10 @@
         top: 52px !important;
       }
     }
+
+
+
+    
   </style>
 
   <div class="raft-shell">
@@ -1442,18 +1230,6 @@
       <div class="mechanism">
         <div class="layer-label">MellowRaft™ Layer</div>
 
-        <div class="mockup-callout" aria-hidden="true">
-          <div class="mockup-shield">
-            <svg viewBox="0 0 32 32">
-              <path d="M16 3.8 25 7.3v6.8c0 6.3-3.8 11.6-9 14-5.2-2.4-9-7.7-9-14V7.3L16 3.8Z" />
-              <path d="m11.6 16.4 2.8 2.8 6-6.6" />
-            </svg>
-          </div>
-          <p>Forms a floating barrier<br>above stomach contents</p>
-        </div>
-
-        <div class="mockup-guide" aria-hidden="true"></div>
-
         <svg class="callout" viewBox="0 0 82 48" aria-hidden="true">
           <path d="M4 8 C 24 8, 36 17, 50 31" />
           <polyline points="43,30 51,33 48,24" />
@@ -1461,7 +1237,6 @@
 
         <div class="acid"></div>
         <div class="acid-label">Acid Pocket / Stomach Contents</div>
-        <p class="acid-caption">Contains excess acid that can rise and cause discomfort</p>
 
         <div class="droplet-callout" aria-hidden="true">
           <span class="droplet-callout__pill">Mellow enters</span>
@@ -1529,17 +1304,52 @@
         <div class="particle p6"></div>
 
         <div class="pb" style="--x0:27%;--s:3px;--dx1:-30px;--dy1:-36px;--dx2:-42px;--dy2:-91px;--dx3:-48px;--dy3:-130px;--c:rgba(255,247,232,.68);animation-delay:.00s"></div>
+        <div class="pb" style="--x0:29%;--s:2px;--dx1:-20px;--dy1:-42px;--dx2:-25px;--dy2:-101px;--dx3:38px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.01s"></div>
+        <div class="pb" style="--x0:30%;--s:3px;--dx1:-28px;--dy1:-38px;--dx2:-48px;--dy2:-92px;--dx3:-54px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.02s"></div>
         <div class="pb" style="--x0:31%;--s:2px;--dx1:-18px;--dy1:-40px;--dx2:-22px;--dy2:-102px;--dx3:44px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.03s"></div>
+        <div class="pb" style="--x0:32%;--s:5px;--dx1:10px;--dy1:-46px;--dx2:26px;--dy2:-96px;--dx3:30px;--dy3:-132px;--c:rgba(228,184,90,.46);animation-delay:.04s"></div>
+        <div class="pb" style="--x0:33%;--s:4px;--dx1:2px;--dy1:-44px;--dx2:30px;--dy2:-100px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.05s"></div>
+        <div class="pb" style="--x0:34%;--s:2px;--dx1:26px;--dy1:-54px;--dx2:38px;--dy2:-104px;--dx3:-12px;--dy3:-136px;--c:rgba(255,247,232,.72);animation-delay:.06s"></div>
         <div class="pb" style="--x0:35%;--s:5px;--dx1:9px;--dy1:-51px;--dx2:33px;--dy2:-101px;--dx3:-9px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.07s"></div>
+        <div class="pb" style="--x0:36%;--s:4px;--dx1:19px;--dy1:-53px;--dx2:-37px;--dy2:-100px;--dx3:-19px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.08s"></div>
+        <div class="pb" style="--x0:37%;--s:5px;--dx1:-27px;--dy1:-55px;--dx2:-11px;--dy2:-99px;--dx3:-29px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.09s"></div>
+        <div class="pb" style="--x0:38%;--s:3px;--dx1:-16px;--dy1:-50px;--dx2:20px;--dy2:-98px;--dx3:36px;--dy3:-133px;--c:rgba(255,247,232,.62);animation-delay:.10s"></div>
         <div class="pb" style="--x0:39%;--s:5px;--dx1:-7px;--dy1:-59px;--dx2:41px;--dy2:-97px;--dx3:-49px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.11s"></div>
+        <div class="pb" style="--x0:40%;--s:3px;--dx1:16px;--dy1:-45px;--dx2:50px;--dy2:-90px;--dx3:18px;--dy3:-126px;--c:rgba(184,201,130,.50);animation-delay:.12s"></div>
+        <div class="pb" style="--x0:41%;--s:2px;--dx1:0px;--dy1:-38px;--dx2:44px;--dy2:-98px;--dx3:26px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.13s"></div>
+        <div class="pb" style="--x0:42%;--s:4px;--dx1:14px;--dy1:-52px;--dx2:30px;--dy2:-98px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.14s"></div>
         <div class="pb" style="--x0:43%;--s:2px;--dx1:20px;--dy1:-42px;--dx2:0px;--dy2:-96px;--dx3:6px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.15s"></div>
+        <div class="pb" style="--x0:44%;--s:4px;--dx1:-28px;--dy1:-51px;--dx2:-32px;--dy2:-92px;--dx3:-20px;--dy3:-128px;--c:rgba(228,184,90,.42);animation-delay:.16s"></div>
+        <div class="pb" style="--x0:45%;--s:3px;--dx1:27px;--dy1:-49px;--dx2:3px;--dy2:-97px;--dx3:-27px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.17s"></div>
+        <div class="pb" style="--x0:46%;--s:2px;--dx1:8px;--dy1:-57px;--dx2:19px;--dy2:-100px;--dx3:44px;--dy3:-131px;--c:rgba(255,247,232,.70);animation-delay:.18s"></div>
         <div class="pb" style="--x0:47%;--s:3px;--dx1:-9px;--dy1:-53px;--dx2:-41px;--dy2:-95px;--dx3:-47px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.19s"></div>
+        <div class="pb" style="--x0:48%;--s:2px;--dx1:-12px;--dy1:-58px;--dx2:32px;--dy2:-97px;--dx3:38px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.20s"></div>
+        <div class="pb" style="--x0:49%;--s:4px;--dx1:-2px;--dy1:-60px;--dx2:-38px;--dy2:-96px;--dx3:28px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.21s"></div>
+        <div class="pb" style="--x0:50%;--s:2px;--dx1:8px;--dy1:-62px;--dx2:-12px;--dy2:-95px;--dx3:18px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.22s"></div>
         <div class="pb" style="--x0:51%;--s:5px;--dx1:5px;--dy1:-39px;--dx2:-35px;--dy2:-97px;--dx3:-5px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.23s"></div>
+        <div class="pb" style="--x0:52%;--s:3px;--dx1:15px;--dy1:-41px;--dx2:-9px;--dy2:-96px;--dx3:-15px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.24s"></div>
+        <div class="pb" style="--x0:53%;--s:5px;--dx1:25px;--dy1:-43px;--dx2:17px;--dy2:-95px;--dx3:-25px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.25s"></div>
+        <div class="pb" style="--x0:54%;--s:3px;--dx1:-21px;--dy1:-45px;--dx2:43px;--dy2:-94px;--dx3:-35px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.26s"></div>
         <div class="pb" style="--x0:55%;--s:5px;--dx1:-11px;--dy1:-47px;--dx2:-27px;--dy2:-93px;--dx3:-45px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.27s"></div>
+        <div class="pb" style="--x0:56%;--s:4px;--dx1:-14px;--dy1:-52px;--dx2:46px;--dy2:-95px;--dx3:40px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.28s"></div>
+        <div class="pb" style="--x0:57%;--s:2px;--dx1:-4px;--dy1:-54px;--dx2:-24px;--dy2:-94px;--dx3:30px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.29s"></div>
+        <div class="pb" style="--x0:58%;--s:4px;--dx1:6px;--dy1:-56px;--dx2:2px;--dy2:-93px;--dx3:20px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.30s"></div>
         <div class="pb" style="--x0:59%;--s:2px;--dx1:16px;--dy1:-58px;--dx2:28px;--dy2:-92px;--dx3:10px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.31s"></div>
+        <div class="pb" style="--x0:60%;--s:3px;--dx1:13px;--dy1:-63px;--dx2:5px;--dy2:-94px;--dx3:-13px;--dy3:-135px;--c:rgba(255,247,232,.58);animation-delay:.32s"></div>
+        <div class="pb" style="--x0:61%;--s:3px;--dx1:23px;--dy1:-65px;--dx2:31px;--dy2:-93px;--dx3:-23px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.33s"></div>
+        <div class="pb" style="--x0:62%;--s:5px;--dx1:-23px;--dy1:-39px;--dx2:-39px;--dy2:-92px;--dx3:-33px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.34s"></div>
         <div class="pb" style="--x0:63%;--s:3px;--dx1:-13px;--dy1:-41px;--dx2:-13px;--dy2:-102px;--dx3:-43px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.35s"></div>
+        <div class="pb" style="--x0:64%;--s:2px;--dx1:-16px;--dy1:-46px;--dx2:-36px;--dy2:-93px;--dx3:42px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.36s"></div>
+        <div class="pb" style="--x0:65%;--s:4px;--dx1:-6px;--dy1:-48px;--dx2:-10px;--dy2:-92px;--dx3:32px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.37s"></div>
+        <div class="pb" style="--x0:66%;--s:2px;--dx1:4px;--dy1:-50px;--dx2:16px;--dy2:-102px;--dx3:22px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.38s"></div>
         <div class="pb" style="--x0:67%;--s:5px;--dx1:1px;--dy1:-55px;--dx2:-7px;--dy2:-93px;--dx3:-1px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.39s"></div>
+        <div class="pb" style="--x0:68%;--s:4px;--dx1:11px;--dy1:-57px;--dx2:19px;--dy2:-92px;--dx3:-11px;--dy3:-133px;--c:rgba(184,201,130,.56);animation-delay:.40s"></div>
+        <div class="pb" style="--x0:69%;--s:5px;--dx1:21px;--dy1:-59px;--dx2:45px;--dy2:-102px;--dx3:-21px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.41s"></div>
+        <div class="pb" style="--x0:70%;--s:3px;--dx1:-25px;--dy1:-61px;--dx2:-25px;--dy2:-101px;--dx3:-31px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.42s"></div>
         <div class="pb" style="--x0:71%;--s:2px;--dx1:18px;--dy1:-47px;--dx2:34px;--dy2:-92px;--dx3:18px;--dy3:-126px;--c:rgba(255,247,232,.72);animation-delay:.43s"></div>
+        <div class="pb" style="--x0:72%;--s:4px;--dx1:-12px;--dy1:-52px;--dx2:-36px;--dy2:-94px;--dx3:-44px;--dy3:-130px;--c:rgba(184,201,130,.52);animation-delay:.44s"></div>
+        <div class="pb" style="--x0:73%;--s:3px;--dx1:24px;--dy1:-55px;--dx2:30px;--dy2:-98px;--dx3:-10px;--dy3:-134px;--c:rgba(228,184,90,.44);animation-delay:.45s"></div>
+        <div class="pb" style="--x0:74%;--s:2px;--dx1:-20px;--dy1:-45px;--dx2:-14px;--dy2:-90px;--dx3:30px;--dy3:-128px;--c:rgba(255,247,232,.68);animation-delay:.46s"></div>
         <div class="pb" style="--x0:75%;--s:3px;--dx1:10px;--dy1:-50px;--dx2:16px;--dy2:-93px;--dx3:24px;--dy3:-127px;--c:rgba(184,201,130,.48);animation-delay:.47s"></div>
 
         <div class="fragment f1"></div>
