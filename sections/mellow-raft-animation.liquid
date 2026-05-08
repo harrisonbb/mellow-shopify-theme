@@ -51,8 +51,8 @@
 
 
 
+    .mellow-clinical-raft-animation .raft-text,
     .mellow-clinical-raft-animation .acid-wave,
-    .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
     .mellow-clinical-raft-animation .callout {
@@ -75,8 +75,8 @@
 
 
 
+    .mellow-clinical-raft-animation.is-playing .raft-text,
     .mellow-clinical-raft-animation.is-playing .acid-wave,
-    .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
     .mellow-clinical-raft-animation.is-playing .callout {
@@ -1026,40 +1026,6 @@
       }
     }
 
-
-
-    .mellow-clinical-raft-animation .raft-label {
-      display: flex;
-      visibility: visible;
-      position: absolute;
-      z-index: 1002;
-      left: 3%;
-      top: var(--raft-birth-top);
-      width: 70%;
-      height: 58px;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      animation: mellowRaftLabelAppear var(--duration) ease-in-out infinite;
-    }
-
-    .mellow-clinical-raft-animation .raft-label span {
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(26, 45, 16, .82);
-      text-shadow: none;
-      white-space: nowrap;
-    }
-
-    @keyframes mellowRaftLabelAppear {
-      0%, 86% {
-        opacity: 0;
-        transform: translateY(2px) scale(.97);
-      }
-
       89% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -1090,7 +1056,7 @@
       pointer-events: none;
       opacity: 0;
       transform-origin: 50% 100%;
-      animation: mellowAcidWaveRise var(--duration) cubic-bezier(.35, .02, .2, 1) infinite;
+      animation: mellowAcidWaveRise var(--duration) ease-in-out infinite;
     }
 
     .mellow-clinical-raft-animation .acid-wave-inner {
@@ -1113,65 +1079,55 @@
     }
 
     @keyframes mellowAcidWaveRise {
-      /* Hidden while droplets are falling */
-      0%, 32% {
+      0%, 34% {
         opacity: 0;
         transform: translateY(100%);
       }
 
-      /* Appears as raft begins to form — slow steady rise */
-      40% {
-        opacity: .28;
-        transform: translateY(90%);
-      }
-
-      56% {
-        opacity: .42;
-        transform: translateY(72%);
-      }
-
-      68% {
-        opacity: .58;
-        transform: translateY(48%);
-      }
-
-      76% {
-        opacity: .74;
-        transform: translateY(26%);
-      }
-
-      84% {
-        opacity: .88;
-        transform: translateY(10%);
-      }
-
-      /* Reach raft */
       87% {
-        opacity: .96;
+        opacity: .94;
         transform: translateY(2%);
       }
 
-      /* Impact — deflects flat */
-      89% {
-        opacity: .94;
-        transform: translateY(3%) scaleY(.72) scaleX(1.03);
+      90% {
+        opacity: .92;
+        transform: translateY(4%) scaleY(.74) scaleX(1.03);
       }
 
-      /* Settle back low */
-      94% {
-        opacity: .64;
-        transform: translateY(42%);
-      }
-
-      98% {
-        opacity: .44;
-        transform: translateY(78%);
+      96% {
+        opacity: .48;
+        transform: translateY(60%);
       }
 
       100% {
-        opacity: .40;
+        opacity: .38;
         transform: translateY(86%);
       }
+    }
+
+    .mellow-clinical-raft-animation .raft-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(26, 45, 16, .82);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftTextAppear var(--duration) ease-in-out infinite;
+    }
+
+    @keyframes mellowRaftTextAppear {
+      0%, 86% { opacity: 0; }
+      89%      { opacity: 1; }
+      93%      { opacity: 1; }
+      98%      { opacity: 0; }
+      100%     { opacity: 0; }
     }
 
     @media (max-width: 900px) {
@@ -1201,8 +1157,8 @@
 
 
 
+    .mellow-clinical-raft-animation .raft-text,
     .mellow-clinical-raft-animation .acid-wave,
-    .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
     .mellow-clinical-raft-animation .callout {
@@ -1225,8 +1181,8 @@
 
 
 
+    .mellow-clinical-raft-animation.is-playing .raft-text,
     .mellow-clinical-raft-animation.is-playing .acid-wave,
-    .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
     .mellow-clinical-raft-animation.is-playing .callout {
@@ -1409,7 +1365,7 @@
         <div class="fragment f4"></div>
 
         <div class="raft-haze"></div>
-        <div class="raft"></div>
+        <div class="raft"><span class="raft-text">Raft blocks acid</span></div>
 
         <div class="raft-dot" style="--x:62px;--y:14px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0s"></div>
         <div class="raft-dot" style="--x:157px;--y:33px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.02s"></div>
@@ -1430,7 +1386,6 @@
           </div>
         </div>
 
-        <div class="raft-label"><span>Raft blocks acid</span></div>
       </div>
     </div>
   </div>
