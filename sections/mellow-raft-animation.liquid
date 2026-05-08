@@ -623,42 +623,50 @@
       left: 70%;
     }
 
+    /* Fixed-width badges prevent the three Acid blocked pills from merging into one long band */
     .mellow-clinical-raft-animation .blocked-callout {
-  position: absolute;
-  z-index: 1001;
-  top: calc(var(--raft-final-top) + 112px);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 22px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .62);
-  border: 1px solid rgba(208, 74, 42, .08);
-  color: rgba(208, 74, 42, .76);
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: .045em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(208, 74, 42, .035);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%);
-  animation: mellowRaftBlockedCalloutClean var(--duration) ease-out infinite;
-}
+      position: absolute;
+      z-index: 1001;
+      top: calc(var(--raft-final-top) + 108px);
+      width: 62px;
+      min-width: 62px;
+      max-width: 62px;
+      height: 20px;
+      min-height: 20px;
+      padding: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .58);
+      border: 1px solid rgba(208, 74, 42, .075);
+      color: rgba(208, 74, 42, .72);
+      font-size: 6.4px;
+      font-weight: 850;
+      letter-spacing: .035em;
+      line-height: 1;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(208, 74, 42, .03);
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(-50%);
+      animation: mellowRaftBlockedCalloutClean var(--duration) ease-out infinite;
+    }
 
-.mellow-clinical-raft-animation .bc1 {
-  left: 31%;
-}
+    .mellow-clinical-raft-animation .bc1 {
+      left: 29%;
+    }
 
-.mellow-clinical-raft-animation .bc2 {
-  left: 52%;
-}
+    .mellow-clinical-raft-animation .bc2 {
+      left: 50%;
+    }
 
-.mellow-clinical-raft-animation .bc3 {
-  left: 73%;
-}
+    .mellow-clinical-raft-animation .bc3 {
+      left: 72%;
+    }
 
     @keyframes mellowRaftCalloutAppearClean {
       0%, 66% {
@@ -1118,17 +1126,23 @@
       }
 
       .mellow-clinical-raft-animation .blocked-callout {
-        top: calc(var(--raft-final-top) + 96px);
-        font-size: 8px;
-        padding: 0 9px;
+        top: calc(var(--raft-final-top) + 98px);
+        width: 52px;
+        min-width: 52px;
+        max-width: 52px;
+        height: 18px;
+        min-height: 18px;
+        font-size: 5.6px;
+        letter-spacing: .025em;
+        padding: 0;
       }
 
       .mellow-clinical-raft-animation .bc1 {
-        left: 30%;
+        left: 29%;
       }
 
       .mellow-clinical-raft-animation .bc2 {
-        left: 51%;
+        left: 50%;
       }
 
       .mellow-clinical-raft-animation .bc3 {
