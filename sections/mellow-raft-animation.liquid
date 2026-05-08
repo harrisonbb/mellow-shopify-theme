@@ -250,7 +250,7 @@
       right: 0;
       bottom: 0;
       height: 22%;
-      background: linear-gradient(180deg, rgba(208, 74, 42, .015), rgba(208, 74, 42, .12));
+      background: linear-gradient(180deg, rgba(210, 45, 18, .02), rgba(210, 45, 18, .18));
       opacity: .9;
     }
 
@@ -624,12 +624,13 @@
 
     .mellow-clinical-raft-animation .heat path {
       fill: none;
-      stroke: rgba(208, 74, 42, .82);
-      stroke-width: 3.8;
+      stroke: rgba(210, 45, 18, .96);
+      stroke-width: 4.8;
       stroke-linecap: round;
       filter:
-        drop-shadow(0 0 5px rgba(208, 74, 42, .22))
-        drop-shadow(0 0 12px rgba(208, 74, 42, .12));
+        drop-shadow(0 0 6px rgba(210, 45, 18, .55))
+        drop-shadow(0 0 16px rgba(210, 45, 18, .30))
+        drop-shadow(0 0 28px rgba(210, 45, 18, .14));
     }
 
     .mellow-clinical-raft-animation .h1 {
@@ -1023,39 +1024,44 @@
     }
 
     @keyframes mellowRaftHeatRiseClean {
-      0%, 72% {
+      0%, 70% {
         opacity: 0;
-        transform: translateY(46px) scaleY(.24);
+        transform: translateY(52px) scaleY(.18) scaleX(.7);
+      }
+
+      74% {
+        opacity: .72;
+        transform: translateY(28px) scaleY(.58) scaleX(1.1) translateX(-2px);
       }
 
       78% {
-        opacity: .94;
-        transform: translateY(24px) scaleY(.72);
+        opacity: .96;
+        transform: translateY(8px) scaleY(.88) scaleX(.95) translateX(2px);
       }
 
-      84% {
-        opacity: .98;
-        transform: translateY(0) scaleY(1);
+      82% {
+        opacity: 1;
+        transform: translateY(-4px) scaleY(1.06) scaleX(1.04) translateX(-1px);
       }
 
-      88% {
-        opacity: .98;
-        transform: translateY(-3px) scaleY(1.04);
+      86% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1) scaleX(1) translateX(0);
       }
 
-      92% {
-        opacity: .82;
-        transform: translateY(10px) scaleY(.88);
+      90% {
+        opacity: .88;
+        transform: translateY(4px) scaleY(.94) scaleX(1.02) translateX(1px);
       }
 
-      96% {
-        opacity: .56;
-        transform: translateY(22px) scaleY(.62);
+      95% {
+        opacity: .52;
+        transform: translateY(18px) scaleY(.68) scaleX(.9);
       }
 
       100% {
         opacity: 0;
-        transform: translateY(34px) scaleY(.3);
+        transform: translateY(38px) scaleY(.28) scaleX(.7);
       }
     }
 
@@ -1178,7 +1184,7 @@
       }
 
       .mellow-clinical-raft-animation .heat path {
-        stroke-width: 3.2;
+        stroke-width: 4.0;
       }
 
       .mellow-clinical-raft-animation .h1 {
@@ -1366,19 +1372,19 @@
 
         <div class="heat h1">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C31 132, 9 116, 20 82 C31 54, 9 36, 20 6" />
+            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
           </svg>
         </div>
 
         <div class="heat h2">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C31 132, 9 116, 20 82 C31 54, 9 36, 20 6" />
+            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
           </svg>
         </div>
 
         <div class="heat h3">
           <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C31 132, 9 116, 20 82 C31 54, 9 36, 20 6" />
+            <path d="M20 166 C40 148, 2 126, 22 100 C42 74, 1 56, 18 34 C36 14, 6 6, 22 0" />
           </svg>
         </div>
 
