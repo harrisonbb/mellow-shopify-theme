@@ -605,8 +605,9 @@
       filter: blur(10px);
       transform-origin: 50% 50%;
       pointer-events: none;
-      animation: mellowRaftForcefieldPulse var(--duration) cubic-bezier(.22,.62,.22,1) infinite;
+      animation: mellowRaftForcefieldPulse var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
       will-change: opacity, transform, filter;
+      backface-visibility: hidden;
     }
 
     .mellow-clinical-raft-animation .raft-dot {
@@ -636,18 +637,19 @@
       pointer-events: none;
       opacity: 0;
       transform-origin: 50% 100%;
-      transform: translateY(110%);
-      animation: mellowAcidWaveRisePremium var(--duration) cubic-bezier(.18,.72,.18,1) infinite;
-      will-change: transform, opacity, filter;
-      filter: blur(.1px);
+      transform: translate3d(0, 112%, 0);
+      animation: mellowAcidWaveRisePremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
     }
 
     .mellow-clinical-raft-animation .acid-wave-inner {
       width: 100%;
       height: 100%;
       transform-origin: 50% 100%;
-      animation: mellowAcidWaveRepelPremium var(--duration) cubic-bezier(.18,.72,.18,1) infinite;
+      animation: mellowAcidWaveRepelPremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
       will-change: transform;
+      backface-visibility: hidden;
     }
 
     .mellow-clinical-raft-animation .acid-wave svg {
@@ -1053,127 +1055,107 @@
     }
 
     @keyframes mellowAcidWaveRisePremium {
-      0%, 58% {
+      0%, 56% {
         opacity: 0;
-        transform: translateY(110%);
-        filter: blur(.4px);
+        transform: translate3d(0, 112%, 0);
       }
 
-      64% {
-        opacity: .18;
-        transform: translateY(92%);
-        filter: blur(.35px);
+      62% {
+        opacity: .14;
+        transform: translate3d(0, 98%, 0);
       }
 
-      70% {
-        opacity: .34;
-        transform: translateY(74%);
-        filter: blur(.25px);
+      68% {
+        opacity: .30;
+        transform: translate3d(0, 82%, 0);
       }
 
-      76% {
-        opacity: .56;
-        transform: translateY(58%);
-        filter: blur(.15px);
+      74% {
+        opacity: .48;
+        transform: translate3d(0, 66%, 0);
       }
 
-      82% {
-        opacity: .76;
-        transform: translateY(43%);
-        filter: blur(.1px);
+      80% {
+        opacity: .66;
+        transform: translate3d(0, 51%, 0);
       }
 
-      86% {
-        opacity: .88;
-        transform: translateY(34%);
-        filter: blur(.05px);
+      85% {
+        opacity: .82;
+        transform: translate3d(0, 39%, 0);
       }
 
       89% {
-        opacity: .94;
-        transform: translateY(29%);
-        filter: blur(0);
+        opacity: .92;
+        transform: translate3d(0, 30%, 0);
       }
 
-      91% {
-        opacity: .90;
-        transform: translateY(31%);
-        filter: blur(.04px);
-      }
-
-      93% {
-        opacity: .78;
-        transform: translateY(38%);
-        filter: blur(.08px);
+      92% {
+        opacity: .84;
+        transform: translate3d(0, 34%, 0);
       }
 
       96% {
         opacity: .42;
-        transform: translateY(70%);
-        filter: blur(.18px);
+        transform: translate3d(0, 64%, 0);
       }
 
       100% {
         opacity: 0;
-        transform: translateY(110%);
-        filter: blur(.35px);
+        transform: translate3d(0, 112%, 0);
       }
     }
 
     @keyframes mellowAcidWaveRepelPremium {
-      0%, 78% {
-        transform: scaleY(1) scaleX(1);
+      0%, 80% {
+        transform: scale3d(1, 1, 1);
       }
 
-      84% {
-        transform: scaleY(.96) scaleX(1.01);
+      86% {
+        transform: scale3d(1.012, .96, 1);
       }
 
       89% {
-        transform: scaleY(.84) scaleX(1.025);
+        transform: scale3d(1.025, .88, 1);
       }
 
-      91% {
-        transform: scaleY(.78) scaleX(1.04);
-      }
-
-      93% {
-        transform: scaleY(.88) scaleX(1.02);
+      92% {
+        transform: scale3d(1.014, .94, 1);
       }
 
       96%, 100% {
-        transform: scaleY(1) scaleX(1);
+        transform: scale3d(1, 1, 1);
       }
     }
 
     @keyframes mellowRaftForcefieldPulse {
       0%, 80% {
         opacity: 0;
-        transform: scaleX(.86) scaleY(.55);
+        transform: scale3d(.9, .62, 1);
         filter: blur(12px);
       }
 
-      85% {
-        opacity: .16;
-        transform: scaleX(.94) scaleY(.72);
+      86% {
+        opacity: .14;
+        transform: scale3d(.96, .78, 1);
         filter: blur(10px);
       }
 
       89% {
-        opacity: .38;
-        transform: scaleX(1.02) scaleY(1);
-        filter: blur(8px);
+        opacity: .32;
+        transform: scale3d(1.02, .94, 1);
+        filter: blur(9px);
       }
 
       92% {
-        opacity: .26;
-        transform: scaleX(1) scaleY(.82);
+        opacity: .22;
+        transform: scale3d(.99, .82, 1);
         filter: blur(10px);
       }
 
       98%, 100% {
         opacity: 0;
-        transform: scaleX(.9) scaleY(.55);
+        transform: scale3d(.9, .62, 1);
         filter: blur(12px);
       }
     }
