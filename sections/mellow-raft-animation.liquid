@@ -19,8 +19,6 @@
       --acid-line-1: 30%;
       --acid-line-2: 55%;
       --acid-line-3: 72%;
-      --blocked-badge-top: calc(var(--raft-final-top) + 58px);
-      --block-ripple-top: calc(var(--raft-final-top) + 56px);
       --acid-line-top: calc(var(--raft-final-top) + 58px);
 
       width: 100%;
@@ -609,57 +607,9 @@
       animation-delay: .1s;
     }
 
-    .mellow-clinical-raft-animation .block-ripple {
-      position: absolute;
-      z-index: 48;
-      top: var(--block-ripple-top);
-      width: 46px;
-      height: 9px;
-      border-radius: 999px;
-      background: rgba(208, 74, 42, .13);
-      opacity: 0;
-      filter: blur(2.4px);
-      animation: mellowRaftBlockRippleClean var(--duration) ease-out infinite;
-    }
 
-    .mellow-clinical-raft-animation .br1 {
-      left: calc(50% - 23px);
-    }
 
-    .mellow-clinical-raft-animation .blocked-callout {
-      position: absolute;
-      z-index: 1001;
-      top: var(--blocked-badge-top);
-      width: max-content;
-      height: 25px;
-      min-height: 25px;
-      padding: 0 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .72);
-      border: 1px solid rgba(208, 74, 42, .08);
-      color: rgba(208, 74, 42, .82);
-      font-size: 8px;
-      font-weight: 850;
-      letter-spacing: .025em;
-      line-height: 1;
-      text-transform: uppercase;
-      text-align: center;
-      white-space: nowrap;
-      box-shadow: 0 4px 10px rgba(208, 74, 42, .035);
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: mellowRaftBlockedCalloutClean var(--duration) ease-out infinite;
-    }
 
-    .mellow-clinical-raft-animation .bc1 {
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-    }
 
     @keyframes mellowRaftCalloutAppearClean {
       0%, 66% {
@@ -1069,32 +1019,59 @@
       }
     }
 
-    @keyframes mellowRaftBlockRippleClean {
-      0%, 84% {
+
+
+    .mellow-clinical-raft-animation .raft-label {
+      display: block !important;
+      visibility: visible !important;
+      position: absolute !important;
+      z-index: 1002 !important;
+      left: 17% !important;
+      top: var(--raft-birth-top) !important;
+      width: 70% !important;
+      height: 58px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftLabelAppear var(--duration) ease-in-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .raft-label span {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .90);
+      text-shadow: 0 1px 4px rgba(26, 45, 16, .18);
+      white-space: nowrap;
+    }
+
+    @keyframes mellowRaftLabelAppear {
+      0%, 72% {
         opacity: 0;
-        transform: scaleX(.2);
+        transform: translateY(2px) scale(.97);
+      }
+
+      80% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       88% {
-        opacity: .42;
-        transform: scaleX(1);
-      }
-
-      96%, 100% {
-        opacity: 0;
-        transform: scaleX(1.22);
-      }
-    }
-
-    @keyframes mellowRaftBlockedCalloutClean {
-      0%, 88% {
-        opacity: 0;
-        transform: translateY(4px) scale(.98);
-      }
-
-      92%, 100% {
         opacity: 1;
         transform: translateY(0) scale(1);
+      }
+
+      96% {
+        opacity: .4;
+        transform: translateY(-1px) scale(.99);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-2px) scale(.98);
       }
     }
 
@@ -1104,9 +1081,7 @@
         --acid-line-1: 30%;
         --acid-line-2: 55%;
         --acid-line-3: 72%;
-        --blocked-badge-top: calc(var(--raft-final-top) + 58px);
-        --block-ripple-top: calc(var(--raft-final-top) + 56px);
-        --acid-line-top: calc(var(--raft-final-top) + 58px);
+            --acid-line-top: calc(var(--raft-final-top) + 58px);
       }
 
       .mellow-clinical-raft-animation .raft-shell {
@@ -1115,15 +1090,6 @@
 
       .mellow-clinical-raft-animation .device {
         min-height: 300px;
-      }
-
-      .mellow-clinical-raft-animation .blocked-callout {
-        width: max-content;
-        height: 21px;
-        min-height: 21px;
-        padding: 0 8px;
-        font-size: 6px;
-        letter-spacing: .008em;
       }
 
       .mellow-clinical-raft-animation .heat {
@@ -1336,9 +1302,7 @@
           </svg>
         </div>
 
-        <div class="block-ripple br1"></div>
-
-        <div class="blocked-callout bc1">Acid blocked</div>
+        <div class="raft-label"><span>Raft blocks acid</span></div>
       </div>
     </div>
   </div>
