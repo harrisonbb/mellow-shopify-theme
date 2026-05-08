@@ -3,7 +3,7 @@
   Paste into: sections/mellow-clinical-raft-animation.liquid
 {% endcomment %}
 
-<div class="mellow-clinical-raft-animation" style="--duration: 8.8s;">
+<div class="mellow-clinical-raft-animation" style="--duration: 14s;">
   <style>
     .mellow-clinical-raft-animation {
       --forest: #1A2D10;
@@ -15,7 +15,6 @@
       --raft-birth-top: 31%;
       --raft-final-top: 31%;
 
-      /* Acid-block system alignment */
       --acid-line-1: 30%;
       --acid-line-2: 55%;
       --acid-line-3: 72%;
@@ -684,14 +683,19 @@
     }
 
     @keyframes mellowRaftCalloutAppearClean {
-      0%, 66% {
+      0%, 46% {
         opacity: 0;
         transform: translateY(3px);
       }
 
-      72%, 100% {
+      50%, 92% {
         opacity: .9;
         transform: translateY(0);
+      }
+
+      98%, 100% {
+        opacity: 0;
+        transform: translateY(2px);
       }
     }
 
@@ -929,37 +933,37 @@
     }
 
     @keyframes mellowRaftHazeSHOWClean {
-      0%, 32% {
+      0%, 26% {
         opacity: 0;
         transform: scaleX(.14) scaleY(.24);
         filter: blur(18px);
       }
 
-      42% {
+      34% {
         opacity: .18;
         transform: scaleX(.36) scaleY(.42);
         filter: blur(15px);
       }
 
-      54% {
+      42% {
         opacity: .36;
         transform: scaleX(.66) scaleY(.62);
         filter: blur(11px);
       }
 
-      66% {
+      50% {
         opacity: .42;
         transform: scaleX(.92) scaleY(.82);
         filter: blur(8px);
       }
 
-      76% {
+      58%, 92% {
         opacity: .28;
         transform: scaleX(1) scaleY(1);
         filter: blur(7px);
       }
 
-      86%, 100% {
+      98%, 100% {
         opacity: 0;
         transform: scaleX(1.03) scaleY(1.02);
         filter: blur(10px);
@@ -967,55 +971,49 @@
     }
 
     @keyframes mellowRaftGelSHOWClean {
-      0%, 34% {
+      0%, 26% {
         opacity: 0;
         transform: translate3d(0, 4px, 0) scaleX(.05) scaleY(.22);
         filter: blur(13px);
       }
 
-      42% {
+      34% {
         opacity: .2;
         transform: translate3d(0, 3px, 0) scaleX(.20) scaleY(.34);
         filter: blur(10px);
       }
 
-      50% {
+      42% {
         opacity: .42;
         transform: translate3d(0, 2px, 0) scaleX(.40) scaleY(.48);
         filter: blur(7px);
       }
 
-      58% {
+      50% {
         opacity: .64;
         transform: translate3d(0, 1px, 0) scaleX(.62) scaleY(.64);
         filter: blur(4px);
       }
 
-      66% {
+      56% {
         opacity: .86;
         transform: translate3d(0, .25px, 0) scaleX(.82) scaleY(.80);
         filter: blur(2px);
       }
 
-      74% {
+      60% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
-      82% {
+      70%, 92% {
         opacity: 1;
-        transform: translate3d(0, -0.8px, 0) scaleX(1) scaleY(1);
+        transform: translate3d(0, -0.6px, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
-      90% {
-        opacity: 1;
-        transform: translate3d(0, 1px, 0) scaleX(1) scaleY(1);
-        filter: blur(0);
-      }
-
-      100% {
+      98%, 100% {
         opacity: 1;
         transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
         filter: blur(0);
@@ -1023,75 +1021,70 @@
     }
 
     @keyframes mellowRaftDotsSHOWClean {
-      0%, 46% {
+      0%, 38% {
         opacity: 0;
         transform: translate3d(0, 2px, 0) scale(.45);
       }
 
-      58% {
+      48% {
         opacity: .32;
         transform: translate3d(0, 1px, 0) scale(.72);
       }
 
-      70% {
+      58% {
         opacity: .54;
         transform: translate3d(0, 0, 0) scale(.94);
       }
 
-      78% {
+      66%, 92% {
         opacity: .56;
         transform: translate3d(0, -1px, 0) scale(1);
       }
 
-      88% {
-        opacity: .56;
-        transform: translate3d(0, 1px, 0) scale(1);
-      }
-
-      100% {
+      98%, 100% {
         opacity: .56;
         transform: translate3d(0, 0, 0) scale(1);
       }
     }
 
     @keyframes mellowAcidWaveRisePremium {
-      0%, 56% {
+      0%, 44% {
         opacity: 0;
         transform: translate3d(0, 112%, 0);
       }
 
-      62% {
+      50% {
         opacity: .14;
         transform: translate3d(0, 98%, 0);
       }
 
-      68% {
+      56% {
         opacity: .30;
         transform: translate3d(0, 82%, 0);
       }
 
-      74% {
+      62% {
         opacity: .48;
         transform: translate3d(0, 66%, 0);
       }
 
-      80% {
+      68% {
         opacity: .66;
         transform: translate3d(0, 51%, 0);
       }
 
-      85% {
+      73% {
         opacity: .82;
         transform: translate3d(0, 39%, 0);
       }
 
-      89% {
+      76% {
         opacity: .92;
         transform: translate3d(0, 30%, 0);
       }
 
-      92% {
-        opacity: .84;
+      82%, 92% {
+        opacity: .88;
         transform: translate3d(0, 34%, 0);
       }
 
@@ -1107,19 +1100,19 @@
     }
 
     @keyframes mellowAcidWaveRepelPremium {
-      0%, 80% {
+      0%, 68% {
         transform: scale3d(1, 1, 1);
       }
 
-      86% {
+      73% {
         transform: scale3d(1.012, .96, 1);
       }
 
-      89% {
+      76% {
         transform: scale3d(1.025, .88, 1);
       }
 
-      92% {
+      82%, 92% {
         transform: scale3d(1.014, .94, 1);
       }
 
@@ -1129,26 +1122,26 @@
     }
 
     @keyframes mellowRaftForcefieldPulse {
-      0%, 80% {
+      0%, 68% {
         opacity: 0;
         transform: scale3d(.9, .62, 1);
         filter: blur(12px);
       }
 
-      86% {
+      73% {
         opacity: .14;
         transform: scale3d(.96, .78, 1);
         filter: blur(10px);
       }
 
-      89% {
+      76% {
         opacity: .32;
         transform: scale3d(1.02, .94, 1);
         filter: blur(9px);
       }
 
-      92% {
-        opacity: .22;
+      82%, 92% {
+        opacity: .24;
         transform: scale3d(.99, .82, 1);
         filter: blur(10px);
       }
@@ -1161,22 +1154,22 @@
     }
 
     @keyframes mellowRaftTextAppear {
-      0%, 84% {
+      0%, 72% {
         opacity: 0;
         transform: translateY(2px) scale(.98);
       }
 
-      88% {
+      76% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
 
-      93% {
+      92% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
 
-      98%, 100% {
+      97%, 100% {
         opacity: 0;
         transform: translateY(-1px) scale(.99);
       }
