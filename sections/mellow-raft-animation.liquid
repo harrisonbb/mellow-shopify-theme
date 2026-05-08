@@ -14,6 +14,15 @@
       --page: #FBFCF7;
       --raft-birth-top: 31%;
       --raft-final-top: 31%;
+
+      /* Acid-block system alignment */
+      --acid-line-1: 27%;
+      --acid-line-2: 52%;
+      --acid-line-3: 77%;
+      --blocked-badge-top: calc(var(--raft-final-top) + 128px);
+      --block-ripple-top: calc(var(--raft-final-top) + 147px);
+      --acid-line-top: calc(var(--raft-final-top) + 158px);
+
       width: 100%;
       background: var(--page);
       padding: clamp(24px, 4vw, 64px);
@@ -561,9 +570,9 @@
     .mellow-clinical-raft-animation .heat {
       position: absolute;
       z-index: 25;
-      top: calc(var(--raft-final-top) + 128px) !important;
+      top: var(--acid-line-top) !important;
       width: 34px !important;
-      height: 96px !important;
+      height: 110px !important;
       opacity: 0;
       overflow: visible;
       animation: mellowRaftHeatRiseClean var(--duration) ease-in-out infinite;
@@ -578,7 +587,7 @@
     .mellow-clinical-raft-animation .heat path {
       fill: none;
       stroke: rgba(208, 74, 42, .82);
-      stroke-width: 3.6;
+      stroke-width: 3.8;
       stroke-linecap: round;
       filter:
         drop-shadow(0 0 5px rgba(208, 74, 42, .22))
@@ -586,24 +595,24 @@
     }
 
     .mellow-clinical-raft-animation .h1 {
-      left: calc(25% - 17px);
+      left: calc(var(--acid-line-1) - 17px);
       animation-delay: .05s;
     }
 
     .mellow-clinical-raft-animation .h2 {
-      left: calc(50% - 17px);
+      left: calc(var(--acid-line-2) - 17px);
       animation-delay: .2s;
     }
 
     .mellow-clinical-raft-animation .h3 {
-      left: calc(75% - 17px);
+      left: calc(var(--acid-line-3) - 17px);
       animation-delay: .1s;
     }
 
     .mellow-clinical-raft-animation .block-ripple {
       position: absolute;
       z-index: 48;
-      top: calc(var(--raft-final-top) + 116px);
+      top: var(--block-ripple-top);
       width: 46px;
       height: 9px;
       border-radius: 999px;
@@ -614,34 +623,34 @@
     }
 
     .mellow-clinical-raft-animation .br1 {
-      left: calc(25% - 23px);
+      left: calc(var(--acid-line-1) - 23px);
     }
 
     .mellow-clinical-raft-animation .br2 {
-      left: calc(50% - 23px);
+      left: calc(var(--acid-line-2) - 23px);
     }
 
     .mellow-clinical-raft-animation .br3 {
-      left: calc(75% - 23px);
+      left: calc(var(--acid-line-3) - 23px);
     }
 
     .mellow-clinical-raft-animation .blocked-callout {
       position: absolute;
       z-index: 1001;
-      top: calc(var(--raft-final-top) + 104px);
-      width: 112px;
-      min-width: 112px;
-      max-width: 112px;
-      height: 22px;
-      min-height: 22px;
-      padding: 0 10px;
+      top: var(--blocked-badge-top);
+      width: 122px;
+      min-width: 122px;
+      max-width: 122px;
+      height: 25px;
+      min-height: 25px;
+      padding: 0 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .70);
+      background: rgba(255, 255, 255, .72);
       border: 1px solid rgba(208, 74, 42, .08);
       color: rgba(208, 74, 42, .82);
-      font-size: 7px;
+      font-size: 8px;
       font-weight: 850;
-      letter-spacing: .018em;
+      letter-spacing: .025em;
       line-height: 1;
       text-transform: uppercase;
       text-align: center;
@@ -658,15 +667,15 @@
     }
 
     .mellow-clinical-raft-animation .bc1 {
-      left: 25%;
+      left: var(--acid-line-1);
     }
 
     .mellow-clinical-raft-animation .bc2 {
-      left: 50%;
+      left: var(--acid-line-2);
     }
 
     .mellow-clinical-raft-animation .bc3 {
-      left: 75%;
+      left: var(--acid-line-3);
     }
 
     @keyframes mellowRaftCalloutAppearClean {
@@ -1055,12 +1064,12 @@
     @keyframes mellowRaftHeatRiseClean {
       0%, 72% {
         opacity: 0;
-        transform: translateY(34px) scaleY(.22);
+        transform: translateY(38px) scaleY(.24);
       }
 
       78% {
         opacity: .96;
-        transform: translateY(18px) scaleY(.62);
+        transform: translateY(20px) scaleY(.68);
       }
 
       84% {
@@ -1070,17 +1079,17 @@
 
       90% {
         opacity: .82;
-        transform: translateY(4px) scaleY(.86);
+        transform: translateY(5px) scaleY(.9);
       }
 
       96% {
         opacity: .56;
-        transform: translateY(14px) scaleY(.58);
+        transform: translateY(16px) scaleY(.64);
       }
 
       100% {
         opacity: 0;
-        transform: translateY(24px) scaleY(.28);
+        transform: translateY(28px) scaleY(.3);
       }
     }
 
@@ -1116,6 +1125,12 @@
     @media (max-width: 900px) {
       .mellow-clinical-raft-animation {
         padding: 24px 16px;
+        --acid-line-1: 27%;
+        --acid-line-2: 52%;
+        --acid-line-3: 77%;
+        --blocked-badge-top: calc(var(--raft-final-top) + 112px);
+        --block-ripple-top: calc(var(--raft-final-top) + 130px);
+        --acid-line-top: calc(var(--raft-final-top) + 140px);
       }
 
       .mellow-clinical-raft-animation .raft-shell {
@@ -1127,49 +1142,35 @@
       }
 
       .mellow-clinical-raft-animation .blocked-callout {
-        top: calc(var(--raft-final-top) + 92px);
-        width: 92px;
-        min-width: 92px;
-        max-width: 92px;
-        height: 19px;
-        min-height: 19px;
-        padding: 0 8px;
-        font-size: 5.8px;
-        letter-spacing: .006em;
+        width: 98px;
+        min-width: 98px;
+        max-width: 98px;
+        height: 21px;
+        min-height: 21px;
+        padding: 0 9px;
+        font-size: 6px;
+        letter-spacing: .008em;
       }
 
       .mellow-clinical-raft-animation .heat {
-        top: calc(var(--raft-final-top) + 114px) !important;
         width: 28px !important;
-        height: 82px !important;
+        height: 92px !important;
       }
 
       .mellow-clinical-raft-animation .heat path {
-        stroke-width: 3;
+        stroke-width: 3.2;
       }
 
       .mellow-clinical-raft-animation .h1 {
-        left: calc(25% - 14px);
+        left: calc(var(--acid-line-1) - 14px);
       }
 
       .mellow-clinical-raft-animation .h2 {
-        left: calc(50% - 14px);
+        left: calc(var(--acid-line-2) - 14px);
       }
 
       .mellow-clinical-raft-animation .h3 {
-        left: calc(75% - 14px);
-      }
-
-      .mellow-clinical-raft-animation .bc1 {
-        left: 25%;
-      }
-
-      .mellow-clinical-raft-animation .bc2 {
-        left: 50%;
-      }
-
-      .mellow-clinical-raft-animation .bc3 {
-        left: 75%;
+        left: calc(var(--acid-line-3) - 14px);
       }
 
       .mellow-clinical-raft-animation .droplet-callout {
