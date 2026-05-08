@@ -1,5 +1,5 @@
 {% comment %}
-  Mellow — Premium Clinical Raft Animation
+  Mellow — Clinical Raft Animation
   Paste into: sections/mellow-clinical-raft-animation.liquid
 {% endcomment %}
 
@@ -7,17 +7,18 @@
   <style>
     .mellow-clinical-raft-animation {
       --forest: #1A2D10;
-      --forest-soft: rgba(26, 45, 16, 0.56);
+      --forest-soft: rgba(26, 45, 16, 0.50);
       --orange: #D04A2A;
-      --acid: #D86B52;
-      --acid-soft: #E99A82;
-      --gold: #C49A3A;
-      --gold-soft: rgba(196, 154, 58, 0.48);
+      --gold: #D6A64A;
       --cream: #F0EBE0;
-      --ivory: #FBFAF5;
       --page: #FBFCF7;
-      --sage: #DDE8C8;
-      --sage-deep: #B7C894;
+      --raft-birth-top: 31%;
+      --raft-final-top: 31%;
+
+      --acid-line-1: 30%;
+      --acid-line-2: 55%;
+      --acid-line-3: 72%;
+      --acid-line-top: calc(var(--raft-final-top) + 58px);
 
       width: 100%;
       background: var(--page);
@@ -33,50 +34,67 @@
 
     .mellow-clinical-raft-animation .drop,
     .mellow-clinical-raft-animation .ripple,
+    .mellow-clinical-raft-animation .splash,
+    .mellow-clinical-raft-animation .splash::before,
+    .mellow-clinical-raft-animation .splash i,
     .mellow-clinical-raft-animation .particle,
+    .mellow-clinical-raft-animation .pb,
+    .mellow-clinical-raft-animation .fragment,
     .mellow-clinical-raft-animation .raft-haze,
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
     .mellow-clinical-raft-animation .raft-text,
+    .mellow-clinical-raft-animation .raft-forcefield,
     .mellow-clinical-raft-animation .acid-wave,
     .mellow-clinical-raft-animation .acid-wave-inner,
-    .mellow-clinical-raft-animation .top-callout,
-    .mellow-clinical-raft-animation .guide-line,
-    .mellow-clinical-raft-animation .guide-dot,
-    .mellow-clinical-raft-animation .micro-bubble {
+    .mellow-clinical-raft-animation .droplet-callout,
+    .mellow-clinical-raft-animation .formation-callout,
+    .mellow-clinical-raft-animation .callout {
       animation-play-state: paused;
     }
 
     .mellow-clinical-raft-animation.is-playing .drop,
     .mellow-clinical-raft-animation.is-playing .ripple,
+    .mellow-clinical-raft-animation.is-playing .splash,
+    .mellow-clinical-raft-animation.is-playing .splash::before,
+    .mellow-clinical-raft-animation.is-playing .splash i,
     .mellow-clinical-raft-animation.is-playing .particle,
+    .mellow-clinical-raft-animation.is-playing .pb,
+    .mellow-clinical-raft-animation.is-playing .fragment,
     .mellow-clinical-raft-animation.is-playing .raft-haze,
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
     .mellow-clinical-raft-animation.is-playing .raft-text,
+    .mellow-clinical-raft-animation.is-playing .raft-forcefield,
     .mellow-clinical-raft-animation.is-playing .acid-wave,
     .mellow-clinical-raft-animation.is-playing .acid-wave-inner,
-    .mellow-clinical-raft-animation.is-playing .top-callout,
-    .mellow-clinical-raft-animation.is-playing .guide-line,
-    .mellow-clinical-raft-animation.is-playing .guide-dot,
-    .mellow-clinical-raft-animation.is-playing .micro-bubble {
+    .mellow-clinical-raft-animation.is-playing .droplet-callout,
+    .mellow-clinical-raft-animation.is-playing .formation-callout,
+    .mellow-clinical-raft-animation.is-playing .callout {
       animation-play-state: running;
     }
 
     .mellow-clinical-raft-animation .raft-shell {
-      max-width: 1320px;
+      max-width: 1280px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: clamp(28px, 5vw, 72px);
       align-items: center;
+      background:
+        radial-gradient(circle at 10% 14%, rgba(214, 166, 74, .12), transparent 34%),
+        linear-gradient(135deg, #faf8f2 0%, #ffffff 58%, #f8f5ec 100%);
+      border: 1px solid rgba(26, 45, 16, .12);
+      border-radius: 34px;
+      box-shadow: 0 28px 80px rgba(26, 45, 16, .08);
+      padding: clamp(22px, 4vw, 56px);
     }
 
     .mellow-clinical-raft-animation .raft-copy-eyebrow {
       display: block;
       margin-bottom: 18px;
       font-size: 12px;
-      font-weight: 850;
+      font-weight: 800;
       letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--orange);
@@ -102,281 +120,171 @@
 
     .mellow-clinical-raft-animation .device {
       position: relative;
-      min-height: 520px;
-      border-radius: 32px;
-      padding: 0;
-      background: transparent;
+      aspect-ratio: 1.56 / 1;
+      min-height: 360px;
+      border-radius: 26px;
+      padding: clamp(18px, 2.2vw, 28px);
+      background: rgba(255, 255, 255, .62);
+      border: 1px solid rgba(26, 45, 16, .12);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .58);
     }
 
     .mellow-clinical-raft-animation .mechanism {
       position: relative;
       width: 100%;
       height: 100%;
-      min-height: 520px;
+      min-height: 320px;
       overflow: hidden;
-      border-radius: 30px;
+      border-radius: 24px;
       background:
-        radial-gradient(circle at 20% 16%, rgba(196, 154, 58, .08), transparent 32%),
-        radial-gradient(circle at 84% 18%, rgba(26, 45, 16, .045), transparent 34%),
-        linear-gradient(180deg, #FBFAF5 0%, #F4F0E7 100%);
-      border: 1px solid rgba(26, 45, 16, .10);
-      box-shadow:
-        0 30px 90px rgba(26, 45, 16, .08),
-        inset 0 0 0 1px rgba(255, 255, 255, .62);
-    }
-
-    .mellow-clinical-raft-animation .mechanism::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .45;
-      background-image:
-        radial-gradient(rgba(26, 45, 16, .13) 0.75px, transparent 0.75px);
-      background-size: 12px 12px;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 88%, transparent 100%);
+        radial-gradient(circle at 48% 78%, rgba(208, 74, 42, .08), transparent 34%),
+        linear-gradient(180deg, #e5dfd2 0%, #eee9dd 72%, #e7e0d1 100%);
     }
 
     .mellow-clinical-raft-animation .layer-label {
       position: absolute;
-      z-index: 70;
-      top: 30px;
-      left: 30px;
+      z-index: 60;
+      top: 20px;
+      left: 24px;
       display: inline-flex;
       align-items: center;
-      min-height: 44px;
-      padding: 0 22px;
+      min-height: 36px;
+      padding: 0 16px;
       border-radius: 999px;
-      background: rgba(251, 250, 245, .76);
-      border: 1px solid rgba(196, 154, 58, .68);
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(26, 45, 16, .08);
       color: var(--forest);
       font-size: 12px;
       font-weight: 900;
-      letter-spacing: .32em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      box-shadow: 0 12px 28px rgba(26, 45, 16, .04);
-    }
-
-    .mellow-clinical-raft-animation .top-callout {
-      position: absolute;
-      z-index: 72;
-      top: 112px;
-      left: 50%;
-      width: min(320px, 48%);
-      transform: translateX(-50%);
-      display: grid;
-      justify-items: center;
-      gap: 14px;
-      opacity: 0;
-      animation: mellowTopCallout var(--duration) ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .mellow-clinical-raft-animation .shield {
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(251, 250, 245, .76);
-      border: 1px solid rgba(196, 154, 58, .72);
-      box-shadow: 0 10px 24px rgba(26, 45, 16, .05);
-    }
-
-    .mellow-clinical-raft-animation .shield svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .mellow-clinical-raft-animation .shield path {
-      fill: none;
-      stroke: var(--forest);
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .mellow-clinical-raft-animation .top-callout p {
-      margin: 0;
-      max-width: 260px;
-      color: var(--forest);
-      text-align: center;
-      font-size: 15px;
-      font-weight: 650;
-      line-height: 1.24;
-      letter-spacing: .045em;
-    }
-
-    .mellow-clinical-raft-animation .guide-line {
-      position: absolute;
-      z-index: 68;
-      left: 50%;
-      top: 222px;
-      width: 1px;
-      height: 116px;
-      background: linear-gradient(180deg, rgba(196,154,58,.85), rgba(196,154,58,.52));
-      transform: translateX(-50%) scaleY(0);
-      transform-origin: 50% 0%;
-      opacity: 0;
-      animation: mellowGuideLine var(--duration) ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .mellow-clinical-raft-animation .guide-dot {
-      position: absolute;
-      z-index: 69;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--gold);
-      transform: translateX(-50%) scale(.5);
-      opacity: 0;
-      animation: mellowGuideDot var(--duration) ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .mellow-clinical-raft-animation .guide-dot-top {
-      top: 290px;
-    }
-
-    .mellow-clinical-raft-animation .guide-dot-bottom {
-      top: 344px;
-      animation-delay: .08s;
-    }
-
-    .mellow-clinical-raft-animation .acid-base {
-      position: absolute;
-      z-index: 4;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 30%;
-      background:
-        linear-gradient(180deg, rgba(232, 129, 103, .82), rgba(208, 74, 42, .84));
-    }
-
-    .mellow-clinical-raft-animation .acid-base::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .34;
-      background-image:
-        radial-gradient(rgba(255, 255, 255, .72) 0.85px, transparent 0.85px);
-      background-size: 12px 12px;
-    }
-
-    .mellow-clinical-raft-animation .acid-label-wrap {
-      position: absolute;
-      z-index: 74;
-      left: 50%;
-      bottom: 42px;
-      transform: translateX(-50%);
-      display: grid;
-      justify-items: center;
-      gap: 14px;
-      width: min(560px, calc(100% - 48px));
+      box-shadow: 0 6px 18px rgba(26, 45, 16, .05);
     }
 
     .mellow-clinical-raft-animation .acid-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      min-height: 46px;
-      padding: 0 22px;
+      position: absolute;
+      z-index: 60;
+      left: 24px;
+      bottom: 22px;
+      padding: 11px 16px;
       border-radius: 999px;
-      background: rgba(251, 250, 245, .20);
-      border: 1px solid rgba(255, 255, 255, .48);
-      color: var(--forest);
+      background: rgba(255, 255, 255, .74);
+      border: 1px solid rgba(26, 45, 16, .08);
+      color: var(--orange);
       font-size: 12px;
       font-weight: 900;
-      letter-spacing: .26em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      backdrop-filter: blur(2px);
-      white-space: nowrap;
     }
 
-    .mellow-clinical-raft-animation .acid-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, .60);
-      flex: 0 0 auto;
+    .mellow-clinical-raft-animation .callout {
+      position: absolute;
+      z-index: 59;
+      left: 230px !important;
+      right: auto !important;
+      top: 52px !important;
+      width: 82px !important;
+      height: 48px !important;
+      pointer-events: none;
+      opacity: 0;
+      transform: none !important;
+      animation: mellowRaftCalloutAppearClean var(--duration) ease-out infinite;
     }
 
-    .mellow-clinical-raft-animation .acid-icon svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .mellow-clinical-raft-animation .acid-icon path {
+    .mellow-clinical-raft-animation .callout path,
+    .mellow-clinical-raft-animation .callout polyline {
       fill: none;
-      stroke: var(--forest);
-      stroke-width: 1.7;
+      stroke: var(--forest-soft);
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    .mellow-clinical-raft-animation .acid-caption {
-      margin: 0;
-      color: rgba(26, 45, 16, .86);
-      font-size: 14px;
-      line-height: 1.35;
-      text-align: center;
-      font-weight: 550;
-      letter-spacing: .01em;
-    }
-
-    .mellow-clinical-raft-animation .acid-wave {
+    .mellow-clinical-raft-animation .droplet-callout {
       position: absolute;
-      z-index: 6;
-      left: -2%;
-      right: -2%;
-      bottom: 0;
-      height: 54%;
+      z-index: 70;
+      top: 92px;
+      right: 72px;
+      display: inline-flex;
+      align-items: center;
       opacity: 0;
-      transform: translate3d(0, 62%, 0);
-      transform-origin: 50% 100%;
-      animation: mellowAcidWaveRisePremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
       pointer-events: none;
-      will-change: transform, opacity;
+      animation: mellowRaftMellowEntersClean var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
     }
 
-    .mellow-clinical-raft-animation .acid-wave-inner {
-      width: 100%;
-      height: 100%;
-      animation: mellowAcidWaveRepelPremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
-      transform-origin: 50% 100%;
-      will-change: transform;
+    .mellow-clinical-raft-animation .formation-callout {
+      position: absolute;
+      z-index: 70;
+      top: 132px;
+      right: 72px;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      animation: mellowRaftBeginsClean var(--duration) cubic-bezier(.32,.02,.2,1) infinite;
     }
 
-    .mellow-clinical-raft-animation .acid-wave svg {
-      display: block;
-      width: 100%;
-      height: 100%;
+    .mellow-clinical-raft-animation .droplet-callout__pill,
+    .mellow-clinical-raft-animation .formation-callout__pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(26,45,16,.075);
+      color: rgba(26,45,16,.82);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 14px rgba(26,45,16,.045);
+      white-space: nowrap;
     }
 
-    .mellow-clinical-raft-animation .wave-fill {
-      fill: rgba(216, 107, 82, .76);
+    .mellow-clinical-raft-animation .formation-callout__pill {
+      color: rgba(26,45,16,.78);
+      background: rgba(255,255,255,.70);
     }
 
-    .mellow-clinical-raft-animation .wave-sheen {
-      fill: rgba(240, 170, 150, .38);
+    .mellow-clinical-raft-animation .acid {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 22%;
+      background: linear-gradient(180deg, rgba(200, 34, 0, .04), rgba(200, 34, 0, .28));
+      opacity: .9;
+    }
+
+    .mellow-clinical-raft-animation .acid::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 18px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(208, 74, 42, .08) 16%,
+          rgba(208, 74, 42, .14) 34%,
+          rgba(208, 74, 42, .08) 52%,
+          rgba(208, 74, 42, .13) 72%,
+          transparent 100%
+        );
+      opacity: .55;
+      filter: blur(6px);
     }
 
     .mellow-clinical-raft-animation .drop {
       position: absolute;
-      z-index: 30;
-      width: 22px;
-      height: 30px;
+      z-index: 20;
+      width: 26px;
+      height: 34px;
       opacity: 0;
       transform-origin: 50% 70%;
-      filter: drop-shadow(0 8px 12px rgba(26, 45, 16, .10));
-      animation: mellowRaftDropletFall var(--duration) cubic-bezier(.32, .02, .2, 1) infinite;
-      pointer-events: none;
+      filter: drop-shadow(0 8px 14px rgba(26, 45, 16, .12));
+      animation: mellowRaftDropletFallClean var(--duration) cubic-bezier(.32, .02, .2, 1) infinite;
     }
 
     .mellow-clinical-raft-animation .drop svg {
@@ -386,356 +294,705 @@
     }
 
     .mellow-clinical-raft-animation .drop-1 {
-      left: 28%;
-      top: 23%;
+      left: 27%;
+      top: 18%;
       animation-delay: 0s;
     }
 
     .mellow-clinical-raft-animation .drop-2 {
       left: 49%;
-      top: 25%;
-      width: 19px;
-      height: 26px;
+      top: 22%;
+      width: 22px;
+      height: 29px;
       animation-delay: .18s;
     }
 
     .mellow-clinical-raft-animation .drop-3 {
       left: 67%;
-      top: 22%;
-      width: 17px;
-      height: 23px;
+      top: 16%;
+      width: 19px;
+      height: 25px;
       animation-delay: .34s;
     }
 
     .mellow-clinical-raft-animation .ripple {
       position: absolute;
-      z-index: 29;
+      z-index: 19;
       width: 34px;
       height: 10px;
       border-radius: 999px;
-      border: 1.5px solid rgba(196, 154, 58, .46);
+      border: 1.5px solid rgba(228, 184, 90, .54);
       opacity: 0;
-      animation: mellowRaftRipple var(--duration) ease-out infinite;
-      pointer-events: none;
+      animation: mellowRaftRippleClean var(--duration) ease-out infinite;
     }
 
     .mellow-clinical-raft-animation .ripple-1 {
-      left: calc(28% - 5px);
-      top: 57%;
+      left: calc(27% - 4px);
+      bottom: 20%;
       animation-delay: 0s;
     }
 
     .mellow-clinical-raft-animation .ripple-2 {
-      left: calc(49% - 5px);
-      top: 57%;
+      left: calc(49% - 4px);
+      bottom: 20%;
       animation-delay: .18s;
     }
 
     .mellow-clinical-raft-animation .ripple-3 {
-      left: calc(67% - 5px);
-      top: 57%;
+      left: calc(67% - 4px);
+      bottom: 20%;
+      animation-delay: .34s;
+    }
+
+    .mellow-clinical-raft-animation .splash {
+      position: absolute;
+      z-index: 24;
+      bottom: 20%;
+      width: 44px;
+      height: 28px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-50%);
+      animation: mellowRaftSplashClean var(--duration) ease-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 28px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(228, 184, 90, .24);
+      filter: blur(2px);
+      transform: translateX(-50%) scaleX(.4);
+      opacity: 0;
+      animation: mellowRaftSplashBaseClean var(--duration) ease-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash i {
+      position: absolute;
+      left: 50%;
+      bottom: 2px;
+      width: var(--s, 4px);
+      height: var(--s, 4px);
+      border-radius: 999px;
+      background: var(--c, rgba(255, 247, 232, .70));
+      box-shadow: 0 0 8px rgba(228, 184, 90, .45);
+      opacity: 0;
+      transform: translate(-50%, 0) scale(.4);
+      animation: mellowRaftSplashDotClean var(--duration) cubic-bezier(.2,.4,.12,1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .splash-1 {
+      left: 28%;
+      animation-delay: 0s;
+    }
+
+    .mellow-clinical-raft-animation .splash-1::before,
+    .mellow-clinical-raft-animation .splash-1 i {
+      animation-delay: 0s;
+    }
+
+    .mellow-clinical-raft-animation .splash-2 {
+      left: 50%;
+      animation-delay: .18s;
+    }
+
+    .mellow-clinical-raft-animation .splash-2::before,
+    .mellow-clinical-raft-animation .splash-2 i {
+      animation-delay: .18s;
+    }
+
+    .mellow-clinical-raft-animation .splash-3 {
+      left: 68%;
+      animation-delay: .34s;
+    }
+
+    .mellow-clinical-raft-animation .splash-3::before,
+    .mellow-clinical-raft-animation .splash-3 i {
       animation-delay: .34s;
     }
 
     .mellow-clinical-raft-animation .particle,
-    .mellow-clinical-raft-animation .micro-bubble {
+    .mellow-clinical-raft-animation .pb {
+      display: block !important;
+      visibility: visible !important;
       position: absolute;
-      z-index: 32;
-      width: var(--s, 5px);
-      height: var(--s, 5px);
+      z-index: 997;
+      width: var(--s, 6px);
+      height: var(--s, 6px);
       border-radius: 999px;
-      background: var(--c, rgba(255, 247, 232, .72));
-      box-shadow: 0 0 10px rgba(196, 154, 58, .32);
+      background: var(--c, rgba(255, 247, 232, .68));
+      box-shadow: 0 0 13px rgba(228, 184, 90, .72);
       opacity: 0;
       pointer-events: none;
-      animation: mellowRaftParticleRise var(--duration) cubic-bezier(.2, .2, .12, 1) infinite;
     }
 
-    .mellow-clinical-raft-animation .p1 { left: 27%; top: 58%; --x: 12px; --y: -118px; --s: 6px; --c: rgba(255,247,232,.74); animation-delay: .03s; }
-    .mellow-clinical-raft-animation .p2 { left: 32%; top: 59%; --x: -18px; --y: -122px; --s: 4px; --c: rgba(196,154,58,.44); animation-delay: .06s; }
-    .mellow-clinical-raft-animation .p3 { left: 44%; top: 57%; --x: 20px; --y: -126px; --s: 5px; --c: rgba(183,200,148,.55); animation-delay: .09s; }
-    .mellow-clinical-raft-animation .p4 { left: 51%; top: 59%; --x: -8px; --y: -120px; --s: 6px; --c: rgba(255,247,232,.72); animation-delay: .12s; }
-    .mellow-clinical-raft-animation .p5 { left: 64%; top: 58%; --x: 16px; --y: -126px; --s: 4px; --c: rgba(196,154,58,.42); animation-delay: .15s; }
-    .mellow-clinical-raft-animation .p6 { left: 70%; top: 59%; --x: -22px; --y: -122px; --s: 5px; --c: rgba(183,200,148,.52); animation-delay: .18s; }
+    .mellow-clinical-raft-animation .particle {
+      animation: mellowRaftParticleSHOWClean var(--duration) cubic-bezier(.2, .2, .12, 1) infinite;
+    }
 
-    .mellow-clinical-raft-animation .micro-bubble {
-      left: var(--x);
-      top: var(--top);
-      animation-delay: var(--d, 0s);
+    .mellow-clinical-raft-animation .pb {
+      left: var(--x0);
+      bottom: 20%;
+      animation: mellowRaftBubbleSHOWClean var(--duration) cubic-bezier(.18, .28, .12, 1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .p1 {
+      --s: 8px;
+      --c: rgba(255, 247, 232, .68);
+      left: 28%;
+      bottom: 20%;
+      --x: 10px;
+      --y: -145px;
+      animation-delay: .03s;
+    }
+
+    .mellow-clinical-raft-animation .p2 {
+      --s: 6px;
+      --c: rgba(228, 184, 90, .54);
+      left: 31%;
+      bottom: 20%;
+      --x: -16px;
+      --y: -128px;
+      animation-delay: .06s;
+    }
+
+    .mellow-clinical-raft-animation .p3 {
+      --s: 5px;
+      --c: rgba(184, 201, 130, .56);
+      left: 47%;
+      bottom: 20%;
+      --x: 22px;
+      --y: -150px;
+      animation-delay: .09s;
+    }
+
+    .mellow-clinical-raft-animation .p4 {
+      --s: 7px;
+      --c: rgba(255, 247, 232, .68);
+      left: 51%;
+      bottom: 20%;
+      --x: -8px;
+      --y: -132px;
+      animation-delay: .12s;
+    }
+
+    .mellow-clinical-raft-animation .p5 {
+      --s: 6px;
+      --c: rgba(228, 184, 90, .54);
+      left: 66%;
+      bottom: 20%;
+      --x: 12px;
+      --y: -152px;
+      animation-delay: .15s;
+    }
+
+    .mellow-clinical-raft-animation .p6 {
+      --s: 4px;
+      --c: rgba(184, 201, 130, .56);
+      left: 69%;
+      bottom: 20%;
+      --x: -20px;
+      --y: -126px;
+      animation-delay: .18s;
+    }
+
+    .mellow-clinical-raft-animation .fragment {
+      position: absolute;
+      z-index: 35;
+      height: 18px;
+      top: 49%;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255, 247, 232, .68), rgba(184, 201, 130, .56));
+      border: 0;
+      filter: blur(4px);
+      opacity: 0;
+      animation: mellowRaftFragmentBuildClean var(--duration) ease-in-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .f1 {
+      left: 24%;
+      width: 58px;
+    }
+
+    .mellow-clinical-raft-animation .f2 {
+      left: 38%;
+      width: 74px;
+      animation-delay: .05s;
+    }
+
+    .mellow-clinical-raft-animation .f3 {
+      left: 53%;
+      width: 88px;
+      animation-delay: .1s;
+    }
+
+    .mellow-clinical-raft-animation .f4 {
+      left: 69%;
+      width: 60px;
+      animation-delay: .15s;
     }
 
     .mellow-clinical-raft-animation .raft-haze {
+      display: block !important;
+      visibility: visible !important;
       position: absolute;
-      z-index: 42;
-      left: 7%;
-      top: 48%;
-      width: 86%;
-      height: 78px;
+      z-index: 998;
+      left: 3%;
+      top: var(--raft-birth-top);
+      width: 94%;
+      height: 38px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 25% 50%, rgba(255, 247, 232, .34), transparent 22%),
-        radial-gradient(circle at 55% 50%, rgba(196, 154, 58, .18), transparent 24%),
-        radial-gradient(circle at 76% 50%, rgba(183, 200, 148, .26), transparent 24%),
-        linear-gradient(180deg, rgba(255, 247, 232, .22), rgba(183, 200, 148, .18));
+        radial-gradient(circle at 22% 50%, rgba(255, 247, 232, .38), transparent 18%),
+        radial-gradient(circle at 46% 48%, rgba(228, 184, 90, .22), transparent 16%),
+        radial-gradient(circle at 70% 52%, rgba(184, 201, 130, .28), transparent 18%),
+        linear-gradient(180deg, rgba(255, 247, 232, .22), rgba(184, 201, 130, .18));
       opacity: 0;
-      filter: blur(14px);
+      filter: blur(10px);
       transform-origin: 50% 50%;
-      animation: mellowRaftHazeBuild var(--duration) ease-in-out infinite;
-      pointer-events: none;
+      animation: mellowRaftHazeSHOWClean var(--duration) ease-in-out infinite;
     }
 
     .mellow-clinical-raft-animation .raft {
-      position: absolute;
-      z-index: 50;
-      left: 6.4%;
-      top: 46.5%;
-      width: 87.2%;
-      height: 84px;
+      display: block !important;
+      visibility: visible !important;
+      position: absolute !important;
+      z-index: 999 !important;
+      left: 3% !important;
+      top: var(--raft-birth-top) !important;
+      width: 94% !important;
+      height: 58px !important;
       border-radius: 999px;
       background:
-        linear-gradient(180deg, rgba(235, 242, 210, .96) 0%, rgba(211, 225, 178, .96) 54%, rgba(181, 198, 145, .94) 100%);
-      border: 1px solid rgba(26, 45, 16, .10);
+        linear-gradient(180deg, rgba(242, 248, 214, .96) 0%, rgba(202, 218, 151, .94) 56%, rgba(157, 180, 109, .88) 100%);
+      border: none !important;
+      outline: none !important;
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 245, .68),
-        inset 0 -14px 22px rgba(26, 45, 16, .045),
-        0 22px 42px rgba(26, 45, 16, .10);
+        inset 0 12px 18px rgba(255, 255, 235, .25),
+        0 12px 26px rgba(17, 31, 18, .08);
       opacity: 0;
       transform-origin: 50% 50%;
-      animation: mellowRaftGelBuild var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
+      animation: mellowRaftGelSHOWClean var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
+      will-change: opacity, transform, filter;
       pointer-events: none;
-      overflow: hidden;
     }
 
-    .mellow-clinical-raft-animation .raft::before {
-      content: "";
-      position: absolute;
-      inset: 17px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(196, 154, 58, .68);
-      opacity: .85;
-    }
-
+    .mellow-clinical-raft-animation .raft::before,
     .mellow-clinical-raft-animation .raft::after {
-      content: "";
+      content: none !important;
+      display: none !important;
+      border: 0 !important;
+      outline: 0 !important;
+    }
+
+    .mellow-clinical-raft-animation .raft-forcefield {
       position: absolute;
-      inset: 0;
-      opacity: .26;
-      background-image:
-        radial-gradient(rgba(26, 45, 16, .30) 0.75px, transparent 0.75px);
-      background-size: 11px 11px;
-      mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+      z-index: 996;
+      left: 5%;
+      top: calc(var(--raft-birth-top) + 54px);
+      width: 90%;
+      height: 32px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 247, 232, .34), transparent 62%),
+        linear-gradient(180deg, rgba(242, 248, 214, .25), rgba(242, 248, 214, 0));
+      opacity: 0;
+      filter: blur(10px);
+      transform-origin: 50% 50%;
+      pointer-events: none;
+      animation: mellowRaftForcefieldPulse var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
+      will-change: opacity, transform, filter;
+      backface-visibility: hidden;
+    }
+
+    .mellow-clinical-raft-animation .raft-dot {
+      display: block !important;
+      visibility: visible !important;
+      position: absolute;
+      z-index: 1000;
+      left: calc(3% + var(--x));
+      top: calc(var(--raft-birth-top) + var(--y));
+      width: var(--s, 4px);
+      height: var(--s, 4px);
+      border-radius: 999px;
+      background: var(--c, rgba(255, 247, 232, .72));
+      box-shadow: 0 0 6px rgba(255, 247, 232, .18);
+      opacity: 0;
+      animation: mellowRaftDotsSHOWClean var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
+      pointer-events: none;
+    }
+
+    .mellow-clinical-raft-animation .acid-wave {
+      position: absolute;
+      z-index: 40;
+      left: -2%;
+      right: -2%;
+      bottom: 0;
+      height: 82%;
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: 50% 100%;
+      transform: translate3d(0, 112%, 0);
+      animation: mellowAcidWaveRisePremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    .mellow-clinical-raft-animation .acid-wave-inner {
+      width: 100%;
+      height: 100%;
+      transform-origin: 50% 100%;
+      animation: mellowAcidWaveRepelPremium var(--duration) cubic-bezier(.33, .01, .19, 1) infinite;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .mellow-clinical-raft-animation .acid-wave svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mellow-clinical-raft-animation .wave-fill {
+      fill: rgba(208, 74, 42, .50);
+    }
+
+    .mellow-clinical-raft-animation .wave-sheen {
+      fill: rgba(225, 95, 55, .24);
     }
 
     .mellow-clinical-raft-animation .raft-text {
       position: absolute;
       inset: 0;
-      z-index: 4;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: .36em;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(26, 45, 16, .94);
+      color: rgba(26, 45, 16, .82);
       white-space: nowrap;
       opacity: 0;
+      pointer-events: none;
       animation: mellowRaftTextAppear var(--duration) ease-in-out infinite;
-      pointer-events: none;
     }
 
-    .mellow-clinical-raft-animation .raft-text::before,
-    .mellow-clinical-raft-animation .raft-text::after {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--gold);
-      opacity: .9;
-      flex: 0 0 auto;
-    }
-
-    .mellow-clinical-raft-animation .raft-dot {
-      position: absolute;
-      z-index: 53;
-      left: calc(6.4% + var(--x));
-      top: calc(46.5% + var(--y));
-      width: var(--s, 4px);
-      height: var(--s, 4px);
-      border-radius: 999px;
-      background: var(--c, rgba(255, 247, 232, .72));
-      box-shadow: 0 0 6px rgba(255, 247, 232, .20);
-      opacity: 0;
-      animation: mellowRaftDotsAppear var(--duration) cubic-bezier(.22, .75, .22, 1) infinite;
-      pointer-events: none;
-    }
-
-    @keyframes mellowTopCallout {
-      0%, 34% {
+    @keyframes mellowRaftCalloutAppearClean {
+      0%, 46% {
         opacity: 0;
-        transform: translateX(-50%) translateY(8px) scale(.98);
+        transform: translateY(3px);
       }
 
-      42%, 92% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
+      50%, 92% {
+        opacity: .9;
+        transform: translateY(0);
       }
 
       98%, 100% {
         opacity: 0;
-        transform: translateX(-50%) translateY(-3px) scale(.99);
+        transform: translateY(2px);
       }
     }
 
-    @keyframes mellowGuideLine {
-      0%, 38% {
+    @keyframes mellowRaftMellowEntersClean {
+      0%, 3% {
         opacity: 0;
-        transform: translateX(-50%) scaleY(0);
+        transform: translateY(-3px) scale(.98);
       }
 
-      48%, 92% {
+      6%, 20% {
         opacity: 1;
-        transform: translateX(-50%) scaleY(1);
+        transform: translateY(0) scale(1);
       }
 
-      98%, 100% {
+      25%, 100% {
         opacity: 0;
-        transform: translateX(-50%) scaleY(.92);
+        transform: translateY(3px) scale(.98);
       }
     }
 
-    @keyframes mellowGuideDot {
-      0%, 40% {
+    @keyframes mellowRaftBeginsClean {
+      0%, 18% {
         opacity: 0;
-        transform: translateX(-50%) scale(.45);
+        transform: translateY(4px) scale(.98);
       }
 
-      48%, 92% {
+      23%, 40% {
         opacity: 1;
-        transform: translateX(-50%) scale(1);
+        transform: translateY(0) scale(1);
       }
 
-      98%, 100% {
+      44%, 100% {
         opacity: 0;
-        transform: translateX(-50%) scale(.7);
+        transform: translateY(-3px) scale(.98);
       }
     }
 
-    @keyframes mellowRaftDropletFall {
+    @keyframes mellowRaftDropletFallClean {
       0%, 4% {
         opacity: 0;
-        transform: translateY(-16px) scale(.82) rotate(-8deg);
+        transform: translateY(-18px) scale(.82) rotate(-8deg);
       }
 
       8% {
-        opacity: .95;
+        opacity: 1;
       }
 
       18% {
-        opacity: .95;
-        transform: translateY(172px) scale(1) rotate(6deg);
+        opacity: 1;
+        transform: translateY(168px) scale(1) rotate(6deg);
       }
 
-      22%, 100% {
+      22% {
         opacity: 0;
-        transform: translateY(182px) scale(1.16, .70) rotate(2deg);
+        transform: translateY(177px) scale(1.18, .68) rotate(2deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(177px) scale(1.18, .68);
       }
     }
 
-    @keyframes mellowRaftRipple {
+    @keyframes mellowRaftRippleClean {
       0%, 12% {
         opacity: 0;
         transform: scale(.3);
       }
 
-      15% {
-        opacity: .64;
-        transform: scale(.75);
+      14% {
+        opacity: .75;
+        transform: scale(.7);
       }
 
-      22%, 100% {
+      21% {
         opacity: 0;
-        transform: scale(1.9);
+        transform: scale(1.8);
+      }
+
+      100% {
+        opacity: 0;
       }
     }
 
-    @keyframes mellowRaftParticleRise {
-      0%, 8% {
+    @keyframes mellowRaftSplashClean {
+      0%, 16% {
         opacity: 0;
-        transform: translate(0, 0) scale(.5);
       }
 
-      13% {
-        opacity: .92;
-        transform: translate(0, 0) scale(.76);
+      18% {
+        opacity: 1;
+      }
+
+      25%, 100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes mellowRaftSplashBaseClean {
+      0%, 16% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(.3);
+      }
+
+      18% {
+        opacity: .72;
+        transform: translateX(-50%) scaleX(.75);
       }
 
       24% {
-        opacity: .82;
-        transform: translate(calc(var(--x) * .46), calc(var(--y) * .62)) scale(1);
-      }
-
-      36% {
-        opacity: .26;
-        transform: translate(var(--x), var(--y)) scale(.68);
-      }
-
-      44%, 100% {
         opacity: 0;
-        transform: translate(var(--x), var(--y)) scale(.22);
+        transform: translateX(-50%) scaleX(1.45);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(1.45);
       }
     }
 
-    @keyframes mellowRaftHazeBuild {
-      0%, 20% {
+    @keyframes mellowRaftSplashDotClean {
+      0%, 16% {
         opacity: 0;
-        transform: scaleX(.10) scaleY(.22);
-        filter: blur(18px);
+        transform: translate(-50%, 0) scale(.35);
+      }
+
+      18% {
+        opacity: .9;
+        transform: translate(-50%, 0) scale(.75);
+      }
+
+      24% {
+        opacity: 0;
+        transform:
+          translate(
+            calc(-50% + var(--dx)),
+            var(--dy)
+          )
+          scale(.35);
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translate(
+            calc(-50% + var(--dx)),
+            var(--dy)
+          )
+          scale(.35);
+      }
+    }
+
+    @keyframes mellowRaftParticleSHOWClean {
+      0%, 8% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.55);
+      }
+
+      12% {
+        opacity: .95;
+        transform: translate(0, 0) scale(.75);
+      }
+
+      20% {
+        opacity: .95;
+        transform: translate(calc(var(--x) * .45), calc(var(--y) * .58)) scale(1);
       }
 
       30% {
-        opacity: .20;
+        opacity: .48;
+        transform: translate(var(--x), var(--y)) scale(.78);
+      }
+
+      38%, 100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(.25);
+      }
+    }
+
+    @keyframes mellowRaftBubbleSHOWClean {
+      0%, 8% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.30);
+      }
+
+      12% {
+        opacity: .82;
+        transform: translate(0, -18px) scale(.58);
+      }
+
+      20% {
+        opacity: .82;
+        transform: translate(var(--dx1), var(--dy1)) scale(.82);
+      }
+
+      28% {
+        opacity: .70;
+        transform: translate(var(--dx2), var(--dy2)) scale(.62);
+      }
+
+      36% {
+        opacity: .34;
+        transform: translate(var(--dx3), var(--dy3)) scale(.42);
+      }
+
+      42%, 100% {
+        opacity: 0;
+        transform: translate(var(--dx3), var(--dy3)) scale(.12);
+      }
+    }
+
+    @keyframes mellowRaftFragmentBuildClean {
+      0%, 20% {
+        opacity: 0;
+        transform: translateY(18px) scaleX(.45);
+        filter: blur(7px);
+      }
+
+      28% {
+        opacity: .48;
+        transform: translateY(0) scaleX(.9);
+        filter: blur(4px);
+      }
+
+      36% {
+        opacity: .12;
+        transform: translateY(-8px) scaleX(1.15);
+        filter: blur(6px);
+      }
+
+      42%, 100% {
+        opacity: 0;
+        transform: translateY(-8px) scaleX(1.15);
+      }
+    }
+
+    @keyframes mellowRaftHazeSHOWClean {
+      0%, 20% {
+        opacity: 0;
+        transform: scaleX(.14) scaleY(.24);
+        filter: blur(18px);
+      }
+
+      28% {
+        opacity: .18;
         transform: scaleX(.36) scaleY(.42);
         filter: blur(15px);
       }
 
-      38% {
-        opacity: .38;
-        transform: scaleX(.72) scaleY(.68);
+      34% {
+        opacity: .36;
+        transform: scaleX(.66) scaleY(.62);
         filter: blur(11px);
       }
 
-      46%, 92% {
-        opacity: .30;
-        transform: scaleX(1) scaleY(1);
+      40% {
+        opacity: .42;
+        transform: scaleX(.92) scaleY(.82);
         filter: blur(8px);
+      }
+
+      46%, 92% {
+        opacity: .28;
+        transform: scaleX(1) scaleY(1);
+        filter: blur(7px);
       }
 
       98%, 100% {
         opacity: 0;
         transform: scaleX(1.03) scaleY(1.02);
-        filter: blur(12px);
+        filter: blur(10px);
       }
     }
 
-    @keyframes mellowRaftGelBuild {
+    @keyframes mellowRaftGelSHOWClean {
       0%, 20% {
         opacity: 0;
-        transform: translate3d(0, 5px, 0) scaleX(.05) scaleY(.22);
-        filter: blur(12px);
+        transform: translate3d(0, 4px, 0) scaleX(.05) scaleY(.22);
+        filter: blur(13px);
       }
 
-      30% {
-        opacity: .28;
-        transform: translate3d(0, 4px, 0) scaleX(.28) scaleY(.36);
-        filter: blur(9px);
+      28% {
+        opacity: .24;
+        transform: translate3d(0, 3px, 0) scaleX(.24) scaleY(.36);
+        filter: blur(10px);
       }
 
-      38% {
-        opacity: .66;
-        transform: translate3d(0, 2px, 0) scaleX(.66) scaleY(.64);
-        filter: blur(5px);
+      34% {
+        opacity: .48;
+        transform: translate3d(0, 2px, 0) scaleX(.48) scaleY(.52);
+        filter: blur(7px);
+      }
+
+      40% {
+        opacity: .78;
+        transform: translate3d(0, 1px, 0) scaleX(.78) scaleY(.78);
+        filter: blur(3px);
       }
 
       46% {
@@ -746,7 +1003,7 @@
 
       56%, 92% {
         opacity: 1;
-        transform: translate3d(0, -1px, 0) scaleX(1) scaleY(1);
+        transform: translate3d(0, -0.6px, 0) scaleX(1) scaleY(1);
         filter: blur(0);
       }
 
@@ -757,13 +1014,151 @@
       }
     }
 
-    @keyframes mellowRaftTextAppear {
-      0%, 50% {
+    @keyframes mellowRaftDotsSHOWClean {
+      0%, 38% {
         opacity: 0;
-        transform: translateY(3px) scale(.98);
+        transform: translate3d(0, 2px, 0) scale(.45);
       }
 
-      58%, 92% {
+      48% {
+        opacity: .32;
+        transform: translate3d(0, 1px, 0) scale(.72);
+      }
+
+      58% {
+        opacity: .54;
+        transform: translate3d(0, 0, 0) scale(.94);
+      }
+
+      66%, 92% {
+        opacity: .56;
+        transform: translate3d(0, -1px, 0) scale(1);
+      }
+
+      98%, 100% {
+        opacity: .56;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    @keyframes mellowAcidWaveRisePremium {
+      0%, 44% {
+        opacity: 0;
+        transform: translate3d(0, 112%, 0);
+      }
+
+      50% {
+        opacity: .14;
+        transform: translate3d(0, 98%, 0);
+      }
+
+      56% {
+        opacity: .30;
+        transform: translate3d(0, 82%, 0);
+      }
+
+      62% {
+        opacity: .48;
+        transform: translate3d(0, 66%, 0);
+      }
+
+      68% {
+        opacity: .66;
+        transform: translate3d(0, 51%, 0);
+      }
+
+      73% {
+        opacity: .82;
+        transform: translate3d(0, 39%, 0);
+      }
+
+      76% {
+        opacity: .92;
+        transform: translate3d(0, 30%, 0);
+      }
+
+      82%, 92% {
+        opacity: .88;
+        transform: translate3d(0, 34%, 0);
+      }
+
+      96% {
+        opacity: .42;
+        transform: translate3d(0, 64%, 0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate3d(0, 112%, 0);
+      }
+    }
+
+    @keyframes mellowAcidWaveRepelPremium {
+      0%, 68% {
+        transform: scale3d(1, 1, 1);
+      }
+
+      73% {
+        transform: scale3d(1.012, .96, 1);
+      }
+
+      76% {
+        transform: scale3d(1.025, .88, 1);
+      }
+
+      82%, 92% {
+        transform: scale3d(1.014, .94, 1);
+      }
+
+      96%, 100% {
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
+    @keyframes mellowRaftForcefieldPulse {
+      0%, 68% {
+        opacity: 0;
+        transform: scale3d(.9, .62, 1);
+        filter: blur(12px);
+      }
+
+      73% {
+        opacity: .14;
+        transform: scale3d(.96, .78, 1);
+        filter: blur(10px);
+      }
+
+      76% {
+        opacity: .32;
+        transform: scale3d(1.02, .94, 1);
+        filter: blur(9px);
+      }
+
+      82%, 92% {
+        opacity: .24;
+        transform: scale3d(.99, .82, 1);
+        filter: blur(10px);
+      }
+
+      98%, 100% {
+        opacity: 0;
+        transform: scale3d(.9, .62, 1);
+        filter: blur(12px);
+      }
+    }
+
+    @keyframes mellowRaftTextAppear {
+      0%, 72% {
+        opacity: 0;
+        transform: translateY(2px) scale(.98);
+      }
+
+      76% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      92% {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
@@ -774,198 +1169,46 @@
       }
     }
 
-    @keyframes mellowRaftDotsAppear {
-      0%, 42% {
-        opacity: 0;
-        transform: translate3d(0, 2px, 0) scale(.45);
-      }
-
-      52% {
-        opacity: .36;
-        transform: translate3d(0, 1px, 0) scale(.72);
-      }
-
-      62%, 92% {
-        opacity: .58;
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      98%, 100% {
-        opacity: .58;
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-    }
-
-    @keyframes mellowAcidWaveRisePremium {
-      0%, 48% {
-        opacity: 0;
-        transform: translate3d(0, 68%, 0);
-      }
-
-      56% {
-        opacity: .18;
-        transform: translate3d(0, 54%, 0);
-      }
-
-      64% {
-        opacity: .42;
-        transform: translate3d(0, 40%, 0);
-      }
-
-      72% {
-        opacity: .76;
-        transform: translate3d(0, 22%, 0);
-      }
-
-      78% {
-        opacity: .90;
-        transform: translate3d(0, 8%, 0);
-      }
-
-      84%, 92% {
-        opacity: .86;
-        transform: translate3d(0, 16%, 0);
-      }
-
-      96% {
-        opacity: .38;
-        transform: translate3d(0, 40%, 0);
-      }
-
-      100% {
-        opacity: 0;
-        transform: translate3d(0, 68%, 0);
-      }
-    }
-
-    @keyframes mellowAcidWaveRepelPremium {
-      0%, 70% {
-        transform: scale3d(1, 1, 1);
-      }
-
-      78% {
-        transform: scale3d(1.018, .86, 1);
-      }
-
-      84%, 92% {
-        transform: scale3d(1.010, .92, 1);
-      }
-
-      96%, 100% {
-        transform: scale3d(1, 1, 1);
-      }
-    }
-
     @media (max-width: 900px) {
       .mellow-clinical-raft-animation {
         padding: 24px 16px;
+        --acid-line-1: 30%;
+        --acid-line-2: 55%;
+        --acid-line-3: 72%;
+        --acid-line-top: calc(var(--raft-final-top) + 58px);
       }
 
       .mellow-clinical-raft-animation .raft-shell {
         grid-template-columns: 1fr;
       }
 
-      .mellow-clinical-raft-animation .device,
-      .mellow-clinical-raft-animation .mechanism {
-        min-height: 430px;
+      .mellow-clinical-raft-animation .device {
+        min-height: 300px;
       }
 
-      .mellow-clinical-raft-animation .layer-label {
-        top: 22px;
-        left: 20px;
-        min-height: 38px;
-        padding: 0 16px;
-        font-size: 10px;
-        letter-spacing: .22em;
+      .mellow-clinical-raft-animation .heat {
+        width: 28px !important;
+        height: 104px !important;
       }
 
-      .mellow-clinical-raft-animation .top-callout {
-        top: 92px;
-        width: 76%;
+      .mellow-clinical-raft-animation .heat path {
+        stroke-width: 3.6;
       }
 
-      .mellow-clinical-raft-animation .shield {
-        width: 48px;
-        height: 48px;
+      .mellow-clinical-raft-animation .droplet-callout {
+        right: 32px;
+        top: 86px;
       }
 
-      .mellow-clinical-raft-animation .top-callout p {
-        font-size: 13px;
+      .mellow-clinical-raft-animation .formation-callout {
+        right: 32px;
+        top: 126px;
       }
 
-      .mellow-clinical-raft-animation .guide-line {
-        top: 196px;
-        height: 94px;
-      }
-
-      .mellow-clinical-raft-animation .guide-dot-top {
-        top: 248px;
-      }
-
-      .mellow-clinical-raft-animation .guide-dot-bottom {
-        top: 296px;
-      }
-
-      .mellow-clinical-raft-animation .raft {
-        left: 5%;
-        width: 90%;
-        top: 45.5%;
-        height: 72px;
-      }
-
-      .mellow-clinical-raft-animation .raft::before {
-        inset: 14px 20px;
-      }
-
-      .mellow-clinical-raft-animation .raft-text {
-        font-size: 12px;
-        letter-spacing: .25em;
-        gap: 12px;
-      }
-
-      .mellow-clinical-raft-animation .acid-base {
-        height: 32%;
-      }
-
-      .mellow-clinical-raft-animation .acid-label-wrap {
-        bottom: 30px;
-        width: calc(100% - 36px);
-      }
-
-      .mellow-clinical-raft-animation .acid-label {
-        min-height: 40px;
-        padding: 0 14px;
-        gap: 10px;
-        font-size: 9px;
-        letter-spacing: .16em;
-      }
-
-      .mellow-clinical-raft-animation .acid-caption {
-        font-size: 12px;
-      }
-
-      .mellow-clinical-raft-animation .drop-1 {
-        left: 24%;
-      }
-
-      .mellow-clinical-raft-animation .drop-2 {
-        left: 48%;
-      }
-
-      .mellow-clinical-raft-animation .drop-3 {
-        left: 70%;
-      }
-
-      .mellow-clinical-raft-animation .ripple-1 {
-        left: calc(24% - 5px);
-      }
-
-      .mellow-clinical-raft-animation .ripple-2 {
-        left: calc(48% - 5px);
-      }
-
-      .mellow-clinical-raft-animation .ripple-3 {
-        left: calc(70% - 5px);
+      .mellow-clinical-raft-animation .callout {
+        left: 205px !important;
+        right: auto !important;
+        top: 52px !important;
       }
     }
   </style>
@@ -983,71 +1226,71 @@
       <div class="mechanism">
         <div class="layer-label">MellowRaft™ Layer</div>
 
-        <div class="top-callout" aria-hidden="true">
-          <div class="shield">
-            <svg viewBox="0 0 32 32">
-              <path d="M16 3.7 25 7.2v6.8c0 6.2-3.8 11.5-9 13.9-5.2-2.4-9-7.7-9-13.9V7.2L16 3.7Z"/>
-              <path d="m11.8 16.2 2.7 2.7 5.9-6.5"/>
-            </svg>
-          </div>
-          <p>Forms a floating barrier above stomach contents</p>
+        <svg class="callout" viewBox="0 0 82 48" aria-hidden="true">
+          <path d="M4 8 C 24 8, 36 17, 50 31" />
+          <polyline points="43,30 51,33 48,24" />
+        </svg>
+
+        <div class="acid"></div>
+        <div class="acid-label">Acid Pocket / Stomach Contents</div>
+
+        <div class="droplet-callout" aria-hidden="true">
+          <span class="droplet-callout__pill">Mellow enters</span>
         </div>
 
-        <div class="guide-line"></div>
-        <div class="guide-dot guide-dot-top"></div>
-        <div class="guide-dot guide-dot-bottom"></div>
-
-        <div class="acid-base"></div>
-
-        <div class="acid-wave">
-          <div class="acid-wave-inner">
-            <svg viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
-              <path class="wave-sheen" d="M0,110 C86,42 170,132 260,74 C360,9 450,136 545,80 C640,25 720,144 825,72 C925,4 1015,132 1110,70 C1160,40 1190,56 1200,62 L1200,420 L0,420 Z"/>
-              <path class="wave-fill" d="M0,142 C92,76 174,168 262,104 C362,30 456,164 548,108 C646,50 728,168 826,102 C930,34 1018,162 1110,96 C1166,56 1190,82 1200,86 L1200,420 L0,420 Z"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="acid-label-wrap">
-          <div class="acid-label">
-            <span class="acid-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3.4C15.8 8 18.5 11.8 18.5 15.2A6.5 6.5 0 0 1 5.5 15.2C5.5 11.8 8.2 8 12 3.4Z"/>
-              </svg>
-            </span>
-            <span>Acid Pocket / Stomach Contents</span>
-          </div>
-          <p class="acid-caption">Contains excess acid that can rise and cause discomfort</p>
+        <div class="formation-callout" aria-hidden="true">
+          <span class="formation-callout__pill">Raft begins to form</span>
         </div>
 
         <div class="drop drop-1">
           <svg viewBox="0 0 100 120" aria-hidden="true">
             <defs>
-              <linearGradient id="mellow-drop-gradient-a" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#F0EBE0"/>
-                <stop offset=".58" stop-color="#B7C894"/>
-                <stop offset="1" stop-color="#C49A3A"/>
+              <linearGradient id="mellow-drop-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f0ebe0"/>
+                <stop offset=".55" stop-color="#a9b880"/>
+                <stop offset="1" stop-color="#d6a64a"/>
               </linearGradient>
             </defs>
-            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="url(#mellow-drop-gradient-a)"/>
+            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="url(#mellow-drop-gradient)"/>
           </svg>
         </div>
 
         <div class="drop drop-2">
           <svg viewBox="0 0 100 120" aria-hidden="true">
-            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(183,200,148,.72)"/>
+            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(184,201,130,.56)"/>
           </svg>
         </div>
 
         <div class="drop drop-3">
           <svg viewBox="0 0 100 120" aria-hidden="true">
-            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(196,154,58,.56)"/>
+            <path d="M50 6 C70 32 86 54 86 76 C86 101 70 116 50 116 C30 116 14 101 14 76 C14 54 30 32 50 6 Z" fill="rgba(228,184,90,.54)"/>
           </svg>
         </div>
 
         <div class="ripple ripple-1"></div>
         <div class="ripple ripple-2"></div>
         <div class="ripple ripple-3"></div>
+
+        <div class="splash splash-1" aria-hidden="true">
+          <i style="--dx:-18px;--dy:-12px;--s:3px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-7px;--dy:-18px;--s:2px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:8px;--dy:-16px;--s:3px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:19px;--dy:-10px;--s:2px;--c:rgba(255,247,232,.62);"></i>
+        </div>
+
+        <div class="splash splash-2" aria-hidden="true">
+          <i style="--dx:-17px;--dy:-11px;--s:2px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-5px;--dy:-18px;--s:3px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:9px;--dy:-15px;--s:2px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:18px;--dy:-9px;--s:3px;--c:rgba(255,247,232,.62);"></i>
+        </div>
+
+        <div class="splash splash-3" aria-hidden="true">
+          <i style="--dx:-16px;--dy:-10px;--s:3px;--c:rgba(255,247,232,.70);"></i>
+          <i style="--dx:-6px;--dy:-17px;--s:2px;--c:rgba(184,201,130,.54);"></i>
+          <i style="--dx:7px;--dy:-15px;--s:3px;--c:rgba(228,184,90,.46);"></i>
+          <i style="--dx:17px;--dy:-8px;--s:2px;--c:rgba(255,247,232,.62);"></i>
+        </div>
 
         <div class="particle p1"></div>
         <div class="particle p2"></div>
@@ -1056,32 +1299,82 @@
         <div class="particle p5"></div>
         <div class="particle p6"></div>
 
-        <div class="micro-bubble" style="--x:30%;--top:59%;--s:3px;--y:-122px;--c:rgba(255,247,232,.68);--d:.04s;"></div>
-        <div class="micro-bubble" style="--x:34%;--top:58%;--s:4px;--y:-132px;--c:rgba(183,200,148,.52);--d:.08s;"></div>
-        <div class="micro-bubble" style="--x:38%;--top:59%;--s:2px;--y:-116px;--c:rgba(196,154,58,.46);--d:.12s;"></div>
-        <div class="micro-bubble" style="--x:42%;--top:57%;--s:3px;--y:-126px;--c:rgba(255,247,232,.68);--d:.16s;"></div>
-        <div class="micro-bubble" style="--x:46%;--top:58%;--s:5px;--y:-134px;--c:rgba(183,200,148,.52);--d:.20s;"></div>
-        <div class="micro-bubble" style="--x:50%;--top:59%;--s:3px;--y:-124px;--c:rgba(196,154,58,.44);--d:.24s;"></div>
-        <div class="micro-bubble" style="--x:54%;--top:57%;--s:4px;--y:-130px;--c:rgba(255,247,232,.68);--d:.28s;"></div>
-        <div class="micro-bubble" style="--x:58%;--top:58%;--s:2px;--y:-120px;--c:rgba(183,200,148,.52);--d:.32s;"></div>
-        <div class="micro-bubble" style="--x:62%;--top:59%;--s:4px;--y:-132px;--c:rgba(196,154,58,.42);--d:.36s;"></div>
-        <div class="micro-bubble" style="--x:66%;--top:58%;--s:3px;--y:-122px;--c:rgba(255,247,232,.68);--d:.40s;"></div>
-        <div class="micro-bubble" style="--x:70%;--top:59%;--s:5px;--y:-136px;--c:rgba(183,200,148,.52);--d:.44s;"></div>
+        <div class="pb" style="--x0:27%;--s:3px;--dx1:-30px;--dy1:-36px;--dx2:-42px;--dy2:-91px;--dx3:-48px;--dy3:-130px;--c:rgba(255,247,232,.68);animation-delay:.00s"></div>
+        <div class="pb" style="--x0:29%;--s:2px;--dx1:-20px;--dy1:-42px;--dx2:-25px;--dy2:-101px;--dx3:38px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.01s"></div>
+        <div class="pb" style="--x0:30%;--s:3px;--dx1:-28px;--dy1:-38px;--dx2:-48px;--dy2:-92px;--dx3:-54px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.02s"></div>
+        <div class="pb" style="--x0:31%;--s:2px;--dx1:-18px;--dy1:-40px;--dx2:-22px;--dy2:-102px;--dx3:44px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.03s"></div>
+        <div class="pb" style="--x0:32%;--s:5px;--dx1:10px;--dy1:-46px;--dx2:26px;--dy2:-96px;--dx3:30px;--dy3:-132px;--c:rgba(228,184,90,.46);animation-delay:.04s"></div>
+        <div class="pb" style="--x0:33%;--s:4px;--dx1:2px;--dy1:-44px;--dx2:30px;--dy2:-100px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.05s"></div>
+        <div class="pb" style="--x0:34%;--s:2px;--dx1:26px;--dy1:-54px;--dx2:38px;--dy2:-104px;--dx3:-12px;--dy3:-136px;--c:rgba(255,247,232,.72);animation-delay:.06s"></div>
+        <div class="pb" style="--x0:35%;--s:5px;--dx1:9px;--dy1:-51px;--dx2:33px;--dy2:-101px;--dx3:-9px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.07s"></div>
+        <div class="pb" style="--x0:36%;--s:4px;--dx1:19px;--dy1:-53px;--dx2:-37px;--dy2:-100px;--dx3:-19px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.08s"></div>
+        <div class="pb" style="--x0:37%;--s:5px;--dx1:-27px;--dy1:-55px;--dx2:-11px;--dy2:-99px;--dx3:-29px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.09s"></div>
+        <div class="pb" style="--x0:38%;--s:3px;--dx1:-16px;--dy1:-50px;--dx2:20px;--dy2:-98px;--dx3:36px;--dy3:-133px;--c:rgba(255,247,232,.62);animation-delay:.10s"></div>
+        <div class="pb" style="--x0:39%;--s:5px;--dx1:-7px;--dy1:-59px;--dx2:41px;--dy2:-97px;--dx3:-49px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.11s"></div>
+        <div class="pb" style="--x0:40%;--s:3px;--dx1:16px;--dy1:-45px;--dx2:50px;--dy2:-90px;--dx3:18px;--dy3:-126px;--c:rgba(184,201,130,.50);animation-delay:.12s"></div>
+        <div class="pb" style="--x0:41%;--s:2px;--dx1:0px;--dy1:-38px;--dx2:44px;--dy2:-98px;--dx3:26px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.13s"></div>
+        <div class="pb" style="--x0:42%;--s:4px;--dx1:14px;--dy1:-52px;--dx2:30px;--dy2:-98px;--dx3:24px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.14s"></div>
+        <div class="pb" style="--x0:43%;--s:2px;--dx1:20px;--dy1:-42px;--dx2:0px;--dy2:-96px;--dx3:6px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.15s"></div>
+        <div class="pb" style="--x0:44%;--s:4px;--dx1:-28px;--dy1:-51px;--dx2:-32px;--dy2:-92px;--dx3:-20px;--dy3:-128px;--c:rgba(228,184,90,.42);animation-delay:.16s"></div>
+        <div class="pb" style="--x0:45%;--s:3px;--dx1:27px;--dy1:-49px;--dx2:3px;--dy2:-97px;--dx3:-27px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.17s"></div>
+        <div class="pb" style="--x0:46%;--s:2px;--dx1:8px;--dy1:-57px;--dx2:19px;--dy2:-100px;--dx3:44px;--dy3:-131px;--c:rgba(255,247,232,.70);animation-delay:.18s"></div>
+        <div class="pb" style="--x0:47%;--s:3px;--dx1:-9px;--dy1:-53px;--dx2:-41px;--dy2:-95px;--dx3:-47px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.19s"></div>
+        <div class="pb" style="--x0:48%;--s:2px;--dx1:-12px;--dy1:-58px;--dx2:32px;--dy2:-97px;--dx3:38px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.20s"></div>
+        <div class="pb" style="--x0:49%;--s:4px;--dx1:-2px;--dy1:-60px;--dx2:-38px;--dy2:-96px;--dx3:28px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.21s"></div>
+        <div class="pb" style="--x0:50%;--s:2px;--dx1:8px;--dy1:-62px;--dx2:-12px;--dy2:-95px;--dx3:18px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.22s"></div>
+        <div class="pb" style="--x0:51%;--s:5px;--dx1:5px;--dy1:-39px;--dx2:-35px;--dy2:-97px;--dx3:-5px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.23s"></div>
+        <div class="pb" style="--x0:52%;--s:3px;--dx1:15px;--dy1:-41px;--dx2:-9px;--dy2:-96px;--dx3:-15px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.24s"></div>
+        <div class="pb" style="--x0:53%;--s:5px;--dx1:25px;--dy1:-43px;--dx2:17px;--dy2:-95px;--dx3:-25px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.25s"></div>
+        <div class="pb" style="--x0:54%;--s:3px;--dx1:-21px;--dy1:-45px;--dx2:43px;--dy2:-94px;--dx3:-35px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.26s"></div>
+        <div class="pb" style="--x0:55%;--s:5px;--dx1:-11px;--dy1:-47px;--dx2:-27px;--dy2:-93px;--dx3:-45px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.27s"></div>
+        <div class="pb" style="--x0:56%;--s:4px;--dx1:-14px;--dy1:-52px;--dx2:46px;--dy2:-95px;--dx3:40px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.28s"></div>
+        <div class="pb" style="--x0:57%;--s:2px;--dx1:-4px;--dy1:-54px;--dx2:-24px;--dy2:-94px;--dx3:30px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.29s"></div>
+        <div class="pb" style="--x0:58%;--s:4px;--dx1:6px;--dy1:-56px;--dx2:2px;--dy2:-93px;--dx3:20px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.30s"></div>
+        <div class="pb" style="--x0:59%;--s:2px;--dx1:16px;--dy1:-58px;--dx2:28px;--dy2:-92px;--dx3:10px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.31s"></div>
+        <div class="pb" style="--x0:60%;--s:3px;--dx1:13px;--dy1:-63px;--dx2:5px;--dy2:-94px;--dx3:-13px;--dy3:-135px;--c:rgba(255,247,232,.58);animation-delay:.32s"></div>
+        <div class="pb" style="--x0:61%;--s:3px;--dx1:23px;--dy1:-65px;--dx2:31px;--dy2:-93px;--dx3:-23px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.33s"></div>
+        <div class="pb" style="--x0:62%;--s:5px;--dx1:-23px;--dy1:-39px;--dx2:-39px;--dy2:-92px;--dx3:-33px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.34s"></div>
+        <div class="pb" style="--x0:63%;--s:3px;--dx1:-13px;--dy1:-41px;--dx2:-13px;--dy2:-102px;--dx3:-43px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.35s"></div>
+        <div class="pb" style="--x0:64%;--s:2px;--dx1:-16px;--dy1:-46px;--dx2:-36px;--dy2:-93px;--dx3:42px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.36s"></div>
+        <div class="pb" style="--x0:65%;--s:4px;--dx1:-6px;--dy1:-48px;--dx2:-10px;--dy2:-92px;--dx3:32px;--dy3:-134px;--c:rgba(184,201,130,.56);animation-delay:.37s"></div>
+        <div class="pb" style="--x0:66%;--s:2px;--dx1:4px;--dy1:-50px;--dx2:16px;--dy2:-102px;--dx3:22px;--dy3:-132px;--c:rgba(255,247,232,.68);animation-delay:.38s"></div>
+        <div class="pb" style="--x0:67%;--s:5px;--dx1:1px;--dy1:-55px;--dx2:-7px;--dy2:-93px;--dx3:-1px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.39s"></div>
+        <div class="pb" style="--x0:68%;--s:4px;--dx1:11px;--dy1:-57px;--dx2:19px;--dy2:-92px;--dx3:-11px;--dy3:-133px;--c:rgba(184,201,130,.56);animation-delay:.40s"></div>
+        <div class="pb" style="--x0:69%;--s:5px;--dx1:21px;--dy1:-59px;--dx2:45px;--dy2:-102px;--dx3:-21px;--dy3:-135px;--c:rgba(228,184,90,.54);animation-delay:.41s"></div>
+        <div class="pb" style="--x0:70%;--s:3px;--dx1:-25px;--dy1:-61px;--dx2:-25px;--dy2:-101px;--dx3:-31px;--dy3:-133px;--c:rgba(255,247,232,.58);animation-delay:.42s"></div>
+        <div class="pb" style="--x0:71%;--s:2px;--dx1:18px;--dy1:-47px;--dx2:34px;--dy2:-92px;--dx3:18px;--dy3:-126px;--c:rgba(255,247,232,.72);animation-delay:.43s"></div>
+        <div class="pb" style="--x0:72%;--s:4px;--dx1:-12px;--dy1:-52px;--dx2:-36px;--dy2:-94px;--dx3:-44px;--dy3:-130px;--c:rgba(184,201,130,.52);animation-delay:.44s"></div>
+        <div class="pb" style="--x0:73%;--s:3px;--dx1:24px;--dy1:-55px;--dx2:30px;--dy2:-98px;--dx3:-10px;--dy3:-134px;--c:rgba(228,184,90,.44);animation-delay:.45s"></div>
+        <div class="pb" style="--x0:74%;--s:2px;--dx1:-20px;--dy1:-45px;--dx2:-14px;--dy2:-90px;--dx3:30px;--dy3:-128px;--c:rgba(255,247,232,.68);animation-delay:.46s"></div>
+        <div class="pb" style="--x0:75%;--s:3px;--dx1:10px;--dy1:-50px;--dx2:16px;--dy2:-93px;--dx3:24px;--dy3:-127px;--c:rgba(184,201,130,.48);animation-delay:.47s"></div>
+
+        <div class="fragment f1"></div>
+        <div class="fragment f2"></div>
+        <div class="fragment f3"></div>
+        <div class="fragment f4"></div>
 
         <div class="raft-haze"></div>
+        <div class="raft-forcefield"></div>
+        <div class="raft"><span class="raft-text">Acid blocked</span></div>
 
-        <div class="raft">
-          <span class="raft-text">Acid Blocked</span>
+        <div class="raft-dot" style="--x:62px;--y:14px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0s"></div>
+        <div class="raft-dot" style="--x:157px;--y:33px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.02s"></div>
+        <div class="raft-dot" style="--x:252px;--y:28px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.04s"></div>
+        <div class="raft-dot" style="--x:347px;--y:23px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.06s"></div>
+        <div class="raft-dot" style="--x:442px;--y:18px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.08s"></div>
+        <div class="raft-dot" style="--x:124px;--y:37px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.1s"></div>
+        <div class="raft-dot" style="--x:219px;--y:32px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.12s"></div>
+        <div class="raft-dot" style="--x:315px;--y:27px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.14s"></div>
+        <div class="raft-dot" style="--x:410px;--y:22px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.16s"></div>
+
+        <div class="acid-wave">
+          <div class="acid-wave-inner">
+            <svg viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
+              <path class="wave-fill" d="M0,110 C80,42 160,148 240,62 C320,-6 400,138 480,54 C560,-2 640,132 720,58 C800,-6 880,128 960,50 C1040,-10 1120,108 1200,44 L1200,360 L0,360 Z"/>
+              <path class="wave-sheen" d="M0,135 C90,58 180,168 270,82 C360,10 450,158 540,74 C630,5 720,152 810,70 C900,2 990,138 1080,58 C1150,16 1185,82 1200,62 L1200,360 L0,360 Z"/>
+            </svg>
+          </div>
         </div>
-
-        <div class="raft-dot" style="--x:9%;--y:21px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0s"></div>
-        <div class="raft-dot" style="--x:18%;--y:42px;--s:4px;--c:rgba(196,154,58,.30);animation-delay:.02s"></div>
-        <div class="raft-dot" style="--x:28%;--y:31px;--s:5px;--c:rgba(183,200,148,.42);animation-delay:.04s"></div>
-        <div class="raft-dot" style="--x:38%;--y:26px;--s:3px;--c:rgba(255,255,255,.44);animation-delay:.06s"></div>
-        <div class="raft-dot" style="--x:48%;--y:48px;--s:4px;--c:rgba(255,247,232,.58);animation-delay:.08s"></div>
-        <div class="raft-dot" style="--x:58%;--y:22px;--s:5px;--c:rgba(196,154,58,.28);animation-delay:.1s"></div>
-        <div class="raft-dot" style="--x:68%;--y:38px;--s:4px;--c:rgba(183,200,148,.42);animation-delay:.12s"></div>
-        <div class="raft-dot" style="--x:78%;--y:29px;--s:3px;--c:rgba(255,255,255,.44);animation-delay:.14s"></div>
 
       </div>
     </div>
