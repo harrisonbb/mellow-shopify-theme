@@ -1213,92 +1213,146 @@
     }
 
 /* =========================================================
-   Mellow — Premium Infographic Visual Skin
-   Visual-only override. Does not change animation mechanics.
-   Paste before the @media block.
+   Mellow — Mockup-Matched Visual Skin
+   VISUAL ONLY. Keeps existing markup, timing, keyframes,
+   scroll trigger, droplets, particles, and animation logic.
+   Replace the previous visual override with this.
 ========================================================= */
 
 .mellow-clinical-raft-animation {
   --forest: #1A2D10;
   --forest-soft: rgba(26, 45, 16, 0.52);
   --orange: #D04A2A;
-  --gold: #C49A3A;
+  --gold: #BE9335;
   --cream: #F0EBE0;
   --page: #FBFCF7;
-  --sage-raft: #DDE8C8;
-  --sage-raft-mid: #C8D9A6;
-  --sage-raft-deep: #AFC58E;
-  --acid-coral: #D96E58;
-  --acid-coral-soft: #F1A28A;
+
+  --sage-raft-top: #EEF5D8;
+  --sage-raft-mid: #D9E8B8;
+  --sage-raft-bottom: #AFC988;
+
+  --acid-coral: #DA735D;
+  --acid-coral-soft: #F3A28B;
 }
 
-/* Outer section/card: less glassy, more editorial infographic */
+/* Keep section but remove overly “carded” feeling */
 .mellow-clinical-raft-animation .raft-shell {
   background:
-    radial-gradient(circle at 12% 12%, rgba(196, 154, 58, .10), transparent 34%),
-    radial-gradient(circle at 88% 14%, rgba(26, 45, 16, .035), transparent 36%),
-    linear-gradient(135deg, #FBFAF5 0%, #FFFFFF 56%, #F6F0E4 100%);
+    radial-gradient(circle at 12% 12%, rgba(190, 147, 53, .08), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(26, 45, 16, .035), transparent 34%),
+    linear-gradient(135deg, #FBFAF5 0%, #FFFFFF 56%, #F5EFE3 100%);
   border: 1px solid rgba(26, 45, 16, .10);
   border-radius: 38px;
-  box-shadow: 0 30px 90px rgba(26, 45, 16, .075);
+  box-shadow: 0 30px 90px rgba(26, 45, 16, .07);
 }
 
-/* Device frame: flatter and more premium */
+/* Make the right-side frame quieter */
 .mellow-clinical-raft-animation .device {
-  background: rgba(255, 255, 255, .42);
-  border: 1px solid rgba(26, 45, 16, .10);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, .62),
-    0 18px 44px rgba(26, 45, 16, .045);
+  padding: clamp(16px, 1.9vw, 24px);
+  background: rgba(255, 255, 255, .34);
+  border: 1px solid rgba(26, 45, 16, .09);
   border-radius: 30px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .58),
+    0 16px 40px rgba(26, 45, 16, .04);
 }
 
-/* Main animation panel: match the mockup */
+/* This is the actual infographic panel */
 .mellow-clinical-raft-animation .mechanism {
-  border-radius: 28px;
+  min-height: 340px;
+  border-radius: 26px;
   background:
-    radial-gradient(circle at 50% 76%, rgba(217, 110, 88, .06), transparent 34%),
-    linear-gradient(180deg, #FBFAF5 0%, #F3EFE5 72%, #EEE7D8 100%);
+    radial-gradient(circle at 50% 8%, rgba(255, 255, 255, .76), transparent 42%),
+    radial-gradient(circle at 48% 72%, rgba(218, 115, 93, .06), transparent 34%),
+    linear-gradient(180deg, #FBFAF5 0%, #F2EDE2 74%, #EDE4D6 100%);
   border: 1px solid rgba(26, 45, 16, .055);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .50);
 }
 
-/* Subtle dotted editorial texture */
+/* More obvious fine dot texture like the mockup */
 .mellow-clinical-raft-animation .mechanism::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .34;
-  background-image: radial-gradient(rgba(26, 45, 16, .16) .7px, transparent .7px);
-  background-size: 12px 12px;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 88%, transparent 100%);
+  opacity: .28;
+  background-image:
+    radial-gradient(rgba(26, 45, 16, .22) .72px, transparent .72px);
+  background-size: 10px 10px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 88%, transparent 100%);
 }
 
-/* Top label: closer to mockup pill */
+/* Big editorial MellowRaft label */
 .mellow-clinical-raft-animation .layer-label {
+  top: 22px;
+  left: 28px;
   min-height: 42px;
   padding: 0 22px;
   border-radius: 999px;
-  background: rgba(251, 250, 245, .74);
-  border: 1px solid rgba(196, 154, 58, .72);
+  background: rgba(251, 250, 245, .72);
+  border: 1px solid rgba(190, 147, 53, .78);
   color: var(--forest);
   font-size: 11px;
   font-weight: 900;
   letter-spacing: .30em;
-  box-shadow: 0 10px 24px rgba(26, 45, 16, .035);
+  box-shadow: 0 10px 24px rgba(26, 45, 16, .03);
 }
 
-/* Acid label: make it feel like the lower mockup label */
+/* Gold callout arrow, still uses the same SVG and same animation */
+.mellow-clinical-raft-animation .callout {
+  left: 230px !important;
+  top: 60px !important;
+  width: 84px !important;
+  height: 52px !important;
+}
+
+.mellow-clinical-raft-animation .callout path,
+.mellow-clinical-raft-animation .callout polyline {
+  stroke: rgba(190, 147, 53, .78);
+  stroke-width: 1.65;
+}
+
+/* Hide the small callout pills visually so the diagram feels closer to the mockup */
+.mellow-clinical-raft-animation .droplet-callout__pill,
+.mellow-clinical-raft-animation .formation-callout__pill {
+  background: rgba(251, 250, 245, .70);
+  border: 1px solid rgba(190, 147, 53, .26);
+  color: rgba(26, 45, 16, .68);
+  box-shadow: 0 8px 18px rgba(26, 45, 16, .025);
+}
+
+/* Static acid base: taller and cleaner coral field */
+.mellow-clinical-raft-animation .acid {
+  z-index: 2;
+  height: 30%;
+  background:
+    linear-gradient(180deg, rgba(243, 162, 139, .78), rgba(218, 115, 93, .88));
+  opacity: 1;
+}
+
+/* Dot texture in acid, not blur */
+.mellow-clinical-raft-animation .acid::before {
+  top: 0;
+  height: 100%;
+  opacity: .26;
+  filter: none;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .82) .72px, transparent .72px);
+  background-size: 10px 10px;
+}
+
+/* Acid label centered like mockup */
 .mellow-clinical-raft-animation .acid-label {
   left: 50%;
-  bottom: 24px;
+  bottom: 26px;
   transform: translateX(-50%);
-  padding: 12px 22px;
+  min-height: 42px;
+  padding: 0 24px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, .20);
-  border: 1px solid rgba(255, 255, 255, .52);
-  color: var(--forest);
+  background: rgba(255, 255, 255, .17);
+  border: 1px solid rgba(255, 255, 255, .54);
+  color: rgba(26, 45, 16, .88);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: .22em;
@@ -1307,34 +1361,34 @@
   box-shadow: none;
 }
 
-/* Static acid base: warmer coral with dotted texture */
-.mellow-clinical-raft-animation .acid {
-  height: 28%;
-  background:
-    linear-gradient(180deg, rgba(241, 162, 138, .76), rgba(217, 110, 88, .84));
-  opacity: .95;
+/* Animated acid wave: lower, softer, more like the mockup */
+.mellow-clinical-raft-animation .acid-wave {
+  z-index: 38;
+  height: 66%;
 }
 
-.mellow-clinical-raft-animation .acid::before {
-  top: 0;
-  height: 100%;
-  opacity: .28;
-  filter: none;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, .75) .75px, transparent .75px);
-  background-size: 12px 12px;
-}
-
-/* Animated acid wave: more like abstract coral liquid, less “lava” */
 .mellow-clinical-raft-animation .wave-fill {
-  fill: rgba(217, 110, 88, .70);
+  fill: rgba(218, 115, 93, .72);
 }
 
 .mellow-clinical-raft-animation .wave-sheen {
-  fill: rgba(241, 162, 138, .34);
+  fill: rgba(243, 162, 139, .34);
 }
 
-/* The raft: larger, calmer, pill-like, mockup-inspired */
+/* Raft haze: wider and flatter */
+.mellow-clinical-raft-animation .raft-haze {
+  left: 4%;
+  width: 92%;
+  height: 62px;
+  background:
+    radial-gradient(circle at 24% 50%, rgba(255, 247, 232, .34), transparent 22%),
+    radial-gradient(circle at 52% 50%, rgba(190, 147, 53, .16), transparent 24%),
+    radial-gradient(circle at 76% 50%, rgba(175, 201, 136, .24), transparent 24%),
+    linear-gradient(180deg, rgba(255, 247, 232, .18), rgba(175, 201, 136, .17));
+  filter: blur(13px);
+}
+
+/* Main raft: bigger, longer, more like the mockup capsule */
 .mellow-clinical-raft-animation .raft {
   left: 4% !important;
   width: 92% !important;
@@ -1343,31 +1397,31 @@
   background:
     linear-gradient(
       180deg,
-      rgba(238, 246, 216, .97) 0%,
-      rgba(211, 226, 178, .96) 54%,
-      rgba(176, 198, 139, .94) 100%
+      rgba(238, 245, 216, .98) 0%,
+      rgba(217, 232, 184, .97) 48%,
+      rgba(175, 201, 136, .95) 100%
     );
-  border: 1px solid rgba(26, 45, 16, .09) !important;
+  border: 1px solid rgba(26, 45, 16, .12) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 245, .72),
-    inset 0 -12px 20px rgba(26, 45, 16, .045),
+    inset 0 1px 0 rgba(255, 255, 245, .76),
+    inset 0 -14px 22px rgba(26, 45, 16, .045),
     0 18px 34px rgba(26, 45, 16, .10);
   overflow: hidden;
 }
 
-/* Add inner gold keyline like the mockup */
+/* Restore pseudo-elements for inner keyline + texture */
 .mellow-clinical-raft-animation .raft::before {
   content: "" !important;
   display: block !important;
   position: absolute;
   inset: 15px 28px;
   border-radius: 999px;
-  border: 1px solid rgba(196, 154, 58, .70);
+  border: 1px solid rgba(190, 147, 53, .74);
   outline: 0 !important;
   pointer-events: none;
+  opacity: .95;
 }
 
-/* Add subtle dotted raft texture */
 .mellow-clinical-raft-animation .raft::after {
   content: "" !important;
   display: block !important;
@@ -1375,15 +1429,15 @@
   inset: 0;
   border: 0 !important;
   outline: 0 !important;
-  opacity: .22;
+  opacity: .24;
   pointer-events: none;
   background-image:
-    radial-gradient(rgba(26, 45, 16, .30) .7px, transparent .7px);
-  background-size: 11px 11px;
-  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    radial-gradient(rgba(26, 45, 16, .34) .68px, transparent .68px);
+  background-size: 10px 10px;
+  mask-image: linear-gradient(90deg, transparent 0%, black 9%, black 91%, transparent 100%);
 }
 
-/* Raft text: larger, more premium, more like the mockup */
+/* Acid Blocked text closer to mockup */
 .mellow-clinical-raft-animation .raft-text {
   z-index: 4;
   font-size: 14px;
@@ -1392,7 +1446,7 @@
   color: rgba(26, 45, 16, .94);
 }
 
-/* Gold dots flanking Acid Blocked */
+/* Gold dots on each side */
 .mellow-clinical-raft-animation .raft-text::before,
 .mellow-clinical-raft-animation .raft-text::after {
   content: "";
@@ -1401,70 +1455,64 @@
   margin: 0 18px;
   border-radius: 999px;
   background: var(--gold);
-  opacity: .9;
+  opacity: .95;
   flex: 0 0 auto;
 }
 
-/* Haze under raft: softer, less sci-fi */
-.mellow-clinical-raft-animation .raft-haze {
-  left: 5%;
-  width: 90%;
-  height: 58px;
-  background:
-    radial-gradient(circle at 24% 50%, rgba(255, 247, 232, .34), transparent 22%),
-    radial-gradient(circle at 52% 50%, rgba(196, 154, 58, .16), transparent 24%),
-    radial-gradient(circle at 76% 50%, rgba(183, 200, 148, .24), transparent 24%),
-    linear-gradient(180deg, rgba(255, 247, 232, .20), rgba(183, 200, 148, .16));
-  filter: blur(14px);
+/* Make the dotted texture inside raft feel calmer */
+.mellow-clinical-raft-animation .raft-dot {
+  background: rgba(255, 247, 232, .42);
+  box-shadow: none;
 }
 
-/* Forcefield: more subtle so the raft feels physical, not magical */
+/* Forcefield should be barely visible */
 .mellow-clinical-raft-animation .raft-forcefield {
   left: 7%;
   width: 86%;
-  height: 30px;
+  height: 26px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 247, 232, .26), transparent 64%),
-    linear-gradient(180deg, rgba(221, 232, 200, .18), rgba(221, 232, 200, 0));
+    radial-gradient(circle at 50% 50%, rgba(255, 247, 232, .20), transparent 64%),
+    linear-gradient(180deg, rgba(221, 232, 200, .13), rgba(221, 232, 200, 0));
   filter: blur(12px);
 }
 
-/* Callout arrow: gold editorial line */
-.mellow-clinical-raft-animation .callout path,
-.mellow-clinical-raft-animation .callout polyline {
-  stroke: rgba(196, 154, 58, .74);
-  stroke-width: 1.6;
-}
-
-/* The small callout pills should recede visually */
-.mellow-clinical-raft-animation .droplet-callout__pill,
-.mellow-clinical-raft-animation .formation-callout__pill {
-  background: rgba(251, 250, 245, .74);
-  border: 1px solid rgba(196, 154, 58, .30);
-  color: rgba(26, 45, 16, .78);
-  box-shadow: 0 8px 18px rgba(26, 45, 16, .035);
-}
-
-/* Droplets/particles: slightly more refined and less neon */
+/* Refine particles so they do not feel neon */
 .mellow-clinical-raft-animation .particle,
 .mellow-clinical-raft-animation .pb {
-  box-shadow: 0 0 10px rgba(196, 154, 58, .38);
+  box-shadow: 0 0 8px rgba(190, 147, 53, .30);
 }
 
 .mellow-clinical-raft-animation .splash::before {
-  background: rgba(196, 154, 58, .20);
+  background: rgba(190, 147, 53, .18);
 }
 
 .mellow-clinical-raft-animation .splash i {
-  box-shadow: 0 0 7px rgba(196, 154, 58, .34);
+  box-shadow: 0 0 6px rgba(190, 147, 53, .28);
 }
 
 .mellow-clinical-raft-animation .ripple {
-  border-color: rgba(196, 154, 58, .46);
+  border-color: rgba(190, 147, 53, .42);
 }
 
-/* Mobile visual adjustment only */
+/* Mobile: visual-only matching */
 @media (max-width: 900px) {
+  .mellow-clinical-raft-animation .device {
+    padding: 14px;
+  }
+
+  .mellow-clinical-raft-animation .mechanism {
+    min-height: 330px;
+  }
+
+  .mellow-clinical-raft-animation .layer-label {
+    top: 18px;
+    left: 18px;
+    min-height: 36px;
+    padding: 0 15px;
+    font-size: 9px;
+    letter-spacing: .20em;
+  }
+
   .mellow-clinical-raft-animation .raft {
     left: 5% !important;
     width: 90% !important;
@@ -1489,22 +1537,16 @@
 
   .mellow-clinical-raft-animation .acid-label {
     max-width: calc(100% - 36px);
+    min-height: 38px;
+    padding: 0 14px;
     font-size: 8px;
     letter-spacing: .14em;
-    padding: 10px 14px;
     white-space: normal;
     text-align: center;
   }
-
-  .mellow-clinical-raft-animation .layer-label {
-    font-size: 9px;
-    letter-spacing: .20em;
-    min-height: 38px;
-    padding: 0 16px;
-  }
 }
 
-
+    
   </style>
 
   <div class="raft-shell">
