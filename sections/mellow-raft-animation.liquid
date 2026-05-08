@@ -552,9 +552,9 @@
       visibility: visible !important;
       position: absolute;
       z-index: 998;
-      left: 17%;
+      left: 3%;
       top: var(--raft-birth-top);
-      width: 70%;
+      width: 94%;
       height: 38px;
       border-radius: 999px;
       background:
@@ -573,9 +573,9 @@
       visibility: visible !important;
       position: absolute !important;
       z-index: 999 !important;
-      left: 17% !important;
+      left: 3% !important;
       top: var(--raft-birth-top) !important;
-      width: 70% !important;
+      width: 94% !important;
       height: 58px !important;
       border-radius: 999px;
       background:
@@ -605,7 +605,7 @@
       visibility: visible !important;
       position: absolute;
       z-index: 1000;
-      left: calc(17% + var(--x));
+      left: calc(3% + var(--x));
       top: calc(var(--raft-birth-top) + var(--y));
       width: var(--s, 4px);
       height: var(--s, 4px);
@@ -1035,7 +1035,7 @@
       visibility: visible;
       position: absolute;
       z-index: 1002;
-      left: 17%;
+      left: 3%;
       top: var(--raft-birth-top);
       width: 70%;
       height: 58px;
@@ -1116,49 +1116,56 @@
     }
 
     @keyframes mellowAcidWaveRise {
-      /* Stay hidden until raft is fully formed */
-      0%, 74% {
-        opacity: 0;
-        transform: translateY(100%);
+      /* Wave sits low and visible throughout non-blocking phases */
+      0% {
+        opacity: .45;
+        transform: translateY(86%);
       }
 
-      /* Slow rise — 74% to 84% */
+      /* Stays low while droplets fall and raft forms */
+      72% {
+        opacity: .45;
+        transform: translateY(86%);
+      }
+
+      /* Slow angry rise after raft is locked in */
       79% {
-        opacity: .42;
-        transform: translateY(62%);
+        opacity: .62;
+        transform: translateY(52%);
       }
 
       84% {
         opacity: .82;
-        transform: translateY(18%);
+        transform: translateY(16%);
       }
 
-      /* Reach raft — stop before overshooting */
+      /* Reach raft — capped, no overshoot */
       87% {
         opacity: .96;
         transform: translateY(2%);
       }
 
-      /* Impact squish — gel deflects the wave */
+      /* Impact — gel deflects the wave flat */
       89% {
         opacity: .94;
-        transform: translateY(3%) scaleY(.72) scaleX(1.04);
+        transform: translateY(3%) scaleY(.70) scaleX(1.04);
       }
 
-      /* Retreat */
+      /* Retreat back down */
       93% {
-        opacity: .60;
-        transform: translateY(28%) scaleY(.88) scaleX(1.01);
+        opacity: .72;
+        transform: translateY(38%) scaleY(.90) scaleX(1.01);
       }
 
-      98% {
-        opacity: .18;
-        transform: translateY(78%);
+      97% {
+        opacity: .50;
+        transform: translateY(72%);
       }
 
+      /* Settles back at resting low position */
       100% {
-        opacity: 0;
-        transform: translateY(100%);
+        opacity: .45;
+        transform: translateY(86%);
       }
     }
 
@@ -1415,15 +1422,15 @@
         <div class="raft-haze"></div>
         <div class="raft"></div>
 
-        <div class="raft-dot" style="--x:46px;--y:14px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0s"></div>
-        <div class="raft-dot" style="--x:117px;--y:33px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.02s"></div>
-        <div class="raft-dot" style="--x:188px;--y:28px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.04s"></div>
-        <div class="raft-dot" style="--x:259px;--y:23px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.06s"></div>
-        <div class="raft-dot" style="--x:330px;--y:18px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.08s"></div>
-        <div class="raft-dot" style="--x:93px;--y:37px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.1s"></div>
-        <div class="raft-dot" style="--x:164px;--y:32px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.12s"></div>
-        <div class="raft-dot" style="--x:235px;--y:27px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.14s"></div>
-        <div class="raft-dot" style="--x:306px;--y:22px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.16s"></div>
+        <div class="raft-dot" style="--x:62px;--y:14px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:0s"></div>
+        <div class="raft-dot" style="--x:157px;--y:33px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.02s"></div>
+        <div class="raft-dot" style="--x:252px;--y:28px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.04s"></div>
+        <div class="raft-dot" style="--x:347px;--y:23px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.06s"></div>
+        <div class="raft-dot" style="--x:442px;--y:18px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.08s"></div>
+        <div class="raft-dot" style="--x:124px;--y:37px;--s:4px;--c:rgba(228,184,90,.30);animation-delay:.1s"></div>
+        <div class="raft-dot" style="--x:219px;--y:32px;--s:5px;--c:rgba(184,201,130,.36);animation-delay:.12s"></div>
+        <div class="raft-dot" style="--x:315px;--y:27px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.14s"></div>
+        <div class="raft-dot" style="--x:410px;--y:22px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.16s"></div>
 
         <div class="acid-wave">
           <div class="acid-wave-inner">
