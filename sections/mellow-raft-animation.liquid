@@ -46,11 +46,13 @@
     .mellow-clinical-raft-animation .raft-haze,
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
-    .mellow-clinical-raft-animation .heat,
-    .mellow-clinical-raft-animation .h4,
-    .mellow-clinical-raft-animation .h5,
-    .mellow-clinical-raft-animation .h6,
-    .mellow-clinical-raft-animation .h7,
+
+
+
+
+
+    .mellow-clinical-raft-animation .acid-wave,
+    .mellow-clinical-raft-animation .acid-wave-inner,
     .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
@@ -69,11 +71,13 @@
     .mellow-clinical-raft-animation.is-playing .raft-haze,
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
-    .mellow-clinical-raft-animation.is-playing .heat,
-    .mellow-clinical-raft-animation.is-playing .h4,
-    .mellow-clinical-raft-animation.is-playing .h5,
-    .mellow-clinical-raft-animation.is-playing .h6,
-    .mellow-clinical-raft-animation.is-playing .h7,
+
+
+
+
+
+    .mellow-clinical-raft-animation.is-playing .acid-wave,
+    .mellow-clinical-raft-animation.is-playing .acid-wave-inner,
     .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
@@ -613,72 +617,6 @@
       pointer-events: none;
     }
 
-    .mellow-clinical-raft-animation .heat {
-      position: absolute;
-      z-index: 25;
-      top: var(--acid-line-top) !important;
-      width: 34px !important;
-      height: 122px !important;
-      opacity: 0;
-      overflow: visible;
-      animation: mellowRaftHeatRiseClean var(--duration) ease-in-out infinite;
-    }
-
-    .mellow-clinical-raft-animation .heat svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .mellow-clinical-raft-animation .heat path {
-      fill: none;
-      stroke: #cc2200;
-      stroke-width: 4.4;
-      stroke-linecap: round;
-      filter:
-        drop-shadow(0 0 5px rgba(200, 34, 0, .70))
-        drop-shadow(0 0 14px rgba(200, 34, 0, .38));
-    }
-
-    .mellow-clinical-raft-animation .h1 {
-      left: 22%;
-      animation-delay: .04s;
-    }
-
-    .mellow-clinical-raft-animation .h2 {
-      left: 36%;
-      height: 108px !important;
-      animation-delay: .18s;
-    }
-
-    .mellow-clinical-raft-animation .h6 {
-      left: 27%;
-      height: 114px !important;
-      animation-delay: .11s;
-    }
-
-    .mellow-clinical-raft-animation .h7 {
-      left: 31%;
-      height: 100px !important;
-      animation-delay: .20s;
-    }
-
-    .mellow-clinical-raft-animation .h3 {
-      left: 51%;
-      animation-delay: .08s;
-    }
-
-    .mellow-clinical-raft-animation .h4 {
-      left: 63%;
-      height: 96px !important;
-      animation-delay: .24s;
-    }
-
-    .mellow-clinical-raft-animation .h5 {
-      left: 76%;
-      animation-delay: .13s;
-    }
-
 
 
 
@@ -1054,12 +992,6 @@
       }
     }
 
-    @keyframes mellowRaftHeatRiseClean {
-      0%, 70% {
-        opacity: 0;
-        transform: translateY(52px) scaleY(.18) scaleX(.7);
-      }
-
       74% {
         opacity: .72;
         transform: translateY(28px) scaleY(.58) scaleX(1.1) translateX(-2px);
@@ -1126,7 +1058,7 @@
     }
 
     @keyframes mellowRaftLabelAppear {
-      0%, 72% {
+      0%, 75% {
         opacity: 0;
         transform: translateY(2px) scale(.97);
       }
@@ -1141,14 +1073,108 @@
         transform: translateY(0) scale(1);
       }
 
-      96% {
-        opacity: .4;
+      94% {
+        opacity: .3;
         transform: translateY(-1px) scale(.99);
       }
 
       100% {
         opacity: 0;
         transform: translateY(-2px) scale(.98);
+      }
+    }
+
+    .mellow-clinical-raft-animation .acid-wave {
+      position: absolute;
+      z-index: 30;
+      left: -2%;
+      right: -2%;
+      bottom: 0;
+      height: 72%;
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: 50% 100%;
+      animation: mellowAcidWaveRise var(--duration) cubic-bezier(.35, .02, .2, 1) infinite;
+    }
+
+    .mellow-clinical-raft-animation .acid-wave-inner {
+      width: 100%;
+      height: 100%;
+      animation: mellowAcidWaveUndulate 1.6s ease-in-out infinite;
+    }
+
+    .mellow-clinical-raft-animation .acid-wave svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mellow-clinical-raft-animation .wave-fill {
+      fill: rgba(200, 34, 0, .42);
+    }
+
+    .mellow-clinical-raft-animation .wave-sheen {
+      fill: rgba(225, 60, 15, .20);
+    }
+
+    @keyframes mellowAcidWaveRise {
+      0%, 38% {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+
+      48% {
+        opacity: .48;
+        transform: translateY(66%);
+      }
+
+      62% {
+        opacity: .74;
+        transform: translateY(33%);
+      }
+
+      70% {
+        opacity: .90;
+        transform: translateY(6%);
+      }
+
+      74% {
+        opacity: .97;
+        transform: translateY(-3%) scaleY(.88);
+      }
+
+      78% {
+        opacity: .92;
+        transform: translateY(0%) scaleY(.70) scaleX(1.04);
+      }
+
+      83% {
+        opacity: .76;
+        transform: translateY(5%) scaleY(.80) scaleX(1.02);
+      }
+
+      92% {
+        opacity: .34;
+        transform: translateY(58%) scaleY(.94);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes mellowAcidWaveUndulate {
+      0%, 100% {
+        transform: scaleX(1) translateX(0);
+      }
+
+      30% {
+        transform: scaleX(1.022) translateX(-14px);
+      }
+
+      65% {
+        transform: scaleX(.980) translateX(14px);
       }
     }
 
@@ -1174,11 +1200,13 @@
     .mellow-clinical-raft-animation .raft-haze,
     .mellow-clinical-raft-animation .raft,
     .mellow-clinical-raft-animation .raft-dot,
-    .mellow-clinical-raft-animation .heat,
-    .mellow-clinical-raft-animation .h4,
-    .mellow-clinical-raft-animation .h5,
-    .mellow-clinical-raft-animation .h6,
-    .mellow-clinical-raft-animation .h7,
+
+
+
+
+
+    .mellow-clinical-raft-animation .acid-wave,
+    .mellow-clinical-raft-animation .acid-wave-inner,
     .mellow-clinical-raft-animation .raft-label,
     .mellow-clinical-raft-animation .droplet-callout,
     .mellow-clinical-raft-animation .formation-callout,
@@ -1197,11 +1225,13 @@
     .mellow-clinical-raft-animation.is-playing .raft-haze,
     .mellow-clinical-raft-animation.is-playing .raft,
     .mellow-clinical-raft-animation.is-playing .raft-dot,
-    .mellow-clinical-raft-animation.is-playing .heat,
-    .mellow-clinical-raft-animation.is-playing .h4,
-    .mellow-clinical-raft-animation.is-playing .h5,
-    .mellow-clinical-raft-animation.is-playing .h6,
-    .mellow-clinical-raft-animation.is-playing .h7,
+
+
+
+
+
+    .mellow-clinical-raft-animation.is-playing .acid-wave,
+    .mellow-clinical-raft-animation.is-playing .acid-wave-inner,
     .mellow-clinical-raft-animation.is-playing .raft-label,
     .mellow-clinical-raft-animation.is-playing .droplet-callout,
     .mellow-clinical-raft-animation.is-playing .formation-callout,
@@ -1225,14 +1255,6 @@
       .mellow-clinical-raft-animation .heat path {
         stroke-width: 3.6;
       }
-
-      .mellow-clinical-raft-animation .h1 { left: 22%; }
-      .mellow-clinical-raft-animation .h2 { left: 36%; }
-      .mellow-clinical-raft-animation .h3 { left: 51%; }
-      .mellow-clinical-raft-animation .h4 { left: 63%; }
-      .mellow-clinical-raft-animation .h5 { left: 76%; }
-      .mellow-clinical-raft-animation .h6 { left: 27%; }
-      .mellow-clinical-raft-animation .h7 { left: 31%; }
 
       .mellow-clinical-raft-animation .droplet-callout {
         right: 32px;
@@ -1405,46 +1427,13 @@
         <div class="raft-dot" style="--x:235px;--y:27px;--s:6px;--c:rgba(255,255,255,.42);animation-delay:.14s"></div>
         <div class="raft-dot" style="--x:306px;--y:22px;--s:3px;--c:rgba(255,247,232,.62);animation-delay:.16s"></div>
 
-        <div class="heat h1">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M18 166 C42 150, 1 130, 24 106 C44 82, 2 62, 20 40 C38 20, 8 10, 22 0" />
-          </svg>
-        </div>
-
-        <div class="heat h2">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M22 166 C4 146, 38 122, 16 96 C2 74, 36 52, 14 30 C4 16, 32 8, 18 0" />
-          </svg>
-        </div>
-
-        <div class="heat h6">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C36 146, 6 124, 28 100 C40 78, 8 58, 26 36 C38 18, 12 8, 22 0" />
-          </svg>
-        </div>
-
-        <div class="heat h7">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M18 166 C2 148, 34 126, 10 102 C0 80, 30 60, 12 38 C2 20, 28 10, 16 0" />
-          </svg>
-        </div>
-
-        <div class="heat h3">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M16 166 C38 144, 3 120, 26 94 C40 72, 6 50, 24 28 C36 12, 10 4, 20 0" />
-          </svg>
-        </div>
-
-        <div class="heat h4">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M24 166 C6 148, 36 128, 12 102 C0 78, 34 58, 16 36 C6 18, 30 8, 20 0" />
-          </svg>
-        </div>
-
-        <div class="heat h5">
-          <svg viewBox="0 0 40 170" aria-hidden="true">
-            <path d="M20 166 C40 150, 4 132, 26 108 C42 86, 8 66, 22 44 C34 24, 10 12, 18 0" />
-          </svg>
+        <div class="acid-wave">
+          <div class="acid-wave-inner">
+            <svg viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
+              <path class="wave-fill" d="M0,110 C80,42 160,148 240,62 C320,-6 400,138 480,54 C560,-2 640,132 720,58 C800,-6 880,128 960,50 C1040,-10 1120,108 1200,44 L1200,360 L0,360 Z"/>
+              <path class="wave-sheen" d="M0,135 C90,58 180,168 270,82 C360,10 450,158 540,74 C630,5 720,152 810,70 C900,2 990,138 1080,58 C1150,16 1185,82 1200,62 L1200,360 L0,360 Z"/>
+            </svg>
+          </div>
         </div>
 
         <div class="raft-label"><span>Raft blocks acid</span></div>
