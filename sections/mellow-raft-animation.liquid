@@ -561,9 +561,9 @@
     .mellow-clinical-raft-animation .heat {
       position: absolute;
       z-index: 25;
-      top: calc(var(--raft-final-top) + 58px);
+      top: calc(var(--raft-final-top) + 102px);
       width: 24px;
-      height: 122px;
+      height: 78px;
       opacity: 0;
       overflow: hidden;
       animation: mellowRaftHeatRiseClean var(--duration) ease-in-out infinite;
@@ -601,9 +601,9 @@
     .mellow-clinical-raft-animation .block-ripple {
       position: absolute;
       z-index: 48;
-      top: calc(var(--raft-final-top) + 54px);
-      width: 52px;
-      height: 10px;
+      top: calc(var(--raft-final-top) + 86px);
+      width: 46px;
+      height: 9px;
       border-radius: 999px;
       background: rgba(208, 74, 42, .13);
       opacity: 0;
@@ -623,29 +623,28 @@
       left: 70%;
     }
 
-    /* Fixed-width badges prevent the three Acid blocked pills from merging into one long band */
     .mellow-clinical-raft-animation .blocked-callout {
       position: absolute;
       z-index: 1001;
-      top: calc(var(--raft-final-top) + 108px);
-      width: 62px;
-      min-width: 62px;
-      max-width: 62px;
-      height: 20px;
-      min-height: 20px;
+      top: calc(var(--raft-final-top) + 76px);
+      width: 58px;
+      min-width: 58px;
+      max-width: 58px;
+      height: 19px;
+      min-height: 19px;
       padding: 0;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .58);
+      background: rgba(255, 255, 255, .64);
       border: 1px solid rgba(208, 74, 42, .075);
-      color: rgba(208, 74, 42, .72);
-      font-size: 6.4px;
+      color: rgba(208, 74, 42, .78);
+      font-size: 7.2px;
       font-weight: 850;
-      letter-spacing: .035em;
+      letter-spacing: .045em;
       line-height: 1;
       text-transform: uppercase;
       text-align: center;
       white-space: nowrap;
-      overflow: hidden;
+      overflow: visible;
       box-shadow: 0 4px 10px rgba(208, 74, 42, .03);
       opacity: 0;
       pointer-events: none;
@@ -1054,12 +1053,12 @@
     @keyframes mellowRaftHeatRiseClean {
       0%, 74% {
         opacity: 0;
-        transform: translateY(36px) scaleY(.18);
+        transform: translateY(28px) scaleY(.18);
       }
 
       80% {
         opacity: .82;
-        transform: translateY(20px) scaleY(.44);
+        transform: translateY(15px) scaleY(.44);
       }
 
       86% {
@@ -1069,17 +1068,17 @@
 
       92% {
         opacity: .64;
-        transform: translateY(7px) scaleY(.62);
+        transform: translateY(5px) scaleY(.62);
       }
 
       97% {
         opacity: .34;
-        transform: translateY(15px) scaleY(.34);
+        transform: translateY(11px) scaleY(.34);
       }
 
       100% {
         opacity: 0;
-        transform: translateY(22px) scaleY(.18);
+        transform: translateY(16px) scaleY(.18);
       }
     }
 
@@ -1090,13 +1089,13 @@
       }
 
       88% {
-        opacity: .56;
+        opacity: .42;
         transform: scaleX(1);
       }
 
       96%, 100% {
         opacity: 0;
-        transform: scaleX(1.35);
+        transform: scaleX(1.22);
       }
     }
 
@@ -1126,15 +1125,19 @@
       }
 
       .mellow-clinical-raft-animation .blocked-callout {
-        top: calc(var(--raft-final-top) + 98px);
-        width: 52px;
-        min-width: 52px;
-        max-width: 52px;
-        height: 18px;
-        min-height: 18px;
-        font-size: 5.6px;
-        letter-spacing: .025em;
-        padding: 0;
+        top: calc(var(--raft-final-top) + 72px);
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+        height: 17px;
+        min-height: 17px;
+        font-size: 6.2px;
+        letter-spacing: .035em;
+      }
+
+      .mellow-clinical-raft-animation .heat {
+        top: calc(var(--raft-final-top) + 96px);
+        height: 70px;
       }
 
       .mellow-clinical-raft-animation .bc1 {
@@ -1342,9 +1345,9 @@
         <div class="block-ripple br2"></div>
         <div class="block-ripple br3"></div>
 
-        <div class="blocked-callout bc1">Acid blocked</div>
-        <div class="blocked-callout bc2">Acid blocked</div>
-        <div class="blocked-callout bc3">Acid blocked</div>
+        <div class="blocked-callout bc1" aria-label="Acid blocked">Blocked</div>
+        <div class="blocked-callout bc2" aria-label="Acid blocked">Blocked</div>
+        <div class="blocked-callout bc3" aria-label="Acid blocked">Blocked</div>
       </div>
     </div>
   </div>
