@@ -1056,7 +1056,7 @@
       pointer-events: none;
       opacity: 0;
       transform-origin: 50% 100%;
-      animation: mellowAcidWaveRise var(--duration) ease-in-out infinite;
+      animation: mellowAcidWaveRise var(--duration) linear infinite;
     }
 
     .mellow-clinical-raft-animation .acid-wave-inner {
@@ -1079,29 +1079,49 @@
     }
 
     @keyframes mellowAcidWaveRise {
-      0%, 34% {
+      /* Invisible during droplet fall and raft formation */
+      0%, 72% {
         opacity: 0;
         transform: translateY(100%);
+        animation-timing-function: linear;
       }
 
-      87% {
-        opacity: .94;
+      /* Fast rise — raft is now formed, acid surges up */
+      78% {
+        opacity: .52;
+        transform: translateY(58%);
+        animation-timing-function: ease-out;
+      }
+
+      85% {
+        opacity: .90;
+        transform: translateY(8%);
+        animation-timing-function: ease-out;
+      }
+
+      /* Hit raft */
+      88% {
+        opacity: .96;
         transform: translateY(2%);
+        animation-timing-function: ease-in;
       }
 
+      /* Deflect — squish then fall away */
       90% {
-        opacity: .92;
-        transform: translateY(4%) scaleY(.74) scaleX(1.03);
+        opacity: .88;
+        transform: translateY(5%) scaleY(.72) scaleX(1.03);
+        animation-timing-function: ease-in;
       }
 
+      /* Retreat and disappear */
       96% {
-        opacity: .48;
-        transform: translateY(60%);
+        opacity: .30;
+        transform: translateY(70%);
       }
 
       100% {
-        opacity: .38;
-        transform: translateY(86%);
+        opacity: 0;
+        transform: translateY(100%);
       }
     }
 
