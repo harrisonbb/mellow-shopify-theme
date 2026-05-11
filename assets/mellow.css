@@ -305,7 +305,14 @@ li {
   max-width: none;
   margin-inline: 0;
   padding-left: var(--mellow-who-edge);
-  padding-right: 0;
+  padding-right: var(--mellow-who-edge);
+}
+
+.mellow-who-its-for__header-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 86rem) minmax(28rem, 36rem);
+  align-items: end;
+  gap: clamp(2rem, 6vw, 8rem);
 }
 
 .mellow-who-its-for__intro {
@@ -356,6 +363,67 @@ li {
   font-size: clamp(1.7rem, 1.45vw, 2.1rem);
   line-height: 1.58;
   text-align: left;
+}
+
+.mellow-who-its-for__quiz-cta {
+  justify-self: end;
+  align-self: end;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 36rem;
+  padding: clamp(1.4rem, 1.6vw, 2rem);
+  border: 0.1rem solid rgba(208, 74, 42, 0.2);
+  border-radius: 1.4rem;
+  background: rgba(240, 235, 224, 0.94);
+  color: #1A2D10;
+  box-shadow: 0 1.4rem 3.4rem rgba(5, 15, 8, 0.26);
+}
+
+.mellow-who-its-for__quiz-cta h3 {
+  margin: 0 0 0.55rem;
+  color: #1A2D10;
+  font-family: var(--mellow-font-heading);
+  font-size: clamp(1.35rem, 1.5vw, 1.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.mellow-who-its-for__quiz-cta p {
+  margin: 0 0 1rem;
+  color: rgba(26, 45, 16, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.mellow-who-its-for__quiz-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0 1.1rem;
+  border-radius: var(--mellow-radius-pill);
+  background: #D04A2A;
+  color: #F0EBE0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.mellow-who-its-for__quiz-button:hover,
+.mellow-who-its-for__quiz-button:focus-visible {
+  background: #b83f24;
+  box-shadow: 0 0.8rem 1.8rem rgba(208, 74, 42, 0.24);
+  transform: translateY(-1px);
+}
+
+.mellow-who-its-for__quiz-button:focus-visible {
+  outline: 0.2rem solid rgba(240, 235, 224, 0.78);
+  outline-offset: 0.3rem;
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -602,6 +670,18 @@ li {
   }
 }
 
+@media screen and (max-width: 900px) {
+  .mellow-who-its-for__header-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mellow-who-its-for__quiz-cta {
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .mellow-who-its-for {
     --mellow-who-card-width: min(82vw, 32rem);
@@ -661,13 +741,16 @@ li {
   .mellow-who-its-for__card,
   .mellow-who-its-for__icon,
   .mellow-who-its-for__icon::after,
-  .mellow-who-its-for__card-copy {
+  .mellow-who-its-for__card-copy,
+  .mellow-who-its-for__quiz-button {
     transition: none;
   }
 
   .mellow-who-its-for__card:hover,
   .mellow-who-its-for__card:hover .mellow-who-its-for__icon,
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy {
+  .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy,
+  .mellow-who-its-for__quiz-button:hover,
+  .mellow-who-its-for__quiz-button:focus-visible {
     transform: none;
   }
 
