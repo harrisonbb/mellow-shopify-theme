@@ -39,7 +39,7 @@
             assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|heart||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
 
-        {%- for duplicate_index in (1..2) -%}
+        {%- for duplicate_index in (1..3) -%}
             {%- for card in cards -%}
               {%- liquid
                 assign card_parts = card | split: '|'
@@ -48,7 +48,7 @@
                 assign card_icon = card_parts[2]
                 assign card_tag = card_parts[3]
               -%}
-              <article class="mellow-who-its-for__card" data-mellow-who-card{% if duplicate_index == 2 %} aria-hidden="true"{% endif %}>
+              <article class="mellow-who-its-for__card" data-mellow-who-card{% unless duplicate_index == 2 %} aria-hidden="true"{% endunless %}>
                 {%- if card_tag != blank -%}
                   <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
                 {%- endif -%}
@@ -95,73 +95,106 @@
 
     const scroller = section.querySelector('[data-mellow-who-scroller]');
     const track = section.querySelector('[data-mellow-who-track]');
+    const cards = Array.from(section.querySelectorAll('[data-mellow-who-card]'));
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileQuery = window.matchMedia('(max-width: 749px)');
 
-    if (!scroller || !track) return;
+    if (!scroller || !track || !cards.length) return;
 
-    let rafId;
-    let lastTime;
     let x = 0;
     let setWidth = 0;
     let cardStep = 0;
-    let hasMeasured = false;
+    let cardCount = Math.max(1, Math.floor(cards.length / 3));
+    let activeIndex = cardCount;
     let isPointerDown = false;
-    let isHovering = false;
     let pointerStartX = 0;
     let pointerStartXOffset = 0;
-    let softPauseUntil = performance.now() + 1200;
-    const baseSpeed = 30;
-    const cardCount = Math.max(1, Math.floor(track.children.length / 2));
+    let hasDragged = false;
+
+    const setTransition = (enabled) => {
+      track.style.transition = enabled && !mediaQuery.matches ? 'transform 520ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+    };
+
+    const cardCenter = (card) => card.offsetLeft + card.offsetWidth / 2;
 
     const normalizePosition = () => {
       if (!setWidth) return;
 
-      while (x <= -setWidth) x += setWidth;
-      while (x > 0) x -= setWidth;
+      while (x <= -setWidth * 1.5) x += setWidth;
+      while (x > -setWidth * 0.5) x -= setWidth;
     };
 
-    const render = () => {
+    const updateCards = () => {
+      const center = scroller.clientWidth / 2;
+      let nearestDistance = Infinity;
+      let nearestIndex = activeIndex;
+
+      cards.forEach((card, index) => {
+        const distance = cardStep ? (cardCenter(card) + x - center) / cardStep : 0;
+        const absDistance = Math.abs(distance);
+        const clampedDistance = Math.max(-2.25, Math.min(2.25, distance));
+        const side = clampedDistance < 0 ? -1 : 1;
+        const scale = mobileQuery.matches ? 1 : Math.max(0.74, 1 - Math.min(absDistance, 2.4) * 0.12);
+        const y = mobileQuery.matches ? 0 : Math.min(absDistance, 2.2) * 18;
+        const rotation = mobileQuery.matches || absDistance < 0.35 ? 0 : side * Math.min(2, 0.75 + absDistance * 0.45);
+        const opacity = mobileQuery.matches ? 1 : Math.max(0.34, 1 - Math.max(0, absDistance - 0.15) * 0.24);
+        const zIndex = String(Math.max(1, 10 - Math.round(absDistance * 3)));
+
+        card.style.setProperty('--mellow-who-card-scale', scale.toFixed(3));
+        card.style.setProperty('--mellow-who-card-y', `${y.toFixed(1)}px`);
+        card.style.setProperty('--mellow-who-card-rotation', `${rotation.toFixed(2)}deg`);
+        card.style.opacity = opacity.toFixed(3);
+        card.style.zIndex = zIndex;
+        card.classList.toggle('is-active', absDistance < 0.45);
+        card.setAttribute('aria-hidden', absDistance < 0.45 ? 'false' : 'true');
+
+        if (absDistance < nearestDistance) {
+          nearestDistance = absDistance;
+          nearestIndex = index;
+        }
+      });
+
+      activeIndex = nearestIndex;
+    };
+
+    const render = (smooth = false) => {
+      setTransition(smooth);
       track.style.transform = `translate3d(${x}px, 0, 0)`;
+      updateCards();
     };
 
-    const measure = () => {
-      const firstCard = track.children[0];
-      const firstDuplicate = track.children[cardCount];
-      const styles = window.getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    const centerCard = (index, smooth = true) => {
+      if (!cards[index]) return;
 
-      cardStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
-      setWidth = firstDuplicate ? firstDuplicate.offsetLeft : cardStep * cardCount;
-      if (!hasMeasured) {
-        x = 0;
-        hasMeasured = true;
-      } else {
-        normalizePosition();
-      }
-
-      render();
+      x = scroller.clientWidth / 2 - cardCenter(cards[index]);
+      normalizePosition();
+      render(smooth);
     };
 
-    const moveBy = (amount) => {
+    const nearestCardIndex = () => {
+      const center = scroller.clientWidth / 2;
+      return cards.reduce((nearest, card, index) => {
+        const distance = Math.abs(cardCenter(card) + x - center);
+        return distance < nearest.distance ? { distance, index } : nearest;
+      }, { distance: Infinity, index: activeIndex }).index;
+    };
+
+    const moveBy = (amount, smooth = true) => {
       x -= amount;
       normalizePosition();
-      render();
+      render(smooth);
     };
 
-    const softenAutoplay = (duration = 1200) => {
-      softPauseUntil = Math.max(softPauseUntil, performance.now() + duration);
-    };
+    const settleToNearest = () => centerCard(nearestCardIndex(), true);
 
-    const tick = (time) => {
-      if (lastTime === undefined) lastTime = time;
-      const delta = Math.min(time - lastTime, 64) / 1000;
-      lastTime = time;
+    const measure = () => {
+      const firstCard = cards[0];
+      const firstMiddleCard = cards[cardCount];
+      const firstLastCard = cards[cardCount * 2];
 
-      if (!mediaQuery.matches && !isPointerDown && !isHovering && time > softPauseUntil) {
-        moveBy(baseSpeed * delta);
-      }
-
-      rafId = window.requestAnimationFrame(tick);
+      cardStep = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : firstCard.offsetWidth;
+      setWidth = firstLastCard && firstMiddleCard ? firstLastCard.offsetLeft - firstMiddleCard.offsetLeft : cardStep * cardCount;
+      centerCard(activeIndex || cardCount, false);
     };
 
     const endDrag = (event) => {
@@ -171,7 +204,7 @@
       if (event.pointerId && scroller.hasPointerCapture(event.pointerId)) {
         scroller.releasePointerCapture(event.pointerId);
       }
-      softenAutoplay(1400);
+      settleToNearest();
     };
 
     scroller.addEventListener('wheel', (event) => {
@@ -179,56 +212,58 @@
 
       if (!isHorizontalIntent) return;
 
-      if (event.deltaX !== 0) {
-        event.preventDefault();
-        moveBy(event.deltaX);
-        softenAutoplay();
-      }
+      event.preventDefault();
+      moveBy(event.deltaX, false);
+      window.clearTimeout(scroller.mellowWhoWheelTimer);
+      scroller.mellowWhoWheelTimer = window.setTimeout(settleToNearest, 140);
     }, { passive: false });
 
     scroller.addEventListener('pointerdown', (event) => {
       isPointerDown = true;
+      hasDragged = false;
       pointerStartX = event.clientX;
       pointerStartXOffset = x;
       scroller.classList.add('is-dragging');
       scroller.setPointerCapture(event.pointerId);
-      softenAutoplay(1800);
+      setTransition(false);
     });
 
     scroller.addEventListener('pointermove', (event) => {
       if (!isPointerDown) return;
+
+      const delta = event.clientX - pointerStartX;
+      if (Math.abs(delta) > 4) hasDragged = true;
+      if (!hasDragged) return;
+
       event.preventDefault();
-      x = pointerStartXOffset + event.clientX - pointerStartX;
+      x = pointerStartXOffset + delta;
       normalizePosition();
-      render();
+      render(false);
     });
 
     scroller.addEventListener('pointerup', endDrag);
     scroller.addEventListener('pointercancel', endDrag);
     scroller.addEventListener('pointerleave', endDrag);
-    scroller.addEventListener('mouseenter', () => {
-      isHovering = true;
+
+    scroller.addEventListener('click', (event) => {
+      const card = event.target.closest('[data-mellow-who-card]');
+      if (!card || hasDragged) return;
+
+      centerCard(cards.indexOf(card), true);
     });
-    scroller.addEventListener('mouseleave', () => {
-      isHovering = false;
-      softenAutoplay(700);
-    });
-    scroller.addEventListener('focusin', () => softenAutoplay(1200));
 
     scroller.addEventListener('keydown', (event) => {
       if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
       event.preventDefault();
-      moveBy(event.key === 'ArrowRight' ? cardStep : -cardStep);
-      softenAutoplay(1600);
+      centerCard(activeIndex + (event.key === 'ArrowRight' ? 1 : -1), true);
     });
 
     window.addEventListener('resize', measure, { passive: true });
     measure();
-    rafId = window.requestAnimationFrame(tick);
 
     document.addEventListener('shopify:section:unload', (event) => {
-      if (event.target.contains(section) && rafId) {
-        window.cancelAnimationFrame(rafId);
+      if (event.target.contains(section)) {
+        window.removeEventListener('resize', measure);
       }
     });
   })();
