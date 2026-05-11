@@ -33,53 +33,58 @@
   </div>
 
   <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
-    <div class="mellow-who-its-for__carousel" data-mellow-who-scroller tabindex="0">
+    <div class="mellow-who-its-for__carousel" data-mellow-who-carousel-stage>
       <div class="mellow-who-its-for__track" data-mellow-who-track>
         {%- liquid
-            assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|heart||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
+          assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
 
-        {%- for duplicate_index in (1..3) -%}
-            {%- for card in cards -%}
-              {%- liquid
-                assign card_parts = card | split: '|'
-                assign card_title = card_parts[0]
-                assign card_text = card_parts[1]
-                assign card_icon = card_parts[2]
-                assign card_tag = card_parts[3]
-              -%}
-              <article class="mellow-who-its-for__card" data-mellow-who-card{% unless duplicate_index == 2 %} aria-hidden="true"{% endunless %}>
-                {%- if card_tag != blank -%}
-                  <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
-                {%- endif -%}
-                <div class="mellow-who-its-for__icon" aria-hidden="true">
-                  {%- case card_icon -%}
-                    {%- when 'fork-knife' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
-                    {%- when 'droplet' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
-                    {%- when 'moon' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
-                    {%- when 'heart' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 40S10 31 10 19c0-5 4-9 9-9 3 0 5 1 5 4 0-3 3-4 6-4 5 0 8 4 8 9 0 12-14 21-14 21Z"/><path d="M18 25c3 2 9 2 12 0"/></svg>
-                    {%- when 'bolt' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
-                    {%- when 'target' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
-                    {%- when 'shield' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
-                    {%- when 'smoke' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
-                  {%- endcase -%}
-                </div>
+        {%- for card in cards -%}
+          {%- liquid
+            assign card_parts = card | split: '|'
+            assign card_title = card_parts[0]
+            assign card_text = card_parts[1]
+            assign card_icon = card_parts[2]
+            assign card_tag = card_parts[3]
+          -%}
+          <article
+            class="mellow-who-its-for__card"
+            data-mellow-who-card
+            data-mellow-who-index="{{ forloop.index0 }}"
+            role="button"
+            tabindex="0"
+            aria-label="Show {{ card_title | escape }} reflux moment"
+          >
+            {%- if card_tag != blank -%}
+              <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+            {%- endif -%}
+            <div class="mellow-who-its-for__icon" aria-hidden="true">
+              {%- case card_icon -%}
+                {%- when 'fork-knife' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
+                {%- when 'droplet' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
+                {%- when 'moon' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
+                {%- when 'pregnancy' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
+                {%- when 'bolt' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
+                {%- when 'target' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
+                {%- when 'smoke' -%}
+                  <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
+              {%- endcase -%}
+            </div>
 
-                <div class="mellow-who-its-for__card-copy">
-                  <h3>{{ card_title | escape }}</h3>
-                  <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
-                  <p>{{ card_text | escape }}</p>
-                </div>
-              </article>
-            {%- endfor -%}
+            <div class="mellow-who-its-for__card-copy">
+              <h3>{{ card_title | escape }}</h3>
+              <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
+              <p>{{ card_text | escape }}</p>
+            </div>
+          </article>
         {%- endfor -%}
       </div>
     </div>
@@ -93,180 +98,188 @@
     if (!section || section.dataset.mellowWhoInitialized === 'true') return;
     section.dataset.mellowWhoInitialized = 'true';
 
-    const scroller = section.querySelector('[data-mellow-who-scroller]');
+    const stage = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cards = Array.from(section.querySelectorAll('[data-mellow-who-card]'));
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const mobileQuery = window.matchMedia('(max-width: 749px)');
 
-    if (!scroller || !track || !cards.length) return;
+    if (!stage || !track || !cards.length) return;
 
-    let x = 0;
-    let setWidth = 0;
-    let cardStep = 0;
-    let cardCount = Math.max(1, Math.floor(cards.length / 3));
-    let activeIndex = cardCount;
-    let isPointerDown = false;
-    let pointerStartX = 0;
-    let pointerStartXOffset = 0;
-    let hasDragged = false;
+    let activeIndex = 0;
+    let autoTimer = null;
+    let isPaused = false;
+    let isMobile = mobileQuery.matches;
 
-    const setTransition = (enabled) => {
-      track.style.transition = enabled && !mediaQuery.matches ? 'transform 520ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+    const positions = {
+      '-2': { x: -470, scale: 0.83, opacity: 0.64, z: 1 },
+      '-1': { x: -250, scale: 0.92, opacity: 0.86, z: 3 },
+      '0': { x: 0, scale: 1, opacity: 1, z: 5 },
+      '1': { x: 250, scale: 0.92, opacity: 0.86, z: 3 },
+      '2': { x: 470, scale: 0.83, opacity: 0.64, z: 1 }
     };
 
-    const cardCenter = (card) => card.offsetLeft + card.offsetWidth / 2;
+    const wrapIndex = (index) => (index + cards.length) % cards.length;
 
-    const normalizePosition = () => {
-      if (!setWidth) return;
+    const shortestOffset = (index) => {
+      let offset = index - activeIndex;
+      const half = cards.length / 2;
 
-      while (x <= -setWidth * 1.5) x += setWidth;
-      while (x > -setWidth * 0.5) x -= setWidth;
+      if (offset > half) offset -= cards.length;
+      if (offset < -half) offset += cards.length;
+
+      return offset;
     };
 
-    const updateCards = () => {
-      const center = scroller.clientWidth / 2;
-      let nearestDistance = Infinity;
-      let nearestIndex = activeIndex;
+    const setActive = (index, shouldScrollMobile = true) => {
+      activeIndex = wrapIndex(index);
+      updateCards(shouldScrollMobile);
+    };
+
+    const scrollMobileCardIntoView = () => {
+      if (!isMobile || !cards[activeIndex]) return;
+
+      cards[activeIndex].scrollIntoView({
+        behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    };
+
+    const updateCards = (shouldScrollMobile = false) => {
+      isMobile = mobileQuery.matches;
 
       cards.forEach((card, index) => {
-        const distance = cardStep ? (cardCenter(card) + x - center) / cardStep : 0;
-        const absDistance = Math.abs(distance);
-        const side = distance < 0 ? -1 : 1;
-        const clampedDistance = Math.min(absDistance, 2.4);
-        const isMobile = mobileQuery.matches;
-        const scale = isMobile ? 1 : Math.max(0.76, 1 - clampedDistance * 0.105);
-        const y = isMobile ? 0 : Math.min(clampedDistance, 2) * 9;
-        const rotation = isMobile || absDistance < 0.45 ? 0 : side * Math.min(1, absDistance * 0.38);
-        const opacity = isMobile ? 1 : Math.max(0, 1 - Math.max(0, absDistance - 0.25) * 0.26);
-        const visible = isMobile || absDistance < 2.7;
-        const zIndex = String(Math.max(1, 50 - Math.round(absDistance * 12)));
+        const offset = shortestOffset(index);
+        const visiblePosition = Math.abs(offset) <= 2;
+        const position = positions[String(offset)];
+        const isActive = index === activeIndex;
 
-        card.style.setProperty('--mellow-who-card-scale', scale.toFixed(3));
-        card.style.setProperty('--mellow-who-card-y', `${y.toFixed(1)}px`);
-        card.style.setProperty('--mellow-who-card-rotation', `${rotation.toFixed(2)}deg`);
-        card.style.opacity = visible ? opacity.toFixed(3) : '0';
-        card.style.pointerEvents = visible ? '' : 'none';
-        card.style.zIndex = zIndex;
-        card.classList.toggle('is-active', absDistance < 0.45);
-        card.setAttribute('aria-hidden', absDistance < 0.45 ? 'false' : 'true');
+        card.classList.toggle('is-active', isActive);
+        card.classList.toggle('is-visible', isMobile || visiblePosition);
+        card.dataset.mellowWhoPosition = isMobile || !position ? '' : String(offset);
+        card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        card.setAttribute('aria-hidden', !isMobile && !visiblePosition ? 'true' : 'false');
+        card.tabIndex = isMobile || visiblePosition ? 0 : -1;
 
-        if (absDistance < nearestDistance) {
-          nearestDistance = absDistance;
-          nearestIndex = index;
+        if (isMobile) {
+          card.style.removeProperty('--mellow-who-card-x');
+          card.style.removeProperty('--mellow-who-card-scale');
+          card.style.removeProperty('--mellow-who-card-opacity');
+          card.style.zIndex = '';
+          card.style.pointerEvents = '';
+          return;
+        }
+
+        if (position) {
+          card.style.setProperty('--mellow-who-card-x', `${position.x}px`);
+          card.style.setProperty('--mellow-who-card-scale', position.scale);
+          card.style.setProperty('--mellow-who-card-opacity', position.opacity);
+          card.style.zIndex = String(position.z);
+          card.style.pointerEvents = '';
+        } else {
+          card.style.setProperty('--mellow-who-card-x', `${offset < 0 ? -620 : 620}px`);
+          card.style.setProperty('--mellow-who-card-scale', '0.78');
+          card.style.setProperty('--mellow-who-card-opacity', '0');
+          card.style.zIndex = '0';
+          card.style.pointerEvents = 'none';
         }
       });
 
-      activeIndex = nearestIndex;
+      if (shouldScrollMobile) scrollMobileCardIntoView();
     };
 
-    const render = (smooth = false) => {
-      setTransition(smooth);
-      track.style.transform = `translate3d(${x}px, 0, 0)`;
-      updateCards();
+    const stopAuto = () => {
+      window.clearInterval(autoTimer);
+      autoTimer = null;
     };
 
-    const centerCard = (index, smooth = true) => {
-      if (!cards[index]) return;
+    const startAuto = () => {
+      stopAuto();
 
-      x = scroller.clientWidth / 2 - cardCenter(cards[index]);
-      normalizePosition();
-      render(smooth);
+      if (reducedMotionQuery.matches || mobileQuery.matches || isPaused) return;
+
+      autoTimer = window.setInterval(() => {
+        setActive(activeIndex + 1, false);
+      }, 4200);
     };
 
-    const nearestCardIndex = () => {
-      const center = scroller.clientWidth / 2;
-      return cards.reduce((nearest, card, index) => {
-        const distance = Math.abs(cardCenter(card) + x - center);
-        return distance < nearest.distance ? { distance, index } : nearest;
-      }, { distance: Infinity, index: activeIndex }).index;
-    };
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        setActive(index);
+        startAuto();
+      });
 
-    const moveBy = (amount, smooth = true) => {
-      x -= amount;
-      normalizePosition();
-      render(smooth);
-    };
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setActive(index);
+          startAuto();
+          return;
+        }
 
-    const settleToNearest = () => centerCard(nearestCardIndex(), true);
-
-    const measure = () => {
-      const firstCard = cards[0];
-      const firstMiddleCard = cards[cardCount];
-      const firstLastCard = cards[cardCount * 2];
-
-      cardStep = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : firstCard.offsetWidth;
-      setWidth = firstLastCard && firstMiddleCard ? firstLastCard.offsetLeft - firstMiddleCard.offsetLeft : cardStep * cardCount;
-      centerCard(activeIndex || cardCount, false);
-    };
-
-    const endDrag = (event) => {
-      if (!isPointerDown) return;
-      isPointerDown = false;
-      scroller.classList.remove('is-dragging');
-      if (event.pointerId && scroller.hasPointerCapture(event.pointerId)) {
-        scroller.releasePointerCapture(event.pointerId);
-      }
-      settleToNearest();
-    };
-
-    scroller.addEventListener('wheel', (event) => {
-      const isHorizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-
-      if (!isHorizontalIntent) return;
-
-      event.preventDefault();
-      moveBy(event.deltaX, false);
-      window.clearTimeout(scroller.mellowWhoWheelTimer);
-      scroller.mellowWhoWheelTimer = window.setTimeout(settleToNearest, 140);
-    }, { passive: false });
-
-    scroller.addEventListener('pointerdown', (event) => {
-      isPointerDown = true;
-      hasDragged = false;
-      pointerStartX = event.clientX;
-      pointerStartXOffset = x;
-      scroller.classList.add('is-dragging');
-      scroller.setPointerCapture(event.pointerId);
-      setTransition(false);
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        setActive(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
+        cards[activeIndex].focus({ preventScroll: true });
+        startAuto();
+      });
     });
 
-    scroller.addEventListener('pointermove', (event) => {
-      if (!isPointerDown) return;
-
-      const delta = event.clientX - pointerStartX;
-      if (Math.abs(delta) > 4) hasDragged = true;
-      if (!hasDragged) return;
-
-      event.preventDefault();
-      x = pointerStartXOffset + delta;
-      normalizePosition();
-      render(false);
+    stage.addEventListener('mouseenter', () => {
+      isPaused = true;
+      stopAuto();
     });
 
-    scroller.addEventListener('pointerup', endDrag);
-    scroller.addEventListener('pointercancel', endDrag);
-    scroller.addEventListener('pointerleave', endDrag);
-
-    scroller.addEventListener('click', (event) => {
-      const card = event.target.closest('[data-mellow-who-card]');
-      if (!card || hasDragged) return;
-
-      centerCard(cards.indexOf(card), true);
+    stage.addEventListener('mouseleave', () => {
+      isPaused = false;
+      startAuto();
     });
 
-    scroller.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-      event.preventDefault();
-      centerCard(activeIndex + (event.key === 'ArrowRight' ? 1 : -1), true);
+    stage.addEventListener('focusin', () => {
+      isPaused = true;
+      stopAuto();
     });
 
-    window.addEventListener('resize', measure, { passive: true });
-    measure();
+    stage.addEventListener('focusout', (event) => {
+      if (stage.contains(event.relatedTarget)) return;
+      isPaused = false;
+      startAuto();
+    });
+
+    track.addEventListener('scroll', () => {
+      if (!mobileQuery.matches) return;
+
+      window.clearTimeout(track.mellowWhoScrollTimer);
+      track.mellowWhoScrollTimer = window.setTimeout(() => {
+        const trackCenter = track.scrollLeft + track.clientWidth / 2;
+        const nearest = cards.reduce((current, card, index) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const distance = Math.abs(trackCenter - cardCenter);
+          return distance < current.distance ? { distance, index } : current;
+        }, { distance: Infinity, index: activeIndex });
+
+        activeIndex = nearest.index;
+        updateCards(false);
+      }, 120);
+    }, { passive: true });
+
+    const handleMediaChange = () => {
+      updateCards(true);
+      startAuto();
+    };
+
+    mobileQuery.addEventListener('change', handleMediaChange);
+    reducedMotionQuery.addEventListener('change', handleMediaChange);
+
+    updateCards(false);
+    startAuto();
 
     document.addEventListener('shopify:section:unload', (event) => {
       if (event.target.contains(section)) {
-        window.removeEventListener('resize', measure);
+        stopAuto();
+        mobileQuery.removeEventListener('change', handleMediaChange);
+        reducedMotionQuery.removeEventListener('change', handleMediaChange);
       }
     });
   })();
