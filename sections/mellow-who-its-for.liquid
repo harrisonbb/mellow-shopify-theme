@@ -28,15 +28,16 @@
       {%- endif -%}
 
     </div>
+  </div>
 
-    <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
-      <div class="mellow-who-its-for__carousel" data-mellow-who-scroller tabindex="0">
-        <div class="mellow-who-its-for__track" data-mellow-who-track>
-          {%- liquid
+  <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
+    <div class="mellow-who-its-for__carousel" data-mellow-who-scroller tabindex="0">
+      <div class="mellow-who-its-for__track" data-mellow-who-track>
+        {%- liquid
             assign cards = 'Large meals & rich foods|Heavy meals and late dinners can add pressure.|fork-knife||Chronic reflux|When reflux keeps coming back.|droplet||Nighttime reflux|When symptoms hit before sleep.|moon||During pregnancy|Shifts and pressure can trigger reflux.|heart||Active lifestyles|Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse.|smoke' | split: '||'
-          -%}
+        -%}
 
-          {%- for duplicate_index in (1..2) -%}
+        {%- for duplicate_index in (1..2) -%}
             {%- for card in cards -%}
               {%- liquid
                 assign card_parts = card | split: '|'
@@ -73,12 +74,11 @@
                 </div>
               </article>
             {%- endfor -%}
-          {%- endfor -%}
-        </div>
+        {%- endfor -%}
       </div>
-
-      <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots></div>
     </div>
+
+    <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots></div>
   </div>
 </section>
 
@@ -171,7 +171,7 @@
         dot.dataset.mellowWhoPosition = String(position);
 
         dot.addEventListener('click', () => {
-          x = -(position * cardStep);
+          x = position === 0 && setWidth ? -setWidth + 0.5 : -(position * cardStep);
           normalizePosition();
           render();
           softenAutoplay(1800);
@@ -201,7 +201,7 @@
       if (!pagePositions.length) pagePositions = [0];
 
       if (!hasMeasured) {
-        x = 0;
+        x = setWidth ? -setWidth + 0.5 : 0;
         hasMeasured = true;
       } else {
         normalizePosition();
