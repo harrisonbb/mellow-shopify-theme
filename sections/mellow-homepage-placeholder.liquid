@@ -1,0 +1,121 @@
+{% comment %}
+  Mellow homepage placeholder section.
+  Clean Dawn-compatible starting point for a future conversion-focused homepage.
+
+  TODO future sections:
+  - mellow-hero
+  - mellow-trust-bar
+  - mellow-who-its-for
+  - mellow-video-reviews
+  - mellow-how-to-use
+  - mellow-ingredients
+  - mellow-raft-science
+  - mellow-clinical-proof
+  - mellow-expert-reviews
+  - mellow-comparison
+  - mellow-reviews-grid
+  - mellow-subscription-buybox
+  - mellow-faq
+{% endcomment %}
+
+<section class="mellow-section mellow-home-placeholder color-{{ section.settings.color_scheme }}">
+  <div class="mellow-section__inner">
+    <div class="mellow-home-placeholder__card">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="mellow-heading">{{ section.settings.heading | escape }}</h1>
+        {%- endif -%}
+
+        {%- if section.settings.lede != blank -%}
+          <p class="mellow-lede">{{ section.settings.lede | escape }}</p>
+        {%- endif -%}
+
+        <div class="mellow-actions">
+          {%- if section.settings.primary_label != blank -%}
+            <a class="mellow-button" href="{{ section.settings.primary_link | default: '#' }}">
+              {{ section.settings.primary_label | escape }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.secondary_label != blank -%}
+            <a class="mellow-button mellow-button--secondary" href="{{ section.settings.secondary_link | default: '#' }}">
+              {{ section.settings.secondary_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <ul class="mellow-home-placeholder__notes" aria-label="Mellow homepage direction">
+        <li>Premium calm foundation</li>
+        <li>Editorial serif headlines</li>
+        <li>Spacious left-aligned layout</li>
+        <li>Built for future conversion sections</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mellow homepage",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Mellow fresh start"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A calm, premium foundation for reflux relief."
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Lead copy",
+      "default": "This placeholder keeps the new Dawn-based theme clean while the full Mellow homepage system is rebuilt section by section."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop Mellow"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "See the plan"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow homepage"
+    }
+  ]
+}
+{% endschema %}
