@@ -132,13 +132,12 @@
       cards.forEach((card, index) => {
         const distance = cardStep ? (cardCenter(card) + x - center) / cardStep : 0;
         const absDistance = Math.abs(distance);
-        const clampedDistance = Math.max(-2.25, Math.min(2.25, distance));
-        const side = clampedDistance < 0 ? -1 : 1;
-        const scale = mobileQuery.matches ? 1 : Math.max(0.74, 1 - Math.min(absDistance, 2.4) * 0.12);
-        const y = mobileQuery.matches ? 0 : Math.min(absDistance, 2.2) * 18;
-        const rotation = mobileQuery.matches || absDistance < 0.35 ? 0 : side * Math.min(2, 0.75 + absDistance * 0.45);
-        const opacity = mobileQuery.matches ? 1 : Math.max(0.34, 1 - Math.max(0, absDistance - 0.15) * 0.24);
-        const zIndex = String(Math.max(1, 10 - Math.round(absDistance * 3)));
+        const side = distance < 0 ? -1 : 1;
+        const scale = mobileQuery.matches ? 1 : Math.max(0.9, 1 - Math.min(absDistance, 1.4) * 0.075);
+        const y = mobileQuery.matches ? 0 : Math.min(absDistance, 1.4) * 8;
+        const rotation = mobileQuery.matches || absDistance < 0.35 ? 0 : side * Math.min(1.25, 0.45 + absDistance * 0.45);
+        const opacity = mobileQuery.matches ? 1 : Math.max(0.18, absDistance < 1.55 ? 1 - Math.max(0, absDistance - 0.15) * 0.18 : 0.18);
+        const zIndex = String(Math.max(1, 20 - Math.round(absDistance * 5)));
 
         card.style.setProperty('--mellow-who-card-scale', scale.toFixed(3));
         card.style.setProperty('--mellow-who-card-y', `${y.toFixed(1)}px`);
