@@ -1,1 +1,14 @@
-{"sections":{"main":{"type":"main-page","settings":{"padding_top":28,"padding_bottom":28}},"mellow_science_page_Lcnbfw":{"type":"mellow-science-page","name":"Mellow Science Clean","settings":{"eyebrow":"The science","heading":"The science behind raft-forming reflux relief.","subheading":"Mellow is built around alginate raft technology — a mechanical approach designed to help reduce reflux by forming a floating barrier in the stomach.","button_label":"See how it works","button_link":"","footnote":"Based on published studies of alginate raft-forming formulations."}},"mellow_how_to_3Xhrjy":{"type":"mellow-how-to","name":"Mellow How It Works","settings":{"eyebrow":"How it works","heading":"Three steps. Hours of relief.","subheading":"Mellow activates in the stomach to form a floating raft where reflux starts.","button_label":"Try Mellow","button_link":"","science_button_label":"See the science","science_button_link":"","step_title_1":"Step 1: Squeeze","step_text_1":"One pouch. No water. No mixing. No chalky aftertaste.","step_title_2":"Step 2: Form","step_text_2":"MellowRaft™ forms a floating gel barrier at the top of your stomach.","step_title_3":"Step 3: Float + Block","step_text_3":"The raft holds where reflux starts, helping keep acid down for hours."}}},"order":["main","mellow_science_page_Lcnbfw","mellow_how_to_3Xhrjy"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
