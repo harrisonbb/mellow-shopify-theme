@@ -77,17 +77,7 @@
         </div>
       </div>
 
-      <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots>
-        {%- for card in cards -%}
-          <button
-            class="mellow-who-its-for__dot{% if forloop.first %} is-active{% endif %}"
-            type="button"
-            aria-label="Go to moment {{ forloop.index }}"
-            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
-            data-mellow-who-dot="{{ forloop.index0 }}"
-          ></button>
-        {%- endfor -%}
-      </div>
+      <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots></div>
     </div>
   </div>
 </section>
@@ -101,35 +91,26 @@
 
     const scroller = section.querySelector('[data-mellow-who-scroller]');
     const track = section.querySelector('[data-mellow-who-track]');
-    const dots = Array.from(section.querySelectorAll('[data-mellow-who-dot]'));
+    const dotsContainer = section.querySelector('[data-mellow-who-dots]');
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    if (!scroller || !track) return;
+    if (!scroller || !track || !dotsContainer) return;
 
+    let dots = [];
     let rafId;
     let lastTime;
     let x = 0;
     let setWidth = 0;
     let cardStep = 0;
+    let cardsPerPage = 1;
+    let pagePositions = [0];
     let isPointerDown = false;
+    let isHovering = false;
     let pointerStartX = 0;
     let pointerStartXOffset = 0;
-    let softPauseUntil = 0;
-    const baseSpeed = 32;
-    const cardCount = dots.length || Math.max(1, track.children.length / 2);
-
-    const measure = () => {
-      const firstCard = track.children[0];
-      const firstDuplicate = track.children[cardCount];
-      const styles = window.getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-
-      cardStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
-      setWidth = firstDuplicate ? firstDuplicate.offsetLeft : cardStep * cardCount;
-
-      normalizePosition();
-      render();
-    };
+    let softPauseUntil = performance.now() + 1200;
+    const baseSpeed = 24;
+    const cardCount = Math.max(1, Math.floor(track.children.length / 2));
 
     const normalizePosition = () => {
       if (!setWidth) return;
@@ -138,13 +119,33 @@
       while (x > 0) x -= setWidth;
     };
 
-    const activeIndex = () => {
+    const currentCardIndex = () => {
       if (!cardStep) return 0;
       return Math.round(Math.abs(x) / cardStep) % cardCount;
     };
 
+    const activePageIndex = () => {
+      const current = currentCardIndex();
+      let closestIndex = 0;
+      let closestDistance = cardCount;
+
+      pagePositions.forEach((position, index) => {
+        const distance = Math.min(
+          Math.abs(current - position),
+          cardCount - Math.abs(current - position)
+        );
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      return closestIndex;
+    };
+
     const updateDots = () => {
-      const current = activeIndex();
+      const current = activePageIndex();
       dots.forEach((dot, index) => {
         const isActive = index === current;
         dot.classList.toggle('is-active', isActive);
@@ -155,6 +156,52 @@
     const render = () => {
       track.style.transform = `translate3d(${x}px, 0, 0)`;
       updateDots();
+    };
+
+    const buildDots = () => {
+      dotsContainer.textContent = '';
+
+      pagePositions.forEach((position, index) => {
+        const dot = document.createElement('button');
+        dot.className = `mellow-who-its-for__dot${index === 0 ? ' is-active' : ''}`;
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to carousel page ${index + 1}`);
+        dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+        dot.dataset.mellowWhoPosition = String(position);
+
+        dot.addEventListener('click', () => {
+          x = -(position * cardStep);
+          normalizePosition();
+          render();
+          softenAutoplay(1800);
+        });
+
+        dotsContainer.appendChild(dot);
+      });
+
+      dots = Array.from(dotsContainer.children);
+    };
+
+    const measure = () => {
+      const firstCard = track.children[0];
+      const firstDuplicate = track.children[cardCount];
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+
+      cardStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
+      setWidth = firstDuplicate ? firstDuplicate.offsetLeft : cardStep * cardCount;
+      cardsPerPage = cardStep ? Math.max(1, Math.floor((scroller.clientWidth + gap) / cardStep)) : 1;
+      pagePositions = [];
+
+      for (let position = 0; position < cardCount; position += cardsPerPage) {
+        pagePositions.push(position);
+      }
+
+      if (!pagePositions.length) pagePositions = [0];
+
+      normalizePosition();
+      buildDots();
+      render();
     };
 
     const moveBy = (amount) => {
@@ -172,7 +219,7 @@
       const delta = Math.min(time - lastTime, 64) / 1000;
       lastTime = time;
 
-      if (!mediaQuery.matches && !isPointerDown && time > softPauseUntil) {
+      if (!mediaQuery.matches && !isPointerDown && !isHovering && time > softPauseUntil) {
         moveBy(baseSpeed * delta);
       }
 
@@ -220,7 +267,13 @@
     scroller.addEventListener('pointerup', endDrag);
     scroller.addEventListener('pointercancel', endDrag);
     scroller.addEventListener('pointerleave', endDrag);
-    scroller.addEventListener('mouseenter', () => softenAutoplay(700));
+    scroller.addEventListener('mouseenter', () => {
+      isHovering = true;
+    });
+    scroller.addEventListener('mouseleave', () => {
+      isHovering = false;
+      softenAutoplay(700);
+    });
     scroller.addEventListener('focusin', () => softenAutoplay(1200));
 
     scroller.addEventListener('keydown', (event) => {
@@ -228,16 +281,6 @@
       event.preventDefault();
       moveBy(event.key === 'ArrowRight' ? cardStep : -cardStep);
       softenAutoplay(1600);
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const index = Number(dot.dataset.mellowWhoDot || 0);
-        x = -(index * cardStep);
-        normalizePosition();
-        render();
-        softenAutoplay(1800);
-      });
     });
 
     window.addEventListener('resize', measure, { passive: true });
