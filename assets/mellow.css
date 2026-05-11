@@ -288,7 +288,8 @@ li {
   --mellow-who-title-zone: clamp(7.2rem, 5.2vw, 8.4rem);
   --mellow-who-card-row-gap: clamp(1.2rem, 1vw, 1.5rem);
   --mellow-who-gap: clamp(2.4rem, 2.2vw, 3.2rem);
-  --mellow-who-track-inset: var(--mellow-axis-inset);
+  --mellow-who-edge: clamp(28px, 4vw, 64px);
+  --mellow-who-track-inset: var(--mellow-who-edge);
   overflow: hidden;
   padding: clamp(8rem, 8.35vw, 12rem) 0;
   background:
@@ -299,8 +300,12 @@ li {
 }
 
 .mellow-who-its-for__inner {
-  width: min(calc(100% - var(--mellow-axis-pad) - var(--mellow-axis-pad)), var(--mellow-axis-max));
-  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-left: var(--mellow-who-edge);
+  padding-right: 0;
 }
 
 .mellow-who-its-for__intro {
@@ -355,17 +360,17 @@ li {
 
 .mellow-who-its-for__carousel-wrap {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-width: 0;
   margin-top: clamp(5.6rem, 5vw, 7.2rem);
-  margin-right: calc(50% - 50vw);
-  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .mellow-who-its-for__carousel {
   position: relative;
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   margin: -2.4rem 0;
   padding: 2.4rem var(--mellow-who-track-inset) 2.8rem;
@@ -577,7 +582,7 @@ li {
     --mellow-who-card-width: min(82vw, 32rem);
     --mellow-who-card-height: 35rem;
     --mellow-who-gap: 1.8rem;
-    --mellow-who-track-inset: var(--mellow-axis-inset);
+    --mellow-who-track-inset: var(--mellow-who-edge);
     padding-top: clamp(5.6rem, 14vw, 7.2rem);
     padding-bottom: clamp(5.6rem, 14vw, 7.2rem);
   }
