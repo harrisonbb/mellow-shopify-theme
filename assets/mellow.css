@@ -279,6 +279,11 @@ li {
   --mellow-who-card: #F7F1E7;
   --mellow-who-card-width: clamp(34rem, 26vw, 38rem);
   --mellow-who-card-height: clamp(39rem, 31vw, 44rem);
+  --mellow-who-card-padding-y: clamp(3.8rem, 2.8vw, 4.2rem);
+  --mellow-who-card-padding-x: clamp(3.4rem, 2.5vw, 4.2rem);
+  --mellow-who-icon-zone: clamp(10.8rem, 8vw, 12rem);
+  --mellow-who-title-zone: clamp(7.2rem, 5.2vw, 8.4rem);
+  --mellow-who-card-row-gap: clamp(1.2rem, 1vw, 1.5rem);
   --mellow-who-gap: clamp(2.4rem, 2.2vw, 3.2rem);
   --mellow-who-track-inset: max(var(--mellow-page-gutter), calc((100vw - var(--mellow-page-width)) / 2));
   overflow: hidden;
@@ -379,14 +384,14 @@ li {
 }
 
 .mellow-who-its-for__card {
-  display: flex;
+  display: grid;
   flex: 0 0 var(--mellow-who-card-width);
   height: var(--mellow-who-card-height);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(2.2rem, 1.7vw, 2.8rem);
-  padding: clamp(3.4rem, 2.8vw, 4.2rem);
+  grid-template-rows: var(--mellow-who-icon-zone) var(--mellow-who-title-zone) 0.2rem minmax(0, 1fr);
+  align-items: start;
+  justify-items: center;
+  row-gap: var(--mellow-who-card-row-gap);
+  padding: var(--mellow-who-card-padding-y) var(--mellow-who-card-padding-x);
   border: 0.1rem solid rgba(26, 45, 16, 0.1);
   border-radius: clamp(1.8rem, 1.45vw, 2.2rem);
   background:
@@ -399,7 +404,9 @@ li {
 }
 
 .mellow-who-its-for__icon {
+  position: relative;
   display: inline-flex;
+  align-self: center;
   align-items: center;
   justify-content: center;
   width: clamp(7.8rem, 6vw, 9.6rem);
@@ -413,7 +420,22 @@ li {
     0 1.2rem 2.8rem rgba(26, 45, 16, 0.1);
 }
 
+.mellow-who-its-for__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.2rem rgba(208, 74, 42, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1);
+  animation: mellow-who-icon-pulse 3.6s ease-out infinite;
+}
+
 .mellow-who-its-for__icon svg {
+  position: relative;
+  z-index: 1;
   width: clamp(3.8rem, 3vw, 4.8rem);
   height: clamp(3.8rem, 3vw, 4.8rem);
   fill: none;
@@ -424,12 +446,14 @@ li {
 }
 
 .mellow-who-its-for__card-copy {
-  display: grid;
-  justify-items: center;
-  gap: 1.4rem;
+  display: contents;
 }
 
 .mellow-who-its-for__card h3 {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   max-width: 27rem;
   margin: 0;
   color: #1A2D10;
@@ -451,10 +475,57 @@ li {
 .mellow-who-its-for__card p {
   max-width: 25.5rem;
   margin: 0;
+  align-self: start;
   color: rgba(20, 33, 17, 0.76);
   font-size: clamp(1.5rem, 1.08vw, 1.7rem);
   line-height: 1.56;
   text-align: center;
+}
+
+
+.mellow-who-its-for__card:nth-child(8n + 2) .mellow-who-its-for__icon::after {
+  animation-delay: 0.35s;
+}
+
+.mellow-who-its-for__card:nth-child(8n + 3) .mellow-who-its-for__icon::after {
+  animation-delay: 0.7s;
+}
+
+.mellow-who-its-for__card:nth-child(8n + 4) .mellow-who-its-for__icon::after {
+  animation-delay: 1.05s;
+}
+
+.mellow-who-its-for__card:nth-child(8n + 5) .mellow-who-its-for__icon::after {
+  animation-delay: 1.4s;
+}
+
+.mellow-who-its-for__card:nth-child(8n + 6) .mellow-who-its-for__icon::after {
+  animation-delay: 1.75s;
+}
+
+.mellow-who-its-for__card:nth-child(8n + 7) .mellow-who-its-for__icon::after {
+  animation-delay: 2.1s;
+}
+
+.mellow-who-its-for__card:nth-child(8n) .mellow-who-its-for__icon::after {
+  animation-delay: 2.45s;
+}
+
+@keyframes mellow-who-icon-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  68%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
 }
 
 .mellow-who-its-for__dots {
@@ -526,8 +597,11 @@ li {
   }
 
   .mellow-who-its-for__card {
-    gap: 1.8rem;
-    padding: 3rem 2.6rem;
+    --mellow-who-card-padding-y: 3rem;
+    --mellow-who-card-padding-x: 2.6rem;
+    --mellow-who-icon-zone: 9.2rem;
+    --mellow-who-title-zone: 7.2rem;
+    --mellow-who-card-row-gap: 1.1rem;
   }
 
   .mellow-who-its-for__icon {
@@ -550,5 +624,9 @@ li {
   .mellow-who-its-for__track,
   .mellow-who-its-for__dot {
     transition: none;
+  }
+
+  .mellow-who-its-for__icon::after {
+    animation: none;
   }
 }
