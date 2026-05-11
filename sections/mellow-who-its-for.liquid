@@ -1,6 +1,6 @@
 {% comment %}
   Mellow who it’s for section.
-  Premium offscreen horizontal carousel for real-life reflux moments.
+  Premium cream carousel panel for real-life reflux moments.
 {% endcomment %}
 
 <section
@@ -15,6 +15,11 @@
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
+        <div class="mellow-who-its-for__wave" aria-hidden="true">
+          <svg viewBox="0 0 88 18" focusable="false">
+            <path d="M2 9c7-8 15-8 22 0s15 8 22 0 15-8 22 0 12 8 18 0" />
+          </svg>
+        </div>
         <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape }}</h2>
       {%- endif -%}
 
@@ -22,18 +27,13 @@
         <p class="mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
       {%- endif -%}
 
-      {%- if section.settings.note != blank -%}
-        <div class="mellow-who-its-for__note">
-          <span>{{ section.settings.note | escape }}</span>
-        </div>
-      {%- endif -%}
     </div>
 
     <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
       <div class="mellow-who-its-for__carousel" data-mellow-who-scroller tabindex="0">
         <div class="mellow-who-its-for__track" data-mellow-who-track>
           {%- liquid
-            assign cards = 'Large meals & rich foods|Heavy meals and late dinners can put extra pressure on your system.|fork-knife||Chronic reflux|When reflux keeps coming back — day after day, night after night.|droplet||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon||During pregnancy|Hormonal shifts and pressure can bring reflux when you least expect it.|heart||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves relief that feels comfortable.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
+            assign cards = 'Large meals & rich foods|Heavy meals and late dinners can add pressure.|fork-knife||Chronic reflux|When reflux keeps coming back.|droplet||Nighttime reflux|When symptoms hit before sleep.|moon||During pregnancy|Shifts and pressure can trigger reflux.|heart||Active lifestyles|Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse.|smoke' | split: '||'
           -%}
 
           {%- for duplicate_index in (1..2) -%}
@@ -68,12 +68,25 @@
 
                 <div class="mellow-who-its-for__card-copy">
                   <h3>{{ card_title | escape }}</h3>
+                  <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
                   <p>{{ card_text | escape }}</p>
                 </div>
               </article>
             {%- endfor -%}
           {%- endfor -%}
         </div>
+      </div>
+
+      <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots>
+        {%- for card in cards -%}
+          <button
+            class="mellow-who-its-for__dot{% if forloop.first %} is-active{% endif %}"
+            type="button"
+            aria-label="Go to moment {{ forloop.index }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            data-mellow-who-dot="{{ forloop.index0 }}"
+          ></button>
+        {%- endfor -%}
       </div>
     </div>
   </div>
@@ -88,45 +101,66 @@
 
     const scroller = section.querySelector('[data-mellow-who-scroller]');
     const track = section.querySelector('[data-mellow-who-track]');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dots = Array.from(section.querySelectorAll('[data-mellow-who-dot]'));
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    if (!scroller || !track || reduceMotion) return;
+    if (!scroller || !track) return;
 
     let rafId;
     let lastTime;
+    let x = 0;
+    let setWidth = 0;
+    let cardStep = 0;
     let isPointerDown = false;
     let pointerStartX = 0;
-    let scrollStartLeft = 0;
+    let pointerStartXOffset = 0;
     let softPauseUntil = 0;
-    const baseSpeed = 18;
+    const baseSpeed = 32;
+    const cardCount = dots.length || Math.max(1, track.children.length / 2);
 
-    const loopPoint = () => {
-      const midwayCard = track.children[Math.floor(track.children.length / 2)];
-      return midwayCard ? midwayCard.offsetLeft : track.scrollWidth / 2;
+    const measure = () => {
+      const firstCard = track.children[0];
+      const firstDuplicate = track.children[cardCount];
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+
+      cardStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
+      setWidth = firstDuplicate ? firstDuplicate.offsetLeft : cardStep * cardCount;
+
+      normalizePosition();
+      render();
     };
 
-    const scrollByAmount = (amount) => {
-      const limit = loopPoint();
-      const nextPosition = scroller.scrollLeft + amount;
+    const normalizePosition = () => {
+      if (!setWidth) return;
 
-      if (limit && nextPosition < 0) {
-        scroller.scrollLeft = limit + nextPosition;
-      } else {
-        scroller.scrollLeft = nextPosition;
-      }
-
-      normalizeScroll();
+      while (x <= -setWidth) x += setWidth;
+      while (x > 0) x -= setWidth;
     };
 
-    const normalizeScroll = () => {
-      const limit = loopPoint();
-      if (!limit) return;
+    const activeIndex = () => {
+      if (!cardStep) return 0;
+      return Math.round(Math.abs(x) / cardStep) % cardCount;
+    };
 
-      if (scroller.scrollLeft >= limit) {
-        scroller.scrollLeft -= limit;
-      } else if (scroller.scrollLeft < 0) {
-        scroller.scrollLeft += limit;
-      }
+    const updateDots = () => {
+      const current = activeIndex();
+      dots.forEach((dot, index) => {
+        const isActive = index === current;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    };
+
+    const render = () => {
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+      updateDots();
+    };
+
+    const moveBy = (amount) => {
+      x -= amount;
+      normalizePosition();
+      render();
     };
 
     const softenAutoplay = (duration = 1200) => {
@@ -138,11 +172,21 @@
       const delta = Math.min(time - lastTime, 64) / 1000;
       lastTime = time;
 
-      if (!isPointerDown && time > softPauseUntil) {
-        scrollByAmount(baseSpeed * delta);
+      if (!mediaQuery.matches && !isPointerDown && time > softPauseUntil) {
+        moveBy(baseSpeed * delta);
       }
 
       rafId = window.requestAnimationFrame(tick);
+    };
+
+    const endDrag = (event) => {
+      if (!isPointerDown) return;
+      isPointerDown = false;
+      scroller.classList.remove('is-dragging');
+      if (event.pointerId && scroller.hasPointerCapture(event.pointerId)) {
+        scroller.releasePointerCapture(event.pointerId);
+      }
+      softenAutoplay(1400);
     };
 
     scroller.addEventListener('wheel', (event) => {
@@ -151,7 +195,7 @@
 
       if (scrollAmount !== 0) {
         event.preventDefault();
-        scrollByAmount(scrollAmount);
+        moveBy(scrollAmount);
         softenAutoplay();
       }
     }, { passive: false });
@@ -159,7 +203,7 @@
     scroller.addEventListener('pointerdown', (event) => {
       isPointerDown = true;
       pointerStartX = event.clientX;
-      scrollStartLeft = scroller.scrollLeft;
+      pointerStartXOffset = x;
       scroller.classList.add('is-dragging');
       scroller.setPointerCapture(event.pointerId);
       softenAutoplay(1800);
@@ -168,26 +212,36 @@
     scroller.addEventListener('pointermove', (event) => {
       if (!isPointerDown) return;
       event.preventDefault();
-      scrollByAmount((scrollStartLeft - (event.clientX - pointerStartX)) - scroller.scrollLeft);
+      x = pointerStartXOffset + event.clientX - pointerStartX;
+      normalizePosition();
+      render();
     });
-
-    const endDrag = (event) => {
-      if (!isPointerDown) return;
-      isPointerDown = false;
-      scroller.classList.remove('is-dragging');
-      if (scroller.hasPointerCapture(event.pointerId)) {
-        scroller.releasePointerCapture(event.pointerId);
-      }
-      softenAutoplay(1400);
-    };
 
     scroller.addEventListener('pointerup', endDrag);
     scroller.addEventListener('pointercancel', endDrag);
     scroller.addEventListener('pointerleave', endDrag);
-    scroller.addEventListener('scroll', normalizeScroll, { passive: true });
-    scroller.addEventListener('mouseenter', () => softenAutoplay(600));
+    scroller.addEventListener('mouseenter', () => softenAutoplay(700));
     scroller.addEventListener('focusin', () => softenAutoplay(1200));
 
+    scroller.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      moveBy(event.key === 'ArrowRight' ? cardStep : -cardStep);
+      softenAutoplay(1600);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = Number(dot.dataset.mellowWhoDot || 0);
+        x = -(index * cardStep);
+        normalizePosition();
+        render();
+        softenAutoplay(1800);
+      });
+    });
+
+    window.addEventListener('resize', measure, { passive: true });
+    measure();
     rafId = window.requestAnimationFrame(tick);
 
     document.addEventListener('shopify:section:unload', (event) => {
@@ -226,7 +280,7 @@
       "type": "textarea",
       "id": "text",
       "label": "Text",
-      "default": "Mellow was designed for the real-life patterns behind reflux — not just the symptom."
+      "default": "Mellow was designed for the real-life moments that trigger reflux — not just the symptom."
     },
     {
       "type": "text",
