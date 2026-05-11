@@ -519,12 +519,10 @@ li {
 @media screen and (min-width: 990px) and (hover: hover) and (pointer: fine) {
   .mellow-who-its-for__card:hover {
     z-index: 3;
-    border-color: rgba(208, 74, 42, 0.32);
-    background:
-      linear-gradient(180deg, rgba(255, 253, 247, 0.78), rgba(255, 253, 247, 0) 42%),
-      #FFF7EA;
-    box-shadow: 0 2.4rem 5.6rem rgba(5, 15, 8, 0.32);
-    transform: translateY(-7px) scale(1.025);
+    background: #EDE3D2;
+    border-color: rgba(208, 74, 42, 0.34);
+    box-shadow: 0 2.4rem 5.6rem rgba(5, 15, 8, 0.34);
+    transform: translateY(-6px) scale(1.025);
   }
 
   .mellow-who-its-for__card:hover .mellow-who-its-for__icon {
