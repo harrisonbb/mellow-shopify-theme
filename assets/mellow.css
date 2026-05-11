@@ -375,30 +375,31 @@ li {
 .mellow-who-its-for__quiz-action {
   justify-self: end;
   align-self: end;
-  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+  margin-bottom: 12px;
+  transform: none !important;
+  font-size: 16px !important;
 }
 
-.mellow-who-its-for__quiz-action,
 .mellow-who-its-for__header-actions {
   transform: none !important;
-  font-size: 1rem;
 }
 
 .mellow-who-its-for__quiz-button {
   min-height: 56px !important;
-  padding: 0 1.85rem !important;
+  height: 56px !important;
+  padding: 0 28px !important;
   border-radius: 999px !important;
 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0.55rem !important;
+  gap: 8px !important;
 
   background: #F0EBE0 !important;
   color: #1A2D10 !important;
   border: 1px solid rgba(240, 235, 224, 0.7) !important;
 
-  font-size: 1rem !important;
+  font-size: 16px !important;
   font-weight: 700 !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
@@ -406,7 +407,7 @@ li {
   text-decoration: none !important;
   white-space: nowrap !important;
 
-  box-shadow: 0 1rem 2.4rem rgba(5, 15, 8, 0.24);
+  box-shadow: 0 16px 38px rgba(5, 15, 8, 0.24) !important;
   transform: none;
 
   transition:
@@ -416,17 +417,20 @@ li {
     border-color 220ms ease;
 }
 
-.mellow-who-its-for__quiz-button:hover,
+.mellow-who-its-for__quiz-button:hover {
+  transform: translateY(-1px);
+  background: #FFF7EA !important;
+  border-color: rgba(240, 235, 224, 0.9) !important;
+  box-shadow: 0 20px 48px rgba(5, 15, 8, 0.3) !important;
+}
+
 .mellow-who-its-for__quiz-button:focus-visible {
   transform: translateY(-1px);
   background: #FFF7EA !important;
   border-color: rgba(240, 235, 224, 0.9) !important;
-  box-shadow: 0 1.2rem 3rem rgba(5, 15, 8, 0.3);
-}
-
-.mellow-who-its-for__quiz-button:focus-visible {
-  outline: 0.2rem solid rgba(240, 235, 224, 0.78);
-  outline-offset: 0.3rem;
+  box-shadow: 0 20px 48px rgba(5, 15, 8, 0.3) !important;
+  outline: 3px solid rgba(240, 235, 224, 0.78);
+  outline-offset: 5px;
 }
 
 .mellow-who-its-for__carousel-wrap {
