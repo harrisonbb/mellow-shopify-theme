@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <div class="mellow-who-its-for__dots" aria-label="Carousel pagination" data-mellow-who-dots></div>
+    <p class="mellow-who-its-for__scroll-cue" aria-hidden="true">Scroll to explore →</p>
   </div>
 </section>
 
@@ -91,19 +91,15 @@
 
     const scroller = section.querySelector('[data-mellow-who-scroller]');
     const track = section.querySelector('[data-mellow-who-track]');
-    const dotsContainer = section.querySelector('[data-mellow-who-dots]');
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    if (!scroller || !track || !dotsContainer) return;
+    if (!scroller || !track) return;
 
-    let dots = [];
     let rafId;
     let lastTime;
     let x = 0;
     let setWidth = 0;
     let cardStep = 0;
-    let cardsPerPage = 1;
-    let pagePositions = [0];
     let hasMeasured = false;
     let isPointerDown = false;
     let isHovering = false;
@@ -120,67 +116,8 @@
       while (x > 0) x -= setWidth;
     };
 
-    const currentCardIndex = () => {
-      if (!cardStep) return 0;
-      return Math.round(Math.abs(x) / cardStep) % cardCount;
-    };
-
-    const activePageIndex = () => {
-      const current = currentCardIndex();
-      let closestIndex = 0;
-      let closestDistance = cardCount;
-
-      pagePositions.forEach((position, index) => {
-        const distance = Math.min(
-          Math.abs(current - position),
-          cardCount - Math.abs(current - position)
-        );
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-
-      return closestIndex;
-    };
-
-    const updateDots = () => {
-      const current = activePageIndex();
-      dots.forEach((dot, index) => {
-        const isActive = index === current;
-        dot.classList.toggle('is-active', isActive);
-        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
-      });
-    };
-
     const render = () => {
       track.style.transform = `translate3d(${x}px, 0, 0)`;
-      updateDots();
-    };
-
-    const buildDots = () => {
-      dotsContainer.textContent = '';
-
-      pagePositions.forEach((position, index) => {
-        const dot = document.createElement('button');
-        dot.className = `mellow-who-its-for__dot${index === 0 ? ' is-active' : ''}`;
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Go to carousel page ${index + 1}`);
-        dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
-        dot.dataset.mellowWhoPosition = String(position);
-
-        dot.addEventListener('click', () => {
-          x = -(position * cardStep);
-          normalizePosition();
-          render();
-          softenAutoplay(1800);
-        });
-
-        dotsContainer.appendChild(dot);
-      });
-
-      dots = Array.from(dotsContainer.children);
     };
 
     const measure = () => {
@@ -191,15 +128,6 @@
 
       cardStep = firstCard ? firstCard.getBoundingClientRect().width + gap : 0;
       setWidth = firstDuplicate ? firstDuplicate.offsetLeft : cardStep * cardCount;
-      cardsPerPage = cardStep ? Math.max(1, Math.floor((scroller.clientWidth + gap) / cardStep)) : 1;
-      pagePositions = [];
-
-      for (let position = 0; position < cardCount; position += cardsPerPage) {
-        pagePositions.push(position);
-      }
-
-      if (!pagePositions.length) pagePositions = [0];
-
       if (!hasMeasured) {
         x = 0;
         hasMeasured = true;
@@ -207,7 +135,6 @@
         normalizePosition();
       }
 
-      buildDots();
       render();
     };
 
@@ -331,12 +258,6 @@
       "id": "text",
       "label": "Text",
       "default": "Mellow was designed for the real-life moments that trigger reflux — not just the symptom."
-    },
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Small pill text",
-      "default": "Swipe, drag, or scroll to explore"
     }
   ],
   "presets": [
