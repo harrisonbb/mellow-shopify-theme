@@ -172,12 +172,13 @@
     };
 
     scroller.addEventListener('wheel', (event) => {
-      const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-      const scrollAmount = horizontalIntent ? event.deltaX : event.deltaY;
+      const isHorizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
 
-      if (scrollAmount !== 0) {
+      if (!isHorizontalIntent) return;
+
+      if (event.deltaX !== 0) {
         event.preventDefault();
-        moveBy(scrollAmount);
+        moveBy(event.deltaX);
         softenAutoplay();
       }
     }, { passive: false });
