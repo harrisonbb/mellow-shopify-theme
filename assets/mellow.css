@@ -311,7 +311,7 @@ li {
 .mellow-who-its-for__header-wrap {
   display: grid;
   grid-template-columns: minmax(0, 760px) auto;
-  align-items: end;
+  align-items: center;
   column-gap: clamp(3rem, 10vw, 12rem);
   width: 100%;
   padding-right: clamp(40px, 6vw, 96px);
@@ -369,37 +369,34 @@ li {
 
 .mellow-who-its-for__header-actions {
   justify-self: end;
-  align-self: end;
+  align-self: center;
+  transform: none !important;
 }
 
 .mellow-who-its-for__quiz-action {
   justify-self: end;
-  align-self: end;
-  margin-bottom: 12px;
-  transform: none !important;
-  font-size: 16px !important;
-}
-
-.mellow-who-its-for__header-actions {
-  transform: none !important;
+  align-self: center;
+  margin-bottom: 0 !important;
+  transform: translateY(18px);
+  font-size: 18px !important;
 }
 
 .mellow-who-its-for__quiz-button {
-  min-height: 56px !important;
-  height: 56px !important;
-  padding: 0 28px !important;
+  min-height: 64px !important;
+  height: 64px !important;
+  padding: 0 36px !important;
   border-radius: 999px !important;
 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
+  gap: 10px !important;
 
   background: #F0EBE0 !important;
   color: #1A2D10 !important;
-  border: 1px solid rgba(240, 235, 224, 0.7) !important;
+  border: 1px solid rgba(240, 235, 224, 0.78) !important;
 
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
@@ -407,7 +404,7 @@ li {
   text-decoration: none !important;
   white-space: nowrap !important;
 
-  box-shadow: 0 16px 38px rgba(5, 15, 8, 0.24) !important;
+  box-shadow: 0 18px 42px rgba(5, 15, 8, 0.24) !important;
   transform: none;
 
   transition:
@@ -421,14 +418,14 @@ li {
   transform: translateY(-1px);
   background: #FFF7EA !important;
   border-color: rgba(240, 235, 224, 0.9) !important;
-  box-shadow: 0 20px 48px rgba(5, 15, 8, 0.3) !important;
+  box-shadow: 0 22px 52px rgba(5, 15, 8, 0.3) !important;
 }
 
 .mellow-who-its-for__quiz-button:focus-visible {
   transform: translateY(-1px);
   background: #FFF7EA !important;
   border-color: rgba(240, 235, 224, 0.9) !important;
-  box-shadow: 0 20px 48px rgba(5, 15, 8, 0.3) !important;
+  box-shadow: 0 22px 52px rgba(5, 15, 8, 0.3) !important;
   outline: 3px solid rgba(240, 235, 224, 0.78);
   outline-offset: 5px;
 }
@@ -674,6 +671,18 @@ li {
   .mellow-who-its-for__quiz-action {
     justify-self: start;
     align-self: start;
+  }
+
+  .mellow-who-its-for__quiz-action {
+    transform: none;
+    font-size: 16px !important;
+  }
+
+  .mellow-who-its-for__quiz-button {
+    min-height: 54px !important;
+    height: 54px !important;
+    padding: 0 26px !important;
+    font-size: 16px !important;
   }
 }
 
