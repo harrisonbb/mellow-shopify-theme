@@ -171,7 +171,7 @@
         dot.dataset.mellowWhoPosition = String(position);
 
         dot.addEventListener('click', () => {
-          x = position === 0 && setWidth ? -setWidth + 0.5 : -(position * cardStep);
+          x = -(position * cardStep);
           normalizePosition();
           render();
           softenAutoplay(1800);
@@ -201,7 +201,7 @@
       if (!pagePositions.length) pagePositions = [0];
 
       if (!hasMeasured) {
-        x = setWidth ? -setWidth + 0.5 : 0;
+        x = 0;
         hasMeasured = true;
       } else {
         normalizePosition();
