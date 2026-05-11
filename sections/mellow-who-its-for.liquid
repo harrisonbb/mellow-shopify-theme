@@ -44,7 +44,7 @@
                 assign card_text = card_parts[1]
                 assign card_icon = card_parts[2]
               -%}
-              <article class="mellow-who-its-for__card"{% if duplicate_index == 2 %} aria-hidden="true"{% endif %}>
+              <article class="mellow-who-its-for__card" data-mellow-who-card{% if duplicate_index == 2 %} aria-hidden="true"{% endif %}>
                 <div class="mellow-who-its-for__icon" aria-hidden="true">
                   {%- case card_icon -%}
                     {%- when 'fork-knife' -%}
@@ -104,6 +104,7 @@
     let cardStep = 0;
     let cardsPerPage = 1;
     let pagePositions = [0];
+    let hasMeasured = false;
     let isPointerDown = false;
     let isHovering = false;
     let pointerStartX = 0;
@@ -199,7 +200,13 @@
 
       if (!pagePositions.length) pagePositions = [0];
 
-      normalizePosition();
+      if (!hasMeasured) {
+        x = 0;
+        hasMeasured = true;
+      } else {
+        normalizePosition();
+      }
+
       buildDots();
       render();
     };
