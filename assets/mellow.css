@@ -362,7 +362,7 @@ li {
   position: relative;
   width: 100%;
   min-width: 0;
-  margin-top: clamp(4.4rem, calc(5vw - 1.2rem), 6rem);
+  margin-top: clamp(1.4rem, 2vw, 2.4rem);
   margin-right: 0;
   margin-left: 0;
 }
@@ -577,16 +577,14 @@ li {
 }
 
 .mellow-who-its-for__scroll-cue {
-  position: absolute;
-  top: clamp(-4.2rem, -3vw, -3rem);
-  right: var(--mellow-who-edge);
-  z-index: 2;
-  margin: 0;
-  color: rgba(240, 235, 224, 0.62);
-  font-size: clamp(1.25rem, 0.9vw, 1.4rem);
+  margin: 1rem 0 0;
+  color: #F0EBE0;
+  font-size: 0.72rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -623,7 +621,7 @@ li {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(4.2rem, 10vw, 5.6rem);
+    margin-top: clamp(1.2rem, 4vw, 2rem);
   }
 
   .mellow-who-its-for__carousel {
@@ -633,12 +631,6 @@ li {
     padding-bottom: 2.2rem;
   }
 
-  .mellow-who-its-for__scroll-cue {
-    top: clamp(-3.6rem, -7vw, -2.8rem);
-    right: var(--mellow-who-edge);
-    font-size: 1.15rem;
-    letter-spacing: 0.07em;
-  }
 
   .mellow-who-its-for__card {
     --mellow-who-card-padding-y: 3rem;
