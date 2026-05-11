@@ -371,19 +371,21 @@ li {
   justify-content: center;
   justify-self: end;
   align-self: end;
-  gap: 0.45rem;
-  min-height: 48px;
-  padding: 0 max(1.35rem, 21.6px);
+  gap: 0.5rem;
+  min-height: 52px;
+  margin-bottom: 0.15rem;
+  padding: 0 1.55rem;
+  border: 1px solid rgba(240, 235, 224, 0.55);
   border-radius: 999px;
-  background: #D04A2A;
-  color: #F0EBE0;
-  font-size: max(0.95rem, 15.2px);
+  background: #F0EBE0;
+  color: #1A2D10;
+  font-size: max(1rem, 16px);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 0.8rem 2rem rgba(208, 74, 42, 0.22);
+  box-shadow: 0 1rem 2.6rem rgba(5, 15, 8, 0.22);
   transition:
     transform 220ms ease,
     background 220ms ease,
@@ -392,8 +394,8 @@ li {
 
 .mellow-who-its-for__quiz-button:hover,
 .mellow-who-its-for__quiz-button:focus-visible {
-  background: #b83f24;
-  box-shadow: 0 1rem 2.2rem rgba(208, 74, 42, 0.28);
+  background: #fff7ea;
+  box-shadow: 0 1.2rem 3rem rgba(5, 15, 8, 0.28);
   transform: translateY(-1px);
 }
 
