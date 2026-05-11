@@ -1,0 +1,75 @@
+{% comment %}
+  Mellow clinical proof placeholder section.
+  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+{% endcomment %}
+
+<section class="mellow-section mellow-architecture-section mellow-clinical-proof color-{{ section.settings.color_scheme }}">
+  <div class="mellow-section__inner">
+    <div class="mellow-architecture-section__card">
+      <div class="mellow-architecture-section__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="mellow-architecture-section__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <p class="mellow-architecture-section__text">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.note != blank -%}
+        <div class="mellow-architecture-section__note">
+          <span>{{ section.settings.note | escape }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mellow clinical proof",
+  "tag": "section",
+  "class": "section section-mellow-clinical-proof",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Clinical proof"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Create space for evidence and study support."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Add research summaries, substantiation, and careful science-forward copy here."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Planning note",
+      "default": "Ready for final design replacement."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow clinical proof"
+    }
+  ]
+}
+{% endschema %}

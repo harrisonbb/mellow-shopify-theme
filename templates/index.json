@@ -1,20 +1,76 @@
 {
   "sections": {
-    "mellow_homepage_placeholder": {
-      "type": "mellow-homepage-placeholder",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "eyebrow": "Mellow fresh start",
-        "heading": "A calm, premium foundation for reflux relief.",
-        "lede": "This clean Dawn-based homepage is ready for the next Mellow build: editorial, spacious, science-aware, and conversion-focused.",
-        "primary_label": "Shop Mellow",
-        "primary_link": "",
-        "secondary_label": "Build the homepage",
-        "secondary_link": ""
-      }
+    "mellow_hero": {
+      "type": "mellow-hero",
+      "settings": {}
+    },
+    "mellow_trust_bar": {
+      "type": "mellow-trust-bar",
+      "settings": {}
+    },
+    "mellow_who_its_for": {
+      "type": "mellow-who-its-for",
+      "settings": {}
+    },
+    "mellow_review_videos": {
+      "type": "mellow-review-videos",
+      "settings": {}
+    },
+    "mellow_how_to_use": {
+      "type": "mellow-how-to-use",
+      "settings": {}
+    },
+    "mellow_day_night_scroll": {
+      "type": "mellow-day-night-scroll",
+      "settings": {}
+    },
+    "mellow_ingredients": {
+      "type": "mellow-ingredients",
+      "settings": {}
+    },
+    "mellow_why_it_works": {
+      "type": "mellow-why-it-works",
+      "settings": {}
+    },
+    "mellow_clinical_proof": {
+      "type": "mellow-clinical-proof",
+      "settings": {}
+    },
+    "mellow_expert_reviews": {
+      "type": "mellow-expert-reviews",
+      "settings": {}
+    },
+    "mellow_compare": {
+      "type": "mellow-compare",
+      "settings": {}
+    },
+    "mellow_written_reviews": {
+      "type": "mellow-written-reviews",
+      "settings": {}
+    },
+    "mellow_buy_boxes": {
+      "type": "mellow-buy-boxes",
+      "settings": {}
+    },
+    "mellow_faq": {
+      "type": "mellow-faq",
+      "settings": {}
     }
   },
   "order": [
-    "mellow_homepage_placeholder"
+    "mellow_hero",
+    "mellow_trust_bar",
+    "mellow_who_its_for",
+    "mellow_review_videos",
+    "mellow_how_to_use",
+    "mellow_day_night_scroll",
+    "mellow_ingredients",
+    "mellow_why_it_works",
+    "mellow_clinical_proof",
+    "mellow_expert_reviews",
+    "mellow_compare",
+    "mellow_written_reviews",
+    "mellow_buy_boxes",
+    "mellow_faq"
   ]
 }
