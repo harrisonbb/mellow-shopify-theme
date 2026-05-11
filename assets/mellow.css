@@ -288,7 +288,7 @@ li {
   --mellow-who-title-zone: clamp(7.2rem, 5.2vw, 8.4rem);
   --mellow-who-card-row-gap: clamp(1.2rem, 1vw, 1.5rem);
   --mellow-who-gap: clamp(2.4rem, 2.2vw, 3.2rem);
-  --mellow-who-edge: clamp(32px, 5vw, 80px);
+  --mellow-who-edge: clamp(40px, 6vw, 96px);
   --mellow-who-track-inset: var(--mellow-who-edge);
   overflow: hidden;
   padding: clamp(8rem, 8.35vw, 12rem) 0;
