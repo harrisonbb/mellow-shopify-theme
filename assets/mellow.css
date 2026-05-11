@@ -312,10 +312,12 @@ li {
   display: grid;
   grid-template-columns: minmax(0, 760px) auto;
   align-items: end;
-  column-gap: clamp(2rem, 8vw, 10rem);
+  column-gap: clamp(3rem, 10vw, 12rem);
+  width: 100%;
+  padding-right: clamp(40px, 6vw, 96px);
 }
 
-.mellow-who-its-for__intro {
+.mellow-who-its-for__header {
   position: relative;
   z-index: 2;
   max-width: 760px;
@@ -366,37 +368,45 @@ li {
 }
 
 .mellow-who-its-for__quiz-button {
+  justify-self: end;
+  align-self: end;
+  margin-bottom: clamp(0.4rem, 1vw, 1rem);
+
+  min-height: 56px;
+  padding: 0 1.75rem;
+  border-radius: 999px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  justify-self: end;
-  align-self: end;
-  gap: 0.5rem;
-  min-height: 52px;
-  margin-bottom: 0.15rem;
-  padding: 0 1.55rem;
-  border: 1px solid rgba(240, 235, 224, 0.55);
-  border-radius: 999px;
+  gap: 0.55rem;
+
   background: #F0EBE0;
   color: #1A2D10;
-  font-size: max(1rem, 16px);
+  border: 1px solid rgba(240, 235, 224, 0.7);
+
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 1rem 2.6rem rgba(5, 15, 8, 0.22);
+
+  box-shadow: 0 1rem 2.4rem rgba(5, 15, 8, 0.24);
+
   transition:
     transform 220ms ease,
     background 220ms ease,
-    box-shadow 220ms ease;
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
 .mellow-who-its-for__quiz-button:hover,
 .mellow-who-its-for__quiz-button:focus-visible {
-  background: #fff7ea;
-  box-shadow: 0 1.2rem 3rem rgba(5, 15, 8, 0.28);
   transform: translateY(-1px);
+  background: #FFF7EA;
+  border-color: rgba(240, 235, 224, 0.9);
+  box-shadow: 0 1.2rem 3rem rgba(5, 15, 8, 0.3);
 }
 
 .mellow-who-its-for__quiz-button:focus-visible {
@@ -631,7 +641,7 @@ li {
     padding-bottom: clamp(6.4rem, 10vw, 9rem);
   }
 
-  .mellow-who-its-for__intro {
+  .mellow-who-its-for__header {
     max-width: 760px;
   }
 }
@@ -639,13 +649,16 @@ li {
 @media screen and (max-width: 900px) {
   .mellow-who-its-for__header-wrap {
     grid-template-columns: 1fr;
-    row-gap: 1.5rem;
+    gap: 1.5rem;
+    padding-right: 0;
   }
 
   .mellow-who-its-for__quiz-button {
     justify-self: start;
     align-self: start;
-    margin-bottom: 0;
+    min-height: 50px;
+    padding: 0 1.4rem;
+    font-size: 0.95rem;
   }
 }
 
