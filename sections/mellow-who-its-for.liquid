@@ -9,26 +9,34 @@
   data-mellow-who-carousel
 >
   <div class="mellow-who-its-for__inner">
-    <div class="mellow-who-its-for__intro">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="mellow-eyebrow mellow-who-its-for__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-      {%- endif -%}
+    <div class="mellow-who-its-for__header-wrap">
+      <div class="mellow-who-its-for__intro">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="mellow-eyebrow mellow-who-its-for__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
 
-      {%- if section.settings.heading != blank -%}
-        <div class="mellow-who-its-for__wave" aria-hidden="true">
-          <svg viewBox="0 0 88 18" focusable="false">
-            <path d="M2 9c7-8 15-8 22 0s15 8 22 0 15-8 22 0 12 8 18 0" />
-          </svg>
-        </div>
-        <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape }}</h2>
-      {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <div class="mellow-who-its-for__wave" aria-hidden="true">
+            <svg viewBox="0 0 88 18" focusable="false">
+              <path d="M2 9c7-8 15-8 22 0s15 8 22 0 15-8 22 0 12 8 18 0" />
+            </svg>
+          </div>
+          <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
 
-      {%- if section.settings.text != blank -%}
-        <p class="mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
-      {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+      </div>
 
-      <p class="mellow-who-its-for__scroll-cue" aria-hidden="true">Scroll to explore →</p>
+      <aside class="mellow-who-its-for__quiz-cta" aria-label="Find your best Mellow routine">
+        <h3>Not sure if Mellow fits your reflux?</h3>
+        <p>Take the 60-second quiz and find your best routine.</p>
+        <a class="mellow-who-its-for__quiz-button" href="/pages/quiz">Take the quiz →</a>
+      </aside>
     </div>
+
+    <p class="mellow-who-its-for__scroll-cue" aria-hidden="true">Scroll to explore →</p>
   </div>
 
   <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
