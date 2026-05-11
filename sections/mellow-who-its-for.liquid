@@ -36,7 +36,7 @@
     <div class="mellow-who-its-for__carousel" data-mellow-who-scroller tabindex="0">
       <div class="mellow-who-its-for__track" data-mellow-who-track>
         {%- liquid
-            assign cards = 'Large meals & rich foods|Heavy meals and late dinners can add pressure.|fork-knife||Chronic reflux|When reflux keeps coming back.|droplet||Nighttime reflux|When symptoms hit before sleep.|moon||During pregnancy|Shifts and pressure can trigger reflux.|heart||Active lifestyles|Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse.|smoke' | split: '||'
+            assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|heart||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
 
         {%- for duplicate_index in (1..2) -%}
@@ -46,8 +46,12 @@
                 assign card_title = card_parts[0]
                 assign card_text = card_parts[1]
                 assign card_icon = card_parts[2]
+                assign card_tag = card_parts[3]
               -%}
               <article class="mellow-who-its-for__card" data-mellow-who-card{% if duplicate_index == 2 %} aria-hidden="true"{% endif %}>
+                {%- if card_tag != blank -%}
+                  <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                {%- endif -%}
                 <div class="mellow-who-its-for__icon" aria-hidden="true">
                   {%- case card_icon -%}
                     {%- when 'fork-knife' -%}
