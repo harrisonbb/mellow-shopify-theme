@@ -485,6 +485,7 @@ input[type="reset"] {
   --mellow-who-icon-size: clamp(5.8rem, 4.2vw, 6.8rem);
   --mellow-who-icon-svg-size: clamp(2.6rem, 2vw, 3.2rem);
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
+  --mellow-who-header-inset: 0rem;
   overflow: hidden;
   padding: clamp(6.2rem, 6.2vw, 8.6rem) 0 clamp(4.2rem, 4.6vw, 6.2rem);
   background:
@@ -509,7 +510,9 @@ input[type="reset"] {
   align-items: center;
   justify-content: space-between;
   column-gap: clamp(3.2rem, 5vw, 8rem);
+  box-sizing: border-box;
   width: 100%;
+  padding-inline: var(--mellow-who-header-inset);
 }
 
 .mellow-who-its-for__header {
