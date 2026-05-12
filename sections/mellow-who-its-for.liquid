@@ -45,56 +45,63 @@
             {%- assign is_duplicate = true -%}
           {%- endif -%}
 
-          {%- for card in cards -%}
-            {%- liquid
-              assign card_parts = card | split: '|'
-              assign card_title = card_parts[0]
-              assign card_text = card_parts[1]
-              assign card_icon = card_parts[2]
-              assign card_tag = card_parts[3]
-            -%}
-            <article
-              class="mellow-who-its-for__card"
-              {% if is_duplicate %}
-                data-mellow-who-card-duplicate
-                aria-hidden="true"
-              {% else %}
-                data-mellow-who-card
-              {% endif %}
-              data-mellow-who-index="{{ forloop.index0 }}"
-            >
-              {%- if card_tag != blank -%}
-                <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
-              {%- endif -%}
-              <div class="mellow-who-its-for__icon" aria-hidden="true">
-                {%- case card_icon -%}
-                  {%- when 'fork-knife' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
-                  {%- when 'droplet' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
-                  {%- when 'moon' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
-                  {%- when 'pregnancy' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
-                  {%- when 'bolt' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
-                  {%- when 'target' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
-                  {%- when 'shield' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
-                  {%- when 'smoke' -%}
-                    <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
-                {%- endcase -%}
-              </div>
+          <div
+            class="mellow-who-its-for__card-set"
+            {% if is_duplicate %}
+              data-mellow-who-card-set-duplicate
+              aria-hidden="true"
+            {% else %}
+              data-mellow-who-card-set
+            {% endif %}
+          >
+            {%- for card in cards -%}
+              {%- liquid
+                assign card_parts = card | split: '|'
+                assign card_title = card_parts[0]
+                assign card_text = card_parts[1]
+                assign card_icon = card_parts[2]
+                assign card_tag = card_parts[3]
+              -%}
+              <article
+                class="mellow-who-its-for__card"
+                {% unless is_duplicate %}
+                  data-mellow-who-card
+                {% endunless %}
+                data-mellow-who-index="{{ forloop.index0 }}"
+              >
+                {%- if card_tag != blank -%}
+                  <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                {%- endif -%}
+                <div class="mellow-who-its-for__icon" aria-hidden="true">
+                  {%- case card_icon -%}
+                    {%- when 'fork-knife' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
+                    {%- when 'droplet' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
+                    {%- when 'moon' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
+                    {%- when 'pregnancy' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
+                    {%- when 'bolt' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
+                    {%- when 'target' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
+                    {%- when 'shield' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
+                    {%- when 'smoke' -%}
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
+                  {%- endcase -%}
+                </div>
 
-              <div class="mellow-who-its-for__card-copy">
-                <h3>{{ card_title | escape }}</h3>
-                <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
-                <p>{{ card_text | escape }}</p>
-              </div>
+                <div class="mellow-who-its-for__card-copy">
+                  <h3>{{ card_title | escape }}</h3>
+                  <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
+                  <p>{{ card_text | escape }}</p>
+                </div>
 
-            </article>
-          {%- endfor -%}
+              </article>
+            {%- endfor -%}
+          </div>
         {%- endfor -%}
       </div>
     </div>
@@ -109,9 +116,29 @@
     }
 
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
+    const track = section.querySelector('[data-mellow-who-track]');
+    const cardSet = section.querySelector('[data-mellow-who-card-set]');
 
-    if (!scroller) {
+    if (!scroller || !track || !cardSet) {
       return;
+    }
+
+    const updateTrackWidth = () => {
+      const setWidth = cardSet.getBoundingClientRect().width;
+
+      if (setWidth > 0) {
+        track.style.setProperty('--who-track-width', `${setWidth}px`);
+      }
+    };
+
+    updateTrackWidth();
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(updateTrackWidth);
+      resizeObserver.observe(cardSet);
+      resizeObserver.observe(scroller);
+    } else {
+      window.addEventListener('resize', updateTrackWidth);
     }
 
     const normalizeWheelDelta = (delta, deltaMode) => {

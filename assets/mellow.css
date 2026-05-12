@@ -559,22 +559,28 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__track {
+  --who-track-width: 50%;
   display: flex;
   width: max-content;
-  gap: var(--mellow-card-gap);
-  padding-right: var(--mellow-card-gap);
   will-change: transform;
   transform: translate3d(0, 0, 0);
   animation: mellowMomentsMarquee 90s linear infinite;
 }
 
+.mellow-who-its-for__card-set {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--mellow-card-gap);
+  padding-right: var(--mellow-card-gap);
+}
+
 @keyframes mellowMomentsMarquee {
   from {
-    transform: translate3d(32vw, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate3d(calc(32vw - 50%), 0, 0);
+    transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
   }
 }
 
