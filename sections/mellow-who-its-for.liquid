@@ -62,6 +62,41 @@
     transform: none;
   }
 
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label {
+    display: inline-block;
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
+    display: inline-block;
+    transform: translateX(-4px);
+    opacity: 0.85;
+    transition:
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 260ms ease;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-label,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-label {
+    transform: translateX(-1px);
+  }
+
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
     width: 100%;
     max-width: 100%;
@@ -204,6 +239,13 @@
     letter-spacing: -0.006em;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label,
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
+      transition: none;
+    }
+  }
+
   @media screen and (max-width: 749px) {
     #MellowWhoItsFor-{{ section.id }} {
       padding-top: 56px;
@@ -283,7 +325,10 @@
 
       <div class="mellow-who-its-for__header-actions">
         <div class="mellow-who-its-for__quiz-action">
-          <a class="mellow-who-its-for__quiz-button" href="/pages/quiz">Take the reflux quiz</a>
+          <a class="mellow-who-its-for__quiz-button" href="/pages/quiz">
+            <span class="mellow-who-its-for__quiz-label">Take the reflux quiz</span>
+            <span class="mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </div>
