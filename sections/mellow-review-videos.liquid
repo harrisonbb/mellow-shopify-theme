@@ -33,8 +33,10 @@
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, clamp(280px, 24vw, 360px)));
+    justify-content: center;
     gap: var(--mellow-card-gap);
+    column-gap: clamp(34px, 4vw, 64px);
     align-items: stretch;
     width: 100%;
     margin: 0;
@@ -44,6 +46,8 @@
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card {
     display: flex;
+    width: 100%;
+    max-width: clamp(280px, 24vw, 360px);
     min-width: 0;
     flex-direction: column;
     overflow: hidden;
@@ -153,7 +157,7 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: clamp(14px, 1.25vw, 20px);
+    padding: clamp(16px, 1.4vw, 22px);
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__content .mellow-card-title {
@@ -211,8 +215,21 @@
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media,
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__video-frame,
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__placeholder {
-      height: clamp(240px, 24vw, 320px);
+      height: clamp(300px, 31vw, 390px);
       aspect-ratio: auto;
+    }
+  }
+
+
+  @media screen and (max-width: 989px) {
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
+      grid-template-columns: 1fr;
+      justify-content: stretch;
+      column-gap: var(--mellow-card-gap);
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card {
+      max-width: none;
     }
   }
 
