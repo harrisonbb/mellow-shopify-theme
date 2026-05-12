@@ -1,33 +1,330 @@
 {% comment %}
-  Mellow FAQ placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+  Mellow FAQ section.
+  Editorial two-column accordion aligned to the global Mellow section system.
 {% endcomment %}
 
-<section class="mellow-section mellow-architecture-section mellow-faq color-{{ section.settings.color_scheme }}">
-  <div class="mellow-section__inner">
-    <div class="mellow-architecture-section__card">
-      <div class="mellow-architecture-section__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+{%- liquid
+  assign section_heading = section.settings.heading | default: 'FAQs'
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
+  if section_heading == 'Answer final purchase questions calmly.'
+    assign section_heading = 'FAQs'
+  endif
+-%}
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
+<style>
+  #MellowFAQ-{{ section.id }} {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-top: clamp(64px, 7vw, 112px);
+    padding-bottom: clamp(64px, 7vw, 112px);
+    background: #F0EBE0;
+    color: #1A2D10;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__inner {
+    width: 100%;
+    max-width: var(--mellow-axis-max, 1360px);
+    margin: 0 auto;
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__grid {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.55fr);
+    align-items: start;
+    gap: clamp(48px, 8vw, 144px);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__heading {
+    margin: 0;
+    max-width: 7em;
+    color: #1A2D10;
+    font-family: var(--mellow-font-display, var(--font-heading-family)) !important;
+    font-size: clamp(52px, 8.2vw, 128px);
+    font-weight: var(--mellow-heading-weight, 600);
+    line-height: 0.9;
+    letter-spacing: var(--mellow-heading-tracking, -0.032em);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__list {
+    border-top: 1px solid rgba(26, 45, 16, 0.24);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__item {
+    border-bottom: 1px solid rgba(26, 45, 16, 0.24);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question {
+    appearance: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(28px, 2.8vw, 38px);
+    align-items: center;
+    gap: clamp(20px, 3vw, 42px);
+    width: 100%;
+    margin: 0;
+    padding: clamp(23px, 2.5vw, 36px) 0;
+    border: 0;
+    background: transparent;
+    color: #1A2D10;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
+    display: block;
+    color: #1A2D10;
+    font-family: var(--mellow-font-display, var(--font-heading-family)) !important;
+    font-size: clamp(20px, 2vw, 30px);
+    font-weight: var(--mellow-card-title-weight, 560);
+    line-height: 1.16;
+    letter-spacing: var(--mellow-card-title-tracking, -0.032em);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(28px, 2.8vw, 38px);
+    height: clamp(28px, 2.8vw, 38px);
+    justify-self: end;
+    color: #1A2D10;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__icon::before,
+  #MellowFAQ-{{ section.id }} .mellow-faq__icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(16px, 1.45vw, 22px);
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 220ms ease;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question[aria-expanded='true'] .mellow-faq__icon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question[aria-expanded='true'] .mellow-faq__icon::after {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 260ms ease;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question[aria-expanded='true'] + .mellow-faq__answer {
+    grid-template-rows: 1fr;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__answer-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
+    max-width: 760px;
+    padding: 0 clamp(54px, 6vw, 92px) clamp(28px, 2.8vw, 42px) 0;
+    color: rgba(26, 45, 16, 0.76);
+    font-size: clamp(16px, 1.14vw, 18px);
+    font-weight: var(--mellow-card-copy-weight, 400);
+    line-height: 1.58;
+    letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__answer-content p {
+    margin: 0;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__answer-content p + p {
+    margin-top: 1em;
+  }
+
+  #MellowFAQ-{{ section.id }} .mellow-faq__question:focus-visible {
+    outline: 2px solid rgba(208, 74, 42, 0.82);
+    outline-offset: 6px;
+  }
+
+  @media screen and (max-width: 989px) {
+    #MellowFAQ-{{ section.id }} .mellow-faq__grid {
+      grid-template-columns: 1fr;
+      gap: clamp(34px, 7vw, 56px);
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__heading {
+      max-width: none;
+      font-size: clamp(48px, 14vw, 76px);
+      line-height: 0.94;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowFAQ-{{ section.id }} {
+      padding-top: clamp(56px, 14vw, 76px);
+      padding-bottom: clamp(56px, 14vw, 76px);
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__inner {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__grid {
+      gap: 30px;
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__question {
+      grid-template-columns: minmax(0, 1fr) 30px;
+      gap: 18px;
+      padding: 22px 0;
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
+      font-size: clamp(19px, 5.4vw, 24px);
+      line-height: 1.18;
+    }
+
+    #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
+      padding-right: 42px;
+      padding-bottom: 26px;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #MellowFAQ-{{ section.id }} .mellow-faq__answer,
+    #MellowFAQ-{{ section.id }} .mellow-faq__icon::before,
+    #MellowFAQ-{{ section.id }} .mellow-faq__icon::after {
+      transition: none;
+    }
+  }
+</style>
+
+<section id="MellowFAQ-{{ section.id }}" class="mellow-section mellow-faq">
+  <div class="mellow-faq__inner">
+    <div class="mellow-faq__grid">
+      <div class="mellow-faq__header">
+        {%- if section_heading != blank -%}
+          <h2 class="mellow-faq__heading">{{ section_heading | escape }}</h2>
         {%- endif -%}
       </div>
 
-      {%- if section.settings.note != blank -%}
-        <div class="mellow-architecture-section__note">
-          <span>{{ section.settings.note | escape }}</span>
-        </div>
-      {%- endif -%}
+      <div class="mellow-faq__list" role="list">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign question = block.settings.question | strip
+              assign answer = block.settings.answer
+            -%}
+
+            {%- if question != blank or answer != blank -%}
+              <div class="mellow-faq__item" role="listitem" {{ block.shopify_attributes }}>
+                <button
+                  class="mellow-faq__question"
+                  type="button"
+                  id="MellowFAQQuestion-{{ section.id }}-{{ block.id }}"
+                  aria-expanded="false"
+                  aria-controls="MellowFAQAnswer-{{ section.id }}-{{ block.id }}"
+                >
+                  <span class="mellow-faq__question-text">{{ question | escape }}</span>
+                  <span class="mellow-faq__icon" aria-hidden="true"></span>
+                </button>
+
+                <div
+                  class="mellow-faq__answer"
+                  id="MellowFAQAnswer-{{ section.id }}-{{ block.id }}"
+                  role="region"
+                  aria-labelledby="MellowFAQQuestion-{{ section.id }}-{{ block.id }}"
+                >
+                  <div class="mellow-faq__answer-inner">
+                    <div class="mellow-faq__answer-content">
+                      {{ answer }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- capture fallback_faqs -%}
+            When should I take MellowRaft™?||Take MellowRaft™ after meals, before bed, or whenever reflux usually shows up. It’s designed to form a protective raft barrier at the top of the stomach before acid has the chance to rise.
+            How is this different from Tums or antacids?||Traditional antacids mainly neutralize acid after it’s already there. MellowRaft™ is different: it forms a physical barrier that helps block reflux from coming back up, without shutting down digestion.
+            Is it safe to take every day?||MellowRaft™ is designed for regular use as directed. If you’re pregnant, managing a medical condition, taking medication, or dealing with frequent symptoms, check with your healthcare provider.
+            Can I use my HSA or FSA?||We’re working toward HSA/FSA eligibility. If available at checkout, you’ll be able to use your HSA or FSA card directly.
+            What does it taste like?||MellowRaft™ is a smooth gel pouch with a mellow, easy-to-take flavor. No chalky tablets, no harsh burn, and no heavy medicinal taste.
+            Can I skip, pause, or cancel my subscription?||Yes. You’ll be able to skip, pause, or cancel your subscription anytime through your customer portal.
+          {%- endcapture -%}
+
+          {%- assign fallback_items = fallback_faqs | strip | newline_to_br | split: '<br />' -%}
+
+          {%- for fallback_item in fallback_items -%}
+            {%- assign fallback_parts = fallback_item | strip | split: '||' -%}
+            {%- assign fallback_question = fallback_parts[0] | strip -%}
+            {%- assign fallback_answer = fallback_parts[1] | strip -%}
+
+            {%- if fallback_question != blank and fallback_answer != blank -%}
+              <div class="mellow-faq__item" role="listitem">
+                <button
+                  class="mellow-faq__question"
+                  type="button"
+                  id="MellowFAQQuestion-{{ section.id }}-fallback-{{ forloop.index }}"
+                  aria-expanded="false"
+                  aria-controls="MellowFAQAnswer-{{ section.id }}-fallback-{{ forloop.index }}"
+                >
+                  <span class="mellow-faq__question-text">{{ fallback_question | escape }}</span>
+                  <span class="mellow-faq__icon" aria-hidden="true"></span>
+                </button>
+
+                <div
+                  class="mellow-faq__answer"
+                  id="MellowFAQAnswer-{{ section.id }}-fallback-{{ forloop.index }}"
+                  role="region"
+                  aria-labelledby="MellowFAQQuestion-{{ section.id }}-fallback-{{ forloop.index }}"
+                >
+                  <div class="mellow-faq__answer-inner">
+                    <div class="mellow-faq__answer-content">
+                      <p>{{ fallback_answer | escape }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const section = document.getElementById('MellowFAQ-{{ section.id }}');
+
+    if (!section) return;
+
+    section.querySelectorAll('.mellow-faq__question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!isExpanded));
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -36,39 +333,80 @@
   "class": "section section-mellow-faq",
   "settings": [
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "FAQ"
-    },
-    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Answer final purchase questions calmly."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Use expandable answers later for objections, usage, shipping, and safety questions."
-    },
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": "Ready for final design replacement."
+      "default": "FAQs"
     }
   ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "When should I take MellowRaft™?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Take MellowRaft™ after meals, before bed, or whenever reflux usually shows up. It’s designed to form a protective raft barrier at the top of the stomach before acid has the chance to rise.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
   "presets": [
     {
-      "name": "Mellow FAQ"
+      "name": "Mellow FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "When should I take MellowRaft™?",
+            "answer": "<p>Take MellowRaft™ after meals, before bed, or whenever reflux usually shows up. It’s designed to form a protective raft barrier at the top of the stomach before acid has the chance to rise.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How is this different from Tums or antacids?",
+            "answer": "<p>Traditional antacids mainly neutralize acid after it’s already there. MellowRaft™ is different: it forms a physical barrier that helps block reflux from coming back up, without shutting down digestion.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to take every day?",
+            "answer": "<p>MellowRaft™ is designed for regular use as directed. If you’re pregnant, managing a medical condition, taking medication, or dealing with frequent symptoms, check with your healthcare provider.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use my HSA or FSA?",
+            "answer": "<p>We’re working toward HSA/FSA eligibility. If available at checkout, you’ll be able to use your HSA or FSA card directly.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "<p>MellowRaft™ is a smooth gel pouch with a mellow, easy-to-take flavor. No chalky tablets, no harsh burn, and no heavy medicinal taste.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I skip, pause, or cancel my subscription?",
+            "answer": "<p>Yes. You’ll be able to skip, pause, or cancel your subscription anytime through your customer portal.</p>"
+          }
+        }
+      ]
     }
   ]
 }
