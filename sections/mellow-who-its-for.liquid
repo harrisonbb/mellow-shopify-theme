@@ -3,6 +3,219 @@
   Full-bleed forest green carousel for real-life reflux moments.
 {% endcomment %}
 
+<style>
+  #MellowWhoItsFor-{{ section.id }} {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-top: clamp(64px, 5.5vw, 92px);
+    padding-bottom: clamp(52px, 5vw, 76px);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: clamp(48px, 6.5vw, 100px);
+    padding-right: clamp(48px, 6.5vw, 100px);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 760px) auto;
+    align-items: center;
+    gap: clamp(40px, 6vw, 96px);
+    margin-bottom: clamp(40px, 4vw, 58px);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header {
+    max-width: 760px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__eyebrow {
+    margin: 0 0 18px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
+    margin: 0;
+    max-width: 760px;
+    font-size: clamp(44px, 4.1vw, 62px);
+    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
+    max-width: 520px;
+    margin: 22px 0 0;
+    font-size: clamp(17px, 1.25vw, 19px);
+    line-height: 1.45;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
+    justify-self: end;
+    align-self: center;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-top: 34px;
+    padding-bottom: 70px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__track {
+    display: flex;
+    width: max-content;
+    max-width: none;
+    gap: clamp(28px, 2.6vw, 42px);
+    align-items: center;
+    will-change: transform;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-set {
+    display: flex;
+    gap: clamp(28px, 2.6vw, 42px);
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
+    flex: 0 0 auto;
+    position: relative;
+    width: clamp(330px, 28vw, 430px);
+    height: clamp(300px, 24vw, 370px);
+    transform: scale(0.98);
+    transform-origin: center center;
+    transition:
+      transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 650ms ease,
+      filter 650ms ease;
+    will-change: transform;
+    backface-visibility: hidden;
+    z-index: 1;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
+    transform: scale(1.09);
+    z-index: 20;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) {
+    opacity: 1;
+    filter: brightness(0.96) saturate(0.98);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
+    position: relative;
+    height: 100%;
+    padding: 52px 36px 36px;
+    overflow: hidden;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    margin: 0;
+    transform: none;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
+    margin-top: 28px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
+    margin: 0;
+    font-size: clamp(25px, 1.8vw, 30px);
+    line-height: 1.04;
+    font-weight: 580;
+    letter-spacing: -0.04em;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__divider {
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
+    margin: 0;
+    max-width: 94%;
+    font-size: clamp(15.5px, 1.02vw, 16.75px);
+    line-height: 1.52;
+    font-weight: 400;
+    letter-spacing: -0.006em;
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowWhoItsFor-{{ section.id }} {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
+      font-size: clamp(38px, 10vw, 48px);
+      line-height: 1;
+      letter-spacing: -0.038em;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
+      font-size: 16px;
+      line-height: 1.45;
+      max-width: 360px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
+      margin-top: 28px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
+      padding-top: 24px;
+      padding-bottom: 52px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
+      width: 320px;
+      height: 300px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
+      transform: scale(1.05);
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
+      padding: 44px 28px 30px;
+    }
+  }
+</style>
+
 <section
   id="MellowWhoItsFor-{{ section.id }}"
   class="mellow-section mellow-who-its-for color-{{ section.settings.color_scheme }}"
@@ -16,7 +229,9 @@
         {%- endif -%}
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' }}</h2>
+          <h2 class="mellow-who-its-for__heading">
+            {{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' }}
+          </h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
@@ -62,6 +277,7 @@
                 assign card_icon = card_parts[2]
                 assign card_tag = card_parts[3]
               -%}
+
               <article
                 class="mellow-who-its-for__card"
                 {% if is_original_set %}
@@ -73,26 +289,27 @@
                   {%- if card_tag != blank -%}
                     <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
                   {%- endif -%}
+
                   <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
-                  {%- case card_icon -%}
-                    {%- when 'fork-knife' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15"/><path d="M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
-                    {%- when 'droplet' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
-                    {%- when 'moon' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
-                    {%- when 'pregnancy' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
-                    {%- when 'bolt' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
-                    {%- when 'target' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
-                    {%- when 'shield' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
-                    {%- when 'smoke' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8"/><path d="M11 23c4-5 11 2 15-4 2-3-1-6-4-8"/><path d="M31 24c3-3 9 0 8-7"/></svg>
-                  {%- endcase -%}
-                </div>
+                    {%- case card_icon -%}
+                      {%- when 'fork-knife' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15"/><path d="M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
+                      {%- when 'droplet' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
+                      {%- when 'moon' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
+                      {%- when 'pregnancy' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
+                      {%- when 'bolt' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
+                      {%- when 'target' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
+                      {%- when 'shield' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
+                      {%- when 'smoke' -%}
+                        <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8"/><path d="M11 23c4-5 11 2 15-4 2-3-1-6-4-8"/><path d="M31 24c3-3 9 0 8-7"/></svg>
+                    {%- endcase -%}
+                  </div>
 
                   <div class="mellow-who-its-for__card-copy">
                     <h3>{{ card_title | escape }}</h3>
@@ -100,7 +317,6 @@
                     <p>{{ card_text | escape }}</p>
                   </div>
                 </div>
-
               </article>
             {%- endfor -%}
           </div>
@@ -109,6 +325,7 @@
     </div>
   </div>
 </section>
+
 <script>
   (() => {
     const section = document.getElementById('MellowWhoItsFor-{{ section.id }}');
@@ -128,13 +345,10 @@
 
     const marqueeDuration = 90000;
     let setWidth = 0;
-    let autoOffset = 0;
-    let manualOffset = 0;
+    let offset = 0;
     let animationFrame = null;
     let lastFrameTime = null;
     let resizeObserver = null;
-
-    const getTotalOffset = () => autoOffset + manualOffset;
 
     const applySafeOffset = () => {
       if (setWidth <= 0) {
@@ -142,17 +356,14 @@
       }
 
       let didWrap = false;
-      let totalOffset = getTotalOffset();
 
-      while (totalOffset <= setWidth * -2) {
-        autoOffset += setWidth;
-        totalOffset += setWidth;
+      while (offset <= setWidth * -2) {
+        offset += setWidth;
         didWrap = true;
       }
 
-      while (totalOffset >= 0) {
-        autoOffset -= setWidth;
-        totalOffset -= setWidth;
+      while (offset >= 0) {
+        offset -= setWidth;
         didWrap = true;
       }
 
@@ -160,7 +371,7 @@
     };
 
     const updateTrackPosition = () => {
-      track.style.transform = `translate3d(${getTotalOffset()}px, 0, 0)`;
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
     };
 
     let activeCard = null;
@@ -253,8 +464,7 @@
         return;
       }
 
-      autoOffset = setWidth * -1;
-      manualOffset = 0;
+      offset = setWidth * -1;
       track.style.setProperty('--who-track-width', `${setWidth}px`);
       updateTrackPosition();
       requestActiveCardUpdate();
@@ -269,7 +479,7 @@
         const elapsed = timestamp - lastFrameTime;
         const pixelsPerMillisecond = setWidth / marqueeDuration;
 
-        autoOffset -= pixelsPerMillisecond * elapsed;
+        offset -= pixelsPerMillisecond * elapsed;
         const didWrap = applySafeOffset();
         updateTrackPosition();
 
@@ -316,15 +526,14 @@
       (event) => {
         const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
         const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
-        const absX = Math.abs(horizontalDelta);
-        const absY = Math.abs(verticalDelta);
+        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.05;
 
-        if (absX <= absY || setWidth <= 0) {
+        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
           return;
         }
 
         event.preventDefault();
-        manualOffset -= horizontalDelta;
+        offset -= horizontalDelta;
         applySafeOffset();
         updateTrackPosition();
         requestActiveCardUpdate();
@@ -332,79 +541,6 @@
       },
       { passive: false }
     );
-
-    let pointerState = null;
-
-    scroller.addEventListener('pointerdown', (event) => {
-      if (setWidth <= 0 || event.button > 0) {
-        return;
-      }
-
-      pointerState = {
-        startX: event.clientX,
-        startY: event.clientY,
-        lastX: event.clientX,
-        isHorizontal: false
-      };
-    });
-
-    scroller.addEventListener(
-      'pointermove',
-      (event) => {
-        if (!pointerState || setWidth <= 0) {
-          return;
-        }
-
-        const totalX = event.clientX - pointerState.startX;
-        const totalY = event.clientY - pointerState.startY;
-        const absX = Math.abs(totalX);
-        const absY = Math.abs(totalY);
-
-        if (!pointerState.isHorizontal) {
-          if (absX < 6 && absY < 6) {
-            return;
-          }
-
-          if (absX <= absY) {
-            pointerState = null;
-            return;
-          }
-
-          pointerState.isHorizontal = true;
-
-          if (scroller.setPointerCapture) {
-            scroller.setPointerCapture(event.pointerId);
-          }
-        }
-
-        event.preventDefault();
-        manualOffset += event.clientX - pointerState.lastX;
-        pointerState.lastX = event.clientX;
-        applySafeOffset();
-        updateTrackPosition();
-        requestActiveCardUpdate();
-        lastFrameTime = null;
-      },
-      { passive: false }
-    );
-
-    const releasePointer = (event) => {
-      if (pointerState && scroller.releasePointerCapture && scroller.hasPointerCapture(event.pointerId)) {
-        scroller.releasePointerCapture(event.pointerId);
-      }
-
-      pointerState = null;
-    };
-
-    scroller.addEventListener('pointerup', releasePointer);
-    scroller.addEventListener('pointercancel', releasePointer);
-    scroller.addEventListener('pointerleave', (event) => {
-      if (!pointerState || pointerState.isHorizontal) {
-        return;
-      }
-
-      releasePointer(event);
-    });
 
     const activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
 
@@ -422,8 +558,8 @@
 
       cancelAnimationFrame(animationFrame);
       clearInterval(activeUpdateInterval);
-      window.removeEventListener('resize', requestActiveCardUpdate);
-      window.removeEventListener('scroll', requestActiveCardUpdate);
+      window.removeEventListener('resize', requestActiveCardUpdate, { passive: true });
+      window.removeEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
       if (activeUpdateFrame) {
         cancelAnimationFrame(activeUpdateFrame);
@@ -435,6 +571,7 @@
     });
   })();
 </script>
+
 {% schema %}
 {
   "name": "Mellow who it’s for",
