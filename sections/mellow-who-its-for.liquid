@@ -60,19 +60,28 @@
     justify-self: end;
     align-self: center;
     transform: none;
+    width: clamp(260px, 19vw, 330px);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
-    display: inline-flex;
+    display: inline-grid;
+    grid-template-columns: 1fr 0;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    column-gap: 0;
     overflow: hidden;
     position: relative;
     white-space: nowrap;
     transform: translateZ(0);
     backface-visibility: hidden;
 
+    width: clamp(230px, 15.6vw, 275px);
     min-height: clamp(58px, 4.6vw, 72px);
     padding: clamp(18px, 1.45vw, 23px) clamp(34px, 3vw, 52px);
     font-size: clamp(16px, 1.08vw, 18px);
@@ -81,6 +90,9 @@
     border-radius: 999px;
 
     transition:
+      width 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      grid-template-columns 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      column-gap 280ms cubic-bezier(0.22, 1, 0.36, 1),
       background-color 220ms ease,
       border-color 220ms ease,
       color 220ms ease;
@@ -93,7 +105,10 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label {
-    display: inline-block;
+    display: block;
+    text-align: center;
+    justify-self: center;
+    min-width: 0;
     transform: translateZ(0);
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -101,13 +116,20 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
     display: inline-block;
     width: 0.9em;
-    flex: 0 0 0.9em;
+    justify-self: end;
     opacity: 0;
     overflow: visible;
     transform: translate3d(-8px, 0, 0);
     transition:
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
       opacity 180ms ease;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
+    width: clamp(252px, 17.2vw, 305px);
+    grid-template-columns: 1fr 0.9em;
+    column-gap: 10px;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
@@ -118,7 +140,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-label,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-label {
-    transform: translate3d(-1px, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -313,14 +335,26 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
+      width: 100%;
       margin-top: 28px;
       transform: none;
     }
 
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
+      width: 230px;
       min-height: 54px;
-      padding: 17px 32px;
+      padding: 17px 30px;
       font-size: 16px;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
+      width: 252px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
