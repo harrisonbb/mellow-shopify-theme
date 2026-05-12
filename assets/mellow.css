@@ -726,23 +726,8 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__card::after {
-  content: '';
-  position: absolute;
-  left: var(--mellow-who-card-padding-x);
-  right: var(--mellow-who-card-padding-x);
-  bottom: clamp(1rem, 1vw, 1.5rem);
-  height: 0.1rem;
-  border-radius: var(--mellow-radius-pill);
-  background: linear-gradient(
-    90deg,
-    rgba(212, 138, 50, 0),
-    rgba(212, 138, 50, 0.24) 18%,
-    rgba(240, 226, 202, 0.42) 50%,
-    rgba(212, 138, 50, 0.24) 82%,
-    rgba(212, 138, 50, 0)
-  );
-  opacity: 0.72;
-  pointer-events: none;
+  content: none;
+  display: none;
 }
 
 .mellow-who-its-for__icon svg {
