@@ -184,10 +184,12 @@
     background: #f4ede0 !important;
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.22) !important;
-    border-radius: 18px !important;
+    border-radius: 22px !important;
     outline: 0 !important;
     box-shadow: none;
     background-clip: padding-box;
+    clip-path: inset(0 round 22px);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     transform: scale(0.98) translateZ(0);
     transform-origin: center center;
@@ -204,10 +206,12 @@
     background: #f4ede0 !important;
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.22) !important;
-    border-radius: 18px !important;
+    border-radius: 22px !important;
     outline: 0 !important;
     box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
     background-clip: padding-box;
+    clip-path: inset(0 round 22px);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     filter: none;
   }
 
@@ -320,10 +324,14 @@
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
       padding: 44px 28px 30px;
+      border-radius: 20px !important;
+      clip-path: inset(0 round 20px);
       transform: scale(0.98) translateZ(0);
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
+      border-radius: 20px !important;
+      clip-path: inset(0 round 20px);
       transform: scale(1.05) translateZ(0);
     }
   }
