@@ -8,8 +8,8 @@
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
-    padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
+    padding-top: clamp(48px, 4.2vw, 72px);
+    padding-bottom: clamp(44px, 3.8vw, 64px);
     background: var(--mellow-section-green, var(--mellow-forest, #1A2D10));
     color: var(--mellow-cream, #F0EBE0);
   }
@@ -23,28 +23,28 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__header {
-    max-width: min(900px, 100%);
+    max-width: var(--mellow-header-max, 760px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__eyebrow {
-    margin: 0 0 var(--mellow-eyebrow-margin-bottom, 18px);
+    margin: 0 0 clamp(12px, 1.2vw, var(--mellow-eyebrow-margin-bottom, 18px));
     color: var(--mellow-orange-red, #D04A2A);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__heading {
-    max-width: 900px;
+    max-width: var(--mellow-header-max, 760px);
     margin: 0;
     color: var(--mellow-cream, #F0EBE0);
     font-family: var(--font-heading-family, inherit);
-    font-size: clamp(48px, 5.4vw, 84px);
-    line-height: 0.96;
+    font-size: var(--mellow-heading-size, clamp(4.8rem, 6.2vw, 8.8rem));
+    line-height: var(--mellow-heading-line-height, 0.96);
     font-weight: var(--mellow-heading-weight, 600);
-    letter-spacing: var(--mellow-heading-tracking, -0.032em);
+    letter-spacing: var(--mellow-heading-tracking, -0.055em);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__subheading {
     max-width: 680px;
-    margin: clamp(20px, 2vw, 28px) 0 0;
+    margin: clamp(14px, 1.5vw, 22px) 0 0;
     color: rgba(240, 235, 224, 0.9);
     font-family: var(--font-body-family, inherit);
     font-size: var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px));
@@ -54,7 +54,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__sequence {
-    margin-top: clamp(34px, 4.2vw, 58px);
+    margin-top: clamp(24px, 3vw, 40px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,
@@ -66,7 +66,7 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
     position: relative;
-    height: clamp(320px, 34vw, 560px);
+    height: clamp(260px, 25vw, 380px);
     overflow: hidden;
     isolation: isolate;
     border-radius: 14px;
@@ -259,24 +259,24 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
-    margin-top: clamp(18px, 1.7vw, 26px);
+    margin-top: clamp(14px, 1.35vw, 20px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    gap: clamp(14px, 1.35vw, 22px);
+    gap: clamp(12px, 1.1vw, 18px);
     align-items: start;
     color: var(--mellow-cream, #F0EBE0);
-    padding: 0 clamp(8px, 2vw, 36px);
+    padding: 0 clamp(6px, 1.4vw, 24px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(44px, 3.2vw, 56px);
-    height: clamp(44px, 3.2vw, 56px);
+    width: clamp(40px, 2.8vw, 50px);
+    height: clamp(40px, 2.8vw, 50px);
     border-radius: 999px;
     background: rgba(240, 235, 224, 0.96);
     color: var(--mellow-forest, #1A2D10);
@@ -290,7 +290,7 @@
     margin: 0;
     color: var(--mellow-cream, #F0EBE0);
     font-family: var(--font-heading-family, inherit);
-    font-size: clamp(20px, 1.55vw, 28px);
+    font-size: clamp(19px, 1.35vw, 24px);
     line-height: 1.04;
     font-weight: 650;
     letter-spacing: -0.035em;
@@ -300,14 +300,14 @@
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-description {
     margin: 8px 0 0;
     color: rgba(240, 235, 224, 0.84);
-    font-size: clamp(15px, 1.08vw, 20px);
-    line-height: 1.35;
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.32;
     letter-spacing: -0.02em;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__footnote {
     max-width: 760px;
-    margin: clamp(26px, 3vw, 42px) 0 0 clamp(0px, 2vw, 36px);
+    margin: clamp(18px, 2.2vw, 30px) 0 0 clamp(0px, 1.4vw, 24px);
     color: rgba(240, 235, 224, 0.78);
     font-size: clamp(13px, 0.98vw, 16px);
     line-height: 1.45;
@@ -316,10 +316,6 @@
   }
 
   @media screen and (max-width: 989px) {
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__heading {
-      font-size: clamp(42px, 8vw, 68px);
-    }
-
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
       grid-template-columns: 1fr;
@@ -340,11 +336,11 @@
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
-      height: clamp(320px, 78vw, 500px);
+      height: clamp(280px, 68vw, 430px);
       border-radius: 18px;
     }
 
-      #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
       display: none;
     }
 
@@ -389,10 +385,6 @@
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__inner {
       padding-left: 22px;
       padding-right: 22px;
-    }
-
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__heading {
-      font-size: clamp(38px, 12vw, 56px);
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation {
