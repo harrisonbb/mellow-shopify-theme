@@ -17,44 +17,44 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: clamp(64px, 7vw, 112px);
-    padding-bottom: clamp(64px, 7vw, 112px);
+    padding-top: clamp(48px, 5vw, 84px);
+    padding-bottom: clamp(64px, 6vw, 96px);
     background: #F0EBE0;
     color: #1A2D10;
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__inner {
     width: 100%;
-    max-width: var(--mellow-axis-max, 1360px);
+    max-width: var(--mellow-axis-max, 1320px);
     margin: 0 auto;
-    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-left: var(--mellow-axis-pad, clamp(24px, 4vw, 64px));
+    padding-right: var(--mellow-axis-pad, clamp(24px, 4vw, 64px));
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__grid {
     display: grid;
-    grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.55fr);
+    grid-template-columns: minmax(220px, 0.52fr) minmax(0, 1.48fr);
     align-items: start;
-    gap: clamp(48px, 8vw, 144px);
+    gap: clamp(48px, 6vw, 104px);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__heading {
     margin: 0;
     max-width: 7em;
     color: #1A2D10;
-    font-family: var(--mellow-font-display, var(--font-heading-family)) !important;
-    font-size: clamp(52px, 8.2vw, 128px);
-    font-weight: var(--mellow-heading-weight, 600);
-    line-height: 0.9;
-    letter-spacing: var(--mellow-heading-tracking, -0.032em);
+    font-family: var(--font-heading-family, inherit);
+    font-size: clamp(56px, 6.2vw, 96px);
+    font-weight: 650;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__list {
-    border-top: 1px solid rgba(26, 45, 16, 0.24);
+    border-top: 1px solid rgba(26, 45, 16, 0.18);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__item {
-    border-bottom: 1px solid rgba(26, 45, 16, 0.24);
+    border-bottom: 1px solid rgba(26, 45, 16, 0.18);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__question {
@@ -65,7 +65,7 @@
     gap: clamp(20px, 3vw, 42px);
     width: 100%;
     margin: 0;
-    padding: clamp(23px, 2.5vw, 36px) 0;
+    padding: clamp(24px, 2.1vw, 32px) 0;
     border: 0;
     background: transparent;
     color: #1A2D10;
@@ -77,11 +77,11 @@
   #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
     display: block;
     color: #1A2D10;
-    font-family: var(--mellow-font-display, var(--font-heading-family)) !important;
-    font-size: clamp(20px, 2vw, 30px);
-    font-weight: var(--mellow-card-title-weight, 560);
-    line-height: 1.16;
-    letter-spacing: var(--mellow-card-title-tracking, -0.032em);
+    font-family: var(--font-heading-family, inherit);
+    font-size: clamp(22px, 1.65vw, 28px);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.045em;
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__icon {
@@ -139,11 +139,12 @@
   #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
     max-width: 760px;
     padding: 0 clamp(54px, 6vw, 92px) clamp(28px, 2.8vw, 42px) 0;
-    color: rgba(26, 45, 16, 0.76);
-    font-size: clamp(16px, 1.14vw, 18px);
-    font-weight: var(--mellow-card-copy-weight, 400);
-    line-height: 1.58;
-    letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
+    color: rgba(26, 45, 16, 0.72);
+    font-family: var(--font-body-family, inherit);
+    font-size: clamp(15.5px, 1vw, 17px);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__answer-content p {
@@ -167,22 +168,12 @@
 
     #MellowFAQ-{{ section.id }} .mellow-faq__heading {
       max-width: none;
-      font-size: clamp(48px, 14vw, 76px);
+      font-size: clamp(44px, 13vw, 68px);
       line-height: 0.94;
     }
   }
 
   @media screen and (max-width: 749px) {
-    #MellowFAQ-{{ section.id }} {
-      padding-top: clamp(56px, 14vw, 76px);
-      padding-bottom: clamp(56px, 14vw, 76px);
-    }
-
-    #MellowFAQ-{{ section.id }} .mellow-faq__inner {
-      padding-left: 22px;
-      padding-right: 22px;
-    }
-
     #MellowFAQ-{{ section.id }} .mellow-faq__grid {
       gap: 30px;
     }
@@ -190,19 +181,16 @@
     #MellowFAQ-{{ section.id }} .mellow-faq__question {
       grid-template-columns: minmax(0, 1fr) 30px;
       gap: 18px;
-      padding: 22px 0;
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
-      font-size: clamp(19px, 5.4vw, 24px);
+      font-size: clamp(19px, 5.2vw, 23px);
       line-height: 1.18;
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
       padding-right: 42px;
       padding-bottom: 26px;
-      font-size: 16px;
-      line-height: 1.55;
     }
   }
 
