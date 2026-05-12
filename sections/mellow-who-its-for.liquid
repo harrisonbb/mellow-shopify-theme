@@ -9,51 +9,51 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: clamp(64px, 5.5vw, 92px);
-    padding-bottom: clamp(52px, 5vw, 76px);
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
     width: 100%;
     max-width: none;
     margin: 0;
-    --mellow-who-edge-pad: clamp(28px, 4vw, 64px);
+    --mellow-who-edge-pad: var(--mellow-section-pad-x);
     padding-left: var(--mellow-who-edge-pad);
     padding-right: var(--mellow-who-edge-pad);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 760px) auto;
+    grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
     align-items: center;
     gap: clamp(40px, 6vw, 96px);
     margin-bottom: clamp(22px, 2.6vw, 36px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header {
-    max-width: 760px;
+    max-width: var(--mellow-header-max);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__eyebrow {
-    margin: 0 0 18px;
+    margin: 0 0 var(--mellow-eyebrow-margin-bottom);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
     margin: 0;
-    max-width: 760px;
-    font-size: clamp(44px, 4.1vw, 62px);
-    line-height: 0.98;
-    font-weight: 600;
-    letter-spacing: -0.032em;
+    max-width: var(--mellow-header-max);
+    font-size: var(--mellow-heading-size);
+    line-height: var(--mellow-heading-line-height);
+    font-weight: var(--mellow-heading-weight);
+    letter-spacing: var(--mellow-heading-tracking);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
-    max-width: 620px;
+    max-width: var(--mellow-copy-max);
     margin: 22px 0 0;
-    font-size: clamp(18px, 1.32vw, 20px);
-    line-height: 1.46;
+    font-size: var(--mellow-subhead-size);
+    line-height: var(--mellow-subhead-line-height);
     font-weight: 400;
-    letter-spacing: -0.005em;
+    letter-spacing: var(--mellow-subhead-tracking);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
@@ -80,11 +80,11 @@
     transform: translateZ(0);
     backface-visibility: hidden;
 
-    width: clamp(190px, 12.6vw, 218px);
-    min-height: clamp(52px, 4.05vw, 62px);
-    padding: clamp(15px, 1.18vw, 18px) clamp(18px, 1.45vw, 25px);
-    font-size: clamp(16px, 1.08vw, 18px);
-    font-weight: 650;
+    width: var(--mellow-cta-width);
+    min-height: var(--mellow-cta-height);
+    padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
+    font-size: var(--mellow-cta-font-size);
+    font-weight: var(--mellow-cta-font-weight);
     line-height: 1;
     border-radius: 999px;
 
@@ -112,7 +112,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
     position: absolute;
-    right: clamp(19px, 1.45vw, 26px);
+    right: var(--mellow-cta-arrow-right);
     top: 50%;
     display: inline-block;
     opacity: 0;
@@ -125,7 +125,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
-    width: clamp(224px, 14.9vw, 258px);
+    width: var(--mellow-cta-hover-width);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
@@ -270,10 +270,10 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
     margin: 0;
-    font-size: clamp(25px, 1.8vw, 30px);
+    font-size: var(--mellow-card-title-size);
     line-height: 1.04;
-    font-weight: 560;
-    letter-spacing: -0.032em;
+    font-weight: var(--mellow-card-title-weight);
+    letter-spacing: var(--mellow-card-title-tracking);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__divider {
@@ -287,10 +287,10 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
     margin: 0;
     max-width: 94%;
-    font-size: clamp(16px, 1.03vw, 17px);
+    font-size: var(--mellow-card-copy-size);
     line-height: 1.48;
     font-weight: 400;
-    letter-spacing: -0.006em;
+    letter-spacing: var(--mellow-card-copy-tracking);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -385,32 +385,32 @@
 
 <section
   id="MellowWhoItsFor-{{ section.id }}"
-  class="mellow-section mellow-who-its-for color-{{ section.settings.color_scheme }}"
+  class="mellow-section mellow-section-standard mellow-who-its-for color-{{ section.settings.color_scheme }}"
   data-mellow-who-carousel
 >
-  <div class="mellow-who-its-for__inner">
-    <div class="mellow-who-its-for__header-wrap">
-      <div class="mellow-who-its-for__header">
+  <div class="mellow-section-axis mellow-who-its-for__inner">
+    <div class="mellow-section-header-grid mellow-who-its-for__header-wrap">
+      <div class="mellow-section-header mellow-who-its-for__header">
         {%- if section.settings.eyebrow != blank -%}
           <p class="mellow-eyebrow mellow-who-its-for__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         {%- endif -%}
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-who-its-for__heading">
+          <h2 class="mellow-section-heading mellow-who-its-for__heading">
             {{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' | replace: 'think.', 'think' }}
           </h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
-          <p class="mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
+          <p class="mellow-section-text mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
         {%- endif -%}
       </div>
 
-      <div class="mellow-who-its-for__header-actions">
-        <div class="mellow-who-its-for__quiz-action">
-          <a class="mellow-who-its-for__quiz-button" href="/pages/quiz">
-            <span class="mellow-who-its-for__quiz-label">Take the reflux quiz</span>
-            <span class="mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
+      <div class="mellow-section-actions mellow-who-its-for__header-actions">
+        <div class="mellow-section-cta-wrap mellow-who-its-for__quiz-action">
+          <a class="mellow-section-cta mellow-who-its-for__quiz-button" href="/pages/quiz">
+            <span class="mellow-section-cta__label mellow-who-its-for__quiz-label">Take the reflux quiz</span>
+            <span class="mellow-section-cta__arrow mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -457,7 +457,7 @@
               >
                 <div class="mellow-who-its-for__card-inner">
                   {%- if card_tag != blank -%}
-                    <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                    <span class="mellow-card-tag mellow-who-its-for__tag">{{ card_tag | escape }}</span>
                   {%- endif -%}
 
                   <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
@@ -482,9 +482,9 @@
                   </div>
 
                   <div class="mellow-who-its-for__card-copy">
-                    <h3>{{ card_title | escape }}</h3>
+                    <h3 class="mellow-card-title">{{ card_title | escape }}</h3>
                     <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
-                    <p>{{ card_text | escape }}</p>
+                    <p class="mellow-card-copy">{{ card_text | escape }}</p>
                   </div>
                 </div>
               </article>

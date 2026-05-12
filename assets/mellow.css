@@ -68,6 +68,44 @@
   --mellow-page-gutter: var(--mellow-axis-pad);
   --mellow-axis-inset: max(var(--mellow-axis-pad), calc((100vw - var(--mellow-axis-max)) / 2));
   --mellow-section-padding: clamp(6.4rem, 9vw, 12rem);
+
+  --mellow-section-pad-x: clamp(28px, 4vw, 64px);
+  --mellow-section-pad-top: clamp(64px, 5.5vw, 92px);
+  --mellow-section-pad-bottom: clamp(52px, 5vw, 76px);
+  --mellow-header-max: 760px;
+  --mellow-copy-max: 620px;
+
+  --mellow-eyebrow-margin-bottom: 18px;
+
+  --mellow-heading-size: clamp(44px, 4.1vw, 62px);
+  --mellow-heading-line-height: 0.98;
+  --mellow-heading-weight: 600;
+  --mellow-heading-tracking: -0.032em;
+
+  --mellow-subhead-size: clamp(18px, 1.32vw, 20px);
+  --mellow-subhead-line-height: 1.46;
+  --mellow-subhead-weight: 400;
+  --mellow-subhead-tracking: -0.005em;
+
+  --mellow-card-title-size: clamp(25px, 1.8vw, 30px);
+  --mellow-card-title-line-height: 1.04;
+  --mellow-card-title-weight: 560;
+  --mellow-card-title-tracking: -0.032em;
+
+  --mellow-card-copy-size: clamp(16px, 1.03vw, 17px);
+  --mellow-card-copy-line-height: 1.48;
+  --mellow-card-copy-weight: 400;
+  --mellow-card-copy-tracking: -0.006em;
+
+  --mellow-cta-width: clamp(190px, 12.6vw, 218px);
+  --mellow-cta-hover-width: clamp(224px, 14.9vw, 258px);
+  --mellow-cta-height: clamp(52px, 4.05vw, 62px);
+  --mellow-cta-pad-y: clamp(15px, 1.18vw, 18px);
+  --mellow-cta-pad-x: clamp(18px, 1.45vw, 25px);
+  --mellow-cta-font-size: clamp(16px, 1.08vw, 18px);
+  --mellow-cta-font-weight: 650;
+  --mellow-cta-arrow-right: clamp(19px, 1.45vw, 26px);
+
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
 }
@@ -90,6 +128,242 @@ body,
 main,
 .shopify-section {
   max-width: 100%;
+}
+
+
+/*
+  Global Mellow section system.
+  Future Mellow sections should begin with:
+
+  <section class="mellow-section-standard">
+    <div class="mellow-section-axis">
+      <div class="mellow-section-header-grid">
+        <div class="mellow-section-header">
+          <p class="mellow-eyebrow">...</p>
+          <h2 class="mellow-section-heading">...</h2>
+          <p class="mellow-section-text">...</p>
+        </div>
+        <div class="mellow-section-actions">
+          <div class="mellow-section-cta-wrap">
+            <a class="mellow-section-cta" href="#">
+              <span class="mellow-section-cta__label">...</span>
+              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+*/
+.mellow-section-axis {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: var(--mellow-section-pad-x);
+  padding-right: var(--mellow-section-pad-x);
+}
+
+.mellow-section-standard {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: var(--mellow-section-pad-top);
+  padding-bottom: var(--mellow-section-pad-bottom);
+}
+
+.mellow-section-header-grid {
+  display: grid;
+  grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+  margin-bottom: clamp(22px, 2.6vw, 36px);
+}
+
+.mellow-section-header {
+  max-width: var(--mellow-header-max);
+}
+
+.mellow-section-actions {
+  justify-self: end;
+  align-self: center;
+  transform: none;
+  width: clamp(220px, 16vw, 280px);
+}
+
+.mellow-section-heading {
+  margin: 0;
+  max-width: var(--mellow-header-max);
+  font-size: var(--mellow-heading-size);
+  line-height: var(--mellow-heading-line-height);
+  font-weight: var(--mellow-heading-weight);
+  letter-spacing: var(--mellow-heading-tracking);
+}
+
+.mellow-section-text {
+  max-width: var(--mellow-copy-max);
+  margin: 22px 0 0;
+  font-size: var(--mellow-subhead-size);
+  line-height: var(--mellow-subhead-line-height);
+  font-weight: var(--mellow-subhead-weight);
+  letter-spacing: var(--mellow-subhead-tracking);
+}
+
+.mellow-card-title {
+  margin: 0;
+  font-size: var(--mellow-card-title-size);
+  line-height: var(--mellow-card-title-line-height);
+  font-weight: var(--mellow-card-title-weight);
+  letter-spacing: var(--mellow-card-title-tracking);
+}
+
+.mellow-card-copy {
+  margin: 0;
+  font-size: var(--mellow-card-copy-size);
+  line-height: var(--mellow-card-copy-line-height);
+  font-weight: var(--mellow-card-copy-weight);
+  letter-spacing: var(--mellow-card-copy-tracking);
+}
+
+.mellow-section-cta-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.mellow-section-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  width: var(--mellow-cta-width);
+  min-height: var(--mellow-cta-height);
+  padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
+  font-size: var(--mellow-cta-font-size);
+  font-weight: var(--mellow-cta-font-weight);
+  line-height: 1;
+  border-radius: 999px;
+
+  transform-origin: right center;
+
+  transition:
+    width 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease;
+}
+
+.mellow-section-cta::before,
+.mellow-section-cta::after {
+  content: none !important;
+  display: none !important;
+}
+
+.mellow-section-cta__label {
+  display: inline-block;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mellow-section-cta__arrow {
+  position: absolute;
+  right: var(--mellow-cta-arrow-right);
+  top: 50%;
+  display: inline-block;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-12px, -50%, 0);
+  transition:
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 260ms ease;
+}
+
+.mellow-section-cta:hover,
+.mellow-section-cta:focus-visible {
+  width: var(--mellow-cta-hover-width);
+}
+
+.mellow-section-cta:hover .mellow-section-cta__arrow,
+.mellow-section-cta:focus-visible .mellow-section-cta__arrow {
+  transform: translate3d(0, -50%, 0);
+  opacity: 1;
+}
+
+.mellow-section-cta:hover .mellow-section-cta__label,
+.mellow-section-cta:focus-visible .mellow-section-cta__label {
+  transform: translate3d(-8px, 0, 0);
+}
+
+.mellow-card-tag {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  margin: 0;
+  transform: none;
+  letter-spacing: 0.13em;
+  z-index: 3;
+}
+
+@media screen and (max-width: 749px) {
+  :root {
+    --mellow-section-pad-x: 22px;
+  }
+
+  .mellow-section-header-grid {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .mellow-section-heading {
+    font-size: clamp(38px, 10vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.034em;
+  }
+
+  .mellow-section-text {
+    font-size: 16px;
+    line-height: 1.45;
+    max-width: 360px;
+  }
+
+  .mellow-section-actions {
+    width: 100%;
+    margin-top: 28px;
+    transform: none;
+  }
+
+  .mellow-section-cta-wrap {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .mellow-section-cta {
+    width: 190px;
+    min-height: 50px;
+    padding: 15px 22px;
+    font-size: 16px;
+  }
+
+  .mellow-section-cta:hover,
+  .mellow-section-cta:focus-visible {
+    width: 224px;
+  }
+
+  .mellow-section-cta__arrow {
+    right: 22px;
+  }
+
+  .mellow-card-tag {
+    top: 18px;
+    right: 18px;
+  }
 }
 
 html,
@@ -179,8 +453,6 @@ h5,
 h6,
 .h2,
 .h3,
-.mellow-section-heading,
-.mellow-card-title,
 .mellow-architecture-section__heading,
 .mellow-who-its-for__card h3 {
   font-weight: 500;
