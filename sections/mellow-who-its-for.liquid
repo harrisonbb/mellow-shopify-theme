@@ -72,10 +72,10 @@
                 {%- if card_tag != blank -%}
                   <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
                 {%- endif -%}
-                <div class="mellow-who-its-for__icon" aria-hidden="true">
+                <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
                   {%- case card_icon -%}
                     {%- when 'fork-knife' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15"/><path d="M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
                     {%- when 'droplet' -%}
                       <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
                     {%- when 'moon' -%}
@@ -89,7 +89,7 @@
                     {%- when 'shield' -%}
                       <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
                     {%- when 'smoke' -%}
-                      <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
+                      <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8"/><path d="M11 23c4-5 11 2 15-4 2-3-1-6-4-8"/><path d="M31 24c3-3 9 0 8-7"/></svg>
                   {%- endcase -%}
                 </div>
 
