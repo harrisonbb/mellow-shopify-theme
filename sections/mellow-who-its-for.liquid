@@ -34,7 +34,7 @@
 
   <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
     <div class="mellow-who-its-for__carousel" data-mellow-who-carousel-stage>
-      <div class="mellow-who-its-for__track" data-mellow-who-track tabindex="0" aria-label="Real-life reflux moments cards">
+      <div class="mellow-who-its-for__track" data-mellow-who-track>
         {%- liquid
           assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
@@ -99,76 +99,6 @@
     </div>
   </div>
 </section>
-
-<script>
-  (() => {
-    const section = document.getElementById('MellowWhoItsFor-{{ section.id }}');
-
-    if (!section || section.dataset.mellowWhoInitialized === 'true') return;
-    section.dataset.mellowWhoInitialized = 'true';
-
-    const carousel = section.querySelector('[data-mellow-who-carousel-stage]');
-    const track = section.querySelector('[data-mellow-who-track]');
-    const firstCard = section.querySelector('[data-mellow-who-card]');
-    const firstDuplicateCard = section.querySelector('[data-mellow-who-card-duplicate]');
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    if (!carousel || !track || !firstCard) return;
-
-    let frame = null;
-
-    const setMarqueeDistance = () => {
-      frame = null;
-
-      if (!firstDuplicateCard) return;
-
-      const firstCardRect = firstCard.getBoundingClientRect();
-      const duplicateRect = firstDuplicateCard.getBoundingClientRect();
-      const distance = duplicateRect.left - firstCardRect.left;
-
-      if (distance > 0) {
-        track.style.setProperty('--mellow-who-marquee-distance', `${distance.toFixed(2)}px`);
-      }
-    };
-
-    const requestMarqueeDistance = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(setMarqueeDistance);
-    };
-
-    const setTouchPause = (isPaused) => {
-      track.classList.toggle('is-touch-paused', isPaused);
-    };
-
-    track.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-
-      event.preventDefault();
-
-      const direction = event.key === 'ArrowRight' ? 1 : -1;
-      const styles = getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap);
-      const scrollAmount = firstCard.offsetWidth + (Number.isNaN(gap) ? 0 : gap);
-
-      carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
-      });
-    });
-
-    track.addEventListener('pointerdown', () => setTouchPause(true), { passive: true });
-    track.addEventListener('pointerup', () => setTouchPause(false), { passive: true });
-    track.addEventListener('pointercancel', () => setTouchPause(false), { passive: true });
-    track.addEventListener('touchstart', () => setTouchPause(true), { passive: true });
-    track.addEventListener('touchend', () => setTouchPause(false), { passive: true });
-    track.addEventListener('touchcancel', () => setTouchPause(false), { passive: true });
-
-    window.addEventListener('resize', requestMarqueeDistance, { passive: true });
-    window.addEventListener('load', requestMarqueeDistance, { once: true });
-
-    requestMarqueeDistance();
-  })();
-</script>
 
 {% schema %}
 {
