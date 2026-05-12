@@ -125,13 +125,9 @@
     }
 
     const marqueeDuration = 90000;
-    const activeIntervalDuration = 3000;
-    const momentCount = new Set(cards.map((card) => card.dataset.mellowWhoIndex)).size;
-    let activeMomentIndex = 0;
     let setWidth = 0;
     let offset = 0;
     let animationFrame = null;
-    let activeInterval = null;
     let lastFrameTime = null;
 
     const applySafeOffset = () => {
@@ -152,40 +148,25 @@
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
     };
 
-    const setActiveMomentCard = (index) => {
-      if (!cards.length) {
-        return;
-      }
-
-      cards.forEach((card) => {
-        card.classList.remove('is-active');
-      });
-
-      const targetIndex = String(index % momentCount);
-      const candidates = cards.filter((card) => card.dataset.mellowWhoIndex === targetIndex);
+    const updateActiveCard = () => {
       const viewportCenter = window.innerWidth / 2;
-      let activeCard = candidates[0];
+      let closestCard = null;
       let closestDistance = Infinity;
 
-      candidates.forEach((card) => {
+      cards.forEach((card) => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.left + rect.width / 2;
         const distance = Math.abs(cardCenter - viewportCenter);
 
         if (distance < closestDistance) {
           closestDistance = distance;
-          activeCard = card;
+          closestCard = card;
         }
       });
 
-      if (activeCard) {
-        activeCard.classList.add('is-active');
-      }
-    };
-
-    const advanceActiveMomentCard = () => {
-      activeMomentIndex = (activeMomentIndex + 1) % momentCount;
-      setActiveMomentCard(activeMomentIndex);
+      cards.forEach((card) => {
+        card.classList.toggle('is-active', card === closestCard);
+      });
     };
 
     const measureCarousel = () => {
@@ -215,6 +196,7 @@
         lastFrameTime = timestamp;
       }
 
+      updateActiveCard();
       animationFrame = requestAnimationFrame(animate);
     };
 
@@ -260,13 +242,12 @@
         offset -= horizontalDelta;
         applySafeOffset();
         updateTrackPosition();
+        updateActiveCard();
         lastFrameTime = null;
       },
       { passive: false }
     );
 
-    setActiveMomentCard(activeMomentIndex);
-    activeInterval = window.setInterval(advanceActiveMomentCard, activeIntervalDuration);
     animationFrame = requestAnimationFrame(animate);
 
     document.addEventListener('shopify:section:unload', (event) => {
@@ -275,7 +256,6 @@
       }
 
       cancelAnimationFrame(animationFrame);
-      window.clearInterval(activeInterval);
     });
   })();
 </script>
