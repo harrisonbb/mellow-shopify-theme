@@ -563,7 +563,7 @@ input[type="reset"] {
   font-size: clamp(44px, 3.6vw, 58px);
   font-weight: 600;
   line-height: 0.98;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
   text-align: left;
 }
 
@@ -1012,7 +1012,7 @@ input[type="reset"] {
 .mellow-who-its-for__card:not(.is-active) {
   transform: scale(0.98);
   opacity: 1;
-  filter: brightness(0.86) saturate(0.94);
+  filter: brightness(0.9) saturate(0.96);
 }
 
 .mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
@@ -1053,9 +1053,9 @@ input[type="reset"] {
   color: #1A2D10;
   font-family: var(--mellow-font-display) !important;
   font-size: clamp(25px, 2vw, 32px);
-  font-weight: 600;
+  font-weight: 580;
   line-height: 1.02;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
   text-align: left;
 }
 
@@ -1074,7 +1074,7 @@ input[type="reset"] {
   font-size: clamp(15.5px, 1.05vw, 17px);
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.45;
+  line-height: 1.5;
   text-align: left;
 }
 
@@ -1177,7 +1177,7 @@ input[type="reset"] {
 
   .mellow-who-its-for__card p {
     font-size: 15.5px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
 }
