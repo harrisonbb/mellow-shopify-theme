@@ -101,11 +101,10 @@
     "mellow_expert_reviews": {
       "type": "mellow-expert-reviews",
       "settings": {
-        "color_scheme": "",
-        "eyebrow": "Expert reviews",
-        "heading": "Bring expert validation into the page.",
-        "text": "Feature practitioner commentary, credentials, and endorsement-style proof points.",
-        "note": "Ready for final design replacement."
+        "microproof": "Expert proof",
+        "heading": "Expert voices for a calmer daily ritual.",
+        "cta_label": "Shop Mellow",
+        "cta_link": ""
       }
     },
     "mellow_compare": {
