@@ -99,6 +99,50 @@
     </div>
   </div>
 </section>
+<script>
+  (() => {
+    const section = document.getElementById('MellowWhoItsFor-{{ section.id }}');
+
+    if (!section) {
+      return;
+    }
+
+    const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
+
+    if (!scroller) {
+      return;
+    }
+
+    const normalizeWheelDelta = (delta, deltaMode) => {
+      if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
+        return delta * 16;
+      }
+
+      if (deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+        return delta * scroller.clientWidth;
+      }
+
+      return delta;
+    };
+
+    scroller.addEventListener(
+      'wheel',
+      (event) => {
+        const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
+        const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
+        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.35;
+
+        if (!isIntentionalHorizontalScroll) {
+          return;
+        }
+
+        event.preventDefault();
+        scroller.scrollLeft += horizontalDelta;
+      },
+      { passive: false }
+    );
+  })();
+</script>
 
 {% schema %}
 {
