@@ -550,7 +550,7 @@ input[type="reset"] {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   margin-bottom: calc(-1 * var(--mellow-scroll-pad-y));
   padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
@@ -563,25 +563,14 @@ input[type="reset"] {
   display: flex;
   width: max-content;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
-  animation: mellowMomentsMarquee 90s linear infinite;
+  transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
 }
 
 .mellow-who-its-for__card-set {
   display: flex;
-  flex: 0 0 auto;
+  flex-shrink: 0;
   gap: var(--mellow-card-gap);
   padding-right: var(--mellow-card-gap);
-}
-
-@keyframes mellowMomentsMarquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
-  }
 }
 
 @media screen and (min-width: 1440px) {
