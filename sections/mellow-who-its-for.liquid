@@ -357,12 +357,12 @@
 
       let didWrap = false;
 
-      while (offset <= setWidth * -2) {
+      while (offset <= setWidth * -1.5) {
         offset += setWidth;
         didWrap = true;
       }
 
-      while (offset >= 0) {
+      while (offset >= setWidth * -0.5) {
         offset -= setWidth;
         didWrap = true;
       }
@@ -391,8 +391,10 @@
 
       return (
         card.offsetParent !== null &&
-        rect.right > -200 &&
-        rect.left < window.innerWidth + 200
+        rect.width > 0 &&
+        rect.height > 0 &&
+        rect.right > 0 &&
+        rect.left < window.innerWidth
       );
     });
 
@@ -484,7 +486,13 @@
         updateTrackPosition();
 
         if (didWrap) {
-          updateActiveMomentCard();
+          activeCard = null;
+
+          getMomentCards().forEach((card) => {
+            card.classList.remove('is-active');
+          });
+
+          requestActiveCardUpdate();
         }
 
         lastFrameTime = timestamp;
