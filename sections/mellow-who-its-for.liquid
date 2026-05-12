@@ -120,10 +120,9 @@
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
-    const cards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'))
-      .filter((card) => card.offsetParent !== null);
+    const getMomentCards = () => Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
-    if (!scroller || !track || !cardSet || !cards.length) {
+    if (!scroller || !track || !cardSet || !getMomentCards().length) {
       return;
     }
 
@@ -170,19 +169,27 @@
       return Math.abs(cardCenter - viewportCenter);
     };
 
-    const getVisibleCards = () => cards.filter((card) => {
+    const getVisibleCards = () => getMomentCards().filter((card) => {
       const rect = card.getBoundingClientRect();
 
-      return rect.right > 0 && rect.left < window.innerWidth;
+      return (
+        card.offsetParent !== null &&
+        rect.right > -200 &&
+        rect.left < window.innerWidth + 200
+      );
     });
 
-    const setActiveCard = (nextActiveCard) => {
-      nextActiveCard.classList.add('is-active');
-      cards.forEach((card) => {
-        if (card !== nextActiveCard) {
+    const clearInactiveCards = (nextActiveCard) => {
+      getMomentCards().forEach((card) => {
+        if (card !== nextActiveCard && card.classList.contains('is-active')) {
           card.classList.remove('is-active');
         }
       });
+    };
+
+    const setActiveCard = (nextActiveCard) => {
+      clearInactiveCards(nextActiveCard);
+      nextActiveCard.classList.add('is-active');
       activeCard = nextActiveCard;
     };
 
@@ -211,7 +218,7 @@
       }
 
       const activeDistance = getDistanceFromCenter(activeCard);
-      const switchThreshold = 40;
+      const switchThreshold = 48;
 
       if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
         setActiveCard(closestCard);
@@ -317,7 +324,7 @@
       { passive: false }
     );
 
-    const activeUpdateInterval = setInterval(requestActiveCardUpdate, 120);
+    const activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
 
     requestActiveCardUpdate();
 
