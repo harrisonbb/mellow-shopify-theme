@@ -38,6 +38,28 @@
   --font-body-family: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mellow-font-heading: var(--mellow-font-display);
   --mellow-font-body: var(--mellow-font-sans);
+
+  --mellow-section-eyebrow-size: 1.2rem;
+  --mellow-section-eyebrow-line-height: 1.2;
+  --mellow-section-eyebrow-letter-spacing: 0.16em;
+  --mellow-section-eyebrow-weight: 800;
+  --mellow-section-heading-size: clamp(4.4rem, 5.25vw, 7.3rem);
+  --mellow-section-heading-line-height: 0.93;
+  --mellow-section-heading-letter-spacing: -0.04em;
+  --mellow-section-heading-weight: 500;
+  --mellow-section-subhead-size: clamp(1.7rem, 1.35vw, 2rem);
+  --mellow-section-subhead-line-height: 1.45;
+  --mellow-section-subhead-letter-spacing: -0.01em;
+  --mellow-section-subhead-weight: 400;
+  --mellow-card-title-size: clamp(34px, 2.4vw, 44px);
+  --mellow-card-title-line-height: 0.95;
+  --mellow-card-title-letter-spacing: -0.04em;
+  --mellow-card-title-weight: 500;
+  --mellow-card-body-size: clamp(18px, 1.24vw, 22px);
+  --mellow-card-body-line-height: 1.4;
+  --mellow-card-body-letter-spacing: -0.015em;
+  --mellow-card-body-weight: 400;
+
   --mellow-axis-pad: clamp(32px, 7vw, 112px);
   --mellow-axis-max: 1360px;
   --mellow-page-width: var(--mellow-axis-max);
@@ -209,16 +231,61 @@ input[type="reset"] {
   margin: 0 auto;
 }
 
-.mellow-eyebrow {
+.mellow-eyebrow,
+.mellow-section-eyebrow {
   display: inline-flex;
   width: fit-content;
   margin: 0 0 1.6rem;
   color: var(--mellow-orange-red);
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  line-height: 1.2;
+  font-size: var(--mellow-section-eyebrow-size);
+  font-weight: var(--mellow-section-eyebrow-weight);
+  letter-spacing: var(--mellow-section-eyebrow-letter-spacing);
+  line-height: var(--mellow-section-eyebrow-line-height);
   text-transform: uppercase;
+}
+
+.mellow-section-heading {
+  max-width: 82rem;
+  margin: 0;
+  color: var(--mellow-forest);
+  font-family: var(--mellow-font-display) !important;
+  font-size: var(--mellow-section-heading-size);
+  font-weight: var(--mellow-section-heading-weight);
+  letter-spacing: var(--mellow-section-heading-letter-spacing);
+  line-height: var(--mellow-section-heading-line-height);
+  text-align: left;
+}
+
+.mellow-section-subhead {
+  max-width: 52rem;
+  margin: 2rem 0 0;
+  color: var(--mellow-muted);
+  font-size: var(--mellow-section-subhead-size);
+  font-weight: var(--mellow-section-subhead-weight);
+  letter-spacing: var(--mellow-section-subhead-letter-spacing);
+  line-height: var(--mellow-section-subhead-line-height);
+  text-align: left;
+  text-wrap: balance;
+}
+
+.mellow-card-title {
+  margin: 0;
+  color: var(--mellow-forest);
+  font-family: var(--mellow-font-display) !important;
+  font-size: var(--mellow-card-title-size);
+  font-weight: var(--mellow-card-title-weight);
+  letter-spacing: var(--mellow-card-title-letter-spacing);
+  line-height: var(--mellow-card-title-line-height);
+  text-align: left;
+}
+
+.mellow-card-copy {
+  color: var(--mellow-muted);
+  font-size: var(--mellow-card-body-size);
+  font-weight: var(--mellow-card-body-weight);
+  letter-spacing: var(--mellow-card-body-letter-spacing);
+  line-height: var(--mellow-card-body-line-height);
+  text-align: left;
 }
 
 .mellow-heading {
@@ -462,10 +529,10 @@ input[type="reset"] {
   max-width: 82rem;
   margin: 0;
   color: #F0EBE0;
-  font-size: clamp(4.4rem, 5.25vw, 7.3rem);
-  font-weight: 500;
-  line-height: 0.93;
-  letter-spacing: -0.04em;
+  font-size: var(--mellow-section-heading-size);
+  font-weight: var(--mellow-section-heading-weight);
+  line-height: var(--mellow-section-heading-line-height);
+  letter-spacing: var(--mellow-section-heading-letter-spacing);
   text-align: left;
 }
 
@@ -473,10 +540,10 @@ input[type="reset"] {
   max-width: 52rem;
   margin: 2rem 0 0;
   color: rgba(240, 235, 224, 0.78);
-  font-size: clamp(1.7rem, 1.35vw, 2rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.45;
+  font-size: var(--mellow-section-subhead-size);
+  font-weight: var(--mellow-section-subhead-weight);
+  letter-spacing: var(--mellow-section-subhead-letter-spacing);
+  line-height: var(--mellow-section-subhead-line-height);
   text-align: left;
   text-wrap: balance;
 }
@@ -762,10 +829,10 @@ input[type="reset"] {
   margin: 0;
   color: #1A2D10;
   font-family: var(--mellow-font-display) !important;
-  font-size: clamp(34px, 2.4vw, 44px);
-  font-weight: 500;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-size: var(--mellow-card-title-size);
+  font-weight: var(--mellow-card-title-weight);
+  line-height: var(--mellow-card-title-line-height);
+  letter-spacing: var(--mellow-card-title-letter-spacing);
   text-align: left;
 }
 
@@ -781,14 +848,10 @@ input[type="reset"] {
   max-width: 36rem;
   margin: 16px 0 0;
   color: rgba(20, 33, 17, 0.82);
-  font-size: clamp(18px, 1.1vw, 19px);
-  font-weight: 400;
-  letter-spacing: -0.012em;
-  line-height: 1.35;
-  font-size: clamp(18px, 1.24vw, 22px);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.4;
+  font-size: var(--mellow-card-body-size);
+  font-weight: var(--mellow-card-body-weight);
+  letter-spacing: var(--mellow-card-body-letter-spacing);
+  line-height: var(--mellow-card-body-line-height);
   text-align: left;
 }
 
