@@ -71,7 +71,7 @@
               >
                 <div class="mellow-who-its-for__card-inner">
                   {%- if card_tag != blank -%}
-                    <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                    <span class="mellow-who-its-for__tag mellow-who-its-for__card-tag">{{ card_tag | escape }}</span>
                   {%- endif -%}
                   <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
                   {%- case card_icon -%}
@@ -117,201 +117,150 @@
       return;
     }
 
-    const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
+    const carousel = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
-    const getMomentCards = () => Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
-    if (!scroller || !track || !cardSet || !getMomentCards().length) {
+    if (!carousel || !track || !cardSet) {
       return;
     }
 
-    const marqueeDuration = 90000;
-    let setWidth = 0;
-    let autoOffset = 0;
-    let manualOffset = 0;
+    let offset = 0;
+    let lastTime = performance.now();
+    let isPointerDown = false;
+    let pointerLastX = 0;
+    let activeCard = null;
     let animationFrame = null;
-    let lastFrameTime = null;
     let resizeObserver = null;
 
-    const getTotalOffset = () => autoOffset + manualOffset;
+    const speed = 0.025;
 
-    const applySafeOffset = () => {
-      if (setWidth <= 0) {
-        return false;
-      }
+    function getLoopWidth() {
+      const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      return cardSet.getBoundingClientRect().width + trackGap;
+    }
 
-      let didWrap = false;
-      let totalOffset = getTotalOffset();
+    function normalizeOffset() {
+      const loopWidth = getLoopWidth();
 
-      while (totalOffset <= setWidth * -2) {
-        autoOffset += setWidth;
-        totalOffset += setWidth;
-        didWrap = true;
-      }
-
-      while (totalOffset >= 0) {
-        autoOffset -= setWidth;
-        totalOffset -= setWidth;
-        didWrap = true;
-      }
-
-      return didWrap;
-    };
-
-    const updateTrackPosition = () => {
-      track.style.transform = `translate3d(${getTotalOffset()}px, 0, 0)`;
-    };
-
-    let activeCard = null;
-    let activeUpdateFrame = null;
-    let ticking = false;
-
-    const getDistanceFromCenter = (card) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const viewportCenter = window.innerWidth / 2;
-
-      return Math.abs(cardCenter - viewportCenter);
-    };
-
-    const getVisibleCards = () => getMomentCards().filter((card) => {
-      const rect = card.getBoundingClientRect();
-
-      return (
-        card.offsetParent !== null &&
-        rect.right > -200 &&
-        rect.left < window.innerWidth + 200
-      );
-    });
-
-    const clearInactiveCards = (nextActiveCard) => {
-      getMomentCards().forEach((card) => {
-        if (card !== nextActiveCard && card.classList.contains('is-active')) {
-          card.classList.remove('is-active');
-        }
-      });
-    };
-
-    const setActiveCard = (nextActiveCard) => {
-      clearInactiveCards(nextActiveCard);
-      nextActiveCard.classList.add('is-active');
-      activeCard = nextActiveCard;
-    };
-
-    const updateActiveMomentCard = () => {
-      const visibleCards = getVisibleCards();
-
-      if (!visibleCards.length) {
+      if (!loopWidth) {
         return;
       }
 
-      let closestCard = visibleCards[0];
-      let closestDistance = getDistanceFromCenter(closestCard);
+      while (offset <= loopWidth * -2) offset += loopWidth;
+      while (offset > loopWidth * -1) offset -= loopWidth;
+    }
 
-      visibleCards.forEach((card) => {
-        const distance = getDistanceFromCenter(card);
+    function applyTrackTransform() {
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    }
+
+    function getCards() {
+      return Array.from(section.querySelectorAll('.mellow-who-its-for__card')).filter((card) => {
+        const rect = card.getBoundingClientRect();
+
+        return (
+          card.offsetParent !== null &&
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.right > -300 &&
+          rect.left < window.innerWidth + 300
+        );
+      });
+    }
+
+    function distanceFromCenter(card) {
+      const rect = card.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+
+      return Math.abs(center - window.innerWidth / 2);
+    }
+
+    function updateActiveCardStable() {
+      const cards = getCards();
+
+      if (!cards.length) {
+        return;
+      }
+
+      let closest = cards[0];
+      let closestDistance = distanceFromCenter(closest);
+
+      cards.forEach((card) => {
+        const distance = distanceFromCenter(card);
 
         if (distance < closestDistance) {
+          closest = card;
           closestDistance = distance;
-          closestCard = card;
         }
       });
 
-      if (!activeCard || !visibleCards.includes(activeCard)) {
-        setActiveCard(closestCard);
+      if (!activeCard || !cards.includes(activeCard)) {
+        section
+          .querySelectorAll('.mellow-who-its-for__card.is-active')
+          .forEach((card) => card.classList.remove('is-active'));
+
+        activeCard = closest;
+        activeCard.classList.add('is-active');
         return;
       }
 
-      const activeDistance = getDistanceFromCenter(activeCard);
-      const switchThreshold = 48;
+      const activeDistance = distanceFromCenter(activeCard);
+      const switchThreshold = 52;
 
-      if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
-        setActiveCard(closestCard);
+      if (closest !== activeCard && closestDistance + switchThreshold < activeDistance) {
+        activeCard.classList.remove('is-active');
+        closest.classList.add('is-active');
+        activeCard = closest;
       }
-    };
+    }
 
-    const requestActiveCardUpdate = () => {
-      if (ticking) {
-        return;
-      }
+    function animate(now) {
+      const delta = now - lastTime;
+      lastTime = now;
 
-      ticking = true;
-
-      activeUpdateFrame = requestAnimationFrame(() => {
-        updateActiveMomentCard();
-        ticking = false;
-        activeUpdateFrame = null;
-      });
-    };
-
-    const measureCarousel = () => {
-      const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
-      setWidth = cardSet.getBoundingClientRect().width + trackGap;
-
-      if (setWidth <= 0) {
-        return;
+      if (!isPointerDown) {
+        offset -= delta * speed;
       }
 
-      autoOffset = setWidth * -1;
-      manualOffset = 0;
-      track.style.setProperty('--who-track-width', `${setWidth}px`);
-      updateTrackPosition();
-      requestActiveCardUpdate();
-    };
-
-    const animate = (timestamp) => {
-      if (setWidth > 0) {
-        if (lastFrameTime === null) {
-          lastFrameTime = timestamp;
-        }
-
-        const elapsed = timestamp - lastFrameTime;
-        const pixelsPerMillisecond = setWidth / marqueeDuration;
-
-        autoOffset -= pixelsPerMillisecond * elapsed;
-        const didWrap = applySafeOffset();
-        updateTrackPosition();
-
-        if (didWrap) {
-          updateActiveMomentCard();
-        }
-
-        lastFrameTime = timestamp;
-      }
+      normalizeOffset();
+      applyTrackTransform();
+      updateActiveCardStable();
 
       animationFrame = requestAnimationFrame(animate);
-    };
+    }
 
-    const normalizeWheelDelta = (delta, deltaMode) => {
+    function normalizeWheelDelta(delta, deltaMode) {
       if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
         return delta * 16;
       }
 
       if (deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-        return delta * scroller.clientWidth;
+        return delta * carousel.clientWidth;
       }
 
       return delta;
-    };
-
-    const handleResize = () => {
-      lastFrameTime = null;
-      measureCarousel();
-      requestActiveCardUpdate();
-    };
-
-    measureCarousel();
-
-    if ('ResizeObserver' in window) {
-      resizeObserver = new ResizeObserver(handleResize);
-      resizeObserver.observe(cardSet);
-      resizeObserver.observe(scroller);
-    } else {
-      window.addEventListener('resize', handleResize);
     }
 
-    scroller.addEventListener(
+    function refreshCarousel() {
+      normalizeOffset();
+      applyTrackTransform();
+      updateActiveCardStable();
+      lastTime = performance.now();
+    }
+
+    offset = getLoopWidth() * -1;
+    refreshCarousel();
+
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(refreshCarousel);
+      resizeObserver.observe(cardSet);
+      resizeObserver.observe(carousel);
+    } else {
+      window.addEventListener('resize', refreshCarousel);
+    }
+
+    carousel.addEventListener(
       'wheel',
       (event) => {
         const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
@@ -319,99 +268,54 @@
         const absX = Math.abs(horizontalDelta);
         const absY = Math.abs(verticalDelta);
 
-        if (absX <= absY || setWidth <= 0) {
+        if (absX <= absY) {
           return;
         }
 
         event.preventDefault();
-        manualOffset -= horizontalDelta;
-        applySafeOffset();
-        updateTrackPosition();
-        requestActiveCardUpdate();
-        lastFrameTime = null;
+        offset -= horizontalDelta;
+        normalizeOffset();
+        applyTrackTransform();
+        updateActiveCardStable();
+        lastTime = performance.now();
       },
       { passive: false }
     );
 
-    let pointerState = null;
-
-    scroller.addEventListener('pointerdown', (event) => {
-      if (setWidth <= 0 || event.button > 0) {
+    carousel.addEventListener('pointerdown', (event) => {
+      if (event.button > 0) {
         return;
       }
 
-      pointerState = {
-        startX: event.clientX,
-        startY: event.clientY,
-        lastX: event.clientX,
-        isHorizontal: false
-      };
+      isPointerDown = true;
+      pointerLastX = event.clientX;
+      carousel.setPointerCapture?.(event.pointerId);
     });
 
-    scroller.addEventListener(
-      'pointermove',
-      (event) => {
-        if (!pointerState || setWidth <= 0) {
-          return;
-        }
-
-        const totalX = event.clientX - pointerState.startX;
-        const totalY = event.clientY - pointerState.startY;
-        const absX = Math.abs(totalX);
-        const absY = Math.abs(totalY);
-
-        if (!pointerState.isHorizontal) {
-          if (absX < 6 && absY < 6) {
-            return;
-          }
-
-          if (absX <= absY) {
-            pointerState = null;
-            return;
-          }
-
-          pointerState.isHorizontal = true;
-
-          if (scroller.setPointerCapture) {
-            scroller.setPointerCapture(event.pointerId);
-          }
-        }
-
-        event.preventDefault();
-        manualOffset += event.clientX - pointerState.lastX;
-        pointerState.lastX = event.clientX;
-        applySafeOffset();
-        updateTrackPosition();
-        requestActiveCardUpdate();
-        lastFrameTime = null;
-      },
-      { passive: false }
-    );
-
-    const releasePointer = (event) => {
-      if (pointerState && scroller.releasePointerCapture && scroller.hasPointerCapture(event.pointerId)) {
-        scroller.releasePointerCapture(event.pointerId);
-      }
-
-      pointerState = null;
-    };
-
-    scroller.addEventListener('pointerup', releasePointer);
-    scroller.addEventListener('pointercancel', releasePointer);
-    scroller.addEventListener('pointerleave', (event) => {
-      if (!pointerState || pointerState.isHorizontal) {
+    carousel.addEventListener('pointermove', (event) => {
+      if (!isPointerDown) {
         return;
       }
 
-      releasePointer(event);
+      const dx = event.clientX - pointerLastX;
+      pointerLastX = event.clientX;
+
+      offset += dx;
+      normalizeOffset();
+      applyTrackTransform();
+      updateActiveCardStable();
+      lastTime = performance.now();
     });
 
-    const activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
+    carousel.addEventListener('pointerup', (event) => {
+      isPointerDown = false;
+      carousel.releasePointerCapture?.(event.pointerId);
+    });
 
-    requestActiveCardUpdate();
-
-    window.addEventListener('resize', requestActiveCardUpdate, { passive: true });
-    window.addEventListener('scroll', requestActiveCardUpdate, { passive: true });
+    carousel.addEventListener('pointercancel', (event) => {
+      isPointerDown = false;
+      carousel.releasePointerCapture?.(event.pointerId);
+    });
 
     animationFrame = requestAnimationFrame(animate);
 
@@ -421,16 +325,11 @@
       }
 
       cancelAnimationFrame(animationFrame);
-      clearInterval(activeUpdateInterval);
-      window.removeEventListener('resize', requestActiveCardUpdate);
-      window.removeEventListener('scroll', requestActiveCardUpdate);
-
-      if (activeUpdateFrame) {
-        cancelAnimationFrame(activeUpdateFrame);
-      }
 
       if (resizeObserver) {
         resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', refreshCarousel);
       }
     });
   })();
