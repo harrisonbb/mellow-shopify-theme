@@ -66,7 +66,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     overflow: hidden;
     position: relative;
     white-space: nowrap;
@@ -85,16 +85,17 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
     display: inline-block;
-    transform: translateX(-4px);
-    opacity: 0.85;
+    width: 0.9em;
+    opacity: 0;
+    transform: translateX(-10px);
     transition:
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 260ms ease;
+      opacity 220ms ease;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-arrow {
-    transform: translateX(4px);
+    transform: translateX(0);
     opacity: 1;
   }
 
