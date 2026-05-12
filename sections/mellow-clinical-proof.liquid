@@ -39,12 +39,9 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
     position: relative;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: clamp(16px, 1.7vw, 24px);
-    align-items: start;
     min-width: 0;
-    padding: clamp(6px, 0.6vw, 10px) clamp(24px, 3.4vw, 54px) clamp(28px, 3vw, 44px);
+    padding: clamp(12px, 1.2vw, 18px) clamp(28px, 3.6vw, 58px) clamp(36px, 3.8vw, 58px);
+    text-align: left;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child {
@@ -59,56 +56,60 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 8px;
-    bottom: clamp(28px, 3vw, 44px);
+    top: clamp(14px, 1.4vw, 22px);
+    bottom: clamp(36px, 3.8vw, 58px);
     width: 1px;
     background: var(--mellow-clinical-divider);
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(38px, 3.4vw, 48px);
-    height: clamp(38px, 3.4vw, 48px);
-    border: 1px solid rgba(240, 235, 224, 0.24);
-    border-radius: var(--mellow-radius-pill, 999px);
-    color: var(--mellow-clinical-sage);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-icon svg {
-    width: 52%;
-    height: 52%;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
     display: block;
-    margin: 0 0 12px;
+    margin: 0 0 clamp(8px, 0.9vw, 14px);
     color: var(--mellow-cream, #F0EBE0);
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(52px, 6.2vw, 92px);
+    font-size: clamp(86px, 8vw, 136px);
     font-weight: var(--mellow-heading-weight);
-    letter-spacing: var(--mellow-heading-tracking);
-    line-height: 0.88;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-plus {
+    display: inline-block;
+    margin-left: 0.02em;
+    color: var(--mellow-clinical-sage);
+    font-size: 0.42em;
+    line-height: 1;
+    transform: translateY(-0.72em);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
     display: block;
-    margin: 0 0 10px;
-    color: var(--mellow-orange-red, #D04A2A);
+    max-width: 320px;
+    margin: 0;
+    color: var(--mellow-clinical-sage);
+    font-family: var(--mellow-font-display) !important;
+    font-size: clamp(24px, 2vw, 34px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    text-transform: none;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label::after {
+    content: "";
+    display: block;
+    width: 34px;
+    height: 1px;
+    margin: clamp(16px, 1.4vw, 22px) 0 clamp(16px, 1.6vw, 24px);
+    background: color-mix(in srgb, var(--mellow-clinical-sage) 72%, transparent);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
-    max-width: 36rem;
+    max-width: 300px;
     margin: 0;
     color: var(--mellow-clinical-cream-muted);
-    font-size: clamp(14px, 1vw, 16px);
-    line-height: 1.45;
+    font-size: clamp(17px, 1.18vw, 20px);
+    line-height: 1.52;
     letter-spacing: -0.006em;
   }
 
@@ -263,7 +264,7 @@
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat,
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child,
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:last-child {
-      padding: 26px 0;
+      padding: 32px 0;
       border-top: 1px solid var(--mellow-clinical-divider);
     }
 
@@ -293,13 +294,20 @@
       padding-right: 22px;
     }
 
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
-      grid-template-columns: 1fr;
-      gap: 14px;
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
+      font-size: clamp(70px, 19vw, 104px);
+      line-height: 0.92;
     }
 
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
-      font-size: clamp(48px, 16vw, 68px);
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
+      max-width: 320px;
+      font-size: clamp(24px, 7.4vw, 32px);
+      line-height: 1.1;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
+      max-width: 330px;
+      font-size: 17px;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading {
@@ -347,45 +355,29 @@
   <div class="mellow-section-axis mellow-clinical-proof__inner">
     <div class="mellow-clinical-proof__stats" aria-label="Clinical research proof points">
       <article class="mellow-clinical-proof__stat">
-        <span class="mellow-clinical-proof__stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M7 4.5h7l3 3v12H7z" />
-            <path d="M14 4.5v3h3" />
-            <path d="M10 11h4" />
-            <path d="M10 15h4" />
-          </svg>
-        </span>
         <div class="mellow-clinical-proof__stat-copy">
-          <span class="mellow-clinical-proof__stat-number">{{ section.settings.stat_1_value | escape }}</span>
-          <span class="mellow-eyebrow mellow-clinical-proof__stat-label">{{ section.settings.stat_1_label | escape }}</span>
+          <span class="mellow-clinical-proof__stat-number">
+            {%- if section.settings.stat_1_value contains '+' -%}{{ section.settings.stat_1_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>{%- else -%}{{ section.settings.stat_1_value | escape }}{%- endif -%}
+          </span>
+          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_1_label | escape }}</span>
           <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_1_body | escape }}</p>
         </div>
       </article>
 
       <article class="mellow-clinical-proof__stat">
-        <span class="mellow-clinical-proof__stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <circle cx="12" cy="12" r="7.5" />
-            <path d="M12 8v4.5l3 2" />
-          </svg>
-        </span>
         <div class="mellow-clinical-proof__stat-copy">
-          <span class="mellow-clinical-proof__stat-number">{{ section.settings.stat_2_value | escape }}</span>
-          <span class="mellow-eyebrow mellow-clinical-proof__stat-label">{{ section.settings.stat_2_label | escape }}</span>
+          <span class="mellow-clinical-proof__stat-number">
+            {%- if section.settings.stat_2_value contains '+' -%}{{ section.settings.stat_2_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>{%- else -%}{{ section.settings.stat_2_value | escape }}{%- endif -%}
+          </span>
+          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_2_label | escape }}</span>
           <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_2_body | escape }}</p>
         </div>
       </article>
 
       <article class="mellow-clinical-proof__stat">
-        <span class="mellow-clinical-proof__stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M5.5 12.5l4 4 9-9" />
-            <path d="M4.5 5.5h15v13h-15z" />
-          </svg>
-        </span>
         <div class="mellow-clinical-proof__stat-copy">
           <span class="mellow-clinical-proof__stat-number">{{ section.settings.stat_3_value | escape }}</span>
-          <span class="mellow-eyebrow mellow-clinical-proof__stat-label">{{ section.settings.stat_3_label | escape }}</span>
+          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_3_label | escape }}</span>
           <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_3_body | escape }}</p>
         </div>
       </article>
@@ -467,7 +459,7 @@
       "type": "text",
       "id": "stat_1_label",
       "label": "Stat 1 label",
-      "default": "STUDIES IN META-ANALYSIS"
+      "default": "studies in meta-analysis"
     },
     {
       "type": "textarea",
@@ -485,7 +477,7 @@
       "type": "text",
       "id": "stat_2_label",
       "label": "Stat 2 label",
-      "default": "YEARS OF PUBLISHED PEER-REVIEWED RESEARCH"
+      "default": "years of published peer-reviewed research"
     },
     {
       "type": "textarea",
@@ -503,7 +495,7 @@
       "type": "text",
       "id": "stat_3_label",
       "label": "Stat 3 label",
-      "default": "MOST RECENT RCT CONFIRMING SUPERIORITY VS. ANTACID ALONE"
+      "default": "most recent RCT confirming superiority vs. antacid alone"
     },
     {
       "type": "textarea",
