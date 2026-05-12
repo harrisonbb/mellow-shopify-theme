@@ -17,14 +17,14 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    --mellow-who-edge-pad: var(--mellow-section-pad-x);
+    --mellow-who-edge-pad: var(--mellow-section-axis-pad);
     padding-left: var(--mellow-who-edge-pad);
     padding-right: var(--mellow-who-edge-pad);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
+    grid-template-columns: minmax(0, 760px) auto;
     align-items: center;
     gap: clamp(40px, 6vw, 96px);
     margin-bottom: clamp(22px, 2.6vw, 36px);
