@@ -22,7 +22,7 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    --mellow-reviews-edge-pad: var(--mellow-section-axis-pad);
+    --mellow-reviews-edge-pad: clamp(84px, 6.5vw, 100px);
     padding-left: var(--mellow-reviews-edge-pad);
     padding-right: var(--mellow-reviews-edge-pad);
   }
@@ -275,7 +275,7 @@
   id="MellowWrittenReviews-{{ section.id }}"
   class="mellow-section mellow-section-standard mellow-written-reviews color-{{ section.settings.color_scheme }}"
 >
-  <div class="mellow-section-axis mellow-written-reviews__inner">
+  <div class="mellow-written-reviews__inner">
     <div class="mellow-written-reviews__header-wrap">
       <div class="mellow-written-reviews__header">
         <p class="mellow-eyebrow mellow-written-reviews__eyebrow">REAL MOMENTS. REAL RELIEF.</p>
