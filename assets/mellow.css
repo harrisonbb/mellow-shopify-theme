@@ -562,30 +562,29 @@ input[type="reset"] {
 .mellow-who-its-for__quiz-action {
   margin-top: 0;
   margin-bottom: 0 !important;
-  font-size: 20px !important;
 }
 
 .mellow-who-its-for__quiz-button {
-  min-height: 68px !important;
-  height: 68px !important;
+  min-height: 60px !important;
+  height: 60px !important;
   box-sizing: border-box !important;
-  padding: 17px 32px !important;
+  padding: 0 28px !important;
   border-radius: 999px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 12px !important;
+  gap: 11px !important;
   background: #F0EBE0 !important;
   color: #1A2D10 !important;
-  border: 1px solid rgba(240, 235, 224, 0.78) !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
+  border: 1px solid rgba(240, 235, 224, 0.64) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
   line-height: 1 !important;
-  letter-spacing: 0 !important;
+  letter-spacing: -0.01em !important;
   text-transform: none !important;
   text-decoration: none !important;
   white-space: nowrap !important;
-  box-shadow: 0 20px 48px rgba(5, 15, 8, 0.24) !important;
+  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18) !important;
   transition:
     transform 220ms ease,
     background 220ms ease,
@@ -593,17 +592,26 @@ input[type="reset"] {
     border-color 220ms ease;
 }
 
+.mellow-who-its-for__quiz-button::after {
+  content: '→';
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: 500;
+  line-height: 1;
+  transform: translateY(-0.02em);
+}
+
 .mellow-who-its-for__quiz-button:hover,
 .mellow-who-its-for__quiz-button:focus-visible {
   transform: translateY(-1px);
   background: #FFF7EA !important;
-  border-color: rgba(240, 235, 224, 0.9) !important;
-  box-shadow: 0 24px 58px rgba(5, 15, 8, 0.3) !important;
+  border-color: rgba(240, 235, 224, 0.78) !important;
+  box-shadow: 0 16px 36px rgba(5, 15, 8, 0.22) !important;
 }
 
 .mellow-who-its-for__quiz-button:focus-visible {
-  outline: 3px solid rgba(240, 235, 224, 0.78);
-  outline-offset: 5px;
+  outline: 2px solid rgba(240, 235, 224, 0.7);
+  outline-offset: 4px;
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -924,10 +932,12 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__quiz-button {
-    min-height: 56px !important;
-    height: 56px !important;
-    padding: 0 28px !important;
-    font-size: 18px !important;
+    min-height: 50px !important;
+    height: 50px !important;
+    padding: 0 22px !important;
+    gap: 10px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
   }
 
   .mellow-who-its-for__carousel-wrap {
