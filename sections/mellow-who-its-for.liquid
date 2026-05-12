@@ -66,13 +66,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0;
+    gap: 8px;
     overflow: hidden;
     position: relative;
     white-space: nowrap;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    min-height: clamp(58px, 4.6vw, 72px);
+    padding: clamp(18px, 1.45vw, 23px) clamp(34px, 3vw, 52px);
+    font-size: clamp(16px, 1.08vw, 18px);
+    font-weight: 650;
+    line-height: 1;
+    border-radius: 999px;
+
     transition:
-      padding 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      gap 260ms cubic-bezier(0.22, 1, 0.36, 1);
+      background-color 220ms ease,
+      border-color 220ms ease,
+      color 220ms ease;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button::before,
@@ -83,37 +94,31 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label {
     display: inline-block;
+    transform: translateZ(0);
     transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
     display: inline-block;
-    width: 0;
-    max-width: 0;
-    margin-left: 0;
+    width: 0.9em;
+    flex: 0 0 0.9em;
     opacity: 0;
-    overflow: hidden;
-    transform: translateX(-8px);
+    overflow: visible;
+    transform: translate3d(-8px, 0, 0);
     transition:
-      width 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      max-width 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      margin-left 260ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
       opacity 180ms ease;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-arrow {
-    width: 0.9em;
-    max-width: 0.9em;
-    margin-left: 8px;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-label,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-label {
-    transform: translateX(-1px);
+    transform: translate3d(-1px, 0, 0);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -149,12 +154,6 @@
     flex: 0 0 auto;
   }
 
-  /*
-    Final corner fix:
-    No scaling, no inset growth, no mask, no clip-path.
-    Chrome was creating the sharp corner artifact from transformed rounded rectangles.
-    Active state now uses shadow + brightness only, so the card remains a true rounded rectangle.
-  */
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
     flex: 0 0 auto;
     position: relative;
@@ -316,6 +315,12 @@
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
       margin-top: 28px;
       transform: none;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
+      min-height: 54px;
+      padding: 17px 32px;
+      font-size: 16px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
