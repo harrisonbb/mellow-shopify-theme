@@ -71,6 +71,26 @@
 }
 
 html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+body,
+#MainContent,
+main,
+.shopify-section {
+  max-width: 100%;
+}
+
+html,
 body,
 button,
 input,
@@ -504,7 +524,9 @@ input[type="reset"] {
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   --mellow-who-header-inset: 0rem;
   --mellow-who-header-inset-desktop: clamp(1.25rem, 1.5vw, 2.25rem);
-  overflow: visible;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(88px, 8vw, 128px);
   background:
     radial-gradient(circle at 78% 28%, rgba(208, 74, 42, 0.08), transparent 34%),
@@ -515,7 +537,7 @@ input[type="reset"] {
 .mellow-who-its-for__inner {
   box-sizing: border-box;
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin-inline: 0;
   padding-left: var(--mellow-who-edge);
   padding-right: var(--mellow-who-edge);
@@ -650,16 +672,17 @@ input[type="reset"] {
   width: 100%;
   min-width: 0;
   margin-top: clamp(2rem, 4vw, 3.5rem);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .mellow-who-its-for__carousel {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow: visible;
+  max-width: 100%;
+  overflow: hidden;
   margin-bottom: clamp(-64px, -4vw, -48px);
-  padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
+  padding: 48px var(--mellow-scroll-pad-x) 72px;
   touch-action: pan-y;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -669,6 +692,7 @@ input[type="reset"] {
   --who-track-width: 50%;
   display: flex;
   width: max-content;
+  max-width: none;
   overflow: visible;
   will-change: transform;
   transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
