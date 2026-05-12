@@ -39,19 +39,19 @@
           assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
 
-        {%- for card_loop in (1..2) -%}
-          {%- assign is_duplicate = false -%}
+        {%- for card_loop in (1..3) -%}
+          {%- assign is_original_set = false -%}
           {%- if card_loop == 2 -%}
-            {%- assign is_duplicate = true -%}
+            {%- assign is_original_set = true -%}
           {%- endif -%}
 
           <div
             class="mellow-who-its-for__card-set"
-            {% if is_duplicate %}
+            {% if is_original_set %}
+              data-mellow-who-card-set
+            {% else %}
               data-mellow-who-card-set-duplicate
               aria-hidden="true"
-            {% else %}
-              data-mellow-who-card-set
             {% endif %}
           >
             {%- for card in cards -%}
@@ -64,9 +64,9 @@
               -%}
               <article
                 class="mellow-who-its-for__card"
-                {% unless is_duplicate %}
+                {% if is_original_set %}
                   data-mellow-who-card
-                {% endunless %}
+                {% endif %}
                 data-mellow-who-index="{{ forloop.index0 }}"
               >
                 {%- if card_tag != blank -%}
@@ -123,23 +123,59 @@
       return;
     }
 
-    const updateTrackWidth = () => {
-      const setWidth = cardSet.getBoundingClientRect().width;
+    const marqueeDuration = 90000;
+    let setWidth = 0;
+    let offset = 0;
+    let animationFrame = null;
+    let lastFrameTime = null;
 
-      if (setWidth > 0) {
-        track.style.setProperty('--who-track-width', `${setWidth}px`);
+    const applySafeOffset = () => {
+      if (setWidth <= 0) {
+        return;
+      }
+
+      while (offset <= setWidth * -2) {
+        offset += setWidth;
+      }
+
+      while (offset >= 0) {
+        offset -= setWidth;
       }
     };
 
-    updateTrackWidth();
+    const updateTrackPosition = () => {
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    };
 
-    if ('ResizeObserver' in window) {
-      const resizeObserver = new ResizeObserver(updateTrackWidth);
-      resizeObserver.observe(cardSet);
-      resizeObserver.observe(scroller);
-    } else {
-      window.addEventListener('resize', updateTrackWidth);
-    }
+    const measureCarousel = () => {
+      setWidth = cardSet.getBoundingClientRect().width;
+
+      if (setWidth <= 0) {
+        return;
+      }
+
+      offset = setWidth * -1;
+      track.style.setProperty('--who-track-width', `${setWidth}px`);
+      updateTrackPosition();
+    };
+
+    const animate = (timestamp) => {
+      if (setWidth > 0) {
+        if (lastFrameTime === null) {
+          lastFrameTime = timestamp;
+        }
+
+        const elapsed = timestamp - lastFrameTime;
+        const pixelsPerMillisecond = setWidth / marqueeDuration;
+
+        offset -= pixelsPerMillisecond * elapsed;
+        applySafeOffset();
+        updateTrackPosition();
+        lastFrameTime = timestamp;
+      }
+
+      animationFrame = requestAnimationFrame(animate);
+    };
 
     const normalizeWheelDelta = (delta, deltaMode) => {
       if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
@@ -153,6 +189,21 @@
       return delta;
     };
 
+    const handleResize = () => {
+      lastFrameTime = null;
+      measureCarousel();
+    };
+
+    measureCarousel();
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver.observe(cardSet);
+      resizeObserver.observe(scroller);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
+
     scroller.addEventListener(
       'wheel',
       (event) => {
@@ -160,18 +211,30 @@
         const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
         const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.35;
 
-        if (!isIntentionalHorizontalScroll) {
+        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
           return;
         }
 
         event.preventDefault();
-        scroller.scrollLeft += horizontalDelta;
+        offset -= horizontalDelta;
+        applySafeOffset();
+        updateTrackPosition();
+        lastFrameTime = null;
       },
       { passive: false }
     );
+
+    animationFrame = requestAnimationFrame(animate);
+
+    document.addEventListener('shopify:section:unload', (event) => {
+      if (!event.target.contains(section)) {
+        return;
+      }
+
+      cancelAnimationFrame(animationFrame);
+    });
   })();
 </script>
-
 {% schema %}
 {
   "name": "Mellow who it’s for",
