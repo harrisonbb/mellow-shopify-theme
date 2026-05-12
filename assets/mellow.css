@@ -279,7 +279,7 @@ li {
 
 /* Mellow who it's for carousel */
 .mellow-who-its-for {
-  --mellow-card-gap: 1.5rem;
+  --mellow-card-gap: 2.25rem;
   --mellow-scroll-pad-y: 1.25rem;
   --mellow-scroll-pad-x: 2rem;
   --mellow-bento-gap: 0.5rem;
@@ -454,7 +454,7 @@ li {
   min-height: var(--mellow-who-card-height);
   grid-template-rows: auto minmax(0, 1fr);
   align-items: start;
-  row-gap: 2.1rem;
+  row-gap: 1.4rem;
   padding: var(--mellow-who-card-padding-y) var(--mellow-who-card-padding-x);
   border: 0.1rem solid rgba(26, 45, 16, 0.09);
   border-radius: var(--mellow-card-radius);
@@ -525,12 +525,12 @@ li {
 
 .mellow-who-its-for__card-copy {
   display: grid;
-  align-content: end;
+  align-content: start;
   justify-items: start;
   min-height: 0;
   width: 100%;
   gap: 1rem;
-  align-self: end;
+  align-self: start;
   transition: transform 260ms ease;
 }
 
@@ -603,8 +603,8 @@ li {
 .mellow-who-its-for__card p {
   max-width: 29rem;
   margin: 0;
-  color: rgba(20, 33, 17, 0.76);
-  font-size: clamp(1.38rem, 0.92vw, 1.55rem);
+  color: rgba(20, 33, 17, 0.82);
+  font-size: clamp(1.48rem, 0.92vw, 1.65rem);
   line-height: 1.46;
   text-align: left;
 }
@@ -640,6 +640,7 @@ li {
 
 @media screen and (max-width: 749px) {
   .mellow-who-its-for {
+    --mellow-card-gap: 1.5rem;
     --mellow-who-card-width: min(84vw, 35rem);
     --mellow-who-card-height: 34rem;
     --mellow-who-card-padding-y: 2.8rem;
@@ -688,7 +689,7 @@ li {
   }
 
   .mellow-who-its-for__card {
-    row-gap: 2.2rem;
+    row-gap: 1.6rem;
     scroll-snap-align: center;
     box-shadow: 0 1.8rem 4rem rgba(5, 15, 8, 0.25);
   }
@@ -698,7 +699,7 @@ li {
   }
 
   .mellow-who-its-for__card p {
-    font-size: 1.55rem;
+    font-size: 1.65rem;
     line-height: 1.5;
   }
 }
