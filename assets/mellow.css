@@ -61,6 +61,7 @@
   --mellow-card-body-line-height: 1.48;
   --mellow-card-body-letter-spacing: -0.01em;
   --mellow-card-body-weight: 400;
+  --mellow-card-gap: clamp(28px, 2.6vw, 42px);
 
   --mellow-axis-pad: clamp(32px, 7vw, 112px);
   --mellow-axis-max: 1360px;
@@ -419,6 +420,13 @@ body {
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.55;
+}
+
+.mellow-card-row,
+.mellow-card-grid,
+.mellow-carousel-track,
+.mellow-section-cards {
+  gap: var(--mellow-card-gap);
 }
 
 h1,
@@ -782,7 +790,6 @@ input[type="reset"] {
 
 /* Mellow who it's for carousel */
 .mellow-who-its-for {
-  --mellow-card-gap: clamp(28px, 2.4vw, 40px);
   --mellow-scroll-pad-y: 1.25rem;
   --mellow-scroll-pad-x: 2rem;
   --mellow-bento-gap: 0.5rem;
