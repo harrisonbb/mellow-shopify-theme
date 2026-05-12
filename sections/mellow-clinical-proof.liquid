@@ -12,11 +12,11 @@
         {%- endif -%}
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-architecture-section__heading">{{ section.settings.heading | escape }}</h2>
+          <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
-          <p class="mellow-architecture-section__text">{{ section.settings.text | escape }}</p>
+          <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
         {%- endif -%}
       </div>
 

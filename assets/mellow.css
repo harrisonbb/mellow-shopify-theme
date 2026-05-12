@@ -23,11 +23,13 @@
   --mellow-green: #14310F;
   --mellow-forest: #14310F;
   --mellow-section-green: #14310F;
-  --mellow-ivory: #F0EBE0;
-  --mellow-orange-red: #D04A2A;
-  --mellow-science-blue: #3D6B8C;
 
-  --mellow-cream: #FAF7F0;
+  --mellow-cream: #F0EBE0;
+  --mellow-card-cream: #F4EDE0;
+  --mellow-orange-red: #D04A2A;
+
+  --mellow-ivory: #F0EBE0;
+  --mellow-science-blue: #3D6B8C;
   --mellow-white: #FFFFFF;
   --mellow-ink: #142111;
   --mellow-muted: #5E6B58;
@@ -41,43 +43,18 @@
   --mellow-font-heading: var(--mellow-font-display);
   --mellow-font-body: var(--mellow-font-sans);
 
-  --mellow-section-eyebrow-size: 1.2rem;
-  --mellow-section-eyebrow-line-height: 1.2;
-  --mellow-section-eyebrow-letter-spacing: 0.16em;
-  --mellow-section-eyebrow-weight: 800;
-  --mellow-section-heading-size: clamp(38px, 3.6vw, 58px);
-  --mellow-section-heading-line-height: 0.96;
-  --mellow-section-heading-letter-spacing: -0.035em;
-  --mellow-section-heading-weight: 500;
-  --mellow-section-subhead-size: clamp(1.5rem, 1.1vw, 1.8rem);
-  --mellow-section-subhead-line-height: 1.45;
-  --mellow-section-subhead-letter-spacing: -0.01em;
-  --mellow-section-subhead-weight: 400;
-  --mellow-card-title-size: clamp(26px, 1.65vw, 32px);
-  --mellow-card-title-line-height: 1.02;
-  --mellow-card-title-letter-spacing: -0.03em;
-  --mellow-card-title-weight: 500;
-  --mellow-card-body-size: clamp(15px, 1vw, 17px);
-  --mellow-card-body-line-height: 1.48;
-  --mellow-card-body-letter-spacing: -0.01em;
-  --mellow-card-body-weight: 400;
-  --mellow-card-gap: clamp(28px, 2.6vw, 42px);
-
-  --mellow-axis-pad: clamp(32px, 7vw, 112px);
-  --mellow-axis-max: 1360px;
-  --mellow-page-width: var(--mellow-axis-max);
-  --mellow-page-gutter: var(--mellow-axis-pad);
-  --mellow-axis-inset: max(var(--mellow-axis-pad), calc((100vw - var(--mellow-axis-max)) / 2));
-  --mellow-section-padding: clamp(6.4rem, 9vw, 12rem);
-
-  --mellow-section-pad-x: clamp(28px, 4vw, 64px);
-  --mellow-section-axis-pad: var(--mellow-section-pad-x);
   --mellow-section-pad-top: clamp(64px, 5.5vw, 92px);
   --mellow-section-pad-bottom: clamp(52px, 5vw, 76px);
+  --mellow-section-axis-pad: clamp(28px, 4vw, 64px);
+
   --mellow-header-max: 760px;
   --mellow-copy-max: 620px;
 
   --mellow-eyebrow-margin-bottom: 18px;
+  --mellow-eyebrow-size: clamp(12px, 0.8vw, 14px);
+  --mellow-eyebrow-line-height: 1;
+  --mellow-eyebrow-weight: 700;
+  --mellow-eyebrow-tracking: 0.16em;
 
   --mellow-heading-size: clamp(44px, 4.1vw, 62px);
   --mellow-heading-line-height: 0.98;
@@ -99,6 +76,34 @@
   --mellow-card-copy-weight: 400;
   --mellow-card-copy-tracking: -0.006em;
 
+  --mellow-card-gap: clamp(28px, 2.6vw, 42px);
+
+  --mellow-section-eyebrow-size: var(--mellow-eyebrow-size);
+  --mellow-section-eyebrow-line-height: var(--mellow-eyebrow-line-height);
+  --mellow-section-eyebrow-letter-spacing: var(--mellow-eyebrow-tracking);
+  --mellow-section-eyebrow-weight: var(--mellow-eyebrow-weight);
+  --mellow-section-heading-size: var(--mellow-heading-size);
+  --mellow-section-heading-line-height: var(--mellow-heading-line-height);
+  --mellow-section-heading-letter-spacing: var(--mellow-heading-tracking);
+  --mellow-section-heading-weight: var(--mellow-heading-weight);
+  --mellow-section-subhead-size: var(--mellow-subhead-size);
+  --mellow-section-subhead-line-height: var(--mellow-subhead-line-height);
+  --mellow-section-subhead-letter-spacing: var(--mellow-subhead-tracking);
+  --mellow-section-subhead-weight: var(--mellow-subhead-weight);
+  --mellow-card-title-letter-spacing: var(--mellow-card-title-tracking);
+  --mellow-card-body-size: var(--mellow-card-copy-size);
+  --mellow-card-body-line-height: var(--mellow-card-copy-line-height);
+  --mellow-card-body-letter-spacing: var(--mellow-card-copy-tracking);
+  --mellow-card-body-weight: var(--mellow-card-copy-weight);
+
+  --mellow-axis-pad: clamp(32px, 7vw, 112px);
+  --mellow-axis-max: 1360px;
+  --mellow-page-width: var(--mellow-axis-max);
+  --mellow-page-gutter: var(--mellow-axis-pad);
+  --mellow-axis-inset: max(var(--mellow-axis-pad), calc((100vw - var(--mellow-axis-max)) / 2));
+  --mellow-section-padding: var(--mellow-section-pad-top);
+  --mellow-section-pad-x: var(--mellow-section-axis-pad);
+
   --mellow-cta-width: clamp(190px, 12.6vw, 218px);
   --mellow-cta-hover-width: clamp(224px, 14.9vw, 258px);
   --mellow-cta-height: clamp(52px, 4.05vw, 62px);
@@ -111,7 +116,6 @@
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
 }
-
 html,
 body {
   max-width: 100%;
@@ -193,13 +197,26 @@ main,
   width: clamp(220px, 16vw, 280px);
 }
 
+.mellow-eyebrow {
+  margin: 0 0 var(--mellow-eyebrow-margin-bottom);
+  color: var(--mellow-orange-red);
+  font-size: var(--mellow-eyebrow-size);
+  line-height: var(--mellow-eyebrow-line-height);
+  font-weight: var(--mellow-eyebrow-weight);
+  letter-spacing: var(--mellow-eyebrow-tracking);
+  text-transform: uppercase;
+}
+
 .mellow-section-heading {
-  margin: 0;
   max-width: var(--mellow-header-max);
+  margin: 0;
+  color: var(--mellow-forest);
+  font-family: var(--mellow-font-display) !important;
   font-size: var(--mellow-heading-size);
-  line-height: var(--mellow-heading-line-height);
   font-weight: var(--mellow-heading-weight);
   letter-spacing: var(--mellow-heading-tracking);
+  line-height: var(--mellow-heading-line-height);
+  text-align: left;
 }
 
 .mellow-section-text {
@@ -213,18 +230,23 @@ main,
 
 .mellow-card-title {
   margin: 0;
+  color: var(--mellow-forest);
+  font-family: var(--mellow-font-display) !important;
   font-size: var(--mellow-card-title-size);
-  line-height: var(--mellow-card-title-line-height);
   font-weight: var(--mellow-card-title-weight);
   letter-spacing: var(--mellow-card-title-tracking);
+  line-height: var(--mellow-card-title-line-height);
+  text-align: left;
 }
 
 .mellow-card-copy {
   margin: 0;
+  color: var(--mellow-muted);
   font-size: var(--mellow-card-copy-size);
-  line-height: var(--mellow-card-copy-line-height);
   font-weight: var(--mellow-card-copy-weight);
   letter-spacing: var(--mellow-card-copy-tracking);
+  line-height: var(--mellow-card-copy-line-height);
+  text-align: left;
 }
 
 .mellow-section-cta-wrap {
@@ -315,7 +337,15 @@ main,
 
 @media screen and (max-width: 749px) {
   :root {
+    --mellow-section-axis-pad: 22px;
     --mellow-section-pad-x: 22px;
+    --mellow-section-pad-top: 56px;
+    --mellow-section-pad-bottom: 56px;
+  }
+
+  .mellow-section-standard {
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 
   .mellow-section-header-grid {
@@ -543,7 +573,8 @@ input[type="reset"] {
   background: var(--mellow-cream);
   color: var(--mellow-ink);
   font-family: var(--mellow-font-sans) !important;
-  padding-block: var(--mellow-section-padding);
+  padding-top: var(--mellow-section-pad-top);
+  padding-bottom: var(--mellow-section-pad-bottom);
 }
 
 .mellow-section__inner {
@@ -555,17 +586,17 @@ input[type="reset"] {
 .mellow-section-eyebrow {
   display: inline-flex;
   width: fit-content;
-  margin: 0 0 1.6rem;
+  margin: 0 0 var(--mellow-eyebrow-margin-bottom);
   color: var(--mellow-orange-red);
-  font-size: var(--mellow-section-eyebrow-size);
-  font-weight: var(--mellow-section-eyebrow-weight);
-  letter-spacing: var(--mellow-section-eyebrow-letter-spacing);
-  line-height: var(--mellow-section-eyebrow-line-height);
+  font-size: var(--mellow-eyebrow-size);
+  font-weight: var(--mellow-eyebrow-weight);
+  letter-spacing: var(--mellow-eyebrow-tracking);
+  line-height: var(--mellow-eyebrow-line-height);
   text-transform: uppercase;
 }
 
 .mellow-section-heading {
-  max-width: 82rem;
+  max-width: var(--mellow-header-max);
   margin: 0;
   color: var(--mellow-forest);
   font-family: var(--mellow-font-display) !important;
@@ -576,14 +607,15 @@ input[type="reset"] {
   text-align: left;
 }
 
-.mellow-section-subhead {
-  max-width: 52rem;
-  margin: 2rem 0 0;
+.mellow-section-subhead,
+.mellow-section-text {
+  max-width: var(--mellow-copy-max);
+  margin: 22px 0 0;
   color: var(--mellow-muted);
-  font-size: var(--mellow-section-subhead-size);
-  font-weight: var(--mellow-section-subhead-weight);
-  letter-spacing: var(--mellow-section-subhead-letter-spacing);
-  line-height: var(--mellow-section-subhead-line-height);
+  font-size: var(--mellow-subhead-size);
+  font-weight: var(--mellow-subhead-weight);
+  letter-spacing: var(--mellow-subhead-tracking);
+  line-height: var(--mellow-subhead-line-height);
   text-align: left;
   text-wrap: balance;
 }
@@ -594,17 +626,18 @@ input[type="reset"] {
   font-family: var(--mellow-font-display) !important;
   font-size: var(--mellow-card-title-size);
   font-weight: var(--mellow-card-title-weight);
-  letter-spacing: var(--mellow-card-title-letter-spacing);
+  letter-spacing: var(--mellow-card-title-tracking);
   line-height: var(--mellow-card-title-line-height);
   text-align: left;
 }
 
 .mellow-card-copy {
+  margin: 0;
   color: var(--mellow-muted);
-  font-size: var(--mellow-card-body-size);
-  font-weight: var(--mellow-card-body-weight);
-  letter-spacing: var(--mellow-card-body-letter-spacing);
-  line-height: var(--mellow-card-body-line-height);
+  font-size: var(--mellow-card-copy-size);
+  font-weight: var(--mellow-card-copy-weight);
+  letter-spacing: var(--mellow-card-copy-tracking);
+  line-height: var(--mellow-card-copy-line-height);
   text-align: left;
 }
 
@@ -702,19 +735,21 @@ input[type="reset"] {
 }
 
 .mellow-architecture-section__heading {
-  max-width: 70rem;
+  max-width: var(--mellow-header-max);
   margin: 0;
-  font-size: clamp(3rem, 4vw, 5.2rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  font-size: var(--mellow-heading-size);
+  font-weight: var(--mellow-heading-weight);
+  letter-spacing: var(--mellow-heading-tracking);
+  line-height: var(--mellow-heading-line-height);
 }
 
 .mellow-architecture-section__text {
-  max-width: 58rem;
-  margin: 1.8rem 0 0;
-  font-size: clamp(1.5rem, 1.2vw, 1.8rem);
-  line-height: 1.6;
+  max-width: var(--mellow-copy-max);
+  margin: 22px 0 0;
+  font-size: var(--mellow-subhead-size);
+  font-weight: var(--mellow-subhead-weight);
+  letter-spacing: var(--mellow-subhead-tracking);
+  line-height: var(--mellow-subhead-line-height);
 }
 
 .mellow-architecture-section__note {
@@ -866,10 +901,10 @@ input[type="reset"] {
   max-width: 740px;
   margin: 0;
   color: #F0EBE0;
-  font-size: clamp(44px, 4.1vw, 62px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  font-weight: 600;
+  font-size: var(--mellow-heading-size);
+  line-height: var(--mellow-heading-line-height);
+  letter-spacing: var(--mellow-heading-tracking);
+  font-weight: var(--mellow-heading-weight);
   text-align: left;
 }
 
@@ -877,10 +912,10 @@ input[type="reset"] {
   max-width: 540px;
   margin: 2.2rem 0 0;
   color: rgba(240, 235, 224, 0.88);
-  font-size: clamp(18px, 1.32vw, 20px);
-  line-height: 1.48;
-  font-weight: 400;
-  letter-spacing: -0.012em;
+  font-size: var(--mellow-subhead-size);
+  line-height: var(--mellow-subhead-line-height);
+  font-weight: var(--mellow-subhead-weight);
+  letter-spacing: var(--mellow-subhead-tracking);
   text-align: left;
   text-wrap: balance;
 }
@@ -1361,10 +1396,10 @@ input[type="reset"] {
   margin: 0 0 12px;
   color: var(--mellow-forest);
   font-family: var(--mellow-font-display) !important;
-  font-size: clamp(27px, 1.9vw, 31px);
-  line-height: 1.04;
-  font-weight: 580;
-  letter-spacing: -0.038em;
+  font-size: var(--mellow-card-title-size);
+  line-height: var(--mellow-card-title-line-height);
+  font-weight: var(--mellow-card-title-weight);
+  letter-spacing: var(--mellow-card-title-tracking);
   text-align: left;
 }
 
@@ -1382,10 +1417,10 @@ input[type="reset"] {
   max-width: 94%;
   margin: 0;
   color: rgba(20, 33, 17, 0.84);
-  font-size: clamp(16.5px, 1.08vw, 17.25px);
-  line-height: 1.54;
-  font-weight: 400;
-  letter-spacing: -0.006em;
+  font-size: var(--mellow-card-copy-size);
+  line-height: var(--mellow-card-copy-line-height);
+  font-weight: var(--mellow-card-copy-weight);
+  letter-spacing: var(--mellow-card-copy-tracking);
   text-align: left;
 }
 
@@ -1445,13 +1480,13 @@ input[type="reset"] {
   .mellow-who-its-for__heading {
     font-size: clamp(38px, 10vw, 48px);
     line-height: 1;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.034em;
   }
 
   .mellow-who-its-for__text {
     max-width: 360px;
-    font-size: 16.5px;
-    line-height: 1.48;
+    font-size: 16px;
+    line-height: 1.45;
     text-wrap: pretty;
   }
 
@@ -1481,14 +1516,14 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__card h3 {
-    font-size: 26px;
-    line-height: 1.05;
-    letter-spacing: -0.035em;
+    font-size: var(--mellow-card-title-size);
+    line-height: var(--mellow-card-title-line-height);
+    letter-spacing: var(--mellow-card-title-tracking);
   }
 
   .mellow-who-its-for__card p {
-    font-size: 15.75px;
-    line-height: 1.5;
+    font-size: var(--mellow-card-copy-size);
+    line-height: var(--mellow-card-copy-line-height);
   }
 
 }

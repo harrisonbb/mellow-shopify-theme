@@ -40,28 +40,15 @@
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__eyebrow {
-    margin: 0 0 var(--mellow-eyebrow-margin-bottom, 18px);
     color: #D04A2A;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
-    margin: 0;
-    max-width: var(--mellow-header-max, 760px);
     color: #F0EBE0;
-    font-size: var(--mellow-heading-size, clamp(44px, 4.1vw, 62px));
-    line-height: var(--mellow-heading-line-height, 0.98);
-    font-weight: var(--mellow-heading-weight, 600);
-    letter-spacing: var(--mellow-heading-tracking, -0.032em);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__text {
-    max-width: var(--mellow-copy-max, 620px);
-    margin: 22px 0 0;
     color: rgba(240, 235, 224, 0.78);
-    font-size: var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px));
-    line-height: var(--mellow-subhead-line-height, 1.46);
-    font-weight: var(--mellow-subhead-weight, 400);
-    letter-spacing: var(--mellow-subhead-tracking, -0.005em);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
@@ -96,12 +83,7 @@
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__quote {
-    margin: 0;
     color: rgba(20, 49, 15, 0.9);
-    font-size: var(--mellow-card-copy-size, clamp(16px, 1.03vw, 17px));
-    line-height: var(--mellow-card-copy-line-height, 1.48);
-    font-weight: 500;
-    letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__person {
@@ -252,17 +234,6 @@
       display: block;
     }
 
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
-      font-size: clamp(38px, 10vw, 48px);
-      line-height: 1;
-      letter-spacing: -0.034em;
-    }
-
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__text {
-      font-size: 16px;
-      line-height: 1.45;
-      max-width: 360px;
-    }
 
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
       padding: 28px;
@@ -276,23 +247,23 @@
   class="mellow-section mellow-section-standard mellow-written-reviews color-{{ section.settings.color_scheme }}"
 >
   <div class="mellow-written-reviews__inner">
-    <div class="mellow-written-reviews__header-wrap">
-      <div class="mellow-written-reviews__header">
+    <div class="mellow-section-header-grid mellow-written-reviews__header-wrap">
+      <div class="mellow-section-header mellow-written-reviews__header">
         <p class="mellow-eyebrow mellow-written-reviews__eyebrow">REAL MOMENTS. REAL RELIEF.</p>
 
-        <h2 class="mellow-written-reviews__heading">
+        <h2 class="mellow-section-heading mellow-written-reviews__heading">
           Over 50,000 Satisfied<br>
           Customers and Counting
         </h2>
 
-        <p class="mellow-written-reviews__text">After dinner. Before sleep. When it matters most.</p>
+        <p class="mellow-section-text mellow-written-reviews__text">After dinner. Before sleep. When it matters most.</p>
       </div>
     </div>
 
     <div class="mellow-written-reviews__cards">
       <article class="mellow-written-reviews__card">
         <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-written-reviews__quote">
+        <p class="mellow-card-copy mellow-written-reviews__quote">
           “I used to take tablets after reflux had already started. Mellow feels more like I’m getting ahead of it.”
         </p>
 
@@ -307,7 +278,7 @@
 
       <article class="mellow-written-reviews__card">
         <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-written-reviews__quote">
+        <p class="mellow-card-copy mellow-written-reviews__quote">
           “I was trying to be more thoughtful about PPIs. Mellow felt like an easy option for nights when I wanted support after dinner.”
         </p>
 
@@ -322,7 +293,7 @@
 
       <article class="mellow-written-reviews__card">
         <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-written-reviews__quote">
+        <p class="mellow-card-copy mellow-written-reviews__quote">
           “It feels easy enough to stick with: one pouch after dinner, no measuring, and no big bottle on my nightstand.”
         </p>
 
