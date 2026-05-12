@@ -675,7 +675,9 @@ input[type="reset"] {
   justify-items: start;
   min-height: 0;
   width: 100%;
+  max-width: 36rem;
   gap: 1rem;
+  margin-top: clamp(0.6rem, 1vw, 1rem);
   align-self: start;
   transition: transform 260ms ease;
 }
@@ -733,10 +735,10 @@ input[type="reset"] {
   margin: 0;
   color: #1A2D10;
   font-family: var(--mellow-font-display) !important;
-  font-size: clamp(2.8rem, 2.3vw, 3.4rem);
+  font-size: clamp(34px, 2.4vw, 44px);
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
   text-align: left;
 }
 
@@ -749,13 +751,13 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__card p {
-  max-width: 34rem;
-  margin: 0;
+  max-width: 36rem;
+  margin: 16px 0 0;
   color: rgba(20, 33, 17, 0.82);
-  font-size: clamp(1.6rem, 1.25vw, 1.8rem);
+  font-size: clamp(17px, 1.15vw, 20px);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
+  letter-spacing: -0.015em;
+  line-height: 1.38;
   text-align: left;
 }
 
