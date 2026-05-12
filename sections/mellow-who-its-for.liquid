@@ -34,7 +34,7 @@
 
   <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
     <div class="mellow-who-its-for__carousel" data-mellow-who-carousel-stage>
-      <div class="mellow-who-its-for__track" data-mellow-who-track>
+      <div class="mellow-who-its-for__track" data-mellow-who-track tabindex="0" aria-label="Real-life reflux moments cards">
         {%- liquid
           assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
@@ -51,9 +51,6 @@
             class="mellow-who-its-for__card"
             data-mellow-who-card
             data-mellow-who-index="{{ forloop.index0 }}"
-            role="button"
-            tabindex="0"
-            aria-label="Show {{ card_title | escape }} reflux moment"
           >
             {%- if card_tag != blank -%}
               <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
@@ -98,189 +95,25 @@
     if (!section || section.dataset.mellowWhoInitialized === 'true') return;
     section.dataset.mellowWhoInitialized = 'true';
 
-    const stage = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
-    const cards = Array.from(section.querySelectorAll('[data-mellow-who-card]'));
+    const firstCard = section.querySelector('[data-mellow-who-card]');
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const mobileQuery = window.matchMedia('(max-width: 749px)');
 
-    if (!stage || !track || !cards.length) return;
+    if (!track || !firstCard) return;
 
-    let activeIndex = 0;
-    let autoTimer = null;
-    let isPaused = false;
-    let isMobile = mobileQuery.matches;
+    track.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
 
-    const positions = {
-      '-2': { x: -470, scale: 0.83, opacity: 0.64, z: 1 },
-      '-1': { x: -250, scale: 0.92, opacity: 0.86, z: 3 },
-      '0': { x: 0, scale: 1, opacity: 1, z: 5 },
-      '1': { x: 250, scale: 0.92, opacity: 0.86, z: 3 },
-      '2': { x: 470, scale: 0.83, opacity: 0.64, z: 1 }
-    };
+      event.preventDefault();
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap);
+      const scrollAmount = firstCard.offsetWidth + (Number.isNaN(gap) ? 0 : gap);
 
-    const wrapIndex = (index) => (index + cards.length) % cards.length;
-
-    const shortestOffset = (index) => {
-      let offset = index - activeIndex;
-      const half = cards.length / 2;
-
-      if (offset > half) offset -= cards.length;
-      if (offset < -half) offset += cards.length;
-
-      return offset;
-    };
-
-    const setActive = (index, shouldScrollMobile = true) => {
-      activeIndex = wrapIndex(index);
-      updateCards(shouldScrollMobile);
-    };
-
-    const scrollMobileCardIntoView = () => {
-      if (!isMobile || !cards[activeIndex]) return;
-
-      cards[activeIndex].scrollIntoView({
-        behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
-        block: 'nearest',
-        inline: 'center'
+      track.scrollBy({
+        left: direction * scrollAmount,
+        behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
       });
-    };
-
-    const updateCards = (shouldScrollMobile = false) => {
-      isMobile = mobileQuery.matches;
-
-      cards.forEach((card, index) => {
-        const offset = shortestOffset(index);
-        const visiblePosition = Math.abs(offset) <= 2;
-        const position = positions[String(offset)];
-        const isActive = index === activeIndex;
-
-        card.classList.toggle('is-active', isActive);
-        card.classList.toggle('is-visible', isMobile || visiblePosition);
-        card.dataset.mellowWhoPosition = isMobile || !position ? '' : String(offset);
-        card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        card.setAttribute('aria-hidden', !isMobile && !visiblePosition ? 'true' : 'false');
-        card.tabIndex = isMobile || visiblePosition ? 0 : -1;
-
-        if (isMobile) {
-          card.style.removeProperty('--mellow-who-card-x');
-          card.style.removeProperty('--mellow-who-card-scale');
-          card.style.removeProperty('--mellow-who-card-opacity');
-          card.style.zIndex = '';
-          card.style.pointerEvents = '';
-          return;
-        }
-
-        if (position) {
-          card.style.setProperty('--mellow-who-card-x', `${position.x}px`);
-          card.style.setProperty('--mellow-who-card-scale', position.scale);
-          card.style.setProperty('--mellow-who-card-opacity', position.opacity);
-          card.style.zIndex = String(position.z);
-          card.style.pointerEvents = '';
-        } else {
-          card.style.setProperty('--mellow-who-card-x', `${offset < 0 ? -620 : 620}px`);
-          card.style.setProperty('--mellow-who-card-scale', '0.78');
-          card.style.setProperty('--mellow-who-card-opacity', '0');
-          card.style.zIndex = '0';
-          card.style.pointerEvents = 'none';
-        }
-      });
-
-      if (shouldScrollMobile) scrollMobileCardIntoView();
-    };
-
-    const stopAuto = () => {
-      window.clearInterval(autoTimer);
-      autoTimer = null;
-    };
-
-    const startAuto = () => {
-      stopAuto();
-
-      if (reducedMotionQuery.matches || mobileQuery.matches || isPaused) return;
-
-      autoTimer = window.setInterval(() => {
-        setActive(activeIndex + 1, false);
-      }, 4200);
-    };
-
-    cards.forEach((card, index) => {
-      card.addEventListener('click', () => {
-        setActive(index);
-        startAuto();
-      });
-
-      card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          setActive(index);
-          startAuto();
-          return;
-        }
-
-        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-        event.preventDefault();
-        setActive(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
-        cards[activeIndex].focus({ preventScroll: true });
-        startAuto();
-      });
-    });
-
-    stage.addEventListener('mouseenter', () => {
-      isPaused = true;
-      stopAuto();
-    });
-
-    stage.addEventListener('mouseleave', () => {
-      isPaused = false;
-      startAuto();
-    });
-
-    stage.addEventListener('focusin', () => {
-      isPaused = true;
-      stopAuto();
-    });
-
-    stage.addEventListener('focusout', (event) => {
-      if (stage.contains(event.relatedTarget)) return;
-      isPaused = false;
-      startAuto();
-    });
-
-    track.addEventListener('scroll', () => {
-      if (!mobileQuery.matches) return;
-
-      window.clearTimeout(track.mellowWhoScrollTimer);
-      track.mellowWhoScrollTimer = window.setTimeout(() => {
-        const trackCenter = track.scrollLeft + track.clientWidth / 2;
-        const nearest = cards.reduce((current, card, index) => {
-          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-          const distance = Math.abs(trackCenter - cardCenter);
-          return distance < current.distance ? { distance, index } : current;
-        }, { distance: Infinity, index: activeIndex });
-
-        activeIndex = nearest.index;
-        updateCards(false);
-      }, 120);
-    }, { passive: true });
-
-    const handleMediaChange = () => {
-      updateCards(true);
-      startAuto();
-    };
-
-    mobileQuery.addEventListener('change', handleMediaChange);
-    reducedMotionQuery.addEventListener('change', handleMediaChange);
-
-    updateCards(false);
-    startAuto();
-
-    document.addEventListener('shopify:section:unload', (event) => {
-      if (event.target.contains(section)) {
-        stopAuto();
-        mobileQuery.removeEventListener('change', handleMediaChange);
-        reducedMotionQuery.removeEventListener('change', handleMediaChange);
-      }
     });
   })();
 </script>
