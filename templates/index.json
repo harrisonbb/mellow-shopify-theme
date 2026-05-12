@@ -41,21 +41,13 @@
     "mellow_review_videos": {
       "type": "mellow-review-videos",
       "settings": {
-        "color_scheme": "",
-        "eyebrow": "Review videos",
-        "heading": "A future home for video social proof.",
-        "text": "Reserve this area for customer clips, creator testimonials, and authentic proof points.",
-        "note": "Ready for final design replacement."
+        "color_scheme": ""
       }
     },
     "mellow_how_to_use": {
       "type": "mellow-how-to-use",
       "settings": {
-        "color_scheme": "",
-        "eyebrow": "How to use Mellow",
-        "heading": "Make the routine feel effortless.",
-        "text": "Show the simple daily steps and when customers should take Mellow.",
-        "note": "Ready for final design replacement."
+        "color_scheme": ""
       }
     },
     "mellow_day_night_scroll": {
@@ -74,8 +66,7 @@
         "color_scheme": "",
         "eyebrow": "Ingredients",
         "heading": "Spotlight the formulation with clarity.",
-        "text": "Use this section for ingredient education, sourcing notes, and why each component matters.",
-        "note": "Ready for final design replacement."
+        "text": "Use this section for ingredient education, sourcing notes, and why each component matters."
       }
     },
     "mellow_why_it_works": {
@@ -83,28 +74,20 @@
       "settings": {
         "color_scheme": "",
         "eyebrow": "Why it works",
-        "heading": "Explain the mechanism in plain language.",
-        "text": "Translate the science into a simple benefit-led narrative customers can trust.",
-        "note": "Ready for final design replacement."
+        "heading": "Explain the mechanism in plain language."
       }
     },
     "mellow_clinical_proof": {
       "type": "mellow-clinical-proof",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Clinical proof",
-        "heading": "Create space for evidence and study support.",
-        "text": "Add research summaries, substantiation, and careful science-forward copy here.",
-        "note": "Ready for final design replacement."
+        "eyebrow": "Clinical proof"
       }
     },
     "mellow_expert_reviews": {
       "type": "mellow-expert-reviews",
       "settings": {
-        "microproof": "Expert proof",
-        "heading": "Expert voices for a calmer daily ritual.",
-        "cta_label": "Shop Mellow",
-        "cta_link": ""
+        "heading": "Expert voices for a calmer daily ritual."
       }
     },
     "mellow_compare": {
@@ -120,10 +103,7 @@
     "mellow_written_reviews": {
       "type": "mellow-written-reviews",
       "settings": {
-        "color_scheme": "",
-        "eyebrow": "Written reviews",
-        "heading": "Collect persuasive customer quotes.",
-        "text": "Use this area for short written testimonials and rating highlights."
+        "color_scheme": ""
       }
     },
     "mellow_buy_boxes": {
