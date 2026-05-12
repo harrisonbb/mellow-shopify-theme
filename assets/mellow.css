@@ -698,17 +698,31 @@ input[type="reset"] {
   margin-bottom: 0;
   color: #1A2D10;
   text-align: left;
+  border: 0.1rem solid rgba(26, 45, 16, 0.09);
   border-radius: var(--mellow-card-radius);
   background: var(--mellow-who-card);
   background-image: none;
+  box-shadow:
+    0 1.8rem 4.2rem rgba(0, 0, 0, 0.14),
+    0 0 2.4rem rgba(240, 235, 224, 0.035);
+  overflow: hidden;
   isolation: isolate;
   backface-visibility: hidden;
-  transform: none;
+  transform: scale(0.98);
+  transform-origin: center center;
   transform-style: flat;
   translate: none;
   top: auto;
   bottom: auto;
+  opacity: 1;
   z-index: 1;
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 650ms ease,
+    filter 650ms ease,
+    background 650ms ease,
+    border-color 650ms ease;
+  will-change: transform;
 }
 
 .mellow-who-its-for__card-inner {
@@ -721,26 +735,17 @@ input[type="reset"] {
   align-items: start;
   row-gap: clamp(1.1rem, 1vw, 1.5rem);
   padding: var(--mellow-who-card-padding-y) var(--mellow-who-card-padding-x);
-  border: 0.1rem solid rgba(26, 45, 16, 0.09);
-  border-radius: var(--mellow-card-radius);
-  background: var(--mellow-who-card);
-  background-image: none;
-  box-shadow:
-    0 1.8rem 4.2rem rgba(0, 0, 0, 0.14),
-    0 0 2.4rem rgba(240, 235, 224, 0.035);
-  overflow: hidden;
-  transform: scale(0.98);
-  transform-origin: center center;
-  opacity: 0.78;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  overflow: visible;
+  transform: none;
+  opacity: 1;
   transform-style: flat;
-  transition:
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 650ms ease,
-    box-shadow 650ms ease,
-    filter 650ms ease,
-    background 650ms ease,
-    border-color 650ms ease;
-  will-change: transform;
+  transition: none;
+  will-change: auto;
   backface-visibility: hidden;
 }
 
@@ -768,9 +773,11 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__card::before,
-.mellow-who-its-for__card::after {
-  content: none;
-  display: none;
+.mellow-who-its-for__card::after,
+.mellow-who-its-for__card-inner::before,
+.mellow-who-its-for__card-inner::after {
+  content: none !important;
+  display: none !important;
 }
 
 .mellow-who-its-for__icon svg {
@@ -976,36 +983,45 @@ input[type="reset"] {
 
 .mellow-who-its-for__card.is-active {
   z-index: 20;
+  transform: scale(1.12);
   background: var(--mellow-who-card-hover);
   background-image: none;
   opacity: 1;
+  filter: none;
+  border-color: rgba(212, 138, 50, 0.32);
   box-shadow: 0 2.8rem 7rem rgba(0, 0, 0, 0.28);
 }
 
 .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
-  transform: scale(1.12);
+  transform: none;
   opacity: 1;
-  border-color: rgba(212, 138, 50, 0.32);
-  background: var(--mellow-who-card-hover);
-  background-image: none;
-  box-shadow:
-    0 2.8rem 7rem rgba(0, 0, 0, 0.28),
-    0 0 3.8rem rgba(212, 138, 50, 0.12);
+  border: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
 .mellow-who-its-for__card.is-active::before,
-.mellow-who-its-for__card.is-active::after {
-  content: none;
-  display: none;
+.mellow-who-its-for__card.is-active::after,
+.mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner::before,
+.mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner::after {
+  content: none !important;
+  display: none !important;
+}
+
+.mellow-who-its-for__card:not(.is-active) {
+  transform: scale(0.98);
+  opacity: 1;
+  filter: brightness(0.86) saturate(0.94);
 }
 
 .mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
-  transform: scale(0.98);
-  opacity: 0.78;
+  transform: none;
+  opacity: 1;
 }
 
 @media screen and (min-width: 990px) and (hover: hover) and (pointer: fine) {
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-inner {
+  .mellow-who-its-for__card:hover {
     transform: scale(1);
     border-color: rgba(212, 138, 50, 0.34);
     background: var(--mellow-who-card-hover);
@@ -1015,8 +1031,17 @@ input[type="reset"] {
       0 0 3.2rem rgba(212, 138, 50, 0.11);
   }
 
-  .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner,
+  .mellow-who-its-for__card:hover .mellow-who-its-for__card-inner,
   .mellow-who-its-for__card.is-active:hover .mellow-who-its-for__card-inner {
+    transform: none;
+    border: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  .mellow-who-its-for__card.is-active,
+  .mellow-who-its-for__card.is-active:hover {
     transform: scale(1.12);
   }
 }
@@ -1141,7 +1166,7 @@ input[type="reset"] {
 
   .mellow-who-its-for__card-inner {
     row-gap: 1.3rem;
-    box-shadow: 0 1.8rem 4.2rem rgba(0, 0, 0, 0.14);
+    box-shadow: none !important;
   }
 
   .mellow-who-its-for__card h3 {
