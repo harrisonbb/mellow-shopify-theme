@@ -382,8 +382,8 @@ li {
   background: #F0EBE0 !important;
   color: #1A2D10 !important;
   border: 1px solid rgba(240, 235, 224, 0.78) !important;
-  font-size: 19px !important;
-  font-weight: 700 !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
@@ -421,9 +421,12 @@ li {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-bottom: calc(-1 * var(--mellow-scroll-pad-y));
   padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .mellow-who-its-for__track {
@@ -680,7 +683,7 @@ li {
     min-height: 56px !important;
     height: 56px !important;
     padding: 0 28px !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
 
   .mellow-who-its-for__carousel-wrap {
