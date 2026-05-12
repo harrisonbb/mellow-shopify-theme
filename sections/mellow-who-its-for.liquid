@@ -118,6 +118,7 @@
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
+    // Select the fully rendered card list, including duplicate sets used for the infinite marquee.
     const cards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
     if (!scroller || !track || !cardSet || !cards.length) {
@@ -129,6 +130,7 @@
     let offset = 0;
     let animationFrame = null;
     let lastFrameTime = null;
+    let resizeObserver = null;
 
     const applySafeOffset = () => {
       if (setWidth <= 0) {
@@ -148,15 +150,28 @@
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
     };
 
-    const updateActiveCard = () => {
+    let activeCard = null;
+    let activeUpdateFrame = null;
+    let ticking = false;
+
+    const getDistanceFromCenter = (card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
       const viewportCenter = window.innerWidth / 2;
-      let closestCard = null;
-      let closestDistance = Infinity;
+
+      return Math.abs(cardCenter - viewportCenter);
+    };
+
+    const updateActiveMomentCard = () => {
+      if (!cards.length) {
+        return;
+      }
+
+      let closestCard = cards[0];
+      let closestDistance = getDistanceFromCenter(closestCard);
 
       cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.left + rect.width / 2;
-        const distance = Math.abs(cardCenter - viewportCenter);
+        const distance = getDistanceFromCenter(card);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -164,8 +179,33 @@
         }
       });
 
-      cards.forEach((card) => {
-        card.classList.toggle('is-active', card === closestCard);
+      if (!activeCard || !cards.includes(activeCard)) {
+        activeCard = closestCard;
+        activeCard.classList.add('is-active');
+        return;
+      }
+
+      const activeDistance = getDistanceFromCenter(activeCard);
+      const switchThreshold = 36;
+
+      if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
+        activeCard.classList.remove('is-active');
+        closestCard.classList.add('is-active');
+        activeCard = closestCard;
+      }
+    };
+
+    const requestActiveCardUpdate = () => {
+      if (ticking) {
+        return;
+      }
+
+      ticking = true;
+
+      activeUpdateFrame = requestAnimationFrame(() => {
+        updateActiveMomentCard();
+        ticking = false;
+        activeUpdateFrame = null;
       });
     };
 
@@ -179,6 +219,7 @@
       offset = setWidth * -1;
       track.style.setProperty('--who-track-width', `${setWidth}px`);
       updateTrackPosition();
+      requestActiveCardUpdate();
     };
 
     const animate = (timestamp) => {
@@ -196,7 +237,6 @@
         lastFrameTime = timestamp;
       }
 
-      updateActiveCard();
       animationFrame = requestAnimationFrame(animate);
     };
 
@@ -215,12 +255,13 @@
     const handleResize = () => {
       lastFrameTime = null;
       measureCarousel();
+      requestActiveCardUpdate();
     };
 
     measureCarousel();
 
     if ('ResizeObserver' in window) {
-      const resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver = new ResizeObserver(handleResize);
       resizeObserver.observe(cardSet);
       resizeObserver.observe(scroller);
     } else {
@@ -242,11 +283,18 @@
         offset -= horizontalDelta;
         applySafeOffset();
         updateTrackPosition();
-        updateActiveCard();
+        requestActiveCardUpdate();
         lastFrameTime = null;
       },
       { passive: false }
     );
+
+    const activeUpdateInterval = setInterval(requestActiveCardUpdate, 120);
+
+    requestActiveCardUpdate();
+
+    window.addEventListener('resize', requestActiveCardUpdate, { passive: true });
+    window.addEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
     animationFrame = requestAnimationFrame(animate);
 
@@ -256,6 +304,17 @@
       }
 
       cancelAnimationFrame(animationFrame);
+      clearInterval(activeUpdateInterval);
+      window.removeEventListener('resize', requestActiveCardUpdate);
+      window.removeEventListener('scroll', requestActiveCardUpdate);
+
+      if (activeUpdateFrame) {
+        cancelAnimationFrame(activeUpdateFrame);
+      }
+
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
     });
   })();
 </script>
