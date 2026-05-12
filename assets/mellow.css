@@ -421,43 +421,28 @@ li {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   margin-bottom: calc(-1 * var(--mellow-scroll-pad-y));
   padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
-  scroll-behavior: smooth;
-  scroll-padding-inline: var(--mellow-scroll-pad-x);
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 .mellow-who-its-for__track {
   display: flex;
   width: max-content;
   gap: var(--mellow-card-gap);
+  padding-right: var(--mellow-card-gap);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: mellowMomentsMarquee 90s linear infinite;
 }
 
 @keyframes mellowMomentsMarquee {
   from {
-    transform: translate3d(35vw, 0, 0);
+    transform: translate3d(32vw, 0, 0);
   }
 
   to {
-    transform: translate3d(calc(35vw - var(--mellow-who-marquee-distance, 50%)), 0, 0);
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .mellow-who-its-for__track {
-    animation: mellowMomentsMarquee 80s linear infinite;
-    will-change: transform;
-  }
-
-  .mellow-who-its-for__track:hover,
-  .mellow-who-its-for__track:focus-within,
-  .mellow-who-its-for__track.is-touch-paused {
-    animation-play-state: paused;
+    transform: translate3d(calc(32vw - 50%), 0, 0);
   }
 }
 
@@ -489,7 +474,6 @@ li {
     0 0 2.4rem rgba(240, 235, 224, 0.04);
   color: #1A2D10;
   overflow: hidden;
-  scroll-snap-align: start;
   text-align: left;
   transition:
     transform 260ms ease,
@@ -633,18 +617,6 @@ li {
   text-align: left;
 }
 
-@media screen and (max-width: 989px) {
-  .mellow-who-its-for__track {
-    transform: none;
-    animation: none;
-    will-change: auto;
-  }
-
-  .mellow-who-its-for__card[data-mellow-who-card-duplicate] {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 989px) and (min-width: 750px) {
   .mellow-who-its-for {
     --mellow-who-card-width: 33rem;
@@ -715,13 +687,8 @@ li {
     margin-top: clamp(2.8rem, 7vw, 4rem);
   }
 
-  .mellow-who-its-for__carousel {
-    scroll-snap-type: x mandatory;
-  }
-
   .mellow-who-its-for__card {
     row-gap: 1.6rem;
-    scroll-snap-align: center;
     box-shadow: 0 1.8rem 4rem rgba(5, 15, 8, 0.25);
   }
 }
