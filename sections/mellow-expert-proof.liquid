@@ -5,7 +5,7 @@
 
 <style>
   #MellowExpertProof-{{ section.id }} {
-    --mellow-expert-proof-gap: clamp(16px, 1.5vw, 22px);
+    --expert-gap: clamp(16px, 1.5vw, 22px);
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     background: var(--mellow-ivory, #F0EBE0);
     color: var(--mellow-forest, #1A2D10);
@@ -112,8 +112,8 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% - (2 * var(--mellow-expert-proof-gap))) / 3);
-    gap: var(--mellow-expert-proof-gap);
+    grid-auto-columns: calc((100% - (2 * var(--expert-gap))) / 3);
+    gap: var(--expert-gap);
     align-items: stretch;
   }
 
@@ -307,12 +307,12 @@
         {%- endif -%}
 
         <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
-          <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert proof" data-mellow-expert-proof-prev>
+          <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" data-expert-prev>
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
               <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-          <button class="mellow-expert-proof__arrow" type="button" aria-label="Next expert proof" data-mellow-expert-proof-next>
+          <button class="mellow-expert-proof__arrow" type="button" aria-label="Next expert quote" data-expert-next>
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
               <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -321,8 +321,8 @@
       </div>
     </div>
 
-    <div class="mellow-expert-proof__scroller" data-mellow-expert-proof-scroller>
-      <div class="mellow-expert-proof__track">
+    <div class="mellow-expert-proof__scroller" data-expert-scroller>
+      <div class="mellow-expert-proof__track" data-expert-track>
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_1_image != blank -%}
@@ -373,6 +373,23 @@
             </div>
           </div>
         </article>
+
+        <article class="mellow-expert-proof__card">
+          <div class="mellow-expert-proof__visual">
+            {%- if section.settings.card_4_image != blank -%}
+              {{ section.settings.card_4_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 70vw, 88vw', widths: '360, 520, 700, 900', alt: section.settings.card_4_name }}
+            {%- endif -%}
+            <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_4_letter | default: 'D' | escape }}</span>
+          </div>
+          <div class="mellow-expert-proof__content">
+            <span class="mellow-expert-proof__role">{{ section.settings.card_4_role | escape }}</span>
+            <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings.card_4_quote | escape }}</p>
+            <div class="mellow-expert-proof__person">
+              <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings.card_4_name | escape }}</h3>
+              <p class="mellow-card-copy mellow-expert-proof__title">{{ section.settings.card_4_role | escape }}</p>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </div>
@@ -383,26 +400,104 @@
     const initExpertProof = (section) => {
       if (!section || section.dataset.mellowExpertProofReady === 'true') return;
 
-      const scroller = section.querySelector('[data-mellow-expert-proof-scroller]');
-      const prev = section.querySelector('[data-mellow-expert-proof-prev]');
-      const next = section.querySelector('[data-mellow-expert-proof-next]');
+      const scroller = section.querySelector('[data-expert-scroller]');
+      const track = section.querySelector('[data-expert-track]');
+      const prev = section.querySelector('[data-expert-prev]');
+      const next = section.querySelector('[data-expert-next]');
 
-      if (!scroller || !prev || !next) return;
+      if (!scroller || !track || !prev || !next) return;
 
-      const getScrollAmount = () => {
-        const card = scroller.querySelector('.mellow-expert-proof__card');
-        const track = scroller.querySelector('.mellow-expert-proof__track');
-        const gap = track ? parseFloat(window.getComputedStyle(track).columnGap) || 0 : 0;
+      const originals = Array.from(track.children);
+      if (!originals.length) return;
 
-        return card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
+      const prepareClone = (card, clonePosition) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.inert = true;
+        clone.setAttribute('inert', '');
+        clone.dataset.clone = clonePosition;
+        clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((element) => {
+          element.setAttribute('tabindex', '-1');
+        });
+        return clone;
       };
 
-      prev.addEventListener('click', () => {
-        scroller.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      });
+      const cloneBefore = originals.map((card) => prepareClone(card, 'before'));
+      const cloneAfter = originals.map((card) => prepareClone(card, 'after'));
+
+      track.prepend(...cloneBefore);
+      track.append(...cloneAfter);
+
+      const getStep = () => {
+        const firstCard = track.querySelector('.mellow-expert-proof__card');
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+
+        return firstCard ? firstCard.getBoundingClientRect().width + gap : scroller.clientWidth;
+      };
+
+      const realStart = () => getStep() * originals.length;
+      const realEnd = () => getStep() * originals.length * 2;
+
+      let activeIndex = 0;
+
+      const updateActiveIndex = () => {
+        const step = getStep();
+        if (!step) return;
+
+        activeIndex = ((Math.round((scroller.scrollLeft - realStart()) / step) % originals.length) + originals.length) % originals.length;
+      };
+
+      const jumpToStart = () => {
+        scroller.scrollLeft = realStart();
+        activeIndex = 0;
+      };
+
+      const normalizeLoop = () => {
+        const step = getStep();
+        const start = realStart();
+        const end = realEnd();
+
+        if (scroller.scrollLeft < start - step / 2) {
+          scroller.scrollTo({
+            left: scroller.scrollLeft + originals.length * step,
+            behavior: 'auto'
+          });
+        }
+
+        if (scroller.scrollLeft >= end - step / 2) {
+          scroller.scrollTo({
+            left: scroller.scrollLeft - originals.length * step,
+            behavior: 'auto'
+          });
+        }
+
+        updateActiveIndex();
+      };
+
+      requestAnimationFrame(jumpToStart);
 
       next.addEventListener('click', () => {
-        scroller.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        scroller.scrollBy({ left: getStep(), behavior: 'smooth' });
+        window.setTimeout(normalizeLoop, 450);
+      });
+
+      prev.addEventListener('click', () => {
+        scroller.scrollBy({ left: -getStep(), behavior: 'smooth' });
+        window.setTimeout(normalizeLoop, 450);
+      });
+
+      let scrollTimer;
+      scroller.addEventListener('scroll', () => {
+        window.clearTimeout(scrollTimer);
+        scrollTimer = window.setTimeout(normalizeLoop, 120);
+      });
+
+      window.addEventListener('resize', () => {
+        requestAnimationFrame(() => {
+          scroller.scrollLeft = realStart() + activeIndex * getStep();
+          normalizeLoop();
+        });
       });
 
       section.dataset.mellowExpertProofReady = 'true';
@@ -563,6 +658,39 @@
       "id": "card_3_quote",
       "label": "Quote",
       "default": "“For people building better evening routines, proof and simplicity matter. This section gives shoppers the confidence to keep exploring.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_4_letter",
+      "label": "Letter",
+      "default": "D"
+    },
+    {
+      "type": "text",
+      "id": "card_4_name",
+      "label": "Name",
+      "default": "Priya S."
+    },
+    {
+      "type": "text",
+      "id": "card_4_role",
+      "label": "Role",
+      "default": "Functional Nutritionist"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_quote",
+      "label": "Quote",
+      "default": "“The best digestive rituals are the ones people actually want to repeat. Mellow makes the format feel simple, calm, and easy to build into the day.”"
     }
   ],
   "presets": [
