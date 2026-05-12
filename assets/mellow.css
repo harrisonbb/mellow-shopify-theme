@@ -116,6 +116,81 @@
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
 }
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-synthesis: none;
+}
+
+.mellow-section img,
+[class^="mellow-"] img,
+[class*=" mellow-"] img {
+  display: block;
+  max-width: 100%;
+}
+
+.mellow-media,
+.mellow-image-wrap,
+.mellow-card__media,
+.mellow-visual,
+.mellow-product-visual,
+.mellow-ingredients__visual,
+.mellow-why-it-works__panel,
+.mellow-expert-proof__image-panel,
+.mellow-review-videos__media,
+.mellow-how-to-use__image-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.mellow-media img,
+.mellow-image-wrap img,
+.mellow-card__media img,
+.mellow-visual img,
+.mellow-product-visual img,
+.mellow-ingredients__visual img,
+.mellow-why-it-works__panel img,
+.mellow-expert-proof__image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mellow-visual,
+.mellow-product-visual,
+.mellow-card__media {
+  aspect-ratio: 4 / 5;
+  min-height: clamp(220px, 24vw, 360px);
+}
+
+html:not(.mellow-ready) [data-mellow-animate],
+html:not(.mellow-ready) .mellow-marquee,
+html:not(.mellow-ready) .mellow-carousel-track,
+html:not(.mellow-ready) .mellow-who-its-for__track,
+html:not(.mellow-ready) .mellow-expert-proof__carousel {
+  animation-play-state: paused;
+  scroll-behavior: auto;
+}
+
+html.mellow-ready [data-mellow-animate],
+html.mellow-ready .mellow-marquee,
+html.mellow-ready .mellow-carousel-track,
+html.mellow-ready .mellow-who-its-for__track,
+html.mellow-ready .mellow-expert-proof__carousel {
+  animation-play-state: running;
+}
+
+html:not(.mellow-ready) [class^="mellow-"],
+html:not(.mellow-ready) [class*=" mellow-"],
+html:not(.mellow-ready) [class^="mellow-"] *,
+html:not(.mellow-ready) [class*=" mellow-"] * {
+  animation-play-state: paused !important;
+  transition-property: background-color, border-color, color, opacity, box-shadow, filter;
+}
+
 html,
 body {
   max-width: 100%;
@@ -448,6 +523,7 @@ body {
   color: var(--mellow-ink);
   background: var(--mellow-cream);
   font-family: var(--mellow-font-body) !important;
+  font-synthesis: none;
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.55;

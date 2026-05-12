@@ -66,7 +66,9 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
     position: relative;
+    aspect-ratio: 4 / 3;
     height: clamp(260px, 25vw, 380px);
+    min-height: clamp(260px, 25vw, 380px);
     overflow: hidden;
     isolation: isolate;
     border-radius: 14px;
@@ -449,7 +451,7 @@
         <article class="mellow-why-it-works__media-item">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--activate">
             {%- if section.settings.image_1 != blank -%}
-              {{ section.settings.image_1 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_1_alt }}
+              {{ section.settings.image_1 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_1_alt }}
             {%- else -%}
               <span class="mellow-why-it-works__placeholder-layer" aria-hidden="true"></span>
             {%- endif -%}
@@ -473,7 +475,7 @@
         <article class="mellow-why-it-works__media-item">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--form">
             {%- if section.settings.image_2 != blank -%}
-              {{ section.settings.image_2 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_2_alt }}
+              {{ section.settings.image_2 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_2_alt }}
             {%- else -%}
               <span class="mellow-why-it-works__placeholder-layer" aria-hidden="true"></span>
             {%- endif -%}
@@ -497,7 +499,7 @@
         <article class="mellow-why-it-works__media-item">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--float">
             {%- if section.settings.image_3 != blank -%}
-              {{ section.settings.image_3 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_3_alt }}
+              {{ section.settings.image_3 | image_url: width: 1200 | image_tag: class: 'mellow-why-it-works__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_3_alt }}
             {%- else -%}
               <span class="mellow-why-it-works__placeholder-layer" aria-hidden="true"></span>
             {%- endif -%}

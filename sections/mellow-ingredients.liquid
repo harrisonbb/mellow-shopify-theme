@@ -128,14 +128,25 @@
     min-height: clamp(315px, 26vw, 390px);
   }
 
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__visual {
+    aspect-ratio: 16 / 9;
+    min-height: clamp(190px, 16vw, 260px);
+  }
+
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
     grid-template-columns: minmax(160px, 43%) minmax(0, 1fr);
+    min-height: clamp(150px, 12.5vw, 187px);
+  }
+
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__visual {
+    aspect-ratio: 4 / 3;
     min-height: clamp(150px, 12.5vw, 187px);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual {
     position: relative;
     min-width: 0;
+    min-height: 100%;
     overflow: hidden;
     background: #D9B075;
   }
@@ -341,7 +352,7 @@
       <article class="mellow-ingredients__card mellow-ingredients__card--feature">
         <div class="mellow-ingredients__visual mellow-ingredients__visual--alginate">
           {%- if section.settings.alginate_image != blank -%}
-            {{ section.settings.alginate_image | image_url: width: 1400 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', sizes: '(min-width: 990px) 54vw, 100vw', widths: '500, 720, 900, 1100, 1400', alt: section.settings.alginate_title }}
+            {{ section.settings.alginate_image | image_url: width: 1400 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 54vw, 100vw', widths: '500, 720, 900, 1100, 1400', alt: section.settings.alginate_title }}
           {%- endif -%}
         </div>
         <div class="mellow-ingredients__content">
@@ -355,7 +366,7 @@
         <article class="mellow-ingredients__card mellow-ingredients__card--compact">
           <div class="mellow-ingredients__visual mellow-ingredients__visual--calcium">
             {%- if section.settings.calcium_image != blank -%}
-              {{ section.settings.calcium_image | image_url: width: 900 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', sizes: '(min-width: 990px) 22vw, (min-width: 750px) 42vw, 100vw', widths: '360, 520, 700, 900', alt: section.settings.calcium_title }}
+              {{ section.settings.calcium_image | image_url: width: 900 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 22vw, (min-width: 750px) 42vw, 100vw', widths: '360, 520, 700, 900', alt: section.settings.calcium_title }}
             {%- endif -%}
           </div>
           <div class="mellow-ingredients__content">
@@ -368,7 +379,7 @@
         <article class="mellow-ingredients__card mellow-ingredients__card--compact">
           <div class="mellow-ingredients__visual mellow-ingredients__visual--bicarbonate">
             {%- if section.settings.bicarbonate_image != blank -%}
-              {{ section.settings.bicarbonate_image | image_url: width: 900 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', sizes: '(min-width: 990px) 22vw, (min-width: 750px) 42vw, 100vw', widths: '360, 520, 700, 900', alt: section.settings.bicarbonate_title }}
+              {{ section.settings.bicarbonate_image | image_url: width: 900 | image_tag: class: 'mellow-ingredients__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 22vw, (min-width: 750px) 42vw, 100vw', widths: '360, 520, 700, 900', alt: section.settings.bicarbonate_title }}
             {%- endif -%}
           </div>
           <div class="mellow-ingredients__content">

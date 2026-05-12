@@ -513,6 +513,24 @@
       return;
     }
 
+    const startWhenReady = (callback) => {
+      if (document.documentElement.classList.contains('mellow-ready')) {
+        requestAnimationFrame(callback);
+        return;
+      }
+
+      const handleReady = () => requestAnimationFrame(callback);
+      document.addEventListener('DOMContentLoaded', handleReady, { once: true });
+      document.addEventListener('mellow:ready', handleReady, { once: true });
+    };
+
+    startWhenReady(() => {
+      if (track.dataset.mellowWhoReady === 'true') {
+        return;
+      }
+
+      track.dataset.mellowWhoReady = 'true';
+
     const marqueeDuration = 90000;
     let setWidth = 0;
     let offset = 0;
@@ -746,6 +764,7 @@
       if (resizeObserver) {
         resizeObserver.disconnect();
       }
+    });
     });
   })();
 </script>

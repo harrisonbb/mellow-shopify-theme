@@ -162,6 +162,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__image-panel {
     position: relative;
+    aspect-ratio: 16 / 10;
     min-height: clamp(210px, 20vw, 280px);
     overflow: hidden;
     background:
@@ -351,7 +352,7 @@
             <article class="mellow-expert-proof__card" {{ block.shopify_attributes }}>
               <div class="mellow-expert-proof__image-panel">
                 {%- if block.settings.image != blank -%}
-                  {{ block.settings.image | image_url: width: 1100 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 520px, 84vw', widths: '360, 520, 720, 900, 1100', alt: block.settings.name }}
+                  {{ block.settings.image | image_url: width: 1100 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', decoding: 'async', sizes: '(min-width: 990px) 520px, 84vw', widths: '360, 520, 720, 900, 1100', alt: block.settings.name }}
                 {%- else -%}
                   <div class="mellow-expert-proof__placeholder" aria-hidden="true">{{ block.settings.initials | default: block.settings.name | default: 'M' | slice: 0, 2 | upcase }}</div>
                 {%- endif -%}

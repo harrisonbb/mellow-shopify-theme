@@ -15,7 +15,7 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;display=optional" rel="stylesheet">
 
     <title>
       {{ page_title }}
@@ -50,11 +50,11 @@
     %}
 
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {{ settings.type_body_font | font_face: font_display: 'fallback' }}
+      {{ body_font_bold | font_face: font_display: 'fallback' }}
+      {{ body_font_italic | font_face: font_display: 'fallback' }}
+      {{ body_font_bold_italic | font_face: font_display: 'fallback' }}
+      {{ settings.type_header_font | font_face: font_display: 'fallback' }}
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -282,6 +282,23 @@
         onload="this.media='all'"
       >
     {%- endif -%}
+
+    <script>
+      (function () {
+        function markReady() {
+          document.documentElement.classList.add('mellow-ready');
+          document.dispatchEvent(new CustomEvent('mellow:ready'));
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () {
+            requestAnimationFrame(markReady);
+          });
+        } else {
+          requestAnimationFrame(markReady);
+        }
+      })();
+    </script>
 
     <script>
       if (Shopify.designMode) {
