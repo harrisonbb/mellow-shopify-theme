@@ -43,21 +43,21 @@
   --mellow-section-eyebrow-line-height: 1.2;
   --mellow-section-eyebrow-letter-spacing: 0.16em;
   --mellow-section-eyebrow-weight: 800;
-  --mellow-section-heading-size: clamp(4.8rem, 4.4vw, 7.2rem);
-  --mellow-section-heading-line-height: 0.93;
-  --mellow-section-heading-letter-spacing: -0.04em;
+  --mellow-section-heading-size: clamp(38px, 3.6vw, 58px);
+  --mellow-section-heading-line-height: 0.96;
+  --mellow-section-heading-letter-spacing: -0.035em;
   --mellow-section-heading-weight: 500;
-  --mellow-section-subhead-size: clamp(1.7rem, 1.35vw, 2rem);
+  --mellow-section-subhead-size: clamp(1.5rem, 1.1vw, 1.8rem);
   --mellow-section-subhead-line-height: 1.45;
   --mellow-section-subhead-letter-spacing: -0.01em;
   --mellow-section-subhead-weight: 400;
-  --mellow-card-title-size: clamp(34px, 2.4vw, 44px);
-  --mellow-card-title-line-height: 0.95;
-  --mellow-card-title-letter-spacing: -0.04em;
+  --mellow-card-title-size: clamp(26px, 1.65vw, 32px);
+  --mellow-card-title-line-height: 1.02;
+  --mellow-card-title-letter-spacing: -0.03em;
   --mellow-card-title-weight: 500;
-  --mellow-card-body-size: clamp(18px, 1.24vw, 22px);
-  --mellow-card-body-line-height: 1.4;
-  --mellow-card-body-letter-spacing: -0.015em;
+  --mellow-card-body-size: clamp(15px, 1vw, 17px);
+  --mellow-card-body-line-height: 1.48;
+  --mellow-card-body-letter-spacing: -0.01em;
   --mellow-card-body-weight: 400;
 
   --mellow-axis-pad: clamp(32px, 7vw, 112px);
@@ -291,10 +291,10 @@ input[type="reset"] {
 .mellow-heading {
   max-width: 76rem;
   margin: 0;
-  font-size: clamp(4.4rem, 7vw, 8.8rem);
+  font-size: clamp(3.8rem, 5.8vw, 7.2rem);
   font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 0.92;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
 }
 
 .mellow-lede {
@@ -384,16 +384,16 @@ input[type="reset"] {
 .mellow-architecture-section__heading {
   max-width: 70rem;
   margin: 0;
-  font-size: clamp(3.2rem, 5vw, 6.4rem);
+  font-size: clamp(3rem, 4vw, 5.2rem);
   font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
 }
 
 .mellow-architecture-section__text {
   max-width: 58rem;
   margin: 1.8rem 0 0;
-  font-size: clamp(1.6rem, 1.7vw, 2rem);
+  font-size: clamp(1.5rem, 1.2vw, 1.8rem);
   line-height: 1.6;
 }
 
@@ -907,12 +907,12 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__heading {
-    font-size: clamp(3.8rem, 11.8vw, 5.8rem);
+    font-size: clamp(3.6rem, 10.5vw, 5.2rem);
   }
 
   .mellow-who-its-for__text {
     max-width: 34rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     text-wrap: pretty;
   }
 
