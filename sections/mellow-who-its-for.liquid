@@ -121,7 +121,6 @@
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
     const getMomentCards = () => Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
-    const activeCardSelector = '.mellow-who-its-for__card.is-active, .mellow-moments-card.is-active, .mellow-reflux-moments__card.is-active';
 
     if (!scroller || !track || !cardSet || !getMomentCards().length) {
       return;
@@ -175,15 +174,21 @@
 
       return (
         card.offsetParent !== null &&
-        rect.width > 0 &&
-        rect.height > 0 &&
-        rect.right > -300 &&
-        rect.left < window.innerWidth + 300
+        rect.right > -200 &&
+        rect.left < window.innerWidth + 200
       );
     });
 
-    const recoverActiveCard = (nextActiveCard) => {
-      section.querySelectorAll(activeCardSelector).forEach((card) => card.classList.remove('is-active'));
+    const clearInactiveCards = (nextActiveCard) => {
+      getMomentCards().forEach((card) => {
+        if (card !== nextActiveCard && card.classList.contains('is-active')) {
+          card.classList.remove('is-active');
+        }
+      });
+    };
+
+    const setActiveCard = (nextActiveCard) => {
+      clearInactiveCards(nextActiveCard);
       nextActiveCard.classList.add('is-active');
       activeCard = nextActiveCard;
     };
@@ -208,17 +213,15 @@
       });
 
       if (!activeCard || !visibleCards.includes(activeCard)) {
-        recoverActiveCard(closestCard);
+        setActiveCard(closestCard);
         return;
       }
 
       const activeDistance = getDistanceFromCenter(activeCard);
-      const switchThreshold = 64;
+      const switchThreshold = 48;
 
       if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
-        activeCard.classList.remove('is-active');
-        closestCard.classList.add('is-active');
-        activeCard = closestCard;
+        setActiveCard(closestCard);
       }
     };
 
