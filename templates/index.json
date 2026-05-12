@@ -1,60 +1,151 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "mellow_hero": {
       "type": "mellow-hero",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Hero",
+        "heading": "A premium calm opening for Mellow.",
+        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Trust bar",
+        "heading": "Credibility markers for first-time shoppers.",
+        "text": "Use this band for concise trust claims, press notes, shipping reassurance, or guarantees.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_who_its_for": {
       "type": "mellow-who-its-for",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "REAL-LIFE REFLUX MOMENTS",
+        "heading": "Reflux shows up in more moments than you think.",
+        "text": "Mellow was designed for the real-life moments that trigger reflux — not just the symptom."
+      }
     },
     "mellow_review_videos": {
       "type": "mellow-review-videos",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Review videos",
+        "heading": "A future home for video social proof.",
+        "text": "Reserve this area for customer clips, creator testimonials, and authentic proof points.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_how_to_use": {
       "type": "mellow-how-to-use",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "How to use Mellow",
+        "heading": "Make the routine feel effortless.",
+        "text": "Show the simple daily steps and when customers should take Mellow.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_day_night_scroll": {
       "type": "mellow-day-night-scroll",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Day & night scroll animation",
+        "heading": "A future storytelling moment for daily coverage.",
+        "text": "Build this into a calm scroll sequence that explains daytime and nighttime support.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_ingredients": {
       "type": "mellow-ingredients",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Ingredients",
+        "heading": "Spotlight the formulation with clarity.",
+        "text": "Use this section for ingredient education, sourcing notes, and why each component matters.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_why_it_works": {
       "type": "mellow-why-it-works",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Why it works",
+        "heading": "Explain the mechanism in plain language.",
+        "text": "Translate the science into a simple benefit-led narrative customers can trust.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_clinical_proof": {
       "type": "mellow-clinical-proof",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Clinical proof",
+        "heading": "Create space for evidence and study support.",
+        "text": "Add research summaries, substantiation, and careful science-forward copy here.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_expert_reviews": {
       "type": "mellow-expert-reviews",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Expert reviews",
+        "heading": "Bring expert validation into the page.",
+        "text": "Feature practitioner commentary, credentials, and endorsement-style proof points.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_compare": {
       "type": "mellow-compare",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Compare",
+        "heading": "Make the better choice easy to understand.",
+        "text": "Compare Mellow against common alternatives with a clean, conversion-focused layout.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_written_reviews": {
       "type": "mellow-written-reviews",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Written reviews",
+        "heading": "Collect persuasive customer quotes.",
+        "text": "Use this area for short written testimonials and rating highlights."
+      }
     },
     "mellow_buy_boxes": {
       "type": "mellow-buy-boxes",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Buy boxes",
+        "heading": "Prepare the main conversion module.",
+        "text": "Add subscription, bundle, one-time purchase, and offer details when ready.",
+        "note": "Ready for final design replacement."
+      }
     },
     "mellow_faq": {
       "type": "mellow-faq",
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "FAQ",
+        "heading": "Answer final purchase questions calmly.",
+        "text": "Use expandable answers later for objections, usage, shipping, and safety questions.",
+        "note": "Ready for final design replacement."
+      }
     }
   },
   "order": [
