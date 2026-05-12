@@ -44,16 +44,16 @@
     font-size: clamp(44px, 4.1vw, 62px);
     line-height: 0.98;
     font-weight: 600;
-    letter-spacing: -0.034em;
+    letter-spacing: -0.032em;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
-    max-width: 520px;
+    max-width: 560px;
     margin: 22px 0 0;
-    font-size: clamp(17px, 1.25vw, 19px);
+    font-size: clamp(18px, 1.28vw, 20px);
     line-height: 1.45;
     font-weight: 400;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
@@ -106,8 +106,6 @@
     will-change: transform;
     backface-visibility: hidden;
     z-index: 1;
-
-    /* Outer article is only the invisible scaling shell. */
     background: transparent !important;
     background-image: none !important;
     border: 0 !important;
@@ -119,8 +117,6 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
     transform: scale(1.09);
     z-index: 20;
-
-    /* Keep all visible card styling on the inner surface only. */
     background: transparent !important;
     background-image: none !important;
     border: 0 !important;
@@ -137,14 +133,11 @@
     height: 100%;
     padding: 52px 36px 36px;
     overflow: hidden;
-
-    /* Inner div is the only visible rounded card surface. */
     background: #f4ede0 !important;
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.22) !important;
     border-radius: 18px !important;
     box-shadow: none;
-
     transform: translateZ(0);
     backface-visibility: hidden;
     transition:
@@ -179,6 +172,7 @@
     right: 22px;
     margin: 0;
     transform: none;
+    letter-spacing: 0.12em;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
@@ -190,7 +184,7 @@
     font-size: clamp(25px, 1.8vw, 30px);
     line-height: 1.04;
     font-weight: 580;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.032em;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__divider {
@@ -205,7 +199,7 @@
     margin: 0;
     max-width: 94%;
     font-size: clamp(15.5px, 1.02vw, 16.75px);
-    line-height: 1.52;
+    line-height: 1.46;
     font-weight: 400;
     letter-spacing: -0.006em;
   }
@@ -230,7 +224,7 @@
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
       font-size: clamp(38px, 10vw, 48px);
       line-height: 1;
-      letter-spacing: -0.038em;
+      letter-spacing: -0.034em;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
@@ -278,7 +272,7 @@
 
         {%- if section.settings.heading != blank -%}
           <h2 class="mellow-who-its-for__heading">
-            {{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' }}
+            {{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' | replace: 'think.', 'think' }}
           </h2>
         {%- endif -%}
 
