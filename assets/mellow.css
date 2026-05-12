@@ -679,6 +679,69 @@ input[type="reset"] {
   transition: transform 260ms ease;
 }
 
+.mellow-who-its-for__card--stress {
+  grid-template-rows: auto auto minmax(18rem, 1fr);
+}
+
+.mellow-who-its-for__stress-illustration {
+  position: relative;
+  align-self: end;
+  width: calc(100% + (var(--mellow-who-card-padding-x) * 2));
+  min-height: clamp(18rem, 23vw, 23rem);
+  margin: auto calc(-1 * var(--mellow-who-card-padding-x)) calc(-1 * var(--mellow-who-card-padding-y));
+  border-top: 0.1rem solid rgba(212, 138, 50, 0.15);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(212, 138, 50, 0.14), transparent 13rem),
+    radial-gradient(circle at 82% 18%, rgba(240, 226, 202, 0.78), transparent 12rem),
+    linear-gradient(180deg, rgba(255, 250, 239, 0.8), rgba(232, 211, 176, 0.62));
+  overflow: hidden;
+}
+
+.mellow-who-its-for__stress-illustration::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 24% 46%, rgba(26, 45, 16, 0.08) 0 0.1rem, transparent 0.12rem),
+    radial-gradient(circle at 72% 54%, rgba(212, 138, 50, 0.08) 0 0.1rem, transparent 0.12rem);
+  background-size: 1.8rem 1.8rem, 2.2rem 2.2rem;
+  mix-blend-mode: multiply;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.mellow-who-its-for__stress-illustration svg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.stress-illustration__wall { fill: #F4E8D2; }
+.stress-illustration__window { fill: rgba(255, 253, 247, 0.58); stroke: rgba(190, 160, 108, 0.38); stroke-width: 5; }
+.stress-illustration__window-line,
+.stress-illustration__shelf,
+.stress-illustration__frame { fill: none; stroke: rgba(166, 128, 74, 0.45); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.stress-illustration__art { fill: rgba(89, 109, 66, 0.45); }
+.stress-illustration__leaf { fill: #596D42; opacity: 0.85; }
+.stress-illustration__pot { fill: #B99461; stroke: rgba(96, 68, 34, 0.35); stroke-width: 3; stroke-linejoin: round; }
+.stress-illustration__desk { fill: #C99A5D; opacity: 0.72; }
+.stress-illustration__chair { fill: #27351F; opacity: 0.9; }
+.stress-illustration__body { fill: #425536; stroke: rgba(26, 45, 16, 0.28); stroke-width: 3; stroke-linejoin: round; }
+.stress-illustration__neck,
+.stress-illustration__face,
+.stress-illustration__hand { fill: #D9995A; stroke: rgba(99, 55, 21, 0.35); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.stress-illustration__hair,
+.stress-illustration__bun { fill: #2D1E0D; stroke: rgba(45, 30, 13, 0.48); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.stress-illustration__features { fill: none; stroke: #2D1E0D; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.stress-illustration__arm { fill: #3A4D31; stroke: rgba(26, 45, 16, 0.3); stroke-width: 3; stroke-linejoin: round; }
+.stress-illustration__laptop { fill: #A79B88; stroke: rgba(69, 68, 62, 0.48); stroke-width: 4; stroke-linejoin: round; }
+.stress-illustration__keyboard,
+.stress-illustration__mug,
+.stress-illustration__notebook { fill: rgba(255, 248, 233, 0.74); stroke: rgba(82, 68, 45, 0.42); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.stress-illustration__scribble { fill: none; stroke: rgba(116, 87, 39, 0.82); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
 .mellow-who-its-for__tag {
   position: absolute;
   top: 1.7rem;
@@ -833,6 +896,14 @@ input[type="reset"] {
     row-gap: 1.6rem;
     box-shadow: 0 1.8rem 4rem rgba(5, 15, 8, 0.25);
   }
+
+  .mellow-who-its-for__card--stress {
+    grid-template-rows: auto auto minmax(15.5rem, 1fr);
+  }
+
+  .mellow-who-its-for__stress-illustration {
+    min-height: 15.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -842,6 +913,7 @@ input[type="reset"] {
   .mellow-who-its-for__icon,
   .mellow-who-its-for__icon::after,
   .mellow-who-its-for__card-copy,
+  .mellow-who-its-for__stress-illustration,
   .mellow-who-its-for__quiz-button {
     animation: none !important;
     scroll-behavior: auto !important;

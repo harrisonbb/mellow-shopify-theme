@@ -54,7 +54,7 @@
               assign card_tag = card_parts[3]
             -%}
             <article
-              class="mellow-who-its-for__card"
+              class="mellow-who-its-for__card{% if card_title == 'Stress & pressure' %} mellow-who-its-for__card--stress{% endif %}"
               {% if is_duplicate %}
                 data-mellow-who-card-duplicate
                 aria-hidden="true"
@@ -92,6 +92,36 @@
                 <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
                 <p>{{ card_text | escape }}</p>
               </div>
+
+              {%- if card_title == 'Stress & pressure' -%}
+                <div class="mellow-who-its-for__stress-illustration" aria-hidden="true">
+                  <svg viewBox="0 0 360 230" focusable="false" role="presentation">
+                    <rect class="stress-illustration__wall" x="0" y="0" width="360" height="230" rx="24"/>
+                    <path class="stress-illustration__window" d="M254 21h81v105h-81z"/>
+                    <path class="stress-illustration__window-line" d="M294 24v98M254 72h78"/>
+                    <path class="stress-illustration__shelf" d="M242 132h100"/>
+                    <path class="stress-illustration__frame" d="M18 35h61v61H18z"/>
+                    <path class="stress-illustration__art" d="M29 74c13-20 26 3 35-19 10 10 13 18 6 31H29z"/>
+                    <path class="stress-illustration__leaf" d="M315 168c6-24 22-39 32-49-1 24-14 45-32 49Zm-19 5c-3-22 7-42 17-55 7 23 1 43-17 55Zm38 1c8-17 20-25 30-29-4 17-15 29-30 29Z"/>
+                    <path class="stress-illustration__pot" d="M294 174h49l-6 34h-37z"/>
+                    <path class="stress-illustration__desk" d="M0 180h360v50H0z"/>
+                    <path class="stress-illustration__chair" d="M28 144c21-11 50 3 55 36H27z"/>
+                    <path class="stress-illustration__body" d="M88 118c35-17 82-4 96 41l12 39H68l7-48c2-14 5-25 13-32Z"/>
+                    <path class="stress-illustration__neck" d="M150 93c-1 13-5 22-12 29 14 9 30 5 37-7-8-5-13-12-13-25Z"/>
+                    <path class="stress-illustration__face" d="M118 54c26-28 74-10 77 27 2 29-20 53-49 53-27 0-46-23-43-50 1-12 6-22 15-30Z"/>
+                    <path class="stress-illustration__hair" d="M106 76c-2-25 16-42 35-48 5-20 39-19 47 0 19 7 30 22 28 42-11-16-27-23-52-21-28 2-43 13-58 27Z"/>
+                    <path class="stress-illustration__bun" d="M129 24c-3-18 12-29 30-26 18 3 25 17 19 31-13-9-30-11-49-5Z"/>
+                    <path class="stress-illustration__features" d="M139 84c7 3 12 3 18 0M181 83c-6 3-11 3-17 0M158 96c-5 8-9 13-3 17M143 119c14 8 28 5 38-5"/>
+                    <path class="stress-illustration__arm" d="M193 127c15 10 20 30 10 49l-16 31h-31l19-46c4-12 8-24 18-34Z"/>
+                    <path class="stress-illustration__hand" d="M193 62c14 8 20 23 16 40-4 14-14 22-27 23 6-22 5-43 11-63Z"/>
+                    <path class="stress-illustration__laptop" d="M199 148h104l31 49H221z"/>
+                    <path class="stress-illustration__keyboard" d="M156 198h179"/>
+                    <path class="stress-illustration__mug" d="M42 177h28v31H45zM70 184c15-4 15 18 0 15"/>
+                    <path class="stress-illustration__notebook" d="M77 203h80l24 17H94z"/>
+                    <path class="stress-illustration__scribble" d="M215 36c22-30 83-6 64 20-16 22-68 12-57-10 11-21 62-15 58 10-5 31-82 27-82-4 0-24 50-44 88-16M220 74c14 4 9 10 1 16"/>
+                  </svg>
+                </div>
+              {%- endif -%}
             </article>
           {%- endfor -%}
         {%- endfor -%}
