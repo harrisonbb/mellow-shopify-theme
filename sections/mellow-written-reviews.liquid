@@ -9,9 +9,12 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: var(--mellow-section-pad-top);
-    padding-bottom: var(--mellow-section-pad-bottom);
-    background: #14310F;
+    padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
+    padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
+    background:
+      radial-gradient(circle at 78% 18%, rgba(208, 74, 42, 0.1), transparent 34%),
+      radial-gradient(circle at 22% 72%, rgba(61, 107, 140, 0.08), transparent 36%),
+      #14310F;
     color: #F0EBE0;
   }
 
@@ -66,7 +69,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--mellow-card-gap, clamp(28px, 2.6vw, 42px));
     align-items: stretch;
+    width: 100%;
+    max-width: none;
     margin: 0;
+    padding: 0;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
@@ -140,7 +146,7 @@
     letter-spacing: -0.004em;
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta-wrap {
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__footer {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -236,6 +242,12 @@
   }
 
   @media screen and (max-width: 749px) {
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__inner {
+      --mellow-reviews-edge-pad: 22px;
+      padding-left: var(--mellow-reviews-edge-pad);
+      padding-right: var(--mellow-reviews-edge-pad);
+    }
+
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
       display: block;
     }
@@ -321,7 +333,7 @@
       </article>
     </div>
 
-    <div class="mellow-written-reviews__cta-wrap">
+    <div class="mellow-written-reviews__footer">
       <a class="mellow-written-reviews__cta" href="/products/mellow">
         <span class="mellow-written-reviews__cta-label">Try Mellow</span>
         <span class="mellow-written-reviews__cta-arrow" aria-hidden="true">→</span>
