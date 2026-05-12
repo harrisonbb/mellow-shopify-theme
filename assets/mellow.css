@@ -543,7 +543,7 @@ input[type="reset"] {
   position: relative;
   width: 100%;
   min-width: 0;
-  margin-top: clamp(3.2rem, 4vw, 5.2rem);
+  margin-top: clamp(7.2rem, 8vw, 12rem);
 }
 
 .mellow-who-its-for__carousel {
@@ -785,6 +785,10 @@ input[type="reset"] {
     align-self: start;
     margin-inline-end: 0;
   }
+
+  .mellow-who-its-for__carousel-wrap {
+    margin-top: clamp(4.8rem, 7vw, 5.6rem);
+  }
 }
 
 @media screen and (max-width: 749px) {
@@ -830,7 +834,7 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(2.8rem, 7vw, 4rem);
+    margin-top: clamp(4rem, 10vw, 5.6rem);
   }
 
   .mellow-who-its-for__card {
