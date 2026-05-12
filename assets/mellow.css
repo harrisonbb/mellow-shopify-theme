@@ -279,7 +279,7 @@ li {
 
 /* Mellow who it's for carousel */
 .mellow-who-its-for {
-  --mellow-card-gap: 0.75rem;
+  --mellow-card-gap: 1.5rem;
   --mellow-scroll-pad-y: 1.25rem;
   --mellow-scroll-pad-x: 2rem;
   --mellow-bento-gap: 0.5rem;
@@ -291,7 +291,7 @@ li {
   --mellow-who-card-padding-y: clamp(2.6rem, 2vw, 3.2rem);
   --mellow-who-card-padding-x: clamp(2.6rem, 2vw, 3.3rem);
   --mellow-who-icon-size: 6.8rem;
-  --mellow-who-edge: clamp(2.4rem, 6vw, 9.6rem);
+  --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   overflow: hidden;
   padding: clamp(6.2rem, 6.2vw, 8.6rem) 0 clamp(4.2rem, 4.6vw, 6.2rem);
   background:
@@ -304,24 +304,25 @@ li {
 .mellow-who-its-for__inner {
   box-sizing: border-box;
   width: 100%;
-  max-width: 1280px;
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
   padding-left: var(--mellow-who-edge);
   padding-right: var(--mellow-who-edge);
 }
 
 .mellow-who-its-for__header-wrap {
   display: grid;
-  grid-template-columns: minmax(0, 76rem) minmax(22rem, auto);
+  grid-template-columns: minmax(0, 72rem) auto;
   align-items: center;
-  gap: clamp(3.2rem, 7vw, 10rem);
+  justify-content: space-between;
+  column-gap: clamp(3.2rem, 5vw, 8rem);
   width: 100%;
 }
 
 .mellow-who-its-for__header {
   position: relative;
   z-index: 2;
-  max-width: 76rem;
+  max-width: 72rem;
   text-align: left;
 }
 
@@ -356,6 +357,10 @@ li {
   justify-self: end;
   align-self: center;
   transform: none !important;
+}
+
+.mellow-who-its-for__header-actions {
+  margin-inline-end: clamp(4rem, 10vw, 18rem);
 }
 
 .mellow-who-its-for__quiz-action {
@@ -625,6 +630,7 @@ li {
   .mellow-who-its-for__quiz-action {
     justify-self: start;
     align-self: start;
+    margin-inline-end: 0;
   }
 
   .mellow-who-its-for__card h3 {
@@ -663,6 +669,7 @@ li {
   .mellow-who-its-for__quiz-action {
     justify-self: start;
     align-self: start;
+    margin-inline-end: 0;
   }
 
   .mellow-who-its-for__quiz-button {
