@@ -588,8 +588,8 @@ li {
   margin: 0;
   color: #1A2D10;
   font-family: var(--mellow-font-heading);
-  font-size: clamp(2.45rem, 1.7vw, 2.95rem);
-  line-height: 1.05;
+  font-size: 24px;
+  line-height: 1;
   letter-spacing: -0.04em;
   text-align: left;
 }
@@ -606,8 +606,9 @@ li {
   max-width: 29rem;
   margin: 0;
   color: rgba(20, 33, 17, 0.82);
-  font-size: clamp(1.48rem, 0.92vw, 1.65rem);
-  line-height: 1.46;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
   text-align: left;
 }
 
@@ -640,10 +641,6 @@ li {
     justify-self: start;
     align-self: start;
     margin-inline-end: 0;
-  }
-
-  .mellow-who-its-for__card h3 {
-    font-size: clamp(2.25rem, 2.8vw, 2.65rem);
   }
 }
 
@@ -701,15 +698,6 @@ li {
     row-gap: 1.6rem;
     scroll-snap-align: center;
     box-shadow: 0 1.8rem 4rem rgba(5, 15, 8, 0.25);
-  }
-
-  .mellow-who-its-for__card h3 {
-    font-size: clamp(2.55rem, 8vw, 3.05rem);
-  }
-
-  .mellow-who-its-for__card p {
-    font-size: 1.65rem;
-    line-height: 1.5;
   }
 }
 
