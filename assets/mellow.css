@@ -12,7 +12,7 @@
   - mellow-ingredients
   - mellow-why-it-works
   - mellow-clinical-proof
-  - mellow-expert-reviews
+  - mellow-expert-proof
   - mellow-compare
   - mellow-written-reviews
   - mellow-buy-boxes
@@ -710,7 +710,7 @@ input[type="reset"] {
 .mellow-review-videos,
 .mellow-day-night-scroll,
 .mellow-why-it-works,
-.mellow-expert-reviews,
+.mellow-expert-proof,
 .mellow-written-reviews,
 .mellow-faq {
   background: var(--mellow-ivory);
