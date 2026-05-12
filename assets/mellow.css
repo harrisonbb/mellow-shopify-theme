@@ -527,7 +527,8 @@ input[type="reset"] {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(88px, 8vw, 128px);
+  padding-top: clamp(72px, 7vw, 108px);
+  padding-bottom: clamp(56px, 6vw, 88px);
   background:
     radial-gradient(circle at 78% 28%, rgba(208, 74, 42, 0.08), transparent 34%),
     linear-gradient(180deg, #10270D 0%, #0D220B 100%);
@@ -552,6 +553,7 @@ input[type="reset"] {
   box-sizing: border-box;
   width: 100%;
   padding-inline: var(--mellow-who-header-inset);
+  margin-bottom: clamp(42px, 4vw, 64px);
 }
 
 @media screen and (min-width: 990px) {
@@ -671,7 +673,7 @@ input[type="reset"] {
   position: relative;
   width: 100%;
   min-width: 0;
-  margin-top: clamp(2rem, 4vw, 3.5rem);
+  margin-top: 0;
   overflow: hidden;
 }
 
@@ -682,7 +684,7 @@ input[type="reset"] {
   max-width: 100%;
   overflow: hidden;
   margin-bottom: clamp(-64px, -4vw, -48px);
-  padding: 48px var(--mellow-scroll-pad-x) 72px;
+  padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
   touch-action: pan-y;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1113,8 +1115,8 @@ input[type="reset"] {
     --mellow-who-card-padding-x: clamp(1.6rem, 2.4vw, 2.2rem);
     --mellow-who-icon-size: clamp(5.8rem, 7vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 3.4vw, 3rem);
-    padding-top: clamp(4.2rem, 7vw, 6.4rem);
-    padding-bottom: clamp(88px, 8vw, 128px);
+    padding-top: clamp(56px, 8vw, 80px);
+    padding-bottom: clamp(56px, 8vw, 88px);
   }
 
   .mellow-who-its-for__header-wrap {
@@ -1131,7 +1133,7 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(2.4rem, 4vw, 3.4rem);
+    margin-top: 0;
   }
 }
 
@@ -1143,8 +1145,8 @@ input[type="reset"] {
     --mellow-who-card-padding-x: clamp(1.8rem, 5vw, 2.4rem);
     --mellow-who-icon-size: clamp(5.8rem, 15vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 7vw, 3rem);
-    padding-top: clamp(4.4rem, 11vw, 6rem);
-    padding-bottom: clamp(88px, 8vw, 128px);
+    padding-top: clamp(48px, 10vw, 64px);
+    padding-bottom: clamp(56px, 10vw, 80px);
   }
 
   .mellow-who-its-for__header-wrap {
@@ -1188,7 +1190,7 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(2.2rem, 5.5vw, 3.4rem);
+    margin-top: 0;
   }
 
   .mellow-who-its-for__card-inner {
