@@ -486,7 +486,7 @@ input[type="reset"] {
   --mellow-who-icon-svg-size: clamp(3.2rem, 2.7vw, 4rem);
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   --mellow-who-header-inset: 0rem;
-  --mellow-who-header-inset-desktop: clamp(1.75rem, 2.2vw, 3.25rem);
+  --mellow-who-header-inset-desktop: clamp(1.25rem, 1.5vw, 2.25rem);
   overflow: hidden;
   padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(2.5rem, 4vw, 4.5rem);
   background:
