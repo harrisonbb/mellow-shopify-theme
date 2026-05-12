@@ -956,7 +956,7 @@ input[type="reset"] {
   min-height: 0;
   width: 100%;
   max-width: 36rem;
-  gap: clamp(0.8rem, 0.9vw, 1.05rem);
+  gap: 0;
   margin-top: clamp(0.2rem, 0.5vw, 0.6rem);
   align-self: start;
   transform: translateY(10px);
@@ -1012,13 +1012,11 @@ input[type="reset"] {
 
 .mellow-who-its-for__card:not(.is-active) {
   transform: scale(0.98);
-  opacity: 1;
-  filter: brightness(0.96) saturate(0.98);
+
 }
 
 .mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
   transform: none;
-  opacity: 1;
 }
 
 @media screen and (min-width: 990px) and (hover: hover) and (pointer: fine) {
@@ -1050,7 +1048,7 @@ input[type="reset"] {
 .mellow-who-its-for__card h3 {
   width: 100%;
   max-width: 92%;
-  margin: 0;
+  margin: 0 0 12px;
   color: #1A2D10;
   font-family: var(--mellow-font-display) !important;
   font-size: clamp(25px, 2vw, 32px);
@@ -1064,6 +1062,8 @@ input[type="reset"] {
   display: block;
   width: clamp(4rem, 3vw, 5.2rem);
   height: 0.2rem;
+  margin-top: 9px;
+  margin-bottom: 14px;
   border-radius: var(--mellow-radius-pill);
   background: #D48A32;
 }
@@ -1075,7 +1075,7 @@ input[type="reset"] {
   font-size: clamp(15.5px, 1.05vw, 17px);
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.5;
+  line-height: 1.52;
   text-align: left;
 }
 
@@ -1178,7 +1178,7 @@ input[type="reset"] {
 
   .mellow-who-its-for__card p {
     font-size: 15.5px;
-    line-height: 1.5;
+    line-height: 1.52;
   }
 
 }
