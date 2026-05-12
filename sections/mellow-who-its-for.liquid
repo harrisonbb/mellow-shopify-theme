@@ -44,7 +44,7 @@
     font-size: clamp(44px, 4.1vw, 62px);
     line-height: 0.98;
     font-weight: 600;
-    letter-spacing: -0.032em;
+    letter-spacing: -0.034em;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
@@ -109,6 +109,7 @@
 
     /* Outer article is only the invisible scaling shell. */
     background: transparent !important;
+    background-image: none !important;
     border: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -121,6 +122,7 @@
 
     /* Keep all visible card styling on the inner surface only. */
     background: transparent !important;
+    background-image: none !important;
     border: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -137,9 +139,10 @@
     overflow: hidden;
 
     /* Inner div is the only visible rounded card surface. */
-    background: #f4ede0;
-    border: 1px solid rgba(180, 130, 72, 0.22);
-    border-radius: 18px;
+    background: #f4ede0 !important;
+    background-image: none !important;
+    border: 1px solid rgba(180, 130, 72, 0.22) !important;
+    border-radius: 18px !important;
     box-shadow: none;
 
     transform: translateZ(0);
@@ -150,14 +153,24 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
-    background: #f4ede0;
-    border-radius: 18px;
+    background: #f4ede0 !important;
+    background-image: none !important;
+    border: 1px solid rgba(180, 130, 72, 0.26) !important;
+    border-radius: 18px !important;
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
     filter: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
     filter: brightness(0.96) saturate(0.98);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card::before,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card::after,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner::before,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner::after {
+    content: none !important;
+    display: none !important;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
