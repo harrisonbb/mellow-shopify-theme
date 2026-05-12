@@ -146,6 +146,7 @@
     border: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    outline: 0 !important;
     overflow: visible;
   }
 
@@ -157,6 +158,7 @@
     border: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    outline: 0 !important;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) {
@@ -172,7 +174,9 @@
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.22) !important;
     border-radius: 18px !important;
+    outline: 0 !important;
     box-shadow: none;
+    background-clip: padding-box;
     transform: translateZ(0);
     backface-visibility: hidden;
     transition:
@@ -183,9 +187,11 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
     background: #f4ede0 !important;
     background-image: none !important;
-    border: 1px solid rgba(180, 130, 72, 0.26) !important;
+    border: 1px solid rgba(180, 130, 72, 0.22) !important;
     border-radius: 18px !important;
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    outline: 0 !important;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
     filter: none;
   }
 
