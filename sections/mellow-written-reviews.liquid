@@ -1,14 +1,17 @@
 {% comment %}
   Mellow written reviews section.
-  Premium written testimonial section using the locked Mellow global design system.
+  Locally matched to the Who It’s For section axis and spacing.
 {% endcomment %}
 
 <style>
   #MellowWrittenReviews-{{ section.id }} {
-    background:
-      radial-gradient(circle at 78% 18%, rgba(208, 74, 42, 0.1), transparent 34%),
-      radial-gradient(circle at 22% 72%, rgba(61, 107, 140, 0.08), transparent 36%),
-      #14310F;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
+    background: #14310F;
     color: #F0EBE0;
   }
 
@@ -16,8 +19,9 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding-left: var(--mellow-section-axis-pad);
-    padding-right: var(--mellow-section-axis-pad);
+    --mellow-reviews-edge-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-left: var(--mellow-reviews-edge-pad);
+    padding-right: var(--mellow-reviews-edge-pad);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
@@ -25,7 +29,7 @@
     grid-template-columns: minmax(0, 760px) auto;
     align-items: center;
     gap: clamp(40px, 6vw, 96px);
-    margin-bottom: clamp(42px, 4.8vw, 72px);
+    margin-bottom: clamp(22px, 2.6vw, 36px);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header {
@@ -62,6 +66,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--mellow-card-gap, clamp(28px, 2.6vw, 42px));
     align-items: stretch;
+    margin: 0;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
@@ -135,37 +140,11 @@
     letter-spacing: -0.004em;
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__footer {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: var(--mellow-card-gap, clamp(28px, 2.6vw, 42px));
-    margin-top: clamp(28px, 3.4vw, 50px);
-  }
-
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof {
-    justify-self: start;
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: rgba(240, 235, 224, 0.72);
-    font-size: clamp(14px, 1vw, 16px);
-    line-height: 1.3;
-    font-weight: 500;
-    letter-spacing: -0.004em;
-  }
-
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-stars {
-    color: #D04A2A;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-  }
-
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta-wrap {
-    justify-self: center;
     display: flex;
-    justify-content: flex-start;
-    width: auto;
+    justify-content: center;
+    width: 100%;
+    margin-top: clamp(28px, 3.4vw, 50px);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta {
@@ -178,7 +157,6 @@
     white-space: nowrap;
     transform: translateZ(0);
     backface-visibility: hidden;
-
     width: clamp(150px, 10.4vw, 178px);
     min-height: clamp(52px, 4.05vw, 62px);
     padding: clamp(15px, 1.18vw, 18px) clamp(18px, 1.45vw, 25px);
@@ -189,9 +167,7 @@
     font-weight: 700;
     line-height: 1;
     text-decoration: none;
-
-    transform-origin: left center;
-
+    transform-origin: center center;
     transition:
       width 520ms cubic-bezier(0.16, 1, 0.3, 1),
       background-color 260ms ease,
@@ -227,7 +203,7 @@
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta:hover,
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta:focus-visible {
     width: clamp(184px, 12.8vw, 218px);
-    background: #E45735;
+    background: #D04A2A;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta:hover .mellow-written-reviews__cta-arrow,
@@ -252,32 +228,16 @@
   @media screen and (max-width: 989px) {
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
       grid-template-columns: 1fr;
-      max-width: 680px;
     }
 
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
       min-height: auto;
     }
-
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__footer {
-      grid-template-columns: 1fr;
-      justify-items: start;
-    }
-
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cta-wrap {
-      justify-self: start;
-    }
   }
 
   @media screen and (max-width: 749px) {
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__inner {
-      padding-left: var(--mellow-section-axis-pad);
-      padding-right: var(--mellow-section-axis-pad);
-    }
-
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
       display: block;
-      margin-bottom: 32px;
     }
 
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
@@ -296,35 +256,21 @@
       padding: 28px;
       border-radius: 22px;
     }
-
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 8px;
-    }
   }
 </style>
 
-<section
-  id="MellowWrittenReviews-{{ section.id }}"
-  class="mellow-section mellow-section-standard mellow-written-reviews color-{{ section.settings.color_scheme }}"
->
+<section id="MellowWrittenReviews-{{ section.id }}" class="mellow-section mellow-written-reviews color-{{ section.settings.color_scheme }}">
   <div class="mellow-written-reviews__inner">
     <div class="mellow-written-reviews__header-wrap">
       <div class="mellow-written-reviews__header">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow mellow-written-reviews__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+        <p class="mellow-eyebrow mellow-written-reviews__eyebrow">REAL MOMENTS. REAL RELIEF.</p>
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-written-reviews__heading mellow-section-heading">
-            {{ section.settings.heading | escape | newline_to_br }}
-          </h2>
-        {%- endif -%}
+        <h2 class="mellow-written-reviews__heading">
+          Over 50,000 Satisfied<br>
+          Customers and Counting
+        </h2>
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-written-reviews__text mellow-section-text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
+        <p class="mellow-written-reviews__text">After dinner. Before sleep. When it matters most.</p>
       </div>
     </div>
 
@@ -375,20 +321,11 @@
       </article>
     </div>
 
-    <div class="mellow-written-reviews__footer">
-      <div class="mellow-written-reviews__proof">
-        <span class="mellow-written-reviews__proof-stars">★★★★★</span>
-        <span>Early access reviewers · 4.9 average</span>
-      </div>
-
-      <div class="mellow-written-reviews__cta-wrap">
-        <a class="mellow-written-reviews__cta" href="/products/mellow">
-          <span class="mellow-written-reviews__cta-label">Try Mellow</span>
-          <span class="mellow-written-reviews__cta-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <div aria-hidden="true"></div>
+    <div class="mellow-written-reviews__cta-wrap">
+      <a class="mellow-written-reviews__cta" href="/products/mellow">
+        <span class="mellow-written-reviews__cta-label">Try Mellow</span>
+        <span class="mellow-written-reviews__cta-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -404,24 +341,6 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "REAL MOMENTS. REAL RELIEF."
-    },
-    {
-      "type": "textarea",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Over 50,000 Satisfied\nCustomers and Counting"
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "After dinner. Before sleep. When it matters most."
     }
   ],
   "presets": [
