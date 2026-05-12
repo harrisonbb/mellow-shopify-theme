@@ -60,7 +60,7 @@
     justify-self: end;
     align-self: center;
     transform: none;
-    width: clamp(230px, 17vw, 300px);
+    width: clamp(220px, 16vw, 280px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
@@ -80,9 +80,9 @@
     transform: translateZ(0);
     backface-visibility: hidden;
 
-    width: clamp(204px, 13.7vw, 236px);
-    min-height: clamp(54px, 4.3vw, 66px);
-    padding: clamp(16px, 1.3vw, 20px) clamp(22px, 1.75vw, 30px);
+    width: clamp(190px, 12.6vw, 218px);
+    min-height: clamp(52px, 4.05vw, 62px);
+    padding: clamp(15px, 1.18vw, 18px) clamp(18px, 1.45vw, 25px);
     font-size: clamp(16px, 1.08vw, 18px);
     font-weight: 650;
     line-height: 1;
@@ -112,7 +112,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
     position: absolute;
-    right: clamp(22px, 1.7vw, 30px);
+    right: clamp(19px, 1.45vw, 26px);
     top: 50%;
     display: inline-block;
     opacity: 0;
@@ -125,7 +125,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
-    width: clamp(238px, 16vw, 274px);
+    width: clamp(224px, 14.9vw, 258px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
@@ -219,7 +219,7 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
-    position: relative;
+    position: static;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -261,6 +261,7 @@
     margin: 0;
     transform: none;
     letter-spacing: 0.13em;
+    z-index: 3;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
@@ -342,19 +343,19 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
-      width: 202px;
-      min-height: 52px;
-      padding: 16px 24px;
+      width: 190px;
+      min-height: 50px;
+      padding: 15px 22px;
       font-size: 16px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
-      width: 236px;
+      width: 224px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
-      right: 24px;
+      right: 22px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -373,6 +374,11 @@
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
       transform: none !important;
       border-radius: 22px !important;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
+      top: 18px;
+      right: 18px;
     }
   }
 </style>
