@@ -2311,16 +2311,22 @@ input[type='checkbox'] {
 
 /* section-header */
 .section-header.shopify-section-group-header-group {
-  z-index: 3;
-}
-
-.shopify-section-header-sticky {
   position: sticky;
   top: 0;
+  z-index: 1000;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
+.shopify-section-header-sticky,
 .shopify-section-header-hidden {
-  top: calc(-1 * var(--header-height));
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .shopify-section-header-hidden.menu-open {
@@ -2328,11 +2334,11 @@ input[type='checkbox'] {
 }
 
 .section-header.animate {
-  transition: top 0.15s ease-out;
+  transition: none;
 }
 
 .shopify-section-group-header-group {
-  z-index: 4;
+  z-index: 1000;
 }
 
 .section-header ~ .shopify-section-group-header-group {
