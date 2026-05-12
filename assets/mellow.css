@@ -279,7 +279,7 @@ li {
 
 /* Mellow who it's for carousel */
 .mellow-who-its-for {
-  --mellow-card-gap: 2.25rem;
+  --mellow-card-gap: clamp(1.5rem, 2vw, 2.25rem);
   --mellow-scroll-pad-y: 1.25rem;
   --mellow-scroll-pad-x: 2rem;
   --mellow-bento-gap: 0.5rem;
@@ -422,6 +422,8 @@ li {
   box-sizing: border-box;
   width: 100%;
   overflow: visible;
+  transform: translate3d(var(--mellow-who-entry-x, 0), 0, 0);
+  will-change: transform;
 }
 
 .mellow-who-its-for__track {
@@ -609,6 +611,13 @@ li {
   text-align: left;
 }
 
+@media screen and (max-width: 989px) {
+  .mellow-who-its-for__carousel {
+    transform: none;
+    will-change: auto;
+  }
+}
+
 @media screen and (max-width: 989px) and (min-width: 750px) {
   .mellow-who-its-for {
     --mellow-who-card-width: 33rem;
@@ -705,6 +714,7 @@ li {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .mellow-who-its-for__carousel,
   .mellow-who-its-for__track,
   .mellow-who-its-for__card,
   .mellow-who-its-for__icon,
@@ -715,6 +725,7 @@ li {
     transition: none !important;
   }
 
+  .mellow-who-its-for__carousel,
   .mellow-who-its-for__card:hover,
   .mellow-who-its-for__card:hover .mellow-who-its-for__icon,
   .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy,

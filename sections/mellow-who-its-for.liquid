@@ -95,16 +95,71 @@
     if (!section || section.dataset.mellowWhoInitialized === 'true') return;
     section.dataset.mellowWhoInitialized = 'true';
 
+    const carousel = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const firstCard = section.querySelector('[data-mellow-who-card]');
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const desktopMotionQuery = window.matchMedia('(min-width: 990px)');
 
-    if (!track || !firstCard) return;
+    if (!carousel || !track || !firstCard) return;
+
+    let frame = null;
+    let userInteracted = false;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const setEntryOffset = (offset) => {
+      carousel.style.setProperty('--mellow-who-entry-x', `${offset.toFixed(2)}px`);
+    };
+
+    const resetEntryMotion = () => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+        frame = null;
+      }
+
+      carousel.style.removeProperty('--mellow-who-entry-x');
+    };
+
+    const shouldAnimateEntry = () => (
+      desktopMotionQuery.matches &&
+      !reducedMotionQuery.matches &&
+      !userInteracted
+    );
+
+    const updateEntryMotion = () => {
+      frame = null;
+
+      if (!shouldAnimateEntry()) {
+        resetEntryMotion();
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const progress = clamp((viewportHeight - rect.top) / (viewportHeight * 0.55), 0, 1);
+      const startOffset = clamp(window.innerWidth * 0.055, 48, 112);
+      const offset = startOffset * (1 - progress);
+
+      setEntryOffset(offset);
+    };
+
+    const requestEntryMotion = () => {
+      if (frame || userInteracted) return;
+      frame = window.requestAnimationFrame(updateEntryMotion);
+    };
+
+    const disableEntryAfterInteraction = () => {
+      userInteracted = true;
+      resetEntryMotion();
+    };
 
     track.addEventListener('keydown', (event) => {
       if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
 
       event.preventDefault();
+      disableEntryAfterInteraction();
+
       const direction = event.key === 'ArrowRight' ? 1 : -1;
       const styles = getComputedStyle(track);
       const gap = parseFloat(styles.columnGap || styles.gap);
@@ -115,6 +170,29 @@
         behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
       });
     });
+
+    track.addEventListener('pointerdown', disableEntryAfterInteraction, { passive: true });
+    track.addEventListener('touchstart', disableEntryAfterInteraction, { passive: true });
+    track.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+        disableEntryAfterInteraction();
+      }
+    }, { passive: true });
+
+    const addMediaListener = (query) => {
+      if (query.addEventListener) {
+        query.addEventListener('change', requestEntryMotion);
+      } else if (query.addListener) {
+        query.addListener(requestEntryMotion);
+      }
+    };
+
+    window.addEventListener('scroll', requestEntryMotion, { passive: true });
+    window.addEventListener('resize', requestEntryMotion, { passive: true });
+    addMediaListener(reducedMotionQuery);
+    addMediaListener(desktopMotionQuery);
+
+    requestEntryMotion();
   })();
 </script>
 
