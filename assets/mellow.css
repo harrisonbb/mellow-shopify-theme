@@ -479,15 +479,15 @@ input[type="reset"] {
   --mellow-who-card: #F7F1E7;
   --mellow-who-card-hover: #FBF4E8;
   --mellow-who-card-width: clamp(33rem, 25vw, 39rem);
-  --mellow-who-card-height: clamp(38rem, 42vh, 44rem);
-  --mellow-who-card-padding-y: clamp(2.2rem, 1.8vw, 3.1rem);
-  --mellow-who-card-padding-x: clamp(2.2rem, 1.8vw, 3.1rem);
+  --mellow-who-card-height: clamp(260px, 24vw, 320px);
+  --mellow-who-card-padding-y: clamp(1.15rem, 1.5vw, 1.6rem);
+  --mellow-who-card-padding-x: clamp(1.15rem, 1.5vw, 1.6rem);
   --mellow-who-icon-size: clamp(7.6rem, 5.8vw, 8.8rem);
   --mellow-who-icon-svg-size: clamp(3.2rem, 2.7vw, 4rem);
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   --mellow-who-header-inset: 0rem;
   overflow: hidden;
-  padding: clamp(6.2rem, 6.2vw, 8.6rem) 0 clamp(4.2rem, 4.6vw, 6.2rem);
+  padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(2.5rem, 4vw, 4.5rem);
   background:
     radial-gradient(circle at 14% 14%, rgba(240, 235, 224, 0.07), transparent 31rem),
     radial-gradient(circle at 84% 22%, rgba(212, 138, 50, 0.08), transparent 34rem),
@@ -621,7 +621,7 @@ input[type="reset"] {
   position: relative;
   width: 100%;
   min-width: 0;
-  margin-top: clamp(3.8rem, 4.4vw, 5.8rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
 }
 
 .mellow-who-its-for__carousel {
@@ -680,7 +680,7 @@ input[type="reset"] {
   grid-template-rows: auto auto;
   align-content: start;
   align-items: start;
-  row-gap: clamp(1.8rem, 1.4vw, 2.2rem);
+  row-gap: clamp(1.1rem, 1vw, 1.5rem);
   padding: var(--mellow-who-card-padding-y) var(--mellow-who-card-padding-x);
   border: 0.1rem solid rgba(26, 45, 16, 0.09);
   border-radius: var(--mellow-card-radius);
@@ -728,7 +728,7 @@ input[type="reset"] {
   position: absolute;
   left: var(--mellow-who-card-padding-x);
   right: var(--mellow-who-card-padding-x);
-  bottom: clamp(1.8rem, 1.5vw, 2.4rem);
+  bottom: clamp(1rem, 1vw, 1.5rem);
   height: 0.1rem;
   border-radius: var(--mellow-radius-pill);
   background: linear-gradient(
@@ -919,8 +919,8 @@ input[type="reset"] {
   min-height: 0;
   width: 100%;
   max-width: 36rem;
-  gap: 1rem;
-  margin-top: clamp(0.6rem, 1vw, 1rem);
+  gap: clamp(0.65rem, 0.8vw, 0.9rem);
+  margin-top: clamp(0.2rem, 0.5vw, 0.6rem);
   align-self: start;
   transition: transform 260ms ease;
 }
@@ -988,7 +988,7 @@ input[type="reset"] {
 
 .mellow-who-its-for__card p {
   max-width: 36rem;
-  margin: 16px 0 0;
+  margin: 0;
   color: rgba(20, 33, 17, 0.82);
   font-size: var(--mellow-card-body-size);
   font-weight: var(--mellow-card-body-weight);
@@ -1000,13 +1000,13 @@ input[type="reset"] {
 @media screen and (max-width: 989px) and (min-width: 750px) {
   .mellow-who-its-for {
     --mellow-who-card-width: clamp(30rem, 40vw, 33rem);
-    --mellow-who-card-height: clamp(35rem, 44vh, 38rem);
-    --mellow-who-card-padding-y: clamp(2.2rem, 2.7vw, 2.8rem);
-    --mellow-who-card-padding-x: clamp(2.2rem, 2.7vw, 2.8rem);
+    --mellow-who-card-height: clamp(29rem, 38vw, 33rem);
+    --mellow-who-card-padding-y: clamp(1.6rem, 2.4vw, 2.2rem);
+    --mellow-who-card-padding-x: clamp(1.6rem, 2.4vw, 2.2rem);
     --mellow-who-icon-size: clamp(5.8rem, 7vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 3.4vw, 3rem);
-    padding-top: clamp(6.4rem, 10vw, 9rem);
-    padding-bottom: clamp(5.6rem, 8vw, 7.6rem);
+    padding-top: clamp(4.2rem, 7vw, 6.4rem);
+    padding-bottom: clamp(3.6rem, 6vw, 5.6rem);
   }
 
   .mellow-who-its-for__header-wrap {
@@ -1023,20 +1023,20 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(3.2rem, 4.8vw, 4.2rem);
+    margin-top: clamp(2.4rem, 4vw, 3.4rem);
   }
 }
 
 @media screen and (max-width: 749px) {
   .mellow-who-its-for {
     --mellow-who-card-width: min(80vw, 31rem);
-    --mellow-who-card-height: clamp(32rem, 52vh, 35rem);
-    --mellow-who-card-padding-y: clamp(2.2rem, 6.4vw, 2.8rem);
-    --mellow-who-card-padding-x: clamp(2.2rem, 6.4vw, 2.8rem);
+    --mellow-who-card-height: clamp(30rem, 48vh, 33rem);
+    --mellow-who-card-padding-y: clamp(1.8rem, 5vw, 2.4rem);
+    --mellow-who-card-padding-x: clamp(1.8rem, 5vw, 2.4rem);
     --mellow-who-icon-size: clamp(5.8rem, 15vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 7vw, 3rem);
-    padding-top: clamp(5.6rem, 14vw, 7.2rem);
-    padding-bottom: clamp(5.6rem, 14vw, 7.2rem);
+    padding-top: clamp(4.4rem, 11vw, 6rem);
+    padding-bottom: clamp(4rem, 10vw, 5.6rem);
   }
 
   .mellow-who-its-for__header-wrap {
@@ -1072,11 +1072,11 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__carousel-wrap {
-    margin-top: clamp(2.8rem, 6.5vw, 4rem);
+    margin-top: clamp(2.2rem, 5.5vw, 3.4rem);
   }
 
   .mellow-who-its-for__card {
-    row-gap: 1.6rem;
+    row-gap: 1.3rem;
     box-shadow: 0 1.8rem 4.2rem rgba(0, 0, 0, 0.14);
   }
 
