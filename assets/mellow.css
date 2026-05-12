@@ -503,12 +503,11 @@ input[type="reset"] {
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   --mellow-who-header-inset: 0rem;
   --mellow-who-header-inset-desktop: clamp(1.25rem, 1.5vw, 2.25rem);
-  overflow: hidden;
-  padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(2.5rem, 4vw, 4.5rem);
+  overflow: visible;
+  padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(88px, 8vw, 128px);
   background:
-    radial-gradient(circle at 14% 14%, rgba(240, 235, 224, 0.07), transparent 31rem),
-    radial-gradient(circle at 84% 22%, rgba(212, 138, 50, 0.08), transparent 34rem),
-    linear-gradient(180deg, #1A2D10 0%, #16270E 100%);
+    radial-gradient(circle at 78% 28%, rgba(208, 74, 42, 0.08), transparent 34%),
+    linear-gradient(180deg, #10270D 0%, #0D220B 100%);
   color: #F0EBE0;
 }
 
@@ -658,7 +657,7 @@ input[type="reset"] {
   box-sizing: border-box;
   width: 100%;
   overflow: visible;
-  margin-bottom: calc(-1 * var(--mellow-scroll-pad-y));
+  margin-bottom: clamp(-64px, -4vw, -48px);
   padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -755,6 +754,7 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__icon {
+  transform: translateY(10px);
   position: relative;
   isolation: isolate;
   display: inline-flex;
@@ -959,6 +959,7 @@ input[type="reset"] {
   gap: 0;
   margin-top: clamp(0.2rem, 0.5vw, 0.6rem);
   align-self: start;
+  transform: translateY(10px);
   transition: transform 260ms ease;
 }
 
@@ -983,7 +984,7 @@ input[type="reset"] {
 
 .mellow-who-its-for__card.is-active {
   z-index: 20;
-  transform: scale(1.12);
+  transform: scale(1.09);
   background: var(--mellow-who-card-hover);
   background-image: none;
   opacity: 1;
@@ -1011,12 +1012,7 @@ input[type="reset"] {
 
 .mellow-who-its-for__card:not(.is-active) {
   transform: scale(0.98);
-}
 
-.mellow-moments-card:not(.is-active),
-.mellow-reflux-moments__card:not(.is-active),
-.mellow-who-its-for__card:not(.is-active) {
-  filter: brightness(0.93) saturate(0.98);
 }
 
 .mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
@@ -1045,7 +1041,7 @@ input[type="reset"] {
 
   .mellow-who-its-for__card.is-active,
   .mellow-who-its-for__card.is-active:hover {
-    transform: scale(1.12);
+    transform: scale(1.09);
   }
 }
 
@@ -1092,7 +1088,7 @@ input[type="reset"] {
     --mellow-who-icon-size: clamp(5.8rem, 7vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 3.4vw, 3rem);
     padding-top: clamp(4.2rem, 7vw, 6.4rem);
-    padding-bottom: clamp(3.6rem, 6vw, 5.6rem);
+    padding-bottom: clamp(88px, 8vw, 128px);
   }
 
   .mellow-who-its-for__header-wrap {
@@ -1122,7 +1118,7 @@ input[type="reset"] {
     --mellow-who-icon-size: clamp(5.8rem, 15vw, 6.4rem);
     --mellow-who-icon-svg-size: clamp(2.6rem, 7vw, 3rem);
     padding-top: clamp(4.4rem, 11vw, 6rem);
-    padding-bottom: clamp(4rem, 10vw, 5.6rem);
+    padding-bottom: clamp(88px, 8vw, 128px);
   }
 
   .mellow-who-its-for__header-wrap {
