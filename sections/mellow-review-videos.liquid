@@ -5,8 +5,8 @@
 
 <style>
   #MellowReviewVideos-{{ section.id }} {
-    padding-top: clamp(32px, 3vw, 48px);
-    padding-bottom: clamp(28px, 3vw, 44px);
+    padding-top: clamp(24px, 2.4vw, 38px);
+    padding-bottom: clamp(24px, 2.6vw, 40px);
     background:
       radial-gradient(circle at 84% 14%, rgba(208, 74, 42, 0.12), transparent 34%),
       radial-gradient(circle at 16% 82%, rgba(244, 237, 224, 0.08), transparent 38%),
@@ -15,7 +15,7 @@
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__header-wrap {
-    margin-bottom: clamp(18px, 2vw, 28px);
+    margin-bottom: clamp(14px, 1.6vw, 24px);
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__eyebrow {
@@ -153,11 +153,19 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    padding: clamp(16px, 1.4vw, 22px);
+    padding: clamp(14px, 1.25vw, 20px);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__content .mellow-card-title {
+    margin-bottom: 8px;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__content .mellow-card-copy {
+    line-height: 1.38;
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__quote {
-    margin-top: 16px;
+    margin-top: 0;
     color: rgba(20, 49, 15, 0.78);
   }
 
@@ -201,8 +209,9 @@
 
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__visual,
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media,
-    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__video-frame {
-      height: clamp(300px, 30vw, 390px);
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__video-frame,
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__placeholder {
+      height: clamp(240px, 24vw, 320px);
       aspect-ratio: auto;
     }
   }
