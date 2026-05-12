@@ -486,6 +486,7 @@ input[type="reset"] {
   --mellow-who-icon-svg-size: clamp(2.6rem, 2vw, 3.2rem);
   --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
   --mellow-who-header-inset: 0rem;
+  --mellow-who-header-inset-desktop: clamp(3rem, 5vw, 6.5rem);
   overflow: hidden;
   padding: clamp(6.2rem, 6.2vw, 8.6rem) 0 clamp(4.2rem, 4.6vw, 6.2rem);
   background:
@@ -513,6 +514,12 @@ input[type="reset"] {
   box-sizing: border-box;
   width: 100%;
   padding-inline: var(--mellow-who-header-inset);
+}
+
+@media screen and (min-width: 990px) {
+  .mellow-who-its-for {
+    --mellow-who-header-inset: var(--mellow-who-header-inset-desktop);
+  }
 }
 
 .mellow-who-its-for__header {
