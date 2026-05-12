@@ -438,7 +438,7 @@ input[type="reset"] {
 
 .mellow-who-its-for__header-wrap {
   display: grid;
-  grid-template-columns: minmax(0, 72rem) auto;
+  grid-template-columns: minmax(0, 82rem) auto;
   align-items: center;
   justify-content: space-between;
   column-gap: clamp(3.2rem, 5vw, 8rem);
@@ -448,7 +448,7 @@ input[type="reset"] {
 .mellow-who-its-for__header {
   position: relative;
   z-index: 2;
-  max-width: 72rem;
+  max-width: 82rem;
   text-align: left;
 }
 
@@ -459,12 +459,12 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__heading {
-  max-width: 72rem;
+  max-width: 82rem;
   margin: 0;
   color: #F0EBE0;
   font-size: clamp(4.4rem, 5.25vw, 7.3rem);
   font-weight: 500;
-  line-height: 0.89;
+  line-height: 0.93;
   letter-spacing: -0.04em;
   text-align: left;
 }
