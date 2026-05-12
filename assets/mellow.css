@@ -201,14 +201,15 @@ label,
 .site-header__nav a,
 .mellow-header__nav a {
   font-size: 14px;
+  line-height: 1;
   font-weight: 600;
   letter-spacing: 0.025em;
-  line-height: 1;
 }
 
 .mellow-logo,
 .header__heading-link {
   font-size: 24px;
+  line-height: 1;
   font-weight: 500;
   letter-spacing: -0.035em;
 }
@@ -548,32 +549,32 @@ input[type="reset"] {
   margin-bottom: 1.7rem;
   color: #D48A32;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
   line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.17em;
   text-align: left;
   text-transform: uppercase;
 }
 
 .mellow-who-its-for__heading {
-  max-width: 72rem;
+  max-width: 740px;
   margin: 0;
   color: #F0EBE0;
-  font-size: clamp(44px, 3.6vw, 58px);
-  font-weight: 600;
+  font-size: clamp(46px, 4.55vw, 66px);
   line-height: 0.98;
-  letter-spacing: -0.04em;
+  font-weight: 600;
+  letter-spacing: -0.038em;
   text-align: left;
 }
 
 .mellow-who-its-for__text {
-  max-width: 52rem;
+  max-width: 540px;
   margin: 2.2rem 0 0;
   color: rgba(240, 235, 224, 0.88);
-  font-size: clamp(17px, 1.35vw, 20px);
+  font-size: clamp(18px, 1.32vw, 20px);
+  line-height: 1.48;
   font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.45;
+  letter-spacing: -0.012em;
   text-align: left;
   text-wrap: balance;
 }
@@ -608,9 +609,9 @@ input[type="reset"] {
   color: #1A2D10 !important;
   border: 1px solid rgba(240, 235, 224, 0.64) !important;
   font-size: 16px !important;
-  font-weight: 650 !important;
   line-height: 1 !important;
-  letter-spacing: -0.01em !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.005em !important;
   text-transform: none !important;
   text-decoration: none !important;
   white-space: nowrap !important;
@@ -976,9 +977,9 @@ input[type="reset"] {
   background: rgba(212, 138, 50, 0.1);
   color: #8F571E;
   font-size: 11px;
-  font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
@@ -1047,14 +1048,14 @@ input[type="reset"] {
 
 .mellow-who-its-for__card h3 {
   width: 100%;
-  max-width: 92%;
+  max-width: 94%;
   margin: 0 0 12px;
   color: #1A2D10;
   font-family: var(--mellow-font-display) !important;
-  font-size: clamp(25px, 2vw, 32px);
+  font-size: clamp(27px, 1.9vw, 31px);
+  line-height: 1.04;
   font-weight: 580;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.038em;
   text-align: left;
 }
 
@@ -1063,19 +1064,19 @@ input[type="reset"] {
   width: clamp(4rem, 3vw, 5.2rem);
   height: 0.2rem;
   margin-top: 9px;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
   border-radius: var(--mellow-radius-pill);
   background: #D48A32;
 }
 
 .mellow-who-its-for__card p {
-  max-width: 92%;
+  max-width: 94%;
   margin: 0;
   color: rgba(20, 33, 17, 0.84);
-  font-size: clamp(15.5px, 1.05vw, 17px);
+  font-size: clamp(16.5px, 1.08vw, 17.25px);
+  line-height: 1.54;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.52;
+  letter-spacing: -0.006em;
   text-align: left;
 }
 
@@ -1129,19 +1130,19 @@ input[type="reset"] {
 
   .mellow-who-its-for__eyebrow {
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.145em;
   }
 
   .mellow-who-its-for__heading {
     font-size: clamp(38px, 10vw, 48px);
     line-height: 1;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
   }
 
   .mellow-who-its-for__text {
-    max-width: 34rem;
-    font-size: 16px;
-    line-height: 1.45;
+    max-width: 360px;
+    font-size: 16.5px;
+    line-height: 1.48;
     text-wrap: pretty;
   }
 
@@ -1171,14 +1172,14 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__card h3 {
-    font-size: 25px;
-    line-height: 1.04;
-    letter-spacing: -0.04em;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
   }
 
   .mellow-who-its-for__card p {
-    font-size: 15.5px;
-    line-height: 1.52;
+    font-size: 15.75px;
+    line-height: 1.5;
   }
 
 }
