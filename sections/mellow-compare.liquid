@@ -1,30 +1,365 @@
 {% comment %}
-  Mellow compare placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+  Premium Mellow comparison table.
+  Built against the global Mellow section axis, typography, color, radius, and spacing tokens.
 {% endcomment %}
 
-<section class="mellow-section mellow-architecture-section mellow-compare color-{{ section.settings.color_scheme }}">
-  <div class="mellow-section__inner">
-    <div class="mellow-architecture-section__card">
-      <div class="mellow-architecture-section__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+<style>
+  #MellowCompare-{{ section.id }} {
+    --compare-forest: #1A2D10;
+    --compare-forest-soft: #24421A;
+    --compare-orange: #D04A2A;
+    --compare-ivory: #F0EBE0;
+    --compare-card: #f8f2e7;
+    --compare-label: #f3eadc;
+    --compare-else: #fbf6ec;
+    --compare-mellow: #edf5de;
+    --compare-border: rgba(128, 96, 52, 0.2);
+    --compare-border-strong: rgba(128, 96, 52, 0.28);
+    --compare-muted: rgba(26, 45, 16, 0.66);
+    --compare-muted-soft: rgba(70, 86, 65, 0.78);
+    background:
+      radial-gradient(circle at 78% 12%, rgba(208, 74, 42, 0.08), transparent 30%),
+      radial-gradient(circle at 16% 84%, rgba(26, 45, 16, 0.08), transparent 32%),
+      var(--compare-ivory);
+    color: var(--compare-forest);
+  }
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
+  #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
+    margin-bottom: clamp(28px, 3vw, 44px);
+  }
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
-      </div>
+  #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
+    width: 100%;
+    max-width: min(100%, 1280px);
+    margin: 0 auto;
+  }
 
-      {%- if section.settings.note != blank -%}
-        <div class="mellow-architecture-section__note">
-          <span>{{ section.settings.note | escape }}</span>
+  #MellowCompare-{{ section.id }} .mellow-compare__scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: clamp(26px, 2.2vw, 30px);
+    box-shadow:
+      0 26px 70px rgba(82, 56, 24, 0.11),
+      0 10px 28px rgba(26, 45, 16, 0.06);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__table {
+    width: 100%;
+    min-width: 760px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border: 1px solid var(--compare-border-strong);
+    border-radius: clamp(26px, 2.2vw, 30px);
+    background: var(--compare-card);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__table th,
+  #MellowCompare-{{ section.id }} .mellow-compare__table td {
+    padding: clamp(20px, 2vw, 30px) clamp(22px, 2.6vw, 42px);
+    border-right: 1px solid var(--compare-border);
+    border-bottom: 1px solid var(--compare-border);
+    vertical-align: middle;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__table th:last-child,
+  #MellowCompare-{{ section.id }} .mellow-compare__table td:last-child {
+    border-right: 0;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__table tbody tr:last-child th,
+  #MellowCompare-{{ section.id }} .mellow-compare__table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__corner,
+  #MellowCompare-{{ section.id }} .mellow-compare__label-cell {
+    width: 22%;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)),
+      var(--compare-label);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__mellow-cell,
+  #MellowCompare-{{ section.id }} .mellow-compare__mellow-header {
+    width: 39%;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__else-cell,
+  #MellowCompare-{{ section.id }} .mellow-compare__else-header {
+    width: 39%;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__corner {
+    border-top-left-radius: clamp(26px, 2.2vw, 30px);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__mellow-header {
+    background:
+      radial-gradient(circle at 18% 28%, rgba(240, 235, 224, 0.14), transparent 32%),
+      linear-gradient(135deg, #1A2D10 0%, #24421A 100%);
+    color: var(--compare-ivory);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__else-header {
+    border-top-right-radius: clamp(26px, 2.2vw, 30px);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)),
+      var(--compare-else);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__brand {
+    display: block;
+    margin: 0 0 8px;
+    color: var(--compare-ivory);
+    font-family: var(--mellow-font-display, var(--font-heading-family));
+    font-size: clamp(34px, 3.2vw, 48px);
+    font-weight: var(--mellow-heading-weight, 600);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__recommended {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--compare-orange);
+    font-size: clamp(15px, 1.1vw, 18px);
+    font-weight: 750;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__else-title {
+    display: block;
+    color: rgba(26, 45, 16, 0.72);
+    font-size: clamp(15px, 1.2vw, 20px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__label-cell {
+    color: rgba(26, 45, 16, 0.7);
+    font-size: clamp(13px, 0.95vw, 16px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__mellow-cell {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.08)),
+      var(--compare-mellow);
+    color: var(--compare-forest);
+    font-size: clamp(17px, 1.35vw, 23px);
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__else-cell {
+    background: var(--compare-else);
+    color: var(--compare-muted-soft);
+    font-size: clamp(16px, 1.22vw, 21px);
+    font-weight: 450;
+    line-height: 1.3;
+    letter-spacing: -0.018em;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__value {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 1.3vw, 20px);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(30px, 2.3vw, 42px);
+    height: clamp(30px, 2.3vw, 42px);
+    flex: 0 0 clamp(30px, 2.3vw, 42px);
+    border-radius: var(--mellow-radius-pill, 999px);
+    font-size: clamp(16px, 1.25vw, 22px);
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__icon--check {
+    background: #dcefb8;
+    color: #4b8a18;
+    box-shadow: inset 0 0 0 1px rgba(75, 138, 24, 0.07);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__recommended .mellow-compare__icon--check {
+    width: clamp(34px, 2.6vw, 46px);
+    height: clamp(34px, 2.6vw, 46px);
+    flex-basis: clamp(34px, 2.6vw, 46px);
+    background: #cde978;
+    color: #5c9b10;
+    box-shadow: 0 0 0 9px rgba(205, 233, 120, 0.18);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__icon--x {
+    background: #e7e0d0;
+    color: rgba(85, 95, 78, 0.82);
+    font-size: clamp(14px, 1vw, 18px);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__mobile-hint {
+    display: none;
+    margin: 12px 0 0;
+    color: rgba(26, 45, 16, 0.62);
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
+      max-width: 100%;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__table th,
+    #MellowCompare-{{ section.id }} .mellow-compare__table td {
+      padding: 20px 24px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
+      margin-bottom: 24px;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__scroll {
+      margin-inline: calc(var(--mellow-section-axis-pad, 28px) * -0.25);
+      padding-bottom: 2px;
+      scroll-snap-type: x proximity;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__table {
+      min-width: 680px;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__table th,
+    #MellowCompare-{{ section.id }} .mellow-compare__table td {
+      padding: 18px 20px;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__corner,
+    #MellowCompare-{{ section.id }} .mellow-compare__label-cell {
+      width: 24%;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__mellow-cell,
+    #MellowCompare-{{ section.id }} .mellow-compare__mellow-header,
+    #MellowCompare-{{ section.id }} .mellow-compare__else-cell,
+    #MellowCompare-{{ section.id }} .mellow-compare__else-header {
+      width: 38%;
+    }
+
+    #MellowCompare-{{ section.id }} .mellow-compare__mobile-hint {
+      display: block;
+    }
+  }
+</style>
+
+<section id="MellowCompare-{{ section.id }}" class="mellow-section-standard mellow-compare">
+  <div class="mellow-section-axis">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="mellow-section-header-grid mellow-compare__header-grid">
+        <div class="mellow-section-header">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.heading != blank -%}
+            <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.text != blank -%}
+            <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
         </div>
-      {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="mellow-compare__table-wrap">
+      <div class="mellow-compare__scroll" tabindex="0" aria-label="Scrollable comparison table">
+        <table class="mellow-compare__table">
+          <caption class="visually-hidden">
+            Mellow compared with everything else across what it does, when it works, who it is made for, what you take, and how it feels.
+          </caption>
+          <thead>
+            <tr>
+              <th class="mellow-compare__corner" scope="col"><span class="visually-hidden">Comparison point</span></th>
+              <th class="mellow-compare__mellow-header" scope="col">
+                <span class="mellow-compare__brand">Mellow</span>
+                <span class="mellow-compare__recommended">
+                  <span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span>
+                  <span>Recommended</span>
+                </span>
+              </th>
+              <th class="mellow-compare__else-header" scope="col">
+                <span class="mellow-compare__else-title">Everything Else</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="mellow-compare__label-cell" scope="row">What it does</th>
+              <td class="mellow-compare__mellow-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Raft-forming gel barrier</span></span>
+              </td>
+              <td class="mellow-compare__else-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Neutralizes or suppresses acid</span></span>
+              </td>
+            </tr>
+            <tr>
+              <th class="mellow-compare__label-cell" scope="row">When it works</th>
+              <td class="mellow-compare__mellow-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Works within minutes</span></span>
+              </td>
+              <td class="mellow-compare__else-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Starts working after reflux has begun</span></span>
+              </td>
+            </tr>
+            <tr>
+              <th class="mellow-compare__label-cell" scope="row">Made for</th>
+              <td class="mellow-compare__mellow-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>People who eat, travel, and don’t slow down</span></span>
+              </td>
+              <td class="mellow-compare__else-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Symptoms after they interrupt you</span></span>
+              </td>
+            </tr>
+            <tr>
+              <th class="mellow-compare__label-cell" scope="row">What you take</th>
+              <td class="mellow-compare__mellow-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Smooth single-serve gel pouch</span></span>
+              </td>
+              <td class="mellow-compare__else-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Chalky tablets, liquids, or pills</span></span>
+              </td>
+            </tr>
+            <tr>
+              <th class="mellow-compare__label-cell" scope="row">How it feels</th>
+              <td class="mellow-compare__mellow-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>One squeeze. No measuring. No mess.</span></span>
+              </td>
+              <td class="mellow-compare__else-cell">
+                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Feels like medicine you’d rather not take</span></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mellow-compare__mobile-hint">Swipe to compare Mellow with everything else.</p>
     </div>
   </div>
 </section>
@@ -51,19 +386,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Make the better choice easy to understand."
+      "default": "Mellow vs Everything Else"
     },
     {
       "type": "textarea",
       "id": "text",
-      "label": "Text",
-      "default": "Compare Mellow against common alternatives with a clean, conversion-focused layout."
-    },
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": "Ready for final design replacement."
+      "label": "Subheading",
+      "default": "A cleaner, calmer way to stay ahead of reflux without chalky tablets, liquids, or pills."
     }
   ],
   "presets": [
