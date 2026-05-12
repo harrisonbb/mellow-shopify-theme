@@ -69,10 +69,11 @@
                 {% endif %}
                 data-mellow-who-index="{{ forloop.index0 }}"
               >
-                {%- if card_tag != blank -%}
-                  <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
-                {%- endif -%}
-                <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
+                <div class="mellow-who-its-for__card-inner">
+                  {%- if card_tag != blank -%}
+                    <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                  {%- endif -%}
+                  <div class="mellow-who-its-for__icon mellow-who-its-for__icon--{{ card_icon }}" aria-hidden="true">
                   {%- case card_icon -%}
                     {%- when 'fork-knife' -%}
                       <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15"/><path d="M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
@@ -93,10 +94,11 @@
                   {%- endcase -%}
                 </div>
 
-                <div class="mellow-who-its-for__card-copy">
-                  <h3>{{ card_title | escape }}</h3>
-                  <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
-                  <p>{{ card_text | escape }}</p>
+                  <div class="mellow-who-its-for__card-copy">
+                    <h3>{{ card_title | escape }}</h3>
+                    <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
+                    <p>{{ card_text | escape }}</p>
+                  </div>
                 </div>
 
               </article>
@@ -118,8 +120,8 @@
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
-    // Select the fully rendered card list, including duplicate sets used for the infinite marquee.
-    const cards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
+    const cards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'))
+      .filter((card) => card.offsetParent !== null);
 
     if (!scroller || !track || !cardSet || !cards.length) {
       return;
@@ -134,16 +136,22 @@
 
     const applySafeOffset = () => {
       if (setWidth <= 0) {
-        return;
+        return false;
       }
+
+      let didWrap = false;
 
       while (offset <= setWidth * -2) {
         offset += setWidth;
+        didWrap = true;
       }
 
       while (offset >= 0) {
         offset -= setWidth;
+        didWrap = true;
       }
+
+      return didWrap;
     };
 
     const updateTrackPosition = () => {
@@ -162,15 +170,33 @@
       return Math.abs(cardCenter - viewportCenter);
     };
 
+    const getVisibleCards = () => cards.filter((card) => {
+      const rect = card.getBoundingClientRect();
+
+      return rect.right > 0 && rect.left < window.innerWidth;
+    });
+
+    const setActiveCard = (nextActiveCard) => {
+      nextActiveCard.classList.add('is-active');
+      cards.forEach((card) => {
+        if (card !== nextActiveCard) {
+          card.classList.remove('is-active');
+        }
+      });
+      activeCard = nextActiveCard;
+    };
+
     const updateActiveMomentCard = () => {
-      if (!cards.length) {
+      const visibleCards = getVisibleCards();
+
+      if (!visibleCards.length) {
         return;
       }
 
-      let closestCard = cards[0];
+      let closestCard = visibleCards[0];
       let closestDistance = getDistanceFromCenter(closestCard);
 
-      cards.forEach((card) => {
+      visibleCards.forEach((card) => {
         const distance = getDistanceFromCenter(card);
 
         if (distance < closestDistance) {
@@ -179,19 +205,16 @@
         }
       });
 
-      if (!activeCard || !cards.includes(activeCard)) {
-        activeCard = closestCard;
-        activeCard.classList.add('is-active');
+      if (!activeCard || !visibleCards.includes(activeCard)) {
+        setActiveCard(closestCard);
         return;
       }
 
       const activeDistance = getDistanceFromCenter(activeCard);
-      const switchThreshold = 36;
+      const switchThreshold = 40;
 
       if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
-        activeCard.classList.remove('is-active');
-        closestCard.classList.add('is-active');
-        activeCard = closestCard;
+        setActiveCard(closestCard);
       }
     };
 
@@ -232,8 +255,13 @@
         const pixelsPerMillisecond = setWidth / marqueeDuration;
 
         offset -= pixelsPerMillisecond * elapsed;
-        applySafeOffset();
+        const didWrap = applySafeOffset();
         updateTrackPosition();
+
+        if (didWrap) {
+          updateActiveMomentCard();
+        }
+
         lastFrameTime = timestamp;
       }
 
