@@ -1,30 +1,261 @@
 {% comment %}
-  Mellow review videos placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+  Mellow review videos section.
+  Hardcoded UGC testimonial cards using the locked Mellow global section system.
 {% endcomment %}
 
-<section class="mellow-section mellow-architecture-section mellow-review-videos color-{{ section.settings.color_scheme }}">
-  <div class="mellow-section__inner">
-    <div class="mellow-architecture-section__card">
-      <div class="mellow-architecture-section__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+<style>
+  #MellowReviewVideos-{{ section.id }} {
+    background:
+      radial-gradient(circle at 84% 14%, rgba(208, 74, 42, 0.12), transparent 34%),
+      radial-gradient(circle at 16% 82%, rgba(244, 237, 224, 0.08), transparent 38%),
+      var(--mellow-green, #14310F);
+    color: var(--mellow-cream, #F0EBE0);
+  }
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-architecture-section__heading">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__header-wrap {
+    margin-bottom: clamp(34px, 4vw, 58px);
+  }
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-architecture-section__text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__heading {
+    color: var(--mellow-cream, #F0EBE0);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__text {
+    color: rgba(240, 235, 224, 0.78);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--mellow-card-gap);
+    align-items: stretch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--mellow-card-cream, #F4EDE0);
+    border: 1px solid rgba(180, 130, 72, 0.22);
+    border-radius: 24px;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.18);
+    color: var(--mellow-green, #14310F);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media {
+    position: relative;
+    display: grid;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    place-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 34% 22%, rgba(244, 237, 224, 0.26), transparent 28%),
+      linear-gradient(155deg, rgba(20, 49, 15, 0.98), rgba(39, 78, 32, 0.88) 54%, rgba(244, 237, 224, 0.2));
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media::before {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(244, 237, 224, 0.14);
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 38%;
+    background: linear-gradient(180deg, transparent, rgba(20, 49, 15, 0.44));
+    pointer-events: none;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card:nth-child(2) .mellow-review-videos__media {
+    background:
+      radial-gradient(circle at 72% 24%, rgba(208, 74, 42, 0.2), transparent 30%),
+      linear-gradient(145deg, rgba(244, 237, 224, 0.2), rgba(20, 49, 15, 0.96) 48%, rgba(67, 92, 50, 0.72));
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card:nth-child(3) .mellow-review-videos__media {
+    background:
+      radial-gradient(circle at 28% 26%, rgba(244, 237, 224, 0.28), transparent 30%),
+      linear-gradient(155deg, rgba(23, 55, 18, 0.96), rgba(61, 107, 140, 0.34) 58%, rgba(208, 74, 42, 0.18));
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__play {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    width: clamp(68px, 6vw, 90px);
+    height: clamp(68px, 6vw, 90px);
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(244, 237, 224, 0.84);
+    border-radius: 999px;
+    background: rgba(244, 237, 224, 0.14);
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.18);
+    color: var(--mellow-card-cream, #F4EDE0);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__play svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+    fill: currentColor;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__duration,
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__label {
+    position: absolute;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(244, 237, 224, 0.2);
+    border-radius: 999px;
+    background: rgba(20, 49, 15, 0.5);
+    color: var(--mellow-card-cream, #F4EDE0);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__duration {
+    top: 18px;
+    right: 18px;
+    min-height: 30px;
+    padding: 0 12px;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__label {
+    bottom: 18px;
+    left: 18px;
+    min-height: 32px;
+    padding: 0 13px;
+    text-transform: uppercase;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: clamp(24px, 2.3vw, 34px);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__quote {
+    margin-top: 16px;
+    color: rgba(20, 49, 15, 0.78);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__meta {
+    margin: auto 0 0;
+    padding-top: 24px;
+    color: rgba(20, 49, 15, 0.58);
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: clamp(30px, 3.5vw, 52px);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta {
+    transform-origin: center center;
+    border: 1px solid var(--mellow-orange-red, #D04A2A);
+    background: var(--mellow-orange-red, #D04A2A);
+    color: var(--mellow-cream, #F0EBE0);
+    text-decoration: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta,
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta .mellow-section-cta__label,
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta .mellow-section-cta__arrow {
+      transition: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
+      grid-template-columns: 1fr;
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__card {
+      border-radius: 22px;
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__media::before {
+      border-radius: 18px;
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__footer {
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<section
+  id="MellowReviewVideos-{{ section.id }}"
+  class="mellow-section mellow-section-standard mellow-review-videos color-{{ section.settings.color_scheme }}"
+>
+  <div class="mellow-section-axis mellow-review-videos__inner">
+    <div class="mellow-section-header-grid mellow-review-videos__header-wrap">
+      <div class="mellow-section-header mellow-review-videos__header">
+        <p class="mellow-eyebrow">REAL PEOPLE. REAL ROUTINES.</p>
+        <h2 class="mellow-section-heading mellow-review-videos__heading">See how Mellow fits<br>into real life</h2>
+        <p class="mellow-section-text mellow-review-videos__text">Short, honest moments from people using Mellow after meals, before bed, and when reflux tends to show up.</p>
       </div>
+    </div>
 
-      {%- if section.settings.note != blank -%}
-        <div class="mellow-architecture-section__note">
-          <span>{{ section.settings.note | escape }}</span>
-        </div>
-      {%- endif -%}
+    <div class="mellow-review-videos__grid">
+      {%- liquid
+        assign review_cards = 'After dinner relief|“I keep one near the kitchen. It became part of my after-dinner routine fast.”|Rachel B. · After-meal reflux|0:18||Before bed routine|“It feels simple: one pouch before bed, no measuring, no chalky tablet.”|Priya N. · Nighttime reflux|0:22||On-the-go support|“I like that it fits in my bag. It feels made for real life, not just the medicine cabinet.”|Michael T. · Travel & workdays|0:15' | split: '||'
+      -%}
+
+      {%- for card in review_cards -%}
+        {%- liquid
+          assign card_parts = card | split: '|'
+          assign card_title = card_parts[0]
+          assign card_quote = card_parts[1]
+          assign card_meta = card_parts[2]
+          assign card_duration = card_parts[3]
+        -%}
+        <article class="mellow-review-videos__card">
+          <div class="mellow-review-videos__media" aria-label="Video placeholder for {{ card_title | escape }}">
+            <span class="mellow-review-videos__duration">{{ card_duration | escape }}</span>
+            <span class="mellow-review-videos__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M8 5v14l11-7L8 5Z" />
+              </svg>
+            </span>
+            <span class="mellow-review-videos__label">Verified routine</span>
+          </div>
+
+          <div class="mellow-review-videos__content">
+            <h3 class="mellow-card-title">{{ card_title | escape }}</h3>
+            <p class="mellow-card-copy mellow-review-videos__quote">{{ card_quote | escape }}</p>
+            <p class="mellow-review-videos__meta">{{ card_meta | escape }}</p>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <div class="mellow-review-videos__footer">
+      <a class="mellow-section-cta mellow-review-videos__cta" href="/products/mellow">
+        <span class="mellow-section-cta__label">Watch more stories</span>
+        <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -40,30 +271,6 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Review videos"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "A future home for video social proof."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Reserve this area for customer clips, creator testimonials, and authentic proof points."
-    },
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": "Ready for final design replacement."
     }
   ],
   "presets": [
