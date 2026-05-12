@@ -240,7 +240,8 @@
     };
 
     const measureCarousel = () => {
-      setWidth = cardSet.getBoundingClientRect().width;
+      const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      setWidth = cardSet.getBoundingClientRect().width + trackGap;
 
       if (setWidth <= 0) {
         return;
