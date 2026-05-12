@@ -41,18 +41,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     min-width: 0;
     padding: clamp(12px, 1.2vw, 18px) clamp(28px, 3.6vw, 58px) clamp(36px, 3.8vw, 58px);
-    text-align: center;
+    text-align: left;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-copy {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child {
@@ -76,6 +76,7 @@
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
     display: block;
     margin: 0 0 clamp(8px, 0.9vw, 14px);
+    text-align: left;
     color: var(--mellow-cream, #F0EBE0);
     font-family: var(--mellow-font-display) !important;
     font-size: clamp(86px, 8vw, 136px);
@@ -96,8 +97,8 @@
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
     display: block;
     max-width: 320px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0;
+    text-align: left;
     color: var(--mellow-clinical-sage);
     font-family: var(--mellow-font-display) !important;
     font-size: clamp(24px, 2vw, 34px);
@@ -112,14 +113,14 @@
     display: block;
     width: 34px;
     height: 1px;
-    margin: clamp(16px, 1.4vw, 22px) auto clamp(16px, 1.6vw, 24px);
+    margin: clamp(16px, 1.4vw, 22px) auto clamp(16px, 1.6vw, 24px) 0;
     background: color-mix(in srgb, var(--mellow-clinical-sage) 72%, transparent);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
     max-width: 300px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0;
+    text-align: left;
     color: var(--mellow-clinical-cream-muted);
     font-size: clamp(17px, 1.18vw, 20px);
     line-height: 1.52;
