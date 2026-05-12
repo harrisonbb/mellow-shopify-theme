@@ -39,49 +39,61 @@
           assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After bariatric surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
         -%}
 
-        {%- for card in cards -%}
-          {%- liquid
-            assign card_parts = card | split: '|'
-            assign card_title = card_parts[0]
-            assign card_text = card_parts[1]
-            assign card_icon = card_parts[2]
-            assign card_tag = card_parts[3]
-          -%}
-          <article
-            class="mellow-who-its-for__card"
-            data-mellow-who-card
-            data-mellow-who-index="{{ forloop.index0 }}"
-          >
-            {%- if card_tag != blank -%}
-              <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
-            {%- endif -%}
-            <div class="mellow-who-its-for__icon" aria-hidden="true">
-              {%- case card_icon -%}
-                {%- when 'fork-knife' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
-                {%- when 'droplet' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
-                {%- when 'moon' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
-                {%- when 'pregnancy' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
-                {%- when 'bolt' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
-                {%- when 'target' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
-                {%- when 'shield' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
-                {%- when 'smoke' -%}
-                  <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
-              {%- endcase -%}
-            </div>
+        {%- for marquee_set in (1..2) -%}
+          {%- assign is_duplicate_set = false -%}
+          {%- if marquee_set == 2 -%}
+            {%- assign is_duplicate_set = true -%}
+          {%- endif -%}
 
-            <div class="mellow-who-its-for__card-copy">
-              <h3>{{ card_title | escape }}</h3>
-              <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
-              <p>{{ card_text | escape }}</p>
-            </div>
-          </article>
+          {%- for card in cards -%}
+            {%- liquid
+              assign card_parts = card | split: '|'
+              assign card_title = card_parts[0]
+              assign card_text = card_parts[1]
+              assign card_icon = card_parts[2]
+              assign card_tag = card_parts[3]
+            -%}
+            <article
+              class="mellow-who-its-for__card"
+              data-mellow-who-card
+              data-mellow-who-index="{{ forloop.index0 }}"
+              {% if is_duplicate_set %}
+                aria-hidden="true"
+                data-mellow-who-duplicate="true"
+                {% if forloop.first %}data-mellow-who-duplicate-start{% endif %}
+              {% endif %}
+            >
+              {%- if card_tag != blank -%}
+                <span class="mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+              {%- endif -%}
+              <div class="mellow-who-its-for__icon" aria-hidden="true">
+                {%- case card_icon -%}
+                  {%- when 'fork-knife' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M15 7v14M9 7v12c0 4 3 7 6 7s6-3 6-7V7M15 26v15M33 7c4 4 6 9 6 15 0 5-3 8-6 8V7Zm0 23v11"/></svg>
+                  {%- when 'droplet' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6S12 20 12 30c0 7 5 12 12 12s12-5 12-12C36 20 24 6 24 6Z"/><path d="M19 31c1 3 3 5 6 5"/></svg>
+                  {%- when 'moon' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M32 39c-12 0-22-10-22-22 0-3 1-6 2-9 3 7 10 12 18 12 4 0 7-1 10-3-1 12-7 22-8 22Z"/></svg>
+                  {%- when 'pregnancy' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M25 9a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/><path d="M20 15c-5 3-8 8-8 15 0 8 5 12 12 12 6 0 11-4 11-10 0-7-5-13-12-13"/><path d="M18 28c3-2 8-2 11 1"/></svg>
+                  {%- when 'bolt' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M28 5 12 27h12l-4 16 16-23H24l4-15Z"/></svg>
+                  {%- when 'target' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M24 24h.1"/></svg>
+                  {%- when 'shield' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 38 12v10c0 9-5 16-14 20-9-4-14-11-14-20V12l14-6Z"/><path d="M18 24l4 4 8-9"/></svg>
+                  {%- when 'smoke' -%}
+                    <svg viewBox="0 0 48 48" focusable="false"><path d="M9 32h18M31 32h8M11 23c4-5 11 2 15-4 2-3-1-6-4-8M31 24c3-3 9 0 8-7"/></svg>
+                {%- endcase -%}
+              </div>
+
+              <div class="mellow-who-its-for__card-copy">
+                <h3>{{ card_title | escape }}</h3>
+                <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
+                <p>{{ card_text | escape }}</p>
+              </div>
+            </article>
+          {%- endfor -%}
         {%- endfor -%}
       </div>
     </div>
@@ -98,6 +110,7 @@
     const carousel = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const firstCard = section.querySelector('[data-mellow-who-card]');
+    const duplicateStartCard = section.querySelector('[data-mellow-who-duplicate-start]');
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const desktopMotionQuery = window.matchMedia('(min-width: 990px)');
 
@@ -119,6 +132,16 @@
       }
 
       carousel.style.removeProperty('--mellow-who-entry-x');
+    };
+
+    const setMarqueeDistance = () => {
+      if (!duplicateStartCard) return;
+
+      const distance = duplicateStartCard.offsetLeft - firstCard.offsetLeft;
+
+      if (distance > 0) {
+        track.style.setProperty('--mellow-who-marquee-distance', `${distance}px`);
+      }
     };
 
     const shouldAnimateEntry = () => (
@@ -188,10 +211,20 @@
     };
 
     window.addEventListener('scroll', requestEntryMotion, { passive: true });
-    window.addEventListener('resize', requestEntryMotion, { passive: true });
+    window.addEventListener('resize', () => {
+      setMarqueeDistance();
+      requestEntryMotion();
+    }, { passive: true });
     addMediaListener(reducedMotionQuery);
     addMediaListener(desktopMotionQuery);
 
+    if ('ResizeObserver' in window) {
+      const marqueeObserver = new ResizeObserver(setMarqueeDistance);
+      marqueeObserver.observe(track);
+      marqueeObserver.observe(firstCard);
+    }
+
+    setMarqueeDistance();
     requestEntryMotion();
   })();
 </script>
