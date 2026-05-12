@@ -16,7 +16,7 @@
         {%- endif -%}
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape }}</h2>
+          <h2 class="mellow-who-its-for__heading">{{ section.settings.heading | escape | replace: 'more moments', 'more<br>moments' }}</h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
