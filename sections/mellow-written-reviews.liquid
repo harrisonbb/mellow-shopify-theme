@@ -16,13 +16,13 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding-left: var(--mellow-section-pad-x, clamp(28px, 4vw, 64px));
-    padding-right: var(--mellow-section-pad-x, clamp(28px, 4vw, 64px));
+    padding-left: var(--mellow-section-axis-pad);
+    padding-right: var(--mellow-section-axis-pad);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, var(--mellow-header-max, 760px)) auto;
+    grid-template-columns: minmax(0, 760px) auto;
     align-items: center;
     gap: clamp(40px, 6vw, 96px);
     margin-bottom: clamp(42px, 4.8vw, 72px);
@@ -271,8 +271,8 @@
 
   @media screen and (max-width: 749px) {
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__inner {
-      padding-left: var(--mellow-section-pad-x, 22px);
-      padding-right: var(--mellow-section-pad-x, 22px);
+      padding-left: var(--mellow-section-axis-pad);
+      padding-right: var(--mellow-section-axis-pad);
     }
 
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
@@ -309,9 +309,9 @@
   id="MellowWrittenReviews-{{ section.id }}"
   class="mellow-section mellow-section-standard mellow-written-reviews color-{{ section.settings.color_scheme }}"
 >
-  <div class="mellow-written-reviews__inner mellow-section-axis">
-    <div class="mellow-written-reviews__header-wrap mellow-section-header-grid">
-      <div class="mellow-written-reviews__header mellow-section-header">
+  <div class="mellow-written-reviews__inner">
+    <div class="mellow-written-reviews__header-wrap">
+      <div class="mellow-written-reviews__header">
         {%- if section.settings.eyebrow != blank -%}
           <p class="mellow-eyebrow mellow-written-reviews__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         {%- endif -%}

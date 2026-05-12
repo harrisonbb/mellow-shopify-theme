@@ -71,6 +71,7 @@
   --mellow-section-padding: clamp(6.4rem, 9vw, 12rem);
 
   --mellow-section-pad-x: clamp(28px, 4vw, 64px);
+  --mellow-section-axis-pad: var(--mellow-section-pad-x);
   --mellow-section-pad-top: clamp(64px, 5.5vw, 92px);
   --mellow-section-pad-bottom: clamp(52px, 5vw, 76px);
   --mellow-header-max: 760px;
@@ -160,8 +161,8 @@ main,
   width: 100%;
   max-width: none;
   margin: 0;
-  padding-left: var(--mellow-section-pad-x);
-  padding-right: var(--mellow-section-pad-x);
+  padding-left: var(--mellow-section-axis-pad);
+  padding-right: var(--mellow-section-axis-pad);
 }
 
 .mellow-section-standard {
