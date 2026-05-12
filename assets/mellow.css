@@ -20,7 +20,9 @@
 */
 
 :root {
-  --mellow-forest: #1A2D10;
+  --mellow-green: #14310F;
+  --mellow-forest: #14310F;
+  --mellow-section-green: #14310F;
   --mellow-ivory: #F0EBE0;
   --mellow-orange-red: #D04A2A;
   --mellow-science-blue: #3D6B8C;
@@ -29,8 +31,8 @@
   --mellow-white: #FFFFFF;
   --mellow-ink: #142111;
   --mellow-muted: #5E6B58;
-  --mellow-border: rgba(26, 45, 16, 0.14);
-  --mellow-shadow: 0 24px 60px rgba(26, 45, 16, 0.08);
+  --mellow-border: rgba(20, 49, 15, 0.14);
+  --mellow-shadow: 0 24px 60px rgba(20, 49, 15, 0.08);
 
   --mellow-font-sans: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mellow-font-display: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -531,7 +533,7 @@ input[type="reset"] {
   padding-bottom: clamp(56px, 6vw, 88px);
   background:
     radial-gradient(circle at 78% 28%, rgba(208, 74, 42, 0.08), transparent 34%),
-    linear-gradient(180deg, #10270D 0%, #0D220B 100%);
+    linear-gradient(180deg, var(--mellow-section-green) 0%, var(--mellow-section-green) 100%);
   color: #F0EBE0;
 }
 
@@ -630,7 +632,7 @@ input[type="reset"] {
   justify-content: center !important;
   gap: 10px !important;
   background: #F0EBE0 !important;
-  color: #1A2D10 !important;
+  color: var(--mellow-forest) !important;
   border: 1px solid rgba(240, 235, 224, 0.64) !important;
   font-size: 16px !important;
   line-height: 1 !important;
@@ -723,9 +725,9 @@ input[type="reset"] {
   min-height: var(--mellow-who-card-height);
   margin-top: 0;
   margin-bottom: 0;
-  color: #1A2D10;
+  color: var(--mellow-forest);
   text-align: left;
-  border: 0.1rem solid rgba(26, 45, 16, 0.09);
+  border: 0.1rem solid rgba(20, 49, 15, 0.09);
   border-radius: var(--mellow-card-radius);
   background: var(--mellow-who-card);
   background-image: none;
@@ -796,7 +798,7 @@ input[type="reset"] {
   color: #9B6427;
   box-shadow:
     inset 0 0 0 0.7rem rgba(255, 253, 247, 0.38),
-    0 1.1rem 2.6rem rgba(26, 45, 16, 0.1);
+    0 1.1rem 2.6rem rgba(20, 49, 15, 0.1);
   transition: transform 260ms ease;
 }
 
@@ -1077,7 +1079,7 @@ input[type="reset"] {
   width: 100%;
   max-width: 94%;
   margin: 0 0 12px;
-  color: #1A2D10;
+  color: var(--mellow-forest);
   font-family: var(--mellow-font-display) !important;
   font-size: clamp(27px, 1.9vw, 31px);
   line-height: 1.04;
