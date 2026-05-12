@@ -279,7 +279,7 @@ li {
 
 /* Mellow who it's for carousel */
 .mellow-who-its-for {
-  --mellow-card-gap: clamp(1.5rem, 2vw, 2.25rem);
+  --mellow-card-gap: 3rem;
   --mellow-scroll-pad-y: 1.25rem;
   --mellow-scroll-pad-x: 2rem;
   --mellow-bento-gap: 0.5rem;
@@ -421,14 +421,6 @@ li {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  overflow: visible;
-  transform: translate3d(var(--mellow-who-entry-x, 0), 0, 0);
-  will-change: transform;
-}
-
-.mellow-who-its-for__track {
-  display: flex;
-  gap: var(--mellow-card-gap);
   overflow-x: auto;
   overflow-y: hidden;
   margin-bottom: calc(-1 * var(--mellow-scroll-pad-y));
@@ -440,7 +432,36 @@ li {
   -webkit-overflow-scrolling: touch;
 }
 
-.mellow-who-its-for__track::-webkit-scrollbar {
+.mellow-who-its-for__track {
+  display: flex;
+  width: max-content;
+  gap: var(--mellow-card-gap);
+}
+
+@keyframes mellowMomentsMarquee {
+  from {
+    transform: translate3d(35vw, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(35vw - var(--mellow-who-marquee-distance, 50%)), 0, 0);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .mellow-who-its-for__track {
+    animation: mellowMomentsMarquee 80s linear infinite;
+    will-change: transform;
+  }
+
+  .mellow-who-its-for__track:hover,
+  .mellow-who-its-for__track:focus-within,
+  .mellow-who-its-for__track.is-touch-paused {
+    animation-play-state: paused;
+  }
+}
+
+.mellow-who-its-for__carousel::-webkit-scrollbar {
   display: none;
 }
 
@@ -613,9 +634,14 @@ li {
 }
 
 @media screen and (max-width: 989px) {
-  .mellow-who-its-for__carousel {
+  .mellow-who-its-for__track {
     transform: none;
+    animation: none;
     will-change: auto;
+  }
+
+  .mellow-who-its-for__card[data-mellow-who-card-duplicate] {
+    display: none;
   }
 }
 
@@ -646,7 +672,6 @@ li {
 
 @media screen and (max-width: 749px) {
   .mellow-who-its-for {
-    --mellow-card-gap: 1.5rem;
     --mellow-who-card-width: min(84vw, 35rem);
     --mellow-who-card-height: 34rem;
     --mellow-who-card-padding-y: 2.8rem;
@@ -690,7 +715,7 @@ li {
     margin-top: clamp(2.8rem, 7vw, 4rem);
   }
 
-  .mellow-who-its-for__track {
+  .mellow-who-its-for__carousel {
     scroll-snap-type: x mandatory;
   }
 
@@ -709,6 +734,7 @@ li {
   .mellow-who-its-for__icon::after,
   .mellow-who-its-for__card-copy,
   .mellow-who-its-for__quiz-button {
+    animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
   }
