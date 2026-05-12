@@ -1,30 +1,321 @@
 {% comment %}
-  Mellow how to use placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+  Mellow how to use section.
+  Premium three-step ritual section aligned to the global Mellow header system.
 {% endcomment %}
 
-<section class="mellow-section mellow-architecture-section mellow-how-to-use color-{{ section.settings.color_scheme }}">
-  <div class="mellow-section__inner">
-    <div class="mellow-architecture-section__card">
-      <div class="mellow-architecture-section__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+<style>
+  #MellowHowToUse-{{ section.id }} {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
+    background: #1E3114;
+  }
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: var(--mellow-section-axis-pad);
+    padding-right: var(--mellow-section-axis-pad);
+  }
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 760px) auto;
+    align-items: center;
+    gap: clamp(40px, 6vw, 96px);
+    margin-bottom: clamp(22px, 2.6vw, 36px);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header {
+    max-width: var(--mellow-header-max);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__eyebrow {
+    margin: 0 0 var(--mellow-eyebrow-margin-bottom);
+    color: var(--mellow-orange-red);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__heading {
+    margin: 0;
+    max-width: var(--mellow-header-max);
+    color: var(--mellow-ivory);
+    font-size: var(--mellow-heading-size);
+    line-height: var(--mellow-heading-line-height);
+    font-weight: var(--mellow-heading-weight);
+    letter-spacing: var(--mellow-heading-tracking);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__text {
+    max-width: var(--mellow-copy-max);
+    margin: 22px 0 0;
+    color: rgba(240, 235, 224, 0.82);
+    font-size: var(--mellow-subhead-size);
+    line-height: var(--mellow-subhead-line-height);
+    font-weight: 400;
+    letter-spacing: var(--mellow-subhead-tracking);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-actions {
+    justify-self: end;
+    align-self: center;
+    transform: none;
+    width: clamp(220px, 16vw, 280px);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta-wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta {
+    background: var(--mellow-ivory);
+    border: 1px solid rgba(240, 235, 224, 0.46);
+    color: #1E3114;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:hover,
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:focus-visible {
+    background: var(--mellow-orange-red);
+    border-color: var(--mellow-orange-red);
+    color: var(--mellow-ivory);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--mellow-card-gap);
+    padding-top: 10px;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step {
+    min-width: 0;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
+    position: relative;
+    min-height: clamp(280px, 27vw, 410px);
+    border: 1px solid rgba(240, 235, 224, 0.18);
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 24% 20%, rgba(240, 235, 224, 0.24) 0 12%, transparent 13%),
+      radial-gradient(circle at 78% 72%, rgba(208, 74, 42, 0.28) 0 16%, transparent 17%),
+      linear-gradient(145deg, rgba(240, 235, 224, 0.16), rgba(240, 235, 224, 0.055));
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card::before {
+    content: '';
+    position: absolute;
+    inset: clamp(18px, 2vw, 30px);
+    border: 1px solid rgba(240, 235, 224, 0.16);
+    border-radius: 18px;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(98px, 10vw, 156px);
+    height: clamp(160px, 15vw, 230px);
+    border-radius: 999px 999px 30px 30px;
+    background:
+      linear-gradient(180deg, rgba(240, 235, 224, 0.92), rgba(240, 235, 224, 0.62));
+    box-shadow: 0 26px 70px rgba(5, 15, 4, 0.22);
+    transform: translate3d(-50%, -50%, 0) rotate(-6deg);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:nth-child(2) .mellow-how-to-use__image-card::after {
+    border-radius: 34px;
+    transform: translate3d(-50%, -50%, 0) rotate(5deg);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:nth-child(3) .mellow-how-to-use__image-card::after {
+    width: clamp(150px, 13vw, 220px);
+    height: clamp(150px, 13vw, 220px);
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-number {
+    position: absolute;
+    left: clamp(22px, 2vw, 32px);
+    top: clamp(22px, 2vw, 32px);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: var(--mellow-orange-red);
+    color: var(--mellow-ivory);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__caption {
+    margin-top: clamp(18px, 1.8vw, 26px);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-title {
+    margin: 0;
+    color: var(--mellow-ivory);
+    font-family: var(--mellow-font-display) !important;
+    font-size: var(--mellow-card-title-size);
+    font-weight: var(--mellow-card-title-weight);
+    letter-spacing: var(--mellow-card-title-tracking);
+    line-height: var(--mellow-card-title-line-height);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-title span {
+    color: var(--mellow-orange-red);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-copy {
+    max-width: 330px;
+    margin: 10px 0 0;
+    color: rgba(240, 235, 224, 0.78);
+    font-size: var(--mellow-card-copy-size);
+    font-weight: var(--mellow-card-copy-weight);
+    letter-spacing: var(--mellow-card-copy-tracking);
+    line-height: var(--mellow-card-copy-line-height);
+  }
+
+  @media screen and (max-width: 989px) {
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 46px);
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
+      min-height: clamp(300px, 58vw, 440px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowHowToUse-{{ section.id }} {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__inner {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__heading {
+      font-size: clamp(38px, 10vw, 48px);
+      line-height: 1;
+      letter-spacing: -0.034em;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__text {
+      max-width: 360px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-actions {
+      width: 100%;
+      margin-top: 28px;
+      transform: none;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta-wrap {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta {
+      width: 190px;
+      min-height: 50px;
+      padding: 15px 22px;
+      font-size: 16px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:hover,
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:focus-visible {
+      width: 224px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
+      padding-top: 14px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
+      min-height: 300px;
+      border-radius: 22px;
+    }
+  }
+</style>
+
+<section
+  id="MellowHowToUse-{{ section.id }}"
+  class="mellow-section mellow-section-standard mellow-how-to-use color-{{ section.settings.color_scheme }}"
+>
+  <div class="mellow-section-axis mellow-how-to-use__inner">
+    <div class="mellow-section-header-grid mellow-how-to-use__header-wrap">
+      <div class="mellow-section-header mellow-how-to-use__header">
+        <p class="mellow-eyebrow mellow-how-to-use__eyebrow">A SIMPLE 3-STEP RITUAL</p>
+        <h2 class="mellow-section-heading mellow-how-to-use__heading">How to use Mellow</h2>
+        <p class="mellow-section-text mellow-how-to-use__text">A simple 3-step ritual after meals, before bed, or whenever reflux shows up.</p>
       </div>
 
-      {%- if section.settings.note != blank -%}
-        <div class="mellow-architecture-section__note">
-          <span>{{ section.settings.note | escape }}</span>
+      <div class="mellow-section-actions mellow-how-to-use__header-actions">
+        <div class="mellow-section-cta-wrap mellow-how-to-use__cta-wrap">
+          <a class="mellow-section-cta mellow-how-to-use__cta" href="/products/mellow">
+            <span class="mellow-section-cta__label">Try Mellow</span>
+            <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+          </a>
         </div>
-      {%- endif -%}
+      </div>
+    </div>
+
+    <div class="mellow-how-to-use__steps" aria-label="How to use Mellow in three steps">
+      <article class="mellow-how-to-use__step">
+        <div class="mellow-how-to-use__image-card" aria-hidden="true">
+          <span class="mellow-how-to-use__step-number">1</span>
+        </div>
+        <div class="mellow-how-to-use__caption">
+          <h3 class="mellow-how-to-use__step-title"><span>Step 1:</span> Squeeze</h3>
+          <p class="mellow-how-to-use__step-copy">Squeeze the gel directly into your mouth.</p>
+        </div>
+      </article>
+
+      <article class="mellow-how-to-use__step">
+        <div class="mellow-how-to-use__image-card" aria-hidden="true">
+          <span class="mellow-how-to-use__step-number">2</span>
+        </div>
+        <div class="mellow-how-to-use__caption">
+          <h3 class="mellow-how-to-use__step-title"><span>Step 2:</span> Take</h3>
+          <p class="mellow-how-to-use__step-copy">Take it and let the raft form.</p>
+        </div>
+      </article>
+
+      <article class="mellow-how-to-use__step">
+        <div class="mellow-how-to-use__image-card" aria-hidden="true">
+          <span class="mellow-how-to-use__step-number">3</span>
+        </div>
+        <div class="mellow-how-to-use__caption">
+          <h3 class="mellow-how-to-use__step-title"><span>Step 3:</span> Feel mellow</h3>
+          <p class="mellow-how-to-use__step-copy">Feel relief and get back to what matters most.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -40,30 +331,6 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "How to use Mellow"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Make the routine feel effortless."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Show the simple daily steps and when customers should take Mellow."
-    },
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": "Ready for final design replacement."
     }
   ],
   "presets": [
