@@ -129,10 +129,13 @@
 
     const marqueeDuration = 90000;
     let setWidth = 0;
-    let offset = 0;
+    let autoOffset = 0;
+    let manualOffset = 0;
     let animationFrame = null;
     let lastFrameTime = null;
     let resizeObserver = null;
+
+    const getTotalOffset = () => autoOffset + manualOffset;
 
     const applySafeOffset = () => {
       if (setWidth <= 0) {
@@ -140,14 +143,17 @@
       }
 
       let didWrap = false;
+      let totalOffset = getTotalOffset();
 
-      while (offset <= setWidth * -2) {
-        offset += setWidth;
+      while (totalOffset <= setWidth * -2) {
+        autoOffset += setWidth;
+        totalOffset += setWidth;
         didWrap = true;
       }
 
-      while (offset >= 0) {
-        offset -= setWidth;
+      while (totalOffset >= 0) {
+        autoOffset -= setWidth;
+        totalOffset -= setWidth;
         didWrap = true;
       }
 
@@ -155,7 +161,7 @@
     };
 
     const updateTrackPosition = () => {
-      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+      track.style.transform = `translate3d(${getTotalOffset()}px, 0, 0)`;
     };
 
     let activeCard = null;
@@ -244,7 +250,8 @@
         return;
       }
 
-      offset = setWidth * -1;
+      autoOffset = setWidth * -1;
+      manualOffset = 0;
       track.style.setProperty('--who-track-width', `${setWidth}px`);
       updateTrackPosition();
       requestActiveCardUpdate();
@@ -259,7 +266,7 @@
         const elapsed = timestamp - lastFrameTime;
         const pixelsPerMillisecond = setWidth / marqueeDuration;
 
-        offset -= pixelsPerMillisecond * elapsed;
+        autoOffset -= pixelsPerMillisecond * elapsed;
         const didWrap = applySafeOffset();
         updateTrackPosition();
 
@@ -306,14 +313,15 @@
       (event) => {
         const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
         const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
-        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.35;
+        const absX = Math.abs(horizontalDelta);
+        const absY = Math.abs(verticalDelta);
 
-        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
+        if (absX <= absY || setWidth <= 0) {
           return;
         }
 
         event.preventDefault();
-        offset -= horizontalDelta;
+        manualOffset -= horizontalDelta;
         applySafeOffset();
         updateTrackPosition();
         requestActiveCardUpdate();
@@ -321,6 +329,79 @@
       },
       { passive: false }
     );
+
+    let pointerState = null;
+
+    scroller.addEventListener('pointerdown', (event) => {
+      if (setWidth <= 0 || event.button > 0) {
+        return;
+      }
+
+      pointerState = {
+        startX: event.clientX,
+        startY: event.clientY,
+        lastX: event.clientX,
+        isHorizontal: false
+      };
+    });
+
+    scroller.addEventListener(
+      'pointermove',
+      (event) => {
+        if (!pointerState || setWidth <= 0) {
+          return;
+        }
+
+        const totalX = event.clientX - pointerState.startX;
+        const totalY = event.clientY - pointerState.startY;
+        const absX = Math.abs(totalX);
+        const absY = Math.abs(totalY);
+
+        if (!pointerState.isHorizontal) {
+          if (absX < 6 && absY < 6) {
+            return;
+          }
+
+          if (absX <= absY) {
+            pointerState = null;
+            return;
+          }
+
+          pointerState.isHorizontal = true;
+
+          if (scroller.setPointerCapture) {
+            scroller.setPointerCapture(event.pointerId);
+          }
+        }
+
+        event.preventDefault();
+        manualOffset += event.clientX - pointerState.lastX;
+        pointerState.lastX = event.clientX;
+        applySafeOffset();
+        updateTrackPosition();
+        requestActiveCardUpdate();
+        lastFrameTime = null;
+      },
+      { passive: false }
+    );
+
+    const releasePointer = (event) => {
+      if (pointerState && scroller.releasePointerCapture && scroller.hasPointerCapture(event.pointerId)) {
+        scroller.releasePointerCapture(event.pointerId);
+      }
+
+      pointerState = null;
+    };
+
+    scroller.addEventListener('pointerup', releasePointer);
+    scroller.addEventListener('pointercancel', releasePointer);
+    scroller.addEventListener('pointerleave', (event) => {
+      if (!pointerState || pointerState.isHorizontal) {
+        return;
+      }
+
+      releasePointer(event);
+    });
 
     const activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
 
