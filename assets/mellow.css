@@ -660,6 +660,7 @@ input[type="reset"] {
   overflow: visible;
   margin-bottom: clamp(-64px, -4vw, -48px);
   padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
+  touch-action: pan-y;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
