@@ -118,8 +118,9 @@
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
+    const cards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
-    if (!scroller || !track || !cardSet) {
+    if (!scroller || !track || !cardSet || !cards.length) {
       return;
     }
 
@@ -145,6 +146,27 @@
 
     const updateTrackPosition = () => {
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    };
+
+    const updateActiveCard = () => {
+      const viewportCenter = window.innerWidth / 2;
+      let closestCard = null;
+      let closestDistance = Infinity;
+
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach((card) => {
+        card.classList.toggle('is-active', card === closestCard);
+      });
     };
 
     const measureCarousel = () => {
@@ -174,6 +196,7 @@
         lastFrameTime = timestamp;
       }
 
+      updateActiveCard();
       animationFrame = requestAnimationFrame(animate);
     };
 
@@ -219,6 +242,7 @@
         offset -= horizontalDelta;
         applySafeOffset();
         updateTrackPosition();
+        updateActiveCard();
         lastFrameTime = null;
       },
       { passive: false }
