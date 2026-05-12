@@ -556,7 +556,7 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__header-actions {
-  margin-inline-end: clamp(4rem, 10vw, 18rem);
+  margin-inline-end: 0;
 }
 
 .mellow-who-its-for__quiz-action {
