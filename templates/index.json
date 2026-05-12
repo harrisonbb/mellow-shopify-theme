@@ -84,8 +84,8 @@
         "eyebrow": "Clinical proof"
       }
     },
-    "mellow_expert_reviews": {
-      "type": "mellow-expert-reviews",
+    "mellow_expert_proof": {
+      "type": "mellow-expert-proof",
       "settings": {
         "heading": "Expert voices for a calmer daily ritual."
       }
@@ -137,7 +137,7 @@
     "mellow_ingredients",
     "mellow_why_it_works",
     "mellow_clinical_proof",
-    "mellow_expert_reviews",
+    "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
     "mellow_buy_boxes",
