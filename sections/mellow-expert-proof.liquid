@@ -344,7 +344,7 @@
           <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_1_image != blank -%}
-              {{ section.settings.card_1_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 29vw, (min-width: 750px) 68vw, 82vw', widths: '360, 520, 700, 900', alt: section.settings.card_1_name }}
+              {{ section.settings.card_1_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 70vw, 88vw', widths: '360, 520, 700, 900', alt: section.settings.card_1_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_1_letter | default: 'A' | escape }}</span>
           </div>
@@ -361,7 +361,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_2_image != blank -%}
-              {{ section.settings.card_2_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 29vw, (min-width: 750px) 68vw, 82vw', widths: '360, 520, 700, 900', alt: section.settings.card_2_name }}
+              {{ section.settings.card_2_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 70vw, 88vw', widths: '360, 520, 700, 900', alt: section.settings.card_2_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_2_letter | default: 'B' | escape }}</span>
           </div>
@@ -378,7 +378,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_3_image != blank -%}
-              {{ section.settings.card_3_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 29vw, (min-width: 750px) 68vw, 82vw', widths: '360, 520, 700, 900', alt: section.settings.card_3_name }}
+              {{ section.settings.card_3_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 70vw, 88vw', widths: '360, 520, 700, 900', alt: section.settings.card_3_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_3_letter | default: 'C' | escape }}</span>
           </div>
