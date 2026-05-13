@@ -9,16 +9,6 @@
  */
 {
   "sections": {
-    "mellow_hero": {
-      "type": "mellow-hero",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Hero",
-        "heading": "A premium calm opening for Mellow.",
-        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
-        "note": "Ready for final design replacement."
-      }
-    },
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
@@ -26,7 +16,7 @@
         "eyebrow": "Trust bar",
         "heading": "Credibility markers for first-time shoppers.",
         "text": "Use this band for concise trust claims, press notes, shipping reassurance, or guarantees.",
-        "note": "Ready for final design replacement."
+        "note": ""
       }
     },
     "mellow_who_its_for": {
@@ -57,7 +47,7 @@
         "eyebrow": "Day & night scroll animation",
         "heading": "A future storytelling moment for daily coverage.",
         "text": "Build this into a calm scroll sequence that explains daytime and nighttime support.",
-        "note": "Ready for final design replacement."
+        "note": ""
       }
     },
     "mellow_ingredients": {
@@ -97,7 +87,7 @@
         "eyebrow": "Compare",
         "heading": "Make the better choice easy to understand.",
         "text": "Compare Mellow against common alternatives with a clean, conversion-focused layout.",
-        "note": "Ready for final design replacement."
+        "note": ""
       }
     },
     "mellow_written_reviews": {
@@ -113,7 +103,7 @@
         "eyebrow": "Buy boxes",
         "heading": "Prepare the main conversion module.",
         "text": "Add subscription, bundle, one-time purchase, and offer details when ready.",
-        "note": "Ready for final design replacement."
+        "note": ""
       }
     },
     "mellow_faq": {
@@ -123,12 +113,11 @@
         "eyebrow": "FAQ",
         "heading": "Answer final purchase questions calmly.",
         "text": "Use expandable answers later for objections, usage, shipping, and safety questions.",
-        "note": "Ready for final design replacement."
+        "note": ""
       }
     }
   },
   "order": [
-    "mellow_hero",
     "mellow_trust_bar",
     "mellow_who_its_for",
     "mellow_review_videos",
