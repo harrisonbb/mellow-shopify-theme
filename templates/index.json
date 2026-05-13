@@ -9,16 +9,6 @@
  */
 {
   "sections": {
-    "mellow_trust_bar": {
-      "type": "mellow-trust-bar",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Trust bar",
-        "heading": "Credibility markers for first-time shoppers.",
-        "text": "Use this band for concise trust claims, press notes, shipping reassurance, or guarantees.",
-        "note": ""
-      }
-    },
     "mellow_who_its_for": {
       "type": "mellow-who-its-for",
       "settings": {
@@ -38,16 +28,6 @@
       "type": "mellow-how-to-use",
       "settings": {
         "color_scheme": ""
-      }
-    },
-    "mellow_day_night_scroll": {
-      "type": "mellow-day-night-scroll",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Day & night scroll animation",
-        "heading": "A future storytelling moment for daily coverage.",
-        "text": "Build this into a calm scroll sequence that explains daytime and nighttime support.",
-        "note": ""
       }
     },
     "mellow_ingredients": {
@@ -96,16 +76,6 @@
         "color_scheme": ""
       }
     },
-    "mellow_buy_boxes": {
-      "type": "mellow-buy-boxes",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Buy boxes",
-        "heading": "Prepare the main conversion module.",
-        "text": "Add subscription, bundle, one-time purchase, and offer details when ready.",
-        "note": ""
-      }
-    },
     "mellow_faq": {
       "type": "mellow-faq",
       "settings": {
@@ -118,18 +88,15 @@
     }
   },
   "order": [
-    "mellow_trust_bar",
     "mellow_who_its_for",
     "mellow_review_videos",
     "mellow_how_to_use",
-    "mellow_day_night_scroll",
     "mellow_ingredients",
     "mellow_why_it_works",
     "mellow_clinical_proof",
     "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
-    "mellow_buy_boxes",
     "mellow_faq"
   ]
 }
