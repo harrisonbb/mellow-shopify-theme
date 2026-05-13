@@ -287,6 +287,18 @@
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
+
+      (function () {
+        var markMellowReady = function () {
+          document.documentElement.classList.add('mellow-ready');
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', markMellowReady, { once: true });
+        } else {
+          markMellowReady();
+        }
+      })();
     </script>
   </head>
 
