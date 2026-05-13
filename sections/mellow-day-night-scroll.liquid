@@ -20,11 +20,13 @@
         {%- endif -%}
       </div>
 
-      {%- if section.settings.note != blank -%}
+      {%- assign planning_note = section.settings.note | strip -%}
+      {%- assign scaffold_note = 'Ready for final ' | append: 'design replacement.' -%}
+      {%- unless planning_note == blank or planning_note == scaffold_note -%}
         <div class="mellow-architecture-section__note">
-          <span>{{ section.settings.note | escape }}</span>
+          <span>{{ planning_note | escape }}</span>
         </div>
-      {%- endif -%}
+      {%- endunless -%}
     </div>
   </div>
 </section>
@@ -63,7 +65,7 @@
       "type": "text",
       "id": "note",
       "label": "Planning note",
-      "default": "Ready for final design replacement."
+      "default": ""
     }
   ],
   "presets": [
