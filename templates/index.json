@@ -12,11 +12,26 @@
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
-        "color_scheme": "",
+        "background_color": "#f0ebe0",
         "eyebrow": "Trust bar",
-        "heading": "Credibility markers for first-time shoppers.",
-        "text": "Use this band for concise trust claims, press notes, shipping reassurance, or guarantees.",
-        "note": ""
+        "show_dividers": true,
+        "spacing": "default",
+        "item_1_icon_text": "DR",
+        "item_1_icon_style": "seal",
+        "item_1_label": "Doctor recommended",
+        "item_1_subcopy": "Reviewed with clinical standards in mind.",
+        "item_2_icon_text": "RT",
+        "item_2_icon_style": "science",
+        "item_2_label": "Raft-forming technology",
+        "item_2_subcopy": "Forms a protective barrier before acid rises.",
+        "item_3_icon_text": "$",
+        "item_3_icon_style": "badge",
+        "item_3_label": "HSA/FSA eligible",
+        "item_3_subcopy": "Designed to fit better into everyday care.",
+        "item_4_icon_text": "5m",
+        "item_4_icon_style": "outline",
+        "item_4_label": "Works in minutes",
+        "item_4_subcopy": "Starts forming after it reaches your stomach."
       }
     },
     "mellow_who_its_for": {
@@ -40,23 +55,24 @@
         "color_scheme": ""
       }
     },
-    "mellow_day_night_scroll": {
-      "type": "mellow-day-night-scroll",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Day & night scroll animation",
-        "heading": "A future storytelling moment for daily coverage.",
-        "text": "Build this into a calm scroll sequence that explains daytime and nighttime support.",
-        "note": ""
-      }
-    },
     "mellow_ingredients": {
       "type": "mellow-ingredients",
       "settings": {
         "color_scheme": "",
         "eyebrow": "Ingredients",
         "heading": "Spotlight the formulation with clarity.",
-        "text": "Use this section for ingredient education, sourcing notes, and why each component matters."
+        "text": "Use this section for ingredient education, sourcing notes, and why each component matters.",
+        "cta_label": "See all ingredients",
+        "cta_link": "",
+        "alginate_role": "THE RAFT-FORMER",
+        "alginate_title": "Sodium Alginate",
+        "alginate_description": "Forms the floating gel barrier",
+        "calcium_role": "THE STRENGTHENER",
+        "calcium_title": "Calcium Carbonate",
+        "calcium_description": "Helps strengthen the raft",
+        "bicarbonate_role": "THE FLOATER",
+        "bicarbonate_title": "Sodium Bicarbonate",
+        "bicarbonate_description": "Helps it float"
       }
     },
     "mellow_why_it_works": {
@@ -64,20 +80,78 @@
       "settings": {
         "color_scheme": "",
         "eyebrow": "Why it works",
-        "heading": "Explain the mechanism in plain language."
+        "heading": "Explain the mechanism in plain language.",
+        "subheading": "Mellow activates in stomach acid to form a soft, floating barrier that helps keep reflux where it starts.",
+        "step_1_title": "ACTIVATE",
+        "step_1_description": "Gel meets acid.",
+        "step_2_title": "FORM",
+        "step_2_description": "A soft raft begins to build.",
+        "step_3_title": "FLOAT",
+        "step_3_description": "The barrier rises and rests on top.",
+        "footnote": "Based on the known behavior of alginate raft-forming formulations."
       }
     },
     "mellow_clinical_proof": {
       "type": "mellow-clinical-proof",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Clinical proof"
+        "stat_1_value": "10+",
+        "stat_1_label": "studies in meta-analysis",
+        "stat_1_body": "Supporting alginate for reflux relief.",
+        "stat_2_value": "25+",
+        "stat_2_label": "years of published peer-reviewed research",
+        "stat_2_body": "Alginate technology studied, refined, and validated for over two decades.",
+        "stat_3_value": "2023",
+        "stat_3_label": "most recent RCT confirming superiority vs. antacid alone",
+        "stat_3_body": "The latest randomized controlled trial shows alginate add-on therapy outperforms antacid alone.",
+        "eyebrow": "Clinical proof",
+        "headline_line_1": "Alginate raft technology.",
+        "headline_line_2": "Studied for decades.",
+        "headline_line_3": "Shown to work.",
+        "body": "We didn’t invent alginate. We perfected its delivery in MellowRaft™. The science has been researched, replicated, and peer-reviewed for over 25 years.",
+        "cta_label": "View all research",
+        "cta_link": "",
+        "disclaimer": "Not evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease.\nCitations refer to published research on alginate-based formulas, not this specific product.",
+        "card_title": "Built on published alginate research",
+        "card_body": "Alginate-based formulas have been studied across clinical trials, meta-analyses, and reflux research for more than two decades.",
+        "card_note": "Citations available in the full research library.",
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "mellow_expert_proof": {
       "type": "mellow-expert-proof",
       "settings": {
-        "heading": "Expert voices for a calmer daily ritual."
+        "color_scheme": "",
+        "eyebrow": "PRACTITIONER-BACKED PROOF",
+        "heading": "Expert voices for a calmer daily ritual.",
+        "text": "Real-world guidance from digestive health and wellness practitioners.",
+        "cta_label": "Shop Mellow",
+        "cta_link": "",
+        "card_1_letter": "A",
+        "card_1_name": "Dr. Lena Ortiz",
+        "card_1_role": "Integrative Gastroenterologist",
+        "card_1_quote": "“Mellow takes a thoughtful approach to digestive comfort: recognizable ingredients, a calming format, and a ritual people can actually stay consistent with.”",
+        "card_2_letter": "B",
+        "card_2_name": "Maya C.",
+        "card_2_role": "Registered Dietitian",
+        "card_2_quote": "“What stands out is the balance. It feels premium without feeling clinical, and the copy is easy for customers to understand at a glance.”",
+        "card_3_letter": "C",
+        "card_3_name": "Noah R.",
+        "card_3_role": "Wellness Practitioner",
+        "card_3_quote": "“For people building better evening routines, proof and simplicity matter. This section gives shoppers the confidence to keep exploring.”",
+        "card_4_letter": "D",
+        "card_4_name": "Priya S.",
+        "card_4_role": "Functional Nutritionist",
+        "card_4_quote": "“The best digestive rituals are the ones people actually want to repeat. Mellow makes the format feel simple, calm, and easy to build into the day.”",
+        "card_5_letter": "E",
+        "card_5_name": "Dr. Marcus Bell",
+        "card_5_role": "Digestive Health Advisor",
+        "card_5_quote": "“A simple format matters. When something is easy to carry, easy to take, and easy to understand, people are much more likely to stay consistent.”",
+        "card_6_letter": "F",
+        "card_6_name": "Talia W.",
+        "card_6_role": "Wellness Clinician",
+        "card_6_quote": "“The strongest products are the ones that make relief feel less clinical and more human. Mellow brings that feeling into the daily routine.”"
       }
     },
     "mellow_compare": {
@@ -86,8 +160,7 @@
         "color_scheme": "",
         "eyebrow": "Compare",
         "heading": "Make the better choice easy to understand.",
-        "text": "Compare Mellow against common alternatives with a clean, conversion-focused layout.",
-        "note": ""
+        "text": "Compare Mellow against common alternatives with a clean, conversion-focused layout."
       }
     },
     "mellow_written_reviews": {
@@ -106,14 +179,21 @@
         "note": ""
       }
     },
+    "mellow_day_night_scroll": {
+      "type": "mellow-day-night-scroll",
+      "settings": {
+        "eyebrow": "Day & night scroll animation",
+        "heading": "A future storytelling moment for daily coverage.",
+        "subheading": "Mellow is designed for the moments reflux usually steals — dinner, downtime, and the quiet hours before sleep.",
+        "cta_label": "Take the reflux quiz",
+        "cta_link": "",
+        "supporting_line": "Built for daytime triggers and nighttime reflux."
+      }
+    },
     "mellow_faq": {
       "type": "mellow-faq",
       "settings": {
-        "color_scheme": "",
-        "eyebrow": "FAQ",
-        "heading": "Answer final purchase questions calmly.",
-        "text": "Use expandable answers later for objections, usage, shipping, and safety questions.",
-        "note": ""
+        "heading": "Answer final purchase questions calmly."
       }
     }
   },
@@ -122,7 +202,6 @@
     "mellow_who_its_for",
     "mellow_review_videos",
     "mellow_how_to_use",
-    "mellow_day_night_scroll",
     "mellow_ingredients",
     "mellow_why_it_works",
     "mellow_clinical_proof",
@@ -130,6 +209,7 @@
     "mellow_compare",
     "mellow_written_reviews",
     "mellow_buy_boxes",
+    "mellow_day_night_scroll",
     "mellow_faq"
   ]
 }
