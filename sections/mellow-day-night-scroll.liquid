@@ -1,76 +1,491 @@
 {% comment %}
-  Mellow day & night scroll placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
+  Mellow day-to-night scroll section.
+  Premium scroll-linked storytelling moment using the global Mellow section system.
 {% endcomment %}
 
-<section class="mellow-section mellow-architecture-section mellow-day-night-scroll color-{{ section.settings.color_scheme }}">
-  <div class="mellow-section__inner">
-    <div class="mellow-architecture-section__card">
-      <div class="mellow-architecture-section__content">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+<style>
+  #MellowDayNight-{{ section.id }} {
+    --day-night-progress: 0;
+    --day-night-cta-progress: 0;
+    --day-night-bg: #DCECF2;
+    --day-night-text: var(--mellow-forest, #1A2D10);
+    --day-night-muted: rgba(26, 45, 16, 0.74);
+    --day-night-rule: rgba(26, 45, 16, 0.14);
+    --day-night-glow-x: 78%;
+    --day-night-glow-y: 18%;
+    --day-night-glow-opacity: 0;
+    --day-night-radial-opacity: 0.12;
+    --day-night-orb-x: 0px;
+    --day-night-orb-y: 0px;
+    --day-night-orb-scale: 1;
+    --day-night-orb-color: #F4B55D;
+    --day-night-orb-shadow-blur: 42px;
+    --day-night-orb-shadow-opacity: 0.24;
+    --day-night-moon-mask-opacity: 0;
+    --day-night-stars-opacity: 0;
+    --day-night-cta-y: 18px;
+    position: relative;
+    min-height: 210vh;
+    width: 100%;
+    max-width: 100%;
+    overflow: clip;
+    background: var(--day-night-bg);
+    color: var(--day-night-text);
+    isolation: isolate;
+    transition: color 260ms ease;
+  }
 
-        {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-architecture-section__heading">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stage {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    min-height: 100svh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at var(--day-night-glow-x) var(--day-night-glow-y), rgba(240, 235, 224, var(--day-night-glow-opacity)), transparent 24rem),
+      radial-gradient(circle at 12% 82%, rgba(61, 107, 140, var(--day-night-radial-opacity)), transparent 32rem),
+      var(--day-night-bg);
+  }
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-architecture-section__text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
-      </div>
+  #MellowDayNight-{{ section.id }} .mellow-day-night__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--mellow-axis-max, 1360px);
+    margin: 0 auto;
+    padding: clamp(64px, 7vh, 92px) var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+  }
 
-      {%- assign planning_note = section.settings.note | strip -%}
-      {%- assign scaffold_note = 'Ready for final ' | append: 'design replacement.' -%}
-      {%- unless planning_note == blank or planning_note == scaffold_note -%}
-        <div class="mellow-architecture-section__note">
-          <span>{{ planning_note | escape }}</span>
+  #MellowDayNight-{{ section.id }} .mellow-day-night__grid {
+    display: grid;
+    grid-template-columns: minmax(0, var(--mellow-header-max, 760px)) minmax(220px, 0.66fr);
+    align-items: center;
+    gap: clamp(40px, 7vw, 112px);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__copy {
+    max-width: var(--mellow-header-max, 760px);
+    text-align: left;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__eyebrow {
+    color: var(--mellow-orange-red, #D04A2A);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__heading {
+    color: var(--day-night-text);
+    transition: color 260ms ease;
+    text-wrap: balance;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__subheading {
+    color: var(--day-night-muted);
+    transition: color 260ms ease;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__actions {
+    margin-top: clamp(28px, 3.4vw, 46px);
+    opacity: var(--day-night-cta-progress);
+    pointer-events: none;
+    transform: translate3d(0, var(--day-night-cta-y), 0);
+    transition: opacity 180ms linear, transform 180ms linear;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__cta-wrap {
+    justify-content: flex-start;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__cta {
+    border: 1px solid rgba(208, 74, 42, 0.42);
+    background: var(--mellow-orange-red, #D04A2A);
+    color: var(--mellow-ivory, #F0EBE0);
+    text-decoration: none;
+    box-shadow: 0 18px 42px rgba(11, 30, 44, 0.16);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__cta:hover,
+  #MellowDayNight-{{ section.id }} .mellow-day-night__cta:focus-visible {
+    border-color: color-mix(in srgb, var(--mellow-orange-red, #D04A2A) 74%, var(--mellow-forest, #1A2D10));
+    background: color-mix(in srgb, var(--mellow-orange-red, #D04A2A) 82%, var(--mellow-forest, #1A2D10));
+    color: var(--mellow-ivory, #F0EBE0);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__support {
+    max-width: 340px;
+    margin: clamp(14px, 1.4vw, 20px) 0 0;
+    color: rgba(240, 235, 224, 0.78);
+    font-size: var(--mellow-card-copy-size, clamp(16px, 1.03vw, 17px));
+    line-height: var(--mellow-card-copy-line-height, 1.48);
+    letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
+  }
+
+  #MellowDayNight-{{ section.id }}.is-cta-visible .mellow-day-night__actions {
+    pointer-events: auto;
+  }
+
+  #MellowDayNight-{{ section.id }}.is-night {
+    --day-night-text: var(--mellow-ivory, #F0EBE0);
+    --day-night-muted: rgba(240, 235, 224, 0.78);
+    --day-night-rule: rgba(240, 235, 224, 0.2);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__visual {
+    position: relative;
+    min-height: clamp(300px, 42vw, 560px);
+    border-left: 1px solid var(--day-night-rule);
+    transition: border-color 260ms ease;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__orb {
+    position: absolute;
+    top: clamp(20px, 5vw, 64px);
+    right: clamp(18px, 5vw, 72px);
+    width: clamp(118px, 13vw, 188px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 36% 32%, rgba(255, 255, 255, 0.86), rgba(240, 235, 224, 0.56) 30%, transparent 56%),
+      var(--day-night-orb-color);
+    box-shadow:
+      0 0 var(--day-night-orb-shadow-blur) rgba(240, 235, 224, var(--day-night-orb-shadow-opacity)),
+      0 28px 80px rgba(11, 30, 44, 0.12);
+    transform: translate3d(var(--day-night-orb-x), var(--day-night-orb-y), 0) scale(var(--day-night-orb-scale));
+    transition: background-color 260ms ease;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__orb::after {
+    content: "";
+    position: absolute;
+    inset: -2px -2px -2px 26%;
+    border-radius: 50%;
+    background: var(--day-night-bg);
+    opacity: var(--day-night-moon-mask-opacity);
+    transform: translate3d(14%, -3%, 0);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__horizon {
+    position: absolute;
+    right: 0;
+    bottom: clamp(30px, 8vw, 112px);
+    width: min(520px, 78%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--day-night-rule));
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars,
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before,
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(240, 235, 224, 0.84);
+    opacity: var(--day-night-stars-opacity);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars {
+    top: 22%;
+    right: 38%;
+    box-shadow: 94px 52px 0 rgba(240, 235, 224, 0.62), 164px -18px 0 rgba(240, 235, 224, 0.46), 218px 88px 0 rgba(240, 235, 224, 0.42);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before,
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
+    content: "";
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before {
+    transform: translate3d(-72px, 104px, 0) scale(0.72);
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
+    transform: translate3d(132px, 156px, 0) scale(0.58);
+  }
+
+  @media screen and (max-width: 899px) {
+    #MellowDayNight-{{ section.id }} {
+      min-height: 190vh;
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stage {
+      align-items: flex-start;
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__inner {
+      padding-top: clamp(64px, 10vh, 96px);
+      padding-bottom: clamp(42px, 7vh, 72px);
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__grid {
+      display: block;
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__visual {
+      min-height: clamp(210px, 32vh, 320px);
+      margin-top: clamp(30px, 7vh, 58px);
+      border-left: 0;
+      border-top: 1px solid var(--day-night-rule);
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__orb {
+      top: clamp(28px, 5vh, 54px);
+      right: clamp(16px, 8vw, 54px);
+      width: clamp(86px, 24vw, 126px);
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stars {
+      right: 52%;
+      top: 30%;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowDayNight-{{ section.id }} .mellow-day-night__support {
+      max-width: 310px;
+      font-size: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #MellowDayNight-{{ section.id }} {
+      --day-night-progress: 1;
+      --day-night-cta-progress: 1;
+      --day-night-bg: #102A3A;
+      --day-night-text: var(--mellow-ivory, #F0EBE0);
+      --day-night-muted: rgba(240, 235, 224, 0.78);
+      --day-night-glow-x: 60%;
+      --day-night-glow-y: 36%;
+      --day-night-glow-opacity: 0.22;
+      --day-night-radial-opacity: 0.22;
+      --day-night-orb-color: var(--mellow-ivory, #F0EBE0);
+      --day-night-orb-shadow-blur: 66px;
+      --day-night-orb-shadow-opacity: 0.48;
+      --day-night-moon-mask-opacity: 1;
+      --day-night-stars-opacity: 0.86;
+      --day-night-cta-y: 0px;
+      min-height: auto;
+      background: var(--day-night-bg);
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stage {
+      position: relative;
+      min-height: auto;
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__actions {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      transition: none;
+    }
+
+    #MellowDayNight-{{ section.id }} .mellow-day-night__orb,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__orb::after,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stars,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
+      transition: none;
+    }
+  }
+</style>
+
+<section id="MellowDayNight-{{ section.id }}" class="mellow-day-night" data-mellow-day-night>
+  <div class="mellow-day-night__stage">
+    <div class="mellow-day-night__inner">
+      <div class="mellow-day-night__grid">
+        <div class="mellow-day-night__copy">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="mellow-eyebrow mellow-day-night__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.heading != blank -%}
+            <h2 class="mellow-section-heading mellow-day-night__heading">{{ section.settings.heading | escape }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.subheading != blank -%}
+            <p class="mellow-section-text mellow-day-night__subheading">{{ section.settings.subheading | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.cta_label != blank -%}
+            <div class="mellow-day-night__actions">
+              <div class="mellow-section-cta-wrap mellow-day-night__cta-wrap">
+                <a class="mellow-section-cta mellow-day-night__cta" href="{{ section.settings.cta_link | default: '#' }}">
+                  <span class="mellow-section-cta__label">{{ section.settings.cta_label | escape }}</span>
+                  <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              {%- if section.settings.supporting_line != blank -%}
+                <p class="mellow-day-night__support">{{ section.settings.supporting_line | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
         </div>
-      {%- endunless -%}
+
+        <div class="mellow-day-night__visual" aria-hidden="true">
+          <span class="mellow-day-night__orb"></span>
+          <span class="mellow-day-night__stars"></span>
+          <span class="mellow-day-night__horizon"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  (() => {
+    const section = document.getElementById('MellowDayNight-{{ section.id }}');
+
+    if (!section) return;
+
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const stops = [
+      { at: 0, color: [220, 236, 242] },
+      { at: 0.42, color: [143, 181, 196] },
+      { at: 0.7, color: [61, 107, 140] },
+      { at: 1, color: [16, 42, 58] }
+    ];
+    const orbStops = [
+      { at: 0, color: [244, 181, 93] },
+      { at: 1, color: [240, 235, 224] }
+    ];
+    let ticking = false;
+
+    const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+
+    const mix = (from, to, amount) => Math.round(from + ((to - from) * amount));
+
+    const colorAt = (progress, palette = stops) => {
+      let from = palette[0];
+      let to = palette[palette.length - 1];
+
+      for (let index = 0; index < palette.length - 1; index += 1) {
+        if (progress >= palette[index].at && progress <= palette[index + 1].at) {
+          from = palette[index];
+          to = palette[index + 1];
+          break;
+        }
+      }
+
+      const localProgress = clamp((progress - from.at) / (to.at - from.at || 1));
+      return `rgb(${mix(from.color[0], to.color[0], localProgress)}, ${mix(from.color[1], to.color[1], localProgress)}, ${mix(from.color[2], to.color[2], localProgress)})`;
+    };
+
+    const setVar = (name, value) => section.style.setProperty(name, value);
+
+    const renderProgress = (progress, ctaProgress) => {
+      const isCompact = window.matchMedia('(max-width: 899px)').matches;
+      const orbX = progress * window.innerWidth * (isCompact ? -0.34 : -0.18);
+      const orbY = progress * window.innerHeight * (isCompact ? 0.09 : 0.22);
+      const orbScale = 1 - (progress * (isCompact ? 0.14 : 0.18));
+      const moonMask = clamp((progress - 0.52) / 0.46);
+      const stars = clamp((progress - 0.48) / 0.4) * 0.86;
+
+      setVar('--day-night-progress', progress.toFixed(4));
+      setVar('--day-night-cta-progress', ctaProgress.toFixed(4));
+      setVar('--day-night-bg', colorAt(progress));
+      setVar('--day-night-glow-x', `${78 - (progress * 18)}%`);
+      setVar('--day-night-glow-y', `${18 + (progress * 18)}%`);
+      setVar('--day-night-glow-opacity', (0.22 * progress).toFixed(4));
+      setVar('--day-night-radial-opacity', (0.12 + (0.1 * progress)).toFixed(4));
+      setVar('--day-night-orb-x', `${orbX.toFixed(2)}px`);
+      setVar('--day-night-orb-y', `${orbY.toFixed(2)}px`);
+      setVar('--day-night-orb-scale', orbScale.toFixed(4));
+      setVar('--day-night-orb-color', colorAt(progress, orbStops));
+      setVar('--day-night-orb-shadow-blur', `${(42 + (progress * 24)).toFixed(2)}px`);
+      setVar('--day-night-orb-shadow-opacity', (0.24 + (0.24 * progress)).toFixed(4));
+      setVar('--day-night-moon-mask-opacity', moonMask.toFixed(4));
+      setVar('--day-night-stars-opacity', stars.toFixed(4));
+      setVar('--day-night-cta-y', `${((1 - ctaProgress) * 18).toFixed(2)}px`);
+      section.classList.toggle('is-night', progress >= 0.48);
+      section.classList.toggle('is-cta-visible', ctaProgress > 0.92);
+    };
+
+    const setProgress = () => {
+      ticking = false;
+
+      if (reduceMotionQuery.matches) {
+        renderProgress(1, 1);
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      const scrollable = Math.max(1, rect.height - window.innerHeight);
+      const progress = clamp(-rect.top / scrollable);
+      const ctaProgress = clamp((progress - 0.62) / 0.18);
+
+      renderProgress(progress, ctaProgress);
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(setProgress);
+      }
+    };
+
+    setProgress();
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
+
+    if (typeof reduceMotionQuery.addEventListener === 'function') {
+      reduceMotionQuery.addEventListener('change', setProgress);
+    } else if (typeof reduceMotionQuery.addListener === 'function') {
+      reduceMotionQuery.addListener(setProgress);
+    }
+
+    document.addEventListener('shopify:section:load', (event) => {
+      if (event.target && event.target.contains(section)) setProgress();
+    });
+  })();
+</script>
+
 {% schema %}
 {
-  "name": "Mellow day & night scroll",
+  "name": "Mellow day to night",
   "tag": "section",
-  "class": "section section-mellow-day-night-scroll",
+  "class": "section section-mellow-day-night",
   "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    },
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Day & night scroll animation"
+      "default": "After meals. Before bed."
     },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "A future storytelling moment for daily coverage."
+      "default": "From day to night, we’ve got you covered."
     },
     {
       "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Build this into a calm scroll sequence that explains daytime and nighttime support."
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Mellow is designed for the moments reflux usually steals — dinner, downtime, and the quiet hours before sleep."
     },
     {
       "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": ""
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Take the reflux quiz"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "text",
+      "id": "supporting_line",
+      "label": "Supporting line",
+      "default": "Built for daytime triggers and nighttime reflux."
     }
   ],
   "presets": [
     {
-      "name": "Mellow day & night scroll"
+      "name": "Mellow day to night"
     }
   ]
 }
