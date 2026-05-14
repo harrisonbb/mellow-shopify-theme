@@ -128,14 +128,17 @@
         "text": "Real-world guidance from digestive health and wellness practitioners.",
         "cta_label": "Shop Mellow",
         "cta_link": "/products/mellow-reflux-relief-gel",
+        "card_1_image": "shopify://shop_images/Adams_1504dd.jpg",
         "card_1_letter": "A",
         "card_1_name": "Dr. Lena Ortiz",
         "card_1_role": "Integrative Gastroenterologist",
         "card_1_quote": "“Mellow takes a thoughtful approach to digestive comfort: recognizable ingredients, a calming format, and a ritual people can actually stay consistent with.”",
+        "card_2_image": "shopify://shop_images/00000dd72500113659175861.jpg",
         "card_2_letter": "B",
         "card_2_name": "Maya C.",
         "card_2_role": "Registered Dietitian",
         "card_2_quote": "“What stands out is the balance. It feels premium without feeling clinical, and the copy is easy for customers to understand at a glance.”",
+        "card_3_image": "shopify://shop_images/dddsdsd.jpg",
         "card_3_letter": "C",
         "card_3_name": "Noah R.",
         "card_3_role": "Wellness Practitioner",
@@ -169,18 +172,6 @@
         "color_scheme": ""
       }
     },
-    "mellow_buy_boxes": {
-      "type": "mellow-buy-boxes",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Shop Mellow",
-        "heading": "Ready for calmer reflux support?",
-        "text": "Shop the focused Mellow product page for flavors, purchase options, and the raft-forming routine.",
-        "cta_label": "Shop Mellow",
-        "cta_link": "/products/mellow-reflux-relief-gel",
-        "note": ""
-      }
-    },
     "mellow_day_night_scroll": {
       "type": "mellow-day-night-scroll",
       "settings": {
@@ -210,7 +201,6 @@
     "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
-    "mellow_buy_boxes",
     "mellow_day_night_scroll",
     "mellow_faq"
   ]
