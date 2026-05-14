@@ -169,16 +169,6 @@
         "color_scheme": ""
       }
     },
-    "mellow_buy_boxes": {
-      "type": "mellow-buy-boxes",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Buy boxes",
-        "heading": "Prepare the main conversion module.",
-        "text": "Add subscription, bundle, one-time purchase, and offer details when ready.",
-        "note": ""
-      }
-    },
     "mellow_day_night_scroll": {
       "type": "mellow-day-night-scroll",
       "settings": {
@@ -208,7 +198,6 @@
     "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
-    "mellow_buy_boxes",
     "mellow_day_night_scroll",
     "mellow_faq"
   ]
