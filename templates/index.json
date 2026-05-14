@@ -63,7 +63,7 @@
         "heading": "Spotlight the formulation with clarity.",
         "text": "Use this section for ingredient education, sourcing notes, and why each component matters.",
         "cta_label": "See all ingredients",
-        "cta_link": "",
+        "cta_link": "/products/mellow-reflux-relief-gel",
         "alginate_role": "THE RAFT-FORMER",
         "alginate_title": "Sodium Alginate",
         "alginate_description": "Forms the floating gel barrier",
@@ -110,7 +110,7 @@
         "headline_line_3": "Shown to work.",
         "body": "We didn’t invent alginate. We perfected its delivery in MellowRaft™. The science has been researched, replicated, and peer-reviewed for over 25 years.",
         "cta_label": "View all research",
-        "cta_link": "",
+        "cta_link": "/products/mellow-reflux-relief-gel",
         "disclaimer": "Not evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease.\nCitations refer to published research on alginate-based formulas, not this specific product.",
         "card_title": "Built on published alginate research",
         "card_body": "Alginate-based formulas have been studied across clinical trials, meta-analyses, and reflux research for more than two decades.",
@@ -127,7 +127,7 @@
         "heading": "Expert voices for a calmer daily ritual.",
         "text": "Real-world guidance from digestive health and wellness practitioners.",
         "cta_label": "Shop Mellow",
-        "cta_link": "",
+        "cta_link": "/products/mellow-reflux-relief-gel",
         "card_1_letter": "A",
         "card_1_name": "Dr. Lena Ortiz",
         "card_1_role": "Integrative Gastroenterologist",
@@ -173,9 +173,11 @@
       "type": "mellow-buy-boxes",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Buy boxes",
-        "heading": "Prepare the main conversion module.",
-        "text": "Add subscription, bundle, one-time purchase, and offer details when ready.",
+        "eyebrow": "Shop Mellow",
+        "heading": "Ready for calmer reflux support?",
+        "text": "Shop the focused Mellow product page for flavors, purchase options, and the raft-forming routine.",
+        "cta_label": "Shop Mellow",
+        "cta_link": "/products/mellow-reflux-relief-gel",
         "note": ""
       }
     },
@@ -185,8 +187,8 @@
         "eyebrow": "Day & night scroll animation",
         "heading": "A future storytelling moment for daily coverage.",
         "subheading": "Mellow is designed for the moments reflux usually steals — dinner, downtime, and the quiet hours before sleep.",
-        "cta_label": "Take the reflux quiz",
-        "cta_link": "",
+        "cta_label": "Shop Mellow",
+        "cta_link": "/products/mellow-reflux-relief-gel",
         "supporting_line": "Built for daytime triggers and nighttime reflux."
       }
     },

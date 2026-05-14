@@ -1,0 +1,209 @@
+{% comment %}
+  Mellow AG1-style sticky product layout.
+  Keeps the first viewport focused on gallery, proof, offer selection, CTA, and one compact assurance line.
+{% endcomment %}
+
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'product-form-' | append: section.id
+  assign first_media = product.featured_media | default: product.media.first
+-%}
+
+<section class="mellow-product-shell color-{{ section.settings.color_scheme }}" id="MellowProduct-{{ section.id }}">
+  <div class="mellow-product-shell__inner">
+    <aside class="mellow-product-gallery" aria-label="{{ product.title | escape }} gallery">
+      <div class="mellow-product-gallery__frame">
+        {%- if product.media.size > 1 -%}
+          <div class="mellow-product-gallery__thumbs" aria-label="Product thumbnails">
+            {%- for media in product.media limit: 5 -%}
+              <a
+                class="mellow-product-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+                href="#MellowProductMedia-{{ section.id }}-{{ media.id }}"
+                aria-label="View {{ product.title | escape }} image {{ forloop.index }}"
+              >
+                {{ media.preview_image | image_url: width: 144 | image_tag: loading: 'lazy', widths: '72, 108, 144', alt: product.title }}
+              </a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="mellow-product-gallery__main">
+          <span class="mellow-product-gallery__badge">Raft-forming technology</span>
+          {%- if first_media != blank -%}
+            <div class="mellow-product-gallery__image" id="MellowProductMedia-{{ section.id }}-{{ first_media.id }}">
+              {{ first_media.preview_image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '500, 700, 900, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: product.title }}
+            </div>
+          {%- else -%}
+            <div class="mellow-product-gallery__placeholder">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </aside>
+
+    <main class="mellow-product-info">
+      <div class="mellow-product-purchase" aria-label="Purchase {{ product.title | escape }}">
+        <p class="mellow-product-purchase__eyebrow">Raft-forming reflux support</p>
+        <p class="mellow-product-purchase__proof" aria-label="Rated 4.8 out of 5 stars from 2847 reviews">★★★★★ 4.8 (2,847 reviews) · Built on raft-forming technology</p>
+        <h1 class="mellow-product-purchase__title">Mellow Reflux Relief Gel</h1>
+        <p class="mellow-product-purchase__subhead">A smooth single-serve gel that forms a protective raft barrier after meals, before bed, or whenever reflux gets in the way.</p>
+
+        <div class="mellow-product-flavors" aria-label="Choose flavor">
+          <p class="mellow-product-flavors__label">Flavor: <span>Vanilla</span></p>
+          <div class="mellow-product-flavors__pills">
+            <button class="mellow-product-flavors__pill is-selected" type="button">Vanilla</button>
+            <button class="mellow-product-flavors__pill" type="button">Wild Honey</button>
+            <button class="mellow-product-flavors__pill" type="button">Apple Cinnamon</button>
+          </div>
+        </div>
+
+        <div class="mellow-purchase-options" aria-label="Choose purchase option">
+          <label class="mellow-purchase-option">
+            <input type="radio" name="mellow_purchase_option" value="monthly" checked>
+            <span class="mellow-purchase-option__content">
+              <span class="mellow-purchase-option__topline">
+                <span class="mellow-purchase-option__name">Monthly Routine</span>
+                <span class="mellow-purchase-option__badge">Best price</span>
+              </span>
+              <span class="mellow-purchase-option__body">
+                <span>
+                  <strong>Best price for regular reflux.</strong>
+                  <span>30 pouches delivered monthly. Pause, skip, or cancel anytime.</span>
+                </span>
+                <span class="mellow-purchase-option__price">
+                  <strong>$25</strong>
+                  <small>$0.83 per pouch</small>
+                </span>
+              </span>
+            </span>
+          </label>
+
+          <label class="mellow-purchase-option">
+            <input type="radio" name="mellow_purchase_option" value="three-month">
+            <span class="mellow-purchase-option__content">
+              <span class="mellow-purchase-option__topline">
+                <span class="mellow-purchase-option__name">3-Month Supply</span>
+                <span class="mellow-purchase-option__badge">No subscription</span>
+              </span>
+              <span class="mellow-purchase-option__body">
+                <span>
+                  <strong>Best for stocking up.</strong>
+                  <span>90 pouches prepaid for home, work, and travel. No monthly billing.</span>
+                </span>
+                <span class="mellow-purchase-option__price">
+                  <strong>$78</strong>
+                  <small>$0.87 per pouch</small>
+                </span>
+              </span>
+            </span>
+          </label>
+
+          <label class="mellow-purchase-option" id="mellow-one-time-trial">
+            <input type="radio" name="mellow_purchase_option" value="trial">
+            <span class="mellow-purchase-option__content">
+              <span class="mellow-purchase-option__topline">
+                <span class="mellow-purchase-option__name">One-Time Trial</span>
+                <span class="mellow-purchase-option__badge">Best first try</span>
+              </span>
+              <span class="mellow-purchase-option__body">
+                <span>
+                  <strong>Best first try.</strong>
+                  <span>30 pouches. Try Mellow once before subscribing.</span>
+                </span>
+                <span class="mellow-purchase-option__price">
+                  <strong>$32</strong>
+                  <small>$1.06 per pouch</small>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <product-form class="product-form mellow-product-form" data-hide-errors="false" data-section-id="{{ section.id }}">
+          {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ current_variant.id }}" {% if current_variant.available == false %}disabled{% endif %}>
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
+              <span class="product-form__error-message"></span>
+            </div>
+            <button
+              id="ProductSubmitButton-{{ section.id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit mellow-product-cta"
+              {% if current_variant.available == false %}disabled{% endif %}
+            >
+              <span>{%- if current_variant.available -%}Add to Cart — $25{%- else -%}Sold out{%- endif -%}</span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          {%- endform -%}
+        </product-form>
+
+        <a class="mellow-product-purchase__secondary" href="#mellow-one-time-trial">Prefer not to subscribe? Try one box — $32</a>
+        <p class="mellow-product-purchase__microcopy">30-day guarantee · Secure checkout · HSA/FSA eligible with Truemed</p>
+      </div>
+
+      <div class="mellow-product-education" aria-label="Product details">
+        <details class="mellow-product-detail" open>
+          <summary>Your routine includes</summary>
+          <ul>
+            <li>30 single-serve gel pouches</li>
+            <li>Free shipping over $45</li>
+            <li>Pause, skip, or cancel anytime</li>
+            <li>HSA/FSA eligible with Truemed</li>
+          </ul>
+        </details>
+        <details class="mellow-product-detail" open>
+          <summary>How to use</summary>
+          <p>Take one pouch after meals, before bed, or before reflux-prone moments.</p>
+        </details>
+        <details class="mellow-product-detail" open>
+          <summary>How it works</summary>
+          <p>Mellow uses alginate raft-forming technology to create a buoyant barrier at the top of the stomach, where reflux starts.</p>
+        </details>
+        <details class="mellow-product-detail" open>
+          <summary>What makes it different</summary>
+          <ul>
+            <li>Forms a physical barrier</li>
+            <li>Works without shutting down digestion</li>
+            <li>Smooth single-serve gel format</li>
+            <li>Made for after meals and before bed</li>
+          </ul>
+        </details>
+        <details class="mellow-product-detail">
+          <summary>Ingredients</summary>
+          <p>Alginate raft system, carbonate/bicarbonate, calcium, and flavor.</p>
+        </details>
+        <details class="mellow-product-detail" open>
+          <summary>Guarantee</summary>
+          <p>Try Mellow for 30 days. Love it or get your money back.</p>
+        </details>
+      </div>
+    </main>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mellow product",
+  "tag": "section",
+  "class": "section section-mellow-product",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow product"
+    }
+  ]
+}
+{% endschema %}

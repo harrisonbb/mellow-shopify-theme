@@ -1572,3 +1572,458 @@ input[type="reset"] {
     transform: none;
   }
 }
+
+/* Mellow AG1-style sticky product page */
+.mellow-product-shell {
+  background: var(--mellow-cream);
+  color: var(--mellow-ink);
+  padding: clamp(24px, 3vw, 40px) var(--mellow-section-axis-pad) clamp(72px, 7vw, 112px);
+}
+
+.mellow-product-shell__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+  gap: clamp(48px, 6vw, 88px);
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.mellow-product-gallery {
+  position: sticky;
+  top: calc(var(--mellow-announcement-height, 36px) + var(--mellow-header-height, 76px) + 24px);
+  align-self: start;
+  height: fit-content;
+}
+
+.mellow-product-gallery__frame {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: clamp(14px, 1.5vw, 22px);
+  align-items: stretch;
+}
+
+.mellow-product-gallery__thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mellow-product-gallery__thumb {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 1px solid rgba(20, 49, 15, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.48);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.mellow-product-gallery__thumb.is-active,
+.mellow-product-gallery__thumb:hover {
+  border-color: rgba(20, 49, 15, 0.5);
+  transform: translateY(-1px);
+}
+
+.mellow-product-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mellow-product-gallery__main {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(480px, 48vw, 680px);
+  overflow: hidden;
+  border: 1px solid rgba(20, 49, 15, 0.1);
+  border-radius: clamp(28px, 3vw, 44px);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.74), rgba(244, 237, 224, 0.82) 48%, rgba(231, 221, 204, 0.78) 100%);
+  box-shadow: var(--mellow-shadow);
+}
+
+.mellow-product-gallery__image,
+.mellow-product-gallery__placeholder {
+  width: min(86%, 620px);
+}
+
+.mellow-product-gallery__image img,
+.mellow-product-gallery__placeholder svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.mellow-product-gallery__badge {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 1;
+  border: 1px solid rgba(20, 49, 15, 0.16);
+  border-radius: 999px;
+  background: rgba(240, 235, 224, 0.86);
+  color: var(--mellow-green);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  padding: 10px 13px;
+  text-transform: uppercase;
+}
+
+.mellow-product-info {
+  min-width: 0;
+}
+
+.mellow-product-purchase {
+  padding-top: clamp(8px, 1.2vw, 20px);
+}
+
+.mellow-product-purchase__eyebrow,
+.mellow-product-purchase__proof,
+.mellow-product-purchase__microcopy,
+.mellow-product-flavors__label {
+  margin: 0;
+}
+
+.mellow-product-purchase__eyebrow {
+  color: var(--mellow-green);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mellow-product-purchase__proof {
+  margin-top: 14px;
+  color: var(--mellow-muted);
+  font-size: 1.38rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.mellow-product-purchase__title {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: var(--mellow-green);
+  font-family: var(--mellow-font-heading);
+  font-size: clamp(4.2rem, 4.8vw, 6.8rem);
+  font-weight: 620;
+  letter-spacing: -0.048em;
+  line-height: 0.96;
+}
+
+.mellow-product-purchase__subhead {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: var(--mellow-muted);
+  font-size: clamp(1.7rem, 1.4vw, 2rem);
+  line-height: 1.45;
+}
+
+.mellow-product-flavors {
+  margin-top: clamp(22px, 2.2vw, 32px);
+}
+
+.mellow-product-flavors__label {
+  color: var(--mellow-green);
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mellow-product-flavors__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mellow-product-flavors__pill {
+  appearance: none;
+  border: 1px solid rgba(20, 49, 15, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--mellow-green);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.28rem;
+  font-weight: 750;
+  line-height: 1;
+  padding: 9px 13px;
+}
+
+.mellow-product-flavors__pill.is-selected {
+  background: var(--mellow-green);
+  border-color: var(--mellow-green);
+  color: var(--mellow-cream);
+}
+
+.mellow-purchase-options {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.mellow-purchase-option {
+  display: block;
+  cursor: pointer;
+}
+
+.mellow-purchase-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mellow-purchase-option__content {
+  display: block;
+  border: 1px solid rgba(20, 49, 15, 0.14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.44);
+  padding: clamp(16px, 1.5vw, 20px);
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.mellow-purchase-option.is-selected .mellow-purchase-option__content,
+.mellow-purchase-option input:checked + .mellow-purchase-option__content,
+.mellow-purchase-option:hover .mellow-purchase-option__content {
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(20, 49, 15, 0.5);
+  box-shadow: 0 16px 36px rgba(20, 49, 15, 0.08);
+}
+
+.mellow-purchase-option__topline,
+.mellow-purchase-option__body {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.mellow-purchase-option__topline {
+  align-items: center;
+}
+
+.mellow-purchase-option__body {
+  align-items: flex-end;
+  margin-top: 12px;
+}
+
+.mellow-purchase-option__name {
+  color: var(--mellow-green);
+  font-size: 1.72rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.mellow-purchase-option__badge {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: rgba(208, 74, 42, 0.12);
+  color: var(--mellow-orange-red);
+  font-size: 1.05rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  padding: 7px 9px;
+  text-transform: uppercase;
+}
+
+.mellow-purchase-option__body > span:first-child {
+  display: grid;
+  gap: 4px;
+  color: var(--mellow-muted);
+  font-size: 1.4rem;
+  line-height: 1.34;
+}
+
+.mellow-purchase-option__body strong {
+  color: var(--mellow-green);
+}
+
+.mellow-purchase-option__price {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 2px;
+  min-width: 96px;
+  text-align: right;
+}
+
+.mellow-purchase-option__price strong {
+  font-size: 2.8rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.mellow-purchase-option__price small {
+  color: var(--mellow-muted);
+  font-size: 1.16rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.mellow-product-form {
+  margin-top: 18px;
+}
+
+.mellow-product-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--mellow-green);
+  color: var(--mellow-cream);
+  cursor: pointer;
+  font-family: var(--mellow-font-body);
+  font-size: 1.62rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.mellow-product-cta:hover {
+  background: #0f260b;
+  transform: translateY(-1px);
+}
+
+.mellow-product-purchase__secondary {
+  display: block;
+  margin-top: 14px;
+  color: var(--mellow-green);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.mellow-product-purchase__microcopy {
+  margin-top: 12px;
+  color: var(--mellow-muted);
+  font-size: 1.26rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mellow-product-education {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(38px, 4vw, 64px);
+  padding-bottom: clamp(20px, 3vw, 48px);
+}
+
+.mellow-product-detail {
+  border-top: 1px solid rgba(20, 49, 15, 0.14);
+  padding: 18px 0 2px;
+}
+
+.mellow-product-detail:last-child {
+  border-bottom: 1px solid rgba(20, 49, 15, 0.14);
+  padding-bottom: 18px;
+}
+
+.mellow-product-detail summary {
+  color: var(--mellow-green);
+  cursor: pointer;
+  font-size: 1.88rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  list-style: none;
+}
+
+.mellow-product-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.mellow-product-detail summary::after {
+  content: '+';
+  float: right;
+  font-weight: 650;
+}
+
+.mellow-product-detail[open] summary::after {
+  content: '–';
+}
+
+.mellow-product-detail p,
+.mellow-product-detail ul {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: var(--mellow-muted);
+  font-size: 1.52rem;
+  line-height: 1.5;
+}
+
+.mellow-product-detail ul {
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 989px) {
+  .mellow-product-shell {
+    padding-top: 18px;
+  }
+
+  .mellow-product-shell__inner {
+    display: block;
+  }
+
+  .mellow-product-gallery {
+    position: static;
+  }
+
+  .mellow-product-gallery__frame {
+    grid-template-columns: 1fr;
+  }
+
+  .mellow-product-gallery__thumbs {
+    order: 2;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .mellow-product-gallery__thumb {
+    flex: 0 0 68px;
+  }
+
+  .mellow-product-gallery__main {
+    min-height: clamp(360px, 82vw, 560px);
+  }
+
+  .mellow-product-info {
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .mellow-product-shell {
+    padding-inline: 18px;
+  }
+
+  .mellow-product-gallery__badge {
+    top: 14px;
+    left: 14px;
+    font-size: 0.94rem;
+  }
+
+  .mellow-purchase-option__topline,
+  .mellow-purchase-option__body {
+    display: grid;
+    gap: 10px;
+  }
+
+  .mellow-purchase-option__price {
+    min-width: 0;
+    text-align: left;
+  }
+}
