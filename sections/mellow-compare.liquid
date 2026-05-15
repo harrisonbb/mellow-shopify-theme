@@ -22,14 +22,14 @@
       radial-gradient(circle at 16% 84%, rgba(26, 45, 16, 0.08), transparent 32%),
       var(--compare-ivory);
     color: var(--compare-forest);
-    padding-top: clamp(36px, 4vw, 56px);
-    padding-bottom: clamp(44px, 5vw, 72px);
+    padding-top: clamp(44px, 4vw, 64px);
+    padding-bottom: clamp(48px, 4vw, 72px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__layout {
     display: grid;
-    grid-template-columns: minmax(260px, 0.8fr) minmax(680px, 1.6fr);
-    gap: clamp(40px, 6vw, 96px);
+    grid-template-columns: minmax(260px, 0.62fr) minmax(680px, 1.38fr);
+    gap: clamp(40px, 5vw, 84px);
     align-items: start;
   }
 
@@ -39,26 +39,28 @@
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-header {
-    max-width: 520px;
+    max-width: 460px;
     text-align: left;
   }
 
   #MellowCompare-{{ section.id }} .mellow-eyebrow {
-    margin-bottom: clamp(6px, 0.6vw, 10px);
+    margin-bottom: clamp(10px, 0.7vw, 12px);
+    font-size: var(--mellow-eyebrow-size, clamp(12px, 0.8vw, 14px));
+    letter-spacing: var(--mellow-eyebrow-tracking, 0.16em);
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-heading {
     margin-bottom: 0;
-    max-width: 520px;
-    font-size: clamp(48px, 5.2vw, 82px);
-    line-height: 0.94;
-    letter-spacing: -0.065em;
+    max-width: 460px;
+    font-size: clamp(36px, 3.8vw, 58px);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-text {
-    max-width: 420px;
-    margin-top: clamp(12px, 1.4vw, 18px);
-    font-size: clamp(15px, 1.1vw, 18px);
+    max-width: 390px;
+    margin-top: 14px;
+    font-size: clamp(15px, 1vw, 17px);
     line-height: 1.35;
   }
 
@@ -285,17 +287,8 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowCompare-{{ section.id }} {
-      padding-top: 32px;
-      padding-bottom: 44px;
-    }
-
     #MellowCompare-{{ section.id }} .mellow-compare__layout {
       gap: 24px;
-    }
-
-    #MellowCompare-{{ section.id }} .mellow-section-heading {
-      font-size: clamp(42px, 12vw, 58px);
     }
 
     #MellowCompare-{{ section.id }} .mellow-compare__scroll {
