@@ -27,8 +27,9 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding-left: var(--mellow-section-axis-pad);
-    padding-right: var(--mellow-section-axis-pad);
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
@@ -301,11 +302,6 @@
     #MellowClinicalProof-{{ section.id }} {
       --mellow-clinical-pad-top: min({{ section.settings.padding_top }}px, 64px);
       --mellow-clinical-pad-bottom: min({{ section.settings.padding_bottom }}px, 64px);
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
-      padding-left: 22px;
-      padding-right: 22px;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {

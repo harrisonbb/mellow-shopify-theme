@@ -17,9 +17,9 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    --mellow-who-edge-pad: var(--mellow-section-axis-pad);
-    padding-left: var(--mellow-who-edge-pad);
-    padding-right: var(--mellow-who-edge-pad);
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
@@ -301,12 +301,6 @@
     #MellowWhoItsFor-{{ section.id }} {
       padding-top: 56px;
       padding-bottom: 56px;
-    }
-
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
-      --mellow-who-edge-pad: 22px;
-      padding-left: var(--mellow-who-edge-pad);
-      padding-right: var(--mellow-who-edge-pad);
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
