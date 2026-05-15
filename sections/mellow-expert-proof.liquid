@@ -5,7 +5,7 @@
 
 <style>
   #MellowExpertProof-{{ section.id }} {
-    --expert-gap: clamp(14px, 1.2vw, 20px);
+    --expert-gap: clamp(20px, 2vw, 32px);
     --expert-axis-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     background: var(--mellow-section-green, #003302);
@@ -17,7 +17,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
     grid-template-columns: minmax(0, .62fr) auto;
-    margin-bottom: clamp(18px, 2vw, 28px);
+    margin-bottom: clamp(14px, 1.6vw, 22px);
     align-items: start;
     gap: clamp(18px, 2.4vw, 36px);
   }
@@ -123,13 +123,16 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: clamp(300px, 28vw, 390px);
+    grid-auto-columns: clamp(280px, 25vw, 380px);
     gap: var(--expert-gap);
     align-items: stretch;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
     scroll-snap-align: center;
+    display: grid;
+    grid-template-rows: minmax(0, 63%) minmax(0, 37%);
+    height: clamp(500px, 58vh, 620px);
     min-width: 0;
     overflow: hidden;
     border-radius: clamp(24px, 2vw, 28px);
@@ -143,8 +146,7 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
     position: relative;
     display: flex;
-    min-height: clamp(138px, 12.5vw, 182px);
-    aspect-ratio: 16 / 7.5;
+    min-height: 0;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -190,6 +192,7 @@
     z-index: 2;
     color: rgba(255, 252, 244, 0.84);
     font-family: var(--mellow-font-display);
+    display: none;
     font-size: clamp(66px, 7vw, 108px);
     font-weight: 650;
     line-height: .78;
@@ -200,8 +203,8 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
     display: flex;
     flex-direction: column;
-    min-height: clamp(178px, 15vw, 226px);
-    padding: clamp(20px, 2vw, 28px);
+    min-height: 0;
+    padding: clamp(18px, 1.5vw, 24px);
     background:
       radial-gradient(circle at 94% 6%, rgba(61, 107, 140, 0.08), transparent 30%),
       rgba(255, 252, 244, 0.92);
@@ -209,12 +212,12 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
     display: block;
-    margin: 0 0 clamp(7px, .7vw, 10px);
+    margin: 0 0 clamp(6px, .55vw, 8px);
     color: var(--mellow-orange, #D04A2A);
-    font-size: clamp(10px, .65vw, 12px);
+    font-size: clamp(10px, .58vw, 11px);
     font-weight: var(--mellow-eyebrow-weight, 700);
     line-height: var(--mellow-eyebrow-line-height, 1);
-    letter-spacing: var(--mellow-eyebrow-tracking, 0.16em);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
@@ -228,7 +231,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(14px, 1.4vw, 22px);
+    padding-top: clamp(10px, 1vw, 16px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__name {
@@ -258,7 +261,7 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
-      grid-auto-columns: min(54vw, 390px);
+      grid-auto-columns: min(48vw, 360px);
     }
   }
 
@@ -274,21 +277,16 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
-      grid-auto-columns: min(84vw, 340px);
+      grid-auto-columns: min(78vw, 330px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      border-radius: 24px;
-    }
-
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      min-height: 150px;
-      aspect-ratio: 16 / 8;
+      height: clamp(470px, 70vh, 560px);
+      border-radius: 12px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
-      min-height: 0;
-      padding: 20px;
+      padding: 18px;
     }
   }
 </style>
@@ -341,7 +339,7 @@
           <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_1_image != blank -%}
-              {{ section.settings.card_1_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_1_name }}
+              {{ section.settings.card_1_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_1_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_1_letter | default: 'A' | escape }}</span>
           </div>
@@ -358,7 +356,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_2_image != blank -%}
-              {{ section.settings.card_2_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_2_name }}
+              {{ section.settings.card_2_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_2_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_2_letter | default: 'B' | escape }}</span>
           </div>
@@ -375,7 +373,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_3_image != blank -%}
-              {{ section.settings.card_3_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_3_name }}
+              {{ section.settings.card_3_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_3_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_3_letter | default: 'C' | escape }}</span>
           </div>
@@ -392,7 +390,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_4_image != blank -%}
-              {{ section.settings.card_4_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_4_name }}
+              {{ section.settings.card_4_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_4_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_4_letter | default: 'D' | escape }}</span>
           </div>
@@ -409,7 +407,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_5_image != blank -%}
-              {{ section.settings.card_5_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_5_name }}
+              {{ section.settings.card_5_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_5_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_5_letter | default: 'E' | escape }}</span>
           </div>
@@ -426,7 +424,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_6_image != blank -%}
-              {{ section.settings.card_6_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 28vw, (min-width: 750px) 54vw, 84vw', widths: '360, 520, 700, 900', alt: section.settings.card_6_name }}
+              {{ section.settings.card_6_image | image_url: width: 900 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 48vw, 78vw', widths: '360, 520, 700, 900', alt: section.settings.card_6_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_6_letter | default: 'F' | escape }}</span>
           </div>
