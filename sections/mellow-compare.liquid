@@ -22,36 +22,49 @@
       radial-gradient(circle at 16% 84%, rgba(26, 45, 16, 0.08), transparent 32%),
       var(--compare-ivory);
     color: var(--compare-forest);
-    padding-top: clamp(36px, 4vw, 56px);
-    padding-bottom: clamp(40px, 4vw, 64px);
+    padding-top: clamp(40px, 4vw, 64px);
+    padding-bottom: clamp(44px, 4vw, 72px);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__content {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(620px, 1.28fr);
+    align-items: start;
+    gap: clamp(32px, 4vw, 72px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
-    margin-bottom: clamp(24px, 3vw, 40px);
+    display: block;
+    margin-bottom: 0;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-section-header {
+    max-width: 560px;
   }
 
   #MellowCompare-{{ section.id }} .mellow-eyebrow {
-    margin-bottom: clamp(6px, 0.6vw, 10px);
+    margin-bottom: clamp(10px, 0.8vw, 14px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-heading {
-    margin-bottom: clamp(8px, 0.9vw, 12px);
-    font-size: clamp(48px, 5.8vw, 92px);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
+    max-width: 560px;
+    font-size: clamp(38px, 4.2vw, 64px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-text {
-    max-width: 440px;
-    margin-top: 0;
-    font-size: clamp(16px, 1.25vw, 20px);
-    line-height: 1.34;
+    max-width: 420px;
+    margin-top: clamp(12px, 1vw, 16px);
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.4;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
     width: 100%;
-    max-width: min(100%, 1280px);
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
+    min-width: 0;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__scroll {
@@ -78,22 +91,22 @@
 
   #MellowCompare-{{ section.id }} .mellow-compare__table th,
   #MellowCompare-{{ section.id }} .mellow-compare__table td {
-    padding-right: clamp(22px, 2.6vw, 42px);
-    padding-left: clamp(22px, 2.6vw, 42px);
+    padding-right: clamp(16px, 1.6vw, 26px);
+    padding-left: clamp(16px, 1.6vw, 26px);
     border-right: 1px solid var(--compare-border);
     border-bottom: 1px solid var(--compare-border);
     vertical-align: middle;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table thead th {
-    padding-top: clamp(12px, 1.4vw, 20px);
-    padding-bottom: clamp(12px, 1.4vw, 20px);
+    padding-top: clamp(16px, 1.4vw, 22px);
+    padding-bottom: clamp(16px, 1.4vw, 22px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table tbody th,
   #MellowCompare-{{ section.id }} .mellow-compare__table tbody td {
-    padding-top: clamp(18px, 2vw, 28px);
-    padding-bottom: clamp(18px, 2vw, 28px);
+    padding-top: clamp(12px, 1.2vw, 18px);
+    padding-bottom: clamp(12px, 1.2vw, 18px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table th:last-child,
@@ -147,7 +160,7 @@
     margin: 0 0 4px;
     color: var(--compare-ivory);
     font-family: var(--mellow-font-display, var(--font-heading-family));
-    font-size: clamp(28px, 3vw, 42px);
+    font-size: clamp(24px, 2vw, 34px);
     font-weight: var(--mellow-heading-weight, 600);
     letter-spacing: -0.04em;
     line-height: 0.95;
@@ -158,7 +171,7 @@
     align-items: center;
     gap: 10px;
     color: var(--compare-orange);
-    font-size: clamp(14px, 1vw, 17px);
+    font-size: clamp(12px, 0.9vw, 14px);
     font-weight: 750;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -167,7 +180,7 @@
   #MellowCompare-{{ section.id }} .mellow-compare__else-title {
     display: block;
     color: rgba(26, 45, 16, 0.72);
-    font-size: clamp(15px, 1.2vw, 20px);
+    font-size: clamp(13px, 1vw, 16px);
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: 0.18em;
@@ -176,7 +189,7 @@
 
   #MellowCompare-{{ section.id }} .mellow-compare__label-cell {
     color: rgba(26, 45, 16, 0.7);
-    font-size: clamp(13px, 0.95vw, 16px);
+    font-size: clamp(11px, 0.8vw, 13px);
     font-weight: 800;
     line-height: 1.25;
     letter-spacing: 0.18em;
@@ -188,7 +201,7 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.08)),
       var(--compare-mellow);
     color: var(--compare-forest);
-    font-size: clamp(17px, 1.35vw, 23px);
+    font-size: clamp(14px, 0.95vw, 16px);
     font-weight: 750;
     line-height: 1.25;
     letter-spacing: -0.025em;
@@ -197,7 +210,7 @@
   #MellowCompare-{{ section.id }} .mellow-compare__else-cell {
     background: var(--compare-else);
     color: var(--compare-muted-soft);
-    font-size: clamp(16px, 1.22vw, 21px);
+    font-size: clamp(14px, 0.95vw, 16px);
     font-weight: 450;
     line-height: 1.3;
     letter-spacing: -0.018em;
@@ -206,18 +219,18 @@
   #MellowCompare-{{ section.id }} .mellow-compare__value {
     display: flex;
     align-items: center;
-    gap: clamp(10px, 1vw, 16px);
+    gap: clamp(8px, 0.8vw, 12px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(28px, 2vw, 36px);
-    height: clamp(28px, 2vw, 36px);
-    flex: 0 0 clamp(28px, 2vw, 36px);
+    width: clamp(24px, 1.6vw, 30px);
+    height: clamp(24px, 1.6vw, 30px);
+    flex: 0 0 clamp(24px, 1.6vw, 30px);
     border-radius: var(--mellow-radius-pill, 999px);
-    font-size: clamp(16px, 1.25vw, 22px);
+    font-size: clamp(14px, 1vw, 18px);
     font-weight: 900;
     line-height: 1;
   }
@@ -229,9 +242,9 @@
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__recommended .mellow-compare__icon--check {
-    width: clamp(26px, 2vw, 34px);
-    height: clamp(26px, 2vw, 34px);
-    flex-basis: clamp(26px, 2vw, 34px);
+    width: clamp(24px, 1.6vw, 30px);
+    height: clamp(24px, 1.6vw, 30px);
+    flex-basis: clamp(24px, 1.6vw, 30px);
     background: #cde978;
     color: #5c9b10;
     box-shadow: 0 0 0 7px rgba(205, 233, 120, 0.18);
@@ -253,14 +266,19 @@
   }
 
   @media screen and (max-width: 989px) {
+    #MellowCompare-{{ section.id }} .mellow-compare__content {
+      grid-template-columns: 1fr;
+      gap: clamp(24px, 4vw, 36px);
+    }
+
     #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
       max-width: 100%;
     }
 
     #MellowCompare-{{ section.id }} .mellow-compare__table th,
     #MellowCompare-{{ section.id }} .mellow-compare__table td {
-      padding-right: 24px;
-      padding-left: 24px;
+      padding-right: 18px;
+      padding-left: 18px;
     }
   }
 
@@ -270,12 +288,12 @@
       padding-bottom: 52px;
     }
 
-    #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
-      margin-bottom: 28px;
+    #MellowCompare-{{ section.id }} .mellow-compare__content {
+      gap: 22px;
     }
 
     #MellowCompare-{{ section.id }} .mellow-section-heading {
-      font-size: clamp(42px, 12vw, 58px);
+      font-size: clamp(36px, 10vw, 48px);
     }
 
     #MellowCompare-{{ section.id }} .mellow-compare__scroll {
@@ -290,14 +308,14 @@
 
     #MellowCompare-{{ section.id }} .mellow-compare__table th,
     #MellowCompare-{{ section.id }} .mellow-compare__table td {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-right: 16px;
+      padding-left: 16px;
     }
 
     #MellowCompare-{{ section.id }} .mellow-compare__table tbody th,
     #MellowCompare-{{ section.id }} .mellow-compare__table tbody td {
-      padding-top: 18px;
-      padding-bottom: 18px;
+      padding-top: 14px;
+      padding-bottom: 14px;
     }
 
     #MellowCompare-{{ section.id }} .mellow-compare__corner,
@@ -320,9 +338,10 @@
 
 <section id="MellowCompare-{{ section.id }}" class="mellow-section-standard mellow-compare">
   <div class="mellow-section-axis">
-    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
-      <div class="mellow-section-header-grid mellow-compare__header-grid">
-        <div class="mellow-section-header">
+    <div class="mellow-compare__content">
+      {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
+        <div class="mellow-section-header-grid mellow-compare__header-grid">
+          <div class="mellow-section-header">
           {%- if section.settings.eyebrow != blank -%}
             <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
           {%- endif -%}
@@ -334,13 +353,13 @@
           {%- if section.settings.text != blank -%}
             <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
           {%- endif -%}
+          </div>
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
 
-    <div class="mellow-compare__table-wrap">
-      <div class="mellow-compare__scroll" tabindex="0" aria-label="Scrollable comparison table">
-        <table class="mellow-compare__table">
+      <div class="mellow-compare__table-wrap">
+        <div class="mellow-compare__scroll" tabindex="0" aria-label="Scrollable comparison table">
+          <table class="mellow-compare__table">
           <caption class="visually-hidden">
             Mellow compared with everything else across what it does, when it works, who it is made for, what you take, and how it feels.
           </caption>
@@ -406,9 +425,10 @@
               </td>
             </tr>
           </tbody>
-        </table>
+          </table>
+        </div>
+        <p class="mellow-compare__mobile-hint">Swipe to compare Mellow with everything else.</p>
       </div>
-      <p class="mellow-compare__mobile-hint">Swipe to compare Mellow with everything else.</p>
     </div>
   </div>
 </section>
