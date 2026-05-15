@@ -16,7 +16,8 @@
     margin-top: var(--mellow-section-heading-gap);
   }
 
-  .mellow-buy-boxes .mellow-buy-boxes__cta {
+  .mellow-buy-boxes .mellow-buy-boxes__cta-wrap {
+    justify-content: flex-start;
     margin-top: var(--mellow-section-content-gap);
   }
 </style>
@@ -38,9 +39,12 @@
         {%- endif -%}
 
         {%- if section.settings.cta_label != blank -%}
-          <a class="mellow-section-cta mellow-buy-boxes__cta" href="{{ section.settings.cta_link | default: '/products/mellow-reflux-relief-gel' }}">
-            <span class="mellow-section-cta__label">{{ section.settings.cta_label | escape }}</span>
-          </a>
+          <div class="mellow-section-cta-wrap mellow-buy-boxes__cta-wrap">
+            <a class="mellow-section-cta mellow-buy-boxes__cta" href="{{ section.settings.cta_link | default: '/products/mellow-reflux-relief-gel' }}">
+              <span class="mellow-section-cta__label">{{ section.settings.cta_label | escape }}</span>
+              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         {%- endif -%}
       </div>
 

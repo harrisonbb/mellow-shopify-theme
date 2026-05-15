@@ -69,18 +69,13 @@
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta {
-    background: var(--mellow-ivory);
-    border: 1px solid rgba(240, 235, 224, 0.46);
-    color: var(--mellow-forest, #003302);
-    text-decoration: none;
+    --mellow-section-cta-bg: var(--mellow-ivory);
+    --mellow-section-cta-border: rgba(240, 235, 224, 0.46);
+    --mellow-section-cta-color: var(--mellow-forest, #003302);
+    --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+    --mellow-section-cta-hover-border: var(--mellow-orange-red);
+    --mellow-section-cta-hover-color: var(--mellow-ivory);
     box-shadow: none;
-  }
-
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:hover,
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:focus-visible {
-    background: var(--mellow-orange-red);
-    border-color: var(--mellow-orange-red);
-    color: var(--mellow-ivory);
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
@@ -228,15 +223,11 @@
     }
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta {
-      width: 190px;
+      --mellow-section-cta-width: 190px;
+      --mellow-section-cta-hover-width: 224px;
       min-height: 50px;
       padding: 15px 22px;
       font-size: 16px;
-    }
-
-    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:hover,
-    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta:focus-visible {
-      width: 224px;
     }
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
