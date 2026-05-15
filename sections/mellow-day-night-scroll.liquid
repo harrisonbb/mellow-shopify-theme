@@ -8,6 +8,7 @@
     --day-night-progress: 0;
     --day-night-cta-progress: 0;
     --day-night-bg: #DCECF2;
+    --mellow-night-bg-current: #DCECF2;
     --day-night-text: var(--mellow-forest, #223216);
     --day-night-muted: rgba(34, 50, 22, 0.74);
     --day-night-rule: rgba(34, 50, 22, 0.14);
@@ -152,7 +153,7 @@
     transform: translate3d(var(--day-night-orb-x), var(--day-night-orb-y), 0) scale(var(--day-night-orb-scale));
   }
 
-  #MellowDayNight-{{ section.id }} .mellow-day-night__orb-disc {
+  #MellowDayNight-{{ section.id }} .mellow-day-night__moon-core {
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -160,9 +161,22 @@
     background:
       radial-gradient(circle at 36% 32%, rgba(255, 255, 255, 0.86), rgba(240, 235, 224, 0.56) 30%, transparent 56%),
       var(--day-night-orb-color);
-    -webkit-mask-image: radial-gradient(circle 52% at var(--day-night-moon-cutout-x) var(--day-night-moon-cutout-y), transparent calc(100% - 1px), #000 100%);
-    mask-image: radial-gradient(circle 52% at var(--day-night-moon-cutout-x) var(--day-night-moon-cutout-y), transparent calc(100% - 1px), #000 100%);
     transition: background-color 260ms ease;
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__moon-cutout {
+    position: absolute;
+    left: var(--day-night-moon-cutout-x);
+    top: var(--day-night-moon-cutout-y);
+    z-index: 1;
+    width: 104%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--mellow-night-bg-current);
+    opacity: 1;
+    filter: none;
+    box-shadow: none;
+    transform: translate3d(-50%, -50%, 0);
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__horizon {
@@ -253,6 +267,7 @@
       --day-night-progress: 1;
       --day-night-cta-progress: 1;
       --day-night-bg: #102A3A;
+      --mellow-night-bg-current: #102A3A;
       --day-night-text: var(--mellow-ivory, #F0EBE0);
       --day-night-muted: rgba(240, 235, 224, 0.78);
       --day-night-glow-x: 60%;
@@ -283,7 +298,7 @@
     }
 
     #MellowDayNight-{{ section.id }} .mellow-day-night__orb,
-    #MellowDayNight-{{ section.id }} .mellow-day-night__orb-disc,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__moon-core,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
@@ -327,7 +342,9 @@
 
         <div class="mellow-day-night__visual" aria-hidden="true">
           <span class="mellow-day-night__orb">
-            <span class="mellow-day-night__orb-disc"></span>
+            <span class="mellow-day-night__moon-core">
+              <span class="mellow-day-night__moon-cutout"></span>
+            </span>
           </span>
           <span class="mellow-day-night__stars"></span>
           <span class="mellow-day-night__horizon"></span>
@@ -392,6 +409,7 @@
       const backgroundColor = colorAt(progress);
 
       setVar('--day-night-bg', backgroundColor);
+      setVar('--mellow-night-bg-current', backgroundColor);
       setVar('--day-night-glow-x', `${78 - (progress * 18)}%`);
       setVar('--day-night-glow-y', `${18 + (progress * 18)}%`);
       setVar('--day-night-glow-opacity', (0.22 * progress).toFixed(4));
