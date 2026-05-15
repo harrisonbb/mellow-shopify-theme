@@ -507,7 +507,7 @@
   }
 }
 
-/* Keep every footer layer on the Mellow cream background. */
+/* Keep every footer layer in the final Mellow night-blue world. */
 .footer,
 .shopify-section-group-footer-group,
 .shopify-section-group-footer-group .footer,
@@ -517,22 +517,72 @@
 .shopify-section-group-footer-group .footer__blocks-wrapper,
 .shopify-section-group-footer-group .newsletter-form,
 .shopify-section-group-footer-group .newsletter-form__field-wrapper {
-  background-color: #F0EBE0 !important;
+  background-color: var(--mellow-night-blue, #102A3A) !important;
 }
 
 .shopify-section-group-footer-group {
-  background-color: #F0EBE0 !important;
+  background-color: var(--mellow-night-blue, #102A3A) !important;
 }
 
 .footer {
-  border-top: 1px solid rgba(0, 51, 2, 0.12);
-  color: #003302;
+  --color-background: 16, 42, 58;
+  --color-foreground: 240, 235, 224;
+  --gradient-background: var(--mellow-night-blue, #102A3A);
+  --mellow-footer-text: var(--mellow-ivory, #F0EBE0);
+  --mellow-footer-muted: rgba(240, 235, 224, 0.76);
+  --mellow-footer-rule: rgba(240, 235, 224, 0.18);
+  border-top: 1px solid var(--mellow-footer-rule);
+  color: var(--mellow-footer-muted);
+}
+
+.footer__content-bottom {
+  border-top-color: var(--mellow-footer-rule);
 }
 
 .footer a,
 .footer p,
 .footer small,
-.footer .footer-block__heading,
+.footer .footer-block__details-content,
 .footer .copyright__content {
-  color: #003302;
+  color: var(--mellow-footer-muted);
+}
+
+.footer .footer-block__heading,
+.footer .footer-block__newsletter h2 {
+  color: var(--mellow-footer-text);
+}
+
+.footer .footer-block__details-content .list-menu__item--link,
+.footer .copyright__content a,
+.footer .policies li::before,
+.footer .footer__localization h2 {
+  color: var(--mellow-footer-muted);
+}
+
+.footer .footer-block__details-content .list-menu__item--active,
+.footer .footer-block__details-content .list-menu__item--link:hover,
+.footer .footer-block__details-content .list-menu__item--link:focus-visible,
+.footer .copyright__content a:hover,
+.footer .copyright__content a:focus-visible {
+  color: var(--mellow-footer-text);
+}
+
+.footer .list-social__link,
+.footer .newsletter-form__button,
+.footer .footer__payment .list-payment__item {
+  color: var(--mellow-footer-text);
+}
+
+.footer .field::before,
+.footer .field::after {
+  box-shadow: 0 0 0 0.1rem var(--mellow-footer-rule);
+}
+
+.footer .field__input,
+.footer .field__label {
+  color: var(--mellow-footer-text);
+}
+
+.footer .field__input::placeholder {
+  color: var(--mellow-footer-muted);
 }
