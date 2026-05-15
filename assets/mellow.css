@@ -20,9 +20,9 @@
 */
 
 :root {
-  --mellow-green: #223216;
-  --mellow-forest: #223216;
-  --mellow-section-green: #223216;
+  --mellow-green: #003302;
+  --mellow-forest: #003302;
+  --mellow-section-green: #003302;
   --mellow-deep-forest: var(--mellow-forest);
 
   --mellow-cream: #F0EBE0;
@@ -34,8 +34,8 @@
   --mellow-white: #FFFFFF;
   --mellow-ink: #142111;
   --mellow-muted: #5E6B58;
-  --mellow-border: rgba(34, 50, 22, 0.14);
-  --mellow-shadow: 0 24px 60px rgba(34, 50, 22, 0.08);
+  --mellow-border: rgba(0, 51, 2, 0.14);
+  --mellow-shadow: 0 24px 60px rgba(0, 51, 2, 0.08);
 
   --mellow-font-sans: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mellow-font-display: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -783,7 +783,7 @@ input[type="reset"] {
 
 .mellow-hero {
   background: var(--mellow-cream, #F0EBE0);
-  color: var(--mellow-ink, var(--mellow-forest, #223216));
+  color: var(--mellow-ink, var(--mellow-forest, #003302));
 }
 
 .mellow-trust-bar,
@@ -923,7 +923,7 @@ input[type="reset"] {
   overflow: hidden;
   padding-top: clamp(72px, 7vw, 108px);
   padding-bottom: clamp(56px, 6vw, 88px);
-  background: var(--mellow-section-green, #223216);
+  background: var(--mellow-section-green, #003302);
   color: var(--mellow-cream, #F0EBE0);
 }
 
@@ -1113,7 +1113,7 @@ input[type="reset"] {
   margin-bottom: 0;
   color: var(--mellow-forest);
   text-align: left;
-  border: 0.1rem solid rgba(34, 50, 22, 0.09);
+  border: 0.1rem solid rgba(0, 51, 2, 0.09);
   border-radius: var(--mellow-card-radius);
   background: var(--mellow-who-card);
   background-image: none;
@@ -1184,7 +1184,7 @@ input[type="reset"] {
   color: #9B6427;
   box-shadow:
     inset 0 0 0 0.7rem rgba(255, 253, 247, 0.38),
-    0 1.1rem 2.6rem rgba(34, 50, 22, 0.1);
+    0 1.1rem 2.6rem rgba(0, 51, 2, 0.1);
   transition: transform 260ms ease;
 }
 
@@ -1669,7 +1669,7 @@ input[type="reset"] {
   display: block;
   overflow: hidden;
   aspect-ratio: 1;
-  border: 1px solid rgba(34, 50, 22, 0.14);
+  border: 1px solid rgba(0, 51, 2, 0.14);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.48);
   transition: border-color 180ms ease, transform 180ms ease;
@@ -1677,7 +1677,7 @@ input[type="reset"] {
 
 .mellow-product-gallery__thumb.is-active,
 .mellow-product-gallery__thumb:hover {
-  border-color: rgba(34, 50, 22, 0.5);
+  border-color: rgba(0, 51, 2, 0.5);
   transform: translateY(-1px);
 }
 
@@ -1696,7 +1696,7 @@ input[type="reset"] {
   min-width: 0;
   min-height: clamp(520px, 66vh, 760px);
   overflow: hidden;
-  border: 1px solid rgba(34, 50, 22, 0.1);
+  border: 1px solid rgba(0, 51, 2, 0.1);
   border-radius: clamp(28px, 3vw, 44px);
   background:
     radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.74), rgba(244, 237, 224, 0.82) 48%, rgba(231, 221, 204, 0.78) 100%);
@@ -1725,7 +1725,7 @@ input[type="reset"] {
   width: min(86%, 620px);
   min-height: clamp(340px, 46vh, 560px);
   padding: clamp(28px, 4vw, 56px);
-  border: 1px dashed rgba(34, 50, 22, 0.22);
+  border: 1px dashed rgba(0, 51, 2, 0.22);
   border-radius: clamp(24px, 2.5vw, 36px);
   background: rgba(255, 255, 255, 0.38);
   color: var(--mellow-green);
@@ -1737,7 +1737,7 @@ input[type="reset"] {
   place-items: center;
   width: 72px;
   height: 72px;
-  border: 1px solid rgba(34, 50, 22, 0.16);
+  border: 1px solid rgba(0, 51, 2, 0.16);
   border-radius: 50%;
   background: rgba(240, 235, 224, 0.82);
   font-family: var(--mellow-font-heading);
@@ -1767,7 +1767,7 @@ input[type="reset"] {
   top: 22px;
   left: 22px;
   z-index: 1;
-  border: 1px solid rgba(34, 50, 22, 0.16);
+  border: 1px solid rgba(0, 51, 2, 0.16);
   border-radius: 999px;
   background: rgba(240, 235, 224, 0.86);
   color: var(--mellow-green);
@@ -1851,7 +1851,7 @@ input[type="reset"] {
 
 .mellow-product-flavors__pill {
   appearance: none;
-  border: 1px solid rgba(34, 50, 22, 0.16);
+  border: 1px solid rgba(0, 51, 2, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.42);
   color: var(--mellow-green);
@@ -1888,7 +1888,7 @@ input[type="reset"] {
 
 .mellow-purchase-option__content {
   display: block;
-  border: 1px solid rgba(34, 50, 22, 0.14);
+  border: 1px solid rgba(0, 51, 2, 0.14);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.44);
   padding: clamp(16px, 1.5vw, 20px);
@@ -1899,8 +1899,8 @@ input[type="reset"] {
 .mellow-purchase-option input:checked + .mellow-purchase-option__content,
 .mellow-purchase-option:hover .mellow-purchase-option__content {
   background: rgba(255, 255, 255, 0.76);
-  border-color: rgba(34, 50, 22, 0.5);
-  box-shadow: 0 16px 36px rgba(34, 50, 22, 0.08);
+  border-color: rgba(0, 51, 2, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 51, 2, 0.08);
 }
 
 .mellow-purchase-option__topline,
@@ -2027,12 +2027,12 @@ input[type="reset"] {
 }
 
 .mellow-product-detail {
-  border-top: 1px solid rgba(34, 50, 22, 0.14);
+  border-top: 1px solid rgba(0, 51, 2, 0.14);
   padding: 18px 0 2px;
 }
 
 .mellow-product-detail:last-child {
-  border-bottom: 1px solid rgba(34, 50, 22, 0.14);
+  border-bottom: 1px solid rgba(0, 51, 2, 0.14);
   padding-bottom: 18px;
 }
 

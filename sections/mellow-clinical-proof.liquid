@@ -7,17 +7,17 @@
   #MellowClinicalProof-{{ section.id }} {
     --mellow-clinical-pad-top: {{ section.settings.padding_top }}px;
     --mellow-clinical-pad-bottom: {{ section.settings.padding_bottom }}px;
-    --mellow-clinical-divider: rgba(34, 50, 22, 0.16);
-    --mellow-clinical-cream-muted: rgba(34, 50, 22, 0.72);
-    --mellow-clinical-cream-soft: rgba(34, 50, 22, 0.54);
-    --mellow-clinical-sage: color-mix(in srgb, var(--mellow-muted, #5E6B58) 72%, var(--mellow-forest, #223216));
+    --mellow-clinical-divider: rgba(0, 51, 2, 0.16);
+    --mellow-clinical-cream-muted: rgba(0, 51, 2, 0.72);
+    --mellow-clinical-cream-soft: rgba(0, 51, 2, 0.54);
+    --mellow-clinical-sage: color-mix(in srgb, var(--mellow-muted, #5E6B58) 72%, var(--mellow-forest, #003302));
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     padding-top: var(--mellow-clinical-pad-top);
     padding-bottom: var(--mellow-clinical-pad-bottom);
     background: var(--mellow-cream, #F0EBE0);
-    color: var(--mellow-forest, #223216);
+    color: var(--mellow-forest, #003302);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
@@ -75,7 +75,7 @@
     display: block;
     margin: 0 0 clamp(8px, 0.9vw, 14px);
     text-align: left;
-    color: var(--mellow-forest, #223216);
+    color: var(--mellow-forest, #003302);
     font-family: var(--mellow-font-display) !important;
     font-size: clamp(86px, 8vw, 136px);
     font-weight: var(--mellow-heading-weight);
@@ -143,7 +143,7 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading {
     max-width: 760px;
-    color: var(--mellow-forest, #223216);
+    color: var(--mellow-forest, #003302);
     text-wrap: balance;
   }
 
@@ -174,8 +174,8 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta {
     width: clamp(214px, 15vw, 252px);
-    border: 1px solid var(--mellow-forest, #223216);
-    background: var(--mellow-forest, #223216);
+    border: 1px solid var(--mellow-forest, #003302);
+    background: var(--mellow-forest, #003302);
     color: var(--mellow-cream, #F0EBE0);
     text-decoration: none;
     box-shadow: none;
@@ -203,12 +203,12 @@
     overflow: hidden;
     min-height: clamp(360px, 32vw, 480px);
     padding: clamp(30px, 4vw, 54px);
-    border: 1px solid rgba(34, 50, 22, 0.12);
+    border: 1px solid rgba(0, 51, 2, 0.12);
     border-radius: var(--mellow-radius-card, 2.8rem);
     background:
       linear-gradient(145deg, rgba(255, 252, 244, 0.84), rgba(244, 237, 224, 0.98)),
       var(--mellow-card-cream, #F4EDE0);
-    box-shadow: var(--mellow-shadow, 0 24px 60px rgba(34, 50, 22, 0.08));
+    box-shadow: var(--mellow-shadow, 0 24px 60px rgba(0, 51, 2, 0.08));
     isolation: isolate;
   }
 
@@ -240,7 +240,7 @@
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-note {
     max-width: 390px;
     margin: clamp(24px, 3vw, 36px) 0 0;
-    color: var(--mellow-forest, #223216);
+    color: var(--mellow-forest, #003302);
     font-size: clamp(14px, 1vw, 16px);
     font-weight: 700;
     line-height: 1.35;
