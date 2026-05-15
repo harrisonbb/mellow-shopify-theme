@@ -30,8 +30,13 @@
   }
 
   #MellowTrustBar-{{ section.id }} .mellow-trust-bar__inner {
-    width: min(calc(100% - var(--mellow-axis-pad, clamp(32px, 7vw, 112px)) - var(--mellow-axis-pad, clamp(32px, 7vw, 112px))), var(--mellow-axis-max, 1360px));
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowTrustBar-{{ section.id }} .mellow-trust-bar__eyebrow {
@@ -189,10 +194,6 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowTrustBar-{{ section.id }} .mellow-trust-bar__inner {
-      width: min(calc(100% - var(--mellow-section-axis-pad, 22px) - var(--mellow-section-axis-pad, 22px)), var(--mellow-axis-max, 1360px));
-    }
-
     #MellowTrustBar-{{ section.id }} .mellow-trust-bar__list {
       grid-template-columns: 1fr;
       border-radius: calc(var(--mellow-radius-card, 28px) * 0.78);

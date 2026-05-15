@@ -185,9 +185,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 .mellow-section-axis {
   width: 100%;
   max-width: none;
-  margin: 0;
-  padding-left: var(--mellow-section-axis-pad);
-  padding-right: var(--mellow-section-axis-pad);
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+  padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+  box-sizing: border-box;
 }
 
 .mellow-section-standard {

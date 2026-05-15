@@ -18,8 +18,9 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding-left: var(--mellow-section-axis-pad);
-    padding-right: var(--mellow-section-axis-pad);
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
@@ -201,11 +202,6 @@
     #MellowHowToUse-{{ section.id }} {
       padding-top: 56px;
       padding-bottom: 56px;
-    }
-
-    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__inner {
-      padding-left: 22px;
-      padding-right: 22px;
     }
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {

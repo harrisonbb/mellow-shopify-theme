@@ -52,9 +52,10 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: var(--mellow-axis-max, 1360px);
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     padding: clamp(64px, 7vh, 92px) var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__grid {

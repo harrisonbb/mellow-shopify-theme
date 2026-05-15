@@ -22,9 +22,9 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    --mellow-reviews-edge-pad: clamp(84px, 6.5vw, 100px);
-    padding-left: var(--mellow-reviews-edge-pad);
-    padding-right: var(--mellow-reviews-edge-pad);
+    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    box-sizing: border-box;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
@@ -224,12 +224,6 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__inner {
-      --mellow-reviews-edge-pad: 22px;
-      padding-left: var(--mellow-reviews-edge-pad);
-      padding-right: var(--mellow-reviews-edge-pad);
-    }
-
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
       display: block;
     }
