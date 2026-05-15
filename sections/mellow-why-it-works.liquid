@@ -28,7 +28,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__eyebrow {
-    margin: 0 0 clamp(12px, 1.2vw, var(--mellow-eyebrow-margin-bottom, 18px));
+    margin: 0 0 var(--mellow-section-header-gap);
     color: var(--mellow-orange-red, #D04A2A);
   }
 
@@ -39,7 +39,7 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__subheading {
     max-width: 680px;
-    margin: clamp(14px, 1.5vw, 22px) 0 0;
+    margin: var(--mellow-section-heading-gap) 0 0;
     color: rgba(240, 235, 224, 0.9);
     font-family: var(--font-body-family, inherit);
     font-size: var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px));
@@ -49,7 +49,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__sequence {
-    margin-top: clamp(24px, 3vw, 40px);
+    margin-top: var(--mellow-section-content-gap-compact);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,

@@ -130,7 +130,7 @@
     grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
     gap: clamp(42px, 7vw, 112px);
     align-items: center;
-    padding-top: clamp(44px, 5.8vw, 88px);
+    padding-top: var(--mellow-section-content-gap);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__copy {
@@ -165,7 +165,7 @@
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__actions {
-    margin-top: clamp(26px, 3vw, 38px);
+    margin-top: var(--mellow-section-content-gap-compact);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta-wrap {

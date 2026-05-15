@@ -14,7 +14,7 @@
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__layout {
     display: grid;
     grid-template-columns: minmax(410px, 0.9fr) minmax(0, 1.3fr);
-    gap: clamp(36px, 5vw, 80px);
+    gap: var(--mellow-section-content-gap);
     align-items: start;
   }
 
@@ -23,7 +23,7 @@
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__eyebrow {
-    margin-bottom: var(--mellow-eyebrow-margin-bottom, 18px);
+    margin-bottom: var(--mellow-section-header-gap);
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__heading {
@@ -169,7 +169,7 @@
   @media screen and (max-width: 989px) {
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__layout {
       grid-template-columns: 1fr;
-      gap: 34px;
+      gap: var(--mellow-section-content-gap-compact);
     }
 
     #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
