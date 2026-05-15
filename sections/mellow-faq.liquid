@@ -22,8 +22,8 @@
     --mellow-faq-rule: rgba(240, 235, 224, 0.18);
     background: var(--mellow-night-blue, #102A3A);
     color: var(--mellow-faq-text);
-    padding-top: clamp(52px, 5vw, 84px);
-    padding-bottom: clamp(64px, 6vw, 96px);
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__inner {
@@ -72,7 +72,7 @@
     gap: clamp(18px, 2.5vw, 36px);
     width: 100%;
     margin: 0;
-    padding: clamp(22px, 2vw, 30px) 0;
+    padding: var(--mellow-list-row-pad-y) 0;
     border: 0;
     background: transparent;
     color: var(--mellow-faq-text);
@@ -147,7 +147,7 @@
 
   #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
     max-width: 700px;
-    padding: 0 clamp(44px, 5vw, 76px) clamp(24px, 2.4vw, 34px) 0;
+    padding: 0 clamp(44px, 5vw, 76px) var(--mellow-accordion-content-pad-bottom) 0;
     color: var(--mellow-faq-text);
     font-family: var(--font-body-family, inherit);
     font-style: var(--font-body-style, normal);
@@ -171,14 +171,9 @@
   }
 
   @media screen and (max-width: 989px) {
-    #MellowFAQ-{{ section.id }} {
-      padding-top: clamp(52px, 8vw, 76px);
-      padding-bottom: clamp(56px, 8vw, 84px);
-    }
-
     #MellowFAQ-{{ section.id }} .mellow-faq__grid {
       grid-template-columns: 1fr;
-      gap: var(--mellow-section-content-gap);
+      gap: var(--mellow-section-content-gap-compact);
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__heading {
@@ -187,20 +182,10 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowFAQ-{{ section.id }} {
-      padding-top: clamp(48px, 13vw, 68px);
-      padding-bottom: clamp(52px, 13vw, 72px);
-    }
-
-    #MellowFAQ-{{ section.id }} .mellow-faq__grid {
-      gap: var(--mellow-section-content-gap-compact);
-    }
-
-
     #MellowFAQ-{{ section.id }} .mellow-faq__question {
       grid-template-columns: minmax(0, 1fr) 30px;
       gap: 18px;
-      padding: 20px 0;
+      padding: var(--mellow-list-row-pad-y) 0;
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
@@ -221,7 +206,7 @@
 
     #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
       padding-right: 38px;
-      padding-bottom: 24px;
+      padding-bottom: var(--mellow-accordion-content-pad-bottom);
       font-size: 15.5px;
       line-height: 1.58;
     }
