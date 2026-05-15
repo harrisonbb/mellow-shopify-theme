@@ -525,8 +525,8 @@
 }
 
 .footer {
-  border-top: 1px solid rgba(26, 45, 16, 0.12);
-  color: #1A2D10;
+  border-top: 1px solid rgba(0, 51, 2, 0.12);
+  color: #003302;
 }
 
 .footer a,
@@ -534,5 +534,5 @@
 .footer small,
 .footer .footer-block__heading,
 .footer .copyright__content {
-  color: #1A2D10;
+  color: #003302;
 }
