@@ -21,7 +21,8 @@
     --day-night-orb-color: #F4B55D;
     --day-night-orb-shadow-blur: 42px;
     --day-night-orb-shadow-opacity: 0.24;
-    --day-night-moon-mask-opacity: 0;
+    --day-night-moon-cutout-x: 164%;
+    --day-night-moon-cutout-y: 47%;
     --day-night-stars-opacity: 0;
     --day-night-cta-y: 18px;
     position: relative;
@@ -145,24 +146,23 @@
     width: clamp(118px, 13vw, 188px);
     aspect-ratio: 1;
     border-radius: 50%;
-    background:
-      radial-gradient(circle at 36% 32%, rgba(255, 255, 255, 0.86), rgba(240, 235, 224, 0.56) 30%, transparent 56%),
-      var(--day-night-orb-color);
     box-shadow:
       0 0 var(--day-night-orb-shadow-blur) rgba(240, 235, 224, var(--day-night-orb-shadow-opacity)),
       0 28px 80px rgba(11, 30, 44, 0.12);
     transform: translate3d(var(--day-night-orb-x), var(--day-night-orb-y), 0) scale(var(--day-night-orb-scale));
-    transition: background-color 260ms ease;
   }
 
-  #MellowDayNight-{{ section.id }} .mellow-day-night__orb::after {
-    content: "";
+  #MellowDayNight-{{ section.id }} .mellow-day-night__orb-disc {
     position: absolute;
-    inset: -2px -2px -2px 26%;
+    inset: 0;
+    overflow: hidden;
     border-radius: 50%;
-    background: var(--day-night-bg);
-    opacity: var(--day-night-moon-mask-opacity);
-    transform: translate3d(14%, -3%, 0);
+    background:
+      radial-gradient(circle at 36% 32%, rgba(255, 255, 255, 0.86), rgba(240, 235, 224, 0.56) 30%, transparent 56%),
+      var(--day-night-orb-color);
+    -webkit-mask-image: radial-gradient(circle 52% at var(--day-night-moon-cutout-x) var(--day-night-moon-cutout-y), transparent calc(100% - 1px), #000 100%);
+    mask-image: radial-gradient(circle 52% at var(--day-night-moon-cutout-x) var(--day-night-moon-cutout-y), transparent calc(100% - 1px), #000 100%);
+    transition: background-color 260ms ease;
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__horizon {
@@ -262,7 +262,8 @@
       --day-night-orb-color: var(--mellow-ivory, #F0EBE0);
       --day-night-orb-shadow-blur: 66px;
       --day-night-orb-shadow-opacity: 0.48;
-      --day-night-moon-mask-opacity: 1;
+      --day-night-moon-cutout-x: 76%;
+      --day-night-moon-cutout-y: 47%;
       --day-night-stars-opacity: 0.86;
       --day-night-cta-y: 0px;
       min-height: auto;
@@ -282,7 +283,7 @@
     }
 
     #MellowDayNight-{{ section.id }} .mellow-day-night__orb,
-    #MellowDayNight-{{ section.id }} .mellow-day-night__orb::after,
+    #MellowDayNight-{{ section.id }} .mellow-day-night__orb-disc,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars::before,
     #MellowDayNight-{{ section.id }} .mellow-day-night__stars::after {
@@ -325,7 +326,9 @@
         </div>
 
         <div class="mellow-day-night__visual" aria-hidden="true">
-          <span class="mellow-day-night__orb"></span>
+          <span class="mellow-day-night__orb">
+            <span class="mellow-day-night__orb-disc"></span>
+          </span>
           <span class="mellow-day-night__stars"></span>
           <span class="mellow-day-night__horizon"></span>
         </div>
@@ -380,12 +383,15 @@
       const orbX = progress * window.innerWidth * (isCompact ? -0.34 : -0.18);
       const orbY = progress * window.innerHeight * (isCompact ? 0.09 : 0.22);
       const orbScale = 1 - (progress * (isCompact ? 0.14 : 0.18));
-      const moonMask = clamp((progress - 0.52) / 0.46);
+      const moonPhase = clamp((progress - 0.52) / 0.46);
+      const moonCutoutX = 164 - (moonPhase * 88);
       const stars = clamp((progress - 0.48) / 0.4) * 0.86;
 
       setVar('--day-night-progress', progress.toFixed(4));
       setVar('--day-night-cta-progress', ctaProgress.toFixed(4));
-      setVar('--day-night-bg', colorAt(progress));
+      const backgroundColor = colorAt(progress);
+
+      setVar('--day-night-bg', backgroundColor);
       setVar('--day-night-glow-x', `${78 - (progress * 18)}%`);
       setVar('--day-night-glow-y', `${18 + (progress * 18)}%`);
       setVar('--day-night-glow-opacity', (0.22 * progress).toFixed(4));
@@ -396,7 +402,7 @@
       setVar('--day-night-orb-color', colorAt(progress, orbStops));
       setVar('--day-night-orb-shadow-blur', `${(42 + (progress * 24)).toFixed(2)}px`);
       setVar('--day-night-orb-shadow-opacity', (0.24 + (0.24 * progress)).toFixed(4));
-      setVar('--day-night-moon-mask-opacity', moonMask.toFixed(4));
+      setVar('--day-night-moon-cutout-x', `${moonCutoutX.toFixed(2)}%`);
       setVar('--day-night-stars-opacity', stars.toFixed(4));
       setVar('--day-night-cta-y', `${((1 - ctaProgress) * 18).toFixed(2)}px`);
       section.classList.toggle('is-night', progress >= 0.48);
