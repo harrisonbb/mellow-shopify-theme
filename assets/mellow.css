@@ -2075,19 +2075,17 @@ input[type="reset"] {
 
 .mellow-product-education {
   display: grid;
-  gap: 14px;
+  gap: var(--mellow-list-gap);
   margin-top: clamp(38px, 4vw, 64px);
   padding-bottom: clamp(20px, 3vw, 48px);
 }
 
 .mellow-product-detail {
   border-top: 1px solid rgba(0, 51, 2, 0.14);
-  padding: 18px 0 2px;
 }
 
 .mellow-product-detail:last-child {
   border-bottom: 1px solid rgba(0, 51, 2, 0.14);
-  padding-bottom: 18px;
 }
 
 .mellow-product-detail summary {
@@ -2097,6 +2095,7 @@ input[type="reset"] {
   font-weight: 850;
   letter-spacing: -0.02em;
   list-style: none;
+  padding: var(--mellow-list-row-pad-y) 0;
 }
 
 .mellow-product-detail summary::-webkit-details-marker {
@@ -2117,6 +2116,7 @@ input[type="reset"] {
 .mellow-product-detail ul {
   max-width: 620px;
   margin: 12px 0 0;
+  padding-bottom: var(--mellow-accordion-content-pad-bottom);
   color: var(--mellow-muted);
   font-size: 1.52rem;
   line-height: 1.5;
