@@ -65,73 +65,22 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-
-    width: var(--mellow-cta-width);
-    min-height: var(--mellow-cta-height);
-    padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
-    font-size: var(--mellow-cta-font-size);
-    font-weight: var(--mellow-cta-font-weight);
-    line-height: 1;
-    border-radius: 999px;
-
-    transform-origin: right center;
-
-    transition:
-      width 520ms cubic-bezier(0.16, 1, 0.3, 1),
-      background-color 260ms ease,
-      border-color 260ms ease,
-      color 260ms ease;
+    text-decoration: none;
   }
 
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button::before,
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button::after {
-    content: none !important;
-    display: none !important;
+  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__carousel-wrap,
+  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__carousel {
+    overflow-x: auto;
+    scroll-behavior: auto;
   }
 
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label {
-    display: inline-block;
-    text-align: center;
-    transform: translate3d(0, 0, 0);
-    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__track {
+    transform: none !important;
+    will-change: auto;
   }
 
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
-    position: absolute;
-    right: var(--mellow-cta-arrow-right);
-    top: 50%;
-    display: inline-block;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate3d(-12px, -50%, 0);
-    transition:
-      transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 260ms ease;
-  }
-
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
-    width: var(--mellow-cta-hover-width);
-  }
-
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-arrow,
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-arrow {
-    transform: translate3d(0, -50%, 0);
-    opacity: 1;
-  }
-
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover .mellow-who-its-for__quiz-label,
-  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible .mellow-who-its-for__quiz-label {
-    transform: translate3d(-8px, 0, 0);
+  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__card-set[data-mellow-who-card-set-duplicate] {
+    display: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -289,9 +238,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button,
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-label,
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow,
+    #MellowWhoItsFor-{{ section.id }} .mellow-section-cta,
+    #MellowWhoItsFor-{{ section.id }} .mellow-section-cta__label,
+    #MellowWhoItsFor-{{ section.id }} .mellow-section-cta__arrow,
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
       transition: none;
     }
@@ -324,22 +273,6 @@
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
       width: 100%;
       justify-content: flex-start;
-    }
-
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
-      width: 190px;
-      min-height: 50px;
-      padding: 15px 22px;
-      font-size: 16px;
-    }
-
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:hover,
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button:focus-visible {
-      width: 224px;
-    }
-
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-arrow {
-      right: 22px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -392,7 +325,7 @@
 
       <div class="mellow-section-actions mellow-who-its-for__header-actions">
         <div class="mellow-section-cta-wrap mellow-who-its-for__quiz-action">
-          <a class="mellow-section-cta mellow-who-its-for__quiz-button" href="/pages/quiz">
+          <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-who-its-for__quiz-button" href="/pages/quiz">
             <span class="mellow-section-cta__label mellow-who-its-for__quiz-label">Take the reflux quiz</span>
             <span class="mellow-section-cta__arrow mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
           </a>
@@ -498,11 +431,21 @@
     }
 
     const marqueeDuration = 90000;
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let setWidth = 0;
     let offset = 0;
     let animationFrame = null;
     let lastFrameTime = null;
     let resizeObserver = null;
+    let activeUpdateFrame = null;
+    let activeUpdateInterval = null;
+    let activeCard = null;
+    let ticking = false;
+    let isReducedMotion = reducedMotionQuery.matches;
+
+    const setReducedMotionState = () => {
+      section.classList.toggle('is-reduced-motion', isReducedMotion);
+    };
 
     const applySafeOffset = () => {
       if (setWidth <= 0) {
@@ -525,12 +468,8 @@
     };
 
     const updateTrackPosition = () => {
-      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+      track.style.transform = isReducedMotion ? 'none' : `translate3d(${offset}px, 0, 0)`;
     };
-
-    let activeCard = null;
-    let activeUpdateFrame = null;
-    let ticking = false;
 
     const getDistanceFromCenter = (card) => {
       const rect = card.getBoundingClientRect();
@@ -566,7 +505,20 @@
       activeCard = nextActiveCard;
     };
 
+    const setStableReducedMotionCard = () => {
+      const firstCard = cardSet.querySelector('.mellow-who-its-for__card');
+
+      if (firstCard) {
+        setActiveCard(firstCard);
+      }
+    };
+
     const updateActiveMomentCard = () => {
+      if (isReducedMotion) {
+        setStableReducedMotionCard();
+        return;
+      }
+
       const visibleCards = getVisibleCards();
 
       if (!visibleCards.length) {
@@ -599,6 +551,11 @@
     };
 
     const requestActiveCardUpdate = () => {
+      if (isReducedMotion) {
+        setStableReducedMotionCard();
+        return;
+      }
+
       if (ticking) {
         return;
       }
@@ -612,6 +569,26 @@
       });
     };
 
+    const stopMarquee = () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+
+      if (activeUpdateFrame) {
+        cancelAnimationFrame(activeUpdateFrame);
+        activeUpdateFrame = null;
+      }
+
+      if (activeUpdateInterval) {
+        clearInterval(activeUpdateInterval);
+        activeUpdateInterval = null;
+      }
+
+      ticking = false;
+      lastFrameTime = null;
+    };
+
     const measureCarousel = () => {
       const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
       setWidth = cardSet.getBoundingClientRect().width + trackGap;
@@ -620,13 +597,20 @@
         return;
       }
 
-      offset = setWidth * -1;
+      offset = isReducedMotion ? 0 : setWidth * -1;
       track.style.setProperty('--who-track-width', `${setWidth}px`);
       updateTrackPosition();
       requestActiveCardUpdate();
     };
 
     const animate = (timestamp) => {
+      if (isReducedMotion) {
+        stopMarquee();
+        updateTrackPosition();
+        setStableReducedMotionCard();
+        return;
+      }
+
       if (setWidth > 0) {
         if (lastFrameTime === null) {
           lastFrameTime = timestamp;
@@ -655,6 +639,19 @@
       animationFrame = requestAnimationFrame(animate);
     };
 
+    const startMarquee = () => {
+      if (isReducedMotion || animationFrame) {
+        return;
+      }
+
+      if (!activeUpdateInterval) {
+        activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
+      }
+
+      requestActiveCardUpdate();
+      animationFrame = requestAnimationFrame(animate);
+    };
+
     const normalizeWheelDelta = (delta, deltaMode) => {
       if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
         return delta * 16;
@@ -670,9 +667,17 @@
     const handleResize = () => {
       lastFrameTime = null;
       measureCarousel();
-      requestActiveCardUpdate();
     };
 
+    const handleMotionPreferenceChange = (event) => {
+      isReducedMotion = event.matches;
+      setReducedMotionState();
+      stopMarquee();
+      measureCarousel();
+      startMarquee();
+    };
+
+    setReducedMotionState();
     measureCarousel();
 
     if ('ResizeObserver' in window) {
@@ -686,6 +691,10 @@
     scroller.addEventListener(
       'wheel',
       (event) => {
+        if (isReducedMotion) {
+          return;
+        }
+
         const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
         const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
         const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.05;
@@ -704,27 +713,34 @@
       { passive: false }
     );
 
-    const activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
-
-    requestActiveCardUpdate();
-
     window.addEventListener('resize', requestActiveCardUpdate, { passive: true });
     window.addEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
-    animationFrame = requestAnimationFrame(animate);
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+      reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+      reducedMotionQuery.addListener(handleMotionPreferenceChange);
+    }
+
+    startMarquee();
 
     document.addEventListener('shopify:section:unload', (event) => {
       if (!event.target.contains(section)) {
         return;
       }
 
-      cancelAnimationFrame(animationFrame);
-      clearInterval(activeUpdateInterval);
+      stopMarquee();
       window.removeEventListener('resize', requestActiveCardUpdate, { passive: true });
       window.removeEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
-      if (activeUpdateFrame) {
-        cancelAnimationFrame(activeUpdateFrame);
+      if (!resizeObserver) {
+        window.removeEventListener('resize', handleResize);
+      }
+
+      if (typeof reducedMotionQuery.removeEventListener === 'function') {
+        reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
+      } else if (typeof reducedMotionQuery.removeListener === 'function') {
+        reducedMotionQuery.removeListener(handleMotionPreferenceChange);
       }
 
       if (resizeObserver) {
