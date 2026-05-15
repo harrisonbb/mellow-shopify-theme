@@ -17,8 +17,11 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    background: var(--mellow-blue, #042D3E);
-    color: var(--mellow-forest, #003302);
+    --mellow-faq-text: var(--mellow-ivory, #F0EBE0);
+    --mellow-faq-muted: rgba(240, 235, 224, 0.76);
+    --mellow-faq-rule: rgba(240, 235, 224, 0.18);
+    background: var(--mellow-night-blue, #102A3A);
+    color: var(--mellow-faq-text);
     padding-top: clamp(52px, 5vw, 84px);
     padding-bottom: clamp(64px, 6vw, 96px);
   }
@@ -47,18 +50,18 @@
 
   #MellowFAQ-{{ section.id }} .mellow-faq__heading {
     max-width: 7em;
-    color: var(--mellow-forest, #003302);
+    color: var(--mellow-faq-text);
     text-wrap: balance;
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__list {
     width: 100%;
     min-width: 0;
-    border-top: 1px solid rgba(0, 51, 2, 0.18);
+    border-top: 1px solid var(--mellow-faq-rule);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__item {
-    border-bottom: 1px solid rgba(0, 51, 2, 0.18);
+    border-bottom: 1px solid var(--mellow-faq-rule);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__question {
@@ -72,7 +75,7 @@
     padding: clamp(22px, 2vw, 30px) 0;
     border: 0;
     background: transparent;
-    color: var(--mellow-forest, #003302);
+    color: var(--mellow-faq-text);
     font: inherit;
     text-align: left;
     cursor: pointer;
@@ -80,7 +83,7 @@
 
   #MellowFAQ-{{ section.id }} .mellow-faq__question-text {
     display: block;
-    color: var(--mellow-forest, #003302);
+    color: var(--mellow-faq-text);
     font-family: var(--font-heading-family, inherit);
     font-style: var(--font-heading-style, normal);
     font-size: clamp(20px, 1.45vw, 24px);
@@ -98,7 +101,7 @@
     width: 32px;
     height: 32px;
     justify-self: end;
-    color: var(--mellow-forest, #003302);
+    color: var(--mellow-faq-text);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__icon::before,
@@ -145,7 +148,7 @@
   #MellowFAQ-{{ section.id }} .mellow-faq__answer-content {
     max-width: 700px;
     padding: 0 clamp(44px, 5vw, 76px) clamp(24px, 2.4vw, 34px) 0;
-    color: rgba(0, 51, 2, 0.72);
+    color: var(--mellow-faq-muted);
     font-family: var(--font-body-family, inherit);
     font-style: var(--font-body-style, normal);
     font-size: clamp(15.5px, 1vw, 17px);
