@@ -506,3 +506,33 @@
     }
   }
 }
+
+/* Keep every footer layer on the Mellow cream background. */
+.footer,
+.shopify-section-group-footer-group,
+.shopify-section-group-footer-group .footer,
+.shopify-section-group-footer-group .footer__content-top,
+.shopify-section-group-footer-group .footer__content-bottom,
+.shopify-section-group-footer-group .footer-block,
+.shopify-section-group-footer-group .footer__blocks-wrapper,
+.shopify-section-group-footer-group .newsletter-form,
+.shopify-section-group-footer-group .newsletter-form__field-wrapper {
+  background-color: #F0EBE0 !important;
+}
+
+.shopify-section-group-footer-group {
+  background-color: #F0EBE0 !important;
+}
+
+.footer {
+  border-top: 1px solid rgba(26, 45, 16, 0.12);
+  color: #1A2D10;
+}
+
+.footer a,
+.footer p,
+.footer small,
+.footer .footer-block__heading,
+.footer .copyright__content {
+  color: #1A2D10;
+}
