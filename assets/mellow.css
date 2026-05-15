@@ -20,9 +20,10 @@
 */
 
 :root {
-  --mellow-green: #14310F;
-  --mellow-forest: #14310F;
-  --mellow-section-green: #14310F;
+  --mellow-green: #1A2D10;
+  --mellow-forest: #1A2D10;
+  --mellow-section-green: #1A2D10;
+  --mellow-deep-forest: #14310F;
 
   --mellow-cream: #F0EBE0;
   --mellow-card-cream: #F4EDE0;
@@ -96,7 +97,8 @@
   --mellow-card-body-letter-spacing: var(--mellow-card-copy-tracking);
   --mellow-card-body-weight: var(--mellow-card-copy-weight);
 
-  --mellow-axis-pad: clamp(32px, 7vw, 112px);
+  /* Legacy rail token kept for older sections; alias to the locked section rail by default. */
+  --mellow-axis-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
   --mellow-axis-max: 1360px;
   --mellow-page-width: var(--mellow-axis-max);
   --mellow-page-gutter: var(--mellow-axis-pad);
@@ -279,6 +281,13 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 }
 
 .mellow-section-cta {
+  --mellow-section-cta-bg: var(--mellow-forest);
+  --mellow-section-cta-border: var(--mellow-section-cta-bg);
+  --mellow-section-cta-color: var(--mellow-cream);
+  --mellow-section-cta-hover-bg: var(--mellow-section-cta-bg);
+  --mellow-section-cta-hover-border: var(--mellow-section-cta-border);
+  --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -295,7 +304,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   font-size: var(--mellow-cta-font-size);
   font-weight: var(--mellow-cta-font-weight);
   line-height: 1;
+  border: 1px solid var(--mellow-section-cta-border);
   border-radius: 999px;
+  background: var(--mellow-section-cta-bg);
+  color: var(--mellow-section-cta-color);
+  text-decoration: none;
 
   transform-origin: right center;
 
@@ -335,6 +348,37 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
   width: var(--mellow-cta-hover-width);
+  border-color: var(--mellow-section-cta-hover-border);
+  background: var(--mellow-section-cta-hover-bg);
+  color: var(--mellow-section-cta-hover-color);
+}
+
+.mellow-section-cta--primary-forest {
+  --mellow-section-cta-bg: var(--mellow-forest);
+  --mellow-section-cta-border: var(--mellow-forest);
+  --mellow-section-cta-color: var(--mellow-cream);
+}
+
+.mellow-section-cta--primary-orange {
+  --mellow-section-cta-bg: var(--mellow-orange-red);
+  --mellow-section-cta-border: var(--mellow-orange-red);
+  --mellow-section-cta-color: var(--mellow-cream);
+}
+
+.mellow-section-cta--ivory-on-dark {
+  --mellow-section-cta-bg: var(--mellow-cream);
+  --mellow-section-cta-border: var(--mellow-cream);
+  --mellow-section-cta-color: var(--mellow-forest);
+}
+
+.mellow-section-cta--compact {
+  width: clamp(150px, 10.4vw, 178px);
+  transform-origin: center center;
+}
+
+.mellow-section-cta--compact:hover,
+.mellow-section-cta--compact:focus-visible {
+  width: clamp(184px, 12.8vw, 218px);
 }
 
 .mellow-section-cta:hover .mellow-section-cta__arrow,
@@ -599,8 +643,9 @@ input[type="reset"] {
   padding-bottom: var(--mellow-section-pad-bottom);
 }
 
+/* Legacy-only centered rail. Active homepage sections should use .mellow-section-axis instead. */
 .mellow-section__inner {
-  width: min(calc(100% - var(--mellow-axis-pad) - var(--mellow-axis-pad)), var(--mellow-axis-max));
+  width: min(calc(100% - var(--mellow-section-axis-pad) - var(--mellow-section-axis-pad)), var(--mellow-axis-max));
   margin: 0 auto;
 }
 
