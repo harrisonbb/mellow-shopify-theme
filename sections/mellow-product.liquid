@@ -7,16 +7,27 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign current_variant = product.selected_or_first_available_variant
+  assign current_variant = product.selected_variant
+  unless current_variant
+    assign current_variant = product.first_available_variant | default: product.variants.first
+  endunless
   assign product_form_id = 'product-form-' | append: section.id
   assign first_media = product.featured_media | default: product.media.first
+  assign has_thumbnail_rail = false
+  assign can_add_to_cart = false
+  if product.media.size > 1
+    assign has_thumbnail_rail = true
+  endif
+  if current_variant and current_variant.available
+    assign can_add_to_cart = true
+  endif
 -%}
 
 <section class="mellow-product-shell color-{{ section.settings.color_scheme }}" id="MellowProduct-{{ section.id }}">
   <div class="mellow-product-shell__inner">
     <aside class="mellow-product-gallery" aria-label="{{ product.title | escape }} gallery">
-      <div class="mellow-product-gallery__frame">
-        {%- if product.media.size > 1 -%}
+      <div class="mellow-product-gallery__frame{% if has_thumbnail_rail %} mellow-product-gallery__frame--has-thumbs{% endif %}">
+        {%- if has_thumbnail_rail -%}
           <div class="mellow-product-gallery__thumbs" aria-label="Product thumbnails">
             {%- for media in product.media limit: 5 -%}
               <a
@@ -37,8 +48,10 @@
               {{ first_media.preview_image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '500, 700, 900, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: product.title }}
             </div>
           {%- else -%}
-            <div class="mellow-product-gallery__placeholder">
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="mellow-product-gallery__placeholder" role="img" aria-label="Product image coming soon">
+              <span class="mellow-product-gallery__placeholder-mark" aria-hidden="true">M</span>
+              <span class="mellow-product-gallery__placeholder-title">Product image coming soon</span>
+              <span class="mellow-product-gallery__placeholder-copy">We’re preparing a closer look at the Mellow pouch.</span>
             </div>
           {%- endif -%}
         </div>
@@ -125,7 +138,7 @@
 
         <product-form class="product-form mellow-product-form" data-hide-errors="false" data-section-id="{{ section.id }}">
           {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-            <input type="hidden" name="id" value="{{ current_variant.id }}" {% if current_variant.available == false %}disabled{% endif %}>
+            <input type="hidden" name="id" value="{{ current_variant.id }}" {% unless can_add_to_cart %}disabled{% endunless %}>
             <div class="product-form__error-message-wrapper" role="alert" hidden>
               <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
               <span class="product-form__error-message"></span>
@@ -135,9 +148,9 @@
               type="submit"
               name="add"
               class="product-form__submit mellow-product-cta"
-              {% if current_variant.available == false %}disabled{% endif %}
+              {% unless can_add_to_cart %}disabled{% endunless %}
             >
-              <span>{%- if current_variant.available -%}Add to Cart — $25{%- else -%}Sold out{%- endif -%}</span>
+              <span>{%- if can_add_to_cart -%}Add to Cart — $25{%- else -%}Sold out{%- endif -%}</span>
               {%- render 'loading-spinner' -%}
             </button>
           {%- endform -%}
@@ -192,6 +205,9 @@
   "name": "Mellow product",
   "tag": "section",
   "class": "section section-mellow-product",
+  "enabled_on": {
+    "templates": ["product"]
+  },
   "settings": [
     {
       "type": "color_scheme",
