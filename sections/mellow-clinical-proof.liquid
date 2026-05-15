@@ -7,20 +7,17 @@
   #MellowClinicalProof-{{ section.id }} {
     --mellow-clinical-pad-top: {{ section.settings.padding_top }}px;
     --mellow-clinical-pad-bottom: {{ section.settings.padding_bottom }}px;
-    --mellow-clinical-divider: rgba(240, 235, 224, 0.18);
-    --mellow-clinical-cream-muted: rgba(240, 235, 224, 0.76);
-    --mellow-clinical-cream-soft: rgba(240, 235, 224, 0.58);
-    --mellow-clinical-sage: color-mix(in srgb, var(--mellow-muted, #5E6B58) 68%, var(--mellow-cream, #F0EBE0));
+    --mellow-clinical-divider: rgba(34, 50, 22, 0.16);
+    --mellow-clinical-cream-muted: rgba(34, 50, 22, 0.72);
+    --mellow-clinical-cream-soft: rgba(34, 50, 22, 0.54);
+    --mellow-clinical-sage: color-mix(in srgb, var(--mellow-muted, #5E6B58) 72%, var(--mellow-forest, #223216));
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     padding-top: var(--mellow-clinical-pad-top);
     padding-bottom: var(--mellow-clinical-pad-bottom);
-    background:
-      radial-gradient(circle at 92% 18%, rgba(240, 235, 224, 0.07), transparent 28rem),
-      radial-gradient(circle at 12% 78%, rgba(208, 74, 42, 0.08), transparent 30rem),
-      var(--mellow-forest, #223216);
-    color: var(--mellow-cream, #F0EBE0);
+    background: var(--mellow-cream, #F0EBE0);
+    color: var(--mellow-forest, #223216);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
@@ -78,7 +75,7 @@
     display: block;
     margin: 0 0 clamp(8px, 0.9vw, 14px);
     text-align: left;
-    color: var(--mellow-cream, #F0EBE0);
+    color: var(--mellow-forest, #223216);
     font-family: var(--mellow-font-display) !important;
     font-size: clamp(86px, 8vw, 136px);
     font-weight: var(--mellow-heading-weight);
@@ -146,7 +143,7 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading {
     max-width: 760px;
-    color: var(--mellow-cream, #F0EBE0);
+    color: var(--mellow-forest, #223216);
     text-wrap: balance;
   }
 
@@ -177,9 +174,9 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta {
     width: clamp(214px, 15vw, 252px);
-    border: 1px solid rgba(240, 235, 224, 0.42);
-    background: var(--mellow-cream, #F0EBE0);
-    color: var(--mellow-forest, #223216);
+    border: 1px solid var(--mellow-forest, #223216);
+    background: var(--mellow-forest, #223216);
+    color: var(--mellow-cream, #F0EBE0);
     text-decoration: none;
     box-shadow: none;
   }

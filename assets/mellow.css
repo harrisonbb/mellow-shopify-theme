@@ -781,6 +781,11 @@ input[type="reset"] {
   position: relative;
 }
 
+.mellow-hero {
+  background: var(--mellow-cream, #F0EBE0);
+  color: var(--mellow-ink, var(--mellow-forest, #223216));
+}
+
 .mellow-trust-bar,
 .mellow-review-videos,
 .mellow-day-night-scroll,
@@ -845,10 +850,7 @@ input[type="reset"] {
 
 .mellow-hero .mellow-architecture-section__card {
   min-height: clamp(42rem, 58vw, 68rem);
-  background:
-    radial-gradient(circle at 88% 18%, rgba(208, 74, 42, 0.14), transparent 28rem),
-    radial-gradient(circle at 70% 74%, rgba(61, 107, 140, 0.14), transparent 30rem),
-    linear-gradient(135deg, var(--mellow-ivory), var(--mellow-cream));
+  background: var(--mellow-cream, #F0EBE0);
 }
 
 @media screen and (min-width: 750px) {
@@ -921,10 +923,8 @@ input[type="reset"] {
   overflow: hidden;
   padding-top: clamp(72px, 7vw, 108px);
   padding-bottom: clamp(56px, 6vw, 88px);
-  background:
-    radial-gradient(circle at 78% 28%, rgba(208, 74, 42, 0.08), transparent 34%),
-    linear-gradient(180deg, var(--mellow-section-green) 0%, var(--mellow-section-green) 100%);
-  color: #F0EBE0;
+  background: var(--mellow-section-green, #223216);
+  color: var(--mellow-cream, #F0EBE0);
 }
 
 .mellow-who-its-for__inner {
