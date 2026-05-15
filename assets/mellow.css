@@ -1598,15 +1598,21 @@ input[type="reset"] {
 
 .mellow-product-gallery__frame {
   display: grid;
-  grid-template-columns: 76px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(14px, 1.5vw, 22px);
   align-items: stretch;
+  width: 100%;
+}
+
+.mellow-product-gallery__frame--has-thumbs {
+  grid-template-columns: 76px minmax(0, 1fr);
 }
 
 .mellow-product-gallery__thumbs {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
 }
 
 .mellow-product-gallery__thumb {
@@ -1636,7 +1642,9 @@ input[type="reset"] {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: clamp(480px, 48vw, 680px);
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(520px, 66vh, 760px);
   overflow: hidden;
   border: 1px solid rgba(20, 49, 15, 0.1);
   border-radius: clamp(28px, 3vw, 44px);
@@ -1645,17 +1653,63 @@ input[type="reset"] {
   box-shadow: var(--mellow-shadow);
 }
 
-.mellow-product-gallery__image,
-.mellow-product-gallery__placeholder {
-  width: min(86%, 620px);
+.mellow-product-gallery__image {
+  display: grid;
+  place-items: center;
+  width: min(88%, 640px);
+  height: clamp(360px, 56vh, 640px);
+  min-height: 0;
 }
 
-.mellow-product-gallery__image img,
-.mellow-product-gallery__placeholder svg {
+.mellow-product-gallery__image img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
+}
+
+.mellow-product-gallery__placeholder {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  width: min(86%, 620px);
+  min-height: clamp(340px, 46vh, 560px);
+  padding: clamp(28px, 4vw, 56px);
+  border: 1px dashed rgba(20, 49, 15, 0.22);
+  border-radius: clamp(24px, 2.5vw, 36px);
+  background: rgba(255, 255, 255, 0.38);
+  color: var(--mellow-green);
+  text-align: center;
+}
+
+.mellow-product-gallery__placeholder-mark {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid rgba(20, 49, 15, 0.16);
+  border-radius: 50%;
+  background: rgba(240, 235, 224, 0.82);
+  font-family: var(--mellow-font-heading);
+  font-size: 3.2rem;
+  font-weight: 650;
+  line-height: 1;
+}
+
+.mellow-product-gallery__placeholder-title {
+  font-family: var(--mellow-font-heading);
+  font-size: clamp(2.8rem, 3.6vw, 4.6rem);
+  font-weight: 620;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.mellow-product-gallery__placeholder-copy {
+  max-width: 300px;
+  color: var(--mellow-muted);
+  font-size: 1.44rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .mellow-product-gallery__badge {
@@ -1981,8 +2035,9 @@ input[type="reset"] {
     position: static;
   }
 
-  .mellow-product-gallery__frame {
-    grid-template-columns: 1fr;
+  .mellow-product-gallery__frame,
+  .mellow-product-gallery__frame--has-thumbs {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .mellow-product-gallery__thumbs {
