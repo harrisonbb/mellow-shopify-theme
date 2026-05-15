@@ -84,6 +84,35 @@
 
   --mellow-card-gap: clamp(28px, 2.6vw, 42px);
 
+  /* Mellow card/grid spacing taxonomy tokens. */
+  /* Tight / process cards */
+  --mellow-card-gap-tight: clamp(12px, 1vw, 18px);
+  --mellow-card-gap-tight-y: clamp(14px, 1.2vw, 22px);
+  --mellow-card-pad-tight: clamp(16px, 1.45vw, 22px);
+
+  /* Standard editorial cards */
+  --mellow-card-pad-standard: clamp(28px, 2.5vw, 42px);
+
+  /* Airy / feature cards */
+  --mellow-card-gap-airy: clamp(34px, 4vw, 64px);
+  --mellow-feature-gap: clamp(42px, 7vw, 112px);
+  --mellow-card-pad-airy: clamp(28px, 3vw, 48px);
+
+  /* Carousel cards */
+  --mellow-carousel-card-gap: clamp(20px, 2vw, 32px);
+  --mellow-carousel-card-width: clamp(280px, 25vw, 380px);
+  --mellow-carousel-card-pad: clamp(18px, 1.5vw, 24px);
+
+  /* Accordion / list cards */
+  --mellow-list-row-pad-y: clamp(22px, 2vw, 30px);
+  --mellow-list-gap: 14px;
+  --mellow-accordion-content-pad-bottom: clamp(24px, 2.4vw, 34px);
+
+  /* Conversion / offer cards */
+  --mellow-offer-card-gap: clamp(12px, 1vw, 16px);
+  --mellow-offer-card-pad: clamp(16px, 1.5vw, 20px);
+  --mellow-offer-card-radius: 24px;
+
   --mellow-section-eyebrow-size: var(--mellow-eyebrow-size);
   --mellow-section-eyebrow-line-height: var(--mellow-eyebrow-line-height);
   --mellow-section-eyebrow-letter-spacing: var(--mellow-eyebrow-tracking);
@@ -422,6 +451,16 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     --mellow-section-pad-x: 22px;
     --mellow-section-pad-top: 56px;
     --mellow-section-pad-bottom: 56px;
+    --mellow-card-gap-tight: 16px;
+    --mellow-card-gap-tight-y: 18px;
+    --mellow-card-gap-airy: clamp(28px, 7vw, 42px);
+    --mellow-feature-gap: clamp(34px, 7vw, 52px);
+    --mellow-carousel-card-gap: 18px;
+    --mellow-carousel-card-width: min(78vw, 330px);
+    --mellow-card-pad-standard: 28px;
+    --mellow-card-pad-airy: 28px;
+    --mellow-list-row-pad-y: 20px;
+    --mellow-offer-card-gap: 12px;
     --mellow-cta-width: 190px;
     --mellow-cta-hover-width: 224px;
     --mellow-cta-height: 50px;
