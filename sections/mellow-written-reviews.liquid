@@ -69,8 +69,8 @@
     padding: clamp(28px, 2.5vw, 42px);
     background: #F4EDE0;
     border: 1px solid rgba(180, 130, 72, 0.22);
-    border-radius: 24px;
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.16);
+    border-radius: var(--mellow-card-radius-md, 24px);
+    box-shadow: var(--mellow-card-shadow-dark-section, 0 24px 56px rgba(0, 0, 0, 0.16));
     color: #14310F;
   }
 
@@ -84,6 +84,8 @@
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__quote {
     color: rgba(20, 49, 15, 0.9);
+    font-size: var(--mellow-quote-size, clamp(17px, 1.2vw, 20px));
+    line-height: var(--mellow-quote-line-height, 1.5);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__person {

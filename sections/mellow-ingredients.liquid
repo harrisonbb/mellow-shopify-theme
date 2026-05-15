@@ -6,7 +6,7 @@
 <style>
   #MellowIngredients-{{ section.id }} {
     --mellow-ingredients-gap: clamp(16px, 1.5vw, 22px);
-    --mellow-ingredients-radius: clamp(24px, 2vw, 28px);
+    --mellow-ingredients-radius: var(--mellow-card-radius-lg, 28px);
     padding-top: clamp(28px, 3vw, 42px);
     padding-bottom: clamp(36px, 3.5vw, 52px);
     background: var(--mellow-ivory, #F0EBE0);
@@ -42,8 +42,8 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__text {
     max-width: 520px;
     margin-top: clamp(10px, .9vw, 14px);
-    font-size: clamp(16px, 1.15vw, 20px);
-    line-height: 1.35;
+    font-size: var(--mellow-subhead-dense-size, clamp(16px, 1.15vw, 20px));
+    line-height: var(--mellow-subhead-dense-line-height, 1.35);
     color: rgba(26, 45, 16, 0.68);
   }
 
@@ -104,7 +104,7 @@
       linear-gradient(145deg, rgba(255, 252, 244, 0.78), rgba(244, 237, 224, 0.96)),
       var(--mellow-card-cream, #F4EDE0);
     box-shadow:
-      0 22px 48px rgba(26, 45, 16, 0.075),
+      var(--mellow-card-shadow-soft, 0 22px 48px rgba(26, 45, 16, 0.075)),
       0 1px 0 rgba(255, 255, 255, 0.48) inset;
     isolation: isolate;
   }
@@ -283,7 +283,7 @@
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card {
-      border-radius: 24px;
+      border-radius: var(--mellow-card-radius-md, 24px);
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature,

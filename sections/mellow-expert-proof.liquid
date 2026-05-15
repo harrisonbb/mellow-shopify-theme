@@ -1,6 +1,7 @@
 {% comment %}
   Mellow Expert Proof section.
   Built on the global Mellow section system with a simple scroll row.
+  Carousel exception: the header stays on the global rail, while the card carousel intentionally uses a 100vw negative-margin bleed to feel full-bleed and slightly off-axis. Do not remove this behavior unless it creates real overflow.
 {% endcomment %}
 
 <style>
@@ -37,8 +38,8 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
     max-width: 520px;
     margin-top: clamp(10px, .9vw, 14px);
-    font-size: clamp(16px, 1.15vw, 20px);
-    line-height: 1.35;
+    font-size: var(--mellow-subhead-dense-size, clamp(16px, 1.15vw, 20px));
+    line-height: var(--mellow-subhead-dense-line-height, 1.35);
     color: rgba(26, 45, 16, 0.68);
   }
 
@@ -129,11 +130,11 @@
     scroll-snap-align: center;
     min-width: 0;
     overflow: hidden;
-    border-radius: clamp(24px, 2vw, 28px);
+    border-radius: var(--mellow-card-radius-lg, 28px);
     border: 1px solid rgba(26, 45, 16, 0.12);
     background: rgba(255, 252, 244, 0.92);
     box-shadow:
-      0 22px 48px rgba(26, 45, 16, 0.075),
+      var(--mellow-card-shadow-soft, 0 22px 48px rgba(26, 45, 16, 0.075)),
       0 1px 0 rgba(255, 255, 255, 0.48) inset;
   }
 
@@ -217,8 +218,8 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
     margin: 0;
     color: var(--mellow-forest, #1A2D10);
-    font-size: clamp(19px, 1.55vw, 25px);
-    line-height: 1.14;
+    font-size: var(--mellow-quote-featured-size, clamp(19px, 1.55vw, 24px));
+    line-height: var(--mellow-quote-featured-line-height, 1.32);
     letter-spacing: -0.028em;
   }
 
@@ -274,7 +275,7 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      border-radius: 24px;
+      border-radius: var(--mellow-card-radius-md, 24px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
