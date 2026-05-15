@@ -45,15 +45,8 @@
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__heading {
-    margin: 0;
     max-width: 7em;
     color: var(--mellow-forest, #1A2D10);
-    font-family: var(--font-heading-family, inherit);
-    font-style: var(--font-heading-style, normal);
-    font-size: clamp(48px, 5.7vw, 82px);
-    font-weight: 650;
-    line-height: 0.95;
-    letter-spacing: -0.055em;
     text-wrap: balance;
   }
 
@@ -186,9 +179,6 @@
 
     #MellowFAQ-{{ section.id }} .mellow-faq__heading {
       max-width: none;
-      font-size: clamp(44px, 10vw, 64px);
-      line-height: 0.96;
-      letter-spacing: -0.052em;
     }
   }
 
@@ -207,9 +197,6 @@
       gap: 28px;
     }
 
-    #MellowFAQ-{{ section.id }} .mellow-faq__heading {
-      font-size: clamp(42px, 12vw, 58px);
-    }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__question {
       grid-template-columns: minmax(0, 1fr) 30px;
@@ -255,7 +242,7 @@
     <div class="mellow-faq__grid">
       <div class="mellow-faq__header">
         {%- if section_heading != blank -%}
-          <h2 class="mellow-faq__heading">{{ section_heading | escape }}</h2>
+          <h2 class="mellow-section-heading mellow-faq__heading">{{ section_heading | escape }}</h2>
         {%- endif -%}
       </div>
 
