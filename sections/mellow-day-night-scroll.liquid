@@ -16,9 +16,14 @@
     --day-night-glow-y: 18%;
     --day-night-glow-opacity: 0;
     --day-night-radial-opacity: 0.12;
+    --day-night-sky-background:
+      radial-gradient(circle at var(--day-night-glow-x) var(--day-night-glow-y), rgba(240, 235, 224, var(--day-night-glow-opacity)), transparent 24rem),
+      radial-gradient(circle at 12% 82%, rgba(61, 107, 140, var(--day-night-radial-opacity)), transparent 32rem),
+      var(--day-night-bg);
     --day-night-orb-x: 0px;
     --day-night-orb-y: 0px;
     --day-night-orb-scale: 1;
+    --day-night-orb-shift-x: -32px;
     --day-night-orb-color: #F4B55D;
     --day-night-orb-shadow-blur: 42px;
     --day-night-orb-shadow-opacity: 0.24;
@@ -44,10 +49,7 @@
     align-items: center;
     min-height: 100svh;
     overflow: hidden;
-    background:
-      radial-gradient(circle at var(--day-night-glow-x) var(--day-night-glow-y), rgba(240, 235, 224, var(--day-night-glow-opacity)), transparent 24rem),
-      radial-gradient(circle at 12% 82%, rgba(61, 107, 140, var(--day-night-radial-opacity)), transparent 32rem),
-      var(--day-night-bg);
+    background: var(--day-night-sky-background);
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__inner {
@@ -147,15 +149,24 @@
     width: clamp(118px, 13vw, 188px);
     aspect-ratio: 1;
     border-radius: 50%;
+    transform: translate3d(calc(var(--day-night-orb-x) + var(--day-night-orb-shift-x)), var(--day-night-orb-y), 0) scale(var(--day-night-orb-scale));
+  }
+
+  #MellowDayNight-{{ section.id }} .mellow-day-night__moon-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
     box-shadow:
       0 0 var(--day-night-orb-shadow-blur) rgba(240, 235, 224, var(--day-night-orb-shadow-opacity)),
       0 28px 80px rgba(11, 30, 44, 0.12);
-    transform: translate3d(var(--day-night-orb-x), var(--day-night-orb-y), 0) scale(var(--day-night-orb-scale));
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__moon-core {
     position: absolute;
     inset: 0;
+    z-index: 1;
     overflow: hidden;
     border-radius: 50%;
     background:
@@ -168,11 +179,14 @@
     position: absolute;
     left: var(--day-night-moon-cutout-x);
     top: var(--day-night-moon-cutout-y);
-    z-index: 1;
+    z-index: 2;
     width: 104%;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: var(--mellow-night-bg-current);
+    background: var(--day-night-sky-background);
+    background-attachment: fixed;
+    background-position: left top;
+    background-size: 100vw 100vh;
     opacity: 1;
     filter: none;
     box-shadow: none;
@@ -244,6 +258,7 @@
     }
 
     #MellowDayNight-{{ section.id }} .mellow-day-night__orb {
+      --day-night-orb-shift-x: 0px;
       top: clamp(28px, 5vh, 54px);
       right: clamp(16px, 8vw, 54px);
       width: clamp(86px, 24vw, 126px);
@@ -342,6 +357,7 @@
 
         <div class="mellow-day-night__visual" aria-hidden="true">
           <span class="mellow-day-night__orb">
+            <span class="mellow-day-night__moon-glow"></span>
             <span class="mellow-day-night__moon-core">
               <span class="mellow-day-night__moon-cutout"></span>
             </span>
