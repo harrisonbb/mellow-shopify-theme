@@ -321,6 +321,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-hover-bg: var(--mellow-section-cta-bg);
   --mellow-section-cta-hover-border: var(--mellow-section-cta-border);
   --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
+  --mellow-section-cta-width: var(--mellow-cta-width);
+  --mellow-section-cta-hover-width: var(--mellow-cta-hover-width);
+  --mellow-section-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --mellow-section-cta-duration: 520ms;
+  --mellow-section-cta-color-duration: 260ms;
 
   display: inline-flex;
   align-items: center;
@@ -332,7 +337,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   transform: translateZ(0);
   backface-visibility: hidden;
 
-  width: var(--mellow-cta-width);
+  width: var(--mellow-section-cta-width);
   min-height: var(--mellow-cta-height);
   padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
   font-size: var(--mellow-cta-font-size);
@@ -347,10 +352,10 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   transform-origin: right center;
 
   transition:
-    width 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 260ms ease,
-    border-color 260ms ease,
-    color 260ms ease;
+    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
+    background-color var(--mellow-section-cta-color-duration) ease,
+    border-color var(--mellow-section-cta-color-duration) ease,
+    color var(--mellow-section-cta-color-duration) ease;
 }
 
 .mellow-section-cta::before,
@@ -363,7 +368,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-block;
   text-align: center;
   transform: translate3d(0, 0, 0);
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease);
 }
 
 .mellow-section-cta__arrow {
@@ -375,13 +380,13 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   pointer-events: none;
   transform: translate3d(-12px, -50%, 0);
   transition:
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 260ms ease;
+    transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
+    opacity var(--mellow-section-cta-color-duration) ease;
 }
 
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
-  width: var(--mellow-cta-hover-width);
+  width: var(--mellow-section-cta-hover-width);
   border-color: var(--mellow-section-cta-hover-border);
   background: var(--mellow-section-cta-hover-bg);
   color: var(--mellow-section-cta-hover-color);
@@ -406,13 +411,9 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 }
 
 .mellow-section-cta--compact {
-  width: clamp(150px, 10.4vw, 178px);
+  --mellow-section-cta-width: clamp(150px, 10.4vw, 178px);
+  --mellow-section-cta-hover-width: clamp(184px, 12.8vw, 218px);
   transform-origin: center center;
-}
-
-.mellow-section-cta--compact:hover,
-.mellow-section-cta--compact:focus-visible {
-  width: clamp(184px, 12.8vw, 218px);
 }
 
 .mellow-section-cta:hover .mellow-section-cta__arrow,
@@ -424,6 +425,14 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 .mellow-section-cta:hover .mellow-section-cta__label,
 .mellow-section-cta:focus-visible .mellow-section-cta__label {
   transform: translate3d(-8px, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mellow-section-cta,
+  .mellow-section-cta__label,
+  .mellow-section-cta__arrow {
+    transition: none !important;
+  }
 }
 
 .mellow-card-tag {
@@ -452,6 +461,13 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     --mellow-card-pad-airy: 28px;
     --mellow-list-row-pad-y: 20px;
     --mellow-offer-card-gap: 12px;
+    --mellow-cta-width: 190px;
+    --mellow-cta-hover-width: 224px;
+    --mellow-cta-height: 50px;
+    --mellow-cta-pad-y: 15px;
+    --mellow-cta-pad-x: 22px;
+    --mellow-cta-font-size: 16px;
+    --mellow-cta-arrow-right: 22px;
   }
 
   .mellow-section-standard {
@@ -488,19 +504,13 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   }
 
   .mellow-section-cta {
-    width: 190px;
-    min-height: 50px;
-    padding: 15px 22px;
-    font-size: 16px;
-  }
-
-  .mellow-section-cta:hover,
-  .mellow-section-cta:focus-visible {
-    width: 224px;
+    min-height: var(--mellow-cta-height);
+    padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
+    font-size: var(--mellow-cta-font-size);
   }
 
   .mellow-section-cta__arrow {
-    right: 22px;
+    right: var(--mellow-cta-arrow-right);
   }
 
   .mellow-card-tag {
