@@ -8,7 +8,8 @@
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     background: var(--mellow-section-green, #003302);
     color: var(--mellow-cream, #F0EBE0);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     padding-top: clamp(36px, 4vw, 64px);
     padding-bottom: clamp(36px, 4vw, 64px);
   }
@@ -98,13 +99,14 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller {
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -127,11 +129,12 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
     scroll-snap-align: center;
-    display: grid;
-    grid-template-rows: minmax(0, 63%) minmax(0, 37%);
-    height: clamp(500px, 58vh, 620px);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: clamp(620px, 64vh, 700px);
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
     border-radius: min(var(--mellow-radius-card), 28px);
     border: 1px solid rgba(0, 51, 2, 0.12);
     background: rgba(255, 252, 244, 0.92);
@@ -143,10 +146,12 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
     position: relative;
     display: flex;
-    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 1 / .9;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-radius: min(var(--mellow-radius-card), 28px) min(var(--mellow-radius-card), 28px) 0 0;
     background:
       radial-gradient(circle at 22% 20%, rgba(208, 74, 42, 0.34), transparent 28%),
       radial-gradient(circle at 76% 30%, rgba(61, 107, 140, 0.34), transparent 30%),
@@ -199,9 +204,12 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
-    min-height: 0;
+    min-height: auto;
     padding: var(--mellow-carousel-card-pad);
+    padding-bottom: clamp(24px, 2.2vw, 34px);
+    border-radius: 0 0 min(var(--mellow-radius-card), 28px) min(var(--mellow-radius-card), 28px);
     background:
       radial-gradient(circle at 94% 6%, rgba(61, 107, 140, 0.08), transparent 30%),
       rgba(255, 252, 244, 0.92);
@@ -222,7 +230,7 @@
     margin: 0;
     color: var(--mellow-forest, #003302);
     font-size: clamp(20px, 1.6vw, 26px);
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.028em;
   }
 
@@ -265,12 +273,18 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      height: clamp(470px, 70vh, 560px);
+      height: auto;
+      min-height: clamp(600px, 86vh, 740px);
       border-radius: min(var(--mellow-radius-card), 28px);
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      aspect-ratio: 1 / .75;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
       padding: var(--mellow-carousel-card-pad);
+      padding-bottom: clamp(24px, 8vw, 34px);
     }
   }
 </style>
