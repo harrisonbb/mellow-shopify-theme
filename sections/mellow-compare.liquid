@@ -23,11 +23,24 @@
       var(--compare-ivory);
     color: var(--compare-forest);
     padding-top: clamp(36px, 4vw, 56px);
-    padding-bottom: clamp(40px, 4vw, 64px);
+    padding-bottom: clamp(44px, 5vw, 72px);
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-compare__layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(680px, 1.6fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
-    margin-bottom: clamp(24px, 3vw, 40px);
+    display: block;
+    margin-bottom: 0;
+  }
+
+  #MellowCompare-{{ section.id }} .mellow-section-header {
+    max-width: 520px;
+    text-align: left;
   }
 
   #MellowCompare-{{ section.id }} .mellow-eyebrow {
@@ -35,23 +48,25 @@
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-heading {
-    margin-bottom: clamp(8px, 0.9vw, 12px);
-    font-size: clamp(48px, 5.8vw, 92px);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
+    margin-bottom: 0;
+    max-width: 520px;
+    font-size: clamp(48px, 5.2vw, 82px);
+    line-height: 0.94;
+    letter-spacing: -0.065em;
   }
 
   #MellowCompare-{{ section.id }} .mellow-section-text {
-    max-width: 440px;
-    margin-top: 0;
-    font-size: clamp(16px, 1.25vw, 20px);
-    line-height: 1.34;
+    max-width: 420px;
+    margin-top: clamp(12px, 1.4vw, 18px);
+    font-size: clamp(15px, 1.1vw, 18px);
+    line-height: 1.35;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
     width: 100%;
-    max-width: min(100%, 1280px);
-    margin: 0 auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__scroll {
@@ -86,14 +101,14 @@
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table thead th {
-    padding-top: clamp(12px, 1.4vw, 20px);
-    padding-bottom: clamp(12px, 1.4vw, 20px);
+    padding-top: clamp(10px, 1.2vw, 16px);
+    padding-bottom: clamp(10px, 1.2vw, 16px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table tbody th,
   #MellowCompare-{{ section.id }} .mellow-compare__table tbody td {
-    padding-top: clamp(18px, 2vw, 28px);
-    padding-bottom: clamp(18px, 2vw, 28px);
+    padding-top: clamp(16px, 1.6vw, 24px);
+    padding-bottom: clamp(16px, 1.6vw, 24px);
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__table th:last-child,
@@ -147,7 +162,7 @@
     margin: 0 0 4px;
     color: var(--compare-ivory);
     font-family: var(--mellow-font-display, var(--font-heading-family));
-    font-size: clamp(28px, 3vw, 42px);
+    font-size: clamp(26px, 2.4vw, 38px);
     font-weight: var(--mellow-heading-weight, 600);
     letter-spacing: -0.04em;
     line-height: 0.95;
@@ -253,6 +268,11 @@
   }
 
   @media screen and (max-width: 989px) {
+    #MellowCompare-{{ section.id }} .mellow-compare__layout {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
     #MellowCompare-{{ section.id }} .mellow-compare__table-wrap {
       max-width: 100%;
     }
@@ -266,12 +286,12 @@
 
   @media screen and (max-width: 749px) {
     #MellowCompare-{{ section.id }} {
-      padding-top: 36px;
-      padding-bottom: 52px;
+      padding-top: 32px;
+      padding-bottom: 44px;
     }
 
-    #MellowCompare-{{ section.id }} .mellow-compare__header-grid {
-      margin-bottom: 28px;
+    #MellowCompare-{{ section.id }} .mellow-compare__layout {
+      gap: 24px;
     }
 
     #MellowCompare-{{ section.id }} .mellow-section-heading {
@@ -319,96 +339,98 @@
 </style>
 
 <section id="MellowCompare-{{ section.id }}" class="mellow-section-standard mellow-compare">
-  <div class="mellow-section-axis">
-    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
-      <div class="mellow-section-header-grid mellow-compare__header-grid">
-        <div class="mellow-section-header">
-          {%- if section.settings.eyebrow != blank -%}
-            <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-          {%- endif -%}
+  <div class="mellow-section-axis mellow-compare__inner">
+    <div class="mellow-compare__layout">
+      {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
+        <div class="mellow-section-header-grid mellow-compare__header-grid">
+          <div class="mellow-section-header">
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {%- endif -%}
 
-          {%- if section.settings.heading != blank -%}
-            <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
-          {%- endif -%}
+            {%- if section.settings.heading != blank -%}
+              <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
+            {%- endif -%}
 
-          {%- if section.settings.text != blank -%}
-            <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
-          {%- endif -%}
+            {%- if section.settings.text != blank -%}
+              <p class="mellow-section-text">{{ section.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
 
-    <div class="mellow-compare__table-wrap">
-      <div class="mellow-compare__scroll" tabindex="0" aria-label="Scrollable comparison table">
-        <table class="mellow-compare__table">
-          <caption class="visually-hidden">
-            Mellow compared with everything else across what it does, when it works, who it is made for, what you take, and how it feels.
-          </caption>
-          <thead>
-            <tr>
-              <th class="mellow-compare__corner" scope="col"><span class="visually-hidden">Comparison point</span></th>
-              <th class="mellow-compare__mellow-header" scope="col">
-                <span class="mellow-compare__brand">Mellow</span>
-                <span class="mellow-compare__recommended">
-                  <span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span>
-                  <span>Recommended</span>
-                </span>
-              </th>
-              <th class="mellow-compare__else-header" scope="col">
-                <span class="mellow-compare__else-title">Everything Else</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th class="mellow-compare__label-cell" scope="row">What it does</th>
-              <td class="mellow-compare__mellow-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Raft-forming gel barrier</span></span>
-              </td>
-              <td class="mellow-compare__else-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Neutralizes or suppresses acid</span></span>
-              </td>
-            </tr>
-            <tr>
-              <th class="mellow-compare__label-cell" scope="row">When it works</th>
-              <td class="mellow-compare__mellow-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Works within minutes</span></span>
-              </td>
-              <td class="mellow-compare__else-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Starts working after reflux has begun</span></span>
-              </td>
-            </tr>
-            <tr>
-              <th class="mellow-compare__label-cell" scope="row">Made for</th>
-              <td class="mellow-compare__mellow-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>People who eat, travel, and don’t slow down</span></span>
-              </td>
-              <td class="mellow-compare__else-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Symptoms after they interrupt you</span></span>
-              </td>
-            </tr>
-            <tr>
-              <th class="mellow-compare__label-cell" scope="row">What you take</th>
-              <td class="mellow-compare__mellow-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Smooth single-serve gel pouch</span></span>
-              </td>
-              <td class="mellow-compare__else-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Chalky tablets, liquids, or pills</span></span>
-              </td>
-            </tr>
-            <tr>
-              <th class="mellow-compare__label-cell" scope="row">How it feels</th>
-              <td class="mellow-compare__mellow-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>One squeeze. No measuring. No mess.</span></span>
-              </td>
-              <td class="mellow-compare__else-cell">
-                <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Feels like medicine you’d rather not take</span></span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="mellow-compare__table-wrap">
+        <div class="mellow-compare__scroll" tabindex="0" aria-label="Scrollable comparison table">
+          <table class="mellow-compare__table">
+            <caption class="visually-hidden">
+              Mellow compared with everything else across what it does, when it works, who it is made for, what you take, and how it feels.
+            </caption>
+            <thead>
+              <tr>
+                <th class="mellow-compare__corner" scope="col"><span class="visually-hidden">Comparison point</span></th>
+                <th class="mellow-compare__mellow-header" scope="col">
+                  <span class="mellow-compare__brand">Mellow</span>
+                  <span class="mellow-compare__recommended">
+                    <span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span>
+                    <span>Recommended</span>
+                  </span>
+                </th>
+                <th class="mellow-compare__else-header" scope="col">
+                  <span class="mellow-compare__else-title">Everything Else</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="mellow-compare__label-cell" scope="row">What it does</th>
+                <td class="mellow-compare__mellow-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Raft-forming gel barrier</span></span>
+                </td>
+                <td class="mellow-compare__else-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Neutralizes or suppresses acid</span></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="mellow-compare__label-cell" scope="row">When it works</th>
+                <td class="mellow-compare__mellow-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Works within minutes</span></span>
+                </td>
+                <td class="mellow-compare__else-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Starts working after reflux has begun</span></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="mellow-compare__label-cell" scope="row">Made for</th>
+                <td class="mellow-compare__mellow-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>People who eat, travel, and don’t slow down</span></span>
+                </td>
+                <td class="mellow-compare__else-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Symptoms after they interrupt you</span></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="mellow-compare__label-cell" scope="row">What you take</th>
+                <td class="mellow-compare__mellow-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>Smooth single-serve gel pouch</span></span>
+                </td>
+                <td class="mellow-compare__else-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Chalky tablets, liquids, or pills</span></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="mellow-compare__label-cell" scope="row">How it feels</th>
+                <td class="mellow-compare__mellow-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--check" aria-hidden="true">✓</span><span>One squeeze. No measuring. No mess.</span></span>
+                </td>
+                <td class="mellow-compare__else-cell">
+                  <span class="mellow-compare__value"><span class="mellow-compare__icon mellow-compare__icon--x" aria-hidden="true">×</span><span>Feels like medicine you’d rather not take</span></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mellow-compare__mobile-hint">Swipe to compare Mellow with everything else.</p>
       </div>
-      <p class="mellow-compare__mobile-hint">Swipe to compare Mellow with everything else.</p>
     </div>
   </div>
 </section>
