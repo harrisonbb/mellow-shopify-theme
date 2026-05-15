@@ -17,7 +17,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
     grid-template-columns: minmax(0, .62fr) auto;
-    margin-bottom: clamp(14px, 1.6vw, 22px);
+    margin-bottom: var(--mellow-section-content-gap-compact);
     align-items: start;
     gap: clamp(18px, 2.4vw, 36px);
   }
@@ -27,7 +27,7 @@
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-eyebrow {
-    margin-bottom: clamp(5px, .45vw, 8px);
+    margin-bottom: var(--mellow-section-header-gap);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
@@ -39,7 +39,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
     max-width: 500px;
-    margin-top: clamp(7px, .65vw, 10px);
+    margin-top: var(--mellow-section-heading-gap);
     font-size: clamp(15px, 1.05vw, 18px);
     line-height: 1.32;
     color: rgba(240, 235, 224, 0.86);
@@ -268,7 +268,7 @@
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       gap: 18px;
-      margin-bottom: 20px;
+      margin-bottom: var(--mellow-section-content-gap-compact);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {

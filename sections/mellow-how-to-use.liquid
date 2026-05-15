@@ -28,7 +28,7 @@
     grid-template-columns: minmax(0, 760px) auto;
     align-items: center;
     gap: clamp(40px, 6vw, 96px);
-    margin-bottom: clamp(22px, 2.6vw, 36px);
+    margin-bottom: var(--mellow-section-content-gap);
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header {
@@ -36,7 +36,7 @@
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__eyebrow {
-    margin: 0 0 var(--mellow-eyebrow-margin-bottom);
+    margin: 0 0 var(--mellow-section-header-gap);
     color: var(--mellow-orange-red);
   }
 
@@ -47,7 +47,7 @@
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__text {
     max-width: var(--mellow-copy-max);
-    margin: 22px 0 0;
+    margin: var(--mellow-section-heading-gap) 0 0;
     color: rgba(240, 235, 224, 0.82);
     font-size: var(--mellow-subhead-size);
     line-height: var(--mellow-subhead-line-height);
@@ -206,7 +206,7 @@
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
       display: block;
-      margin-bottom: 24px;
+      margin-bottom: var(--mellow-section-content-gap-compact);
     }
 
 
@@ -218,7 +218,7 @@
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-actions {
       width: 100%;
-      margin-top: 28px;
+      margin-top: var(--mellow-section-content-gap-compact);
       transform: none;
     }
 

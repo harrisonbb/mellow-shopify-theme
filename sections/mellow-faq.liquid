@@ -37,7 +37,7 @@
     display: grid;
     grid-template-columns: minmax(180px, 0.48fr) minmax(0, 1.52fr);
     align-items: start;
-    gap: clamp(44px, 6vw, 96px);
+    gap: var(--mellow-section-content-gap);
   }
 
   #MellowFAQ-{{ section.id }} .mellow-faq__header {
@@ -175,7 +175,7 @@
 
     #MellowFAQ-{{ section.id }} .mellow-faq__grid {
       grid-template-columns: 1fr;
-      gap: clamp(30px, 6vw, 48px);
+      gap: var(--mellow-section-content-gap);
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__heading {
@@ -190,7 +190,7 @@
     }
 
     #MellowFAQ-{{ section.id }} .mellow-faq__grid {
-      gap: 28px;
+      gap: var(--mellow-section-content-gap-compact);
     }
 
 
