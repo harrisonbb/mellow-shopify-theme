@@ -92,7 +92,6 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: 10px;
     padding-bottom: 70px;
   }
 
@@ -125,12 +124,12 @@
     position: relative;
     width: clamp(330px, 28vw, 430px);
     height: clamp(300px, 24vw, 370px);
-    padding: 52px 36px 36px;
+    padding: var(--mellow-card-pad-standard);
 
     background: #f4ede0 !important;
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.22) !important;
-    border-radius: 24px !important;
+    border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
     box-shadow: none;
     background-clip: border-box;
@@ -154,7 +153,7 @@
     background: #f4ede0 !important;
     background-image: none !important;
     border: 1px solid rgba(180, 130, 72, 0.26) !important;
-    border-radius: 24px !important;
+    border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
     box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
     background-clip: border-box;
@@ -248,11 +247,6 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowWhoItsFor-{{ section.id }} {
-      padding-top: 56px;
-      padding-bottom: 56px;
-    }
-
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
@@ -277,21 +271,18 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
-      padding-top: 14px;
       padding-bottom: 52px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
       width: 320px;
       height: 300px;
-      padding: 44px 28px 30px;
-      border-radius: 22px !important;
+      padding: var(--mellow-card-pad-standard);
       transform: none !important;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
       transform: none !important;
-      border-radius: 22px !important;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {

@@ -9,8 +9,8 @@
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
-    padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
     background: var(--mellow-cream, #F0EBE0);
     color: var(--mellow-ink, var(--mellow-forest, #003302));
   }
@@ -51,7 +51,7 @@
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--mellow-card-gap, clamp(28px, 2.6vw, 42px));
+    gap: var(--mellow-card-gap);
     align-items: stretch;
     width: 100%;
     max-width: none;
@@ -63,10 +63,10 @@
     display: flex;
     flex-direction: column;
     min-height: clamp(280px, 22vw, 340px);
-    padding: clamp(28px, 2.5vw, 42px);
+    padding: var(--mellow-card-pad-standard);
     background: #F4EDE0;
     border: 1px solid rgba(180, 130, 72, 0.22);
-    border-radius: 24px;
+    border-radius: var(--mellow-radius-card);
     box-shadow: 0 24px 56px rgba(0, 0, 0, 0.16);
     color: var(--mellow-forest, #003302);
   }
@@ -149,12 +149,7 @@
   @media screen and (max-width: 749px) {
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
       display: block;
-    }
-
-
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
-      padding: 28px;
-      border-radius: 22px;
+      margin-bottom: var(--mellow-section-content-gap-compact);
     }
   }
 </style>

@@ -82,7 +82,6 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--mellow-card-gap);
-    padding-top: 10px;
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step {
@@ -93,7 +92,7 @@
     position: relative;
     min-height: clamp(280px, 27vw, 410px);
     border: 1px solid rgba(240, 235, 224, 0.18);
-    border-radius: 24px;
+    border-radius: var(--mellow-radius-card);
     overflow: hidden;
     background:
       radial-gradient(circle at 24% 20%, rgba(240, 235, 224, 0.24) 0 12%, transparent 13%),
@@ -185,7 +184,7 @@
   @media screen and (max-width: 989px) {
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
       grid-template-columns: 1fr;
-      gap: clamp(32px, 5vw, 46px);
+      gap: var(--mellow-card-gap);
     }
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
@@ -194,11 +193,6 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowHowToUse-{{ section.id }} {
-      padding-top: 56px;
-      padding-bottom: 56px;
-    }
-
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
@@ -230,13 +224,8 @@
       font-size: 16px;
     }
 
-    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
-      padding-top: 14px;
-    }
-
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
       min-height: 300px;
-      border-radius: 22px;
     }
   }
 </style>
