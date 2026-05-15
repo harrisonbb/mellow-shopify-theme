@@ -11,11 +11,8 @@
     overflow-y: visible;
     padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
     padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
-    background:
-      radial-gradient(circle at 78% 18%, rgba(208, 74, 42, 0.1), transparent 34%),
-      radial-gradient(circle at 22% 72%, rgba(61, 107, 140, 0.08), transparent 36%),
-      var(--mellow-forest, #223216);
-    color: #F0EBE0;
+    background: var(--mellow-cream, #F0EBE0);
+    color: var(--mellow-ink, var(--mellow-forest, #223216));
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__inner {
@@ -44,11 +41,11 @@
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
-    color: #F0EBE0;
+    color: var(--mellow-forest, #223216);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__text {
-    color: rgba(240, 235, 224, 0.78);
+    color: rgba(34, 50, 22, 0.68);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
