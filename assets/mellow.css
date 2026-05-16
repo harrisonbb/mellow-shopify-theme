@@ -151,6 +151,12 @@
   --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --mellow-cta-duration: 520ms;
   --mellow-cta-color-duration: 260ms;
+  --mellow-cta-radius: 999px;
+  --mellow-cta-gap: 10px;
+  --mellow-cta-letter-spacing: 0.02em;
+  --mellow-cta-label-shift: -8px;
+  --mellow-cta-arrow-reveal-distance: 12px;
+  --mellow-cta-active-duration: 160ms;
 
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
@@ -508,10 +514,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
   --mellow-section-cta-width: var(--mellow-cta-width);
   --mellow-section-cta-hover-width: var(--mellow-cta-hover-width);
-  --mellow-section-cta-label-rest-offset: clamp(17px, 1.15vw, 20px);
-  --mellow-section-cta-label-hover-offset: -8px;
-  --mellow-section-cta-visual-left: auto;
-  --mellow-section-cta-visual-right: 0;
   --mellow-section-cta-ease: var(--mellow-cta-ease);
   --mellow-section-cta-duration: var(--mellow-cta-duration);
   --mellow-section-cta-color-duration: var(--mellow-cta-color-duration);
@@ -519,21 +521,22 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: var(--mellow-cta-gap);
   overflow: hidden;
   position: relative;
   white-space: nowrap;
   transform: translateZ(0);
   backface-visibility: hidden;
 
-  width: var(--mellow-section-cta-hover-width);
+  width: var(--mellow-section-cta-width);
   min-height: var(--mellow-cta-height);
   padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
   font-size: var(--mellow-cta-font-size);
   font-weight: var(--mellow-cta-font-weight);
+  letter-spacing: var(--mellow-cta-letter-spacing);
   line-height: 1;
   border: 1px solid var(--mellow-section-cta-border);
-  border-radius: 999px;
+  border-radius: var(--mellow-cta-radius);
   background: var(--mellow-section-cta-bg);
   color: var(--mellow-section-cta-color);
   text-decoration: none;
@@ -543,33 +546,18 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   pointer-events: auto;
   z-index: 1;
 
-  transform-origin: right center;
-
   transition:
+    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
     box-shadow var(--mellow-section-cta-color-duration) ease,
     color var(--mellow-section-cta-color-duration) ease;
 }
 
-.mellow-section-cta::before {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  left: var(--mellow-section-cta-visual-left);
-  right: var(--mellow-section-cta-visual-right);
-  z-index: 0;
-  display: block;
-  width: var(--mellow-section-cta-width);
-  border: 1px solid var(--mellow-section-cta-border);
-  border-radius: inherit;
-  background: var(--mellow-section-cta-bg);
-  pointer-events: none;
-  transition:
-    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
-    background-color var(--mellow-section-cta-color-duration) ease,
-    border-color var(--mellow-section-cta-color-duration) ease,
-    box-shadow var(--mellow-section-cta-color-duration) ease;
+.mellow-section-cta::before,
+.mellow-section-cta::after {
+  content: none !important;
+  display: none !important;
 }
 
 .mellow-section-cta:focus-visible {
@@ -577,14 +565,8 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   outline-offset: 4px;
 }
 
-.mellow-section-cta:active,
-.mellow-section-cta:active::before {
-  transition-duration: 160ms;
-}
-
-.mellow-section-cta::after {
-  content: none !important;
-  display: none !important;
+.mellow-section-cta:active {
+  transition-duration: var(--mellow-cta-active-duration);
 }
 
 .mellow-section-cta__label {
@@ -594,7 +576,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   color: currentColor;
   opacity: 1;
   visibility: visible;
-  transform: translate3d(var(--mellow-section-cta-label-rest-offset), 0, 0);
+  transform: translate3d(0, 0, 0);
   transition: transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease);
 }
 
@@ -606,7 +588,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-12px, -50%, 0);
+  transform: translate3d(calc(-1 * var(--mellow-cta-arrow-reveal-distance)), -50%, 0);
   transition:
     transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     opacity var(--mellow-section-cta-color-duration) ease;
@@ -614,16 +596,10 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
+  width: var(--mellow-section-cta-hover-width);
   border-color: var(--mellow-section-cta-hover-border);
   background: var(--mellow-section-cta-hover-bg);
   color: var(--mellow-section-cta-hover-color);
-}
-
-.mellow-section-cta:hover::before,
-.mellow-section-cta:focus-visible::before {
-  width: 100%;
-  border-color: var(--mellow-section-cta-hover-border);
-  background: var(--mellow-section-cta-hover-bg);
 }
 
 .mellow-section-cta--primary-forest {
@@ -653,19 +629,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-color: var(--mellow-forest);
 }
 
-.mellow-section-cta--compact {
-  --mellow-section-cta-width: clamp(150px, 10.4vw, 178px);
-  --mellow-section-cta-hover-width: clamp(184px, 12.8vw, 218px);
-  transform-origin: center center;
-}
-
-.mellow-buy-boxes__cta,
-.mellow-day-night__cta {
-  --mellow-section-cta-visual-left: 0;
-  --mellow-section-cta-visual-right: auto;
-  --mellow-section-cta-label-rest-offset: clamp(-20px, -1.15vw, -17px);
-}
-
 .mellow-section-cta:hover .mellow-section-cta__arrow,
 .mellow-section-cta:focus-visible .mellow-section-cta__arrow {
   transform: translate3d(0, -50%, 0);
@@ -674,12 +637,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover .mellow-section-cta__label,
 .mellow-section-cta:focus-visible .mellow-section-cta__label {
-  transform: translate3d(var(--mellow-section-cta-label-hover-offset), 0, 0);
+  transform: translate3d(var(--mellow-cta-label-shift), 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mellow-section-cta,
-  .mellow-section-cta::before,
   .mellow-section-cta__label,
   .mellow-section-cta__arrow {
     transition: none !important;
@@ -755,9 +717,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   }
 
   .mellow-section-cta {
-    --mellow-section-cta-visual-left: 0;
-    --mellow-section-cta-visual-right: auto;
-    --mellow-section-cta-label-rest-offset: -17px;
     min-height: var(--mellow-cta-height);
     padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
     font-size: var(--mellow-cta-font-size);
@@ -1280,37 +1239,12 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__quiz-button {
-  min-height: 56px !important;
-  height: 56px !important;
-  box-sizing: border-box !important;
-  padding: 0 24px !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 10px !important;
-  background: transparent !important;
-  color: var(--mellow-forest) !important;
-  border: 1px solid transparent !important;
-  font-size: 16px !important;
-  line-height: 1 !important;
-  font-weight: 650 !important;
-  letter-spacing: -0.005em !important;
-  text-transform: none !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-  box-shadow: none !important;
   --mellow-section-cta-bg: #F0EBE0;
   --mellow-section-cta-border: rgba(240, 235, 224, 0.64);
   --mellow-section-cta-color: var(--mellow-forest);
   --mellow-section-cta-hover-bg: #FFF7EA;
   --mellow-section-cta-hover-border: rgba(240, 235, 224, 0.78);
   --mellow-section-cta-hover-color: var(--mellow-forest);
-  transition: color var(--mellow-section-cta-color-duration) ease;
-}
-
-.mellow-who-its-for__quiz-button::before {
-  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18);
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -1824,16 +1758,6 @@ input[type="reset"] {
     margin-inline-end: 0;
   }
 
-  .mellow-who-its-for__quiz-button {
-    --mellow-section-cta-width: 190px;
-    --mellow-section-cta-hover-width: 224px;
-    min-height: 48px !important;
-    height: 48px !important;
-    padding: 0 20px !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-
   .mellow-who-its-for__carousel-wrap {
     margin-top: 0;
   }
@@ -2242,17 +2166,11 @@ input[type="reset"] {
   --mellow-section-cta-hover-color: var(--mellow-cream);
   --mellow-section-cta-width: 100%;
   --mellow-section-cta-hover-width: 100%;
-  --mellow-section-cta-label-rest-offset: 0px;
-  --mellow-section-cta-label-hover-offset: -8px;
 
   width: 100%;
-  min-height: 58px;
   border-width: 1px;
   cursor: pointer;
   font-family: var(--mellow-font-body);
-  font-size: 1.62rem;
-  font-weight: 850;
-  letter-spacing: -0.01em;
 }
 
 .mellow-product-cta[disabled],
