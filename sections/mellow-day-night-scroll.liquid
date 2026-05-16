@@ -354,7 +354,12 @@
           {%- endif -%}
 
           {%- if section.settings.heading != blank -%}
-            <h2 class="mellow-section-heading mellow-day-night__heading">{{ section.settings.heading | escape | replace: 'After meals. Before bed. Covered.', 'After meals.<br>Before bed.<br>Covered.' }}</h2>
+            {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
+            <h2 class="mellow-section-heading mellow-day-night__heading">
+              {%- for line in heading_lines -%}
+                {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
+              {%- endfor -%}
+            </h2>
           {%- endif -%}
 
           {%- if section.settings.subheading != blank -%}
@@ -555,7 +560,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "After meals. Before bed. Covered."
+      "default": "After meals.|Before bed.|Covered."
     },
     {
       "type": "textarea",

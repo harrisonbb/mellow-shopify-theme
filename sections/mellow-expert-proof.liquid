@@ -351,7 +351,12 @@
         {%- endif -%}
 
         {%- if section.settings.heading != blank -%}
-          <h2 class="mellow-section-heading mellow-expert-proof__heading">{{ section.settings.heading | escape | replace: 'Trusted by practitioners who understand reflux.', 'Trusted by practitioners<br>who understand reflux.' }}</h2>
+          {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
+          <h2 class="mellow-section-heading mellow-expert-proof__heading">
+            {%- for line in heading_lines -%}
+              {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
+            {%- endfor -%}
+          </h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
@@ -770,7 +775,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Trusted by practitioners who understand reflux."
+      "default": "Trusted by practitioners|who understand reflux."
     },
     {
       "type": "textarea",

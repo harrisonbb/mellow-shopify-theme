@@ -336,7 +336,12 @@
             {%- endif -%}
 
             {%- if section.settings.heading != blank -%}
-              <h2 class="mellow-section-heading">{{ section.settings.heading | escape | replace: 'Built to block reflux, ', 'Built to block reflux,<br>' }}</h2>
+              {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
+              <h2 class="mellow-section-heading">
+                {%- for line in heading_lines -%}
+                  {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
+                {%- endfor -%}
+              </h2>
             {%- endif -%}
 
             {%- if section.settings.text != blank -%}
@@ -444,7 +449,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Built to block reflux, not just neutralize it."
+      "default": "Built to block reflux,|not just neutralize it."
     },
     {
       "type": "textarea",
