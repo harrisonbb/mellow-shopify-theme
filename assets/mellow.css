@@ -196,6 +196,188 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
 }
 
+/*
+  Dawn animation guardrails for Mellow homepage surfaces.
+  Keep Dawn reveal/hover systems available elsewhere, but make any accidental
+  Dawn animation classes inside Mellow sections render immediately and defer to
+  Mellow's own scoped transitions.
+*/
+.mellow-section-standard.scroll-trigger,
+.mellow-section-standard .scroll-trigger,
+.mellow-section.scroll-trigger,
+.mellow-section .scroll-trigger,
+[id^="Mellow"].scroll-trigger,
+[id^="Mellow"] .scroll-trigger,
+.mellow-section-cta.scroll-trigger,
+.mellow-section-cta.animate--fade-in,
+.mellow-section-cta.animate--slide-in {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  animation-delay: 0s !important;
+}
+
+.mellow-section-standard.animate--slide-in,
+.mellow-section-standard.animate--fade-in,
+.mellow-section-standard .animate--slide-in,
+.mellow-section-standard .animate--fade-in,
+.mellow-section.animate--slide-in,
+.mellow-section.animate--fade-in,
+.mellow-section .animate--slide-in,
+.mellow-section .animate--fade-in,
+[id^="Mellow"].animate--slide-in,
+[id^="Mellow"].animate--fade-in,
+[id^="Mellow"] .animate--slide-in,
+[id^="Mellow"] .animate--fade-in {
+  opacity: 1 !important;
+}
+
+.mellow-section-standard.animate--slide-in,
+.mellow-section-standard .animate--slide-in,
+.mellow-section.animate--slide-in,
+.mellow-section .animate--slide-in,
+[id^="Mellow"].animate--slide-in,
+[id^="Mellow"] .animate--slide-in {
+  transform: none !important;
+}
+
+.mellow-section-standard.animate--ambient > img,
+.mellow-section-standard.animate--ambient > .svg-wrapper,
+.mellow-section-standard .animate--ambient > img,
+.mellow-section-standard .animate--ambient > .svg-wrapper,
+.mellow-section.animate--ambient > img,
+.mellow-section.animate--ambient > .svg-wrapper,
+.mellow-section .animate--ambient > img,
+.mellow-section .animate--ambient > .svg-wrapper,
+[id^="Mellow"].animate--ambient > img,
+[id^="Mellow"].animate--ambient > .svg-wrapper,
+[id^="Mellow"] .animate--ambient > img,
+[id^="Mellow"] .animate--ambient > .svg-wrapper {
+  animation: none !important;
+}
+
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card,
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--standard .card__inner,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card--card,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card--standard .card__inner,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--standard .card__inner,
+.animate--hover-vertical-lift .mellow-section-standard .card-wrapper .card--card,
+.animate--hover-vertical-lift .mellow-section-standard .card-wrapper .card--standard .card__inner,
+.animate--hover-vertical-lift .mellow-section .card-wrapper .card--card,
+.animate--hover-vertical-lift .mellow-section .card-wrapper .card--standard .card__inner,
+.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper .card--card,
+.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper .card--standard .card__inner {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper:hover .card--card,
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-3d-lift .mellow-section .card-wrapper:hover .card--card,
+.animate--hover-3d-lift .mellow-section .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper:hover .card--card,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-vertical-lift .mellow-section-standard .card-wrapper:hover .card--card,
+.animate--hover-vertical-lift .mellow-section-standard .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-vertical-lift .mellow-section .card-wrapper:hover .card--card,
+.animate--hover-vertical-lift .mellow-section .card-wrapper:hover .card--standard .card__inner,
+.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper:hover .card--card,
+.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper:hover .card--standard .card__inner {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card::before,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card--card::before,
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card::after,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card--card::after,
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card__media::before,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card__media::before,
+.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card__media::after,
+.animate--hover-3d-lift .mellow-section .card-wrapper .card__media::after,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card::before,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card::after,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card__media::before,
+.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card__media::after {
+  background-image: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 0 !important;
+}
+
+.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta,
+.animate--hover-3d-lift .mellow-section .mellow-section-cta,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta,
+.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta,
+.animate--hover-3d-lift .mellow-section .mellow-product-cta,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta,
+.animate--hover-vertical-lift .mellow-section .mellow-section-cta,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta,
+.animate--hover-vertical-lift .mellow-section .mellow-product-cta,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta {
+  transform: translateZ(0) !important;
+  box-shadow: none !important;
+}
+
+.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-section .mellow-section-cta:not([disabled]):hover,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-section .mellow-product-cta:not([disabled]):hover,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):hover,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):hover,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta:not([disabled]):active,
+.animate--hover-3d-lift .mellow-section .mellow-section-cta:not([disabled]):active,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):active,
+.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta:not([disabled]):active,
+.animate--hover-3d-lift .mellow-section .mellow-product-cta:not([disabled]):active,
+.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):active,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):active,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):active {
+  transform: translateZ(0) !important;
+  box-shadow: none !important;
+}
+
+.mellow-section-standard .mellow-section-cta::before,
+.mellow-section-standard .mellow-section-cta::after,
+.mellow-section .mellow-section-cta::before,
+.mellow-section .mellow-section-cta::after,
+[id^="Mellow"] .mellow-section-cta::before,
+[id^="Mellow"] .mellow-section-cta::after,
+.mellow-section-standard .mellow-product-cta::before,
+.mellow-section-standard .mellow-product-cta::after,
+.mellow-section .mellow-product-cta::before,
+.mellow-section .mellow-product-cta::after,
+[id^="Mellow"] .mellow-product-cta::before,
+[id^="Mellow"] .mellow-product-cta::after,
+.animate--hover-vertical-lift .mellow-section-standard .button:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-section .button:not([disabled]):hover::after,
+.animate--hover-vertical-lift [id^="Mellow"] .button:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover::after {
+  content: none !important;
+  display: none !important;
+  box-shadow: none !important;
+}
+
 
 /*
   Global Mellow section system.
