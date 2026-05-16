@@ -137,13 +137,12 @@
     overflow: hidden;
     transform: none !important;
     backface-visibility: visible;
-    will-change: filter, box-shadow;
+    will-change: auto;
     z-index: 1;
 
     transition:
-      box-shadow 520ms ease,
-      filter 520ms ease,
-      border-color 520ms ease;
+      opacity 260ms ease,
+      border-color 260ms ease;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
@@ -155,14 +154,15 @@
     border: 1px solid rgba(180, 130, 72, 0.26) !important;
     border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
     background-clip: border-box;
     filter: none;
+    opacity: 1;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) {
-    opacity: 1;
-    filter: brightness(0.96) saturate(0.98);
+    opacity: 0.96;
+    filter: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
@@ -416,22 +416,27 @@
     const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
     const track = section.querySelector('[data-mellow-who-track]');
     const cardSet = section.querySelector('[data-mellow-who-card-set]');
-    const getMomentCards = () => Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
+    const momentCards = cardSet ? Array.from(cardSet.querySelectorAll('[data-mellow-who-card]')) : [];
+    const allMomentCards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
-    if (!scroller || !track || !cardSet || !getMomentCards().length) {
+    if (!scroller || !track || !cardSet || !momentCards.length) {
       return;
     }
 
     const marqueeDuration = 90000;
+    const activeUpdateIntervalMs = 180;
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let setWidth = 0;
+    let cardWidth = 0;
+    let cardPitch = 0;
+    let scrollerCenterX = 0;
     let offset = 0;
     let animationFrame = null;
     let lastFrameTime = null;
     let resizeObserver = null;
     let activeUpdateFrame = null;
-    let activeUpdateInterval = null;
-    let activeCard = null;
+    let activeCardIndex = null;
+    let lastActiveUpdateTime = 0;
     let ticking = false;
     let isReducedMotion = reducedMotionQuery.matches;
 
@@ -463,82 +468,79 @@
       track.style.transform = isReducedMotion ? 'none' : `translate3d(${offset}px, 0, 0)`;
     };
 
-    const getDistanceFromCenter = (card) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.left + rect.width / 2;
-      const viewportCenter = window.innerWidth / 2;
+    const wrapSetPosition = (position) => {
+      if (setWidth <= 0) {
+        return 0;
+      }
 
-      return Math.abs(cardCenter - viewportCenter);
+      return ((position % setWidth) + setWidth) % setWidth;
     };
 
-    const getVisibleCards = () => getMomentCards().filter((card) => {
-      const rect = card.getBoundingClientRect();
+    const getCircularDistance = (positionA, positionB) => {
+      const directDistance = Math.abs(positionA - positionB);
 
-      return (
-        card.offsetParent !== null &&
-        rect.width > 0 &&
-        rect.height > 0 &&
-        rect.right > 0 &&
-        rect.left < window.innerWidth
-      );
-    });
+      return Math.min(directDistance, setWidth - directDistance);
+    };
 
-    const clearInactiveCards = (nextActiveCard) => {
-      getMomentCards().forEach((card) => {
-        if (card !== nextActiveCard && card.classList.contains('is-active')) {
+    const getCenteredCardIndex = () => {
+      if (setWidth <= 0 || cardPitch <= 0 || cardWidth <= 0) {
+        return 0;
+      }
+
+      const centerInTrack = scrollerCenterX - offset;
+      const centerInSet = wrapSetPosition(centerInTrack);
+      const approximateIndex = Math.round((centerInSet - cardWidth / 2) / cardPitch);
+      const candidateIndexes = [approximateIndex - 1, approximateIndex, approximateIndex + 1];
+
+      return candidateIndexes.reduce((closestIndex, candidateIndex) => {
+        const normalizedCandidateIndex = ((candidateIndex % momentCards.length) + momentCards.length) % momentCards.length;
+        const normalizedClosestIndex = ((closestIndex % momentCards.length) + momentCards.length) % momentCards.length;
+        const candidateCenter = wrapSetPosition(cardWidth / 2 + normalizedCandidateIndex * cardPitch);
+        const closestCenter = wrapSetPosition(cardWidth / 2 + normalizedClosestIndex * cardPitch);
+        const candidateDistance = getCircularDistance(centerInSet, candidateCenter);
+        const closestDistance = getCircularDistance(centerInSet, closestCenter);
+
+        return candidateDistance < closestDistance ? candidateIndex : closestIndex;
+      }, approximateIndex);
+    };
+
+    const clearInactiveCards = (nextActiveIndex) => {
+      allMomentCards.forEach((card) => {
+        const cardIndex = Number(card.dataset.mellowWhoIndex);
+
+        if (cardIndex !== nextActiveIndex && card.classList.contains('is-active')) {
           card.classList.remove('is-active');
         }
       });
     };
 
-    const setActiveCard = (nextActiveCard) => {
-      clearInactiveCards(nextActiveCard);
-      nextActiveCard.classList.add('is-active');
-      activeCard = nextActiveCard;
+    const setActiveCardByIndex = (nextActiveIndex) => {
+      clearInactiveCards(nextActiveIndex);
+
+      allMomentCards.forEach((card) => {
+        if (Number(card.dataset.mellowWhoIndex) === nextActiveIndex) {
+          card.classList.add('is-active');
+        }
+      });
+
+      activeCardIndex = nextActiveIndex;
     };
 
     const setStableReducedMotionCard = () => {
-      const firstCard = cardSet.querySelector('.mellow-who-its-for__card');
-
-      if (firstCard) {
-        setActiveCard(firstCard);
-      }
+      setActiveCardByIndex(0);
     };
 
-    const updateActiveMomentCard = () => {
+    const updateActiveMomentCard = (timestamp = performance.now()) => {
       if (isReducedMotion) {
         setStableReducedMotionCard();
         return;
       }
 
-      const visibleCards = getVisibleCards();
+      const nextActiveIndex = ((getCenteredCardIndex() % momentCards.length) + momentCards.length) % momentCards.length;
+      lastActiveUpdateTime = timestamp;
 
-      if (!visibleCards.length) {
-        return;
-      }
-
-      let closestCard = visibleCards[0];
-      let closestDistance = getDistanceFromCenter(closestCard);
-
-      visibleCards.forEach((card) => {
-        const distance = getDistanceFromCenter(card);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestCard = card;
-        }
-      });
-
-      if (!activeCard || !visibleCards.includes(activeCard)) {
-        setActiveCard(closestCard);
-        return;
-      }
-
-      const activeDistance = getDistanceFromCenter(activeCard);
-      const switchThreshold = 48;
-
-      if (closestCard !== activeCard && closestDistance + switchThreshold < activeDistance) {
-        setActiveCard(closestCard);
+      if (nextActiveIndex !== activeCardIndex) {
+        setActiveCardByIndex(nextActiveIndex);
       }
     };
 
@@ -554,8 +556,8 @@
 
       ticking = true;
 
-      activeUpdateFrame = requestAnimationFrame(() => {
-        updateActiveMomentCard();
+      activeUpdateFrame = requestAnimationFrame((timestamp) => {
+        updateActiveMomentCard(timestamp);
         ticking = false;
         activeUpdateFrame = null;
       });
@@ -572,18 +574,25 @@
         activeUpdateFrame = null;
       }
 
-      if (activeUpdateInterval) {
-        clearInterval(activeUpdateInterval);
-        activeUpdateInterval = null;
-      }
-
       ticking = false;
       lastFrameTime = null;
     };
 
+    const measureScrollerCenter = () => {
+      scrollerCenterX = scroller.clientWidth / 2;
+    };
+
     const measureCarousel = () => {
-      const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      const trackStyles = window.getComputedStyle(track);
+      const cardSetStyles = window.getComputedStyle(cardSet);
+      const trackGap = parseFloat(trackStyles.columnGap) || 0;
+      const cardGap = parseFloat(cardSetStyles.columnGap) || 0;
+      const firstCard = momentCards[0];
+
+      cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+      cardPitch = cardWidth + cardGap;
       setWidth = cardSet.getBoundingClientRect().width + trackGap;
+      measureScrollerCenter();
 
       if (setWidth <= 0) {
         return;
@@ -616,13 +625,10 @@
         updateTrackPosition();
 
         if (didWrap) {
-          activeCard = null;
-
-          getMomentCards().forEach((card) => {
-            card.classList.remove('is-active');
-          });
-
+          activeCardIndex = null;
           requestActiveCardUpdate();
+        } else if (timestamp - lastActiveUpdateTime >= activeUpdateIntervalMs) {
+          updateActiveMomentCard(timestamp);
         }
 
         lastFrameTime = timestamp;
@@ -634,10 +640,6 @@
     const startMarquee = () => {
       if (isReducedMotion || animationFrame) {
         return;
-      }
-
-      if (!activeUpdateInterval) {
-        activeUpdateInterval = setInterval(requestActiveCardUpdate, 140);
       }
 
       requestActiveCardUpdate();
@@ -706,7 +708,6 @@
     );
 
     window.addEventListener('resize', requestActiveCardUpdate, { passive: true });
-    window.addEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
     if (typeof reducedMotionQuery.addEventListener === 'function') {
       reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
@@ -723,7 +724,6 @@
 
       stopMarquee();
       window.removeEventListener('resize', requestActiveCardUpdate, { passive: true });
-      window.removeEventListener('scroll', requestActiveCardUpdate, { passive: true });
 
       if (!resizeObserver) {
         window.removeEventListener('resize', handleResize);
