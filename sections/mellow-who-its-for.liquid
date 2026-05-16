@@ -28,14 +28,14 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 920px) auto;
+    grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
     align-items: center;
-    gap: clamp(40px, 6vw, 96px);
+    gap: var(--mellow-section-content-gap);
     margin-bottom: var(--mellow-section-content-gap);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header {
-    max-width: 920px;
+    max-width: var(--mellow-header-max);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__eyebrow {
@@ -43,7 +43,7 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
-    max-width: 920px;
+    max-width: var(--mellow-header-max);
     color: var(--mellow-cream, #F0EBE0);
   }
 
@@ -61,7 +61,7 @@
     justify-self: end;
     align-self: center;
     transform: none;
-    width: clamp(220px, 16vw, 280px);
+    width: var(--mellow-cta-width);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
@@ -787,13 +787,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Reflux happens in|more moments than|you think."
+      "default": "Mellow stops reflux before it starts."
     },
     {
       "type": "textarea",
       "id": "text",
       "label": "Text",
-      "default": "Mellow was designed for the real-life moments that trigger reflux — not just the symptom."
+      "default": "A smooth gel that works before acid gets the chance."
     }
   ],
   "presets": [
