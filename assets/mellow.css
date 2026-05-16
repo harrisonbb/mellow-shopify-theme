@@ -503,11 +503,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta {
   --mellow-section-cta-bg: var(--mellow-forest);
-  --mellow-section-cta-border: var(--mellow-section-cta-bg);
+  --mellow-section-cta-border: var(--mellow-forest);
   --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-section-cta-bg);
-  --mellow-section-cta-hover-border: var(--mellow-section-cta-border);
-  --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
+  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+  --mellow-section-cta-hover-border: var(--mellow-orange-red);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
   --mellow-section-cta-width: var(--mellow-cta-width);
   --mellow-section-cta-ease: var(--mellow-cta-ease);
   --mellow-section-cta-duration: var(--mellow-cta-duration);
@@ -588,12 +588,18 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-bg: var(--mellow-forest);
   --mellow-section-cta-border: var(--mellow-forest);
   --mellow-section-cta-color: var(--mellow-cream);
+  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+  --mellow-section-cta-hover-border: var(--mellow-orange-red);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
 }
 
 .mellow-section-cta--primary-orange {
   --mellow-section-cta-bg: var(--mellow-orange-red);
   --mellow-section-cta-border: var(--mellow-orange-red);
   --mellow-section-cta-color: var(--mellow-cream);
+  --mellow-section-cta-hover-bg: var(--mellow-forest);
+  --mellow-section-cta-hover-border: var(--mellow-forest);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
 }
 
 .mellow-section-cta--secondary {
@@ -602,13 +608,16 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-color: var(--mellow-forest);
   --mellow-section-cta-hover-bg: var(--mellow-forest);
   --mellow-section-cta-hover-border: var(--mellow-forest);
-  --mellow-section-cta-hover-color: var(--mellow-white);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
 }
 
 .mellow-section-cta--ivory-on-dark {
   --mellow-section-cta-bg: var(--mellow-cream);
   --mellow-section-cta-border: var(--mellow-cream);
   --mellow-section-cta-color: var(--mellow-forest);
+  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+  --mellow-section-cta-hover-border: var(--mellow-orange-red);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
 }
 
 
@@ -1202,9 +1211,9 @@ input[type="reset"] {
   --mellow-section-cta-bg: #F0EBE0;
   --mellow-section-cta-border: rgba(240, 235, 224, 0.64);
   --mellow-section-cta-color: var(--mellow-forest);
-  --mellow-section-cta-hover-bg: #FFF7EA;
-  --mellow-section-cta-hover-border: rgba(240, 235, 224, 0.78);
-  --mellow-section-cta-hover-color: var(--mellow-forest);
+  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+  --mellow-section-cta-hover-border: var(--mellow-orange-red);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
   box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18);
 }
 
@@ -2119,8 +2128,8 @@ input[type="reset"] {
   --mellow-section-cta-bg: var(--mellow-green);
   --mellow-section-cta-border: var(--mellow-green);
   --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-forest);
-  --mellow-section-cta-hover-border: var(--mellow-forest);
+  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
+  --mellow-section-cta-hover-border: var(--mellow-orange-red);
   --mellow-section-cta-hover-color: var(--mellow-cream);
   --mellow-section-cta-width: 100%;
 
