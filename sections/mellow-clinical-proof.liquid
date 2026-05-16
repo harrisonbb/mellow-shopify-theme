@@ -233,27 +233,6 @@
     letter-spacing: -0.004em;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__illustration {
-    position: absolute;
-    right: clamp(-30px, -1.8vw, -12px);
-    bottom: clamp(-26px, -1.6vw, -10px);
-    width: min(48%, 290px);
-    color: color-mix(in srgb, var(--mellow-muted, #5E6B58) 64%, var(--mellow-card-cream, #F4EDE0));
-    opacity: 0.36;
-    z-index: 1;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__illustration svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.45;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
   @media screen and (max-width: 989px) {
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
       grid-template-columns: 1fr;
@@ -324,10 +303,6 @@
       border-radius: min(var(--mellow-radius-card), 24px);
     }
 
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__illustration {
-      width: 58%;
-      opacity: 0.24;
-    }
   }
 </style>
 
@@ -374,18 +349,6 @@
           <h3 class="mellow-card-title mellow-clinical-proof__card-title">{{ section.settings.card_title | escape }}</h3>
           <p class="mellow-card-copy mellow-clinical-proof__card-body">{{ section.settings.card_body | escape }}</p>
           <p class="mellow-clinical-proof__card-note">{{ section.settings.card_note | escape }}</p>
-        </div>
-
-        <div class="mellow-clinical-proof__illustration" aria-hidden="true">
-          <svg viewBox="0 0 220 220" focusable="false">
-            <path d="M115 22c-18 0-31 12-31 29 0 14 10 24 25 34 16 10 29 20 29 39 0 24-19 42-45 42-20 0-37-11-47-27" />
-            <path d="M117 44c12 4 20 15 20 29 0 11-5 21-13 28" />
-            <path d="M61 137c12 10 27 15 44 15 25 0 43-13 43-31" />
-            <path d="M45 119c20-9 43-13 68-10 22 2 41 9 57 20" />
-            <path d="M52 127c18-6 38-8 60-6 19 2 36 7 51 16" />
-            <path d="M83 51c-21 6-36 25-36 48 0 11 3 21 9 29" />
-            <path d="M83 51c-15-8-28-12-39-12" />
-          </svg>
         </div>
       </article>
     </div>
