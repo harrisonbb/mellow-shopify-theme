@@ -142,15 +142,21 @@
 
   --mellow-cta-width: clamp(190px, 12.6vw, 218px);
   --mellow-cta-hover-width: clamp(224px, 14.9vw, 258px);
-  --mellow-cta-height: clamp(52px, 4.05vw, 62px);
-  --mellow-cta-pad-y: clamp(15px, 1.18vw, 18px);
-  --mellow-cta-pad-x: clamp(18px, 1.45vw, 25px);
-  --mellow-cta-font-size: clamp(16px, 1.08vw, 18px);
-  --mellow-cta-font-weight: 650;
-  --mellow-cta-arrow-right: clamp(19px, 1.45vw, 26px);
+  --mellow-cta-min-height: 52px;
+  --mellow-cta-pad-y: 14px;
+  --mellow-cta-pad-x: 22px;
+  --mellow-cta-radius: 999px;
+  --mellow-cta-gap: 10px;
+  --mellow-cta-font-size: 14px;
+  --mellow-cta-font-weight: 700;
+  --mellow-cta-letter-spacing: 0.02em;
+  --mellow-cta-arrow-right: 22px;
+  --mellow-cta-arrow-reveal-distance: 12px;
+  --mellow-cta-label-shift: -8px;
   --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --mellow-cta-duration: 520ms;
   --mellow-cta-color-duration: 260ms;
+  --mellow-cta-active-duration: 160ms;
 
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
@@ -521,7 +527,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: var(--mellow-cta-gap);
   overflow: hidden;
   position: relative;
   white-space: nowrap;
@@ -529,13 +535,14 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   backface-visibility: hidden;
 
   width: var(--mellow-section-cta-width);
-  min-height: var(--mellow-cta-height);
+  min-height: var(--mellow-cta-min-height);
   padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
   font-size: var(--mellow-cta-font-size);
   font-weight: var(--mellow-cta-font-weight);
+  letter-spacing: var(--mellow-cta-letter-spacing);
   line-height: 1;
   border: 1px solid var(--mellow-section-cta-border);
-  border-radius: 999px;
+  border-radius: var(--mellow-cta-radius);
   background: var(--mellow-section-cta-bg);
   color: var(--mellow-section-cta-color);
   text-decoration: none;
@@ -556,7 +563,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 }
 
 .mellow-section-cta:active {
-  transition-duration: 160ms;
+  transition-duration: var(--mellow-cta-active-duration);
 }
 
 .mellow-section-cta::before,
@@ -579,7 +586,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-block;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-12px, -50%, 0);
+  transform: translate3d(calc(-1 * var(--mellow-cta-arrow-reveal-distance)), -50%, 0);
   transition:
     transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     opacity var(--mellow-section-cta-color-duration) ease;
@@ -620,12 +627,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-color: var(--mellow-forest);
 }
 
-.mellow-section-cta--compact {
-  --mellow-section-cta-width: clamp(150px, 10.4vw, 178px);
-  --mellow-section-cta-hover-width: clamp(184px, 12.8vw, 218px);
-  transform-origin: center center;
-}
-
 .mellow-section-cta:hover .mellow-section-cta__arrow,
 .mellow-section-cta:focus-visible .mellow-section-cta__arrow {
   transform: translate3d(0, -50%, 0);
@@ -634,7 +635,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover .mellow-section-cta__label,
 .mellow-section-cta:focus-visible .mellow-section-cta__label {
-  transform: translate3d(-8px, 0, 0);
+  transform: translate3d(var(--mellow-cta-label-shift), 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -673,11 +674,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     --mellow-offer-card-gap: 12px;
     --mellow-cta-width: 190px;
     --mellow-cta-hover-width: 224px;
-    --mellow-cta-height: 50px;
-    --mellow-cta-pad-y: 15px;
-    --mellow-cta-pad-x: 22px;
-    --mellow-cta-font-size: 16px;
-    --mellow-cta-arrow-right: 22px;
+    --mellow-cta-min-height: 50px;
+    --mellow-cta-pad-y: 13px;
+    --mellow-cta-pad-x: 20px;
+    --mellow-cta-font-size: 14px;
+    --mellow-cta-arrow-right: 20px;
   }
 
   .mellow-section-standard {
@@ -714,7 +715,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   }
 
   .mellow-section-cta {
-    min-height: var(--mellow-cta-height);
+    min-height: var(--mellow-cta-min-height);
     padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
     font-size: var(--mellow-cta-font-size);
   }
@@ -1236,37 +1237,14 @@ input[type="reset"] {
 }
 
 .mellow-who-its-for__quiz-button {
-  min-height: 56px !important;
-  height: 56px !important;
-  box-sizing: border-box !important;
-  padding: 0 24px !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 10px !important;
-  background: #F0EBE0 !important;
-  color: var(--mellow-forest) !important;
-  border: 1px solid rgba(240, 235, 224, 0.64) !important;
-  font-size: 16px !important;
-  line-height: 1 !important;
-  font-weight: 650 !important;
-  letter-spacing: -0.005em !important;
-  text-transform: none !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18) !important;
   --mellow-section-cta-bg: #F0EBE0;
   --mellow-section-cta-border: rgba(240, 235, 224, 0.64);
   --mellow-section-cta-color: var(--mellow-forest);
   --mellow-section-cta-hover-bg: #FFF7EA;
   --mellow-section-cta-hover-border: rgba(240, 235, 224, 0.78);
   --mellow-section-cta-hover-color: var(--mellow-forest);
-  transition:
-    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
-    background-color var(--mellow-section-cta-color-duration) ease,
-    border-color var(--mellow-section-cta-color-duration) ease,
-    color var(--mellow-section-cta-color-duration) ease;
+
+  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18);
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -1780,16 +1758,6 @@ input[type="reset"] {
     margin-inline-end: 0;
   }
 
-  .mellow-who-its-for__quiz-button {
-    --mellow-section-cta-width: 190px;
-    --mellow-section-cta-hover-width: 224px;
-    min-height: 48px !important;
-    height: 48px !important;
-    padding: 0 20px !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-
   .mellow-who-its-for__carousel-wrap {
     margin-top: 0;
   }
@@ -2200,13 +2168,9 @@ input[type="reset"] {
   --mellow-section-cta-hover-width: 100%;
 
   width: 100%;
-  min-height: 58px;
   border-width: 1px;
   cursor: pointer;
   font-family: var(--mellow-font-body);
-  font-size: 1.62rem;
-  font-weight: 850;
-  letter-spacing: -0.01em;
 }
 
 .mellow-product-cta[disabled],
