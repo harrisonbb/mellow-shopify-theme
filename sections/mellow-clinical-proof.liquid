@@ -173,11 +173,6 @@
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta {
-    --mellow-section-cta-width: clamp(214px, 15vw, 252px);
-    --mellow-section-cta-hover-width: clamp(238px, 16.7vw, 282px);
-    --mellow-section-cta-label-rest-offset: clamp(-15px, -0.85vw, -12px);
-    --mellow-section-cta-visual-left: 0;
-    --mellow-section-cta-visual-right: auto;
     --mellow-section-cta-bg: var(--mellow-forest, #003302);
     --mellow-section-cta-border: var(--mellow-forest, #003302);
     --mellow-section-cta-color: var(--mellow-cream, #F0EBE0);
@@ -314,20 +309,10 @@
       font-size: 17px;
     }
 
-
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__text {
       max-width: 360px;
       font-size: 16px;
       line-height: 1.45;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta {
-      --mellow-section-cta-width: 202px;
-      --mellow-section-cta-hover-width: 232px;
-      --mellow-section-cta-label-rest-offset: -15px;
-      min-height: 50px;
-      padding: 15px 22px;
-      font-size: 16px;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card {
@@ -387,6 +372,7 @@
           <p class="mellow-card-copy mellow-clinical-proof__card-body">{{ section.settings.card_body | escape }}</p>
           <p class="mellow-clinical-proof__card-note">{{ section.settings.card_note | escape }}</p>
         </div>
+
         <div class="mellow-clinical-proof__illustration" aria-hidden="true">
           <svg viewBox="0 0 220 220" focusable="false">
             <path d="M115 22c-18 0-31 12-31 29 0 14 10 24 25 34 16 10 29 20 29 39 0 24-19 42-45 42-20 0-37-11-47-27" />
@@ -407,7 +393,11 @@
       <article class="mellow-clinical-proof__stat">
         <div class="mellow-clinical-proof__stat-copy">
           <span class="mellow-clinical-proof__stat-number">
-            {%- if section.settings.stat_1_value contains '+' -%}{{ section.settings.stat_1_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>{%- else -%}{{ section.settings.stat_1_value | escape }}{%- endif -%}
+            {%- if section.settings.stat_1_value contains '+' -%}
+              {{ section.settings.stat_1_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>
+            {%- else -%}
+              {{ section.settings.stat_1_value | escape }}
+            {%- endif -%}
           </span>
           <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_1_label | escape }}</span>
           <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_1_body | escape }}</p>
@@ -417,7 +407,11 @@
       <article class="mellow-clinical-proof__stat">
         <div class="mellow-clinical-proof__stat-copy">
           <span class="mellow-clinical-proof__stat-number">
-            {%- if section.settings.stat_2_value contains '+' -%}{{ section.settings.stat_2_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>{%- else -%}{{ section.settings.stat_2_value | escape }}{%- endif -%}
+            {%- if section.settings.stat_2_value contains '+' -%}
+              {{ section.settings.stat_2_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>
+            {%- else -%}
+              {{ section.settings.stat_2_value | escape }}
+            {%- endif -%}
           </span>
           <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_2_label | escape }}</span>
           <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_2_body | escape }}</p>
