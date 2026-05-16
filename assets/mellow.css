@@ -1005,6 +1005,30 @@ input[type="reset"] {
   color: var(--mellow-ink, var(--mellow-forest, #003302));
 }
 
+.mellow-hero .mellow-architecture-section__card {
+  gap: var(--mellow-section-content-gap);
+  padding: var(--mellow-card-pad-airy);
+  border-radius: var(--mellow-radius-card);
+  box-shadow: var(--mellow-shadow);
+}
+
+.mellow-hero .mellow-architecture-section__content {
+  max-width: var(--mellow-header-max);
+}
+
+.mellow-hero .mellow-architecture-section__text {
+  color: var(--mellow-muted, #5E6B58);
+}
+
+.mellow-hero .mellow-architecture-section__note {
+  margin-top: var(--mellow-section-content-gap-compact);
+  padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
+  border-radius: var(--mellow-radius-pill, 999px);
+  font-size: var(--mellow-eyebrow-size);
+  letter-spacing: var(--mellow-eyebrow-tracking);
+  line-height: var(--mellow-eyebrow-line-height);
+}
+
 .mellow-trust-bar,
 .mellow-review-videos,
 .mellow-day-night-scroll,
