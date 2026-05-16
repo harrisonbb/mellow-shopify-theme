@@ -207,9 +207,39 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
-    left: calc(7% - 24px);
-    bottom: 56%;
-    --annotation-line: clamp(60px, calc(3.4vw + 24px), 86px);
+    left: 34%;
+    top: 35%;
+    grid-template-columns: 10px var(--annotation-line, 46px) auto;
+    grid-template-rows: var(--annotation-rise, 54px) auto;
+    gap: 0 12px;
+    --annotation-line: clamp(34px, 2.8vw, 52px);
+    --annotation-rise: clamp(42px, 4.4vw, 62px);
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form .mellow-why-it-works__annotation-dot {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: center;
+    margin-top: 0;
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form .mellow-why-it-works__annotation-line {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    align-self: end;
+    width: calc(var(--annotation-line) + 10px);
+    height: var(--annotation-rise);
+    background:
+      linear-gradient(currentColor, currentColor) left top / 1.5px 100% no-repeat,
+      linear-gradient(currentColor, currentColor) left bottom / 100% 1.5px no-repeat;
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form .mellow-why-it-works__annotation-text {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: center;
+    max-width: 150px;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--raft {
@@ -348,15 +378,14 @@
       padding: 0 var(--mellow-card-pad-tight) var(--mellow-card-pad-tight);
     }
 
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--activate,
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--activate {
       left: 8%;
       bottom: 25%;
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
-      left: calc(7% - 24px);
-      bottom: 55%;
+      left: 35%;
+      top: 36%;
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--raft {
@@ -399,6 +428,17 @@
       right: 7%;
       top: 28%;
       --annotation-rise: 58px;
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
+      left: 31%;
+      top: 37%;
+      --annotation-line: 34px;
+      --annotation-rise: 48px;
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form .mellow-why-it-works__annotation-text {
+      max-width: 130px;
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--raft .mellow-why-it-works__annotation-text,
@@ -482,9 +522,9 @@
             {%- endif -%}
 
             <div class="mellow-why-it-works__annotation mellow-why-it-works__annotation--form" aria-hidden="true">
-              <span class="mellow-why-it-works__annotation-text">raft begins forming</span>
-              <span class="mellow-why-it-works__annotation-line"></span>
               <span class="mellow-why-it-works__annotation-dot"></span>
+              <span class="mellow-why-it-works__annotation-line"></span>
+              <span class="mellow-why-it-works__annotation-text">raft begins forming</span>
             </div>
           </div>
 
