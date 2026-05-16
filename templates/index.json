@@ -191,9 +191,21 @@
       "settings": {
         "heading": "Answer final purchase questions calmly."
       }
+    },
+    "mellow_hero_LazmDd": {
+      "type": "mellow-hero",
+      "name": "Mellow hero",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Hero",
+        "heading": "A premium calm opening for Mellow.",
+        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
+        "note": "Ready for final design replacement."
+      }
     }
   },
   "order": [
+    "mellow_hero_LazmDd",
     "mellow_trust_bar",
     "mellow_who_its_for",
     "mellow_review_videos",
