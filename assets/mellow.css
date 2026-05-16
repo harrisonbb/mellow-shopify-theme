@@ -186,7 +186,13 @@ main,
 html:not(.mellow-ready) .mellow-section-standard,
 html:not(.mellow-ready) .mellow-section-standard *,
 html:not(.mellow-ready) .mellow-who-its-for,
-html:not(.mellow-ready) .mellow-who-its-for * {
+html:not(.mellow-ready) .mellow-who-its-for *,
+html.mellow-js .mellow-who-its-for:not(.is-mellow-section-ready),
+html.mellow-js .mellow-who-its-for:not(.is-mellow-section-ready) *,
+html.mellow-js .mellow-day-night:not(.is-mellow-section-ready),
+html.mellow-js .mellow-day-night:not(.is-mellow-section-ready) *,
+html.mellow-js .mellow-expert-proof:not(.is-mellow-section-ready),
+html.mellow-js .mellow-expert-proof:not(.is-mellow-section-ready) * {
   animation-play-state: paused !important;
   transition-duration: 0s !important;
   scroll-behavior: auto !important;

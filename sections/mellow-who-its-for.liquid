@@ -408,8 +408,19 @@
 <script>
   (() => {
     const section = document.getElementById('MellowWhoItsFor-{{ section.id }}');
+    const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
+    const releaseSectionReady = () => {
+      section.classList.add('is-mellow-section-ready');
+
+      if (releaseReadyHold) {
+        releaseReadyHold();
+      }
+    };
 
     if (!section) {
+      if (releaseReadyHold) {
+        releaseReadyHold();
+      }
       return;
     }
 
@@ -419,6 +430,7 @@
     const getMomentCards = () => Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
 
     if (!scroller || !track || !cardSet || !getMomentCards().length) {
+      releaseSectionReady();
       return;
     }
 
@@ -715,6 +727,8 @@
     }
 
     startMarquee();
+
+    requestAnimationFrame(releaseSectionReady);
 
     document.addEventListener('shopify:section:unload', (event) => {
       if (!event.target.contains(section)) {
