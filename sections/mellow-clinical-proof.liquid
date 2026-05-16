@@ -38,18 +38,16 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     min-width: 0;
-    padding: clamp(12px, 1.2vw, 18px) clamp(28px, 3.6vw, 58px) clamp(36px, 3.8vw, 58px);
+    padding: clamp(40px, 5vw, 72px) clamp(20px, 2vw, 34px);
     text-align: left;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(8px, 0.8vw, 12px) clamp(20px, 2vw, 34px);
+    align-items: start;
     width: 100%;
     text-align: left;
   }
@@ -66,22 +64,23 @@
     content: "";
     position: absolute;
     left: 0;
-    top: clamp(14px, 1.4vw, 22px);
-    bottom: clamp(36px, 3.8vw, 58px);
+    top: clamp(40px, 5vw, 72px);
+    bottom: clamp(40px, 5vw, 72px);
     width: 1px;
     background: var(--mellow-clinical-divider);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
     display: block;
-    margin: 0 0 clamp(8px, 0.9vw, 14px);
+    grid-row: 1 / span 2;
+    margin: 0;
     text-align: left;
     color: var(--mellow-forest, #003302);
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(86px, 8vw, 136px);
+    font-size: clamp(76px, 7.2vw, 120px);
     font-weight: var(--mellow-heading-weight);
     letter-spacing: -0.06em;
-    line-height: 0.9;
+    line-height: 0.86;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-plus {
@@ -95,33 +94,28 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
     display: block;
-    max-width: 320px;
+    max-width: 360px;
     margin: 0;
     text-align: left;
     color: var(--mellow-clinical-sage);
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(24px, 2vw, 34px);
+    font-size: clamp(22px, 2vw, 34px);
     font-weight: 600;
-    line-height: 1.1;
+    line-height: 1.02;
     letter-spacing: -0.028em;
     text-transform: none;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label::after {
-    content: "";
-    display: block;
-    width: 34px;
-    height: 1px;
-    margin: clamp(16px, 1.4vw, 22px) auto clamp(16px, 1.6vw, 24px) 0;
-    background: color-mix(in srgb, var(--mellow-clinical-sage) 72%, transparent);
+    content: none;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
-    max-width: 300px;
+    max-width: 380px;
     margin: 0;
     text-align: left;
     color: var(--mellow-clinical-cream-muted);
-    font-size: clamp(17px, 1.18vw, 20px);
+    font-size: clamp(15px, 1.1vw, 19px);
     line-height: 1.52;
     letter-spacing: -0.006em;
   }
@@ -268,7 +262,7 @@
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat,
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child,
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:last-child {
-      padding: 32px 0;
+      padding: clamp(30px, 5vw, 44px) 0;
       border-top: 1px solid var(--mellow-clinical-divider);
     }
 
@@ -293,19 +287,29 @@
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
-      font-size: clamp(70px, 19vw, 104px);
+      font-size: clamp(60px, 16vw, 92px);
       line-height: 0.92;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-copy {
+      display: block;
+      max-width: 430px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
+      margin-bottom: clamp(8px, 2.5vw, 14px);
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
       max-width: 320px;
-      font-size: clamp(24px, 7.4vw, 32px);
-      line-height: 1.1;
+      font-size: clamp(22px, 6.6vw, 30px);
+      line-height: 1.04;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
       max-width: 330px;
-      font-size: 17px;
+      margin-top: clamp(8px, 2.6vw, 12px);
+      font-size: 16px;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__text {
