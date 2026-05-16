@@ -336,7 +336,7 @@
             {%- endif -%}
 
             {%- if section.settings.heading != blank -%}
-              <h2 class="mellow-section-heading">{{ section.settings.heading | escape }}</h2>
+              <h2 class="mellow-section-heading">{{ section.settings.heading | escape | replace: 'Built to block reflux, ', 'Built to block reflux,<br>' }}</h2>
             {%- endif -%}
 
             {%- if section.settings.text != blank -%}
