@@ -832,6 +832,25 @@ label,
   font-family: var(--mellow-font-sans) !important;
 }
 
+.header-wrapper {
+  --color-background: 240, 235, 224;
+  --color-foreground: 34, 50, 22;
+  background: #F0EBE0;
+  color: #223216;
+}
+
+.header-wrapper--border-bottom {
+  border-bottom-color: rgba(34, 50, 22, 0.10);
+}
+
+.header-wrapper .header,
+.header-wrapper .header__heading-link,
+.header-wrapper .header__heading-link .h2,
+.header-wrapper .header__menu-item,
+.header-wrapper .header__icon {
+  color: #223216;
+}
+
 .header__menu-item,
 .site-header__nav a,
 .mellow-header__nav a {
