@@ -358,17 +358,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   box-shadow: none !important;
 }
 
-.mellow-section-standard .mellow-section-cta::before,
 .mellow-section-standard .mellow-section-cta::after,
-.mellow-section .mellow-section-cta::before,
 .mellow-section .mellow-section-cta::after,
-[id^="Mellow"] .mellow-section-cta::before,
 [id^="Mellow"] .mellow-section-cta::after,
-.mellow-section-standard .mellow-product-cta::before,
 .mellow-section-standard .mellow-product-cta::after,
-.mellow-section .mellow-product-cta::before,
 .mellow-section .mellow-product-cta::after,
-[id^="Mellow"] .mellow-product-cta::before,
 [id^="Mellow"] .mellow-product-cta::after,
 .animate--hover-vertical-lift .mellow-section-standard .button:not([disabled]):hover::after,
 .animate--hover-vertical-lift .mellow-section .button:not([disabled]):hover::after,
@@ -538,15 +532,22 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   font-size: var(--mellow-cta-font-size);
   font-weight: var(--mellow-cta-font-weight);
   line-height: 1;
-  border: 1px solid transparent;
+  border: 1px solid var(--mellow-section-cta-border);
   border-radius: 999px;
-  background: transparent;
+  background: var(--mellow-section-cta-bg);
   color: var(--mellow-section-cta-color);
   text-decoration: none;
+  box-sizing: border-box;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
 
   transform-origin: right center;
 
   transition:
+    background-color var(--mellow-section-cta-color-duration) ease,
+    border-color var(--mellow-section-cta-color-duration) ease,
     box-shadow var(--mellow-section-cta-color-duration) ease,
     color var(--mellow-section-cta-color-duration) ease;
 }
@@ -590,6 +591,9 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-block;
   text-align: center;
   z-index: 1;
+  color: currentColor;
+  opacity: 1;
+  visibility: visible;
   transform: translate3d(var(--mellow-section-cta-label-rest-offset), 0, 0);
   transition: transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease);
 }
@@ -610,6 +614,8 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
+  border-color: var(--mellow-section-cta-hover-border);
+  background: var(--mellow-section-cta-hover-bg);
   color: var(--mellow-section-cta-hover-color);
 }
 
