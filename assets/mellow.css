@@ -146,10 +146,12 @@
   --mellow-cta-min-height: var(--mellow-cta-height);
   --mellow-cta-pad-y: clamp(15px, 1.18vw, 18px);
   --mellow-cta-pad-x: clamp(18px, 1.45vw, 25px);
+  --mellow-cta-gap: 0;
   --mellow-cta-font-size: clamp(16px, 1.08vw, 18px);
   --mellow-cta-font-weight: 650;
   --mellow-cta-letter-spacing: -0.005em;
   --mellow-cta-label-shift: -8px;
+  --mellow-cta-arrow-reveal-distance: -12px;
   --mellow-cta-arrow-right: clamp(19px, 1.45vw, 26px);
   --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --mellow-cta-duration: 520ms;
@@ -521,6 +523,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--mellow-cta-gap);
   box-sizing: border-box;
   width: var(--mellow-section-cta-width);
   min-height: var(--mellow-cta-min-height);
@@ -586,7 +589,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   display: inline-block;
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-12px, -50%, 0);
+  transform: translate3d(var(--mellow-cta-arrow-reveal-distance), -50%, 0);
   transition:
     transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     opacity var(--mellow-section-cta-color-duration) ease;
@@ -678,6 +681,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     --mellow-cta-min-height: var(--mellow-cta-height);
     --mellow-cta-pad-y: 15px;
     --mellow-cta-pad-x: 22px;
+    --mellow-cta-gap: 0;
     --mellow-cta-font-size: 16px;
     --mellow-cta-arrow-right: 22px;
   }
@@ -713,10 +717,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   .mellow-section-cta-wrap {
     width: 100%;
     justify-content: flex-start;
-  }
-
-  .mellow-section-cta__arrow {
-    right: var(--mellow-cta-arrow-right);
   }
 
   .mellow-card-tag {
@@ -1780,8 +1780,7 @@ input[type="reset"] {
   .mellow-who-its-for__card,
   .mellow-who-its-for__card-inner,
   .mellow-who-its-for__icon,
-  .mellow-who-its-for__card-copy,
-  .mellow-who-its-for__quiz-button {
+  .mellow-who-its-for__card-copy {
     animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
@@ -1791,9 +1790,7 @@ input[type="reset"] {
   .mellow-who-its-for__card:hover,
   .mellow-who-its-for__card:hover .mellow-who-its-for__card-inner,
   .mellow-who-its-for__card:hover .mellow-who-its-for__icon,
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy,
-  .mellow-who-its-for__quiz-button:hover,
-  .mellow-who-its-for__quiz-button:focus-visible {
+  .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy {
     transform: none;
   }
 }
