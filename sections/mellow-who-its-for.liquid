@@ -103,14 +103,14 @@
     display: flex;
     width: max-content;
     max-width: none;
-    gap: var(--mellow-carousel-card-gap);
+    gap: clamp(24px, 2.4vw, 36px);
     align-items: center;
     will-change: transform;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-set {
     display: flex;
-    gap: var(--mellow-carousel-card-gap);
+    gap: clamp(24px, 2.4vw, 36px);
     align-items: center;
     flex: 0 0 auto;
   }
