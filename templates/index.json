@@ -59,20 +59,20 @@
       "type": "mellow-ingredients",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Ingredients",
-        "heading": "Spotlight the formulation with clarity.",
-        "text": "Use this section for ingredient education, sourcing notes, and why each component matters.",
+        "eyebrow": "INGREDIENTS",
+        "heading": "Nothing hidden. Everything intentional.",
+        "text": "Every ingredient in Mellow earns its place. No fillers, no mystery compounds — just the clinically studied components behind the MellowRaft™ formula.",
         "cta_label": "See all ingredients",
         "cta_link": "/products/mellow-reflux-relief-gel",
         "alginate_role": "THE RAFT-FORMER",
         "alginate_title": "Sodium Alginate",
-        "alginate_description": "Forms the floating gel barrier",
+        "alginate_description": "Forms the floating gel barrier. The backbone of MellowRaft™ — derived from seaweed, activated by stomach acid.",
         "calcium_role": "THE STRENGTHENER",
         "calcium_title": "Calcium Carbonate",
-        "calcium_description": "Helps strengthen the raft",
+        "calcium_description": "Strengthens and stabilizes the raft. Helps the gel barrier hold its structure after formation.",
         "bicarbonate_role": "THE FLOATER",
         "bicarbonate_title": "Sodium Bicarbonate",
-        "bicarbonate_description": "Helps it float"
+        "bicarbonate_description": "Generates the CO₂ that lifts the raft to the top of the stomach, where it can do its job."
       }
     },
     "mellow_why_it_works": {
@@ -132,38 +132,38 @@
         "card_1_letter": "A",
         "card_1_name": "Dr. Lena Ortiz",
         "card_1_role": "Integrative Gastroenterologist",
-        "card_1_quote": "“Mellow takes a thoughtful approach to digestive comfort: recognizable ingredients, a calming format, and a ritual people can actually stay consistent with.”",
+        "card_1_quote": "“What I appreciate most is that Mellow doesn't suppress acid — it creates a physical barrier instead. For clients who want meaningful support without the concerns around long-term acid suppression, that distinction matters a lot.”",
         "card_2_image": "shopify://shop_images/00000dd72500113659175861.jpg",
         "card_2_letter": "B",
         "card_2_name": "Maya C.",
         "card_2_role": "Registered Dietitian",
-        "card_2_quote": "“What stands out is the balance. It feels premium without feeling clinical, and the copy is easy for customers to understand at a glance.”",
+        "card_2_quote": "“For people who deal with reflux after meals, the format matters. A single pouch is easier to build into a routine than another bottle, tablet, or chalky liquid — and that makes the science more usable.”",
         "card_3_image": "shopify://shop_images/dddsdsd.jpg",
         "card_3_letter": "C",
         "card_3_name": "Noah R.",
         "card_3_role": "Wellness Practitioner",
-        "card_3_quote": "“For people building better evening routines, proof and simplicity matter. This section gives shoppers the confidence to keep exploring.”",
+        "card_3_quote": "“Most of my clients have been chasing reflux with antacids for years and never feel ahead of it. The raft-forming mechanism is genuinely different — and when something is this easy to use, people actually stick with it.”",
         "card_4_letter": "D",
         "card_4_name": "Priya S.",
         "card_4_role": "Functional Nutritionist",
-        "card_4_quote": "“The best digestive rituals are the ones people actually want to repeat. Mellow makes the format feel simple, calm, and easy to build into the day.”",
+        "card_4_quote": "“I'm particular about what I recommend. Sodium alginate has decades of published research behind it, and Mellow's formula is clean — no ingredients I'd question for daily use. That matters more than the marketing.”",
         "card_5_letter": "E",
         "card_5_name": "Dr. Marcus Bell",
         "card_5_role": "Digestive Health Advisor",
-        "card_5_quote": "“A simple format matters. When something is easy to carry, easy to take, and easy to understand, people are much more likely to stay consistent.”",
+        "card_5_quote": "“Alginate raft therapy is well-documented in the GI literature. What's been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”",
         "card_6_letter": "F",
         "card_6_name": "Talia W.",
         "card_6_role": "Wellness Clinician",
-        "card_6_quote": "“The strongest products are the ones that make relief feel less clinical and more human. Mellow brings that feeling into the daily routine.”"
+        "card_6_quote": "“Consistency is the hardest part of any wellness routine. Mellow is simple enough to fit into an evening without feeling clinical — which is exactly why I think people keep using it.”"
       }
     },
     "mellow_compare": {
       "type": "mellow-compare",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Compare",
-        "heading": "Make the better choice easy to understand.",
-        "text": "Compare Mellow against common alternatives with a clean, conversion-focused layout."
+        "eyebrow": "COMPARE",
+        "heading": "Built to stop reflux. Not just neutralize it.",
+        "text": "Most products wait for reflux to start — then try to quiet it down. Mellow forms a physical barrier before the burn reaches you."
       }
     },
     "mellow_written_reviews": {
@@ -175,9 +175,9 @@
     "mellow_day_night_scroll": {
       "type": "mellow-day-night-scroll",
       "settings": {
-        "eyebrow": "Day & night scroll animation",
-        "heading": "A future storytelling moment for daily coverage.",
-        "subheading": "Mellow is designed for the moments reflux usually steals — dinner, downtime, and the quiet hours before sleep.",
+        "eyebrow": "AFTER MEALS & BEFORE BED",
+        "heading": "From day to night, we got you covered.",
+        "subheading": "Mellow is built for the two moments reflux hits hardest — after eating and before sleep. One pouch. Both covered.",
         "cta_label": "Shop Mellow",
         "cta_link": "/products/mellow-reflux-relief-gel",
         "supporting_line": "Built for daytime triggers and nighttime reflux."
