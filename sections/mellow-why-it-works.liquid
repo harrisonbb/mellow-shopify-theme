@@ -207,9 +207,9 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
-    left: 7%;
+    left: calc(7% - 24px);
     bottom: 56%;
-    --annotation-line: clamp(36px, 3.4vw, 62px);
+    --annotation-line: clamp(60px, calc(3.4vw + 24px), 86px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--raft {
@@ -355,7 +355,7 @@
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--form {
-      left: 7%;
+      left: calc(7% - 24px);
       bottom: 55%;
     }
 
