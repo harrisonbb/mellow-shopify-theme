@@ -65,7 +65,7 @@
     display: grid;
     grid-template-columns: minmax(0, var(--mellow-header-max, 760px)) minmax(220px, 0.66fr);
     align-items: center;
-    gap: clamp(40px, 7vw, 112px);
+    gap: var(--mellow-feature-gap);
   }
 
   #MellowDayNight-{{ section.id }} .mellow-day-night__copy {
@@ -249,7 +249,7 @@
 
     #MellowDayNight-{{ section.id }} .mellow-day-night__visual {
       min-height: clamp(210px, 32vh, 320px);
-      margin-top: clamp(30px, 7vh, 58px);
+      margin-top: var(--mellow-section-content-gap-compact);
       border-left: 0;
       border-top: 1px solid var(--day-night-rule);
     }
