@@ -326,6 +326,10 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
   --mellow-section-cta-width: var(--mellow-cta-width);
   --mellow-section-cta-hover-width: var(--mellow-cta-hover-width);
+  --mellow-section-cta-label-rest-offset: clamp(17px, 1.15vw, 20px);
+  --mellow-section-cta-label-hover-offset: -8px;
+  --mellow-section-cta-visual-left: auto;
+  --mellow-section-cta-visual-right: 0;
   --mellow-section-cta-ease: var(--mellow-cta-ease);
   --mellow-section-cta-duration: var(--mellow-cta-duration);
   --mellow-section-cta-color-duration: var(--mellow-cta-color-duration);
@@ -340,26 +344,43 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   transform: translateZ(0);
   backface-visibility: hidden;
 
-  width: var(--mellow-section-cta-width);
+  width: var(--mellow-section-cta-hover-width);
   min-height: var(--mellow-cta-height);
   padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
   font-size: var(--mellow-cta-font-size);
   font-weight: var(--mellow-cta-font-weight);
   line-height: 1;
-  border: 1px solid var(--mellow-section-cta-border);
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--mellow-section-cta-bg);
+  background: transparent;
   color: var(--mellow-section-cta-color);
   text-decoration: none;
 
   transform-origin: right center;
 
   transition:
+    box-shadow var(--mellow-section-cta-color-duration) ease,
+    color var(--mellow-section-cta-color-duration) ease;
+}
+
+.mellow-section-cta::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: var(--mellow-section-cta-visual-left);
+  right: var(--mellow-section-cta-visual-right);
+  z-index: 0;
+  display: block;
+  width: var(--mellow-section-cta-width);
+  border: 1px solid var(--mellow-section-cta-border);
+  border-radius: inherit;
+  background: var(--mellow-section-cta-bg);
+  pointer-events: none;
+  transition:
     width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
-    box-shadow var(--mellow-section-cta-color-duration) ease,
-    color var(--mellow-section-cta-color-duration) ease;
+    box-shadow var(--mellow-section-cta-color-duration) ease;
 }
 
 .mellow-section-cta:focus-visible {
@@ -367,11 +388,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   outline-offset: 4px;
 }
 
-.mellow-section-cta:active {
+.mellow-section-cta:active,
+.mellow-section-cta:active::before {
   transition-duration: 160ms;
 }
 
-.mellow-section-cta::before,
 .mellow-section-cta::after {
   content: none !important;
   display: none !important;
@@ -380,7 +401,8 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 .mellow-section-cta__label {
   display: inline-block;
   text-align: center;
-  transform: translate3d(0, 0, 0);
+  z-index: 1;
+  transform: translate3d(var(--mellow-section-cta-label-rest-offset), 0, 0);
   transition: transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease);
 }
 
@@ -389,6 +411,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   right: var(--mellow-cta-arrow-right);
   top: 50%;
   display: inline-block;
+  z-index: 1;
   opacity: 0;
   pointer-events: none;
   transform: translate3d(-12px, -50%, 0);
@@ -399,10 +422,14 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
-  width: var(--mellow-section-cta-hover-width);
+  color: var(--mellow-section-cta-hover-color);
+}
+
+.mellow-section-cta:hover::before,
+.mellow-section-cta:focus-visible::before {
+  width: 100%;
   border-color: var(--mellow-section-cta-hover-border);
   background: var(--mellow-section-cta-hover-bg);
-  color: var(--mellow-section-cta-hover-color);
 }
 
 .mellow-section-cta--primary-forest {
@@ -438,6 +465,13 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   transform-origin: center center;
 }
 
+.mellow-buy-boxes__cta,
+.mellow-day-night__cta {
+  --mellow-section-cta-visual-left: 0;
+  --mellow-section-cta-visual-right: auto;
+  --mellow-section-cta-label-rest-offset: clamp(-20px, -1.15vw, -17px);
+}
+
 .mellow-section-cta:hover .mellow-section-cta__arrow,
 .mellow-section-cta:focus-visible .mellow-section-cta__arrow {
   transform: translate3d(0, -50%, 0);
@@ -446,11 +480,12 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 
 .mellow-section-cta:hover .mellow-section-cta__label,
 .mellow-section-cta:focus-visible .mellow-section-cta__label {
-  transform: translate3d(-8px, 0, 0);
+  transform: translate3d(var(--mellow-section-cta-label-hover-offset), 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mellow-section-cta,
+  .mellow-section-cta::before,
   .mellow-section-cta__label,
   .mellow-section-cta__arrow {
     transition: none !important;
@@ -526,6 +561,9 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   }
 
   .mellow-section-cta {
+    --mellow-section-cta-visual-left: 0;
+    --mellow-section-cta-visual-right: auto;
+    --mellow-section-cta-label-rest-offset: -17px;
     min-height: var(--mellow-cta-height);
     padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
     font-size: var(--mellow-cta-font-size);
@@ -1057,9 +1095,9 @@ input[type="reset"] {
   align-items: center !important;
   justify-content: center !important;
   gap: 10px !important;
-  background: #F0EBE0 !important;
+  background: transparent !important;
   color: var(--mellow-forest) !important;
-  border: 1px solid rgba(240, 235, 224, 0.64) !important;
+  border: 1px solid transparent !important;
   font-size: 16px !important;
   line-height: 1 !important;
   font-weight: 650 !important;
@@ -1067,18 +1105,18 @@ input[type="reset"] {
   text-transform: none !important;
   text-decoration: none !important;
   white-space: nowrap !important;
-  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18) !important;
+  box-shadow: none !important;
   --mellow-section-cta-bg: #F0EBE0;
   --mellow-section-cta-border: rgba(240, 235, 224, 0.64);
   --mellow-section-cta-color: var(--mellow-forest);
   --mellow-section-cta-hover-bg: #FFF7EA;
   --mellow-section-cta-hover-border: rgba(240, 235, 224, 0.78);
   --mellow-section-cta-hover-color: var(--mellow-forest);
-  transition:
-    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
-    background-color var(--mellow-section-cta-color-duration) ease,
-    border-color var(--mellow-section-cta-color-duration) ease,
-    color var(--mellow-section-cta-color-duration) ease;
+  transition: color var(--mellow-section-cta-color-duration) ease;
+}
+
+.mellow-who-its-for__quiz-button::before {
+  box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18);
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -2010,6 +2048,8 @@ input[type="reset"] {
   --mellow-section-cta-hover-color: var(--mellow-cream);
   --mellow-section-cta-width: 100%;
   --mellow-section-cta-hover-width: 100%;
+  --mellow-section-cta-label-rest-offset: 0px;
+  --mellow-section-cta-label-hover-offset: -8px;
 
   width: 100%;
   min-height: 58px;
@@ -2032,9 +2072,7 @@ input[type="reset"] {
   box-shadow: none;
 }
 
-.mellow-product-shell .mellow-section-cta.button::before,
 .mellow-product-shell .mellow-section-cta.button::after,
-.mellow-product-shell .mellow-product-cta::before,
 .mellow-product-shell .mellow-product-cta::after {
   content: none !important;
   display: none !important;
