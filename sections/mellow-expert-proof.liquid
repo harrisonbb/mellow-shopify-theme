@@ -87,11 +87,16 @@
     transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
   }
 
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:hover,
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:focus-visible {
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):hover,
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):focus-visible {
     border-color: var(--mellow-cream, #F0EBE0);
     background: var(--mellow-cream, #F0EBE0);
     color: var(--mellow-forest, #003302);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:disabled {
+    cursor: default;
+    opacity: 0.42;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow svg {
@@ -343,7 +348,7 @@
         {%- endif -%}
 
         <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
-          <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" data-expert-prev>
+          <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" aria-disabled="true" data-expert-prev disabled>
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
               <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -363,7 +368,7 @@
           <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_1_image != blank -%}
-              {{ section.settings.card_1_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_1_name }}
+              {{ section.settings.card_1_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_1_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_1_letter | default: 'A' | escape }}</span>
           </div>
@@ -380,7 +385,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_2_image != blank -%}
-              {{ section.settings.card_2_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_2_name }}
+              {{ section.settings.card_2_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_2_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_2_letter | default: 'B' | escape }}</span>
           </div>
@@ -397,7 +402,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_3_image != blank -%}
-              {{ section.settings.card_3_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_3_name }}
+              {{ section.settings.card_3_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_3_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_3_letter | default: 'C' | escape }}</span>
           </div>
@@ -414,7 +419,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_4_image != blank -%}
-              {{ section.settings.card_4_image | image_url: width: 1200 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_4_name }}
+              {{ section.settings.card_4_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_4_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_4_letter | default: 'D' | escape }}</span>
           </div>
@@ -431,7 +436,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_5_image != blank -%}
-              {{ section.settings.card_5_image | image_url: width: 1200 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_5_name }}
+              {{ section.settings.card_5_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_5_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_5_letter | default: 'E' | escape }}</span>
           </div>
@@ -448,7 +453,7 @@
         <article class="mellow-expert-proof__card">
           <div class="mellow-expert-proof__visual">
             {%- if section.settings.card_6_image != blank -%}
-              {{ section.settings.card_6_image | image_url: width: 1200 | image_tag: class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_6_name }}
+              {{ section.settings.card_6_image | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'lazy', sizes: '(min-width: 990px) 24vw, (min-width: 750px) 54vw, 82vw', widths: '360, 520, 700, 900, 1200', alt: section.settings.card_6_name }}
             {%- endif -%}
             <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings.card_6_letter | default: 'F' | escape }}</span>
           </div>
@@ -479,105 +484,63 @@
 
       if (!scroller || !track || !prev || !next) return;
 
-      const originals = Array.from(track.children);
-      if (!originals.length) return;
+      const cards = Array.from(track.querySelectorAll('.mellow-expert-proof__card'));
+      if (!cards.length) return;
 
-      const prepareClone = (card, clonePosition) => {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        clone.inert = true;
-        clone.setAttribute('inert', '');
-        clone.dataset.clone = clonePosition;
-        clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach((element) => {
-          element.setAttribute('tabindex', '-1');
-        });
-        return clone;
-      };
-
-      const cloneBefore = originals.map((card) => prepareClone(card, 'before'));
-      const cloneAfter = originals.map((card) => prepareClone(card, 'after'));
-
-      track.prepend(...cloneBefore);
-      track.append(...cloneAfter);
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
       const getStep = () => {
-        const firstCard = track.querySelector('.mellow-expert-proof__card');
+        const firstCard = cards[0];
         const styles = window.getComputedStyle(track);
         const gap = parseFloat(styles.columnGap || styles.gap) || 0;
 
         return firstCard ? firstCard.getBoundingClientRect().width + gap : scroller.clientWidth;
       };
 
-      const getPeekOffset = () => getStep() * 0.45;
-      const realStart = () => originals[0].offsetLeft;
-      const realEnd = () => realStart() + getStep() * originals.length;
-      const visualStart = () => realStart() - getPeekOffset();
-      const visualEnd = () => realEnd() - getPeekOffset();
+      const getMaxScroll = () => Math.max(0, scroller.scrollWidth - scroller.clientWidth);
 
-      let activeIndex = 0;
+      const updateControls = () => {
+        const maxScroll = getMaxScroll();
+        const atStart = scroller.scrollLeft <= 1;
+        const atEnd = scroller.scrollLeft >= maxScroll - 1;
 
-      const jumpWithoutSnap = (left) => {
-        const previousSnap = scroller.style.scrollSnapType;
-        scroller.style.scrollSnapType = 'none';
-        scroller.scrollLeft = left;
-        requestAnimationFrame(() => {
-          scroller.style.scrollSnapType = previousSnap;
-        });
+        prev.disabled = atStart;
+        next.disabled = atEnd;
+        prev.setAttribute('aria-disabled', String(atStart));
+        next.setAttribute('aria-disabled', String(atEnd));
       };
 
-      const updateActiveIndex = () => {
-        const step = getStep();
-        if (!step) return;
+      const scrollByCard = (direction) => {
+        const maxScroll = getMaxScroll();
+        const target = Math.min(maxScroll, Math.max(0, scroller.scrollLeft + getStep() * direction));
+        const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
 
-        activeIndex = ((Math.round((scroller.scrollLeft - visualStart()) / step) % originals.length) + originals.length) % originals.length;
+        scroller.scrollTo({ left: target, behavior });
       };
-
-      const jumpToStart = () => {
-        jumpWithoutSnap(visualStart());
-        activeIndex = 0;
-      };
-
-      const normalizeLoop = () => {
-        const step = getStep();
-        const start = visualStart();
-        const end = visualEnd();
-
-        if (scroller.scrollLeft < start - step / 2) {
-          jumpWithoutSnap(scroller.scrollLeft + originals.length * step);
-        }
-
-        if (scroller.scrollLeft >= end - step / 2) {
-          jumpWithoutSnap(scroller.scrollLeft - originals.length * step);
-        }
-
-        updateActiveIndex();
-      };
-
-      requestAnimationFrame(jumpToStart);
 
       next.addEventListener('click', () => {
-        scroller.scrollBy({ left: getStep(), behavior: 'smooth' });
-        window.setTimeout(normalizeLoop, 450);
+        if (!next.disabled) scrollByCard(1);
       });
 
       prev.addEventListener('click', () => {
-        scroller.scrollBy({ left: -getStep(), behavior: 'smooth' });
-        window.setTimeout(normalizeLoop, 450);
+        if (!prev.disabled) scrollByCard(-1);
       });
 
-      let scrollTimer;
+      let scrollFrame;
       scroller.addEventListener('scroll', () => {
-        window.clearTimeout(scrollTimer);
-        scrollTimer = window.setTimeout(normalizeLoop, 120);
-      });
+        if (scrollFrame) return;
+
+        scrollFrame = window.requestAnimationFrame(() => {
+          scrollFrame = null;
+          updateControls();
+        });
+      }, { passive: true });
 
       window.addEventListener('resize', () => {
-        requestAnimationFrame(() => {
-          jumpWithoutSnap(visualStart() + activeIndex * getStep());
-          normalizeLoop();
-        });
+        window.requestAnimationFrame(updateControls);
       });
 
+      updateControls();
       section.dataset.mellowExpertProofReady = 'true';
     };
 
