@@ -141,7 +141,6 @@
   --mellow-section-pad-x: var(--mellow-section-axis-pad);
 
   --mellow-cta-width: clamp(190px, 12.6vw, 218px);
-  --mellow-cta-hover-width: clamp(224px, 14.9vw, 258px);
   --mellow-cta-height: clamp(52px, 4.05vw, 62px);
   --mellow-cta-min-height: var(--mellow-cta-height);
   --mellow-cta-pad-y: clamp(15px, 1.18vw, 18px);
@@ -150,9 +149,6 @@
   --mellow-cta-font-size: clamp(16px, 1.08vw, 18px);
   --mellow-cta-font-weight: 650;
   --mellow-cta-letter-spacing: -0.005em;
-  --mellow-cta-label-shift: -8px;
-  --mellow-cta-arrow-reveal-distance: -12px;
-  --mellow-cta-arrow-right: clamp(19px, 1.45vw, 26px);
   --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --mellow-cta-duration: 520ms;
   --mellow-cta-color-duration: 260ms;
@@ -513,7 +509,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-hover-border: var(--mellow-section-cta-border);
   --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
   --mellow-section-cta-width: var(--mellow-cta-width);
-  --mellow-section-cta-hover-width: var(--mellow-cta-hover-width);
   --mellow-section-cta-ease: var(--mellow-cta-ease);
   --mellow-section-cta-duration: var(--mellow-cta-duration);
   --mellow-section-cta-color-duration: var(--mellow-cta-color-duration);
@@ -547,7 +542,6 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   backface-visibility: hidden;
 
   transition:
-    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
     color var(--mellow-section-cta-color-duration) ease,
@@ -577,27 +571,14 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   text-align: center;
   opacity: 1;
   visibility: visible;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease);
 }
 
 .mellow-section-cta__arrow {
-  position: absolute;
-  right: var(--mellow-cta-arrow-right);
-  top: 50%;
-  z-index: 1;
-  display: inline-block;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(var(--mellow-cta-arrow-reveal-distance), -50%, 0);
-  transition:
-    transform var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
-    opacity var(--mellow-section-cta-color-duration) ease;
+  display: none;
 }
 
 .mellow-section-cta:hover,
 .mellow-section-cta:focus-visible {
-  width: var(--mellow-section-cta-hover-width);
   border-color: var(--mellow-section-cta-hover-border);
   background: var(--mellow-section-cta-hover-bg);
   color: var(--mellow-section-cta-hover-color);
@@ -630,21 +611,9 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-color: var(--mellow-forest);
 }
 
-.mellow-section-cta:hover .mellow-section-cta__arrow,
-.mellow-section-cta:focus-visible .mellow-section-cta__arrow {
-  transform: translate3d(0, -50%, 0);
-  opacity: 1;
-}
-
-.mellow-section-cta:hover .mellow-section-cta__label,
-.mellow-section-cta:focus-visible .mellow-section-cta__label {
-  transform: translate3d(var(--mellow-cta-label-shift), 0, 0);
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .mellow-section-cta,
-  .mellow-section-cta__label,
-  .mellow-section-cta__arrow {
+  .mellow-section-cta {
     transition: none !important;
   }
 }
@@ -676,14 +645,12 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     --mellow-list-row-pad-y: 20px;
     --mellow-offer-card-gap: 12px;
     --mellow-cta-width: 190px;
-    --mellow-cta-hover-width: 224px;
     --mellow-cta-height: 50px;
     --mellow-cta-min-height: var(--mellow-cta-height);
     --mellow-cta-pad-y: 15px;
     --mellow-cta-pad-x: 22px;
     --mellow-cta-gap: 0;
     --mellow-cta-font-size: 16px;
-    --mellow-cta-arrow-right: 22px;
   }
 
   .mellow-section-standard {
@@ -2156,7 +2123,6 @@ input[type="reset"] {
   --mellow-section-cta-hover-border: var(--mellow-forest);
   --mellow-section-cta-hover-color: var(--mellow-cream);
   --mellow-section-cta-width: 100%;
-  --mellow-section-cta-hover-width: 100%;
 
   width: 100%;
   cursor: pointer;
@@ -2187,7 +2153,6 @@ input[type="reset"] {
 .animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta {
   transform: translateZ(0) !important;
   transition:
-    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
     box-shadow var(--mellow-section-cta-color-duration) ease,
