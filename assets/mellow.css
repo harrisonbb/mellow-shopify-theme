@@ -417,6 +417,15 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-color: var(--mellow-cream);
 }
 
+.mellow-section-cta--secondary {
+  --mellow-section-cta-bg: transparent;
+  --mellow-section-cta-border: var(--mellow-border);
+  --mellow-section-cta-color: var(--mellow-forest);
+  --mellow-section-cta-hover-bg: var(--mellow-forest);
+  --mellow-section-cta-hover-border: var(--mellow-forest);
+  --mellow-section-cta-hover-color: var(--mellow-white);
+}
+
 .mellow-section-cta--ivory-on-dark {
   --mellow-section-cta-bg: var(--mellow-cream);
   --mellow-section-cta-border: var(--mellow-cream);
@@ -443,11 +452,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 @media (prefers-reduced-motion: reduce) {
   .mellow-section-cta,
   .mellow-section-cta__label,
-  .mellow-section-cta__arrow,
-  .mellow-product-cta,
-  .mellow-product-cta span:first-child,
-  .mellow-product-cta::after,
-  .mellow-button {
+  .mellow-section-cta__arrow {
     transition: none !important;
   }
 }
@@ -812,46 +817,6 @@ input[type="reset"] {
   margin-top: 3.2rem;
 }
 
-.mellow-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 4.8rem;
-  padding: 0 2.4rem;
-  border: 0.1rem solid var(--mellow-orange-red);
-  border-radius: var(--mellow-radius-pill);
-  background: var(--mellow-orange-red);
-  color: var(--mellow-white);
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition:
-    background-color var(--mellow-cta-color-duration) ease,
-    border-color var(--mellow-cta-color-duration) ease,
-    color var(--mellow-cta-color-duration) ease;
-}
-
-.mellow-button:hover,
-.mellow-button:focus-visible {
-  border-color: var(--mellow-forest);
-  background: var(--mellow-forest);
-  color: var(--mellow-white);
-}
-
-.mellow-button--secondary {
-  border-color: var(--mellow-border);
-  background: transparent;
-  color: var(--mellow-forest);
-}
-
-.mellow-button--secondary:hover,
-.mellow-button--secondary:focus-visible {
-  border-color: var(--mellow-science-blue);
-  background: var(--mellow-science-blue);
-}
-
 .mellow-architecture-section {
   position: relative;
 }
@@ -1113,16 +1078,7 @@ input[type="reset"] {
     width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
-    box-shadow var(--mellow-section-cta-color-duration) ease,
     color var(--mellow-section-cta-color-duration) ease;
-}
-
-.mellow-who-its-for__quiz-button:hover,
-.mellow-who-its-for__quiz-button:focus-visible {
-  background: var(--mellow-section-cta-hover-bg) !important;
-  border-color: var(--mellow-section-cta-hover-border) !important;
-  color: var(--mellow-section-cta-hover-color) !important;
-  box-shadow: 0 16px 36px rgba(5, 15, 8, 0.22) !important;
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -2046,70 +2002,73 @@ input[type="reset"] {
 }
 
 .mellow-product-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  --mellow-section-cta-bg: var(--mellow-green);
+  --mellow-section-cta-border: var(--mellow-green);
+  --mellow-section-cta-color: var(--mellow-cream);
+  --mellow-section-cta-hover-bg: var(--mellow-forest);
+  --mellow-section-cta-hover-border: var(--mellow-forest);
+  --mellow-section-cta-hover-color: var(--mellow-cream);
+  --mellow-section-cta-width: 100%;
+  --mellow-section-cta-hover-width: 100%;
+
   width: 100%;
   min-height: 58px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--mellow-green);
-  color: var(--mellow-cream);
+  border-width: 1px;
   cursor: pointer;
   font-family: var(--mellow-font-body);
   font-size: 1.62rem;
   font-weight: 850;
   letter-spacing: -0.01em;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+}
+
+.mellow-product-cta[disabled],
+.mellow-product-cta[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.mellow-product-shell .mellow-section-cta.button,
+.mellow-product-shell .mellow-product-cta {
+  box-shadow: none;
+}
+
+.mellow-product-shell .mellow-section-cta.button::before,
+.mellow-product-shell .mellow-section-cta.button::after,
+.mellow-product-shell .mellow-product-cta::before,
+.mellow-product-shell .mellow-product-cta::after {
+  content: none !important;
+  display: none !important;
+  box-shadow: none !important;
+}
+
+.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta,
+.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta {
+  transform: translateZ(0) !important;
   transition:
-    background-color var(--mellow-cta-color-duration) ease,
-    border-color var(--mellow-cta-color-duration) ease,
-    box-shadow var(--mellow-cta-color-duration) ease,
-    color var(--mellow-cta-color-duration) ease;
+    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
+    background-color var(--mellow-section-cta-color-duration) ease,
+    border-color var(--mellow-section-cta-color-duration) ease,
+    box-shadow var(--mellow-section-cta-color-duration) ease,
+    color var(--mellow-section-cta-color-duration) ease !important;
 }
 
-.mellow-product-cta span:first-child {
-  display: inline-block;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--mellow-cta-duration) var(--mellow-cta-ease);
+.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover,
+.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):active,
+.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta:not([disabled]):active,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):active {
+  transform: translateZ(0) !important;
 }
 
-.mellow-product-cta::after {
-  content: '→';
-  position: absolute;
-  right: var(--mellow-cta-arrow-right);
-  top: 50%;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(-12px, -50%, 0);
-  transition:
-    transform var(--mellow-cta-duration) var(--mellow-cta-ease),
-    opacity var(--mellow-cta-color-duration) ease;
-}
-
-.mellow-product-cta:hover,
-.mellow-product-cta:focus-visible {
-  background: var(--mellow-forest);
-}
-
-.mellow-product-cta:hover span:first-child,
-.mellow-product-cta:focus-visible span:first-child {
-  transform: translate3d(-8px, 0, 0);
-}
-
-.mellow-product-cta:hover::after,
-.mellow-product-cta:focus-visible::after {
-  opacity: 1;
-  transform: translate3d(0, -50%, 0);
-}
-
-.mellow-product-cta:focus-visible {
-  outline: 2px solid color-mix(in srgb, currentColor 72%, transparent);
-  outline-offset: 4px;
+.animate--hover-vertical-lift .mellow-product-shell .button:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover::after,
+.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover::after {
+  box-shadow: none !important;
 }
 
 .mellow-product-purchase__secondary {

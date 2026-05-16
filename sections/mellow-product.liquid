@@ -147,10 +147,11 @@
               id="ProductSubmitButton-{{ section.id }}"
               type="submit"
               name="add"
-              class="product-form__submit mellow-product-cta"
+              class="product-form__submit mellow-section-cta mellow-product-cta"
               {% unless can_add_to_cart %}disabled{% endunless %}
             >
-              <span>{%- if can_add_to_cart -%}Add to Cart — $25{%- else -%}Sold out{%- endif -%}</span>
+              <span class="mellow-section-cta__label">{%- if can_add_to_cart -%}Add to Cart — $25{%- else -%}Sold out{%- endif -%}</span>
+              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
               {%- render 'loading-spinner' -%}
             </button>
           {%- endform -%}

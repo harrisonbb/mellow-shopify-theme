@@ -36,14 +36,16 @@
 
         <div class="mellow-actions">
           {%- if section.settings.primary_label != blank -%}
-            <a class="mellow-button" href="{{ section.settings.primary_link | default: '#' }}">
-              {{ section.settings.primary_label | escape }}
+            <a class="mellow-section-cta mellow-section-cta--primary-orange" href="{{ section.settings.primary_link | default: '#' }}">
+              <span class="mellow-section-cta__label">{{ section.settings.primary_label | escape }}</span>
+              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
             </a>
           {%- endif -%}
 
           {%- if section.settings.secondary_label != blank -%}
-            <a class="mellow-button mellow-button--secondary" href="{{ section.settings.secondary_link | default: '#' }}">
-              {{ section.settings.secondary_label | escape }}
+            <a class="mellow-section-cta mellow-section-cta--secondary" href="{{ section.settings.secondary_link | default: '#' }}">
+              <span class="mellow-section-cta__label">{{ section.settings.secondary_label | escape }}</span>
+              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
             </a>
           {%- endif -%}
         </div>
