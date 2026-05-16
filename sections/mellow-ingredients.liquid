@@ -5,6 +5,7 @@
 
 <style>
   #MellowIngredients-{{ section.id }} {
+    --mellow-ingredients-card-gap: clamp(24px, 2.4vw, 36px);
     padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
     padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
     background: var(--mellow-ivory, #F0EBE0);
@@ -64,7 +65,7 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-    gap: var(--mellow-card-gap-tight);
+    gap: var(--mellow-ingredients-card-gap);
     min-height: 0;
     align-items: stretch;
   }
@@ -72,7 +73,7 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
     display: grid;
     grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: var(--mellow-card-gap-tight-y);
+    gap: var(--mellow-ingredients-card-gap);
     min-width: 0;
   }
 
@@ -262,11 +263,7 @@
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__grid,
     #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
-      gap: var(--mellow-card-gap-tight);
-    }
-
-    #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
-      gap: var(--mellow-card-gap-tight-y);
+      gap: var(--mellow-ingredients-card-gap);
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card {

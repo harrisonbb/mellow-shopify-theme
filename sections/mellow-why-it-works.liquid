@@ -5,6 +5,7 @@
 
 <style>
   #MellowWhyItWorks-{{ section.id }} {
+    --mellow-why-it-works-card-gap: clamp(24px, 2.4vw, 36px);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -56,7 +57,7 @@
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--mellow-card-gap-tight);
+    gap: var(--mellow-why-it-works-card-gap);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
@@ -323,7 +324,7 @@
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item {
       display: block;
-      margin-top: var(--mellow-card-gap-tight-y);
+      margin-top: var(--mellow-why-it-works-card-gap);
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item:first-child {
