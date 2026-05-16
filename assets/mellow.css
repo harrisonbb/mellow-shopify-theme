@@ -148,6 +148,9 @@
   --mellow-cta-font-size: clamp(16px, 1.08vw, 18px);
   --mellow-cta-font-weight: 650;
   --mellow-cta-arrow-right: clamp(19px, 1.45vw, 26px);
+  --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --mellow-cta-duration: 520ms;
+  --mellow-cta-color-duration: 260ms;
 
   --mellow-radius-card: 2.8rem;
   --mellow-radius-pill: 999px;
@@ -323,9 +326,9 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   --mellow-section-cta-hover-color: var(--mellow-section-cta-color);
   --mellow-section-cta-width: var(--mellow-cta-width);
   --mellow-section-cta-hover-width: var(--mellow-cta-hover-width);
-  --mellow-section-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --mellow-section-cta-duration: 520ms;
-  --mellow-section-cta-color-duration: 260ms;
+  --mellow-section-cta-ease: var(--mellow-cta-ease);
+  --mellow-section-cta-duration: var(--mellow-cta-duration);
+  --mellow-section-cta-color-duration: var(--mellow-cta-color-duration);
 
   display: inline-flex;
   align-items: center;
@@ -355,7 +358,17 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
     width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
     background-color var(--mellow-section-cta-color-duration) ease,
     border-color var(--mellow-section-cta-color-duration) ease,
+    box-shadow var(--mellow-section-cta-color-duration) ease,
     color var(--mellow-section-cta-color-duration) ease;
+}
+
+.mellow-section-cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, currentColor 72%, transparent);
+  outline-offset: 4px;
+}
+
+.mellow-section-cta:active {
+  transition-duration: 160ms;
 }
 
 .mellow-section-cta::before,
@@ -430,7 +443,11 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
 @media (prefers-reduced-motion: reduce) {
   .mellow-section-cta,
   .mellow-section-cta__label,
-  .mellow-section-cta__arrow {
+  .mellow-section-cta__arrow,
+  .mellow-product-cta,
+  .mellow-product-cta span:first-child,
+  .mellow-product-cta::after,
+  .mellow-button {
     transition: none !important;
   }
 }
@@ -810,14 +827,17 @@ input[type="reset"] {
   letter-spacing: 0.04em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition:
+    background-color var(--mellow-cta-color-duration) ease,
+    border-color var(--mellow-cta-color-duration) ease,
+    color var(--mellow-cta-color-duration) ease;
 }
 
-.mellow-button:hover {
+.mellow-button:hover,
+.mellow-button:focus-visible {
   border-color: var(--mellow-forest);
   background: var(--mellow-forest);
   color: var(--mellow-white);
-  transform: translateY(-1px);
 }
 
 .mellow-button--secondary {
@@ -826,7 +846,8 @@ input[type="reset"] {
   color: var(--mellow-forest);
 }
 
-.mellow-button--secondary:hover {
+.mellow-button--secondary:hover,
+.mellow-button--secondary:focus-visible {
   border-color: var(--mellow-science-blue);
   background: var(--mellow-science-blue);
 }
@@ -1082,33 +1103,26 @@ input[type="reset"] {
   text-decoration: none !important;
   white-space: nowrap !important;
   box-shadow: 0 12px 30px rgba(5, 15, 8, 0.18) !important;
+  --mellow-section-cta-bg: #F0EBE0;
+  --mellow-section-cta-border: rgba(240, 235, 224, 0.64);
+  --mellow-section-cta-color: var(--mellow-forest);
+  --mellow-section-cta-hover-bg: #FFF7EA;
+  --mellow-section-cta-hover-border: rgba(240, 235, 224, 0.78);
+  --mellow-section-cta-hover-color: var(--mellow-forest);
   transition:
-    transform 220ms ease,
-    background 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
-}
-
-.mellow-who-its-for__quiz-button::after {
-  content: '→';
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: 500;
-  line-height: 1;
-  transform: translateY(-0.02em);
+    width var(--mellow-section-cta-duration) var(--mellow-section-cta-ease),
+    background-color var(--mellow-section-cta-color-duration) ease,
+    border-color var(--mellow-section-cta-color-duration) ease,
+    box-shadow var(--mellow-section-cta-color-duration) ease,
+    color var(--mellow-section-cta-color-duration) ease;
 }
 
 .mellow-who-its-for__quiz-button:hover,
 .mellow-who-its-for__quiz-button:focus-visible {
-  transform: translateY(-1px);
-  background: #FFF7EA !important;
-  border-color: rgba(240, 235, 224, 0.78) !important;
+  background: var(--mellow-section-cta-hover-bg) !important;
+  border-color: var(--mellow-section-cta-hover-border) !important;
+  color: var(--mellow-section-cta-hover-color) !important;
   box-shadow: 0 16px 36px rgba(5, 15, 8, 0.22) !important;
-}
-
-.mellow-who-its-for__quiz-button:focus-visible {
-  outline: 2px solid rgba(240, 235, 224, 0.7);
-  outline-offset: 4px;
 }
 
 .mellow-who-its-for__carousel-wrap {
@@ -1623,10 +1637,11 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__quiz-button {
+    --mellow-section-cta-width: 190px;
+    --mellow-section-cta-hover-width: 224px;
     min-height: 48px !important;
     height: 48px !important;
     padding: 0 20px !important;
-    gap: 9px !important;
     font-size: 15px !important;
     font-weight: 600 !important;
   }
@@ -2046,12 +2061,55 @@ input[type="reset"] {
   font-weight: 850;
   letter-spacing: -0.01em;
   text-decoration: none;
-  transition: transform 180ms ease, background 180ms ease;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition:
+    background-color var(--mellow-cta-color-duration) ease,
+    border-color var(--mellow-cta-color-duration) ease,
+    box-shadow var(--mellow-cta-color-duration) ease,
+    color var(--mellow-cta-color-duration) ease;
 }
 
-.mellow-product-cta:hover {
+.mellow-product-cta span:first-child {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--mellow-cta-duration) var(--mellow-cta-ease);
+}
+
+.mellow-product-cta::after {
+  content: '→';
+  position: absolute;
+  right: var(--mellow-cta-arrow-right);
+  top: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-12px, -50%, 0);
+  transition:
+    transform var(--mellow-cta-duration) var(--mellow-cta-ease),
+    opacity var(--mellow-cta-color-duration) ease;
+}
+
+.mellow-product-cta:hover,
+.mellow-product-cta:focus-visible {
   background: var(--mellow-forest);
-  transform: translateY(-1px);
+}
+
+.mellow-product-cta:hover span:first-child,
+.mellow-product-cta:focus-visible span:first-child {
+  transform: translate3d(-8px, 0, 0);
+}
+
+.mellow-product-cta:hover::after,
+.mellow-product-cta:focus-visible::after {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+}
+
+.mellow-product-cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, currentColor 72%, transparent);
+  outline-offset: 4px;
 }
 
 .mellow-product-purchase__secondary {
