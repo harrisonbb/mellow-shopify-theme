@@ -289,14 +289,65 @@
       }
 
       (function () {
+        var root = document.documentElement;
+        var pendingSections = 0;
+        var domReady = false;
+        var readyMarked = false;
+        var maxWaitTimer = null;
+
+        root.classList.add('mellow-js');
+
         var markMellowReady = function () {
-          document.documentElement.classList.add('mellow-ready');
+          if (readyMarked || !domReady || pendingSections > 0) {
+            return;
+          }
+
+          readyMarked = true;
+
+          if (maxWaitTimer) {
+            window.clearTimeout(maxWaitTimer);
+            maxWaitTimer = null;
+          }
+
+          window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
+              root.classList.add('mellow-ready');
+              document.dispatchEvent(new CustomEvent('mellow:ready'));
+            });
+          });
+        };
+
+        window.MellowReadyGate = {
+          hold: function () {
+            var released = false;
+            pendingSections += 1;
+
+            return function () {
+              if (released) {
+                return;
+              }
+
+              released = true;
+              pendingSections = Math.max(0, pendingSections - 1);
+              markMellowReady();
+            };
+          },
+          ready: markMellowReady
+        };
+
+        var onDomReady = function () {
+          domReady = true;
+          maxWaitTimer = window.setTimeout(function () {
+            pendingSections = 0;
+            markMellowReady();
+          }, 1200);
+          markMellowReady();
         };
 
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', markMellowReady, { once: true });
+          document.addEventListener('DOMContentLoaded', onDomReady, { once: true });
         } else {
-          markMellowReady();
+          onDomReady();
         }
       })();
     </script>

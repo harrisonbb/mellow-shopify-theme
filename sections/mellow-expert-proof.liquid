@@ -475,17 +475,38 @@
 <script>
   (() => {
     const initExpertProof = (section) => {
-      if (!section || section.dataset.mellowExpertProofReady === 'true') return;
+      const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
+
+      const releaseSectionReady = () => {
+        if (section) {
+          section.classList.add('is-mellow-section-ready');
+        }
+
+        if (releaseReadyHold) {
+          releaseReadyHold();
+        }
+      };
+
+      if (!section || section.dataset.mellowExpertProofReady === 'true') {
+        releaseSectionReady();
+        return;
+      }
 
       const scroller = section.querySelector('[data-expert-scroller]');
       const track = section.querySelector('[data-expert-track]');
       const prev = section.querySelector('[data-expert-prev]');
       const next = section.querySelector('[data-expert-next]');
 
-      if (!scroller || !track || !prev || !next) return;
+      if (!scroller || !track || !prev || !next) {
+        releaseSectionReady();
+        return;
+      }
 
       const cards = Array.from(track.querySelectorAll('.mellow-expert-proof__card'));
-      if (!cards.length) return;
+      if (!cards.length) {
+        releaseSectionReady();
+        return;
+      }
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -542,17 +563,14 @@
 
       updateControls();
       section.dataset.mellowExpertProofReady = 'true';
+      window.requestAnimationFrame(releaseSectionReady);
     };
 
     const initCurrentSection = () => {
       initExpertProof(document.getElementById('MellowExpertProof-{{ section.id }}'));
     };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCurrentSection, { once: true });
-    } else {
-      initCurrentSection();
-    }
+    initCurrentSection();
 
     document.addEventListener('shopify:section:load', (event) => {
       initExpertProof(event.target.querySelector('[data-mellow-expert-proof]'));

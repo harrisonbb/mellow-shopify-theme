@@ -396,8 +396,22 @@
 <script>
   (() => {
     const section = document.getElementById('MellowDayNight-{{ section.id }}');
+    const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
 
-    if (!section) return;
+    const releaseSectionReady = () => {
+      section.classList.add('is-mellow-section-ready');
+
+      if (releaseReadyHold) {
+        releaseReadyHold();
+      }
+    };
+
+    if (!section) {
+      if (releaseReadyHold) {
+        releaseReadyHold();
+      }
+      return;
+    }
 
     const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const compactQuery = window.matchMedia('(max-width: 899px)');
@@ -517,6 +531,8 @@
     } else if (typeof reduceMotionQuery.addListener === 'function') {
       reduceMotionQuery.addListener(refreshMeasurements);
     }
+
+    requestAnimationFrame(releaseSectionReady);
 
     document.addEventListener('shopify:section:load', (event) => {
       if (event.target && event.target.contains(section)) refreshMeasurements();
