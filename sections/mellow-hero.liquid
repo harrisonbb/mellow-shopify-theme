@@ -24,15 +24,18 @@
       background-repeat: no-repeat;
     {%- endif %}
     color: var(--mellow-forest, #003302);
-    padding-top: var(--mellow-section-content-gap);
-    padding-bottom: var(--mellow-section-heading-gap);
+    display: flex;
+    align-items: center;
+    min-height: clamp(640px, 76vh, 860px);
+    padding-top: var(--mellow-section-pad-top);
+    padding-bottom: var(--mellow-section-pad-bottom);
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__inner {
     display: grid;
-    grid-template-columns: minmax(0, var(--mellow-header-max)) minmax(300px, 0.78fr);
+    grid-template-columns: minmax(0, var(--mellow-header-max)) minmax(420px, 1.1fr);
     align-items: center;
-    column-gap: var(--mellow-section-content-gap);
+    column-gap: var(--mellow-feature-gap);
     row-gap: var(--mellow-section-content-gap-compact);
   }
 
@@ -82,7 +85,7 @@
 
   #MellowHero-{{ section.id }} .mellow-hero__media {
     justify-self: end;
-    width: min(100%, 440px);
+    width: min(100%, 720px);
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__image-frame {
@@ -90,23 +93,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: clamp(240px, 28vw, 380px);
+    min-height: clamp(420px, 60vh, 680px);
     overflow: hidden;
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__image {
     display: block;
     width: 100%;
-    max-height: clamp(240px, 26vw, 360px);
+    max-height: clamp(420px, 62vh, 700px);
     object-fit: contain;
+    object-position: center;
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: min(100%, 220px);
-    min-height: 96px;
+    width: min(100%, 320px);
+    min-height: 180px;
     padding: var(--mellow-card-pad-tight);
     border-radius: var(--mellow-radius-card, 28px);
     background: rgba(0, 51, 2, 0.04);
@@ -119,9 +123,8 @@
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__proof {
-    grid-column: 1 / -1;
     max-width: var(--mellow-copy-max);
-    margin: 0;
+    margin: var(--mellow-section-heading-gap) 0 0;
     padding-top: var(--mellow-section-heading-gap);
     border-top: 1px solid var(--mellow-border, rgba(0, 51, 2, 0.14));
     color: rgba(0, 51, 2, 0.74);
@@ -140,18 +143,16 @@
 
     #MellowHero-{{ section.id }} .mellow-hero__media {
       justify-self: start;
-      width: min(100%, 520px);
-    }
-
-    #MellowHero-{{ section.id }} .mellow-hero__proof {
-      max-width: var(--mellow-copy-max);
+      width: min(100%, 680px);
     }
   }
 
   @media screen and (max-width: 749px) {
     #MellowHero-{{ section.id }} {
-      padding-top: var(--mellow-section-content-gap);
-      padding-bottom: var(--mellow-section-heading-gap);
+      display: block;
+      min-height: auto;
+      padding-top: var(--mellow-section-pad-top);
+      padding-bottom: var(--mellow-section-content-gap-compact);
     }
 
     #MellowHero-{{ section.id }} .mellow-hero__actions {
@@ -169,7 +170,15 @@
     }
 
     #MellowHero-{{ section.id }} .mellow-hero__image-frame {
-      min-height: 220px;
+      min-height: clamp(280px, 76vw, 420px);
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__image {
+      max-height: clamp(280px, 76vw, 420px);
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__placeholder {
+      min-height: 120px;
     }
   }
 </style>
@@ -225,21 +234,22 @@
         {%- if helper_text != blank -%}
           <p class="mellow-hero__helper">{{ helper_text | escape }}</p>
         {%- endif -%}
+
+        {%- if trust_line != blank -%}
+          <p class="mellow-hero__proof">{{ trust_line | escape }}</p>
+        {%- endif -%}
       </div>
 
       <div class="mellow-hero__media" aria-label="Mellow packaging image">
         <div class="mellow-hero__image-frame">
           {%- if hero_image != blank -%}
-            {{ hero_image | image_url: width: 1100 | image_tag: loading: 'eager', decoding: 'async', class: 'mellow-hero__image', sizes: '(min-width: 990px) 36vw, (min-width: 750px) 520px, 100vw', widths: '360, 520, 720, 900, 1100', alt: hero_image_alt }}
+            {{ hero_image | image_url: width: 1600 | image_tag: loading: 'eager', decoding: 'async', class: 'mellow-hero__image', sizes: '(min-width: 1400px) 48vw, (min-width: 990px) 50vw, (min-width: 750px) 680px, 100vw', widths: '520, 720, 900, 1100, 1400, 1600', alt: hero_image_alt }}
           {%- else -%}
             <span class="mellow-hero__placeholder">Packaging image</span>
           {%- endif -%}
         </div>
       </div>
 
-      {%- if trust_line != blank -%}
-        <p class="mellow-hero__proof">{{ trust_line | escape }}</p>
-      {%- endif -%}
     </div>
   </div>
 </section>
