@@ -14,7 +14,7 @@
     --compare-else: var(--mellow-cream, #FCFBF7);
     --compare-mellow: #F1F7E8;
     --compare-border: var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-    --compare-border-strong: rgba(0, 51, 2, 0.14);
+    --compare-border-strong: var(--compare-border);
     --compare-muted: rgba(0, 51, 2, 0.66);
     --compare-muted-soft: rgba(70, 86, 65, 0.78);
     background: var(--mellow-cream, #FCFBF7);
@@ -69,9 +69,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     border-radius: clamp(26px, 2.2vw, 30px);
-    box-shadow:
-      var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05)),
-      0 10px 28px rgba(0, 51, 2, 0.04);
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
     -webkit-overflow-scrolling: touch;
   }
 

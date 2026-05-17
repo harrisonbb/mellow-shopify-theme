@@ -1010,8 +1010,9 @@ input[type="reset"] {
 .mellow-hero .mellow-architecture-section__card {
   gap: var(--mellow-section-content-gap);
   padding: var(--mellow-card-pad-airy);
+  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
   border-radius: var(--mellow-radius-card);
-  box-shadow: var(--mellow-shadow);
+  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
 }
 
 .mellow-hero .mellow-architecture-section__content {
@@ -1047,12 +1048,12 @@ input[type="reset"] {
   align-items: center;
   min-height: clamp(22rem, 30vw, 34rem);
   padding: clamp(2.8rem, 5vw, 5.6rem);
-  border: 0.1rem solid var(--mellow-border);
+  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
   border-radius: var(--mellow-radius-card);
   background:
     radial-gradient(circle at 88% 16%, rgba(61, 107, 140, 0.12), transparent 22rem),
-    rgba(255, 255, 255, 0.62);
-  box-shadow: var(--mellow-shadow);
+    var(--mellow-card-cream, #F8F4EC);
+  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
 }
 
 .mellow-architecture-section__content {
@@ -1116,10 +1117,10 @@ input[type="reset"] {
   gap: clamp(3.2rem, 6vw, 7.2rem);
   align-items: end;
   padding: clamp(3.2rem, 6vw, 7.2rem);
-  border: 0.1rem solid var(--mellow-border);
+  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
   border-radius: var(--mellow-radius-card);
-  background: rgba(255, 255, 255, 0.56);
-  box-shadow: var(--mellow-shadow);
+  background: var(--mellow-card-cream, #F8F4EC);
+  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
 }
 
 .mellow-home-placeholder__notes {
@@ -1889,8 +1890,8 @@ input[type="reset"] {
   border: 1px solid rgba(0, 51, 2, 0.1);
   border-radius: var(--mellow-radius-card);
   background:
-    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.74), rgba(248, 244, 236, 0.82) 48%, rgba(240, 235, 226, 0.78) 100%);
-  box-shadow: var(--mellow-card-shadow);
+    radial-gradient(circle at 50% 35%, rgba(252, 251, 247, 0.78), rgba(248, 244, 236, 0.82) 48%, rgba(248, 244, 236, 0.72) 100%);
+  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
 }
 
 .mellow-product-gallery__image {
