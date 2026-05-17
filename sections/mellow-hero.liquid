@@ -11,11 +11,18 @@
   assign trust_line = section.settings.trust_line | strip
   assign hero_image = section.settings.hero_image
   assign hero_image_alt = hero_image.alt | default: 'Mellow packaging image' | strip
+  assign hero_background_image = section.settings.hero_background_image
 -%}
 
 <style>
   #MellowHero-{{ section.id }} {
     background: var(--mellow-ivory, #F0EBE0);
+    {%- if hero_background_image != blank %}
+      background-image: url('{{ hero_background_image | image_url: width: 2400 }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {%- endif %}
     color: var(--mellow-forest, #003302);
     padding-top: var(--mellow-section-pad-bottom);
     padding-bottom: var(--mellow-section-content-gap-compact);
@@ -83,19 +90,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: clamp(280px, 30vw, 420px);
-    padding: var(--mellow-card-pad-standard);
+    min-height: clamp(240px, 28vw, 380px);
     overflow: hidden;
-    border: 1px solid var(--mellow-border, rgba(0, 51, 2, 0.14));
-    border-radius: var(--mellow-radius-card, 28px);
-    background: rgba(255, 255, 255, 0.18);
-    box-shadow: var(--mellow-shadow, 0 24px 60px rgba(0, 51, 2, 0.08));
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__image {
     display: block;
     width: 100%;
-    height: 100%;
     max-height: clamp(240px, 26vw, 360px);
     object-fit: contain;
   }
@@ -104,11 +105,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border: 1px solid rgba(0, 51, 2, 0.12);
+    width: min(100%, 220px);
+    min-height: 96px;
+    padding: var(--mellow-card-pad-tight);
     border-radius: var(--mellow-radius-card, 28px);
-    background: rgba(0, 51, 2, 0.035);
+    background: rgba(0, 51, 2, 0.04);
     color: rgba(0, 51, 2, 0.56);
     font-size: var(--mellow-eyebrow-size);
     font-weight: var(--mellow-eyebrow-weight);
@@ -168,8 +169,7 @@
     }
 
     #MellowHero-{{ section.id }} .mellow-hero__image-frame {
-      min-height: 260px;
-      padding: var(--mellow-card-pad-tight);
+      min-height: 220px;
     }
   }
 </style>
@@ -318,6 +318,11 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero packaging image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_background_image",
+      "label": "Hero background image"
     }
   ],
   "presets": [
