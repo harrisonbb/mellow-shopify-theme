@@ -189,12 +189,10 @@
     overflow: hidden;
     min-height: clamp(360px, 32vw, 480px);
     padding: var(--mellow-card-pad-airy);
-    border: 1px solid rgba(0, 51, 2, 0.12);
+    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
     border-radius: var(--mellow-radius-card);
-    background:
-      linear-gradient(145deg, rgba(255, 252, 244, 0.84), rgba(244, 237, 224, 0.98)),
-      var(--mellow-card-cream, #F4EDE0);
-    box-shadow: var(--mellow-shadow, 0 24px 60px rgba(0, 51, 2, 0.08));
+    background: var(--mellow-card-cream, #F8F4EC);
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
     isolation: isolate;
   }
 

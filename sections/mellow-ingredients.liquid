@@ -82,14 +82,12 @@
     display: grid;
     overflow: hidden;
     min-width: 0;
-    border: 1px solid rgba(0, 51, 2, 0.12);
+    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
     border-radius: min(var(--mellow-radius-card), 28px);
-    background:
-      linear-gradient(145deg, rgba(255, 252, 244, 0.78), rgba(244, 237, 224, 0.96)),
-      var(--mellow-card-cream, #F4EDE0);
+    background: var(--mellow-card-cream, #F8F4EC);
     box-shadow:
-      0 22px 48px rgba(0, 51, 2, 0.075),
-      0 1px 0 rgba(255, 255, 255, 0.48) inset;
+      var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05)),
+      0 1px 0 rgba(255, 255, 255, 0.42) inset;
     isolation: isolate;
   }
 
@@ -193,7 +191,7 @@
     padding: var(--mellow-card-pad-tight);
     background:
       radial-gradient(circle at 92% 10%, rgba(61, 107, 140, 0.08), transparent 34%),
-      rgba(244, 237, 224, 0.94);
+      rgba(248, 244, 236, 0.94);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__content {

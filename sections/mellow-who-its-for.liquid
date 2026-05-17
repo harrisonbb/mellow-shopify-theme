@@ -124,12 +124,12 @@
     height: clamp(276px, 22vw, 340px);
     padding: var(--mellow-card-pad-standard);
 
-    background: #f4ede0 !important;
+    background: var(--mellow-card-cream, #F8F4EC) !important;
     background-image: none !important;
-    border: 1px solid rgba(180, 130, 72, 0.22) !important;
+    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10)) !important;
     border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
-    box-shadow: none;
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
     background-clip: border-box;
 
     overflow: hidden;
@@ -147,12 +147,12 @@
     transform: none !important;
     z-index: 20;
 
-    background: #f4ede0 !important;
+    background: var(--mellow-card-cream, #F8F4EC) !important;
     background-image: none !important;
-    border: 1px solid rgba(180, 130, 72, 0.26) !important;
+    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10)) !important;
     border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
-    box-shadow: none;
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
     background-clip: border-box;
     filter: none;
     opacity: 1;
@@ -182,8 +182,8 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__icon {
     transform: translateY(4px);
-    border-color: rgba(212, 138, 50, 0.2);
-    background: rgba(240, 226, 202, 0.78);
+    border-color: rgba(208, 74, 42, 0.2);
+    background: rgba(248, 244, 236, 0.82);
     box-shadow:
       inset 0 0 0 0.55rem rgba(255, 253, 247, 0.3),
       0 0.8rem 1.8rem rgba(0, 51, 2, 0.07);
