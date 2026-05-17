@@ -30,9 +30,9 @@
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
-        "background_color": "#FCFBF7",
+        "background_color": "#f0ebe0",
         "eyebrow": "",
-        "show_dividers": false,
+        "show_dividers": true,
         "spacing": "default",
         "item_1_icon_text": "DR",
         "item_1_icon_style": "seal",
@@ -85,6 +85,7 @@
         "alginate_role": "THE RAFT-FORMER",
         "alginate_title": "Sodium Alginate",
         "alginate_description": "Forms the floating gel barrier. The backbone of MellowRaft™ — derived from seaweed, activated by stomach acid.",
+        "calcium_image": "shopify://shop_images/carb.png",
         "calcium_role": "THE STRENGTHENER",
         "calcium_title": "Calcium Carbonate",
         "calcium_description": "Strengthens and stabilizes the raft. Helps the gel barrier hold its structure after formation.",
