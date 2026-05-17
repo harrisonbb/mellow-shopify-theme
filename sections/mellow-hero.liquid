@@ -1,64 +1,175 @@
-{% comment %}
-  Mellow hero placeholder section.
-  Dawn-compatible Online Store 2.0 section scaffold for the Mellow homepage.
-{% endcomment %}
-
 {%- liquid
   assign hero_eyebrow = section.settings.eyebrow | strip
-  assign hero_heading = section.settings.heading | strip
+  assign headline_primary = section.settings.headline_primary | strip
+  assign headline_accent = section.settings.headline_accent | strip
   assign hero_text = section.settings.text | strip
-  assign hero_note = section.settings.note | strip
-  assign safe_note = hero_note
-
-  assign scaffold_note = 'Ready for final ' | append: 'design replacement.'
-  assign scaffold_heading = 'A premium calm opening for ' | append: 'Mellow.'
-  assign scaffold_text = 'Introduce the flagship ' | append: 'promise, primary offer, and clear path to purchase.'
-
-  if safe_note == scaffold_note
-    assign safe_note = ''
-  endif
-
-  assign is_scaffold_copy = false
-  if hero_heading == scaffold_heading and hero_text == scaffold_text
-    assign is_scaffold_copy = true
-  endif
-
-  assign has_customer_content = false
-  if hero_eyebrow != blank or hero_heading != blank or hero_text != blank or safe_note != blank
-    assign has_customer_content = true
-  endif
+  assign primary_label = section.settings.primary_label | strip
+  assign primary_link = section.settings.primary_link | default: '/products/mellow-reflux-relief-gel'
+  assign secondary_label = section.settings.secondary_label | strip
+  assign secondary_link = section.settings.secondary_link | default: '/pages/quiz'
+  assign helper_text = section.settings.helper_text | strip
+  assign trust_line = section.settings.trust_line | strip
 -%}
 
-{%- if has_customer_content and is_scaffold_copy == false -%}
-  <section
-    id="MellowHero-{{ section.id }}"
-    class="mellow-section-standard mellow-architecture-section mellow-hero color-{{ section.settings.color_scheme }}"
-  >
-    <div class="mellow-section-axis">
-      <div class="mellow-architecture-section__card">
-        <div class="mellow-section-header mellow-architecture-section__content">
-          {%- if hero_eyebrow != blank -%}
-            <p class="mellow-eyebrow">{{ hero_eyebrow | escape }}</p>
-          {%- endif -%}
+<style>
+  #MellowHero-{{ section.id }} {
+    background: var(--mellow-ivory, #F0EBE0);
+    color: var(--mellow-forest, #003302);
+  }
 
-          {%- if hero_heading != blank -%}
-            <h1 class="mellow-section-heading mellow-architecture-section__heading">{{ hero_heading | escape }}</h1>
-          {%- endif -%}
+  #MellowHero-{{ section.id }} .mellow-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, var(--mellow-header-max)) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--mellow-section-content-gap);
+  }
 
-          {%- if hero_text != blank -%}
-            <p class="mellow-section-text mellow-architecture-section__text">{{ hero_text | escape }}</p>
-          {%- endif -%}
-        </div>
+  #MellowHero-{{ section.id }} .mellow-hero__content {
+    max-width: var(--mellow-header-max);
+  }
 
-        {%- if safe_note != blank -%}
-          <div class="mellow-architecture-section__note">
-            <span>{{ safe_note | escape }}</span>
+  #MellowHero-{{ section.id }} .mellow-hero__heading {
+    max-width: var(--mellow-header-max);
+    text-wrap: balance;
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__heading-line {
+    display: block;
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__heading-line--accent {
+    color: var(--mellow-orange-red, #D04A2A);
+    font-style: italic;
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__text {
+    max-width: var(--mellow-copy-max);
+    color: var(--mellow-muted, #5E6B58);
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(10px, 1vw, 14px);
+    margin-top: var(--mellow-section-content-gap-compact);
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__cta-wrap {
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__helper {
+    max-width: var(--mellow-copy-max);
+    margin: var(--mellow-section-header-gap) 0 0;
+    color: rgba(0, 51, 2, 0.68);
+    font-size: clamp(14px, 0.96vw, 15px);
+    line-height: 1.45;
+  }
+
+  #MellowHero-{{ section.id }} .mellow-hero__proof {
+    justify-self: end;
+    max-width: min(100%, 440px);
+    padding-top: var(--mellow-section-content-gap-compact);
+    border-top: 1px solid var(--mellow-border, rgba(0, 51, 2, 0.14));
+    color: rgba(0, 51, 2, 0.74);
+    font-size: var(--mellow-card-copy-size);
+    line-height: var(--mellow-card-copy-line-height);
+    letter-spacing: var(--mellow-card-copy-tracking);
+    text-wrap: balance;
+  }
+
+  @media screen and (max-width: 989px) {
+    #MellowHero-{{ section.id }} .mellow-hero__inner {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: var(--mellow-section-content-gap-compact);
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__proof {
+      justify-self: start;
+      max-width: var(--mellow-copy-max);
+      padding-top: var(--mellow-section-heading-gap);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowHero-{{ section.id }} .mellow-hero__actions {
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__cta-wrap,
+    #MellowHero-{{ section.id }} .mellow-hero__cta {
+      width: 100%;
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__helper {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<section
+  id="MellowHero-{{ section.id }}"
+  class="mellow-section-standard mellow-hero color-{{ section.settings.color_scheme }}"
+>
+  <div class="mellow-section-axis">
+    <div class="mellow-hero__inner">
+      <div class="mellow-section-header mellow-hero__content">
+        {%- if hero_eyebrow != blank -%}
+          <p class="mellow-eyebrow mellow-hero__eyebrow">{{ hero_eyebrow | escape }}</p>
+        {%- endif -%}
+
+        {%- if headline_primary != blank or headline_accent != blank -%}
+          <h1 class="mellow-section-heading mellow-hero__heading">
+            {%- if headline_primary != blank -%}
+              <span class="mellow-hero__heading-line">{{ headline_primary | escape }}</span>
+            {%- endif -%}
+            {%- if headline_accent != blank -%}
+              <span class="mellow-hero__heading-line mellow-hero__heading-line--accent">{{ headline_accent | escape }}</span>
+            {%- endif -%}
+          </h1>
+        {%- endif -%}
+
+        {%- if hero_text != blank -%}
+          <p class="mellow-section-text mellow-hero__text">{{ hero_text | escape }}</p>
+        {%- endif -%}
+
+        {%- if primary_label != blank or secondary_label != blank -%}
+          <div class="mellow-hero__actions">
+            {%- if primary_label != blank -%}
+              <div class="mellow-section-cta-wrap mellow-hero__cta-wrap">
+                <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-hero__cta" href="{{ primary_link }}">
+                  <span class="mellow-section-cta__label">{{ primary_label | escape }}</span>
+                  <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            {%- endif -%}
+
+            {%- if secondary_label != blank -%}
+              <div class="mellow-section-cta-wrap mellow-hero__cta-wrap">
+                <a class="mellow-section-cta mellow-section-cta--secondary mellow-hero__cta" href="{{ secondary_link }}">
+                  <span class="mellow-section-cta__label">{{ secondary_label | escape }}</span>
+                  <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            {%- endif -%}
           </div>
         {%- endif -%}
+
+        {%- if helper_text != blank -%}
+          <p class="mellow-hero__helper">{{ helper_text | escape }}</p>
+        {%- endif -%}
       </div>
+
+      {%- if trust_line != blank -%}
+        <p class="mellow-hero__proof">{{ trust_line | escape }}</p>
+      {%- endif -%}
     </div>
-  </section>
-{%- endif -%}
+  </div>
+</section>
 
 {% schema %}
 {
@@ -76,25 +187,59 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": ""
+      "default": "REFLUX RELIEF, REBUILT"
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Mellow stops reflux before it starts."
+      "id": "headline_primary",
+      "label": "Headline first line",
+      "default": "Mellow stops reflux"
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline accent line",
+      "default": "before it starts."
     },
     {
       "type": "textarea",
       "id": "text",
       "label": "Text",
-      "default": "A smooth gel that works before acid gets the chance."
+      "default": "A smooth gel that forms a floating raft barrier at the top of your stomach — helping block reflux before it rises."
     },
     {
       "type": "text",
-      "id": "note",
-      "label": "Planning note",
-      "default": ""
+      "id": "primary_label",
+      "label": "Primary CTA label",
+      "default": "Try Mellow"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary CTA label",
+      "default": "Take the Quiz"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "helper_text",
+      "label": "Helper text",
+      "default": "Find out if Mellow fits your reflux routine."
+    },
+    {
+      "type": "text",
+      "id": "trust_line",
+      "label": "Trust line",
+      "default": "Forms within minutes. Holds for hours. After meals. Before bed."
     }
   ],
   "presets": [

@@ -202,6 +202,23 @@
       "settings": {
         "heading": "Answer final purchase questions calmly."
       }
+    },
+    "mellow_hero_LazmDd": {
+      "type": "mellow-hero",
+      "name": "Mellow hero",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "REFLUX RELIEF, REBUILT",
+        "headline_primary": "Mellow stops reflux",
+        "headline_accent": "before it starts.",
+        "text": "A smooth gel that forms a floating raft barrier at the top of your stomach — helping block reflux before it rises.",
+        "primary_label": "Try Mellow",
+        "primary_link": "/products/mellow-reflux-relief-gel",
+        "secondary_label": "Take the Quiz",
+        "secondary_link": "/pages/quiz",
+        "helper_text": "Find out if Mellow fits your reflux routine.",
+        "trust_line": "Forms within minutes. Holds for hours. After meals. Before bed."
+      }
     }
   },
   "order": [
