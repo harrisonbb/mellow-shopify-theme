@@ -9,8 +9,8 @@
   assign secondary_link = section.settings.secondary_link | default: '/pages/quiz'
   assign helper_text = section.settings.helper_text | strip
   assign trust_line = section.settings.trust_line | strip
-  assign packaging_image = section.settings.packaging_image
-  assign packaging_image_alt = section.settings.packaging_image_alt | default: 'Mellow packaging image' | strip
+  assign hero_image = section.settings.hero_image
+  assign hero_image_alt = hero_image.alt | default: 'Mellow packaging image' | strip
 -%}
 
 <style>
@@ -229,8 +229,8 @@
 
       <div class="mellow-hero__media" aria-label="Mellow packaging image">
         <div class="mellow-hero__image-frame">
-          {%- if packaging_image != blank -%}
-            {{ packaging_image | image_url: width: 1100 | image_tag: loading: 'eager', decoding: 'async', class: 'mellow-hero__image', sizes: '(min-width: 990px) 36vw, (min-width: 750px) 520px, 100vw', widths: '360, 520, 720, 900, 1100', alt: packaging_image_alt }}
+          {%- if hero_image != blank -%}
+            {{ hero_image | image_url: width: 1100 | image_tag: loading: 'eager', decoding: 'async', class: 'mellow-hero__image', sizes: '(min-width: 990px) 36vw, (min-width: 750px) 520px, 100vw', widths: '360, 520, 720, 900, 1100', alt: hero_image_alt }}
           {%- else -%}
             <span class="mellow-hero__placeholder">Packaging image</span>
           {%- endif -%}
@@ -316,14 +316,8 @@
     },
     {
       "type": "image_picker",
-      "id": "packaging_image",
-      "label": "Packaging image"
-    },
-    {
-      "type": "text",
-      "id": "packaging_image_alt",
-      "label": "Packaging image alt text",
-      "default": "Mellow packaging image"
+      "id": "hero_image",
+      "label": "Hero packaging image"
     }
   ],
   "presets": [
