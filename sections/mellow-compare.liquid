@@ -10,7 +10,7 @@
     --compare-orange: #D04A2A;
     --compare-ivory: #FCFBF7;
     --compare-card: var(--mellow-card-cream, #F8F4EC);
-    --compare-label: var(--mellow-card-cream, #F8F4EC);
+    --compare-label: var(--mellow-cream, #FCFBF7);
     --compare-else: var(--mellow-cream, #FCFBF7);
     --compare-mellow: #edf5de;
     --compare-border: var(--mellow-card-border, rgba(0, 51, 2, 0.10));
@@ -121,7 +121,7 @@
   #MellowCompare-{{ section.id }} .mellow-compare__label-cell {
     width: 22%;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)),
+      linear-gradient(180deg, rgba(248, 244, 236, 0.44), rgba(252, 251, 247, 0)),
       var(--compare-label);
   }
 
@@ -149,7 +149,7 @@
   #MellowCompare-{{ section.id }} .mellow-compare__else-header {
     border-top-right-radius: clamp(26px, 2.2vw, 30px);
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)),
+      linear-gradient(180deg, rgba(248, 244, 236, 0.38), rgba(252, 251, 247, 0)),
       var(--compare-else);
   }
 
@@ -206,7 +206,9 @@
   }
 
   #MellowCompare-{{ section.id }} .mellow-compare__else-cell {
-    background: var(--compare-else);
+    background:
+      linear-gradient(180deg, rgba(248, 244, 236, 0.22), rgba(252, 251, 247, 0)),
+      var(--compare-else);
     color: var(--compare-muted-soft);
     font-size: clamp(16px, 1.22vw, 21px);
     font-weight: 450;

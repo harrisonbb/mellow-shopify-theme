@@ -115,7 +115,7 @@
     position: relative;
     min-width: 0;
     overflow: hidden;
-    background: #D9B075;
+    background: var(--mellow-cream, #FCFBF7);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual::before,
@@ -128,8 +128,8 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual::after {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 51, 2, 0.1)),
-      radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.22), transparent 29%);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 51, 2, 0.04)),
+      radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.28), transparent 29%);
     mix-blend-mode: soft-light;
   }
 
@@ -157,22 +157,22 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--calcium {
     background:
-      radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.82) 0 11%, transparent 25%),
-      radial-gradient(circle at 72% 66%, rgba(224, 210, 184, 0.62) 0 13%, transparent 28%),
-      linear-gradient(135deg, #F8F2E4 0%, #D9C7A4 48%, #B8A479 100%);
+      radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.86) 0 11%, transparent 25%),
+      radial-gradient(circle at 72% 66%, rgba(248, 244, 236, 0.72) 0 13%, transparent 28%),
+      linear-gradient(135deg, #FCFBF7 0%, #F8F4EC 54%, rgba(61, 107, 140, 0.16) 100%);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--calcium::before {
     background:
-      repeating-radial-gradient(circle at 42% 48%, rgba(0, 51, 2, 0.1) 0 1px, transparent 1px 9px),
-      linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.44));
+      repeating-radial-gradient(circle at 42% 48%, rgba(0, 51, 2, 0.06) 0 1px, transparent 1px 9px),
+      linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.52));
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--bicarbonate {
     background:
-      radial-gradient(circle at 24% 30%, rgba(255, 255, 255, 0.9) 0 12%, transparent 28%),
-      radial-gradient(circle at 78% 72%, rgba(255, 255, 255, 0.72) 0 15%, transparent 31%),
-      linear-gradient(135deg, #FFFCF4 0%, #ECE3D1 52%, #D7CBB5 100%);
+      radial-gradient(circle at 24% 30%, rgba(255, 255, 255, 0.92) 0 12%, transparent 28%),
+      radial-gradient(circle at 78% 72%, rgba(255, 255, 255, 0.78) 0 15%, transparent 31%),
+      linear-gradient(135deg, #FCFBF7 0%, #F8F4EC 58%, rgba(208, 74, 42, 0.08) 100%);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--bicarbonate::before {
@@ -191,7 +191,7 @@
     padding: var(--mellow-card-pad-tight);
     background:
       radial-gradient(circle at 92% 10%, rgba(61, 107, 140, 0.08), transparent 34%),
-      rgba(248, 244, 236, 0.94);
+      rgba(252, 251, 247, 0.94);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__content {
