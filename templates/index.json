@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "mellow_hero_LazmDd": {
+      "type": "mellow-hero",
+      "name": "Mellow hero",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "Hero",
+        "heading": "A premium calm opening for Mellow.",
+        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
+        "note": "Ready for final design replacement."
+      }
+    },
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
@@ -39,8 +50,8 @@
       "settings": {
         "color_scheme": "",
         "eyebrow": "REAL-LIFE REFLUX MOMENTS",
-        "heading": "Mellow stops reflux before it starts.",
-        "text": "A smooth gel that works before acid gets the chance."
+        "heading": "Reflux happens in|more moments than|you think.",
+        "text": "Mellow was designed for the real-life moments that trigger reflux — not just the symptom."
       }
     },
     "mellow_review_videos": {
@@ -82,7 +93,7 @@
         "eyebrow": "Why it works",
         "heading": "How MellowRaft™ works",
         "subheading": "Mellow activates in stomach acid to form a soft, floating barrier that helps keep reflux where it starts.",
-        "image_1": "shopify://shop_images/Acid11.png",
+        "image_1": "shopify://shop_images/ds.png",
         "image_2": "shopify://shop_images/Acid12.png",
         "image_3": "shopify://shop_images/Acid13_c76e0524-b9d8-4a33-99da-1d3027b380ca.png",
         "step_1_title": "ACTIVATE",
@@ -190,17 +201,6 @@
       "type": "mellow-faq",
       "settings": {
         "heading": "Answer final purchase questions calmly."
-      }
-    },
-    "mellow_hero_LazmDd": {
-      "type": "mellow-hero",
-      "name": "Mellow hero",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Hero",
-        "heading": "A premium calm opening for Mellow.",
-        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
-        "note": "Ready for final design replacement."
       }
     }
   },
