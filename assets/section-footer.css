@@ -526,11 +526,11 @@
 
 .footer {
   --color-background: 16, 42, 58;
-  --color-foreground: 251, 250, 244;
+  --color-foreground: 252, 251, 247;
   --gradient-background: var(--mellow-night-blue, #102A3A);
-  --mellow-footer-text: var(--mellow-ivory, #FBFAF4);
-  --mellow-footer-muted: rgba(251, 250, 244, 0.76);
-  --mellow-footer-rule: rgba(251, 250, 244, 0.18);
+  --mellow-footer-text: var(--mellow-ivory, #FCFBF7);
+  --mellow-footer-muted: rgba(252, 251, 247, 0.76);
+  --mellow-footer-rule: rgba(252, 251, 247, 0.18);
   border-top: 1px solid var(--mellow-footer-rule);
   color: var(--mellow-footer-muted);
 }
