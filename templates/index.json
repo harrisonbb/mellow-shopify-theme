@@ -9,22 +9,11 @@
  */
 {
   "sections": {
-    "mellow_hero_LazmDd": {
-      "type": "mellow-hero",
-      "name": "Mellow hero",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "Hero",
-        "heading": "A premium calm opening for Mellow.",
-        "text": "Introduce the flagship promise, primary offer, and clear path to purchase.",
-        "note": "Ready for final design replacement."
-      }
-    },
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
         "background_color": "#f0ebe0",
-        "eyebrow": "Trust bar",
+        "eyebrow": "",
         "show_dividers": true,
         "spacing": "default",
         "item_1_icon_text": "DR",
@@ -217,7 +206,8 @@
         "secondary_label": "Take the Quiz",
         "secondary_link": "/pages/quiz",
         "helper_text": "Find out if Mellow fits your reflux routine.",
-        "trust_line": "Forms within minutes. Holds for hours. After meals. Before bed."
+        "trust_line": "Forms within minutes. Holds for hours. After meals. Before bed.",
+        "packaging_image_alt": "Mellow packaging image"
       }
     }
   },
