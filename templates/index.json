@@ -32,7 +32,7 @@
       "settings": {
         "background_color": "#f0ebe0",
         "eyebrow": "",
-        "show_dividers": true,
+        "show_dividers": false,
         "spacing": "default",
         "item_1_icon_text": "DR",
         "item_1_icon_style": "seal",
