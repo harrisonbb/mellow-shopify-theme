@@ -24,8 +24,8 @@
       background-repeat: no-repeat;
     {%- endif %}
     color: var(--mellow-forest, #003302);
-    padding-top: var(--mellow-section-pad-bottom);
-    padding-bottom: var(--mellow-section-content-gap-compact);
+    padding-top: var(--mellow-section-content-gap);
+    padding-bottom: var(--mellow-section-heading-gap);
   }
 
   #MellowHero-{{ section.id }} .mellow-hero__inner {
@@ -150,8 +150,8 @@
 
   @media screen and (max-width: 749px) {
     #MellowHero-{{ section.id }} {
-      padding-top: var(--mellow-section-pad-bottom);
-      padding-bottom: var(--mellow-section-content-gap-compact);
+      padding-top: var(--mellow-section-content-gap);
+      padding-bottom: var(--mellow-section-heading-gap);
     }
 
     #MellowHero-{{ section.id }} .mellow-hero__actions {
