@@ -3,6 +3,10 @@
   Premium peer-reviewed research proof band using the global Mellow brand system.
 {% endcomment %}
 
+{%- liquid
+  assign background_image = section.settings.background_image
+-%}
+
 <style>
   #MellowClinicalProof-{{ section.id }} {
     --mellow-clinical-pad-top: {{ section.settings.padding_top }}px;
@@ -18,6 +22,28 @@
     padding-bottom: var(--mellow-clinical-pad-bottom);
     background: var(--mellow-cream, #FCFBF7);
     color: var(--mellow-forest, #003302);
+  }
+
+  #MellowClinicalProof-{{ section.id }}.has-background-image {
+    position: relative;
+    isolation: isolate;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #MellowClinicalProof-{{ section.id }}.has-background-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(252, 251, 247, 0.18);
+    pointer-events: none;
+  }
+
+  #MellowClinicalProof-{{ section.id }}.has-background-image > .mellow-section-axis {
+    position: relative;
+    z-index: 1;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
@@ -301,12 +327,17 @@
       border-radius: min(var(--mellow-radius-card), 24px);
     }
 
+    #MellowClinicalProof-{{ section.id }}.has-background-image::before {
+      background: rgba(252, 251, 247, 0.24);
+    }
+
   }
 </style>
 
 <section
   id="MellowClinicalProof-{{ section.id }}"
-  class="mellow-section-standard mellow-clinical-proof color-{{ section.settings.color_scheme }}"
+  class="mellow-section-standard mellow-clinical-proof color-{{ section.settings.color_scheme }}{% if background_image != blank %} has-background-image{% endif %}"
+  {% if background_image != blank %}style="background-image: url('{{ background_image | image_url: width: 2400 }}');"{% endif %}
   aria-labelledby="MellowClinicalProofHeading-{{ section.id }}"
 >
   <div class="mellow-section-axis mellow-clinical-proof__inner">
@@ -406,6 +437,11 @@
       "default": "scheme-1"
     },
     {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Full-section background image"
+    },
+    {
       "type": "text",
       "id": "stat_1_value",
       "label": "Stat 1 value",
@@ -493,7 +529,7 @@
       "type": "text",
       "id": "cta_label",
       "label": "CTA label",
-      "default": "View all research"
+      "default": "View the science"
     },
     {
       "type": "url",
