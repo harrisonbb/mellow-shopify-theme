@@ -38,15 +38,6 @@
     color: var(--mellow-muted, rgba(0, 51, 2, 0.68));
   }
 
-  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta {
-    --mellow-section-cta-bg: transparent;
-    --mellow-section-cta-border: rgba(0, 51, 2, 0.42);
-    --mellow-section-cta-color: var(--mellow-forest, #003302);
-    --mellow-section-cta-hover-bg: var(--mellow-forest, #003302);
-    --mellow-section-cta-hover-border: var(--mellow-forest, #003302);
-    --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
-  }
-
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -198,8 +189,8 @@
         <h2 class="mellow-section-heading mellow-review-videos__heading">For anyone who thinks twice<br>before eating.</h2>
         <p class="mellow-section-text mellow-review-videos__text">Short, honest moments from people using Mellow after meals, before bed, and when reflux tends to show up.</p>
 
-        <a class="mellow-section-cta mellow-review-videos__cta" href="/products/mellow">
-          <span class="mellow-section-cta__label">Watch more stories</span>
+        <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-review-videos__cta" href="/products/mellow">
+          <span class="mellow-section-cta__label">Try Mellow</span>
           <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
         </a>
       </div>
