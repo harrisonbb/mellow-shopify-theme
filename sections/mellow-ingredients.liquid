@@ -6,6 +6,8 @@
 <style>
   #MellowIngredients-{{ section.id }} {
     --mellow-ingredients-card-gap: clamp(18px, 1.8vw, 28px);
+    --mellow-ingredients-small-card-height: clamp(170px, 14vw, 230px);
+    --mellow-ingredients-feature-card-height: calc((var(--mellow-ingredients-small-card-height) * 2) + var(--mellow-ingredients-card-gap));
     padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
     padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
     background: var(--mellow-ivory, #FCFBF7);
@@ -72,7 +74,7 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
     display: grid;
-    grid-template-rows: repeat(2, clamp(190px, 16vw, 250px));
+    grid-template-rows: repeat(2, var(--mellow-ingredients-small-card-height));
     gap: var(--mellow-ingredients-card-gap);
     min-width: 0;
   }
@@ -91,13 +93,13 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
     grid-template-columns: minmax(0, 44%) minmax(0, 56%);
-    height: clamp(340px, 29vw, 460px);
+    height: var(--mellow-ingredients-feature-card-height);
     min-height: 0;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
     grid-template-columns: minmax(0, 44%) minmax(0, 56%);
-    height: clamp(170px, 14vw, 230px);
+    height: var(--mellow-ingredients-small-card-height);
     min-height: 0;
   }
 
