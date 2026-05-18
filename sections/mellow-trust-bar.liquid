@@ -4,12 +4,12 @@
 
 {%- style -%}
   #MellowTrustBar-{{ section.id }} {
-    --mellow-trust-background: {{ section.settings.background_color | default: '#003302' }};
-    --mellow-trust-text: #F0EBE0;
+    --mellow-trust-background: {{ section.settings.background_color | default: '#FCFBF7' }};
+    --mellow-trust-text: var(--mellow-green, #003302);
     --mellow-trust-accent: var(--mellow-orange-red, #D04A2A);
     --mellow-trust-blue: var(--mellow-science-blue, #3D6B8C);
-    --mellow-trust-muted: rgba(240, 235, 224, 0.72);
-    --mellow-trust-border: rgba(0, 20, 1, 0.32);
+    --mellow-trust-muted: rgba(0, 51, 2, 0.68);
+    --mellow-trust-border: rgba(0, 51, 2, 0.10);
     background: var(--mellow-trust-background);
     color: var(--mellow-trust-text);
     padding-top: 0;
@@ -295,7 +295,7 @@
       "type": "color",
       "id": "background_color",
       "label": "Section background color",
-      "default": "#003302"
+      "default": "#FCFBF7"
     },
     {
       "type": "text",
