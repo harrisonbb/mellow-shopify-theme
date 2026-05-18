@@ -5,7 +5,7 @@
 
 <style>
   #MellowIngredients-{{ section.id }} {
-    --mellow-ingredients-card-gap: clamp(24px, 2.4vw, 36px);
+    --mellow-ingredients-card-gap: clamp(18px, 1.8vw, 28px);
     padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
     padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
     background: var(--mellow-ivory, #FCFBF7);
@@ -72,7 +72,7 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
     display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, clamp(190px, 16vw, 250px));
     gap: var(--mellow-ingredients-card-gap);
     min-width: 0;
   }
@@ -90,13 +90,15 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
-    grid-template-rows: clamp(210px, 18vw, 260px) auto;
-    min-height: clamp(315px, 26vw, 390px);
+    grid-template-rows: minmax(0, 48%) minmax(0, 1fr);
+    height: clamp(420px, 34vw, 560px);
+    min-height: 0;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
     grid-template-columns: minmax(160px, 43%) minmax(0, 1fr);
-    min-height: clamp(150px, 12.5vw, 187px);
+    height: clamp(190px, 16vw, 250px);
+    min-height: 0;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual {
@@ -143,6 +145,10 @@
     padding: var(--mellow-card-pad-tight);
   }
 
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content {
+    justify-content: center;
+  }
+
   #MellowIngredients-{{ section.id }} .mellow-ingredients__role {
     display: block;
     width: fit-content;
@@ -187,12 +193,18 @@
       justify-content: flex-start;
     }
 
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__side {
+      grid-template-rows: none;
+    }
+
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
+      height: auto;
       min-height: 0;
       grid-template-rows: clamp(260px, 40vw, 360px) auto;
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
+      height: auto;
       min-height: 270px;
     }
   }
