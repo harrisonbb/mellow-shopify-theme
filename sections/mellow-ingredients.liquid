@@ -90,15 +90,27 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
-    grid-template-rows: minmax(0, 48%) minmax(0, 1fr);
-    height: clamp(420px, 34vw, 560px);
+    grid-template-columns: minmax(0, 44%) minmax(0, 56%);
+    height: clamp(340px, 29vw, 460px);
     min-height: 0;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
-    grid-template-columns: minmax(160px, 43%) minmax(0, 1fr);
-    height: clamp(190px, 16vw, 250px);
+    grid-template-columns: minmax(0, 44%) minmax(0, 56%);
+    height: clamp(170px, 14vw, 230px);
     min-height: 0;
+  }
+
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__visual,
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__visual {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content,
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__content {
+    grid-column: 1;
+    grid-row: 1;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual {
@@ -146,7 +158,7 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content {
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__role {
@@ -200,12 +212,23 @@
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
       height: auto;
       min-height: 0;
+      grid-template-columns: 1fr;
       grid-template-rows: clamp(260px, 40vw, 360px) auto;
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
       height: auto;
       min-height: 270px;
+    }
+
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__visual {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content {
+      grid-column: 1;
+      grid-row: 2;
     }
   }
 
@@ -229,6 +252,18 @@
       grid-template-columns: 1fr;
       grid-template-rows: clamp(220px, 60vw, 340px) auto;
       min-height: 0;
+    }
+
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__visual,
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__visual {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content,
+    #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__content {
+      grid-column: 1;
+      grid-row: 2;
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__content,
