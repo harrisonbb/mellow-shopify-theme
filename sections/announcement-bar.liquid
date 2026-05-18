@@ -18,6 +18,24 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} .utility-bar {
+    background: var(--mellow-green, #003302);
+    color: #F0EBE0;
+  }
+
+  #shopify-section-{{ section.id }} .announcement-bar,
+  #shopify-section-{{ section.id }} .announcement-bar__message,
+  #shopify-section-{{ section.id }} .announcement-bar__link,
+  #shopify-section-{{ section.id }} .announcement-bar .slider-button {
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .announcement-bar svg {
+    color: inherit;
+  }
+{%- endstyle -%}
+
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
 >
