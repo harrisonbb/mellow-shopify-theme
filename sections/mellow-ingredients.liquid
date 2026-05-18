@@ -21,7 +21,7 @@
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__header-grid {
     grid-template-columns: minmax(0, .62fr) auto;
-    margin-bottom: var(--mellow-section-content-gap-compact);
+    margin-bottom: clamp(20px, 2vw, 32px);
     align-items: start;
     gap: clamp(24px, 3vw, 48px);
   }
@@ -136,8 +136,8 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--alginate .mellow-ingredients__image {
-    object-position: center 58%;
-    transform: scale(1.04);
+    object-position: center 66%;
+    transform: scale(1.1);
     transform-origin: center bottom;
   }
 
@@ -146,8 +146,8 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--calcium .mellow-ingredients__image {
-    object-position: center center;
-    transform: scale(1.2);
+    object-position: 58% center;
+    transform: scale(1.22);
     transform-origin: center center;
   }
 
