@@ -89,18 +89,8 @@
     isolation: isolate;
   }
 
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    pointer-events: none;
-    border-radius: inherit;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
-    z-index: 2;
-  }
-
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
-    grid-template-rows: minmax(190px, 1fr) auto;
+    grid-template-rows: clamp(210px, 18vw, 260px) auto;
     min-height: clamp(315px, 26vw, 390px);
   }
 
@@ -112,23 +102,10 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual {
     position: relative;
     min-width: 0;
+    min-height: 0;
+    height: 100%;
     overflow: hidden;
     background: var(--mellow-cream, #FCFBF7);
-  }
-
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual::before,
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual::after {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 51, 2, 0.04)),
-      radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.28), transparent 29%);
-    mix-blend-mode: soft-light;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__image {
@@ -139,44 +116,15 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--alginate {
-    background:
-      radial-gradient(circle at 22% 20%, rgba(255, 214, 143, 0.72) 0 12%, transparent 31%),
-      radial-gradient(circle at 78% 32%, rgba(91, 45, 18, 0.58) 0 10%, transparent 28%),
-      radial-gradient(circle at 42% 78%, rgba(208, 74, 42, 0.46) 0 14%, transparent 35%),
-      linear-gradient(135deg, #5F331D 0%, #A45C2A 34%, #E0A246 68%, #774523 100%);
-  }
-
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--alginate::before {
-    background:
-      repeating-linear-gradient(112deg, rgba(255, 234, 178, 0.33) 0 2px, transparent 2px 18px),
-      radial-gradient(ellipse at 52% 52%, transparent 0 35%, rgba(79, 45, 21, 0.36) 68%, transparent 72%);
-    filter: blur(0.2px);
+    background: var(--mellow-cream, #FCFBF7);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--calcium {
-    background:
-      radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.86) 0 11%, transparent 25%),
-      radial-gradient(circle at 72% 66%, rgba(248, 244, 236, 0.72) 0 13%, transparent 28%),
-      linear-gradient(135deg, #FCFBF7 0%, #F8F4EC 54%, rgba(61, 107, 140, 0.16) 100%);
-  }
-
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--calcium::before {
-    background:
-      repeating-radial-gradient(circle at 42% 48%, rgba(0, 51, 2, 0.06) 0 1px, transparent 1px 9px),
-      linear-gradient(145deg, transparent, rgba(255, 255, 255, 0.52));
+    background: var(--mellow-cream, #FCFBF7);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--bicarbonate {
-    background:
-      radial-gradient(circle at 24% 30%, rgba(255, 255, 255, 0.92) 0 12%, transparent 28%),
-      radial-gradient(circle at 78% 72%, rgba(255, 255, 255, 0.78) 0 15%, transparent 31%),
-      linear-gradient(135deg, #FCFBF7 0%, #F8F4EC 58%, rgba(208, 74, 42, 0.08) 100%);
-  }
-
-  #MellowIngredients-{{ section.id }} .mellow-ingredients__visual--bicarbonate::before {
-    background:
-      repeating-radial-gradient(circle at 50% 50%, rgba(0, 51, 2, 0.07) 0 1px, transparent 1px 7px),
-      radial-gradient(ellipse at 50% 105%, rgba(0, 51, 2, 0.12), transparent 52%);
+    background: var(--mellow-cream, #FCFBF7);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__content {
@@ -187,9 +135,7 @@
     justify-content: flex-end;
     min-width: 0;
     padding: var(--mellow-card-pad-tight);
-    background:
-      radial-gradient(circle at 92% 10%, rgba(61, 107, 140, 0.08), transparent 34%),
-      rgba(252, 251, 247, 0.94);
+    background: rgba(252, 251, 247, 0.94);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact .mellow-ingredients__content {
@@ -243,7 +189,7 @@
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature {
       min-height: 0;
-      grid-template-rows: minmax(300px, 44vw) auto;
+      grid-template-rows: clamp(260px, 40vw, 360px) auto;
     }
 
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
@@ -269,7 +215,7 @@
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature,
     #MellowIngredients-{{ section.id }} .mellow-ingredients__card--compact {
       grid-template-columns: 1fr;
-      grid-template-rows: minmax(220px, 60vw) auto;
+      grid-template-rows: clamp(220px, 60vw, 340px) auto;
       min-height: 0;
     }
 
