@@ -30,7 +30,7 @@
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
-        "background_color": "#f0ebe0",
+        "background_color": "#003302",
         "eyebrow": "",
         "show_dividers": true,
         "spacing": "default",
