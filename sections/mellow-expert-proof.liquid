@@ -6,11 +6,12 @@
 <style>
   #MellowExpertProof-{{ section.id }} {
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
+    --mellow-expert-proof-bg: var(--mellow-section-green, #003302);
     --mellow-expert-proof-card-width: clamp(300px, 24vw, 380px);
     --mellow-expert-proof-card-height: clamp(430px, 38vw, 520px);
     --mellow-expert-proof-card-pad: clamp(18px, 1.4vw, 24px);
     --mellow-carousel-card-gap: clamp(24px, 2.4vw, 36px);
-    background: var(--mellow-section-green, #003302);
+    background: var(--mellow-expert-proof-bg);
     color: var(--mellow-cream, #FCFBF7);
     overflow-x: hidden;
     overflow-y: visible;
@@ -112,6 +113,7 @@
     margin-right: calc(50% - 50vw);
     overflow-x: hidden;
     overflow-y: visible;
+    background: var(--mellow-expert-proof-bg);
   }
 
   #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
@@ -136,6 +138,7 @@
     box-sizing: border-box;
     padding-left: var(--mellow-section-axis-pad);
     padding-right: var(--mellow-section-axis-pad);
+    background: var(--mellow-expert-proof-bg);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller::-webkit-scrollbar {
@@ -149,6 +152,7 @@
     width: max-content;
     max-width: none;
     will-change: transform;
+    background: var(--mellow-expert-proof-bg);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
@@ -156,6 +160,7 @@
     gap: var(--mellow-carousel-card-gap);
     align-items: stretch;
     flex: 0 0 auto;
+    background: var(--mellow-expert-proof-bg);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
