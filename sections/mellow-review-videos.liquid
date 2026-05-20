@@ -34,20 +34,72 @@
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__text {
+    max-width: 640px;
     margin-top: 22px;
-    margin-bottom: clamp(26px, 2.8vw, 40px);
+    margin-bottom: clamp(20px, 2.1vw, 30px);
     color: rgba(20, 33, 17, 0.72);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-cue {
+    display: flex;
+    align-items: center;
+    width: min(100%, 460px);
+    margin: 0 0 clamp(24px, 2.4vw, 34px);
+    padding: 12px 16px 12px 12px;
+    gap: 14px;
+    border: 1px solid rgba(0, 51, 2, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 14px 36px rgba(0, 51, 2, 0.06);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-frame {
+    flex: 0 0 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 8px;
+    background: var(--mellow-card-cream, #F8F4EC);
+    overflow: hidden;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-image {
+    width: 38px;
+    max-height: 54px;
+    object-fit: contain;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-label {
+    margin: 0 0 4px;
+    color: var(--mellow-orange-red, #D04A2A);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-copy {
+    margin: 0;
+    color: rgba(0, 51, 2, 0.88);
+    font-size: clamp(14px, 0.96vw, 15px);
+    font-weight: 650;
+    line-height: 1.35;
+    text-wrap: balance;
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__actions {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta {
-    --mellow-section-cta-width: clamp(218px, 13.5vw, 246px);
+    --mellow-section-cta-width: clamp(230px, 14.5vw, 264px);
+    box-shadow: 0 14px 30px rgba(0, 51, 2, 0.14);
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta .mellow-section-cta__arrow {
@@ -59,8 +111,8 @@
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__proof {
     display: flex;
     flex-wrap: wrap;
-    gap: 9px 14px;
-    max-width: 520px;
+    gap: 8px;
+    max-width: 600px;
     margin: 0;
     padding: 0;
   }
@@ -68,9 +120,14 @@
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__proof span {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    color: rgba(0, 51, 2, 0.74);
-    font-size: 13px;
+    min-height: 32px;
+    padding: 0 12px;
+    gap: 8px;
+    border: 1px solid rgba(0, 51, 2, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 51, 2, 0.78);
+    font-size: 12px;
     font-weight: 650;
     line-height: 1.2;
   }
@@ -78,10 +135,18 @@
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__proof span::before {
     content: "";
     flex: 0 0 auto;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 999px;
     background: var(--mellow-orange-red, #D04A2A);
+  }
+
+  #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta-note {
+    margin: 0;
+    color: rgba(0, 51, 2, 0.72);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.35;
   }
 
   #MellowReviewVideos-{{ section.id }} .mellow-review-videos__grid {
@@ -269,6 +334,25 @@
       height: auto;
       aspect-ratio: 4 / 5;
     }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-cue {
+      width: min(100%, 560px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__cta {
+      width: 100%;
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__product-cue {
+      align-items: flex-start;
+    }
+
+    #MellowReviewVideos-{{ section.id }} .mellow-review-videos__proof span {
+      min-height: 30px;
+      padding-inline: 10px;
+    }
   }
 </style>
 
@@ -283,14 +367,33 @@
         <h2 class="mellow-section-heading mellow-review-videos__heading">For anyone who thinks twice<br>before eating.</h2>
         <p class="mellow-section-text mellow-review-videos__text">Short, honest moments from people using Mellow after meals, before bed, and when reflux tends to show up.</p>
 
+        <div class="mellow-review-videos__product-cue" aria-label="Mellow single-serve pouch">
+          <span class="mellow-review-videos__product-frame" aria-hidden="true">
+            <img
+              src="{{ 'mellow-reflux-calm-pouch.png' | asset_url }}"
+              alt=""
+              class="mellow-review-videos__product-image"
+              width="520"
+              height="649"
+              loading="lazy"
+              decoding="async"
+            >
+          </span>
+          <div class="mellow-review-videos__product-content">
+            <p class="mellow-review-videos__product-label">Single-serve pouch</p>
+            <p class="mellow-review-videos__product-copy">One pouch after meals or before bed. No bottle, no chalky chew.</p>
+          </div>
+        </div>
+
         <div class="mellow-review-videos__actions">
           <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-review-videos__cta" href="/products/mellow-reflux-relief-gel">
             <span class="mellow-section-cta__label">Try Mellow</span>
             <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
           </a>
+          <p class="mellow-review-videos__cta-note">30 single-serve pouches. No subscription to cancel.</p>
           <p class="mellow-review-videos__proof" aria-label="Mellow purchase details">
             <span>30-day guarantee</span>
-            <span>No subscription required</span>
+            <span>Secure checkout</span>
             <span>HSA/FSA eligible</span>
           </p>
         </div>
@@ -298,7 +401,7 @@
 
       <div class="mellow-review-videos__grid">
         {%- liquid
-          assign review_cards = 'After dinner relief|Easy after meals|“I keep one near the kitchen. It became part of my after-dinner routine fast.”|Rachel B. · After-meal reflux|0:18||Before bed routine|Simple before sleep|“It feels simple: one pouch before bed, no measuring, no chalky tablet.”|Priya N. · Nighttime reflux|0:22||On-the-go support|Fits real life|“I like that it fits in my bag. It feels made for real life, not just the medicine cabinet.”|Michael T. · Travel & workdays|0:15' | split: '||'
+          assign review_cards = 'After dinner relief|Easy after meals|“One pouch after dinner. It became automatic fast.”|Rachel B. · After-meal reflux|0:18||Before bed routine|Simple before sleep|“Before bed is simple now: one pouch, no measuring.”|Priya N. · Nighttime reflux|0:22||On-the-go support|Fits real life|“It fits in my bag, so I can keep moving.”|Michael T. · Travel & workdays|0:15' | split: '||'
         -%}
 
         {%- for card in review_cards -%}
