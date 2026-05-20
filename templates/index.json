@@ -21,7 +21,7 @@
         "primary_label": "Try Mellow",
         "primary_link": "/products/mellow-reflux-relief-gel",
         "secondary_label": "Take the Quiz",
-        "secondary_link": "/pages/quiz",
+        "secondary_link": "https://mellow-find-flow.base44.app",
         "helper_text": "Find out if Mellow fits your reflux routine.",
         "trust_line": "Forms within minutes. Holds for hours. After meals. Before bed.",
         "hero_image": "shopify://shop_images/Generated_with_Kive.ai_-_kive-image_6.png"
@@ -142,8 +142,8 @@
         "card_title": "Published research, made practical",
         "card_body": "Alginate-based formulas have been studied across clinical trials, meta-analyses, and reflux research for more than two decades.",
         "card_note": "Citations available in the full research library.",
-        "padding_top": 72,
-        "padding_bottom": 76
+        "padding_top": 88,
+        "padding_bottom": 88
       }
     },
     "mellow_expert_proof": {
