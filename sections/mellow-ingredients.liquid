@@ -5,7 +5,7 @@
 
 <style>
   #MellowIngredients-{{ section.id }} {
-    --mellow-ingredients-card-gap: clamp(18px, 1.8vw, 28px);
+    --mellow-ingredients-card-gap: clamp(16px, 1.6vw, 24px);
     --mellow-ingredients-small-card-height: clamp(170px, 14vw, 230px);
     --mellow-ingredients-feature-card-height: calc((var(--mellow-ingredients-small-card-height) * 2) + var(--mellow-ingredients-card-gap));
     padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
@@ -20,10 +20,10 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__header-grid {
-    grid-template-columns: minmax(0, 760px) minmax(220px, 1fr);
-    margin-bottom: clamp(12px, 1.25vw, 20px);
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    margin-bottom: clamp(8px, 1vw, 14px);
     align-items: end;
-    gap: clamp(24px, 3vw, 56px);
+    gap: var(--mellow-ingredients-card-gap);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__header {
@@ -45,15 +45,20 @@
     margin-top: var(--mellow-section-heading-gap);
     font-size: clamp(16px, 1.15vw, 20px);
     line-height: 1.35;
-    color: rgba(0, 51, 2, 0.76);
+    font-weight: 430;
+    color: rgba(0, 51, 2, 0.8);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__actions {
     justify-self: start;
     align-self: end;
     width: auto;
-    min-width: clamp(210px, 15vw, 250px);
-    padding-bottom: clamp(2px, .45vw, 8px);
+    min-width: 0;
+    padding-bottom: clamp(0px, .25vw, 4px);
+  }
+
+  #MellowIngredients-{{ section.id }} .mellow-ingredients__actions .mellow-section-cta-wrap {
+    justify-content: flex-start;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__cta {
@@ -196,7 +201,9 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__description {
     max-width: 32rem;
     margin-top: clamp(6px, .6vw, 9px);
-    color: rgba(0, 51, 2, 0.76);
+    color: rgba(0, 51, 2, 0.82);
+    font-weight: 450;
+    line-height: 1.43;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__title {
