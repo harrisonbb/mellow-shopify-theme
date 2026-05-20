@@ -20,10 +20,10 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__header-grid {
-    grid-template-columns: minmax(0, .62fr) auto;
-    margin-bottom: clamp(20px, 2vw, 32px);
-    align-items: start;
-    gap: clamp(24px, 3vw, 48px);
+    grid-template-columns: minmax(0, 760px) minmax(220px, 1fr);
+    margin-bottom: clamp(12px, 1.25vw, 20px);
+    align-items: end;
+    gap: clamp(24px, 3vw, 56px);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__header {
@@ -45,14 +45,15 @@
     margin-top: var(--mellow-section-heading-gap);
     font-size: clamp(16px, 1.15vw, 20px);
     line-height: 1.35;
-    color: rgba(0, 51, 2, 0.68);
+    color: rgba(0, 51, 2, 0.76);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__actions {
-    align-self: start;
+    justify-self: start;
+    align-self: end;
     width: auto;
-    min-width: clamp(220px, 17vw, 286px);
-    padding-top: clamp(8px, .8vw, 12px);
+    min-width: clamp(210px, 15vw, 250px);
+    padding-bottom: clamp(2px, .45vw, 8px);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__cta {
@@ -62,6 +63,7 @@
     --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
+    --mellow-section-cta-width: clamp(208px, 14vw, 238px);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__grid {
@@ -84,10 +86,10 @@
     display: grid;
     overflow: hidden;
     min-width: 0;
-    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
+    border: 1px solid rgba(0, 51, 2, 0.14);
     border-radius: min(var(--mellow-radius-card), 28px);
     background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
+    box-shadow: 0 24px 64px rgba(0, 51, 2, 0.07);
     isolation: isolate;
   }
 
@@ -172,7 +174,7 @@
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__content {
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__role {
@@ -194,7 +196,7 @@
   #MellowIngredients-{{ section.id }} .mellow-ingredients__description {
     max-width: 32rem;
     margin-top: clamp(6px, .6vw, 9px);
-    color: rgba(0, 51, 2, 0.68);
+    color: rgba(0, 51, 2, 0.76);
   }
 
   #MellowIngredients-{{ section.id }} .mellow-ingredients__card--feature .mellow-ingredients__title {
