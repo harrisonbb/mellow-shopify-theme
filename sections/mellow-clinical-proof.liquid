@@ -58,14 +58,14 @@
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: var(--mellow-section-content-gap);
+    margin-top: clamp(54px, 5.4vw, 78px);
     border-top: 1px solid var(--mellow-clinical-divider);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
     position: relative;
     min-width: 0;
-    padding: clamp(40px, 5vw, 72px) clamp(20px, 2vw, 34px);
+    padding: clamp(34px, 4vw, 56px) clamp(20px, 2vw, 34px);
     text-align: left;
   }
 
@@ -90,8 +90,8 @@
     content: "";
     position: absolute;
     left: 0;
-    top: clamp(40px, 5vw, 72px);
-    bottom: clamp(40px, 5vw, 72px);
+    top: clamp(34px, 4vw, 56px);
+    bottom: clamp(34px, 4vw, 56px);
     width: 1px;
     background: var(--mellow-clinical-divider);
   }
@@ -103,7 +103,7 @@
     text-align: left;
     color: var(--mellow-forest, #003302);
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(76px, 7.2vw, 120px);
+    font-size: clamp(70px, 6.6vw, 108px);
     font-weight: var(--mellow-heading-weight);
     letter-spacing: -0.06em;
     line-height: 0.86;
@@ -125,7 +125,7 @@
     text-align: left;
     color: var(--mellow-clinical-sage);
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(22px, 2vw, 34px);
+    font-size: clamp(21px, 1.8vw, 30px);
     font-weight: 600;
     line-height: 1.02;
     letter-spacing: -0.028em;
@@ -148,7 +148,7 @@
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__content {
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.72fr);
     gap: var(--mellow-feature-gap);
     align-items: center;
   }
@@ -213,7 +213,7 @@
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card {
     position: relative;
     overflow: hidden;
-    min-height: clamp(360px, 32vw, 480px);
+    min-height: clamp(340px, 29vw, 430px);
     padding: var(--mellow-card-pad-airy);
     border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
     border-radius: var(--mellow-radius-card);
@@ -247,9 +247,48 @@
     margin-top: 18px;
   }
 
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    max-width: 520px;
+    margin-top: clamp(28px, 3vw, 40px);
+    overflow: hidden;
+    border: 1px solid rgba(0, 51, 2, 0.12);
+    border-radius: min(var(--mellow-radius-card), 18px);
+    background: rgba(0, 51, 2, 0.12);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-item {
+    min-width: 0;
+    padding: clamp(14px, 1.3vw, 18px);
+    background: rgba(252, 251, 247, 0.56);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-value {
+    display: block;
+    color: var(--mellow-forest, #003302);
+    font-family: var(--mellow-font-display) !important;
+    font-size: clamp(20px, 1.8vw, 28px);
+    font-weight: var(--mellow-heading-weight);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-label {
+    display: block;
+    margin-top: 8px;
+    color: var(--mellow-clinical-cream-muted);
+    font-size: clamp(11px, 0.84vw, 13px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-note {
     max-width: 390px;
-    margin: clamp(24px, 3vw, 36px) 0 0;
+    margin: clamp(22px, 2.6vw, 32px) 0 0;
     color: var(--mellow-forest, #003302);
     font-size: clamp(14px, 1vw, 16px);
     font-weight: 700;
@@ -327,6 +366,10 @@
       border-radius: min(var(--mellow-radius-card), 24px);
     }
 
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-list {
+      grid-template-columns: 1fr;
+    }
+
     #MellowClinicalProof-{{ section.id }}.has-background-image::before {
       background: rgba(252, 251, 247, 0.24);
     }
@@ -377,6 +420,20 @@
         <div class="mellow-clinical-proof__card-copy">
           <h3 class="mellow-card-title mellow-clinical-proof__card-title">{{ section.settings.card_title | escape }}</h3>
           <p class="mellow-card-copy mellow-clinical-proof__card-body">{{ section.settings.card_body | escape }}</p>
+          <div class="mellow-clinical-proof__evidence-list" aria-label="Research categories">
+            <div class="mellow-clinical-proof__evidence-item">
+              <span class="mellow-clinical-proof__evidence-value">10+</span>
+              <span class="mellow-clinical-proof__evidence-label">Studies</span>
+            </div>
+            <div class="mellow-clinical-proof__evidence-item">
+              <span class="mellow-clinical-proof__evidence-value">25+</span>
+              <span class="mellow-clinical-proof__evidence-label">Years</span>
+            </div>
+            <div class="mellow-clinical-proof__evidence-item">
+              <span class="mellow-clinical-proof__evidence-value">RCT</span>
+              <span class="mellow-clinical-proof__evidence-label">Evidence</span>
+            </div>
+          </div>
           <p class="mellow-clinical-proof__card-note">{{ section.settings.card_note | escape }}</p>
         </div>
       </article>
@@ -487,7 +544,7 @@
       "type": "text",
       "id": "stat_3_label",
       "label": "Stat 3 label",
-      "default": "most recent RCT confirming superiority vs. antacid alone"
+      "default": "recent RCT vs. antacid alone"
     },
     {
       "type": "textarea",
@@ -517,7 +574,7 @@
       "type": "text",
       "id": "headline_line_3",
       "label": "Headline line 3",
-      "default": "Shown to work."
+      "default": "Clinically studied."
     },
     {
       "type": "textarea",
@@ -529,7 +586,7 @@
       "type": "text",
       "id": "cta_label",
       "label": "CTA label",
-      "default": "View the science"
+      "default": "Explore the research"
     },
     {
       "type": "url",
@@ -546,7 +603,7 @@
       "type": "text",
       "id": "card_title",
       "label": "Trust card title",
-      "default": "Built on published alginate research"
+      "default": "Published research, made practical"
     },
     {
       "type": "textarea",
