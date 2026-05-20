@@ -30,7 +30,7 @@
     "mellow_trust_bar": {
       "type": "mellow-trust-bar",
       "settings": {
-        "background_color": "#FCFBF7",
+        "background_color": "#fcfbf7",
         "eyebrow": "",
         "show_dividers": true,
         "spacing": "default",
@@ -106,9 +106,9 @@
         "eyebrow": "Why it works",
         "heading": "How MellowRaft™ works",
         "subheading": "Mellow activates in stomach acid to form a soft, floating barrier that helps keep reflux where it starts.",
-        "image_1": "shopify://shop_images/ds.png",
-        "image_2": "shopify://shop_images/Acid12.png",
-        "image_3": "shopify://shop_images/Acid13_c76e0524-b9d8-4a33-99da-1d3027b380ca.png",
+        "image_1": "shopify://shop_images/activate1.png",
+        "image_2": "shopify://shop_images/form2.png",
+        "image_3": "shopify://shop_images/float1.png",
         "step_1_title": "ACTIVATE",
         "step_1_description": "Gel meets acid.",
         "step_2_title": "FORM",
