@@ -391,9 +391,15 @@
         {%- endif -%}
 
         <h2 id="MellowClinicalProofHeading-{{ section.id }}" class="mellow-section-heading mellow-clinical-proof__heading">
-          <span class="mellow-clinical-proof__heading-line">{{ section.settings.headline_line_1 | escape }}</span>
-          <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--sage">{{ section.settings.headline_line_2 | escape }}</span>
-          <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--accent">{{ section.settings.headline_line_3 | escape }}</span>
+          {%- if section.settings.headline_line_1 != blank -%}
+            <span class="mellow-clinical-proof__heading-line">{{ section.settings.headline_line_1 | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.headline_line_2 != blank -%}
+            <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--sage">{{ section.settings.headline_line_2 | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.headline_line_3 != blank -%}
+            <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--accent">{{ section.settings.headline_line_3 | escape }}</span>
+          {%- endif -%}
         </h2>
 
         {%- if section.settings.body != blank -%}
@@ -562,19 +568,19 @@
       "type": "text",
       "id": "headline_line_1",
       "label": "Headline line 1",
-      "default": "Alginate raft technology."
+      "default": "A simple barrier."
     },
     {
       "type": "text",
       "id": "headline_line_2",
       "label": "Headline line 2",
-      "default": "Studied for decades."
+      "default": "Decades of research behind it."
     },
     {
       "type": "text",
       "id": "headline_line_3",
       "label": "Headline line 3",
-      "default": "Clinically studied."
+      "default": ""
     },
     {
       "type": "textarea",
