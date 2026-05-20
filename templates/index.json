@@ -64,7 +64,10 @@
     "mellow_review_videos": {
       "type": "mellow-review-videos",
       "settings": {
-        "color_scheme": ""
+        "color_scheme": "",
+        "card_1_image": "shopify://shop_images/Adams_1504dd.jpg",
+        "card_2_image": "shopify://shop_images/00000dd72500113659175861.jpg",
+        "card_3_image": "shopify://shop_images/dddsdsd.jpg"
       }
     },
     "mellow_how_to_use": {
