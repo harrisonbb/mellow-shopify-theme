@@ -7,6 +7,10 @@
   #MellowWhoItsFor-{{ section.id }} {
     --mellow-who-icon-size: clamp(6.9rem, 5.25vw, 8rem);
     --mellow-who-icon-svg-size: clamp(2.9rem, 2.45vw, 3.6rem);
+    --mellow-who-edge-fade: clamp(72px, 7vw, 148px);
+    --mellow-who-card-surface: #FAF7EF;
+    --mellow-who-card-border: rgba(0, 51, 2, 0.14);
+    --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.68) inset, 0 26px 70px rgba(0, 24, 2, 0.11);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -28,10 +32,11 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
-    align-items: center;
-    gap: var(--mellow-section-content-gap);
-    margin-bottom: var(--mellow-section-content-gap);
+    grid-template-columns: minmax(0, var(--mellow-header-max)) max-content;
+    align-items: end;
+    justify-content: start;
+    gap: clamp(46px, 5.8vw, 112px);
+    margin-bottom: clamp(46px, 4.4vw, 70px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header {
@@ -45,29 +50,42 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
     max-width: var(--mellow-header-max);
     color: var(--mellow-cream, #FCFBF7);
+    letter-spacing: 0;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
     max-width: var(--mellow-copy-max);
     margin: var(--mellow-section-heading-gap) 0 0;
-    color: rgba(252, 251, 247, 0.86);
-    font-size: var(--mellow-subhead-size);
-    line-height: var(--mellow-subhead-line-height);
+    color: rgba(252, 251, 247, 0.93);
+    font-size: 20px;
+    line-height: 1.5;
     font-weight: 400;
-    letter-spacing: var(--mellow-subhead-tracking);
+    letter-spacing: 0;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
-    justify-self: end;
-    align-self: center;
+    justify-self: start;
+    align-self: end;
     transform: none;
     width: var(--mellow-cta-width);
+    margin-bottom: clamp(2px, 0.4vw, 8px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     width: 100%;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button {
+    --mellow-section-cta-bg: var(--mellow-cream, #FCFBF7);
+    --mellow-section-cta-border: rgba(252, 251, 247, 0.72);
+    --mellow-section-cta-color: var(--mellow-forest, #003302);
+    --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
+    --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
+    --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
+    letter-spacing: 0;
+    box-shadow: 0 12px 28px rgba(0, 20, 1, 0.12);
   }
 
   #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__carousel-wrap,
@@ -86,11 +104,34 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
+    position: relative;
+    isolation: isolate;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
     padding-bottom: 70px;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::before,
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 70px;
+    z-index: 4;
+    width: var(--mellow-who-edge-fade);
+    pointer-events: none;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--mellow-section-green, #003302) 0%, rgba(0, 51, 2, 0) 100%);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--mellow-section-green, #003302) 0%, rgba(0, 51, 2, 0) 100%);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
@@ -99,6 +140,7 @@
     overflow-x: hidden;
     overflow-y: visible;
     position: relative;
+    z-index: 1;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__track {
@@ -124,12 +166,12 @@
     height: clamp(276px, 22vw, 340px);
     padding: var(--mellow-card-pad-standard);
 
-    background: var(--mellow-card-cream, #F8F4EC) !important;
+    background: var(--mellow-who-card-surface, #FAF7EF) !important;
     background-image: none !important;
-    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10)) !important;
+    border: 1px solid var(--mellow-who-card-border, rgba(0, 51, 2, 0.14)) !important;
     border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
-    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
+    box-shadow: var(--mellow-who-card-shadow, 0 26px 70px rgba(0, 24, 2, 0.11));
     background-clip: border-box;
 
     overflow: hidden;
@@ -147,19 +189,22 @@
     transform: none !important;
     z-index: 20;
 
-    background: var(--mellow-card-cream, #F8F4EC) !important;
+    background: var(--mellow-who-card-surface, #FAF7EF) !important;
     background-image: none !important;
-    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10)) !important;
+    border: 1px solid rgba(208, 74, 42, 0.24) !important;
     border-radius: var(--mellow-radius-card) !important;
     outline: 0 !important;
-    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.72) inset,
+      0 28px 78px rgba(0, 24, 2, 0.14),
+      0 0 0 1px rgba(208, 74, 42, 0.08);
     background-clip: border-box;
     filter: none;
     opacity: 1;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) {
-    opacity: 0.96;
+    opacity: 0.92;
     filter: none;
   }
 
@@ -219,32 +264,35 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
-    margin-top: 20px;
+    margin-top: clamp(22px, 1.8vw, 30px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
     margin: 0;
-    font-size: var(--mellow-card-title-size);
-    line-height: 1.04;
-    font-weight: var(--mellow-card-title-weight);
-    letter-spacing: var(--mellow-card-title-tracking);
+    font-size: 30px;
+    line-height: 1.05;
+    font-weight: 650;
+    letter-spacing: 0;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__divider {
     display: block;
-    width: 48px;
+    width: 52px;
     height: 2px;
-    margin-top: 10px;
-    margin-bottom: 14px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    border-radius: var(--mellow-radius-pill, 999px);
+    background: var(--mellow-orange-red, #D04A2A);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
     margin: 0;
-    max-width: 94%;
-    font-size: var(--mellow-card-copy-size);
-    line-height: 1.48;
+    max-width: 92%;
+    color: rgba(20, 33, 17, 0.78);
+    font-size: 17px;
+    line-height: 1.5;
     font-weight: 400;
-    letter-spacing: var(--mellow-card-copy-tracking);
+    letter-spacing: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -254,6 +302,10 @@
   }
 
   @media screen and (max-width: 749px) {
+    #MellowWhoItsFor-{{ section.id }} {
+      --mellow-who-edge-fade: clamp(28px, 11vw, 72px);
+    }
+
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
@@ -261,14 +313,15 @@
 
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
-      font-size: 16px;
-      line-height: 1.45;
+      font-size: 16.5px;
+      line-height: 1.48;
       max-width: 360px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
       width: 100%;
       margin-top: var(--mellow-section-content-gap-compact);
+      margin-bottom: 0;
       transform: none;
     }
 
@@ -281,6 +334,11 @@
       padding-bottom: 52px;
     }
 
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::before,
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::after {
+      bottom: 52px;
+    }
+
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
       width: 320px;
       height: 282px;
@@ -290,6 +348,18 @@
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
       transform: none !important;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
+      font-size: 25px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
+      font-size: 16.5px;
+      line-height: 1.48;
+      letter-spacing: 0;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
