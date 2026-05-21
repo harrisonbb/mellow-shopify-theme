@@ -118,25 +118,6 @@
         "footnote": "Based on the known behavior of alginate raft-forming formulations."
       }
     },
-    "mellow_ppi_support": {
-      "type": "mellow-ppi-support",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "ACID REDUCTION + BARRIER SUPPORT",
-        "heading": "Taking a PPI? Think barrier, not replacement.",
-        "body": "PPIs help lower acid production over time. MellowRaft™ works differently: it forms a floating alginate barrier designed to help keep reflux from rising when symptoms still break through.",
-        "emphasis_line": "Less acid is one strategy.\nA better barrier is another.",
-        "card_1_title": "PPIs reduce acid",
-        "card_1_body": "Proton pump inhibitors help lower how much acid your stomach produces — but they can take time to reach their full effect.",
-        "card_2_title": "Mellow forms a barrier",
-        "card_2_body": "MellowRaft™ uses alginate raft technology to create a floating physical barrier above stomach contents.",
-        "card_3_title": "Different jobs, same goal",
-        "card_3_body": "One approach reduces acid production. The other supports the moments after meals, at night, or when reflux still breaks through.",
-        "disclaimer": "Mellow is not a replacement for prescribed medication. Do not stop or change reflux medication without speaking with your clinician.",
-        "cta_label": "Try Mellow",
-        "cta_link": "/products/mellow-reflux-relief-gel"
-      }
-    },
     "mellow_clinical_proof": {
       "type": "mellow-clinical-proof",
       "settings": {
@@ -234,6 +215,101 @@
       "settings": {
         "heading": "Answer final purchase questions calmly."
       }
+    },
+    "mellow_science_page_9kbRfK": {
+      "type": "mellow-science-page",
+      "name": "Mellow Science Clean",
+      "settings": {
+        "eyebrow": "The science",
+        "heading": "The science behind raft-forming reflux relief.",
+        "subheading": "Mellow is built around alginate raft technology — a mechanical approach designed to help reduce reflux by forming a floating barrier in the stomach.",
+        "button_label": "See how it works",
+        "button_link": "",
+        "footnote": "Based on published studies of alginate raft-forming formulations."
+      }
+    },
+    "mellow_premium_positioning_reminder_qFnPa3": {
+      "type": "mellow-premium-positioning-reminder",
+      "name": "Mellow premium reminder",
+      "settings": {
+        "eyebrow": "Internal brand strategy",
+        "heading": "Premium positioning reminder for Mellow.",
+        "subheading": "A clean internal reminder for keeping Mellow's premium pricing story focused on format, ritual, science, and relief moment ownership.",
+        "note": "Use this section while building the site, PDP, ads, and packaging hierarchy. Remove or hide it before publishing customer-facing pages."
+      }
+    },
+    "mellow_expectations_timeline_QCfGUF": {
+      "type": "mellow-expectations-timeline",
+      "blocks": {
+        "timeline_item_BPnLXd": {
+          "type": "timeline_item",
+          "settings": {
+            "label": "Day 1",
+            "headline": "Something finally feels different",
+            "bullet_1": "That familiar burn starts to settle after meals",
+            "bullet_2": "Less of that tight, acidic pressure in your chest",
+            "bullet_3": "You notice something working — and it’s not nothing"
+          }
+        },
+        "timeline_item_CBP9Vb": {
+          "type": "timeline_item",
+          "settings": {
+            "label": "7 Days",
+            "headline": "Meals feel less loaded",
+            "bullet_1": "You stop dreading the hour after dinner",
+            "bullet_2": "That creeping feeling at night starts to ease",
+            "bullet_3": "You eat, and it doesn’t have to ruin the rest of your evening"
+          }
+        },
+        "timeline_item_7jwcaq": {
+          "type": "timeline_item",
+          "settings": {
+            "label": "2 Weeks",
+            "headline": "You stop bracing for it",
+            "bullet_1": "Less mental math about what you can and can’t eat",
+            "bullet_2": "You go to bed without waiting for reflux to show up",
+            "bullet_3": "Eating out starts to feel less like a gamble"
+          }
+        },
+        "timeline_item_MREGPU": {
+          "type": "timeline_item",
+          "settings": {
+            "label": "4 Weeks",
+            "headline": "It stops being the thing you plan around",
+            "bullet_1": "Meals with friends don’t come with a side of anxiety",
+            "bullet_2": "You’re not checking where the antacids are before you leave",
+            "bullet_3": "A run of normal days starts to feel normal again"
+          }
+        },
+        "timeline_item_xDzEb3": {
+          "type": "timeline_item",
+          "settings": {
+            "label": "3 Months",
+            "headline": "Food feels like yours again",
+            "bullet_1": "You order what you actually want",
+            "bullet_2": "You make it through more nights without reflux calling the shots",
+            "bullet_3": "Reflux may still need managing — it’s just not in charge anymore"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_item_BPnLXd",
+        "timeline_item_CBP9Vb",
+        "timeline_item_7jwcaq",
+        "timeline_item_MREGPU",
+        "timeline_item_xDzEb3"
+      ],
+      "name": "Mellow expectations timeline",
+      "settings": {
+        "eyebrow": "WHAT TO EXPECT",
+        "heading": "What changes when reflux stops running the night.",
+        "subheading": "<p>Mellow helps create a protective raft barrier during reflux-prone moments, so relief can become less reactive — and more routine.</p>",
+        "usage_heading": "How to use:",
+        "usage_text": "<p>Take one pouch during reflux-prone moments, or as directed on pack.</p>",
+        "footnote": "Based on studies of alginate and alginate-antacid raft-forming formulations. Individual results may vary.",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
@@ -244,12 +320,14 @@
     "mellow_how_to_use",
     "mellow_ingredients",
     "mellow_why_it_works",
-    "mellow_ppi_support",
     "mellow_clinical_proof",
     "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
     "mellow_day_night_scroll",
-    "mellow_faq"
+    "mellow_faq",
+    "mellow_science_page_9kbRfK",
+    "mellow_premium_positioning_reminder_qFnPa3",
+    "mellow_expectations_timeline_QCfGUF"
   ]
 }
