@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,9 +15,22 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "mellow_science_page_GrK3jP": {
+      "type": "mellow-science-page",
+      "name": "Mellow Science Clean",
+      "settings": {
+        "eyebrow": "The science",
+        "heading": "CAN I TAKE THIS WITH A PPI",
+        "subheading": "Mellow is built around alginate raft technology — a mechanical approach designed to help reduce reflux by forming a floating barrier in the stomach.",
+        "button_label": "See how it works",
+        "button_link": "",
+        "footnote": "Based on published studies of alginate raft-forming formulations."
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "mellow_science_page_GrK3jP"
   ]
 }
