@@ -7,7 +7,7 @@
   #MellowWhoItsFor-{{ section.id }} {
     --mellow-who-icon-size: clamp(6.9rem, 5.25vw, 8rem);
     --mellow-who-icon-svg-size: clamp(2.9rem, 2.45vw, 3.6rem);
-    --mellow-who-edge-fade: clamp(72px, 7vw, 148px);
+    --mellow-who-edge-fade: clamp(220px, 18vw, 360px);
     --mellow-who-card-surface: #FAF7EF;
     --mellow-who-card-border: rgba(0, 51, 2, 0.14);
     --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.68) inset, 0 26px 70px rgba(0, 24, 2, 0.11);
@@ -117,21 +117,35 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: -1px;
     bottom: 70px;
-    z-index: 4;
+    z-index: 60;
     width: var(--mellow-who-edge-fade);
     pointer-events: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::before {
     left: 0;
-    background: linear-gradient(90deg, var(--mellow-section-green, #003302) 0%, rgba(0, 51, 2, 0) 100%);
+    background:
+      linear-gradient(
+        90deg,
+        var(--mellow-section-green, #003302) 0%,
+        var(--mellow-section-green, #003302) 34%,
+        rgba(0, 51, 2, 0.94) 52%,
+        rgba(0, 51, 2, 0) 100%
+      );
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap::after {
     right: 0;
-    background: linear-gradient(270deg, var(--mellow-section-green, #003302) 0%, rgba(0, 51, 2, 0) 100%);
+    background:
+      linear-gradient(
+        270deg,
+        var(--mellow-section-green, #003302) 0%,
+        var(--mellow-section-green, #003302) 34%,
+        rgba(0, 51, 2, 0.94) 52%,
+        rgba(0, 51, 2, 0) 100%
+      );
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
@@ -303,7 +317,7 @@
 
   @media screen and (max-width: 749px) {
     #MellowWhoItsFor-{{ section.id }} {
-      --mellow-who-edge-fade: clamp(28px, 11vw, 72px);
+      --mellow-who-edge-fade: clamp(96px, 30vw, 150px);
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
