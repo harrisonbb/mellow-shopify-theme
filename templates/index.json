@@ -118,6 +118,26 @@
         "footnote": "Based on the known behavior of alginate raft-forming formulations."
       }
     },
+    "mellow_ppi_support": {
+      "type": "mellow-ppi-support",
+      "name": "PPI Support / Barrier Support",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "PPI SUPPORT",
+        "heading": "Taking a PPI? Think barrier, not replacement.",
+        "body": "PPIs help reduce acid production over time. Mellow is designed for the moments acid can still rise — forming a floating alginate barrier after you take it.",
+        "emphasis_line": "Mellow is not a replacement for prescribed medication.\nIt is barrier support for breakthrough reflux moments.",
+        "card_1_title": "PPIs lower acid.",
+        "card_1_body": "They work by reducing how much acid your stomach produces, but they can take time to reach full effect and do not create a physical barrier.",
+        "card_2_title": "Mellow forms a raft.",
+        "card_2_body": "MellowRaft™ uses alginate technology to form a floating barrier that helps block reflux from rising after meals.",
+        "card_3_title": "Different jobs. Same goal.",
+        "card_3_body": "A PPI works upstream by reducing acid production. Mellow works at the surface, creating a protective raft where reflux begins.",
+        "disclaimer": "Always follow your clinician’s guidance and do not stop or change prescribed medication without speaking with them.",
+        "cta_label": "Try Mellow",
+        "cta_link": "/products/mellow-reflux-relief-gel"
+      }
+    },
     "mellow_clinical_proof": {
       "type": "mellow-clinical-proof",
       "settings": {
@@ -320,6 +340,7 @@
     "mellow_how_to_use",
     "mellow_ingredients",
     "mellow_why_it_works",
+    "mellow_ppi_support",
     "mellow_clinical_proof",
     "mellow_expert_proof",
     "mellow_compare",
