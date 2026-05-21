@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "ppi_support_page": {
+      "type": "mellow-ppi-support-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "ppi_support_page"
+  ]
+}
