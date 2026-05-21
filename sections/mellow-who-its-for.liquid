@@ -7,7 +7,7 @@
   #MellowWhoItsFor-{{ section.id }} {
     --mellow-who-icon-size: clamp(6.9rem, 5.25vw, 8rem);
     --mellow-who-icon-svg-size: clamp(2.9rem, 2.45vw, 3.6rem);
-    --mellow-who-edge-fade: clamp(64px, 7vw, 150px);
+    --mellow-who-edge-fade: clamp(36px, 5vw, 72px);
     --mellow-who-card-surface: #FAF7EF;
     --mellow-who-card-border: rgba(0, 51, 2, 0.14);
     --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.68) inset, 0 26px 70px rgba(0, 24, 2, 0.11);
@@ -297,15 +297,15 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowWhoItsFor-{{ section.id }} {
-      --mellow-who-edge-fade: 28px;
-    }
-
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
     }
 
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
       font-size: 16.5px;
