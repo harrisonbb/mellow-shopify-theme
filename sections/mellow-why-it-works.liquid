@@ -343,6 +343,33 @@
     letter-spacing: -0.01em;
   }
 
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__ppi-note {
+    max-width: 760px;
+    margin: clamp(34px, 3vw, 46px) 0 0 clamp(0px, 1.4vw, 24px);
+    padding-top: clamp(24px, 2.4vw, 34px);
+    border-top: 1px solid rgba(252, 251, 247, 0.2);
+    color: rgba(252, 251, 247, 0.88);
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__ppi-heading {
+    margin: 0;
+    color: var(--mellow-cream, #FCFBF7);
+    font-family: var(--font-heading-family, inherit);
+    font-size: clamp(22px, 1.8vw, 30px);
+    line-height: 1.08;
+    font-weight: 650;
+    letter-spacing: -0.025em;
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__ppi-body {
+    max-width: 700px;
+    margin: 12px 0 0;
+    color: rgba(252, 251, 247, 0.84);
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
   @media screen and (max-width: 989px) {
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
@@ -399,6 +426,10 @@
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__footnote {
+      margin-left: 4px;
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__ppi-note {
       margin-left: 4px;
     }
   }
@@ -594,6 +625,18 @@
         </div>
       </div>
 
+      {%- if section.settings.ppi_heading != blank or section.settings.ppi_body != blank -%}
+        <div class="mellow-why-it-works__ppi-note">
+          {%- if section.settings.ppi_heading != blank -%}
+            <h3 class="mellow-why-it-works__ppi-heading">{{ section.settings.ppi_heading | escape }}</h3>
+          {%- endif -%}
+
+          {%- if section.settings.ppi_body != blank -%}
+            <p class="mellow-why-it-works__ppi-body">{{ section.settings.ppi_body | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.footnote != blank -%}
         <p class="mellow-why-it-works__footnote">{{ section.settings.footnote | escape }}</p>
       {%- endif -%}
@@ -687,6 +730,18 @@
       "id": "footnote",
       "label": "Footnote",
       "default": "Based on the known behavior of alginate raft-forming formulations."
+    },
+    {
+      "type": "text",
+      "id": "ppi_heading",
+      "label": "PPI support heading",
+      "default": "Taking a PPI? Mellow works differently."
+    },
+    {
+      "type": "textarea",
+      "id": "ppi_body",
+      "label": "PPI support body",
+      "default": "PPIs help reduce acid production over time. Mellow is designed for the moments reflux can still rise — forming a floating alginate barrier after you take it. A PPI works upstream by lowering acid. Mellow works at the surface, creating a protective raft where reflux begins."
     }
   ],
   "presets": [

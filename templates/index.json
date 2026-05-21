@@ -115,27 +115,9 @@
         "step_2_description": "A soft raft begins to build.",
         "step_3_title": "FLOAT",
         "step_3_description": "The barrier rises and rests on top.",
-        "footnote": "Based on the known behavior of alginate raft-forming formulations."
-      }
-    },
-    "mellow_ppi_support": {
-      "type": "mellow-ppi-support",
-      "name": "PPI Support / Barrier Support",
-      "settings": {
-        "color_scheme": "",
-        "eyebrow": "PPI SUPPORT",
-        "heading": "Taking a PPI? Think barrier, not replacement.",
-        "body": "PPIs help reduce acid production over time. Mellow is designed for the moments acid can still rise — forming a floating alginate barrier after you take it.",
-        "emphasis_line": "Mellow is not a replacement for prescribed medication.\nIt is barrier support for breakthrough reflux moments.",
-        "card_1_title": "PPIs lower acid.",
-        "card_1_body": "They work by reducing how much acid your stomach produces, but they can take time to reach full effect and do not create a physical barrier.",
-        "card_2_title": "Mellow forms a raft.",
-        "card_2_body": "MellowRaft™ uses alginate technology to form a floating barrier that helps block reflux from rising after meals.",
-        "card_3_title": "Different jobs. Same goal.",
-        "card_3_body": "A PPI works upstream by reducing acid production. Mellow works at the surface, creating a protective raft where reflux begins.",
-        "disclaimer": "Always follow your clinician’s guidance and do not stop or change prescribed medication without speaking with them.",
-        "cta_label": "Try Mellow",
-        "cta_link": "/products/mellow-reflux-relief-gel"
+        "footnote": "Based on the known behavior of alginate raft-forming formulations.",
+        "ppi_heading": "Taking a PPI? Mellow works differently.",
+        "ppi_body": "PPIs help reduce acid production over time. Mellow is designed for the moments reflux can still rise — forming a floating alginate barrier after you take it. A PPI works upstream by lowering acid. Mellow works at the surface, creating a protective raft where reflux begins."
       }
     },
     "mellow_clinical_proof": {
@@ -232,103 +214,68 @@
     },
     "mellow_faq": {
       "type": "mellow-faq",
-      "settings": {
-        "heading": "Answer final purchase questions calmly."
-      }
-    },
-    "mellow_science_page_9kbRfK": {
-      "type": "mellow-science-page",
-      "name": "Mellow Science Clean",
-      "settings": {
-        "eyebrow": "The science",
-        "heading": "The science behind raft-forming reflux relief.",
-        "subheading": "Mellow is built around alginate raft technology — a mechanical approach designed to help reduce reflux by forming a floating barrier in the stomach.",
-        "button_label": "See how it works",
-        "button_link": "",
-        "footnote": "Based on published studies of alginate raft-forming formulations."
-      }
-    },
-    "mellow_premium_positioning_reminder_qFnPa3": {
-      "type": "mellow-premium-positioning-reminder",
-      "name": "Mellow premium reminder",
-      "settings": {
-        "eyebrow": "Internal brand strategy",
-        "heading": "Premium positioning reminder for Mellow.",
-        "subheading": "A clean internal reminder for keeping Mellow's premium pricing story focused on format, ritual, science, and relief moment ownership.",
-        "note": "Use this section while building the site, PDP, ads, and packaging hierarchy. Remove or hide it before publishing customer-facing pages."
-      }
-    },
-    "mellow_expectations_timeline_QCfGUF": {
-      "type": "mellow-expectations-timeline",
       "blocks": {
-        "timeline_item_BPnLXd": {
-          "type": "timeline_item",
+        "faq_when_to_take": {
+          "type": "faq",
           "settings": {
-            "label": "Day 1",
-            "headline": "Something finally feels different",
-            "bullet_1": "That familiar burn starts to settle after meals",
-            "bullet_2": "Less of that tight, acidic pressure in your chest",
-            "bullet_3": "You notice something working — and it’s not nothing"
+            "question": "When should I take MellowRaft™?",
+            "answer": "<p>Take MellowRaft™ after meals, before bed, or whenever reflux usually shows up. It’s designed to form a protective raft barrier at the top of the stomach before acid has the chance to rise.</p>"
           }
         },
-        "timeline_item_CBP9Vb": {
-          "type": "timeline_item",
+        "faq_antacids": {
+          "type": "faq",
           "settings": {
-            "label": "7 Days",
-            "headline": "Meals feel less loaded",
-            "bullet_1": "You stop dreading the hour after dinner",
-            "bullet_2": "That creeping feeling at night starts to ease",
-            "bullet_3": "You eat, and it doesn’t have to ruin the rest of your evening"
+            "question": "How is this different from Tums or antacids?",
+            "answer": "<p>Traditional antacids mainly neutralize acid after it’s already there. MellowRaft™ is different: it forms a physical barrier that helps block reflux from coming back up, without shutting down digestion.</p>"
           }
         },
-        "timeline_item_7jwcaq": {
-          "type": "timeline_item",
+        "faq_ppi": {
+          "type": "faq",
           "settings": {
-            "label": "2 Weeks",
-            "headline": "You stop bracing for it",
-            "bullet_1": "Less mental math about what you can and can’t eat",
-            "bullet_2": "You go to bed without waiting for reflux to show up",
-            "bullet_3": "Eating out starts to feel less like a gamble"
+            "question": "Can I take Mellow if I’m already taking a PPI?",
+            "answer": "<p>Mellow works differently from PPIs. PPIs help reduce how much acid your stomach produces over time. Mellow uses alginate raft technology to form a floating barrier that helps block reflux from rising after meals.</p><p>Mellow is not a replacement for prescribed medication. Always follow your clinician’s guidance.</p>"
           }
         },
-        "timeline_item_MREGPU": {
-          "type": "timeline_item",
+        "faq_daily": {
+          "type": "faq",
           "settings": {
-            "label": "4 Weeks",
-            "headline": "It stops being the thing you plan around",
-            "bullet_1": "Meals with friends don’t come with a side of anxiety",
-            "bullet_2": "You’re not checking where the antacids are before you leave",
-            "bullet_3": "A run of normal days starts to feel normal again"
+            "question": "Is it safe to take every day?",
+            "answer": "<p>MellowRaft™ is designed for regular use as directed. If you’re pregnant, managing a medical condition, taking medication, or dealing with frequent symptoms, check with your healthcare provider.</p>"
           }
         },
-        "timeline_item_xDzEb3": {
-          "type": "timeline_item",
+        "faq_hsa_fsa": {
+          "type": "faq",
           "settings": {
-            "label": "3 Months",
-            "headline": "Food feels like yours again",
-            "bullet_1": "You order what you actually want",
-            "bullet_2": "You make it through more nights without reflux calling the shots",
-            "bullet_3": "Reflux may still need managing — it’s just not in charge anymore"
+            "question": "Can I use my HSA or FSA?",
+            "answer": "<p>We’re working toward HSA/FSA eligibility. If available at checkout, you’ll be able to use your HSA or FSA card directly.</p>"
+          }
+        },
+        "faq_taste": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "<p>MellowRaft™ is a smooth gel pouch with a mellow, easy-to-take flavor. No chalky tablets, no harsh burn, and no heavy medicinal taste.</p>"
+          }
+        },
+        "faq_subscription": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I skip, pause, or cancel my subscription?",
+            "answer": "<p>Yes. You’ll be able to skip, pause, or cancel your subscription anytime through your customer portal.</p>"
           }
         }
       },
       "block_order": [
-        "timeline_item_BPnLXd",
-        "timeline_item_CBP9Vb",
-        "timeline_item_7jwcaq",
-        "timeline_item_MREGPU",
-        "timeline_item_xDzEb3"
+        "faq_when_to_take",
+        "faq_antacids",
+        "faq_ppi",
+        "faq_daily",
+        "faq_hsa_fsa",
+        "faq_taste",
+        "faq_subscription"
       ],
-      "name": "Mellow expectations timeline",
       "settings": {
-        "eyebrow": "WHAT TO EXPECT",
-        "heading": "What changes when reflux stops running the night.",
-        "subheading": "<p>Mellow helps create a protective raft barrier during reflux-prone moments, so relief can become less reactive — and more routine.</p>",
-        "usage_heading": "How to use:",
-        "usage_text": "<p>Take one pouch during reflux-prone moments, or as directed on pack.</p>",
-        "footnote": "Based on studies of alginate and alginate-antacid raft-forming formulations. Individual results may vary.",
-        "padding_top": 72,
-        "padding_bottom": 72
+        "heading": "Answer final purchase questions calmly."
       }
     }
   },
@@ -340,15 +287,11 @@
     "mellow_how_to_use",
     "mellow_ingredients",
     "mellow_why_it_works",
-    "mellow_ppi_support",
     "mellow_clinical_proof",
     "mellow_expert_proof",
     "mellow_compare",
     "mellow_written_reviews",
     "mellow_day_night_scroll",
-    "mellow_faq",
-    "mellow_science_page_9kbRfK",
-    "mellow_premium_positioning_reminder_qFnPa3",
-    "mellow_expectations_timeline_QCfGUF"
+    "mellow_faq"
   ]
 }
