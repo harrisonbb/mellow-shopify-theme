@@ -1034,11 +1034,18 @@ input[type="reset"] {
 
 .mellow-review-videos,
 .mellow-day-night-scroll,
-.mellow-why-it-works,
 .mellow-expert-proof,
 .mellow-written-reviews,
 .mellow-faq {
   background: var(--mellow-ivory);
+}
+
+.section-mellow-why-it-works,
+.section-mellow-why-it-works .mellow-why-it-works,
+.mellow-why-it-works {
+  background: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important;
+  background-color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important;
+  color: var(--mellow-forest, #123308);
 }
 
 .mellow-architecture-section__card {
