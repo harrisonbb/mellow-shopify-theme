@@ -1,24 +1,42 @@
 {% comment %}
   Mellow who it’s for section.
-  Full-bleed forest green carousel for real-life reflux moments.
+  Split editorial intro and warm carousel shelf for real-life reflux moments.
 {% endcomment %}
 
 <style>
   #MellowWhoItsFor-{{ section.id }} {
-    --mellow-who-icon-size: clamp(6.9rem, 5.25vw, 8rem);
-    --mellow-who-icon-svg-size: clamp(2.9rem, 2.45vw, 3.6rem);
-    --mellow-who-edge-fade: clamp(24px, 3vw, 48px);
-    --mellow-who-card-surface: #FAF7EF;
-    --mellow-who-card-border: rgba(0, 51, 2, 0.14);
-    --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.68) inset, 0 26px 70px rgba(0, 24, 2, 0.11);
+    --mellow-who-intro-pad-top: clamp(76px, 7.2vw, 112px);
+    --mellow-who-intro-pad-bottom: clamp(70px, 6vw, 100px);
+    --mellow-who-shelf-pad-top: clamp(34px, 3.2vw, 50px);
+    --mellow-who-shelf-pad-bottom: clamp(56px, 5vw, 82px);
+    --mellow-who-card-gap: clamp(14px, 1.35vw, 22px);
+    --mellow-who-icon-size: clamp(5.6rem, 4.55vw, 7rem);
+    --mellow-who-icon-svg-size: clamp(2.45rem, 2.05vw, 3.1rem);
+    --mellow-who-card-surface: var(--mellow-card-cream, #FAF7EF);
+    --mellow-who-card-border: rgba(0, 51, 2, 0.12);
+    --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 18px 48px rgba(47, 33, 16, 0.1);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding-top: var(--mellow-section-pad-top);
-    padding-bottom: var(--mellow-section-pad-bottom);
-    background: var(--mellow-section-green, #003302);
+    padding: 0;
+    background: var(--mellow-ivory, #FCFBF7);
+    color: var(--mellow-forest, #003302);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__intro {
+    background: var(--mellow-section-green, var(--mellow-forest, #003302));
     color: var(--mellow-cream, #FCFBF7);
+    padding-top: var(--mellow-who-intro-pad-top);
+    padding-bottom: var(--mellow-who-intro-pad-bottom);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__shelf {
+    position: relative;
+    overflow: hidden;
+    background: var(--mellow-ivory, #FCFBF7);
+    padding-top: var(--mellow-who-shelf-pad-top);
+    padding-bottom: var(--mellow-who-shelf-pad-bottom);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
@@ -32,11 +50,10 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, var(--mellow-header-max)) max-content;
+    grid-template-columns: minmax(0, 760px) minmax(240px, max-content);
     align-items: end;
-    justify-content: start;
-    gap: clamp(46px, 5.8vw, 112px);
-    margin-bottom: clamp(46px, 4.4vw, 70px);
+    justify-content: space-between;
+    gap: clamp(48px, 9vw, 176px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header {
@@ -50,6 +67,9 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
     max-width: var(--mellow-header-max);
     color: var(--mellow-cream, #FCFBF7);
+    font-size: clamp(54px, 5.4vw, 78px);
+    line-height: 1.02;
+    font-weight: 560;
     letter-spacing: 0;
   }
 
@@ -64,7 +84,7 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-actions {
-    justify-self: start;
+    justify-self: end;
     align-self: end;
     transform: none;
     width: var(--mellow-cta-width);
@@ -73,7 +93,7 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-action {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     width: 100%;
   }
 
@@ -88,19 +108,8 @@
     box-shadow: 0 12px 28px rgba(0, 20, 1, 0.12);
   }
 
-  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__carousel-wrap,
-  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__carousel {
-    overflow-x: auto;
-    scroll-behavior: auto;
-  }
-
-  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__track {
-    transform: none !important;
-    will-change: auto;
-  }
-
-  #MellowWhoItsFor-{{ section.id }}.is-reduced-motion .mellow-who-its-for__card-set[data-mellow-who-card-set-duplicate] {
-    display: none;
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__quiz-button .mellow-section-cta__arrow {
+    display: inline-flex;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
@@ -108,48 +117,45 @@
     isolation: isolate;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: visible;
     overflow-y: visible;
-    padding-bottom: 70px;
+    padding-top: 4px;
+    padding-bottom: clamp(18px, 2.2vw, 30px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
+    box-sizing: border-box;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: visible;
+    margin: 0;
+    padding: 0 var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
     position: relative;
     z-index: 1;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--mellow-who-edge-fade),
-      #000 calc(100% - var(--mellow-who-edge-fade)),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      #000 var(--mellow-who-edge-fade),
-      #000 calc(100% - var(--mellow-who-edge-fade)),
-      transparent 100%
-    );
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+    scroll-padding-inline: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel::-webkit-scrollbar {
+    display: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__track {
     display: flex;
     width: max-content;
     max-width: none;
-    gap: clamp(24px, 2.4vw, 36px);
+    gap: var(--mellow-who-card-gap);
     align-items: center;
-    will-change: transform;
+    will-change: auto;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-set {
     display: flex;
-    gap: clamp(24px, 2.4vw, 36px);
+    gap: var(--mellow-who-card-gap);
     align-items: center;
     flex: 0 0 auto;
   }
@@ -157,14 +163,16 @@
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
     flex: 0 0 auto;
     position: relative;
-    width: clamp(330px, 28vw, 430px);
-    height: clamp(276px, 22vw, 340px);
-    padding: var(--mellow-card-pad-standard);
+    width: clamp(286px, 22vw, 338px);
+    height: clamp(262px, 20vw, 304px);
+    min-height: 0;
+    padding: clamp(22px, 1.9vw, 32px);
+    scroll-snap-align: start;
 
     background: var(--mellow-who-card-surface, #FAF7EF) !important;
     background-image: none !important;
     border: 1px solid var(--mellow-who-card-border, rgba(0, 51, 2, 0.14)) !important;
-    border-radius: var(--mellow-radius-card) !important;
+    border-radius: min(var(--mellow-radius-card, 28px), 24px) !important;
     outline: 0 !important;
     box-shadow: var(--mellow-who-card-shadow, 0 26px 70px rgba(0, 24, 2, 0.11));
     background-clip: border-box;
@@ -177,7 +185,8 @@
 
     transition:
       opacity 260ms ease,
-      border-color 260ms ease;
+      border-color 260ms ease,
+      box-shadow 260ms ease;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active {
@@ -186,25 +195,28 @@
 
     background: var(--mellow-who-card-surface, #FAF7EF) !important;
     background-image: none !important;
-    border: 1px solid rgba(208, 74, 42, 0.24) !important;
-    border-radius: var(--mellow-radius-card) !important;
+    border: 1px solid rgba(208, 74, 42, 0.28) !important;
+    border-radius: min(var(--mellow-radius-card, 28px), 24px) !important;
     outline: 0 !important;
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.72) inset,
-      0 28px 78px rgba(0, 24, 2, 0.14),
-      0 0 0 1px rgba(208, 74, 42, 0.08);
+      0 1px 0 rgba(255, 255, 255, 0.82) inset,
+      0 22px 58px rgba(47, 33, 16, 0.12),
+      0 0 0 1px rgba(208, 74, 42, 0.07);
     background-clip: border-box;
     filter: none;
     opacity: 1;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card:not(.is-active) {
-    opacity: 0.92;
+    opacity: 1;
     filter: none;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-inner {
-    position: static;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -221,12 +233,23 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__icon {
-    transform: translateY(4px);
-    border-color: rgba(208, 74, 42, 0.2);
-    background: rgba(248, 244, 236, 0.82);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--mellow-who-icon-size);
+    height: var(--mellow-who-icon-size);
+    border: 1px solid rgba(0, 51, 2, 0.08);
+    border-radius: 999px;
+    color: var(--mellow-forest, #003302);
+    background: var(--mellow-card-cream, #F8F4EC);
     box-shadow:
-      inset 0 0 0 0.55rem rgba(255, 253, 247, 0.3),
-      0 0.8rem 1.8rem rgba(0, 51, 2, 0.07);
+      inset 0 0 0 0.58rem rgba(255, 253, 247, 0.38),
+      0 0.8rem 1.8rem rgba(47, 33, 16, 0.07);
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__icon svg {
+    width: var(--mellow-who-icon-svg-size);
+    height: var(--mellow-who-icon-svg-size);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
@@ -249,45 +272,57 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    margin: 0;
+    position: static;
+    display: block;
+    margin: clamp(22px, 1.7vw, 28px) 0 0;
     transform: none;
-    letter-spacing: 0.13em;
+    color: var(--mellow-orange-red, #D04A2A);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     z-index: 3;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
-    margin-top: clamp(22px, 1.8vw, 30px);
+    margin-top: 9px;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
     margin: 0;
-    font-size: 30px;
-    line-height: 1.05;
+    color: var(--mellow-forest, #003302);
+    font-size: clamp(25px, 1.8vw, 30px);
+    line-height: 1.04;
     font-weight: 650;
     letter-spacing: 0;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__divider {
     display: block;
-    width: 52px;
+    width: 34px;
     height: 2px;
     margin-top: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     border-radius: var(--mellow-radius-pill, 999px);
-    background: var(--mellow-orange-red, #D04A2A);
+    background: var(--mellow-forest, #003302);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
     margin: 0;
-    max-width: 92%;
-    color: rgba(20, 33, 17, 0.78);
-    font-size: 17px;
-    line-height: 1.5;
+    max-width: 90%;
+    color: rgba(20, 33, 17, 0.76);
+    font-size: clamp(15px, 1.02vw, 17px);
+    line-height: 1.44;
     font-weight: 400;
     letter-spacing: 0;
+  }
+
+  #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-arrow {
+    position: absolute;
+    right: 3px;
+    bottom: 1px;
+    color: var(--mellow-forest, #003302);
+    font-size: clamp(24px, 1.8vw, 31px);
+    line-height: 1;
+    opacity: 0.95;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -297,14 +332,23 @@
   }
 
   @media screen and (max-width: 749px) {
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
-      display: block;
-      margin-bottom: var(--mellow-section-content-gap-compact);
+    #MellowWhoItsFor-{{ section.id }} {
+      --mellow-who-intro-pad-top: clamp(58px, 14vw, 76px);
+      --mellow-who-intro-pad-bottom: clamp(50px, 12vw, 68px);
+      --mellow-who-shelf-pad-top: 28px;
+      --mellow-who-shelf-pad-bottom: 58px;
+      --mellow-who-card-gap: 16px;
+      --mellow-who-icon-size: 5.4rem;
+      --mellow-who-icon-svg-size: 2.45rem;
     }
 
-    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel {
-      -webkit-mask-image: none;
-      mask-image: none;
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
+      display: block;
+    }
+
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__heading {
+      font-size: clamp(40px, 12vw, 52px);
+      line-height: 1.04;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__text {
@@ -326,13 +370,14 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__carousel-wrap {
-      padding-bottom: 52px;
+      padding-bottom: 8px;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
-      width: 320px;
-      height: 282px;
-      padding: var(--mellow-card-pad-standard);
+      width: min(82vw, 310px);
+      height: 262px;
+      min-height: 0;
+      padding: 22px;
       transform: none !important;
     }
 
@@ -341,20 +386,19 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
-      font-size: 25px;
+      font-size: 24px;
       line-height: 1.06;
       letter-spacing: 0;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy p {
-      font-size: 16.5px;
-      line-height: 1.48;
+      font-size: 15.5px;
+      line-height: 1.42;
       letter-spacing: 0;
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__tag {
-      top: 18px;
-      right: 18px;
+      margin-top: 18px;
     }
   }
 </style>
@@ -364,60 +408,49 @@
   class="mellow-section mellow-section-standard mellow-who-its-for color-{{ section.settings.color_scheme }}"
   data-mellow-who-carousel
 >
-  <div class="mellow-section-axis mellow-who-its-for__inner">
-    <div class="mellow-section-header-grid mellow-who-its-for__header-wrap">
-      <div class="mellow-section-header mellow-who-its-for__header">
-        {%- if section.settings.eyebrow != blank -%}
-          <p class="mellow-eyebrow mellow-who-its-for__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        {%- endif -%}
+  <div class="mellow-who-its-for__intro">
+    <div class="mellow-section-axis mellow-who-its-for__inner">
+      <div class="mellow-section-header-grid mellow-who-its-for__header-wrap">
+        <div class="mellow-section-header mellow-who-its-for__header">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="mellow-eyebrow mellow-who-its-for__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
 
-        {%- if section.settings.heading != blank -%}
-          {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
-          <h2 class="mellow-section-heading mellow-who-its-for__heading">
-            {%- for line in heading_lines -%}
-              {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
-            {%- endfor -%}
-          </h2>
-        {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
+            <h2 class="mellow-section-heading mellow-who-its-for__heading">
+              {%- for line in heading_lines -%}
+                {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
+              {%- endfor -%}
+            </h2>
+          {%- endif -%}
 
-        {%- if section.settings.text != blank -%}
-          <p class="mellow-section-text mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
-        {%- endif -%}
-      </div>
+          {%- if section.settings.text != blank -%}
+            <p class="mellow-section-text mellow-who-its-for__text">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
 
-      <div class="mellow-section-actions mellow-who-its-for__header-actions">
-        <div class="mellow-section-cta-wrap mellow-who-its-for__quiz-action">
-          <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-who-its-for__quiz-button" href="/pages/quiz">
-            <span class="mellow-section-cta__label mellow-who-its-for__quiz-label">Take the reflux quiz</span>
-            <span class="mellow-section-cta__arrow mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
-          </a>
+        <div class="mellow-section-actions mellow-who-its-for__header-actions">
+          <div class="mellow-section-cta-wrap mellow-who-its-for__quiz-action">
+            <a class="mellow-section-cta mellow-section-cta--primary-forest mellow-who-its-for__quiz-button" href="/pages/quiz">
+              <span class="mellow-section-cta__label mellow-who-its-for__quiz-label">Take the reflux quiz</span>
+              <span class="mellow-section-cta__arrow mellow-who-its-for__quiz-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
-    <div class="mellow-who-its-for__carousel" data-mellow-who-carousel-stage>
-      <div class="mellow-who-its-for__track" data-mellow-who-track>
-        {%- liquid
-          assign cards = 'Big meal lovers|Large portions and rich foods can put extra pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
-        -%}
+  <div class="mellow-who-its-for__shelf">
+    <div class="mellow-who-its-for__carousel-wrap" aria-label="Real-life reflux moments carousel">
+      <div class="mellow-who-its-for__carousel" data-mellow-who-carousel-stage>
+        <div class="mellow-who-its-for__track" data-mellow-who-track>
+          {%- liquid
+            assign cards = 'After dinner|Rich foods can put pressure on your digestive system.|fork-knife|Most Common||Nighttime reflux|When symptoms hit right as you’re trying to fall asleep.|moon|Bedtime Use||Chronic reflux|When it keeps coming back — day after day, night after night.|droplet|Most Searched||During pregnancy|Hormonal shifts and added pressure can bring reflux when you least expect it.|pregnancy||Active lifestyles|You love to move. Reflux shouldn’t slow you down.|bolt||Stress & pressure|Life gets stressful. Reflux often follows.|target||After surgery|Your new normal deserves real, comfortable relief.|shield||Smokers & vapers|Smoking and vaping can make reflux worse. Relief still matters.|smoke' | split: '||'
+          -%}
 
-        {%- for card_loop in (1..3) -%}
-          {%- assign is_original_set = false -%}
-          {%- if card_loop == 2 -%}
-            {%- assign is_original_set = true -%}
-          {%- endif -%}
-
-          <div
-            class="mellow-who-its-for__card-set"
-            {% if is_original_set %}
-              data-mellow-who-card-set
-            {% else %}
-              data-mellow-who-card-set-duplicate
-              aria-hidden="true"
-            {% endif %}
-          >
+          <div class="mellow-who-its-for__card-set" data-mellow-who-card-set>
             {%- for card in cards -%}
               {%- liquid
                 assign card_parts = card | split: '|'
@@ -428,17 +461,11 @@
               -%}
 
               <article
-                class="mellow-who-its-for__card"
-                {% if is_original_set %}
-                  data-mellow-who-card
-                {% endif %}
+                class="mellow-who-its-for__card{% if forloop.index0 == 2 %} is-active{% endif %}"
+                data-mellow-who-card
                 data-mellow-who-index="{{ forloop.index0 }}"
               >
                 <div class="mellow-who-its-for__card-inner">
-                  {%- if card_tag != blank -%}
-                    <span class="mellow-card-tag mellow-who-its-for__tag">{{ card_tag | escape }}</span>
-                  {%- endif -%}
-
                   <div class="mellow-who-its-for__icon" aria-hidden="true">
                     {%- case card_icon -%}
                       {%- when 'fork-knife' -%}
@@ -460,16 +487,22 @@
                     {%- endcase -%}
                   </div>
 
+                  {%- if card_tag != blank -%}
+                    <span class="mellow-card-tag mellow-who-its-for__tag">{{ card_tag | escape }}</span>
+                  {%- endif -%}
+
                   <div class="mellow-who-its-for__card-copy">
                     <h3 class="mellow-card-title">{{ card_title | escape }}</h3>
                     <span class="mellow-who-its-for__divider" aria-hidden="true"></span>
                     <p class="mellow-card-copy">{{ card_text | escape }}</p>
                   </div>
+
+                  <span class="mellow-who-its-for__card-arrow" aria-hidden="true">→</span>
                 </div>
               </article>
             {%- endfor -%}
           </div>
-        {%- endfor -%}
+        </div>
       </div>
     </div>
   </div>
@@ -479,13 +512,6 @@
   (() => {
     const section = document.getElementById('MellowWhoItsFor-{{ section.id }}');
     const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
-    const releaseSectionReady = () => {
-      section.classList.add('is-mellow-section-ready');
-
-      if (releaseReadyHold) {
-        releaseReadyHold();
-      }
-    };
 
     if (!section) {
       if (releaseReadyHold) {
@@ -494,332 +520,11 @@
       return;
     }
 
-    const scroller = section.querySelector('[data-mellow-who-carousel-stage]');
-    const track = section.querySelector('[data-mellow-who-track]');
-    const cardSet = section.querySelector('[data-mellow-who-card-set]');
-    const momentCards = cardSet ? Array.from(cardSet.querySelectorAll('[data-mellow-who-card]')) : [];
-    const allMomentCards = Array.from(section.querySelectorAll('.mellow-who-its-for__card'));
-
-    if (!scroller || !track || !cardSet || !momentCards.length) {
-      return;
-    }
-
-    const marqueeDuration = 90000;
-    const activeUpdateIntervalMs = 180;
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let setWidth = 0;
-    let cardWidth = 0;
-    let cardPitch = 0;
-    let scrollerCenterX = 0;
-    let offset = 0;
-    let animationFrame = null;
-    let lastFrameTime = null;
-    let resizeObserver = null;
-    let activeUpdateFrame = null;
-    let activeCardIndex = null;
-    let lastActiveUpdateTime = 0;
-    let ticking = false;
-    let isReducedMotion = reducedMotionQuery.matches;
-
-    const setReducedMotionState = () => {
-      section.classList.toggle('is-reduced-motion', isReducedMotion);
-    };
-
-    const applySafeOffset = () => {
-      if (setWidth <= 0) {
-        return false;
-      }
-
-      let didWrap = false;
-
-      while (offset <= setWidth * -1.5) {
-        offset += setWidth;
-        didWrap = true;
-      }
-
-      while (offset >= setWidth * -0.5) {
-        offset -= setWidth;
-        didWrap = true;
-      }
-
-      return didWrap;
-    };
-
-    const updateTrackPosition = () => {
-      track.style.transform = isReducedMotion ? 'none' : `translate3d(${offset}px, 0, 0)`;
-    };
-
-    const wrapSetPosition = (position) => {
-      if (setWidth <= 0) {
-        return 0;
-      }
-
-      return ((position % setWidth) + setWidth) % setWidth;
-    };
-
-    const getCircularDistance = (positionA, positionB) => {
-      const directDistance = Math.abs(positionA - positionB);
-
-      return Math.min(directDistance, setWidth - directDistance);
-    };
-
-    const getCenteredCardIndex = () => {
-      if (setWidth <= 0 || cardPitch <= 0 || cardWidth <= 0) {
-        return 0;
-      }
-
-      const centerInTrack = scrollerCenterX - offset;
-      const centerInSet = wrapSetPosition(centerInTrack);
-      const approximateIndex = Math.round((centerInSet - cardWidth / 2) / cardPitch);
-      const candidateIndexes = [approximateIndex - 1, approximateIndex, approximateIndex + 1];
-
-      return candidateIndexes.reduce((closestIndex, candidateIndex) => {
-        const normalizedCandidateIndex = ((candidateIndex % momentCards.length) + momentCards.length) % momentCards.length;
-        const normalizedClosestIndex = ((closestIndex % momentCards.length) + momentCards.length) % momentCards.length;
-        const candidateCenter = wrapSetPosition(cardWidth / 2 + normalizedCandidateIndex * cardPitch);
-        const closestCenter = wrapSetPosition(cardWidth / 2 + normalizedClosestIndex * cardPitch);
-        const candidateDistance = getCircularDistance(centerInSet, candidateCenter);
-        const closestDistance = getCircularDistance(centerInSet, closestCenter);
-
-        return candidateDistance < closestDistance ? candidateIndex : closestIndex;
-      }, approximateIndex);
-    };
-
-    const clearInactiveCards = (nextActiveIndex) => {
-      allMomentCards.forEach((card) => {
-        const cardIndex = Number(card.dataset.mellowWhoIndex);
-
-        if (cardIndex !== nextActiveIndex && card.classList.contains('is-active')) {
-          card.classList.remove('is-active');
-        }
-      });
-    };
-
-    const setActiveCardByIndex = (nextActiveIndex) => {
-      clearInactiveCards(nextActiveIndex);
-
-      allMomentCards.forEach((card) => {
-        if (Number(card.dataset.mellowWhoIndex) === nextActiveIndex) {
-          card.classList.add('is-active');
-        }
-      });
-
-      activeCardIndex = nextActiveIndex;
-    };
-
-    const setStableReducedMotionCard = () => {
-      setActiveCardByIndex(0);
-    };
-
-    const updateActiveMomentCard = (timestamp = performance.now()) => {
-      if (isReducedMotion) {
-        setStableReducedMotionCard();
-        return;
-      }
-
-      const nextActiveIndex = ((getCenteredCardIndex() % momentCards.length) + momentCards.length) % momentCards.length;
-      lastActiveUpdateTime = timestamp;
-
-      if (nextActiveIndex !== activeCardIndex) {
-        setActiveCardByIndex(nextActiveIndex);
-      }
-    };
-
-    const requestActiveCardUpdate = () => {
-      if (isReducedMotion) {
-        setStableReducedMotionCard();
-        return;
-      }
-
-      if (ticking) {
-        return;
-      }
-
-      ticking = true;
-
-      activeUpdateFrame = requestAnimationFrame((timestamp) => {
-        updateActiveMomentCard(timestamp);
-        ticking = false;
-        activeUpdateFrame = null;
-      });
-    };
-
-    const stopMarquee = () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-        animationFrame = null;
-      }
-
-      if (activeUpdateFrame) {
-        cancelAnimationFrame(activeUpdateFrame);
-        activeUpdateFrame = null;
-      }
-
-      ticking = false;
-      lastFrameTime = null;
-    };
-
-    const measureScrollerCenter = () => {
-      scrollerCenterX = scroller.clientWidth / 2;
-    };
-
-    const measureCarousel = () => {
-      const trackStyles = window.getComputedStyle(track);
-      const cardSetStyles = window.getComputedStyle(cardSet);
-      const trackGap = parseFloat(trackStyles.columnGap) || 0;
-      const cardGap = parseFloat(cardSetStyles.columnGap) || 0;
-      const firstCard = momentCards[0];
-
-      cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-      cardPitch = cardWidth + cardGap;
-      setWidth = cardSet.getBoundingClientRect().width + trackGap;
-      measureScrollerCenter();
-
-      if (setWidth <= 0) {
-        return;
-      }
-
-      offset = isReducedMotion ? 0 : setWidth * -1;
-      track.style.setProperty('--who-track-width', `${setWidth}px`);
-      updateTrackPosition();
-      requestActiveCardUpdate();
-    };
-
-    const animate = (timestamp) => {
-      if (isReducedMotion) {
-        stopMarquee();
-        updateTrackPosition();
-        setStableReducedMotionCard();
-        return;
-      }
-
-      if (setWidth > 0) {
-        if (lastFrameTime === null) {
-          lastFrameTime = timestamp;
-        }
-
-        const elapsed = timestamp - lastFrameTime;
-        const pixelsPerMillisecond = setWidth / marqueeDuration;
-
-        offset -= pixelsPerMillisecond * elapsed;
-        const didWrap = applySafeOffset();
-        updateTrackPosition();
-
-        if (didWrap) {
-          activeCardIndex = null;
-          requestActiveCardUpdate();
-        } else if (timestamp - lastActiveUpdateTime >= activeUpdateIntervalMs) {
-          updateActiveMomentCard(timestamp);
-        }
-
-        lastFrameTime = timestamp;
-      }
-
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    const startMarquee = () => {
-      if (isReducedMotion || animationFrame) {
-        return;
-      }
-
-      requestActiveCardUpdate();
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    const normalizeWheelDelta = (delta, deltaMode) => {
-      if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
-        return delta * 16;
-      }
-
-      if (deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-        return delta * scroller.clientWidth;
-      }
-
-      return delta;
-    };
-
-    const handleResize = () => {
-      lastFrameTime = null;
-      measureCarousel();
-    };
-
-    const handleMotionPreferenceChange = (event) => {
-      isReducedMotion = event.matches;
-      setReducedMotionState();
-      stopMarquee();
-      measureCarousel();
-      startMarquee();
-    };
-
-    setReducedMotionState();
-    measureCarousel();
-
-    if ('ResizeObserver' in window) {
-      resizeObserver = new ResizeObserver(handleResize);
-      resizeObserver.observe(cardSet);
-      resizeObserver.observe(scroller);
-    } else {
-      window.addEventListener('resize', handleResize);
-    }
-
-    scroller.addEventListener(
-      'wheel',
-      (event) => {
-        if (isReducedMotion) {
-          return;
-        }
-
-        const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
-        const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
-        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.05;
-
-        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
-          return;
-        }
-
-        event.preventDefault();
-        offset -= horizontalDelta;
-        applySafeOffset();
-        updateTrackPosition();
-        requestActiveCardUpdate();
-        lastFrameTime = null;
-      },
-      { passive: false }
-    );
-
-    window.addEventListener('resize', requestActiveCardUpdate, { passive: true });
-
-    if (typeof reducedMotionQuery.addEventListener === 'function') {
-      reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
-    } else if (typeof reducedMotionQuery.addListener === 'function') {
-      reducedMotionQuery.addListener(handleMotionPreferenceChange);
-    }
-
-    startMarquee();
-
-    requestAnimationFrame(releaseSectionReady);
-
-    document.addEventListener('shopify:section:unload', (event) => {
-      if (!event.target.contains(section)) {
-        return;
-      }
-
-      stopMarquee();
-      window.removeEventListener('resize', requestActiveCardUpdate, { passive: true });
-
-      if (!resizeObserver) {
-        window.removeEventListener('resize', handleResize);
-      }
-
-      if (typeof reducedMotionQuery.removeEventListener === 'function') {
-        reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
-      } else if (typeof reducedMotionQuery.removeListener === 'function') {
-        reducedMotionQuery.removeListener(handleMotionPreferenceChange);
-      }
-
-      if (resizeObserver) {
-        resizeObserver.disconnect();
+    requestAnimationFrame(() => {
+      section.classList.add('is-mellow-section-ready');
+
+      if (releaseReadyHold) {
+        releaseReadyHold();
       }
     });
   })();
