@@ -20,9 +20,9 @@
 */
 
 :root {
-  --mellow-green: #003302;
-  --mellow-forest: #003302;
-  --mellow-section-green: #003302;
+  --mellow-green: #123308;
+  --mellow-forest: #123308;
+  --mellow-section-green: #123308;
   --mellow-deep-forest: var(--mellow-forest);
 
   --mellow-cream: #FCFBF7;

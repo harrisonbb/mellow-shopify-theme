@@ -11,7 +11,7 @@
     overflow-y: visible;
     padding-top: var(--mellow-section-pad-top);
     padding-bottom: var(--mellow-section-pad-bottom);
-    background: var(--mellow-section-green, #003302);
+    background: var(--mellow-section-green, #123308);
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__inner {
@@ -25,9 +25,9 @@
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 760px) auto;
-    align-items: center;
-    gap: clamp(40px, 6vw, 96px);
+    grid-template-columns: minmax(0, 780px) auto;
+    align-items: end;
+    gap: clamp(36px, 6vw, 96px);
     margin-bottom: var(--mellow-section-content-gap);
   }
 
@@ -70,8 +70,8 @@
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__cta {
     --mellow-section-cta-bg: var(--mellow-ivory);
-    --mellow-section-cta-border: rgba(252, 251, 247, 0.46);
-    --mellow-section-cta-color: var(--mellow-forest, #003302);
+    --mellow-section-cta-border: var(--mellow-ivory);
+    --mellow-section-cta-color: var(--mellow-forest, #123308);
     --mellow-section-cta-hover-bg: var(--mellow-orange-red);
     --mellow-section-cta-hover-border: var(--mellow-orange-red);
     --mellow-section-cta-hover-color: var(--mellow-ivory);
@@ -80,7 +80,7 @@
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--mellow-card-gap);
+    gap: clamp(22px, 1.7vw, 28px);
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step {
@@ -89,71 +89,44 @@
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
     position: relative;
-    min-height: clamp(280px, 27vw, 410px);
-    border: 1px solid rgba(252, 251, 247, 0.18);
-    border-radius: var(--mellow-radius-card);
+    aspect-ratio: 1 / 1.02;
+    min-height: clamp(300px, 30vw, 438px);
+    border-radius: min(var(--mellow-radius-card), 24px);
     overflow: hidden;
-    background:
-      radial-gradient(circle at 24% 20%, rgba(252, 251, 247, 0.24) 0 12%, transparent 13%),
-      radial-gradient(circle at 78% 72%, rgba(208, 74, 42, 0.28) 0 16%, transparent 17%),
-      linear-gradient(145deg, rgba(252, 251, 247, 0.16), rgba(252, 251, 247, 0.055));
+    background: rgba(252, 251, 247, 0.08);
   }
 
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card::before {
-    content: '';
-    position: absolute;
-    inset: clamp(18px, 2vw, 30px);
-    border: 1px solid rgba(252, 251, 247, 0.16);
-    border-radius: 18px;
-  }
-
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: clamp(98px, 10vw, 156px);
-    height: clamp(160px, 15vw, 230px);
-    border-radius: 999px 999px 30px 30px;
-    background:
-      linear-gradient(180deg, rgba(252, 251, 247, 0.92), rgba(252, 251, 247, 0.62));
-    box-shadow: 0 26px 70px rgba(5, 15, 4, 0.22);
-    transform: translate3d(-50%, -50%, 0) rotate(-6deg);
-  }
-
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:nth-child(2) .mellow-how-to-use__image-card::after {
-    border-radius: 34px;
-    transform: translate3d(-50%, -50%, 0) rotate(5deg);
-  }
-
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:nth-child(3) .mellow-how-to-use__image-card::after {
-    width: clamp(150px, 13vw, 220px);
-    height: clamp(150px, 13vw, 220px);
-    border-radius: 50%;
-    transform: translate3d(-50%, -50%, 0);
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-number {
-    position: absolute;
-    left: clamp(22px, 2vw, 32px);
-    top: clamp(22px, 2vw, 32px);
-    z-index: 2;
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: clamp(40px, 3vw, 46px);
+    height: clamp(40px, 3vw, 46px);
     border-radius: 999px;
     background: var(--mellow-orange-red);
     color: var(--mellow-ivory);
-    font-size: 14px;
+    font-size: clamp(13px, 0.95vw, 15px);
     font-weight: 700;
     line-height: 1;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__caption {
-    margin-top: clamp(18px, 1.8vw, 26px);
+    margin-top: clamp(20px, 2vw, 30px);
+    padding-left: clamp(16px, 1.2vw, 22px);
+  }
+
+  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__title-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 1.7vw, 26px);
   }
 
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-title {
@@ -166,13 +139,10 @@
     line-height: var(--mellow-card-title-line-height);
   }
 
-  #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-title span {
-    color: var(--mellow-orange-red);
-  }
-
   #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step-copy {
     max-width: 330px;
-    margin: 10px 0 0;
+    margin: 8px 0 0;
+    padding-left: calc(clamp(40px, 3vw, 46px) + clamp(18px, 1.7vw, 26px));
     color: rgba(252, 251, 247, 0.78);
     font-size: var(--mellow-card-copy-size);
     font-weight: var(--mellow-card-copy-weight);
@@ -182,8 +152,13 @@
 
   @media screen and (max-width: 989px) {
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--mellow-card-gap);
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:last-child {
+      grid-column: 1 / -1;
+      max-width: calc((100% - var(--mellow-card-gap)) / 2);
     }
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
@@ -196,7 +171,6 @@
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
     }
-
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__text {
       max-width: 360px;
@@ -217,6 +191,19 @@
 
     #MellowHowToUse-{{ section.id }} .mellow-how-to-use__image-card {
       min-height: 300px;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__steps {
+      grid-template-columns: 1fr;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__step:last-child {
+      grid-column: auto;
+      max-width: none;
+    }
+
+    #MellowHowToUse-{{ section.id }} .mellow-how-to-use__caption {
+      padding-left: 0;
     }
   }
 </style>
@@ -245,31 +232,52 @@
 
     <div class="mellow-how-to-use__steps" aria-label="How to use Mellow in three steps">
       <article class="mellow-how-to-use__step">
-        <div class="mellow-how-to-use__image-card" aria-hidden="true">
-          <span class="mellow-how-to-use__step-number">1</span>
+        <div class="mellow-how-to-use__image-card">
+          {%- if section.settings.step_1_image != blank -%}
+            {{ section.settings.step_1_image | image_url: width: 1200 | image_tag: class: 'mellow-how-to-use__image', loading: 'lazy', widths: '420, 640, 860, 1200', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 46vw, calc(100vw - 44px)', alt: 'Person opening a Mellow pouch at a desk' }}
+          {%- else -%}
+            <img class="mellow-how-to-use__image" src="{{ 'mellow-how-to-use-squeeze.jpg' | asset_url }}" alt="Person opening a Mellow pouch at a desk" loading="lazy" width="1536" height="1024">
+          {%- endif -%}
         </div>
         <div class="mellow-how-to-use__caption">
-          <h3 class="mellow-how-to-use__step-title"><span>Step 1:</span> Squeeze</h3>
+          <div class="mellow-how-to-use__title-row">
+            <span class="mellow-how-to-use__step-number">01</span>
+            <h3 class="mellow-how-to-use__step-title">Squeeze</h3>
+          </div>
           <p class="mellow-how-to-use__step-copy">Squeeze the gel directly into your mouth.</p>
         </div>
       </article>
 
       <article class="mellow-how-to-use__step">
-        <div class="mellow-how-to-use__image-card" aria-hidden="true">
-          <span class="mellow-how-to-use__step-number">2</span>
+        <div class="mellow-how-to-use__image-card">
+          {%- if section.settings.step_2_image != blank -%}
+            {{ section.settings.step_2_image | image_url: width: 1200 | image_tag: class: 'mellow-how-to-use__image', loading: 'lazy', widths: '420, 640, 860, 1200', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 46vw, calc(100vw - 44px)', alt: 'Hiker taking Mellow outdoors' }}
+          {%- else -%}
+            <img class="mellow-how-to-use__image" src="{{ 'mellow-how-to-use-take.jpg' | asset_url }}" alt="Hiker taking Mellow outdoors" loading="lazy" width="1536" height="1024">
+          {%- endif -%}
         </div>
         <div class="mellow-how-to-use__caption">
-          <h3 class="mellow-how-to-use__step-title"><span>Step 2:</span> Take</h3>
+          <div class="mellow-how-to-use__title-row">
+            <span class="mellow-how-to-use__step-number">02</span>
+            <h3 class="mellow-how-to-use__step-title">Take</h3>
+          </div>
           <p class="mellow-how-to-use__step-copy">Take it and let the raft form.</p>
         </div>
       </article>
 
       <article class="mellow-how-to-use__step">
-        <div class="mellow-how-to-use__image-card" aria-hidden="true">
-          <span class="mellow-how-to-use__step-number">3</span>
+        <div class="mellow-how-to-use__image-card">
+          {%- if section.settings.step_3_image != blank -%}
+            {{ section.settings.step_3_image | image_url: width: 1200 | image_tag: class: 'mellow-how-to-use__image', loading: 'lazy', widths: '420, 640, 860, 1200', sizes: '(min-width: 990px) 31vw, (min-width: 750px) 46vw, calc(100vw - 44px)', alt: 'Person relaxing at home after using Mellow' }}
+          {%- else -%}
+            <img class="mellow-how-to-use__image" src="{{ 'mellow-how-to-use-feel.jpg' | asset_url }}" alt="Person relaxing at home after using Mellow" loading="lazy" width="1536" height="1024">
+          {%- endif -%}
         </div>
         <div class="mellow-how-to-use__caption">
-          <h3 class="mellow-how-to-use__step-title"><span>Step 3:</span> Feel mellow</h3>
+          <div class="mellow-how-to-use__title-row">
+            <span class="mellow-how-to-use__step-number">03</span>
+            <h3 class="mellow-how-to-use__step-title">Feel mellow</h3>
+          </div>
           <p class="mellow-how-to-use__step-copy">Feel relief and get back to what matters most.</p>
         </div>
       </article>
@@ -288,6 +296,21 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_image",
+      "label": "Step 1 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_image",
+      "label": "Step 2 image"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_image",
+      "label": "Step 3 image"
     }
   ],
   "presets": [
