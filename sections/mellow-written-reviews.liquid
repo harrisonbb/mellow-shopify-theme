@@ -1,16 +1,16 @@
 {% comment %}
   Mellow written reviews section.
-  Locally matched to the Who It’s For section axis and spacing.
+  Locally matched to the homepage rail, type, and carousel card system.
 {% endcomment %}
 
 <style>
   #MellowWrittenReviews-{{ section.id }} {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     overflow-y: visible;
-    padding-top: clamp(52px, 4.7vw, 76px);
-    padding-bottom: clamp(46px, 4.2vw, 66px);
+    padding-top: clamp(56px, 5vw, 84px);
+    padding-bottom: clamp(56px, 5vw, 84px);
     background: var(--mellow-cream, #FCFBF7);
     color: var(--mellow-ink, var(--mellow-forest, #003302));
   }
@@ -26,10 +26,10 @@
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 760px) auto;
+    grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
     align-items: center;
-    gap: clamp(40px, 6vw, 96px);
-    margin-bottom: clamp(30px, 2.6vw, 44px);
+    gap: clamp(48px, 6vw, 96px);
+    margin-bottom: clamp(32px, 3.5vw, 52px);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header {
@@ -37,137 +37,212 @@
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__eyebrow {
-    color: #D04A2A;
+    color: var(--mellow-orange-red, #D04A2A);
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading,
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__text {
     color: var(--mellow-forest, #003302);
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__text {
-    color: rgba(0, 51, 2, 0.72);
-  }
-
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof {
+    align-self: stretch;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 9px 14px;
-    margin-top: clamp(18px, 1.6vw, 24px);
-    color: rgba(0, 51, 2, 0.72);
-    font-size: clamp(13px, 0.9vw, 15px);
-    line-height: 1.35;
-    font-weight: 650;
-    letter-spacing: -0.004em;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    padding-left: clamp(36px, 4.5vw, 64px);
+    border-left: 1px solid rgba(0, 51, 2, 0.16);
+    color: var(--mellow-forest, #003302);
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-stars {
-    color: #D04A2A;
-    font-size: 13px;
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-rating {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2vw, 32px);
+    margin: 0 0 clamp(18px, 1.7vw, 24px);
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-stars,
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__stars {
+    color: var(--mellow-orange-red, #D04A2A);
+    font-size: clamp(20px, 1.9vw, 30px);
     line-height: 1;
     letter-spacing: 0.06em;
   }
 
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(24px, 2.2vw, 36px);
-    align-items: stretch;
-    width: 100%;
-    max-width: none;
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-score {
+    color: var(--mellow-forest, #003302);
+    font-size: clamp(24px, 2.1vw, 34px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-title {
     margin: 0;
-    padding: 0;
+    color: var(--mellow-forest, #003302);
+    font-size: clamp(18px, 1.25vw, 22px);
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-copy {
+    margin: 12px 0 0;
+    max-width: 32ch;
+    color: rgba(0, 51, 2, 0.84);
+    font-size: clamp(16px, 1.08vw, 18px);
+    line-height: 1.45;
+    font-weight: 500;
+    letter-spacing: -0.006em;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__tray {
+    position: relative;
+    margin: 0;
+    padding: clamp(28px, 3vw, 44px);
+    overflow: visible;
+    border: 1px solid rgba(0, 51, 2, 0.08);
+    border-radius: clamp(24px, 2vw, 36px);
+    background: rgba(250, 246, 238, 0.82);
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(20px, 2vw, 32px);
+    width: max-content;
+    min-width: 100%;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: clamp(238px, 18vw, 286px);
-    padding: clamp(26px, 2.35vw, 36px);
+    width: clamp(270px, 21vw, 330px);
+    min-height: clamp(300px, 27vw, 380px);
+    padding: clamp(24px, 2.4vw, 34px);
     overflow: hidden;
     background: var(--mellow-card-cream, #F8F4EC);
-    border: 1px solid rgba(0, 51, 2, 0.14);
-    border-radius: var(--mellow-radius-card);
-    box-shadow: 0 18px 48px rgba(0, 51, 2, 0.055);
+    border: 1px solid rgba(0, 51, 2, 0.10);
+    border-radius: clamp(18px, 1.5vw, 26px);
+    box-shadow: 0 16px 42px rgba(0, 51, 2, 0.07);
     color: var(--mellow-forest, #003302);
-  }
-
-  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card::before {
-    content: "“";
-    position: absolute;
-    top: 22px;
-    right: clamp(22px, 2vw, 32px);
-    color: rgba(208, 74, 42, 0.16);
-    font-family: Georgia, serif;
-    font-size: clamp(58px, 5vw, 78px);
-    font-weight: 700;
-    line-height: 0.7;
-    pointer-events: none;
+    scroll-snap-align: start;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__stars {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 16px;
-    color: #D04A2A;
-    font-size: 15px;
-    line-height: 1;
-    letter-spacing: 0.06em;
+    margin: 0 0 clamp(26px, 2.2vw, 34px);
+    font-size: clamp(20px, 1.55vw, 25px);
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__star-muted {
+    color: rgba(0, 51, 2, 0.12);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__quote {
-    position: relative;
-    z-index: 1;
+    max-width: 28ch;
+    margin: 0;
     color: rgba(0, 51, 2, 0.9);
-    max-width: 42ch;
-    font-size: clamp(16.5px, 1.08vw, 18px);
-    line-height: 1.5;
-    font-weight: 450;
+    font-size: clamp(16px, 1.05vw, 18px);
+    line-height: 1.55;
+    font-weight: 500;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__person {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     gap: 14px;
     margin-top: auto;
-    padding-top: 18px;
-    border-top: 1px solid rgba(0, 51, 2, 0.12);
+    padding-top: clamp(22px, 2vw, 30px);
+    border-top: 1px solid rgba(0, 51, 2, 0.14);
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__avatar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
-    flex: 0 0 46px;
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    border: 1px solid rgba(18, 51, 8, 0.56);
     border-radius: 999px;
-    background: var(--mellow-forest, #003302);
-    color: #FCFBF7;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    background: rgba(252, 251, 247, 0.72);
+    color: var(--mellow-forest, #003302);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__name {
     margin: 0;
     color: var(--mellow-forest, #003302);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.2;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__meta {
-    margin: 5px 0 0;
-    color: rgba(0, 51, 2, 0.68);
-    font-size: 14px;
-    line-height: 1.35;
+    margin: 6px 0 0;
+    color: rgba(0, 51, 2, 0.72);
+    font-size: clamp(12.5px, 0.9vw, 14px);
+    line-height: 1.42;
     font-weight: 560;
     letter-spacing: -0.004em;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(44px, 3.4vw, 56px);
+    height: clamp(44px, 3.4vw, 56px);
+    padding: 0;
+    border: 1px solid rgba(0, 51, 2, 0.08);
+    border-radius: 999px;
+    background: var(--mellow-cream, #FCFBF7);
+    box-shadow: 0 14px 30px rgba(0, 51, 2, 0.12);
+    color: var(--mellow-forest, #003302);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow:hover {
+    box-shadow: 0 18px 38px rgba(0, 51, 2, 0.16);
+    transform: translateY(-50%) scale(1.03);
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow--prev {
+    left: calc(clamp(22px, 3vw, 44px) * -1);
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow--next {
+    right: calc(clamp(22px, 3vw, 44px) * -1);
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow svg {
+    width: 48%;
+    height: 48%;
+    stroke: currentColor;
   }
 
   #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__footer {
@@ -177,24 +252,118 @@
     margin-top: clamp(22px, 2.2vw, 34px);
   }
 
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px clamp(18px, 2.4vw, 34px);
+    margin: clamp(22px, 2.2vw, 32px) auto 0;
+    color: var(--mellow-forest, #003302);
+    font-size: clamp(13px, 0.96vw, 15px);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust-item + .mellow-written-reviews__trust-item::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    margin-right: clamp(6px, 0.7vw, 12px);
+    border-radius: 999px;
+    background: currentColor;
+  }
+
+  #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust svg {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    stroke: currentColor;
+  }
+
+  @media screen and (min-width: 1440px) {
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
+      width: calc((100vw - (2 * var(--mellow-section-axis-pad, 64px)) - (2 * clamp(28px, 3vw, 44px)) - (3 * clamp(20px, 2vw, 32px))) / 4);
+      max-width: 330px;
+    }
+  }
+
   @media screen and (max-width: 989px) {
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__cards {
-      grid-template-columns: 1fr;
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(22px, 4vw, 34px);
     }
 
-    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
-      min-height: auto;
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof {
+      min-height: 0;
+      padding: clamp(20px, 3vw, 28px) 0 0;
+      border-top: 1px solid rgba(0, 51, 2, 0.14);
+      border-left: 0;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__arrow {
+      display: none;
     }
   }
 
   @media screen and (max-width: 749px) {
+    #MellowWrittenReviews-{{ section.id }} {
+      overflow-x: hidden;
+    }
+
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__header-wrap {
       display: block;
       margin-bottom: var(--mellow-section-content-gap-compact);
     }
 
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__heading {
+      font-size: clamp(40px, 11vw, 56px);
+    }
+
     #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof {
-      margin-top: 18px;
+      margin-top: 22px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-rating {
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-stars {
+      font-size: 20px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__proof-score {
+      font-size: 24px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__tray {
+      margin-right: calc(var(--mellow-section-axis-pad, 28px) * -1);
+      margin-left: calc(var(--mellow-section-axis-pad, 28px) * -1);
+      padding: 20px var(--mellow-section-axis-pad, 28px);
+      border-radius: 24px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__card {
+      width: min(82vw, 318px);
+      min-height: 300px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust {
+      gap: 12px 18px;
+      max-width: 320px;
+    }
+
+    #MellowWrittenReviews-{{ section.id }} .mellow-written-reviews__trust-item + .mellow-written-reviews__trust-item::before {
+      display: none;
     }
   }
 </style>
@@ -213,59 +382,94 @@
         </h2>
 
         <p class="mellow-section-text mellow-written-reviews__text">After dinner. Before sleep. When it matters most.</p>
+      </div>
 
-        <div class="mellow-written-reviews__proof" aria-label="Review proof">
+      <div class="mellow-written-reviews__proof" aria-label="Rated 4.9 out of 5 stars by verified Mellow buyers">
+        <div class="mellow-written-reviews__proof-rating">
           <span class="mellow-written-reviews__proof-stars" aria-hidden="true">★★★★★</span>
-          <span class="mellow-written-reviews__proof-copy">Verified Mellow buyers sharing after-meal, before-bed, and daily routine notes.</span>
+          <span class="mellow-written-reviews__proof-score">4.9/5</span>
         </div>
+        <p class="mellow-written-reviews__proof-title">Verified Mellow buyers</p>
+        <p class="mellow-written-reviews__proof-copy">sharing after-meal, before-bed,<br>and daily routine notes.</p>
       </div>
     </div>
 
-    <div class="mellow-written-reviews__cards">
-      <article class="mellow-written-reviews__card">
-        <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-card-copy mellow-written-reviews__quote">
-          “I stopped planning dinner around what might punish me later. One pouch after eating felt like I had a little more control.”
-        </p>
+    <div class="mellow-written-reviews__tray">
+      <button class="mellow-written-reviews__arrow mellow-written-reviews__arrow--prev" type="button" aria-label="Previous reviews" data-mellow-reviews-prev>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-        <div class="mellow-written-reviews__person">
-          <span class="mellow-written-reviews__avatar" aria-hidden="true">RB</span>
-          <div>
-            <p class="mellow-written-reviews__name">Rachel B.</p>
-            <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • After-meal reflux</p>
-          </div>
+      <div class="mellow-written-reviews__scroller" data-mellow-reviews-scroller>
+        <div class="mellow-written-reviews__cards">
+          <article class="mellow-written-reviews__card">
+            <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="mellow-card-copy mellow-written-reviews__quote">
+              “I stopped planning dinner around what might punish me later. One pouch after eating felt like I had a little more control.”
+            </p>
+
+            <div class="mellow-written-reviews__person">
+              <span class="mellow-written-reviews__avatar" aria-hidden="true">RB</span>
+              <div>
+                <p class="mellow-written-reviews__name">Rachel B.</p>
+                <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • After-meal reflux</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="mellow-written-reviews__card">
+            <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="mellow-card-copy mellow-written-reviews__quote">
+              “I wanted something that fit into my routine without making reflux feel like a whole project. Mellow made the after-dinner part easier.”
+            </p>
+
+            <div class="mellow-written-reviews__person">
+              <span class="mellow-written-reviews__avatar" aria-hidden="true">MT</span>
+              <div>
+                <p class="mellow-written-reviews__name">Michael T.</p>
+                <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • Non-PPI support</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="mellow-written-reviews__card">
+            <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="mellow-card-copy mellow-written-reviews__quote">
+              “Before bed used to come with a little mental math. This felt simple enough to keep on my nightstand and actually use.”
+            </p>
+
+            <div class="mellow-written-reviews__person">
+              <span class="mellow-written-reviews__avatar" aria-hidden="true">PN</span>
+              <div>
+                <p class="mellow-written-reviews__name">Priya N.</p>
+                <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • Nighttime routine</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="mellow-written-reviews__card">
+            <div class="mellow-written-reviews__stars" aria-label="4 out of 5 stars">★★★★<span class="mellow-written-reviews__star-muted">★</span></div>
+            <p class="mellow-card-copy mellow-written-reviews__quote">
+              “Mellow has helped my meals feel less stressful.”
+            </p>
+
+            <div class="mellow-written-reviews__person">
+              <span class="mellow-written-reviews__avatar" aria-hidden="true">JW</span>
+              <div>
+                <p class="mellow-written-reviews__name">James W.</p>
+                <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • After-meal support</p>
+              </div>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
 
-      <article class="mellow-written-reviews__card">
-        <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-card-copy mellow-written-reviews__quote">
-          “I wanted something that fit into my routine without making reflux feel like a whole project. Mellow made the after-dinner part easier.”
-        </p>
-
-        <div class="mellow-written-reviews__person">
-          <span class="mellow-written-reviews__avatar" aria-hidden="true">MT</span>
-          <div>
-            <p class="mellow-written-reviews__name">Michael T.</p>
-            <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • Non-PPI support</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="mellow-written-reviews__card">
-        <div class="mellow-written-reviews__stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="mellow-card-copy mellow-written-reviews__quote">
-          “Before bed used to come with a little mental math. This felt simple enough to keep on my nightstand and actually use.”
-        </p>
-
-        <div class="mellow-written-reviews__person">
-          <span class="mellow-written-reviews__avatar" aria-hidden="true">PN</span>
-          <div>
-            <p class="mellow-written-reviews__name">Priya N.</p>
-            <p class="mellow-written-reviews__meta">Verified buyer • Purchased Mellow • Nighttime routine</p>
-          </div>
-        </div>
-      </article>
+      <button class="mellow-written-reviews__arrow mellow-written-reviews__arrow--next" type="button" aria-label="Next reviews" data-mellow-reviews-next>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
 
     <div class="mellow-written-reviews__footer">
@@ -274,8 +478,57 @@
         <span class="mellow-section-cta__arrow mellow-written-reviews__cta-arrow" aria-hidden="true">→</span>
       </a>
     </div>
+
+    <div class="mellow-written-reviews__trust" aria-label="Purchase reassurance">
+      <div class="mellow-written-reviews__trust-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3l7 3v5c0 4.6-2.8 7.9-7 10-4.2-2.1-7-5.4-7-10V6l7-3z" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M8.7 12.1l2.1 2.1 4.5-4.8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>30-day guarantee</span>
+      </div>
+      <div class="mellow-written-reviews__trust-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="5" y="10" width="14" height="10" rx="2" stroke-width="1.8"/>
+          <path d="M8 10V7.8a4 4 0 0 1 8 0V10" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12 14v2" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Secure checkout</span>
+      </div>
+      <div class="mellow-written-reviews__trust-item">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 12a8 8 0 0 1-13.6 5.7" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M4 12A8 8 0 0 1 17.6 6.3" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M18 3v4h-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 21v-4h4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Cancel anytime</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const section = document.getElementById('MellowWrittenReviews-{{ section.id }}');
+    if (!section) return;
+
+    const scroller = section.querySelector('[data-mellow-reviews-scroller]');
+    const prev = section.querySelector('[data-mellow-reviews-prev]');
+    const next = section.querySelector('[data-mellow-reviews-next]');
+    if (!scroller || !prev || !next) return;
+
+    const getStep = () => {
+      const card = scroller.querySelector('.mellow-written-reviews__card');
+      const cards = scroller.querySelector('.mellow-written-reviews__cards');
+      const styles = cards ? window.getComputedStyle(cards) : null;
+      return card ? card.getBoundingClientRect().width + parseFloat((styles && (styles.columnGap || styles.gap)) || 24) : 320;
+    };
+
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -getStep(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: getStep(), behavior: 'smooth' }));
+  })();
+</script>
 
 {% schema %}
 {
