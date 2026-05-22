@@ -103,21 +103,21 @@
       "type": "mellow-why-it-works",
       "settings": {
         "color_scheme": "",
-        "eyebrow": "Why it works",
+        "eyebrow": "HOW IT WORKS",
         "heading": "How MellowRaft™ works",
         "subheading": "Mellow activates in stomach acid to form a soft, floating barrier that helps keep reflux where it starts.",
         "image_1": "shopify://shop_images/mellow_activate_float_master_bg_v2.png",
-        "image_2": "shopify://shop_images/mellow_float_float_master_bg_v2.png",
-        "image_3": "shopify://shop_images/mellow_form_float_master_bg_v2.png",
+        "image_2": "shopify://shop_images/mellow_form_float_master_bg_v2.png",
+        "image_3": "shopify://shop_images/mellow_float_float_master_bg_v2.png",
         "step_1_title": "ACTIVATE",
         "step_1_description": "Gel meets acid.",
         "step_2_title": "FORM",
         "step_2_description": "A soft raft begins to build.",
         "step_3_title": "FLOAT",
         "step_3_description": "The barrier rises and rests on top.",
-        "footnote": "Based on the known behavior of alginate raft-forming formulations.",
-        "ppi_heading": "Taking a PPI? Mellow works differently.",
-        "ppi_body": "PPIs help reduce acid production over time. Mellow is designed for the moments reflux can still rise — forming a floating alginate barrier after you take it. A PPI works upstream by lowering acid. Mellow works at the surface, creating a protective raft where reflux begins."
+        "footnote": "",
+        "ppi_heading": "",
+        "ppi_body": ""
       }
     },
     "mellow_clinical_proof": {

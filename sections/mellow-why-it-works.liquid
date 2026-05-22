@@ -1,18 +1,21 @@
 {% comment %}
   Mellow why it works section.
-  Full-bleed forest green scientific visual sequence for the MellowRaft mechanism.
+  Warm ivory educational sequence for the MellowRaft mechanism.
 {% endcomment %}
 
 <style>
   #MellowWhyItWorks-{{ section.id }} {
-    --mellow-why-it-works-card-gap: clamp(24px, 2.4vw, 36px);
+    --mellow-forest: #123308;
+    --mellow-green: #123308;
+    --mellow-section-green: #123308;
+    --mellow-why-it-works-card-gap: clamp(18px, 1.75vw, 26px);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    padding-top: var(--mellow-section-pad-top, clamp(64px, 5.5vw, 92px));
-    padding-bottom: var(--mellow-section-pad-bottom, clamp(52px, 5vw, 76px));
-    background: var(--mellow-section-green, var(--mellow-forest, #003302));
-    color: var(--mellow-cream, #FCFBF7);
+    padding-top: clamp(62px, 5vw, 86px);
+    padding-bottom: clamp(58px, 5vw, 84px);
+    background: var(--mellow-ivory, var(--mellow-cream, #FCFBF7));
+    color: var(--mellow-forest, #123308);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__inner {
@@ -25,7 +28,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__header {
-    max-width: var(--mellow-header-max, 760px);
+    max-width: min(760px, 100%);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__eyebrow {
@@ -35,13 +38,13 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__heading {
     max-width: var(--mellow-header-max, 760px);
-    color: var(--mellow-cream, #FCFBF7);
+    color: var(--mellow-forest, #123308);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__subheading {
-    max-width: 680px;
+    max-width: 590px;
     margin: var(--mellow-section-heading-gap) 0 0;
-    color: rgba(252, 251, 247, 0.9);
+    color: rgba(18, 51, 8, 0.82);
     font-family: var(--font-body-family, inherit);
     font-size: var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px));
     line-height: var(--mellow-subhead-line-height, 1.46);
@@ -50,7 +53,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__sequence {
-    margin-top: calc(var(--mellow-section-content-gap-compact) + 20px);
+    margin-top: clamp(34px, 3vw, 52px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,
@@ -62,12 +65,13 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
     position: relative;
-    height: clamp(288px, 27.5vw, 420px);
+    height: clamp(310px, 29.2vw, 424px);
     overflow: hidden;
     isolation: isolate;
-    border-radius: min(var(--mellow-radius-card), 28px);
+    border-radius: min(var(--mellow-radius-card), 22px);
     background-color: #c88716;
     transform: translateZ(0);
+    box-shadow: 0 22px 58px rgba(18, 51, 8, 0.06);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel::before {
@@ -177,7 +181,7 @@
     align-items: center;
     gap: 10px;
     color: #ffffff;
-    font-size: clamp(13px, 1.05vw, 17px);
+    font-size: clamp(13px, 1vw, 16px);
     line-height: 1.12;
     letter-spacing: -0.02em;
     opacity: 0.88;
@@ -287,7 +291,7 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
-    margin-top: calc(var(--mellow-card-gap-tight-y) + 10px);
+    margin-top: clamp(20px, 1.8vw, 28px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step {
@@ -295,8 +299,8 @@
     grid-template-columns: auto minmax(0, 1fr);
     gap: var(--mellow-card-gap-tight);
     align-items: start;
-    color: var(--mellow-cream, #FCFBF7);
-    padding: 0 var(--mellow-card-pad-tight);
+    color: var(--mellow-forest, #123308);
+    padding: 0 clamp(6px, 0.8vw, 12px);
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-number {
@@ -306,8 +310,8 @@
     width: clamp(40px, 2.8vw, 50px);
     height: clamp(40px, 2.8vw, 50px);
     border-radius: 999px;
-    background: rgba(252, 251, 247, 0.96);
-    color: var(--mellow-forest, #003302);
+    background: var(--mellow-forest, #123308);
+    color: var(--mellow-cream, #FCFBF7);
     font-size: clamp(16px, 1.1vw, 20px);
     line-height: 1;
     font-weight: 700;
@@ -316,9 +320,9 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-title {
     margin: 0;
-    color: var(--mellow-cream, #FCFBF7);
+    color: var(--mellow-forest, #123308);
     font-family: var(--font-heading-family, inherit);
-    font-size: clamp(19px, 1.35vw, 24px);
+    font-size: clamp(18px, 1.25vw, 22px);
     line-height: 1.04;
     font-weight: 650;
     letter-spacing: -0.035em;
@@ -326,10 +330,10 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-description {
-    margin: 8px 0 0;
-    color: rgba(252, 251, 247, 0.84);
-    font-size: clamp(15px, 1vw, 18px);
-    line-height: 1.32;
+    margin: 6px 0 0;
+    color: rgba(18, 51, 8, 0.78);
+    font-size: clamp(15px, 1vw, 17px);
+    line-height: 1.34;
     letter-spacing: -0.02em;
   }
 
@@ -373,26 +377,13 @@
   @media screen and (max-width: 989px) {
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid,
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid {
-      display: block;
-    }
-
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item {
-      display: block;
-      margin-top: var(--mellow-why-it-works-card-gap);
-    }
-
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item:first-child {
-      margin-top: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(28px, 4vw, 42px) var(--mellow-why-it-works-card-gap);
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
-      height: clamp(300px, 72vw, 460px);
-      border-radius: min(var(--mellow-radius-card), 28px);
+      height: clamp(300px, 45vw, 410px);
+      border-radius: min(var(--mellow-radius-card), 22px);
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
@@ -402,7 +393,7 @@
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step--mobile {
       display: grid;
       margin-top: calc(var(--mellow-card-gap-tight) + 10px);
-      padding: 0 var(--mellow-card-pad-tight) var(--mellow-card-pad-tight);
+      padding: 0 clamp(4px, 0.8vw, 10px);
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--activate {
@@ -450,6 +441,23 @@
       padding-right: var(--mellow-section-axis-pad, 22px);
     }
 
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-grid {
+      display: block;
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item {
+      display: block;
+      margin-top: clamp(30px, 8vw, 42px);
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__media-item:first-child {
+      margin-top: 0;
+    }
+
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__panel {
+      height: clamp(300px, 76vw, 440px);
+    }
+
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation {
       font-size: clamp(12px, 3.6vw, 15px);
       gap: 8px;
@@ -457,7 +465,7 @@
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--raft {
       right: 7%;
-      top: 28%;
+      top: 27%;
       --annotation-rise: 58px;
     }
 
@@ -478,7 +486,7 @@
     }
 
     #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__annotation--contents {
-      right: 12%;
+      right: 10%;
       bottom: 13%;
       --annotation-line: 36px;
     }
@@ -625,21 +633,6 @@
         </div>
       </div>
 
-      {%- if section.settings.ppi_heading != blank or section.settings.ppi_body != blank -%}
-        <div class="mellow-why-it-works__ppi-note">
-          {%- if section.settings.ppi_heading != blank -%}
-            <h3 class="mellow-why-it-works__ppi-heading">{{ section.settings.ppi_heading | escape }}</h3>
-          {%- endif -%}
-
-          {%- if section.settings.ppi_body != blank -%}
-            <p class="mellow-why-it-works__ppi-body">{{ section.settings.ppi_body | escape }}</p>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.footnote != blank -%}
-        <p class="mellow-why-it-works__footnote">{{ section.settings.footnote | escape }}</p>
-      {%- endif -%}
     </div>
   </div>
 </section>
@@ -660,7 +653,7 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "WHY IT WORKS"
+      "default": "HOW IT WORKS"
     },
     {
       "type": "text",
@@ -729,19 +722,19 @@
       "type": "text",
       "id": "footnote",
       "label": "Footnote",
-      "default": "Based on the known behavior of alginate raft-forming formulations."
+      "default": ""
     },
     {
       "type": "text",
       "id": "ppi_heading",
       "label": "PPI support heading",
-      "default": "Taking a PPI? Mellow works differently."
+      "default": ""
     },
     {
       "type": "textarea",
       "id": "ppi_body",
       "label": "PPI support body",
-      "default": "PPIs help reduce acid production over time. Mellow is designed for the moments reflux can still rise — forming a floating alginate barrier after you take it. A PPI works upstream by lowering acid. Mellow works at the surface, creating a protective raft where reflux begins."
+      "default": ""
     }
   ],
   "presets": [
