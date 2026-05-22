@@ -1,160 +1,46 @@
 {% comment %}
   Mellow clinical proof section.
-  Premium peer-reviewed research proof band using the global Mellow brand system.
+  Warm before/after research proof module using the global Mellow brand system.
 {% endcomment %}
-
-{%- liquid
-  assign background_image = section.settings.background_image
--%}
 
 <style>
   #MellowClinicalProof-{{ section.id }} {
     --mellow-clinical-pad-top: {{ section.settings.padding_top }}px;
     --mellow-clinical-pad-bottom: {{ section.settings.padding_bottom }}px;
-    --mellow-clinical-divider: rgba(0, 51, 2, 0.16);
-    --mellow-clinical-cream-muted: rgba(0, 51, 2, 0.72);
-    --mellow-clinical-cream-soft: rgba(0, 51, 2, 0.54);
-    --mellow-clinical-sage: color-mix(in srgb, var(--mellow-muted, #5E6B58) 72%, var(--mellow-forest, #003302));
+    --mellow-clinical-border: rgba(18, 51, 8, 0.12);
+    --mellow-clinical-border-soft: rgba(18, 51, 8, 0.08);
+    --mellow-clinical-copy: rgba(18, 51, 8, 0.78);
+    --mellow-clinical-muted: rgba(18, 51, 8, 0.62);
+    --mellow-clinical-line: #AAB5A6;
+    --mellow-clinical-card: color-mix(in srgb, var(--mellow-cream, #FCFBF7) 82%, var(--mellow-card-cream, #F8F4EC));
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     padding-top: var(--mellow-clinical-pad-top);
     padding-bottom: var(--mellow-clinical-pad-bottom);
     background: var(--mellow-cream, #FCFBF7);
-    color: var(--mellow-forest, #003302);
-  }
-
-  #MellowClinicalProof-{{ section.id }}.has-background-image {
-    position: relative;
-    isolation: isolate;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  #MellowClinicalProof-{{ section.id }}.has-background-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: rgba(252, 251, 247, 0.18);
-    pointer-events: none;
-  }
-
-  #MellowClinicalProof-{{ section.id }}.has-background-image > .mellow-section-axis {
-    position: relative;
-    z-index: 1;
+    color: var(--mellow-forest, #123308);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
     width: 100%;
-    max-width: none;
-    margin: 0;
+    max-width: var(--mellow-axis-max, 1360px);
+    margin: 0 auto;
     padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
     padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
     box-sizing: border-box;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: clamp(28px, 3vw, 44px);
-    border-top: 1px solid var(--mellow-clinical-divider);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
-    position: relative;
-    min-width: 0;
-    padding: clamp(24px, 2.6vw, 36px) clamp(18px, 1.8vw, 30px);
-    text-align: left;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-copy {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: clamp(8px, 0.8vw, 12px) clamp(18px, 1.7vw, 28px);
-    align-items: start;
-    width: 100%;
-    text-align: left;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child {
-    padding-left: 0;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:last-child {
-    padding-right: 0;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat + .mellow-clinical-proof__stat::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: clamp(24px, 2.6vw, 36px);
-    bottom: clamp(24px, 2.6vw, 36px);
-    width: 1px;
-    background: var(--mellow-clinical-divider);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
-    display: block;
-    grid-row: 1 / span 2;
-    margin: 0;
-    text-align: left;
-    color: var(--mellow-forest, #003302);
-    font-family: var(--mellow-font-display) !important;
-    font-size: clamp(68px, 5.8vw, 96px);
-    font-weight: var(--mellow-heading-weight);
-    letter-spacing: 0;
-    line-height: 0.9;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-plus {
-    display: inline-block;
-    margin-left: 0.02em;
-    color: var(--mellow-clinical-sage);
-    font-size: 0.42em;
-    line-height: 1;
-    transform: translateY(-0.72em);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
-    display: block;
-    max-width: 360px;
-    margin: 0;
-    text-align: left;
-    color: var(--mellow-clinical-sage);
-    font-family: var(--mellow-font-display) !important;
-    font-size: clamp(20px, 1.5vw, 26px);
-    font-weight: 600;
-    line-height: 1.06;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label::after {
-    content: none;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
-    max-width: 380px;
-    margin: 0;
-    text-align: left;
-    color: var(--mellow-clinical-cream-muted);
-    font-size: clamp(15px, 1vw, 17px);
-    line-height: 1.46;
-    letter-spacing: 0;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__content {
-    display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.72fr);
-    gap: var(--mellow-feature-gap);
+    grid-template-columns: minmax(280px, 0.76fr) minmax(620px, 1.36fr);
+    gap: clamp(44px, 7vw, 112px);
     align-items: start;
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__copy {
-    max-width: 760px;
+    max-width: 470px;
+    padding-top: clamp(20px, 2.4vw, 34px);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__eyebrow {
@@ -162,8 +48,8 @@
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading {
-    max-width: 820px;
-    color: var(--mellow-forest, #003302);
+    max-width: 520px;
+    color: var(--mellow-forest, #123308);
     text-wrap: balance;
   }
 
@@ -171,21 +57,13 @@
     display: block;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading-line--sage {
-    color: var(--mellow-clinical-sage);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__heading-line--accent {
-    color: var(--mellow-orange-red, #D04A2A);
-  }
-
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__text {
-    max-width: 620px;
-    color: var(--mellow-clinical-cream-muted);
+    max-width: 470px;
+    color: var(--mellow-clinical-copy);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__actions {
-    margin-top: clamp(22px, 2vw, 30px);
+    margin-top: clamp(24px, 2.2vw, 34px);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta-wrap {
@@ -193,148 +71,255 @@
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__cta {
-    --mellow-section-cta-bg: var(--mellow-forest, #003302);
-    --mellow-section-cta-border: var(--mellow-forest, #003302);
+    --mellow-section-cta-bg: var(--mellow-forest, #123308);
+    --mellow-section-cta-border: var(--mellow-forest, #123308);
     --mellow-section-cta-color: var(--mellow-cream, #FCFBF7);
     --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
+    --mellow-section-cta-width: clamp(214px, 14vw, 248px);
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__disclaimer {
-    max-width: 620px;
-    margin: clamp(18px, 1.6vw, 22px) 0 0;
-    padding-top: clamp(10px, 1vw, 14px);
-    border-top: 1px solid rgba(0, 51, 2, 0.10);
-    color: var(--mellow-clinical-cream-soft);
-    font-size: clamp(12px, 0.9vw, 13px);
-    line-height: 1.5;
-    letter-spacing: 0;
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__proof {
+    display: grid;
+    gap: clamp(14px, 1.4vw, 18px);
+    min-width: 0;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card,
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
+    border: 1px solid var(--mellow-clinical-border);
+    border-radius: min(var(--mellow-radius-card, 2.8rem), 30px);
+    background: var(--mellow-clinical-card);
+    box-shadow: 0 18px 44px rgba(18, 51, 8, 0.045);
   }
 
   #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card {
-    position: relative;
-    overflow: hidden;
-    align-self: start;
-    min-height: clamp(280px, 22vw, 340px);
-    padding: clamp(30px, 2.6vw, 42px);
-    border: 1px solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-    border-radius: var(--mellow-radius-card);
-    background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-    isolation: isolate;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card::before {
-    content: "";
-    display: block;
-    width: clamp(48px, 4vw, 64px);
-    height: 3px;
-    margin-bottom: clamp(18px, 1.8vw, 26px);
-    border-radius: var(--mellow-radius-pill, 999px);
-    background: var(--mellow-orange-red, #D04A2A);
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-copy {
-    position: relative;
-    z-index: 2;
-    max-width: 430px;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-title {
-    max-width: 390px;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-body {
-    max-width: 420px;
-    margin-top: 14px;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    max-width: 520px;
-    margin-top: clamp(20px, 2vw, 28px);
+    grid-template-columns: minmax(0, 1fr) minmax(156px, 0.58fr) minmax(0, 1fr);
+    align-items: stretch;
+    min-height: clamp(390px, 34vw, 470px);
     overflow: hidden;
-    border: 1px solid rgba(0, 51, 2, 0.12);
-    border-radius: min(var(--mellow-radius-card), 18px);
-    background: rgba(0, 51, 2, 0.12);
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-item {
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__panel {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(14px, 1.4vw, 20px);
     min-width: 0;
-    padding: clamp(13px, 1.1vw, 16px);
-    background: rgba(252, 251, 247, 0.56);
+    padding: clamp(28px, 2.8vw, 42px) clamp(20px, 2vw, 32px) clamp(24px, 2.4vw, 34px);
+    text-align: center;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-value {
-    display: block;
-    color: var(--mellow-forest, #003302);
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__panel + .mellow-clinical-proof__outcome,
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome + .mellow-clinical-proof__panel {
+    border-left: 1px solid var(--mellow-clinical-border-soft);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__label {
+    display: grid;
+    gap: 7px;
+    min-height: 54px;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(12px, 0.86vw, 14px);
+    line-height: 1.22;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__label strong {
     font-family: var(--mellow-font-display) !important;
-    font-size: clamp(20px, 1.8vw, 28px);
-    font-weight: var(--mellow-heading-weight);
-    line-height: 0.96;
-    letter-spacing: 0;
-  }
-
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-label {
-    display: block;
-    margin-top: 8px;
-    color: var(--mellow-clinical-cream-muted);
-    font-size: clamp(11px, 0.84vw, 13px);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.05em;
+    font-size: clamp(13px, 0.95vw, 16px);
+    font-weight: 760;
+    letter-spacing: 0.02em;
+    line-height: 1;
     text-transform: uppercase;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-note {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    max-width: 390px;
-    margin: clamp(18px, 2vw, 24px) 0 0;
-    color: var(--mellow-forest, #003302);
-    font-size: clamp(14px, 1vw, 16px);
-    font-weight: 700;
-    line-height: 1.35;
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__label span {
+    color: var(--mellow-clinical-copy);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__figure {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__anatomy {
+    width: min(100%, 214px);
+    height: auto;
+    overflow: visible;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__caption {
+    margin: 0;
+    color: var(--mellow-clinical-copy);
+    font-size: clamp(13px, 0.94vw, 15px);
+    font-weight: 650;
+    line-height: 1.25;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome {
+    display: grid;
+    place-items: center;
+    padding: clamp(26px, 2.2vw, 36px) clamp(16px, 1.5vw, 24px);
+    text-align: left;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome-inner {
+    display: grid;
+    gap: clamp(12px, 1vw, 16px);
+    justify-items: start;
+    max-width: 150px;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__multiplier {
+    display: block;
+    color: var(--mellow-forest, #123308);
+    font-family: var(--mellow-font-display) !important;
+    font-size: clamp(54px, 4.8vw, 76px);
+    font-weight: 720;
     letter-spacing: 0;
+    line-height: 0.88;
   }
 
-  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card-note::before {
-    content: "";
-    flex: 0 0 16px;
-    width: 16px;
-    height: 2px;
-    margin-top: 0.65em;
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome-copy {
+    margin: 0;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(15px, 1.15vw, 18px);
+    font-weight: 760;
+    line-height: 1.2;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__source {
+    margin: 0;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(12px, 0.88vw, 14px);
+    font-weight: 760;
+    letter-spacing: 0.05em;
+    line-height: 1.22;
+    text-transform: uppercase;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__arrow {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
     border-radius: var(--mellow-radius-pill, 999px);
-    background: var(--mellow-orange-red, #D04A2A);
+    background: var(--mellow-forest, #123308);
+    color: var(--mellow-cream, #FCFBF7);
+    font-size: 23px;
+    line-height: 1;
+    box-shadow: 0 10px 22px rgba(18, 51, 8, 0.16);
   }
 
-  @media screen and (max-width: 989px) {
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: hidden;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(16px, 1.5vw, 22px);
+    align-items: start;
+    min-width: 0;
+    padding: clamp(24px, 2.2vw, 34px) clamp(22px, 2vw, 34px);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat + .mellow-clinical-proof__stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: var(--mellow-clinical-border-soft);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__icon {
+    display: grid;
+    place-items: center;
+    width: clamp(42px, 3.4vw, 50px);
+    height: clamp(42px, 3.4vw, 50px);
+    border-radius: var(--mellow-radius-pill, 999px);
+    background: var(--mellow-forest, #123308);
+    color: var(--mellow-cream, #FCFBF7);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__icon svg {
+    width: 58%;
+    height: 58%;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-content {
+    min-width: 0;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
+    display: block;
+    color: var(--mellow-forest, #123308);
+    font-family: var(--mellow-font-display) !important;
+    font-size: clamp(44px, 4vw, 62px);
+    font-weight: 720;
+    letter-spacing: 0;
+    line-height: 0.9;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-text {
+    margin: 10px 0 0;
+    color: var(--mellow-clinical-copy);
+    font-size: clamp(15px, 1.1vw, 18px);
+    font-weight: 540;
+    line-height: 1.22;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-source {
+    display: block;
+    margin-top: 12px;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(10px, 0.78vw, 12px);
+    font-weight: 760;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__citation {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    margin-top: clamp(20px, 2vw, 28px);
+    padding-top: clamp(20px, 2vw, 28px);
+    border-top: 1px solid var(--mellow-clinical-border-soft);
+    color: var(--mellow-clinical-copy);
+    font-size: clamp(12px, 0.86vw, 14px);
+    font-weight: 560;
+    line-height: 1.45;
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__citation-icon {
+    width: 32px;
+    height: 38px;
+    color: var(--mellow-forest, #123308);
+  }
+
+  #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__citation p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1180px) {
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__grid {
       grid-template-columns: 1fr;
+      gap: var(--mellow-section-content-gap-compact, clamp(26px, 2.4vw, 40px));
     }
 
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat,
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child,
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:last-child {
-      padding: clamp(26px, 4.5vw, 38px) 0;
-      border-top: 1px solid var(--mellow-clinical-divider);
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat:first-child {
-      border-top: 0;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat + .mellow-clinical-proof__stat::before {
-      content: none;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__content {
-      grid-template-columns: 1fr;
-      gap: var(--mellow-section-content-gap-compact);
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__copy {
+      max-width: 720px;
+      padding-top: 0;
     }
   }
 
@@ -344,63 +329,85 @@
       --mellow-clinical-pad-bottom: min({{ section.settings.padding_bottom }}px, 64px);
     }
 
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
-      font-size: clamp(60px, 16vw, 92px);
-      line-height: 0.92;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-copy {
-      display: block;
-      max-width: 430px;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
-      margin-bottom: clamp(8px, 2.5vw, 14px);
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-label {
-      max-width: 320px;
-      font-size: clamp(22px, 6.6vw, 30px);
-      line-height: 1.04;
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-body {
-      max-width: 330px;
-      margin-top: clamp(8px, 2.6vw, 12px);
-      font-size: 16px;
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__inner {
+      padding-left: clamp(18px, 5vw, 28px);
+      padding-right: clamp(18px, 5vw, 28px);
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__text {
-      max-width: 360px;
+      max-width: 420px;
       font-size: 16px;
       line-height: 1.45;
     }
 
     #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__card {
-      min-height: 0;
-      padding: clamp(26px, 6vw, 34px);
-      border-radius: min(var(--mellow-radius-card), 24px);
-    }
-
-    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__evidence-list {
       grid-template-columns: 1fr;
+      min-height: 0;
+      border-radius: 24px;
     }
 
-    #MellowClinicalProof-{{ section.id }}.has-background-image::before {
-      background: rgba(252, 251, 247, 0.24);
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__panel {
+      padding: 26px 22px;
     }
 
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__panel + .mellow-clinical-proof__outcome,
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome + .mellow-clinical-proof__panel {
+      border-top: 1px solid var(--mellow-clinical-border-soft);
+      border-left: 0;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome {
+      padding: 26px 22px;
+      text-align: center;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__outcome-inner {
+      justify-items: center;
+      max-width: 240px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stats {
+      grid-template-columns: 1fr;
+      border-radius: 24px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat {
+      grid-template-columns: auto minmax(0, 1fr);
+      padding: 22px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat + .mellow-clinical-proof__stat::before {
+      top: 0;
+      bottom: auto;
+      left: 22px;
+      right: 22px;
+      width: auto;
+      height: 1px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__stat-number {
+      font-size: clamp(40px, 13vw, 56px);
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__citation {
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    #MellowClinicalProof-{{ section.id }} .mellow-clinical-proof__citation-icon {
+      width: 28px;
+      height: 34px;
+    }
   }
 </style>
 
 <section
   id="MellowClinicalProof-{{ section.id }}"
-  class="mellow-section-standard mellow-clinical-proof color-{{ section.settings.color_scheme }}{% if background_image != blank %} has-background-image{% endif %}"
-  {% if background_image != blank %}style="background-image: url('{{ background_image | image_url: width: 2400 }}');"{% endif %}
+  class="mellow-section-standard mellow-clinical-proof color-{{ section.settings.color_scheme }}"
   aria-labelledby="MellowClinicalProofHeading-{{ section.id }}"
 >
-  <div class="mellow-section-axis mellow-clinical-proof__inner">
-    <div class="mellow-clinical-proof__content">
+  <div class="mellow-clinical-proof__inner">
+    <div class="mellow-clinical-proof__grid">
       <div class="mellow-clinical-proof__copy">
         {%- if section.settings.eyebrow != blank -%}
           <p class="mellow-eyebrow mellow-clinical-proof__eyebrow">{{ section.settings.eyebrow | escape }}</p>
@@ -411,10 +418,10 @@
             <span class="mellow-clinical-proof__heading-line">{{ section.settings.headline_line_1 | escape }}</span>
           {%- endif -%}
           {%- if section.settings.headline_line_2 != blank -%}
-            <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--sage">{{ section.settings.headline_line_2 | escape }}</span>
+            <span class="mellow-clinical-proof__heading-line">{{ section.settings.headline_line_2 | escape }}</span>
           {%- endif -%}
           {%- if section.settings.headline_line_3 != blank -%}
-            <span class="mellow-clinical-proof__heading-line mellow-clinical-proof__heading-line--accent">{{ section.settings.headline_line_3 | escape }}</span>
+            <span class="mellow-clinical-proof__heading-line">{{ section.settings.headline_line_3 | escape }}</span>
           {%- endif -%}
         </h2>
 
@@ -427,78 +434,134 @@
             <div class="mellow-section-cta-wrap mellow-clinical-proof__cta-wrap">
               <a class="mellow-section-cta mellow-clinical-proof__cta" href="{{ section.settings.cta_link | default: '#' }}">
                 <span class="mellow-section-cta__label">{{ section.settings.cta_label | escape }}</span>
-                <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+                <span class="mellow-section-cta__arrow" aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </div>
         {%- endif -%}
-
-        {%- if section.settings.disclaimer != blank -%}
-          <p class="mellow-clinical-proof__disclaimer">{{ section.settings.disclaimer | escape | newline_to_br }}</p>
-        {%- endif -%}
       </div>
 
-      <article class="mellow-clinical-proof__card">
-        <div class="mellow-clinical-proof__card-copy">
-          <h3 class="mellow-card-title mellow-clinical-proof__card-title">{{ section.settings.card_title | escape }}</h3>
-          <p class="mellow-card-copy mellow-clinical-proof__card-body">{{ section.settings.card_body | escape }}</p>
-          <div class="mellow-clinical-proof__evidence-list" aria-label="Research categories">
-            <div class="mellow-clinical-proof__evidence-item">
-              <span class="mellow-clinical-proof__evidence-value">10+</span>
-              <span class="mellow-clinical-proof__evidence-label">Studies</span>
+      <div class="mellow-clinical-proof__proof">
+        <article class="mellow-clinical-proof__card" aria-label="Before and after alginate therapy illustration">
+          <div class="mellow-clinical-proof__panel">
+            <div class="mellow-clinical-proof__label">
+              <strong>Before support</strong>
+              <span>Placebo or antacid</span>
             </div>
-            <div class="mellow-clinical-proof__evidence-item">
-              <span class="mellow-clinical-proof__evidence-value">25+</span>
-              <span class="mellow-clinical-proof__evidence-label">Years</span>
+            <div class="mellow-clinical-proof__figure" aria-hidden="true">
+              <svg class="mellow-clinical-proof__anatomy" viewBox="0 0 210 250" role="img" focusable="false">
+                <defs>
+                  <radialGradient id="mellow-before-stomach-{{ section.id }}" cx="55%" cy="52%" r="64%">
+                    <stop offset="0%" stop-color="#F5B08E" stop-opacity="0.72" />
+                    <stop offset="100%" stop-color="#D04A2A" stop-opacity="0.52" />
+                  </radialGradient>
+                </defs>
+                <path d="M79 13c-16 2-28 14-30 31-2 14 5 25 12 36 5 8 7 15 6 24-2 17-16 22-31 29-20 9-29 26-31 50l-3 42" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M130 14c16 4 27 17 27 33 0 14-8 22-10 32-2 9 4 16 16 22 31 15 42 35 43 79l1 44" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M55 169c-3 28-4 44-6 60" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.35" stroke-linecap="round" />
+                <path d="M158 169c4 26 5 43 7 60" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.35" stroke-linecap="round" />
+                <path d="M93 78c-8 20-7 64 0 84 4 10 12 15 18 20 8 7 6 23-7 31-18 12-41 5-47-13-5-15 4-27 19-27 11 0 17 7 20 18" fill="none" stroke="#D04A2A" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M107 98c-4 28-2 55 5 76 3 10 3 23-2 31-7 12-22 19-40 16 2 16 24 21 42 12 20-10 30-31 23-52-4-13-15-19-24-27-7-8-9-30-6-55z" fill="url(#mellow-before-stomach-{{ section.id }})" opacity="0.9" />
+                <path d="M101 78c-7 22-6 59-1 78" fill="none" stroke="#D04A2A" stroke-width="1.35" stroke-linecap="round" opacity="0.72" />
+                <circle cx="86" cy="107" r="1.6" fill="#D04A2A" opacity="0.56" />
+                <circle cx="121" cy="113" r="1.8" fill="#D04A2A" opacity="0.5" />
+                <circle cx="77" cy="128" r="1.3" fill="#D04A2A" opacity="0.48" />
+                <circle cx="128" cy="132" r="1.4" fill="#D04A2A" opacity="0.48" />
+                <circle cx="91" cy="145" r="1.2" fill="#D04A2A" opacity="0.42" />
+                <circle cx="118" cy="151" r="1.2" fill="#D04A2A" opacity="0.42" />
+                <circle cx="69" cy="95" r="1.1" fill="#D04A2A" opacity="0.36" />
+                <circle cx="74" cy="80" r="1" fill="#D04A2A" opacity="0.22" />
+              </svg>
             </div>
-            <div class="mellow-clinical-proof__evidence-item">
-              <span class="mellow-clinical-proof__evidence-value">RCT</span>
-              <span class="mellow-clinical-proof__evidence-label">Evidence</span>
+            <p class="mellow-clinical-proof__caption">Symptoms persist</p>
+          </div>
+
+          <div class="mellow-clinical-proof__outcome">
+            <div class="mellow-clinical-proof__outcome-inner">
+              <span class="mellow-clinical-proof__multiplier">4.4&times;</span>
+              <p class="mellow-clinical-proof__outcome-copy">greater odds of reflux symptom resolution</p>
+              <p class="mellow-clinical-proof__source">vs. placebo or antacids</p>
+              <span class="mellow-clinical-proof__arrow" aria-hidden="true">&rarr;</span>
             </div>
           </div>
-          <p class="mellow-clinical-proof__card-note">{{ section.settings.card_note | escape }}</p>
-        </div>
-      </article>
-    </div>
-  </div>
 
-  <div class="mellow-section-axis mellow-clinical-proof__metrics-rail">
-    <div class="mellow-clinical-proof__stats" aria-label="Clinical research proof points">
-      <article class="mellow-clinical-proof__stat">
-        <div class="mellow-clinical-proof__stat-copy">
-          <span class="mellow-clinical-proof__stat-number">
-            {%- if section.settings.stat_1_value contains '+' -%}
-              {{ section.settings.stat_1_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>
-            {%- else -%}
-              {{ section.settings.stat_1_value | escape }}
-            {%- endif -%}
-          </span>
-          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_1_label | escape }}</span>
-          <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_1_body | escape }}</p>
-        </div>
-      </article>
+          <div class="mellow-clinical-proof__panel">
+            <div class="mellow-clinical-proof__label">
+              <strong>After alginate therapy</strong>
+              <span>Alginate forms a barrier<br>to help stop reflux</span>
+            </div>
+            <div class="mellow-clinical-proof__figure" aria-hidden="true">
+              <svg class="mellow-clinical-proof__anatomy" viewBox="0 0 210 250" role="img" focusable="false">
+                <path d="M79 13c-16 2-28 14-30 31-2 14 5 25 12 36 5 8 7 15 6 24-2 17-16 22-31 29-20 9-29 26-31 50l-3 42" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M130 14c16 4 27 17 27 33 0 14-8 22-10 32-2 9 4 16 16 22 31 15 42 35 43 79l1 44" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M55 169c-3 28-4 44-6 60" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.35" stroke-linecap="round" />
+                <path d="M158 169c4 26 5 43 7 60" fill="none" stroke="var(--mellow-clinical-line)" stroke-width="1.35" stroke-linecap="round" />
+                <path d="M101 82c-4 27-3 63 4 87 3 11 7 16 15 20" fill="none" stroke="#87977F" stroke-width="3.2" stroke-linecap="round" opacity="0.82" />
+                <path d="M111 170c13 12 20 28 12 43-8 14-28 20-48 16-17-3-24-13-22-27 2-13 12-22 25-22 10 0 17 5 21 13" fill="#E7EADF" stroke="#87977F" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M69 181c27 7 58 3 88-15 8-5 15-6 20-3 2 14-6 26-20 34-28 15-63 19-96 8 0-10 2-18 8-24z" fill="#123308" opacity="0.88" />
+                <path d="M72 205c22 7 47 5 73-5" fill="none" stroke="#87977F" stroke-width="1.1" stroke-linecap="round" opacity="0.45" />
+                <circle cx="88" cy="205" r="1.2" fill="#87977F" opacity="0.5" />
+                <circle cx="111" cy="213" r="1.2" fill="#87977F" opacity="0.42" />
+                <circle cx="132" cy="202" r="1.1" fill="#87977F" opacity="0.42" />
+                <circle cx="101" cy="222" r="1" fill="#87977F" opacity="0.35" />
+              </svg>
+            </div>
+            <p class="mellow-clinical-proof__caption">Symptoms improved</p>
+          </div>
+        </article>
 
-      <article class="mellow-clinical-proof__stat">
-        <div class="mellow-clinical-proof__stat-copy">
-          <span class="mellow-clinical-proof__stat-number">
-            {%- if section.settings.stat_2_value contains '+' -%}
-              {{ section.settings.stat_2_value | remove: '+' | escape }}<span class="mellow-clinical-proof__stat-plus">+</span>
-            {%- else -%}
-              {{ section.settings.stat_2_value | escape }}
-            {%- endif -%}
-          </span>
-          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_2_label | escape }}</span>
-          <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_2_body | escape }}</p>
-        </div>
-      </article>
+        <div class="mellow-clinical-proof__stats" aria-label="Clinical research proof points">
+          <article class="mellow-clinical-proof__stat">
+            <span class="mellow-clinical-proof__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" focusable="false">
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5" />
+                <path d="m8 12.3 2.6 2.7 5.8-6.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div class="mellow-clinical-proof__stat-content">
+              <span class="mellow-clinical-proof__stat-number">4.4&times;</span>
+              <p class="mellow-clinical-proof__stat-text">greater odds of reflux symptom resolution</p>
+              <span class="mellow-clinical-proof__stat-source">vs. placebo or antacids<sup>1</sup></span>
+            </div>
+          </article>
 
-      <article class="mellow-clinical-proof__stat">
-        <div class="mellow-clinical-proof__stat-copy">
-          <span class="mellow-clinical-proof__stat-number">{{ section.settings.stat_3_value | escape }}</span>
-          <span class="mellow-clinical-proof__stat-label">{{ section.settings.stat_3_label | escape }}</span>
-          <p class="mellow-clinical-proof__stat-body">{{ section.settings.stat_3_body | escape }}</p>
+          <article class="mellow-clinical-proof__stat">
+            <span class="mellow-clinical-proof__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" focusable="false">
+                <path d="M9.5 11.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" stroke="currentColor" stroke-width="1.45" />
+                <path d="M3.7 19c.7-3.4 2.6-5.1 5.8-5.1 3.1 0 5.1 1.7 5.8 5.1" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                <path d="M16.5 11.6a2.5 2.5 0 1 0 0-5" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+                <path d="M15.7 14.3c2.4.4 3.9 2 4.5 4.7" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" />
+              </svg>
+            </span>
+            <div class="mellow-clinical-proof__stat-content">
+              <span class="mellow-clinical-proof__stat-number">56.7%</span>
+              <p class="mellow-clinical-proof__stat-text">complete 7-day heartburn resolution with alginate + omeprazole<sup>2</sup></p>
+            </div>
+          </article>
+
+          <article class="mellow-clinical-proof__stat">
+            <span class="mellow-clinical-proof__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" focusable="false">
+                <path d="M12 3.5 19 6v5.3c0 4.2-2.7 7.5-7 9.2-4.3-1.7-7-5-7-9.2V6l7-2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div class="mellow-clinical-proof__stat-content">
+              <span class="mellow-clinical-proof__stat-number">25+</span>
+              <p class="mellow-clinical-proof__stat-text">years of alginate research behind barrier therapy<sup>3</sup></p>
+            </div>
+          </article>
         </div>
-      </article>
+
+        <div class="mellow-clinical-proof__citation">
+          <svg class="mellow-clinical-proof__citation-icon" viewBox="0 0 28 34" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4.5 1.5h12.8L23.5 8v24.5h-19V1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+            <path d="M17.2 1.8v6.5h6.1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+            <path d="M8.5 15.2h11M8.5 20h11M8.5 24.8h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          <p>{{ section.settings.disclaimer | escape | newline_to_br }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -524,61 +587,61 @@
       "type": "text",
       "id": "stat_1_value",
       "label": "Stat 1 value",
-      "default": "10+"
+      "default": "4.4x"
     },
     {
       "type": "text",
       "id": "stat_1_label",
       "label": "Stat 1 label",
-      "default": "studies in meta-analysis"
+      "default": "greater odds of reflux symptom resolution"
     },
     {
       "type": "textarea",
       "id": "stat_1_body",
       "label": "Stat 1 body",
-      "default": "Supporting alginate for reflux relief."
+      "default": "VS. PLACEBO OR ANTACIDS¹"
     },
     {
       "type": "text",
       "id": "stat_2_value",
       "label": "Stat 2 value",
-      "default": "25+"
+      "default": "56.7%"
     },
     {
       "type": "text",
       "id": "stat_2_label",
       "label": "Stat 2 label",
-      "default": "years of published peer-reviewed research"
+      "default": "complete 7-day heartburn resolution with alginate + omeprazole²"
     },
     {
       "type": "textarea",
       "id": "stat_2_body",
       "label": "Stat 2 body",
-      "default": "Alginate technology studied, refined, and validated for over two decades."
+      "default": ""
     },
     {
       "type": "text",
       "id": "stat_3_value",
       "label": "Stat 3 value",
-      "default": "2023"
+      "default": "25+"
     },
     {
       "type": "text",
       "id": "stat_3_label",
       "label": "Stat 3 label",
-      "default": "recent RCT vs. antacid alone"
+      "default": "years of alginate research behind barrier therapy³"
     },
     {
       "type": "textarea",
       "id": "stat_3_body",
       "label": "Stat 3 body",
-      "default": "The latest randomized controlled trial shows alginate add-on therapy outperforms antacid alone."
+      "default": ""
     },
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "PEER-REVIEWED RESEARCH"
+      "default": "CLINICAL PROOF"
     },
     {
       "type": "text",
@@ -590,19 +653,19 @@
       "type": "text",
       "id": "headline_line_2",
       "label": "Headline line 2",
-      "default": "Backed by decades of research."
+      "default": "Backed by decades"
     },
     {
       "type": "text",
       "id": "headline_line_3",
       "label": "Headline line 3",
-      "default": ""
+      "default": "of research."
     },
     {
       "type": "textarea",
       "id": "body",
       "label": "Body copy",
-      "default": "We didn’t invent alginate. We perfected its delivery in MellowRaft™. The science has been researched, replicated, and peer-reviewed for over 25 years."
+      "default": "Published studies show alginate therapies can improve reflux symptom resolution, support relief alongside PPIs, and build on decades of barrier-therapy research."
     },
     {
       "type": "text",
@@ -618,25 +681,25 @@
     {
       "type": "textarea",
       "id": "disclaimer",
-      "label": "Disclaimer text",
-      "default": "Not evaluated by the FDA. Not intended to diagnose, treat, cure or prevent any disease.\nCitations refer to published research on alginate-based formulas, not this specific product."
+      "label": "Citation note",
+      "default": "Based on published research on alginate-based therapies, not this specific product.\nSee our research library for full citations."
     },
     {
       "type": "text",
       "id": "card_title",
-      "label": "Trust card title",
+      "label": "Legacy trust card title",
       "default": "Published research, made practical"
     },
     {
       "type": "textarea",
       "id": "card_body",
-      "label": "Trust card body",
+      "label": "Legacy trust card body",
       "default": "Alginate-based formulas have been studied across clinical trials, meta-analyses, and reflux research for more than two decades."
     },
     {
       "type": "text",
       "id": "card_note",
-      "label": "Trust card bottom note",
+      "label": "Legacy trust card bottom note",
       "default": "Citations available in the full research library."
     },
     {
