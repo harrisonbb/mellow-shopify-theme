@@ -8,9 +8,9 @@
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
-    --mellow-expert-proof-card-width: clamp(270px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 310px);
-    --mellow-expert-proof-card-pad: clamp(18px, 1.35vw, 22px);
-    --mellow-carousel-card-gap: clamp(22px, 1.7vw, 28px);
+    --mellow-expert-proof-card-width: clamp(270px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 300px);
+    --mellow-expert-proof-card-pad: clamp(20px, 1.35vw, 22px);
+    --mellow-carousel-card-gap: clamp(24px, 1.7vw, 28px);
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
     overflow-x: hidden;
@@ -29,8 +29,8 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(20px, 2vw, 30px);
-    padding-bottom: clamp(44px, 4vw, 64px);
+    padding-top: clamp(36px, 3vw, 44px);
+    padding-bottom: clamp(40px, 3.4vw, 48px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -176,7 +176,7 @@
     box-sizing: border-box;
     padding-left: var(--mellow-section-axis-pad);
     padding-right: var(--mellow-section-axis-pad);
-    padding-bottom: 22px;
+    padding-bottom: 36px;
     scroll-padding-inline: var(--mellow-section-axis-pad);
     background: var(--mellow-expert-proof-shelf);
   }
@@ -208,14 +208,14 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    height: clamp(450px, 27vw, 500px);
+    height: clamp(398px, 24vw, 430px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
     border-radius: var(--mellow-radius-card, 28px);
     border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
     background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: 0 18px 34px rgba(18, 51, 8, 0.13), 0 3px 10px rgba(18, 51, 8, 0.07);
+    box-shadow: 0 18px 34px rgba(18, 51, 8, 0.15), 0 4px 12px rgba(18, 51, 8, 0.08);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
@@ -223,7 +223,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(148px, 9.8vw, 178px);
+    height: clamp(130px, 8vw, 148px);
     overflow: hidden;
     border-radius: var(--mellow-radius-card, 28px) var(--mellow-radius-card, 28px) 0 0;
     background:
@@ -272,14 +272,14 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: clamp(13px, 0.78vw, 14px);
-    line-height: 1.42;
+    font-size: clamp(12.5px, 0.72vw, 13.5px);
+    line-height: 1.34;
     letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
-    margin-top: auto;
-    padding-top: clamp(14px, 1.1vw, 18px);
+    margin-top: clamp(14px, 1.05vw, 18px);
+    padding-top: clamp(12px, 0.95vw, 16px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
@@ -299,7 +299,7 @@
 
   @media screen and (max-width: 989px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: clamp(280px, 43vw, 320px);
+      --mellow-expert-proof-card-width: clamp(270px, 43vw, 310px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -321,8 +321,8 @@
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: min(82vw, 330px);
-      --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
+      --mellow-expert-proof-card-width: min(82vw, 310px);
+      --mellow-expert-proof-card-pad: 20px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
@@ -352,15 +352,15 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 22px;
+      padding-top: 28px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      height: 468px;
+      height: 420px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 150px;
+      height: 132px;
     }
   }
 </style>
@@ -446,6 +446,10 @@
                     assign quote_key = 'card_' | append: card_index | append: '_quote'
                     assign name_key = 'card_' | append: card_index | append: '_name'
                     assign title_key = 'card_' | append: card_index | append: '_title'
+                    assign card_image = section.settings[image_key]
+                    if card_image == blank and card_index == 4
+                      assign card_image = section.settings.card_2_image | default: section.settings.card_1_image | default: section.settings.card_3_image
+                    endif
                     assign fallback_letters = 'A,B,C,D,E,F' | split: ','
                     assign fallback_letter = fallback_letters[forloop.index0]
                     assign image_loading = 'lazy'
@@ -462,8 +466,8 @@
                     data-expert-index="{{ forloop.index0 }}"
                   >
                     <div class="mellow-expert-proof__visual">
-                      {%- if section.settings[image_key] != blank -%}
-                        {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: image_loading, sizes: '(min-width: 1480px) 340px, (min-width: 990px) 23vw, (min-width: 815px) 44vw, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
+                      {%- if card_image != blank -%}
+                        {{ card_image | image_url: width: 900 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: image_loading, sizes: '(min-width: 1480px) 300px, (min-width: 990px) 22vw, (min-width: 815px) 43vw, (min-width: 750px) 300px, 82vw', widths: '320, 480, 640, 800, 900', alt: section.settings[name_key] }}
                       {%- else -%}
                         <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings[letter_key] | default: fallback_letter | escape }}</span>
                       {%- endif -%}
