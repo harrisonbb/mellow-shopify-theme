@@ -8,9 +8,9 @@
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
-    --mellow-expert-proof-card-width: clamp(300px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 340px);
-    --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, clamp(18px, 1.5vw, 24px));
-    --mellow-carousel-card-gap: clamp(24px, 2vw, 32px);
+    --mellow-expert-proof-card-width: clamp(270px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 310px);
+    --mellow-expert-proof-card-pad: clamp(18px, 1.35vw, 22px);
+    --mellow-carousel-card-gap: clamp(22px, 1.7vw, 28px);
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
     overflow-x: hidden;
@@ -22,21 +22,21 @@
     width: 100%;
     background: var(--mellow-expert-proof-bg);
     color: var(--mellow-cream, #FCFBF7);
-    padding-top: clamp(44px, 4vw, 64px);
-    padding-bottom: clamp(44px, 4vw, 64px);
+    padding-top: clamp(34px, 3.1vw, 48px);
+    padding-bottom: clamp(34px, 3.1vw, 48px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(28px, 2.8vw, 40px);
-    padding-bottom: var(--mellow-section-pad-bottom);
+    padding-top: clamp(20px, 2vw, 30px);
+    padding-bottom: clamp(44px, 4vw, 64px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 0.58fr);
     align-items: center;
-    gap: clamp(44px, 5.4vw, 84px);
+    gap: clamp(36px, 4.8vw, 72px);
     margin-bottom: 0;
   }
 
@@ -49,7 +49,7 @@
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
-    max-width: 720px;
+    max-width: 650px;
     color: var(--mellow-cream, #FCFBF7);
     font-size: var(--mellow-section-heading-size, var(--mellow-heading-size, clamp(40px, 3.7vw, 56px)));
     line-height: var(--mellow-section-heading-line-height, var(--mellow-heading-line-height, 0.98));
@@ -61,12 +61,12 @@
     align-self: center;
     justify-self: end;
     width: 100%;
-    padding-left: clamp(36px, 4.6vw, 64px);
+    padding-left: clamp(30px, 4vw, 56px);
     border-left: 1px solid rgba(240, 235, 224, 0.30);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
-    max-width: 520px;
+    max-width: 480px;
     margin: 0;
     font-size: var(--mellow-section-subhead-size, var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px)));
     line-height: var(--mellow-section-subhead-line-height, var(--mellow-subhead-line-height, 1.46));
@@ -79,7 +79,7 @@
     align-items: center;
     gap: clamp(18px, 2vw, 30px);
     width: auto;
-    margin-top: var(--mellow-section-content-gap-compact, clamp(26px, 2.4vw, 40px));
+    margin-top: clamp(22px, 2vw, 30px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__cta {
@@ -106,8 +106,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 54px;
-    height: 54px;
+    width: 50px;
+    height: 50px;
     padding: 0;
     border: 1px solid rgba(252, 251, 247, 0.72);
     border-radius: 999px;
@@ -176,6 +176,7 @@
     box-sizing: border-box;
     padding-left: var(--mellow-section-axis-pad);
     padding-right: var(--mellow-section-axis-pad);
+    padding-bottom: 22px;
     scroll-padding-inline: var(--mellow-section-axis-pad);
     background: var(--mellow-expert-proof-shelf);
   }
@@ -207,14 +208,14 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(520px, 35vw, 568px);
+    height: clamp(450px, 27vw, 500px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
     border-radius: var(--mellow-radius-card, 28px);
     border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
     background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
+    box-shadow: 0 18px 34px rgba(18, 51, 8, 0.13), 0 3px 10px rgba(18, 51, 8, 0.07);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
@@ -222,7 +223,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(180px, 12vw, 216px);
+    height: clamp(148px, 9.8vw, 178px);
     overflow: hidden;
     border-radius: var(--mellow-radius-card, 28px) var(--mellow-radius-card, 28px) 0 0;
     background:
@@ -259,7 +260,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
     display: block;
-    margin: 0 0 clamp(10px, .85vw, 14px);
+    margin: 0 0 clamp(8px, .7vw, 11px);
     color: var(--mellow-orange, #D04A2A);
     font-size: clamp(10px, .58vw, 11px);
     font-weight: var(--mellow-eyebrow-weight, 700);
@@ -271,21 +272,21 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: clamp(14px, 0.86vw, 15px);
-    line-height: 1.44;
+    font-size: clamp(13px, 0.78vw, 14px);
+    line-height: 1.42;
     letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(18px, 1.4vw, 22px);
+    padding-top: clamp(14px, 1.1vw, 18px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__name {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: clamp(16px, 1vw, 18px);
+    font-size: clamp(15px, .95vw, 17px);
     line-height: 1.02;
   }
 
@@ -298,7 +299,7 @@
 
   @media screen and (max-width: 989px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
+      --mellow-expert-proof-card-width: clamp(280px, 43vw, 320px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -325,8 +326,8 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
-      padding-top: 42px;
-      padding-bottom: 42px;
+      padding-top: 34px;
+      padding-bottom: 34px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -355,11 +356,11 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 512px;
+      height: 468px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 178px;
+      height: 150px;
     }
   }
 </style>
@@ -521,7 +522,7 @@
       const marqueeDuration = 84000;
       const nudgeDuration = 420;
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const nativeScrollQuery = window.matchMedia('(max-width: 749px)');
+      const nativeScrollQuery = window.matchMedia('(min-width: 0px)');
       let setWidth = 0;
       let cardWidth = 0;
       let cardPitch = 0;
