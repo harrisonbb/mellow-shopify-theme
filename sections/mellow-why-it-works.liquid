@@ -30,8 +30,18 @@
 
   #MellowWhyItWorks-{{ section.id }} :where(.mellow-why-it-works__header, .mellow-why-it-works__heading, .mellow-why-it-works__subheading, .mellow-why-it-works__step, .mellow-why-it-works__step-title, .mellow-why-it-works__step-copy) {
     color: var(--mellow-why-it-works-text) !important;
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  #MellowWhyItWorks-{{ section.id }} :where(.mellow-why-it-works__heading, .mellow-why-it-works__subheading, .mellow-why-it-works__step-text, .mellow-why-it-works__step-title, .mellow-why-it-works__step-copy) {
+    position: relative !important;
+    z-index: 2;
+    overflow: visible !important;
+    clip-path: none !important;
+    transform: none !important;
+    text-indent: 0 !important;
+    white-space: normal !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__inner {
@@ -356,6 +366,9 @@
     align-items: flex-start;
     gap: 16px;
     margin-top: var(--mellow-section-heading-gap, clamp(14px, 1.35vw, 20px));
+    color: var(--mellow-why-it-works-text) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-number {
@@ -372,6 +385,14 @@
     line-height: 1;
     font-weight: 700;
     letter-spacing: -0.02em;
+  }
+
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-text {
+    display: block !important;
+    min-width: 0;
+    color: var(--mellow-why-it-works-text) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-title {
@@ -575,14 +596,24 @@
         {%- endif -%}
 
         {%- if why_heading != blank -%}
-          <h2 class="mellow-section-heading mellow-why-it-works__heading">{{ why_heading | escape }}</h2>
+          <h2
+            class="mellow-section-heading mellow-why-it-works__heading"
+            style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;"
+          >
+            {{ why_heading | escape }}
+          </h2>
         {%- endif -%}
       </div>
 
       {%- if why_subheading != blank -%}
         <span class="mellow-why-it-works__divider" aria-hidden="true"></span>
         <div class="mellow-why-it-works__header-right">
-          <p class="mellow-section-text mellow-why-it-works__subheading">{{ why_subheading | escape }}</p>
+          <p
+            class="mellow-section-text mellow-why-it-works__subheading"
+            style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;"
+          >
+            {{ why_subheading | escape }}
+          </p>
         </div>
       {%- endif -%}
     </header>
@@ -609,10 +640,10 @@
           </div>
 
           <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number">01</span>
+            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">01</span>
             <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title">{{ step_1_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy">{{ step_1_description | escape }}</p>
+              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_1_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_1_description | escape }}</p>
             </div>
           </div>
         </article>
@@ -633,10 +664,10 @@
           </div>
 
           <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number">02</span>
+            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">02</span>
             <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title">{{ step_2_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy">{{ step_2_description | escape }}</p>
+              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_2_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_2_description | escape }}</p>
             </div>
           </div>
         </article>
@@ -663,10 +694,10 @@
           </div>
 
           <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number">03</span>
+            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">03</span>
             <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title">{{ step_3_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy">{{ step_3_description | escape }}</p>
+              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_3_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_3_description | escape }}</p>
             </div>
           </div>
         </article>
