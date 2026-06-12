@@ -34,16 +34,6 @@
     visibility: visible !important;
   }
 
-  #MellowWhyItWorks-{{ section.id }} :where(.mellow-why-it-works__heading, .mellow-why-it-works__subheading, .mellow-why-it-works__step-text, .mellow-why-it-works__step-title, .mellow-why-it-works__step-copy) {
-    position: relative !important;
-    z-index: 2;
-    overflow: visible !important;
-    clip-path: none !important;
-    transform: none !important;
-    text-indent: 0 !important;
-    white-space: normal !important;
-  }
-
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__inner {
     width: 100%;
     max-width: none;
@@ -107,7 +97,7 @@
     margin-top: 0;
   }
 
-  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--mellow-why-it-works-card-gap);
@@ -354,14 +344,14 @@
     --annotation-line: clamp(40px, 3.8vw, 68px);
   }
 
-  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step {
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__card {
     display: block;
     min-width: 0;
     color: var(--mellow-forest, #123308);
     padding: 0;
   }
 
-  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-meta {
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step {
     display: flex;
     align-items: flex-start;
     gap: 16px;
@@ -371,7 +361,7 @@
     visibility: visible !important;
   }
 
-  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-number {
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-index {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -387,8 +377,8 @@
     letter-spacing: -0.02em;
   }
 
-  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-text {
-    display: block !important;
+  #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-body {
+    display: block;
     min-width: 0;
     color: var(--mellow-why-it-works-text) !important;
     opacity: 1 !important;
@@ -474,7 +464,7 @@
       font-size: clamp(17px, 2.2vw, 21px);
     }
 
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__cards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: clamp(28px, 4vw, 42px) var(--mellow-why-it-works-card-gap);
     }
@@ -524,7 +514,7 @@
       line-height: 1.42;
     }
 
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__steps {
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__cards {
       display: grid;
       grid-template-columns: 1fr;
       gap: clamp(28px, 8vw, 40px);
@@ -534,7 +524,7 @@
       aspect-ratio: 1.08 / 1;
     }
 
-    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-meta {
+    #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step {
       margin-top: 16px;
     }
 
@@ -586,7 +576,6 @@
 <section
   id="MellowWhyItWorks-{{ section.id }}"
   class="mellow-section mellow-section-standard mellow-why-it-works color-{{ section.settings.color_scheme }}"
-  style="background-color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7));"
 >
   <div class="mellow-section-axis mellow-why-it-works__inner">
     <header class="mellow-section-header mellow-why-it-works__header">
@@ -596,24 +585,14 @@
         {%- endif -%}
 
         {%- if why_heading != blank -%}
-          <h2
-            class="mellow-section-heading mellow-why-it-works__heading"
-            style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;"
-          >
-            {{ why_heading | escape }}
-          </h2>
+          <h2 class="mellow-section-heading mellow-why-it-works__heading">{{ why_heading | escape }}</h2>
         {%- endif -%}
       </div>
 
       {%- if why_subheading != blank -%}
         <span class="mellow-why-it-works__divider" aria-hidden="true"></span>
         <div class="mellow-why-it-works__header-right">
-          <p
-            class="mellow-section-text mellow-why-it-works__subheading"
-            style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;"
-          >
-            {{ why_subheading | escape }}
-          </p>
+          <p class="mellow-section-text mellow-why-it-works__subheading">{{ why_subheading | escape }}</p>
         </div>
       {%- endif -%}
     </header>
@@ -623,8 +602,8 @@
     {%- assign image_3_alt = section.settings.image_3.alt | default: 'Close-up golden stomach contents with a pale MellowRaft floating barrier on top' -%}
 
     <div class="mellow-why-it-works__sequence" aria-label="How MellowRaft works inside the stomach in three steps">
-      <div class="mellow-why-it-works__steps">
-        <article class="mellow-why-it-works__step">
+      <div class="mellow-why-it-works__cards">
+        <article class="mellow-why-it-works__card">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--activate">
             {%- if section.settings.image_1 != blank -%}
               {{ section.settings.image_1 | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_1_alt }}
@@ -639,16 +618,16 @@
             </div>
           </div>
 
-          <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">01</span>
-            <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_1_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_1_description | escape }}</p>
+          <div class="mellow-why-it-works__step">
+            <span class="mellow-why-it-works__step-index">01</span>
+            <div class="mellow-why-it-works__step-body">
+              <h3 class="mellow-why-it-works__step-title">{{ step_1_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy">{{ step_1_description | escape }}</p>
             </div>
           </div>
         </article>
 
-        <article class="mellow-why-it-works__step">
+        <article class="mellow-why-it-works__card">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--form">
             {%- if section.settings.image_2 != blank -%}
               {{ section.settings.image_2 | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_2_alt }}
@@ -663,16 +642,16 @@
             </div>
           </div>
 
-          <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">02</span>
-            <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_2_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_2_description | escape }}</p>
+          <div class="mellow-why-it-works__step">
+            <span class="mellow-why-it-works__step-index">02</span>
+            <div class="mellow-why-it-works__step-body">
+              <h3 class="mellow-why-it-works__step-title">{{ step_2_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy">{{ step_2_description | escape }}</p>
             </div>
           </div>
         </article>
 
-        <article class="mellow-why-it-works__step">
+        <article class="mellow-why-it-works__card">
           <div class="mellow-why-it-works__panel mellow-why-it-works__panel--float">
             {%- if section.settings.image_3 != blank -%}
               {{ section.settings.image_3 | image_url: width: 1200 | image_tag: decoding: 'async', class: 'mellow-why-it-works__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '480, 720, 960, 1200', alt: image_3_alt }}
@@ -693,11 +672,11 @@
             </div>
           </div>
 
-          <div class="mellow-why-it-works__step-meta">
-            <span class="mellow-why-it-works__step-number" style="display: inline-flex !important; color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important; background: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">03</span>
-            <div class="mellow-why-it-works__step-text">
-              <h3 class="mellow-why-it-works__step-title" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_3_title | escape }}</h3>
-              <p class="mellow-why-it-works__step-copy" style="display: block !important; color: var(--mellow-forest, #123308) !important; opacity: 1 !important; visibility: visible !important;">{{ step_3_description | escape }}</p>
+          <div class="mellow-why-it-works__step">
+            <span class="mellow-why-it-works__step-index">03</span>
+            <div class="mellow-why-it-works__step-body">
+              <h3 class="mellow-why-it-works__step-title">{{ step_3_title | escape }}</h3>
+              <p class="mellow-why-it-works__step-copy">{{ step_3_description | escape }}</p>
             </div>
           </div>
         </article>
