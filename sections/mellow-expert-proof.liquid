@@ -16,7 +16,7 @@
     --mellow-expert-proof-card-width: calc(
       (var(--mellow-expert-proof-rail) - (var(--mellow-carousel-card-gap) * 3)) / 4
     );
-    --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
+    --mellow-expert-proof-card-pad: clamp(18px, 1.35vw, 22px);
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
     overflow-x: hidden;
@@ -31,15 +31,15 @@
       radial-gradient(circle at 52% 56%, rgba(7, 86, 34, 0.42) 0%, rgba(5, 64, 27, 0.22) 28%, rgba(4, 44, 19, 0) 56%),
       linear-gradient(90deg, #022610 0%, var(--mellow-expert-proof-bg) 50%, #032a12 100%);
     color: var(--mellow-cream, #FCFBF7);
-    padding-top: clamp(52px, 5.85vw, 90px);
-    padding-bottom: clamp(52px, 5.85vw, 90px);
+    padding-top: clamp(34px, 3.2vw, 58px);
+    padding-bottom: clamp(34px, 3.2vw, 58px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(28px, 2.65vw, 42px);
-    padding-bottom: clamp(58px, 5.4vw, 84px);
+    padding-top: clamp(24px, 2vw, 34px);
+    padding-bottom: clamp(40px, 4vw, 64px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -79,7 +79,7 @@
     top: 50%;
     width: 1px;
     height: 100%;
-    min-height: clamp(148px, 13.8vw, 210px);
+    min-height: clamp(132px, 11vw, 176px);
     background: rgba(252, 251, 247, 0.32);
     transform: translateY(-50%);
   }
@@ -190,7 +190,7 @@
     overflow-y: visible;
     scrollbar-width: none;
     box-sizing: border-box;
-    padding: 0 0 12px;
+    padding: 0 0 10px;
     scroll-padding-inline: 0;
     background: var(--mellow-expert-proof-shelf);
   }
@@ -203,7 +203,7 @@
     position: absolute;
     z-index: 2;
     right: clamp(-34px, -2.2vw, -22px);
-    top: clamp(206px, 14.8vw, 228px);
+    top: clamp(178px, 12.2vw, 204px);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -247,7 +247,7 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(548px, 38vw, 590px);
+    min-height: clamp(470px, 31vw, 520px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
@@ -262,7 +262,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(204px, 14.7vw, 226px);
+    height: clamp(172px, 12vw, 200px);
     overflow: hidden;
     border-radius: 13px 13px 0 0;
     background:
@@ -301,13 +301,13 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    padding: clamp(18px, 1.35vw, 22px) var(--mellow-expert-proof-card-pad) clamp(22px, 1.7vw, 26px);
+    padding: clamp(16px, 1.15vw, 20px) var(--mellow-expert-proof-card-pad) clamp(18px, 1.45vw, 24px);
     border-radius: 0 0 13px 13px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
     display: block;
-    margin: 0 0 clamp(10px, .75vw, 13px);
+    margin: 0 0 clamp(9px, .65vw, 12px);
     color: var(--mellow-orange, #D04A2A);
     font-size: var(--mellow-section-eyebrow-size, var(--mellow-eyebrow-size, clamp(12px, 0.8vw, 14px)));
     font-weight: var(--mellow-eyebrow-weight, 700);
@@ -324,7 +324,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(18px, 1.45vw, 24px);
+    padding-top: clamp(16px, 1.25vw, 22px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
@@ -339,6 +339,35 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__title {
     margin: 6px 0 0;
     color: rgba(18, 51, 8, 0.64);
+  }
+
+  @media screen and (min-width: 990px) and (max-height: 820px) {
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
+      padding-top: 34px;
+      padding-bottom: 34px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
+      padding-top: 22px;
+      padding-bottom: 42px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+      min-height: 455px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      height: 168px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
+      padding-top: 16px;
+      padding-bottom: 18px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
+      padding-top: 16px;
+    }
   }
 
   @media screen and (max-width: 989px) {
@@ -858,275 +887,3 @@
     });
   })();
 </script>
-
-{% schema %}
-{
-  "name": "Mellow expert proof",
-  "tag": "section",
-  "class": "section section-mellow-expert-proof",
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "PRACTITIONER-BACKED PROOF"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Trusted by practitioners|who understand reflux."
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Subhead",
-      "default": "Real-world guidance from digestive health and wellness practitioners."
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "CTA label",
-      "default": "Shop Mellow"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "CTA link"
-    },
-    {
-      "type": "header",
-      "content": "Card 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_1_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_1_letter",
-      "label": "Letter",
-      "default": "A"
-    },
-    {
-      "type": "text",
-      "id": "card_1_name",
-      "label": "Name",
-      "default": "Noah R."
-    },
-    {
-      "type": "text",
-      "id": "card_1_role",
-      "label": "Role",
-      "default": "WELLNESS PRACTITIONER"
-    },
-    {
-      "type": "text",
-      "id": "card_1_title",
-      "label": "Title",
-      "default": "Wellness Practitioner"
-    },
-    {
-      "type": "textarea",
-      "id": "card_1_quote",
-      "label": "Quote",
-      "default": "“Most of my clients have been chasing reflux with antacids for years and never feel ahead of it. The raft-forming mechanism is genuinely different — and when something is this easy to use, people actually stick with it.”"
-    },
-    {
-      "type": "header",
-      "content": "Card 2"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_2_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_2_letter",
-      "label": "Letter",
-      "default": "B"
-    },
-    {
-      "type": "text",
-      "id": "card_2_name",
-      "label": "Name",
-      "default": "Priya S."
-    },
-    {
-      "type": "text",
-      "id": "card_2_role",
-      "label": "Role",
-      "default": "FUNCTIONAL NUTRITIONIST"
-    },
-    {
-      "type": "text",
-      "id": "card_2_title",
-      "label": "Title",
-      "default": "Functional Nutritionist"
-    },
-    {
-      "type": "textarea",
-      "id": "card_2_quote",
-      "label": "Quote",
-      "default": "“I’m particular about what I recommend. Sodium alginate has decades of published research behind it, and Mellow’s formula is clean — no ingredients I’d question for daily use. That matters more than the marketing.”"
-    },
-    {
-      "type": "header",
-      "content": "Card 3"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_3_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_3_letter",
-      "label": "Letter",
-      "default": "C"
-    },
-    {
-      "type": "text",
-      "id": "card_3_name",
-      "label": "Name",
-      "default": "Dr. Marcus Bell"
-    },
-    {
-      "type": "text",
-      "id": "card_3_role",
-      "label": "Role",
-      "default": "DIGESTIVE HEALTH ADVISOR"
-    },
-    {
-      "type": "text",
-      "id": "card_3_title",
-      "label": "Title",
-      "default": "Digestive Health Advisor"
-    },
-    {
-      "type": "textarea",
-      "id": "card_3_quote",
-      "label": "Quote",
-      "default": "“Alginate raft therapy is well-documented in the GI literature. What’s been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
-    },
-    {
-      "type": "header",
-      "content": "Card 4"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_4_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_4_letter",
-      "label": "Letter",
-      "default": "D"
-    },
-    {
-      "type": "text",
-      "id": "card_4_name",
-      "label": "Name",
-      "default": "Talia W."
-    },
-    {
-      "type": "text",
-      "id": "card_4_role",
-      "label": "Role",
-      "default": "WELLNESS CLINICIAN"
-    },
-    {
-      "type": "text",
-      "id": "card_4_title",
-      "label": "Title",
-      "default": "Wellness Clinician"
-    },
-    {
-      "type": "textarea",
-      "id": "card_4_quote",
-      "label": "Quote",
-      "default": "“Consistency is the hardest part of any routine. Mellow is simple enough to take an evening without feeling like a chore — that’s exactly why I think people love it.”"
-    },
-    {
-      "type": "header",
-      "content": "Card 5"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_5_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_5_letter",
-      "label": "Letter",
-      "default": "E"
-    },
-    {
-      "type": "text",
-      "id": "card_5_name",
-      "label": "Name",
-      "default": "Dr. Marcus Bell"
-    },
-    {
-      "type": "text",
-      "id": "card_5_role",
-      "label": "Role",
-      "default": "Digestive Health Advisor"
-    },
-    {
-      "type": "textarea",
-      "id": "card_5_quote",
-      "label": "Quote",
-      "default": "“Alginate raft therapy is well-documented in the GI literature. What's been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
-    },
-    {
-      "type": "header",
-      "content": "Card 6"
-    },
-    {
-      "type": "image_picker",
-      "id": "card_6_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "card_6_letter",
-      "label": "Letter",
-      "default": "F"
-    },
-    {
-      "type": "text",
-      "id": "card_6_name",
-      "label": "Name",
-      "default": "Talia W."
-    },
-    {
-      "type": "text",
-      "id": "card_6_role",
-      "label": "Role",
-      "default": "Wellness Clinician"
-    },
-    {
-      "type": "textarea",
-      "id": "card_6_quote",
-      "label": "Quote",
-      "default": "“Consistency is the hardest part of any wellness routine. Mellow is simple enough to fit into an evening without feeling clinical — which is exactly why I think people keep using it.”"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Mellow expert proof"
-    }
-  ]
-}
-{% endschema %}
