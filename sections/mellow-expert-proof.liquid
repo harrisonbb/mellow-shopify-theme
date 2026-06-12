@@ -6,40 +6,40 @@
 <style>
   #MellowExpertProof-{{ section.id }} {
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
-    --mellow-expert-proof-bg: #042c13;
+    --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
-    --mellow-expert-proof-card-width: max(280px, calc((100vw - (var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4));
-    --mellow-expert-proof-card-pad: clamp(18px, 1.35vw, 22px);
-    --mellow-carousel-card-gap: clamp(22px, 2.35vw, 38px);
+    --mellow-expert-proof-rail: min(100%, 1390px);
+    --mellow-expert-proof-card-width: clamp(288px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 319px);
+    --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
+    --mellow-carousel-card-gap: clamp(24px, 2.35vw, 38px);
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
     overflow-x: hidden;
     overflow-y: visible;
     padding: 0;
-    scroll-margin-top: calc(var(--header-height, 68px) + 12px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
     width: 100%;
     background:
-      radial-gradient(circle at 52% 56%, rgba(7, 86, 34, 0.42) 0%, rgba(5, 64, 27, 0.22) 28%, rgba(4, 44, 19, 0) 56%),
-      linear-gradient(90deg, #022610 0%, var(--mellow-expert-proof-bg) 50%, #032a12 100%);
+      radial-gradient(circle at 54% 45%, rgba(3, 95, 34, 0.72) 0%, rgba(3, 77, 29, 0.38) 24%, rgba(18, 51, 8, 0) 54%),
+      linear-gradient(90deg, #092c12 0%, var(--mellow-expert-proof-bg) 48%, #0b3214 100%);
     color: var(--mellow-cream, #FCFBF7);
-    padding-top: clamp(52px, 5.85vw, 90px);
-    padding-bottom: clamp(52px, 5.85vw, 90px);
+    padding-top: clamp(34px, 3.2vw, 58px);
+    padding-bottom: clamp(34px, 3.2vw, 58px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(28px, 2.65vw, 42px);
-    padding-bottom: clamp(58px, 5.4vw, 84px);
+    padding-top: clamp(32px, 2.6vw, 46px);
+    padding-bottom: clamp(40px, 4vw, 64px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
-    grid-template-columns: minmax(0, 720px) minmax(430px, 0.74fr);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.58fr);
     align-items: center;
-    gap: clamp(34px, 4.35vw, 70px);
+    gap: clamp(44px, 5.4vw, 84px);
     margin-bottom: 0;
   }
 
@@ -52,44 +52,37 @@
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
-    max-width: min(700px, var(--mellow-header-max, 760px));
+    max-width: 760px;
     color: var(--mellow-cream, #FCFBF7);
+    font-size: clamp(44px, 4.25vw, 68px);
+    line-height: 1.02;
+    letter-spacing: 0;
     text-wrap: balance;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
-    position: relative;
     align-self: center;
-    justify-self: start;
+    justify-self: end;
     width: 100%;
-    max-width: 560px;
-    padding-left: clamp(32px, 3.1vw, 50px);
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 1px;
-    height: 100%;
-    min-height: clamp(148px, 13.8vw, 210px);
-    background: rgba(252, 251, 247, 0.32);
-    transform: translateY(-50%);
+    padding-left: clamp(36px, 4.6vw, 64px);
+    border-left: 1px solid rgba(240, 235, 224, 0.30);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
-    max-width: 455px;
+    max-width: 520px;
     margin: 0;
+    font-size: clamp(18px, 1.52vw, 24px);
+    line-height: 1.45;
+    letter-spacing: 0;
     color: rgba(252, 251, 247, 0.88);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
     display: flex;
     align-items: center;
-    gap: clamp(14px, 1.45vw, 22px);
+    gap: clamp(18px, 2vw, 30px);
     width: auto;
-    margin-top: clamp(18px, 1.55vw, 26px);
+    margin-top: var(--mellow-section-content-gap-compact, clamp(26px, 2.4vw, 40px));
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__cta {
@@ -99,8 +92,9 @@
     --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
-    --mellow-section-cta-width: var(--mellow-cta-width, clamp(190px, 12.6vw, 218px));
-    min-height: var(--mellow-cta-min-height, 54px);
+    --mellow-section-cta-width: clamp(220px, 17vw, 260px);
+    min-height: 72px;
+    font-size: clamp(18px, 1.24vw, 22px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
@@ -118,10 +112,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(46px, 3.55vw, 54px);
-    height: clamp(46px, 3.55vw, 54px);
+    width: 72px;
+    height: 72px;
     padding: 0;
-    border: 1px solid rgba(252, 251, 247, 0.62);
+    border: 1px solid rgba(252, 251, 247, 0.72);
     border-radius: 999px;
     background: transparent;
     color: var(--mellow-cream, #FCFBF7);
@@ -143,18 +137,31 @@
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow svg {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed {
-    position: relative;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    overflow-x: visible;
+    max-width: var(--mellow-expert-proof-rail);
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: hidden;
     overflow-y: visible;
     background: var(--mellow-expert-proof-shelf);
+    position: relative;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 26px;
+    width: clamp(28px, 4vw, 56px);
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(252, 251, 247, 0), var(--mellow-expert-proof-shelf));
+    z-index: 2;
   }
 
   #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
@@ -187,37 +194,13 @@
     overflow-y: visible;
     scrollbar-width: none;
     box-sizing: border-box;
-    padding: 0 0 12px;
+    padding: 0 0 26px;
     scroll-padding-inline: 0;
     background: var(--mellow-expert-proof-shelf);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller::-webkit-scrollbar {
     display: none;
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance {
-    position: absolute;
-    z-index: 2;
-    right: clamp(-20px, -1.3vw, -12px);
-    top: clamp(194px, 15vw, 226px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(54px, 4.3vw, 64px);
-    height: clamp(54px, 4.3vw, 64px);
-    border-radius: 999px;
-    border: 0;
-    background: var(--mellow-cream, #FCFBF7);
-    color: var(--mellow-forest, #123308);
-    box-shadow: 0 10px 26px rgba(18, 51, 8, 0.12);
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance svg {
-    width: 18px;
-    height: 18px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
@@ -238,23 +221,19 @@
     background: var(--mellow-expert-proof-shelf);
   }
 
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set[data-expert-card-set-duplicate] {
-    display: none;
-  }
-
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
     flex: 0 0 var(--mellow-expert-proof-card-width);
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(520px, 38vw, 590px);
+    min-height: clamp(500px, 34vw, 560px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
-    border-radius: 13px;
-    border: 1px solid rgba(18, 51, 8, 0.08);
-    background: color-mix(in srgb, var(--mellow-cream, #FCFBF7) 62%, var(--mellow-card-cream, #F8F4EC));
-    box-shadow: 0 20px 42px rgba(18, 51, 8, 0.12);
+    border-radius: 16px;
+    border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
+    background: var(--mellow-card-cream, #F8F4EC);
+    box-shadow: 0 18px 36px rgba(18, 51, 8, 0.16);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
@@ -262,20 +241,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(194px, 14.7vw, 226px);
+    height: clamp(190px, 13.2vw, 220px);
     overflow: hidden;
-    border-radius: 13px 13px 0 0;
+    border-radius: 16px 16px 0 0;
     background:
-      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.72), transparent 35%),
-      linear-gradient(135deg, #DDE5DA 0%, #F7F3EA 55%, #EEE5D6 100%);
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual--fallback {
-    background:
-      radial-gradient(circle at 50% 34%, rgba(18, 51, 8, 0.12) 0 13%, transparent 14%),
-      radial-gradient(ellipse at 50% 105%, rgba(18, 51, 8, 0.10) 0 32%, transparent 33%),
-      radial-gradient(circle at 50% 16%, rgba(255, 255, 255, 0.7), transparent 36%),
-      linear-gradient(135deg, #DDE5DA 0%, #F7F3EA 58%, #EEE5D6 100%);
+      radial-gradient(circle at 24% 14%, rgba(208, 74, 42, 0.18), transparent 32%),
+      linear-gradient(135deg, #DCE4DF 0%, #F8F4EC 58%, #E8D5C2 100%);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__image {
@@ -283,7 +254,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 34%;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__letter {
@@ -301,63 +272,83 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    padding: clamp(18px, 1.35vw, 22px) var(--mellow-expert-proof-card-pad) clamp(22px, 1.7vw, 26px);
-    border-radius: 0 0 13px 13px;
+    padding: var(--mellow-expert-proof-card-pad);
+    border-radius: 0 0 16px 16px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
     display: block;
-    margin: 0 0 clamp(10px, .75vw, 13px);
+    margin: 0 0 clamp(12px, .9vw, 16px);
     color: var(--mellow-orange, #D04A2A);
-    font-size: var(--mellow-section-eyebrow-size, var(--mellow-eyebrow-size, clamp(12px, 0.8vw, 14px)));
+    font-size: clamp(10px, .68vw, 12px);
     font-weight: var(--mellow-eyebrow-weight, 700);
     line-height: var(--mellow-eyebrow-line-height, 1);
-    letter-spacing: var(--mellow-section-eyebrow-letter-spacing, var(--mellow-eyebrow-tracking, 0.16em));
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    max-width: 96%;
+    font-size: clamp(14px, 0.9vw, 16px);
+    line-height: 1.55;
+    letter-spacing: 0;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(18px, 1.45vw, 24px);
+    padding-top: clamp(22px, 1.8vw, 28px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__name {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: var(--mellow-subhead-size);
-    line-height: 1.08;
-    letter-spacing: var(--mellow-subhead-tracking);
+    font-size: clamp(18px, 1.2vw, 22px);
+    line-height: 1.02;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__title {
     margin: 6px 0 0;
     color: rgba(18, 51, 8, 0.64);
+    font-size: clamp(14px, .95vw, 16px);
+    line-height: 1.22;
+  }
+
+  @media screen and (min-width: 990px) and (max-height: 820px) {
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
+      padding-top: 34px;
+      padding-bottom: 34px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
+      padding-top: 32px;
+      padding-bottom: 42px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+      min-height: 500px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      height: 190px;
+    }
   }
 
   @media screen and (max-width: 989px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: clamp(280px, 42vw, 316px);
+      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       grid-template-columns: 1fr;
-      gap: clamp(20px, 3.4vw, 30px);
+      gap: clamp(24px, 4vw, 36px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
       padding-left: 0;
+      border-left: 0;
       justify-self: start;
-    }
-
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions::before {
-      content: none;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row,
@@ -368,51 +359,46 @@
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: min(81vw, 308px);
-      --mellow-expert-proof-card-pad: 18px;
-      --mellow-carousel-card-gap: 18px;
+      --mellow-expert-proof-card-width: min(82vw, 330px);
+      --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
-      padding-top: 28px;
-      padding-bottom: 30px;
+      padding-top: 42px;
+      padding-bottom: 42px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
-      gap: 18px;
+      gap: 22px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
-      max-width: 340px;
+      font-size: clamp(36px, 9.5vw, 46px);
+      line-height: 1;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
       flex-wrap: wrap;
       width: 100%;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 16px;
+      margin-top: 22px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
-      width: 44px;
-      height: 44px;
+      width: 50px;
+      height: 50px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 24px;
-      padding-bottom: 58px;
-    }
-
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance {
-      display: none;
+      padding-top: 22px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 448px;
+      min-height: 512px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 148px;
+      height: 178px;
     }
   }
 </style>
@@ -477,7 +463,7 @@
           <div class="mellow-expert-proof__track" data-expert-track>
             {%- for card_loop in (1..3) -%}
               {%- assign is_original_set = false -%}
-              {%- if card_loop == 2 -%}
+              {%- if card_loop == 1 -%}
                 {%- assign is_original_set = true -%}
               {%- endif -%}
 
@@ -490,7 +476,7 @@
                   aria-hidden="true"
                 {% endif %}
               >
-                {%- for card_index in (1..6) -%}
+                {%- for card_index in (1..4) -%}
                   {%- liquid
                     assign image_key = 'card_' | append: card_index | append: '_image'
                     assign letter_key = 'card_' | append: card_index | append: '_letter'
@@ -501,7 +487,7 @@
                     assign fallback_letters = 'A,B,C,D,E,F' | split: ','
                     assign fallback_letter = fallback_letters[forloop.index0]
                     assign image_loading = 'lazy'
-                    if card_index <= 4 and card_loop <= 2
+                    if card_loop == 1
                       assign image_loading = 'eager'
                     endif
                   -%}
@@ -513,7 +499,7 @@
                     {% endif %}
                     data-expert-index="{{ forloop.index0 }}"
                   >
-                    <div class="mellow-expert-proof__visual{% if section.settings[image_key] == blank %} mellow-expert-proof__visual--fallback{% endif %}">
+                    <div class="mellow-expert-proof__visual">
                       {%- if section.settings[image_key] != blank -%}
                         {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: image_loading, sizes: '(min-width: 1480px) 340px, (min-width: 990px) 23vw, (min-width: 815px) 44vw, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
                       {%- else -%}
@@ -534,11 +520,6 @@
             {%- endfor -%}
           </div>
         </div>
-        <span class="mellow-expert-proof__edge-affordance" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" focusable="false">
-            <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
       </div>
     </div>
   </div>
@@ -576,7 +557,6 @@
         return;
       }
 
-      const autoplayMarquee = false;
       const marqueeDuration = 84000;
       const nudgeDuration = 420;
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -584,7 +564,6 @@
       let setWidth = 0;
       let cardWidth = 0;
       let cardPitch = 0;
-      let maxOffset = 0;
       let offset = 0;
       let animationFrame = null;
       let nudgeFrame = null;
@@ -604,12 +583,17 @@
       };
 
       const applySafeOffset = () => {
-        if (setWidth <= 0 || maxOffset <= 0) {
-          offset = 0;
+        if (setWidth <= 0) {
           return;
         }
 
-        offset = Math.min(0, Math.max(offset, maxOffset * -1));
+        while (offset <= setWidth * -2) {
+          offset += setWidth;
+        }
+
+        while (offset > 0) {
+          offset -= setWidth;
+        }
       };
 
       const updateTrackPosition = () => {
@@ -634,20 +618,21 @@
       };
 
       const measureCarousel = () => {
+        const trackStyles = window.getComputedStyle(track);
         const cardSetStyles = window.getComputedStyle(cardSet);
+        const trackGap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
         const cardGap = parseFloat(cardSetStyles.columnGap || cardSetStyles.gap) || 0;
         const firstCard = cards[0];
 
         cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
         cardPitch = cardWidth + cardGap;
-        setWidth = cardSet.getBoundingClientRect().width;
-        maxOffset = Math.max(0, setWidth - scroller.clientWidth);
+        setWidth = cardSet.getBoundingClientRect().width + trackGap;
 
         if (setWidth <= 0) {
           return;
         }
 
-        applySafeOffset();
+        offset = 0;
         track.style.setProperty('--expert-track-width', `${setWidth}px`);
         updateTrackPosition();
       };
@@ -679,7 +664,7 @@
       };
 
       const startMarquee = () => {
-        if (!autoplayMarquee || isNativeScroll || animationFrame) {
+        if (isNativeScroll || animationFrame) {
           return;
         }
 
@@ -705,7 +690,7 @@
         stopNudge();
 
         const startOffset = offset;
-        const targetOffset = Math.min(0, Math.max(startOffset - cardPitch * direction, maxOffset * -1));
+        const targetOffset = startOffset - cardPitch * direction;
         const startTime = performance.now();
 
         const step = (timestamp) => {
