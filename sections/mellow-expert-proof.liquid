@@ -9,7 +9,7 @@
     --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
     --mellow-expert-proof-rail: min(100%, 1390px);
-    --mellow-expert-proof-card-width: clamp(288px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 330px);
+    --mellow-expert-proof-card-width: clamp(288px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 319px);
     --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
     --mellow-carousel-card-gap: clamp(24px, 2.35vw, 38px);
     background: var(--mellow-expert-proof-shelf);
@@ -32,7 +32,7 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(24px, 2vw, 34px);
+    padding-top: clamp(32px, 2.6vw, 46px);
     padding-bottom: clamp(40px, 4vw, 64px);
   }
 
@@ -149,6 +149,19 @@
     overflow-x: hidden;
     overflow-y: visible;
     background: var(--mellow-expert-proof-shelf);
+    position: relative;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 26px;
+    width: clamp(28px, 4vw, 56px);
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(252, 251, 247, 0), var(--mellow-expert-proof-shelf));
+    z-index: 2;
   }
 
   #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
@@ -213,7 +226,7 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(470px, 31vw, 520px);
+    min-height: clamp(500px, 34vw, 560px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
@@ -228,7 +241,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(172px, 12vw, 200px);
+    height: clamp(190px, 13.2vw, 220px);
     overflow: hidden;
     border-radius: 16px 16px 0 0;
     background:
@@ -309,16 +322,16 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 22px;
+      padding-top: 32px;
       padding-bottom: 42px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 455px;
+      min-height: 500px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 168px;
+      height: 190px;
     }
   }
 
@@ -450,7 +463,7 @@
           <div class="mellow-expert-proof__track" data-expert-track>
             {%- for card_loop in (1..3) -%}
               {%- assign is_original_set = false -%}
-              {%- if card_loop == 2 -%}
+              {%- if card_loop == 1 -%}
                 {%- assign is_original_set = true -%}
               {%- endif -%}
 
@@ -474,7 +487,7 @@
                     assign fallback_letters = 'A,B,C,D,E,F' | split: ','
                     assign fallback_letter = fallback_letters[forloop.index0]
                     assign image_loading = 'lazy'
-                    if card_index <= 3 and card_loop <= 2
+                    if card_loop == 1
                       assign image_loading = 'eager'
                     endif
                   -%}
