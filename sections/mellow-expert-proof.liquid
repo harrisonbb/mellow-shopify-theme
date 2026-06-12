@@ -207,14 +207,14 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(580px, 42vw, 640px);
+    min-height: clamp(520px, 35vw, 568px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
     border-radius: var(--mellow-radius-card, 28px);
     border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
     background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: 0 22px 60px rgba(0, 51, 2, 0.11);
+    box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
@@ -222,7 +222,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(220px, 20vw, 320px);
+    height: clamp(180px, 12vw, 216px);
     overflow: hidden;
     border-radius: var(--mellow-radius-card, 28px) var(--mellow-radius-card, 28px) 0 0;
     background:
@@ -355,7 +355,7 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 570px;
+      min-height: 512px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
