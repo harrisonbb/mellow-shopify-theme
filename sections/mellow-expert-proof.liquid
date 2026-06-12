@@ -16,6 +16,7 @@
     overflow-x: hidden;
     overflow-y: visible;
     padding: 0;
+    scroll-margin-top: calc(var(--header-height, 68px) + 12px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
@@ -24,15 +25,15 @@
       radial-gradient(circle at 52% 56%, rgba(7, 86, 34, 0.42) 0%, rgba(5, 64, 27, 0.22) 28%, rgba(4, 44, 19, 0) 56%),
       linear-gradient(90deg, #022610 0%, var(--mellow-expert-proof-bg) 50%, #032a12 100%);
     color: var(--mellow-cream, #FCFBF7);
-    padding-top: clamp(30px, 2.65vw, 42px);
-    padding-bottom: clamp(30px, 2.65vw, 42px);
+    padding-top: clamp(22px, 1.7vw, 28px);
+    padding-bottom: clamp(22px, 1.7vw, 28px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(34px, 2.75vw, 44px);
-    padding-bottom: clamp(68px, 5.2vw, 88px);
+    padding-top: clamp(18px, 1.8vw, 28px);
+    padding-bottom: clamp(44px, 3.7vw, 60px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
@@ -184,7 +185,7 @@
     overflow-y: visible;
     scrollbar-width: none;
     box-sizing: border-box;
-    padding: 0 var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)) 22px;
+    padding: 0 var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)) 12px;
     scroll-padding-inline: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
     background: var(--mellow-expert-proof-shelf);
   }
@@ -216,7 +217,7 @@
     width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(530px, 37.8vw, 575px);
+    min-height: clamp(440px, 31vw, 480px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
@@ -231,7 +232,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(196px, 14vw, 214px);
+    height: clamp(160px, 12vw, 184px);
     overflow: hidden;
     border-radius: 14px 14px 0 0;
     background:
@@ -361,11 +362,11 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 512px;
+      min-height: 448px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 176px;
+      height: 148px;
     }
   }
 </style>
