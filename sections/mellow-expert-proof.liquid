@@ -548,11 +548,11 @@
           return;
         }
 
-        while (offset <= setWidth * -1.5) {
+        while (offset <= setWidth * -2) {
           offset += setWidth;
         }
 
-        while (offset >= setWidth * -0.5) {
+        while (offset > 0) {
           offset -= setWidth;
         }
       };
@@ -593,7 +593,7 @@
           return;
         }
 
-        offset = isNativeScroll ? 0 : setWidth * -1;
+        offset = 0;
         track.style.setProperty('--expert-track-width', `${setWidth}px`);
         updateTrackPosition();
       };
