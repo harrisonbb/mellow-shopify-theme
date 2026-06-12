@@ -1,2367 +1,1082 @@
-/*
-  Mellow brand foundation
-  Loaded after Dawn's base.css from layout/theme.liquid.
+{% comment %}
+  Mellow Expert Proof section.
+  Built on the global Mellow section system with a simple scroll row.
+{% endcomment %}
 
-  Homepage architecture sections:
-  - mellow-hero
-  - mellow-trust-bar
-  - mellow-who-its-for
-  - mellow-review-videos
-  - mellow-how-to-use
-  - mellow-day-night-scroll
-  - mellow-ingredients
-  - mellow-why-it-works
-  - mellow-clinical-proof
-  - mellow-expert-proof
-  - mellow-compare
-  - mellow-written-reviews
-  - mellow-buy-boxes
-  - mellow-faq
-*/
-
-:root {
-  --mellow-green: #123308;
-  --mellow-forest: #123308;
-  --mellow-section-green: #123308;
-  --mellow-deep-forest: var(--mellow-forest);
-
-  --mellow-cream: #FCFBF7;
-  --mellow-card-cream: #F8F4EC;
-  --mellow-card-border: rgba(0, 51, 2, 0.10);
-  --mellow-card-shadow: 0 22px 60px rgba(0, 51, 2, 0.11);
-  --mellow-orange-red: #D04A2A;
-
-  --mellow-ivory: #FCFBF7;
-  --mellow-night-blue: #102A3A;
-  --mellow-science-blue: #3D6B8C;
-  --mellow-white: #FFFFFF;
-  --mellow-ink: #142111;
-  --mellow-muted: #5E6B58;
-  --mellow-border: rgba(0, 51, 2, 0.14);
-  --mellow-shadow: 0 24px 60px rgba(0, 51, 2, 0.08);
-
-  --mellow-font-sans: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mellow-font-display: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading-family: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body-family: "Satoshi", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mellow-font-heading: var(--mellow-font-display);
-  --mellow-font-body: var(--mellow-font-sans);
-
-  --mellow-section-pad-top: clamp(64px, 5.5vw, 92px);
-  --mellow-section-pad-bottom: clamp(52px, 5vw, 76px);
-  --mellow-section-axis-pad: clamp(28px, 4vw, 64px);
-  --mellow-section-header-gap: clamp(10px, 1vw, 14px);
-  --mellow-section-heading-gap: clamp(14px, 1.35vw, 20px);
-  --mellow-section-content-gap: clamp(34px, 3.2vw, 54px);
-  --mellow-section-content-gap-compact: clamp(26px, 2.4vw, 40px);
-
-  --mellow-header-max: 760px;
-  --mellow-copy-max: 620px;
-
-  --mellow-eyebrow-margin-bottom: var(--mellow-section-header-gap);
-  --mellow-eyebrow-size: clamp(12px, 0.8vw, 14px);
-  --mellow-eyebrow-line-height: 1;
-  --mellow-eyebrow-weight: 700;
-  --mellow-eyebrow-tracking: 0.16em;
-
-  --mellow-heading-size: clamp(40px, 3.7vw, 56px);
-  --mellow-heading-line-height: 0.98;
-  --mellow-heading-weight: 600;
-  --mellow-heading-tracking: -0.028em;
-
-  --mellow-subhead-size: clamp(18px, 1.32vw, 20px);
-  --mellow-subhead-line-height: 1.46;
-  --mellow-subhead-weight: 400;
-  --mellow-subhead-tracking: -0.005em;
-
-  --mellow-card-title-size: clamp(25px, 1.8vw, 30px);
-  --mellow-card-title-line-height: 1.04;
-  --mellow-card-title-weight: 560;
-  --mellow-card-title-tracking: -0.032em;
-
-  --mellow-card-copy-size: clamp(16px, 1.03vw, 17px);
-  --mellow-card-copy-line-height: 1.48;
-  --mellow-card-copy-weight: 400;
-  --mellow-card-copy-tracking: -0.006em;
-
-  --mellow-card-gap: clamp(28px, 2.6vw, 42px);
-
-  /* Mellow card/grid spacing taxonomy tokens. */
-  /* Tight / process cards */
-  --mellow-card-gap-tight: clamp(12px, 1vw, 18px);
-  --mellow-card-gap-tight-y: clamp(14px, 1.2vw, 22px);
-  --mellow-card-pad-tight: clamp(16px, 1.45vw, 22px);
-
-  /* Standard editorial cards */
-  --mellow-card-pad-standard: clamp(28px, 2.5vw, 42px);
-
-  /* Airy / feature cards */
-  --mellow-card-gap-airy: clamp(34px, 4vw, 64px);
-  --mellow-feature-gap: clamp(42px, 7vw, 112px);
-  --mellow-card-pad-airy: clamp(28px, 3vw, 48px);
-
-  /* Carousel cards */
-  --mellow-carousel-card-gap: clamp(20px, 2vw, 32px);
-  --mellow-carousel-card-width: clamp(280px, 25vw, 380px);
-  --mellow-carousel-card-pad: clamp(18px, 1.5vw, 24px);
-
-  /* Accordion / list cards */
-  --mellow-list-row-pad-y: clamp(22px, 2vw, 30px);
-  --mellow-list-gap: 14px;
-  --mellow-accordion-content-pad-bottom: clamp(24px, 2.4vw, 34px);
-
-  /* Conversion / offer cards */
-  --mellow-offer-card-gap: clamp(12px, 1vw, 16px);
-  --mellow-offer-card-pad: clamp(16px, 1.5vw, 20px);
-  --mellow-offer-card-radius: 24px;
-
-  --mellow-section-eyebrow-size: var(--mellow-eyebrow-size);
-  --mellow-section-eyebrow-line-height: var(--mellow-eyebrow-line-height);
-  --mellow-section-eyebrow-letter-spacing: var(--mellow-eyebrow-tracking);
-  --mellow-section-eyebrow-weight: var(--mellow-eyebrow-weight);
-  --mellow-section-heading-size: var(--mellow-heading-size);
-  --mellow-section-heading-line-height: var(--mellow-heading-line-height);
-  --mellow-section-heading-letter-spacing: var(--mellow-heading-tracking);
-  --mellow-section-heading-weight: var(--mellow-heading-weight);
-  --mellow-section-subhead-size: var(--mellow-subhead-size);
-  --mellow-section-subhead-line-height: var(--mellow-subhead-line-height);
-  --mellow-section-subhead-letter-spacing: var(--mellow-subhead-tracking);
-  --mellow-section-subhead-weight: var(--mellow-subhead-weight);
-  --mellow-card-title-letter-spacing: var(--mellow-card-title-tracking);
-  --mellow-card-body-size: var(--mellow-card-copy-size);
-  --mellow-card-body-line-height: var(--mellow-card-copy-line-height);
-  --mellow-card-body-letter-spacing: var(--mellow-card-copy-tracking);
-  --mellow-card-body-weight: var(--mellow-card-copy-weight);
-
-  /* Legacy rail token kept for older sections; alias to the locked section rail by default. */
-  --mellow-axis-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-  --mellow-axis-max: 1360px;
-  --mellow-page-width: var(--mellow-axis-max);
-  --mellow-page-gutter: var(--mellow-axis-pad);
-  --mellow-axis-inset: max(var(--mellow-axis-pad), calc((100vw - var(--mellow-axis-max)) / 2));
-  --mellow-section-padding: var(--mellow-section-pad-top);
-  --mellow-section-pad-x: var(--mellow-section-axis-pad);
-
-  --mellow-cta-width: clamp(190px, 12.6vw, 218px);
-  --mellow-cta-height: 54px;
-  --mellow-cta-min-height: var(--mellow-cta-height);
-  --mellow-cta-pad-y: 15px;
-  --mellow-cta-pad-x: 24px;
-  --mellow-cta-gap: 0;
-  --mellow-cta-font-size: 16px;
-  --mellow-cta-font-weight: 650;
-  --mellow-cta-letter-spacing: -0.005em;
-  --mellow-cta-line-height: 1;
-  --mellow-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --mellow-cta-duration: 520ms;
-  --mellow-cta-color-duration: 260ms;
-
-  --mellow-radius-card: 2.8rem;
-  --mellow-radius-pill: 999px;
-  --mellow-cta-radius: var(--mellow-radius-pill);
-}
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-@supports (overflow-x: clip) {
-  html,
-  body {
-    overflow-x: clip;
+<style>
+  #MellowExpertProof-{{ section.id }} {
+    --mellow-orange: var(--mellow-orange-red, #D04A2A);
+    --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
+    --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
+    --mellow-expert-proof-card-width: clamp(300px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 340px);
+    --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, clamp(18px, 1.5vw, 24px));
+    --mellow-carousel-card-gap: clamp(24px, 2vw, 32px);
+    background: var(--mellow-expert-proof-shelf);
+    color: var(--mellow-forest, #123308);
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 0;
   }
-}
 
-body,
-#MainContent,
-main,
-.shopify-section {
-  max-width: 100%;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
+    width: 100%;
+    background: var(--mellow-expert-proof-bg);
+    color: var(--mellow-cream, #FCFBF7);
+    padding-top: clamp(44px, 4vw, 64px);
+    padding-bottom: clamp(44px, 4vw, 64px);
+  }
 
-.mellow-section-standard img,
-[class^="mellow-"] img,
-[class*=" mellow-"] img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
+    width: 100%;
+    background: var(--mellow-expert-proof-shelf);
+    padding-top: clamp(28px, 2.8vw, 40px);
+    padding-bottom: var(--mellow-section-pad-bottom);
+  }
 
-html:not(.mellow-ready) .mellow-section-standard,
-html:not(.mellow-ready) .mellow-section-standard *,
-html:not(.mellow-ready) .mellow-who-its-for,
-html:not(.mellow-ready) .mellow-who-its-for *,
-html.mellow-js .mellow-who-its-for:not(.is-mellow-section-ready),
-html.mellow-js .mellow-who-its-for:not(.is-mellow-section-ready) *,
-html.mellow-js .mellow-day-night:not(.is-mellow-section-ready),
-html.mellow-js .mellow-day-night:not(.is-mellow-section-ready) *,
-html.mellow-js .mellow-expert-proof:not(.is-mellow-section-ready),
-html.mellow-js .mellow-expert-proof:not(.is-mellow-section-ready) * {
-  animation-play-state: paused !important;
-  transition-duration: 0s !important;
-  scroll-behavior: auto !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.58fr);
+    align-items: center;
+    gap: clamp(44px, 5.4vw, 84px);
+    margin-bottom: 0;
+  }
 
-html:not(.mellow-ready) .mellow-who-its-for__track {
-  transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header {
+    max-width: none;
+  }
 
-/*
-  Dawn animation guardrails for Mellow homepage surfaces.
-  Keep Dawn reveal/hover systems available elsewhere, but make any accidental
-  Dawn animation classes inside Mellow sections render immediately and defer to
-  Mellow's own scoped transitions.
-*/
-.mellow-section-standard.scroll-trigger,
-.mellow-section-standard .scroll-trigger,
-.mellow-section.scroll-trigger,
-.mellow-section .scroll-trigger,
-[id^="Mellow"].scroll-trigger,
-[id^="Mellow"] .scroll-trigger,
-.mellow-section-cta.scroll-trigger,
-.mellow-section-cta.animate--fade-in,
-.mellow-section-cta.animate--slide-in {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-  animation-delay: 0s !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-eyebrow {
+    margin-bottom: var(--mellow-section-header-gap);
+  }
 
-.mellow-section-standard.animate--slide-in,
-.mellow-section-standard.animate--fade-in,
-.mellow-section-standard .animate--slide-in,
-.mellow-section-standard .animate--fade-in,
-.mellow-section.animate--slide-in,
-.mellow-section.animate--fade-in,
-.mellow-section .animate--slide-in,
-.mellow-section .animate--fade-in,
-[id^="Mellow"].animate--slide-in,
-[id^="Mellow"].animate--fade-in,
-[id^="Mellow"] .animate--slide-in,
-[id^="Mellow"] .animate--fade-in {
-  opacity: 1 !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
+    max-width: 720px;
+    color: var(--mellow-cream, #FCFBF7);
+    font-size: var(--mellow-section-heading-size, var(--mellow-heading-size, clamp(40px, 3.7vw, 56px)));
+    line-height: var(--mellow-section-heading-line-height, var(--mellow-heading-line-height, 0.98));
+    letter-spacing: var(--mellow-section-heading-letter-spacing, var(--mellow-heading-tracking, -0.028em));
+    text-wrap: balance;
+  }
 
-.mellow-section-standard.animate--slide-in,
-.mellow-section-standard .animate--slide-in,
-.mellow-section.animate--slide-in,
-.mellow-section .animate--slide-in,
-[id^="Mellow"].animate--slide-in,
-[id^="Mellow"] .animate--slide-in {
-  transform: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
+    align-self: center;
+    justify-self: end;
+    width: 100%;
+    padding-left: clamp(36px, 4.6vw, 64px);
+    border-left: 1px solid rgba(240, 235, 224, 0.30);
+  }
 
-.mellow-section-standard.animate--ambient > img,
-.mellow-section-standard.animate--ambient > .svg-wrapper,
-.mellow-section-standard .animate--ambient > img,
-.mellow-section-standard .animate--ambient > .svg-wrapper,
-.mellow-section.animate--ambient > img,
-.mellow-section.animate--ambient > .svg-wrapper,
-.mellow-section .animate--ambient > img,
-.mellow-section .animate--ambient > .svg-wrapper,
-[id^="Mellow"].animate--ambient > img,
-[id^="Mellow"].animate--ambient > .svg-wrapper,
-[id^="Mellow"] .animate--ambient > img,
-[id^="Mellow"] .animate--ambient > .svg-wrapper {
-  animation: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
+    max-width: 520px;
+    margin: 0;
+    font-size: var(--mellow-section-subhead-size, var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px)));
+    line-height: var(--mellow-section-subhead-line-height, var(--mellow-subhead-line-height, 1.46));
+    letter-spacing: var(--mellow-section-subhead-letter-spacing, var(--mellow-subhead-tracking, -0.005em));
+    color: rgba(252, 251, 247, 0.88);
+  }
 
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card,
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--standard .card__inner,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card--card,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card--standard .card__inner,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--standard .card__inner,
-.animate--hover-vertical-lift .mellow-section-standard .card-wrapper .card--card,
-.animate--hover-vertical-lift .mellow-section-standard .card-wrapper .card--standard .card__inner,
-.animate--hover-vertical-lift .mellow-section .card-wrapper .card--card,
-.animate--hover-vertical-lift .mellow-section .card-wrapper .card--standard .card__inner,
-.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper .card--card,
-.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper .card--standard .card__inner {
-  transform: none !important;
-  filter: none !important;
-  box-shadow: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2vw, 30px);
+    width: auto;
+    margin-top: var(--mellow-section-content-gap-compact, clamp(26px, 2.4vw, 40px));
+  }
 
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper:hover .card--card,
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper:hover .card--standard .card__inner,
-.animate--hover-3d-lift .mellow-section .card-wrapper:hover .card--card,
-.animate--hover-3d-lift .mellow-section .card-wrapper:hover .card--standard .card__inner,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper:hover .card--card,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper:hover .card--standard .card__inner,
-.animate--hover-vertical-lift .mellow-section-standard .card-wrapper:hover .card--card,
-.animate--hover-vertical-lift .mellow-section-standard .card-wrapper:hover .card--standard .card__inner,
-.animate--hover-vertical-lift .mellow-section .card-wrapper:hover .card--card,
-.animate--hover-vertical-lift .mellow-section .card-wrapper:hover .card--standard .card__inner,
-.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper:hover .card--card,
-.animate--hover-vertical-lift [id^="Mellow"] .card-wrapper:hover .card--standard .card__inner {
-  transform: none !important;
-  filter: none !important;
-  box-shadow: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__cta {
+    --mellow-section-cta-bg: var(--mellow-cream, #FCFBF7);
+    --mellow-section-cta-border: var(--mellow-cream, #FCFBF7);
+    --mellow-section-cta-color: var(--mellow-forest, #123308);
+    --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
+    --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
+    --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
+  }
 
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card::before,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card--card::before,
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card--card::after,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card--card::after,
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card__media::before,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card__media::before,
-.animate--hover-3d-lift .mellow-section-standard .card-wrapper .card__media::after,
-.animate--hover-3d-lift .mellow-section .card-wrapper .card__media::after,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card::before,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card--card::after,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card__media::before,
-.animate--hover-3d-lift [id^="Mellow"] .card-wrapper .card__media::after {
-  background-image: none !important;
-  filter: none !important;
-  mix-blend-mode: normal !important;
-  opacity: 0 !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
+    flex: 0 0 auto;
+    width: auto;
+  }
 
-.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta,
-.animate--hover-3d-lift .mellow-section .mellow-section-cta,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta,
-.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta,
-.animate--hover-3d-lift .mellow-section .mellow-product-cta,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta,
-.animate--hover-vertical-lift .mellow-section .mellow-section-cta,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta,
-.animate--hover-vertical-lift .mellow-section .mellow-product-cta,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta {
-  transform: translateZ(0) !important;
-  box-shadow: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrows {
+    display: flex;
+    align-items: center;
+    gap: var(--mellow-card-gap-tight, clamp(12px, 1vw, 18px));
+  }
 
-.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-section .mellow-section-cta:not([disabled]):hover,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-section .mellow-product-cta:not([disabled]):hover,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):hover,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):hover,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-section-standard .mellow-section-cta:not([disabled]):active,
-.animate--hover-3d-lift .mellow-section .mellow-section-cta:not([disabled]):active,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):active,
-.animate--hover-3d-lift .mellow-section-standard .mellow-product-cta:not([disabled]):active,
-.animate--hover-3d-lift .mellow-section .mellow-product-cta:not([disabled]):active,
-.animate--hover-3d-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):active,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):active,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):active {
-  transform: translateZ(0) !important;
-  box-shadow: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border: 1px solid rgba(252, 251, 247, 0.72);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--mellow-cream, #FCFBF7);
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
 
-.mellow-section-standard .mellow-section-cta::after,
-.mellow-section .mellow-section-cta::after,
-[id^="Mellow"] .mellow-section-cta::after,
-.mellow-section-standard .mellow-product-cta::after,
-.mellow-section .mellow-product-cta::after,
-[id^="Mellow"] .mellow-product-cta::after,
-.animate--hover-vertical-lift .mellow-section-standard .button:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-section .button:not([disabled]):hover::after,
-.animate--hover-vertical-lift [id^="Mellow"] .button:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-section-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-section .mellow-section-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-section-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-section-standard .mellow-product-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-section .mellow-product-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift [id^="Mellow"] .mellow-product-cta:not([disabled]):hover::after {
-  content: none !important;
-  display: none !important;
-  box-shadow: none !important;
-}
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):hover,
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):focus-visible {
+    border-color: var(--mellow-cream, #FCFBF7);
+    background: var(--mellow-cream, #FCFBF7);
+    color: var(--mellow-forest, #123308);
+  }
 
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:disabled {
+    cursor: default;
+    opacity: 0.42;
+  }
 
-/*
-  Global Mellow section system.
-  Future Mellow sections should begin with:
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
 
-  <section class="mellow-section-standard">
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow-x: hidden;
+    overflow-y: visible;
+    background: var(--mellow-expert-proof-shelf);
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
+    overflow-x: auto;
+    scroll-behavior: auto;
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__scroller {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__track {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__track {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__card-set[data-expert-card-set-duplicate] {
+    display: none;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    scrollbar-width: none;
+    box-sizing: border-box;
+    padding-left: var(--mellow-section-axis-pad);
+    padding-right: var(--mellow-section-axis-pad);
+    scroll-padding-inline: var(--mellow-section-axis-pad);
+    background: var(--mellow-expert-proof-shelf);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
+    display: flex;
+    gap: var(--mellow-carousel-card-gap);
+    align-items: stretch;
+    width: max-content;
+    max-width: none;
+    will-change: transform;
+    background: var(--mellow-expert-proof-shelf);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
+    display: flex;
+    gap: var(--mellow-carousel-card-gap);
+    align-items: stretch;
+    flex: 0 0 auto;
+    background: var(--mellow-expert-proof-shelf);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+    flex: 0 0 var(--mellow-expert-proof-card-width);
+    width: var(--mellow-expert-proof-card-width);
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(580px, 42vw, 640px);
+    min-width: 0;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: var(--mellow-radius-card, 28px);
+    border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
+    background: var(--mellow-card-cream, #F8F4EC);
+    box-shadow: 0 22px 60px rgba(0, 51, 2, 0.11);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(220px, 20vw, 320px);
+    overflow: hidden;
+    border-radius: var(--mellow-radius-card, 28px) var(--mellow-radius-card, 28px) 0 0;
+    background:
+      radial-gradient(circle at 24% 14%, rgba(208, 74, 42, 0.18), transparent 32%),
+      linear-gradient(135deg, #DCE4DF 0%, #F8F4EC 58%, #E8D5C2 100%);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__letter {
+    color: rgba(18, 51, 8, 0.34);
+    font-family: var(--mellow-font-display);
+    display: block;
+    font-size: clamp(44px, 4.5vw, 72px);
+    font-weight: 650;
+    line-height: .78;
+    letter-spacing: 0;
+    opacity: 0;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: var(--mellow-expert-proof-card-pad);
+    border-radius: 0 0 var(--mellow-radius-card, 28px) var(--mellow-radius-card, 28px);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
+    display: block;
+    margin: 0 0 clamp(10px, .85vw, 14px);
+    color: var(--mellow-orange, #D04A2A);
+    font-size: clamp(10px, .58vw, 11px);
+    font-weight: var(--mellow-eyebrow-weight, 700);
+    line-height: var(--mellow-eyebrow-line-height, 1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
+    margin: 0;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(14px, 0.86vw, 15px);
+    line-height: 1.44;
+    letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
+    margin-top: auto;
+    padding-top: clamp(18px, 1.4vw, 22px);
+    border-top: 1px solid rgba(18, 51, 8, 0.13);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__name {
+    margin: 0;
+    color: var(--mellow-forest, #123308);
+    font-size: clamp(16px, 1vw, 18px);
+    line-height: 1.02;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__title {
+    margin-top: 3px;
+    color: rgba(18, 51, 8, 0.64);
+    font-size: clamp(12px, .86vw, 14px);
+    line-height: 1.22;
+  }
+
+  @media screen and (max-width: 989px) {
+    #MellowExpertProof-{{ section.id }} {
+      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
+      grid-template-columns: 1fr;
+      gap: clamp(24px, 4vw, 36px);
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
+      padding-left: 0;
+      border-left: 0;
+      justify-self: start;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row,
+    #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
+      justify-content: flex-start;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #MellowExpertProof-{{ section.id }} {
+      --mellow-expert-proof-card-width: min(82vw, 330px);
+      --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
+      gap: 22px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
+      font-size: clamp(36px, 9.5vw, 46px);
+      line-height: 1;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
+      width: 50px;
+      height: 50px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
+      padding-top: 22px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+      min-height: 570px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      height: 178px;
+    }
+  }
+</style>
+
+<section id="MellowExpertProof-{{ section.id }}" class="mellow-section-standard mellow-expert-proof color-{{ section.settings.color_scheme }}" data-mellow-expert-proof>
+  <div class="mellow-expert-proof__band">
     <div class="mellow-section-axis">
-      <div class="mellow-section-header-grid">
-        <div class="mellow-section-header">
-          <p class="mellow-eyebrow">...</p>
-          <h2 class="mellow-section-heading">...</h2>
-          <p class="mellow-section-text">...</p>
+      <div class="mellow-section-header-grid mellow-expert-proof__header-grid">
+        <div class="mellow-section-header mellow-expert-proof__header">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="mellow-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.heading != blank -%}
+            {%- assign heading_lines = section.settings.heading | escape | split: '|' -%}
+            <h2 class="mellow-section-heading mellow-expert-proof__heading">
+              {%- for line in heading_lines -%}
+                {{ line }}{%- unless forloop.last -%}<br>{%- endunless -%}
+              {%- endfor -%}
+            </h2>
+          {%- endif -%}
+
         </div>
-        <div class="mellow-section-actions">
-          <div class="mellow-section-cta-wrap">
-            <a class="mellow-section-cta" href="#">
-              <span class="mellow-section-cta__label">...</span>
-              <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
-            </a>
+
+        <div class="mellow-section-actions mellow-expert-proof__actions">
+          {%- if section.settings.text != blank -%}
+            <p class="mellow-section-text mellow-expert-proof__text">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
+
+          <div class="mellow-expert-proof__action-row">
+            {%- if section.settings.cta_label != blank -%}
+              <div class="mellow-section-cta-wrap">
+                <a class="mellow-section-cta mellow-expert-proof__cta" href="{{ section.settings.cta_link | default: '#' }}">
+                  <span class="mellow-section-cta__label">{{ section.settings.cta_label | escape }}</span>
+                  <span class="mellow-section-cta__arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            {%- endif -%}
+
+            <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" aria-disabled="false" data-expert-prev>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Next expert quote" data-expert-next>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                  <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-*/
-.mellow-section-axis {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-  padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-  box-sizing: border-box;
-}
-
-.mellow-section-standard {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  overflow-y: visible;
-  padding-top: var(--mellow-section-pad-top);
-  padding-bottom: var(--mellow-section-pad-bottom);
-}
-
-.mellow-section-header-grid {
-  display: grid;
-  grid-template-columns: minmax(0, var(--mellow-header-max)) auto;
-  align-items: center;
-  gap: clamp(40px, 6vw, 96px);
-  margin-bottom: var(--mellow-section-content-gap);
-}
-
-.mellow-section-header {
-  max-width: var(--mellow-header-max);
-}
-
-.mellow-section-actions {
-  justify-self: end;
-  align-self: center;
-  transform: none;
-  width: clamp(220px, 16vw, 280px);
-}
-
-.mellow-eyebrow {
-  margin: 0 0 var(--mellow-eyebrow-margin-bottom);
-  color: var(--mellow-orange-red);
-  font-size: var(--mellow-eyebrow-size);
-  line-height: var(--mellow-eyebrow-line-height);
-  font-weight: var(--mellow-eyebrow-weight);
-  letter-spacing: var(--mellow-eyebrow-tracking);
-  text-transform: uppercase;
-}
-
-.mellow-section-heading {
-  max-width: var(--mellow-header-max);
-  margin: 0;
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-size: var(--mellow-heading-size);
-  font-weight: var(--mellow-heading-weight);
-  letter-spacing: var(--mellow-heading-tracking);
-  line-height: var(--mellow-heading-line-height);
-  text-align: left;
-}
-
-.mellow-section-text {
-  max-width: var(--mellow-copy-max);
-  margin: var(--mellow-section-heading-gap) 0 0;
-  font-size: var(--mellow-subhead-size);
-  line-height: var(--mellow-subhead-line-height);
-  font-weight: var(--mellow-subhead-weight);
-  letter-spacing: var(--mellow-subhead-tracking);
-}
-
-.mellow-card-title {
-  margin: 0;
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-size: var(--mellow-card-title-size);
-  font-weight: var(--mellow-card-title-weight);
-  letter-spacing: var(--mellow-card-title-tracking);
-  line-height: var(--mellow-card-title-line-height);
-  text-align: left;
-}
-
-.mellow-card-copy {
-  margin: 0;
-  color: var(--mellow-muted);
-  font-size: var(--mellow-card-copy-size);
-  font-weight: var(--mellow-card-copy-weight);
-  letter-spacing: var(--mellow-card-copy-tracking);
-  line-height: var(--mellow-card-copy-line-height);
-  text-align: left;
-}
-
-.mellow-section-cta-wrap {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.mellow-section-cta {
-  --mellow-section-cta-bg: var(--mellow-forest);
-  --mellow-section-cta-border: var(--mellow-forest);
-  --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
-  --mellow-section-cta-hover-border: var(--mellow-orange-red);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-  --mellow-section-cta-width: var(--mellow-cta-width);
-  --mellow-section-cta-ease: var(--mellow-cta-ease);
-  --mellow-section-cta-duration: var(--mellow-cta-duration);
-  --mellow-section-cta-color-duration: var(--mellow-cta-color-duration);
-
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--mellow-cta-gap);
-  box-sizing: border-box;
-  width: var(--mellow-section-cta-width);
-  min-height: var(--mellow-cta-min-height);
-  padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
-  overflow: hidden;
-  border: 1px solid var(--mellow-section-cta-border);
-  border-radius: var(--mellow-cta-radius);
-  background: var(--mellow-section-cta-bg);
-  color: var(--mellow-section-cta-color);
-  font-size: var(--mellow-cta-font-size);
-  font-weight: var(--mellow-cta-font-weight);
-  letter-spacing: var(--mellow-cta-letter-spacing);
-  line-height: var(--mellow-cta-line-height);
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-
-  transition:
-    background-color var(--mellow-section-cta-color-duration) ease,
-    border-color var(--mellow-section-cta-color-duration) ease,
-    color var(--mellow-section-cta-color-duration) ease;
-}
-
-.mellow-section-cta::before,
-.mellow-section-cta::after {
-  content: none !important;
-  display: none !important;
-}
-
-.mellow-section-cta:focus-visible {
-  outline: 2px solid color-mix(in srgb, currentColor 72%, transparent);
-  outline-offset: 4px;
-}
-
-.mellow-section-cta:active {
-  transition-duration: 160ms;
-}
-
-.mellow-section-cta__label {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  color: currentColor;
-  text-align: center;
-  opacity: 1;
-  visibility: visible;
-}
-
-.mellow-section-cta__arrow {
-  display: none;
-}
-
-.mellow-section-cta:hover,
-.mellow-section-cta:focus-visible {
-  border-color: var(--mellow-section-cta-hover-border);
-  background: var(--mellow-section-cta-hover-bg);
-  color: var(--mellow-section-cta-hover-color);
-}
-
-.mellow-section-cta--primary-forest {
-  --mellow-section-cta-bg: var(--mellow-forest);
-  --mellow-section-cta-border: var(--mellow-forest);
-  --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
-  --mellow-section-cta-hover-border: var(--mellow-orange-red);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-}
-
-.mellow-section-cta--primary-orange {
-  --mellow-section-cta-bg: var(--mellow-orange-red);
-  --mellow-section-cta-border: var(--mellow-orange-red);
-  --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-forest);
-  --mellow-section-cta-hover-border: var(--mellow-forest);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-}
-
-.mellow-section-cta--secondary {
-  --mellow-section-cta-bg: transparent;
-  --mellow-section-cta-border: var(--mellow-border);
-  --mellow-section-cta-color: var(--mellow-forest);
-  --mellow-section-cta-hover-bg: var(--mellow-forest);
-  --mellow-section-cta-hover-border: var(--mellow-forest);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-}
-
-.mellow-section-cta--ivory-on-dark {
-  --mellow-section-cta-bg: var(--mellow-cream);
-  --mellow-section-cta-border: var(--mellow-cream);
-  --mellow-section-cta-color: var(--mellow-forest);
-  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
-  --mellow-section-cta-hover-border: var(--mellow-orange-red);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .mellow-section-cta {
-    transition: none !important;
-  }
-}
-
-.mellow-card-tag {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  margin: 0;
-  transform: none;
-  letter-spacing: 0.13em;
-  z-index: 3;
-}
-
-@media screen and (max-width: 749px) {
-  :root {
-    --mellow-section-axis-pad: 22px;
-    --mellow-section-pad-x: 22px;
-    --mellow-section-pad-top: 56px;
-    --mellow-section-pad-bottom: 56px;
-    --mellow-card-gap-tight: 16px;
-    --mellow-card-gap-tight-y: 18px;
-    --mellow-card-gap-airy: clamp(28px, 7vw, 42px);
-    --mellow-feature-gap: clamp(34px, 7vw, 52px);
-    --mellow-carousel-card-gap: 18px;
-    --mellow-carousel-card-width: min(78vw, 330px);
-    --mellow-card-pad-standard: 28px;
-    --mellow-card-pad-airy: 28px;
-    --mellow-list-row-pad-y: 20px;
-    --mellow-offer-card-gap: 12px;
-    --mellow-cta-width: 190px;
-    --mellow-cta-height: 54px;
-    --mellow-cta-min-height: var(--mellow-cta-height);
-    --mellow-cta-pad-y: 15px;
-    --mellow-cta-pad-x: 24px;
-    --mellow-cta-gap: 0;
-    --mellow-cta-font-size: 16px;
-  }
-
-  .mellow-section-standard {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
-
-  .mellow-section-header-grid {
-    display: block;
-    margin-bottom: var(--mellow-section-content-gap-compact);
-  }
-
-  .mellow-section-heading {
-    font-size: clamp(36px, 9.5vw, 46px);
-    line-height: 1;
-    letter-spacing: -0.032em;
-  }
-
-  .mellow-section-text {
-    font-size: 16px;
-    line-height: 1.45;
-    max-width: 360px;
-  }
-
-  .mellow-section-actions {
-    width: 100%;
-    margin-top: var(--mellow-section-content-gap-compact);
-    transform: none;
-  }
-
-  .mellow-section-cta-wrap {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .mellow-card-tag {
-    top: 18px;
-    right: 18px;
-  }
-}
-
-html,
-body,
-button,
-input,
-textarea,
-select,
-label,
-summary,
-.header,
-.header *,
-.menu-drawer,
-.menu-drawer *,
-.card,
-.card *,
-.card-wrapper,
-.card-wrapper *,
-.product-card-wrapper,
-.product-card-wrapper *,
-.mellow-section,
-.mellow-section *,
-[class^="mellow-"],
-[class^="mellow-"] *,
-[class*=" mellow-"],
-[class*=" mellow-"] * {
-  font-family: var(--mellow-font-sans) !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h0,
-.h1,
-.h2,
-.h3,
-.mellow-heading,
-.mellow-section-heading,
-.mellow-card-title,
-.mellow-architecture-section__heading,
-.mellow-who-its-for__heading,
-.mellow-who-its-for__card h3 {
-  font-family: var(--mellow-font-display) !important;
-}
-
-body {
-  color: var(--mellow-ink);
-  background: var(--mellow-cream);
-  font-family: var(--mellow-font-body) !important;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.55;
-}
-
-.mellow-card-row,
-.mellow-card-grid,
-.mellow-carousel-track,
-.mellow-section-cards {
-  gap: var(--mellow-card-gap);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h0,
-.h1,
-.h2,
-.h3 {
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  text-align: left;
-}
-
-h1,
-.h0,
-.h1,
-.mellow-heading {
-  line-height: 0.92;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6,
-.h2,
-.h3,
-.mellow-architecture-section__heading,
-.mellow-who-its-for__card h3 {
-  font-weight: 500;
-  letter-spacing: -0.04em;
-}
-
-p,
-li {
-  color: var(--mellow-muted);
-  font-family: var(--mellow-font-sans) !important;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.55;
-  text-align: left;
-}
-
-input,
-textarea,
-select,
-label,
-.field__label,
-.form__label,
-.facets__label,
-.product-form__input,
-.product-form__input * {
-  font-family: var(--mellow-font-sans) !important;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-.header__menu-item,
-.list-menu__item,
-.menu-drawer__menu-item,
-.header__icon,
-.header__heading-link {
-  font-family: var(--mellow-font-sans) !important;
-}
-
-.header-wrapper {
-  --color-background: 252, 251, 247;
-  --color-foreground: 34, 50, 22;
-  background: #FCFBF7;
-  color: #223216;
-}
-
-.header-wrapper--border-bottom {
-  border-bottom-color: rgba(34, 50, 22, 0.10);
-}
-
-.header-wrapper .header,
-.header-wrapper .header__heading-link,
-.header-wrapper .header__heading-link .h2,
-.header-wrapper .header__menu-item,
-.header-wrapper .header__icon {
-  color: #223216;
-}
-
-.header__menu-item,
-.site-header__nav a,
-.mellow-header__nav a {
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-}
-
-.mellow-logo,
-.header__heading-link {
-  font-size: 24px;
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: -0.035em;
-}
-
-.card__heading,
-.card__heading a,
-.card-information,
-.card-information *,
-.price,
-.price * {
-  font-family: var(--mellow-font-sans) !important;
-}
-
-.button,
-.shopify-challenge__button,
-.customer button,
-button,
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  border-radius: var(--mellow-radius-pill);
-  font-family: var(--mellow-font-sans) !important;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.mellow-section {
-  background: var(--mellow-cream);
-  color: var(--mellow-ink);
-  font-family: var(--mellow-font-sans) !important;
-  padding-top: var(--mellow-section-pad-top);
-  padding-bottom: var(--mellow-section-pad-bottom);
-}
-
-/* Legacy-only centered rail. Active homepage sections should use .mellow-section-axis instead. */
-.mellow-section__inner {
-  width: min(calc(100% - var(--mellow-section-axis-pad) - var(--mellow-section-axis-pad)), var(--mellow-axis-max));
-  margin: 0 auto;
-}
-
-.mellow-eyebrow,
-.mellow-section-eyebrow {
-  display: inline-flex;
-  width: fit-content;
-  margin: 0 0 var(--mellow-eyebrow-margin-bottom);
-  color: var(--mellow-orange-red);
-  font-size: var(--mellow-eyebrow-size);
-  font-weight: var(--mellow-eyebrow-weight);
-  letter-spacing: var(--mellow-eyebrow-tracking);
-  line-height: var(--mellow-eyebrow-line-height);
-  text-transform: uppercase;
-}
-
-.mellow-section-heading {
-  max-width: var(--mellow-header-max);
-  margin: 0;
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-size: var(--mellow-section-heading-size);
-  font-weight: var(--mellow-section-heading-weight);
-  letter-spacing: var(--mellow-section-heading-letter-spacing);
-  line-height: var(--mellow-section-heading-line-height);
-  text-align: left;
-}
-
-@media screen and (max-width: 749px) {
-  .mellow-section-heading {
-    font-size: clamp(36px, 9.5vw, 46px);
-    line-height: 1;
-    letter-spacing: -0.032em;
-  }
-}
-
-.mellow-section-subhead,
-.mellow-section-text {
-  max-width: var(--mellow-copy-max);
-  margin: var(--mellow-section-heading-gap) 0 0;
-  color: var(--mellow-muted);
-  font-size: var(--mellow-subhead-size);
-  font-weight: var(--mellow-subhead-weight);
-  letter-spacing: var(--mellow-subhead-tracking);
-  line-height: var(--mellow-subhead-line-height);
-  text-align: left;
-  text-wrap: balance;
-}
-
-.mellow-card-title {
-  margin: 0;
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-size: var(--mellow-card-title-size);
-  font-weight: var(--mellow-card-title-weight);
-  letter-spacing: var(--mellow-card-title-tracking);
-  line-height: var(--mellow-card-title-line-height);
-  text-align: left;
-}
-
-.mellow-card-copy {
-  margin: 0;
-  color: var(--mellow-muted);
-  font-size: var(--mellow-card-copy-size);
-  font-weight: var(--mellow-card-copy-weight);
-  letter-spacing: var(--mellow-card-copy-tracking);
-  line-height: var(--mellow-card-copy-line-height);
-  text-align: left;
-}
-
-.mellow-heading {
-  max-width: 76rem;
-  margin: 0;
-  font-size: clamp(3.8rem, 5.8vw, 7.2rem);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 0.96;
-}
-
-.mellow-lede {
-  max-width: 62rem;
-  margin: 2.4rem 0 0;
-  font-size: clamp(1.8rem, 2vw, 2.2rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.55;
-}
-
-.mellow-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-top: 3.2rem;
-}
-
-.mellow-architecture-section {
-  position: relative;
-}
-
-.mellow-hero {
-  background: var(--mellow-cream, #FCFBF7);
-  color: var(--mellow-ink, var(--mellow-forest, #003302));
-}
-
-.mellow-hero .mellow-architecture-section__card {
-  gap: var(--mellow-section-content-gap);
-  padding: var(--mellow-card-pad-airy);
-  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-  border-radius: var(--mellow-radius-card);
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-}
-
-.mellow-hero .mellow-architecture-section__content {
-  max-width: var(--mellow-header-max);
-}
-
-.mellow-hero .mellow-architecture-section__text {
-  color: var(--mellow-muted, #5E6B58);
-}
-
-.mellow-hero .mellow-architecture-section__note {
-  margin-top: var(--mellow-section-content-gap-compact);
-  padding: var(--mellow-cta-pad-y) var(--mellow-cta-pad-x);
-  border-radius: var(--mellow-radius-pill, 999px);
-  font-size: var(--mellow-eyebrow-size);
-  letter-spacing: var(--mellow-eyebrow-tracking);
-  line-height: var(--mellow-eyebrow-line-height);
-}
-
-.mellow-review-videos,
-.mellow-day-night-scroll,
-.mellow-expert-proof,
-.mellow-written-reviews,
-.mellow-faq {
-  background: var(--mellow-ivory);
-}
-
-.section-mellow-why-it-works,
-.section-mellow-why-it-works .mellow-why-it-works,
-.mellow-why-it-works {
-  background: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important;
-  background-color: var(--mellow-ivory, var(--mellow-cream, #FCFBF7)) !important;
-  color: var(--mellow-forest, #123308);
-}
-
-.mellow-architecture-section__card {
-  display: grid;
-  gap: clamp(2.4rem, 4vw, 4.8rem);
-  align-items: center;
-  min-height: clamp(22rem, 30vw, 34rem);
-  padding: clamp(2.8rem, 5vw, 5.6rem);
-  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-  border-radius: var(--mellow-radius-card);
-  background:
-    radial-gradient(circle at 88% 16%, rgba(61, 107, 140, 0.12), transparent 22rem),
-    var(--mellow-card-cream, #F8F4EC);
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-}
-
-.mellow-architecture-section__content {
-  max-width: 72rem;
-}
-
-.mellow-architecture-section__heading {
-  max-width: var(--mellow-header-max);
-  margin: 0;
-  font-size: var(--mellow-heading-size);
-  font-weight: var(--mellow-heading-weight);
-  letter-spacing: var(--mellow-heading-tracking);
-  line-height: var(--mellow-heading-line-height);
-}
-
-.mellow-architecture-section__text {
-  max-width: var(--mellow-copy-max);
-  margin: var(--mellow-section-heading-gap) 0 0;
-  font-size: var(--mellow-subhead-size);
-  font-weight: var(--mellow-subhead-weight);
-  letter-spacing: var(--mellow-subhead-tracking);
-  line-height: var(--mellow-subhead-line-height);
-}
-
-.mellow-architecture-section__note {
-  display: inline-flex;
-  width: fit-content;
-  max-width: 42rem;
-  padding: 1.2rem 1.6rem;
-  border: 0.1rem solid rgba(61, 107, 140, 0.2);
-  border-radius: var(--mellow-radius-pill);
-  background: rgba(252, 251, 247, 0.72);
-  color: var(--mellow-forest);
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.mellow-hero .mellow-architecture-section__card {
-  min-height: clamp(42rem, 58vw, 68rem);
-  background: var(--mellow-cream, #FCFBF7);
-}
-
-@media screen and (min-width: 750px) {
-  .mellow-architecture-section__card {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-}
-
-.mellow-home-placeholder {
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 82% 18%, rgba(61, 107, 140, 0.16), transparent 28rem),
-    linear-gradient(135deg, var(--mellow-ivory), var(--mellow-cream));
-}
-
-.mellow-home-placeholder__card {
-  display: grid;
-  gap: clamp(3.2rem, 6vw, 7.2rem);
-  align-items: end;
-  padding: clamp(3.2rem, 6vw, 7.2rem);
-  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-  border-radius: var(--mellow-radius-card);
-  background: var(--mellow-card-cream, #F8F4EC);
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-}
-
-.mellow-home-placeholder__notes {
-  display: grid;
-  gap: 1.2rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.mellow-home-placeholder__notes li {
-  padding-left: 1.8rem;
-  border-left: 0.3rem solid var(--mellow-science-blue);
-  color: var(--mellow-forest);
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-@media screen and (min-width: 990px) {
-  .mellow-home-placeholder__card {
-    grid-template-columns: minmax(0, 1.35fr) minmax(28rem, 0.65fr);
-  }
-}
-
-/* Mellow who it's for carousel */
-.mellow-who-its-for {
-  --mellow-scroll-pad-y: 1.25rem;
-  --mellow-scroll-pad-x: 2rem;
-  --mellow-bento-gap: 0.5rem;
-  --mellow-card-radius: 1.5rem;
-  --mellow-who-card: var(--mellow-card-cream, #F8F4EC);
-  --mellow-who-card-hover: var(--mellow-card-cream, #F8F4EC);
-  --mellow-who-card-width: clamp(33rem, 25vw, 39rem);
-  --mellow-who-card-height: clamp(260px, 24vw, 320px);
-  --mellow-who-card-padding-y: clamp(1.15rem, 1.5vw, 1.6rem);
-  --mellow-who-card-padding-x: clamp(1.15rem, 1.5vw, 1.6rem);
-  --mellow-who-icon-size: clamp(7.6rem, 5.8vw, 8.8rem);
-  --mellow-who-icon-svg-size: clamp(3.2rem, 2.7vw, 4rem);
-  --mellow-who-edge: clamp(2.4rem, 5vw, 9.6rem);
-  --mellow-who-header-inset: 0rem;
-  --mellow-who-header-inset-desktop: clamp(1.25rem, 1.5vw, 2.25rem);
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  padding-top: clamp(72px, 7vw, 108px);
-  padding-bottom: clamp(56px, 6vw, 88px);
-  background: var(--mellow-section-green, #003302);
-  color: var(--mellow-cream, #FCFBF7);
-}
-
-.mellow-who-its-for__inner {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  margin-inline: 0;
-  padding-left: var(--mellow-who-edge);
-  padding-right: var(--mellow-who-edge);
-}
-
-.mellow-who-its-for__header-wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 82rem) auto;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: clamp(3.2rem, 5vw, 8rem);
-  box-sizing: border-box;
-  width: 100%;
-  padding-inline: var(--mellow-who-header-inset);
-  margin-bottom: clamp(42px, 4vw, 64px);
-}
-
-@media screen and (min-width: 990px) {
-  .mellow-who-its-for {
-    --mellow-who-header-inset: var(--mellow-who-header-inset-desktop);
-  }
-}
-
-.mellow-who-its-for__header {
-  position: relative;
-  z-index: 2;
-  max-width: 82rem;
-  text-align: left;
-}
-
-.mellow-who-its-for__eyebrow {
-  margin-bottom: 1.7rem;
-  color: var(--mellow-orange-red, #D04A2A);
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.17em;
-  text-align: left;
-  text-transform: uppercase;
-}
-
-.mellow-who-its-for__heading {
-  max-width: 740px;
-  margin: 0;
-  color: #FCFBF7;
-  text-align: left;
-}
-
-.mellow-who-its-for__text {
-  max-width: 540px;
-  margin: 2.2rem 0 0;
-  color: rgba(252, 251, 247, 0.88);
-  font-size: var(--mellow-subhead-size);
-  line-height: var(--mellow-subhead-line-height);
-  font-weight: var(--mellow-subhead-weight);
-  letter-spacing: var(--mellow-subhead-tracking);
-  text-align: left;
-  text-wrap: balance;
-}
-
-.mellow-who-its-for__header-actions,
-.mellow-who-its-for__quiz-action {
-  justify-self: end;
-  align-self: center;
-  transform: none !important;
-}
-
-.mellow-who-its-for__header-actions {
-  margin-inline-end: 0;
-}
-
-.mellow-who-its-for__quiz-action {
-  margin-top: 0;
-  margin-bottom: 0 !important;
-}
-
-.mellow-who-its-for__quiz-button {
-  --mellow-section-cta-bg: #FCFBF7;
-  --mellow-section-cta-border: rgba(252, 251, 247, 0.64);
-  --mellow-section-cta-color: var(--mellow-forest);
-  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
-  --mellow-section-cta-hover-border: var(--mellow-orange-red);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-}
-
-.mellow-who-its-for__carousel-wrap {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  margin-top: 0;
-  overflow: hidden;
-}
-
-.mellow-who-its-for__carousel {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  margin-bottom: clamp(-64px, -4vw, -48px);
-  padding: var(--mellow-scroll-pad-y) var(--mellow-scroll-pad-x);
-  touch-action: pan-y;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.mellow-who-its-for__track {
-  --who-track-width: 50%;
-  display: flex;
-  width: max-content;
-  max-width: none;
-  overflow: visible;
-  will-change: transform;
-  transform: translate3d(calc(-1 * var(--who-track-width)), 0, 0);
-  gap: var(--mellow-card-gap);
-}
-
-.mellow-who-its-for__card-set {
-  display: flex;
-  flex-shrink: 0;
-  gap: var(--mellow-card-gap);
-}
-
-.mellow-who-its-for__carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.mellow-who-its-for__track:focus-visible {
-  outline: 3px solid rgba(208, 74, 42, 0.62);
-  outline-offset: -0.2rem;
-}
-
-.mellow-who-its-for__card {
-  position: relative;
-  display: block;
-  flex: 0 0 var(--mellow-who-card-width);
-  min-height: var(--mellow-who-card-height);
-  margin-top: 0;
-  margin-bottom: 0;
-  color: var(--mellow-forest);
-  text-align: left;
-  border: 0.1rem solid var(--mellow-card-border, rgba(0, 51, 2, 0.10));
-  border-radius: var(--mellow-card-radius);
-  background: var(--mellow-who-card);
-  background-image: none;
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-  overflow: hidden;
-  isolation: isolate;
-  backface-visibility: hidden;
-  transform: scale(0.98);
-  transform-origin: center center;
-  transform-style: flat;
-  translate: none;
-  top: auto;
-  bottom: auto;
-  opacity: 1;
-  z-index: 1;
-  transition:
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 650ms ease,
-    filter 650ms ease,
-    background 650ms ease,
-    border-color 650ms ease;
-  will-change: transform;
-}
-
-.mellow-who-its-for__card-inner {
-  position: relative;
-  display: grid;
-  height: 100%;
-  min-height: var(--mellow-who-card-height);
-  grid-template-rows: auto auto;
-  align-content: start;
-  align-items: start;
-  row-gap: clamp(1.1rem, 1vw, 1.5rem);
-  padding: var(--mellow-who-card-padding-y) var(--mellow-who-card-padding-x);
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  overflow: visible;
-  transform: none;
-  opacity: 1;
-  transform-style: flat;
-  transition: none;
-  will-change: auto;
-  backface-visibility: hidden;
-}
-
-.mellow-who-its-for__card:focus-visible {
-  outline: 3px solid rgba(208, 74, 42, 0.62);
-  outline-offset: 6px;
-}
-
-.mellow-who-its-for__icon {
-  transform: translateY(10px);
-  position: relative;
-  isolation: isolate;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--mellow-who-icon-size);
-  height: var(--mellow-who-icon-size);
-  border: 0.1rem solid rgba(208, 74, 42, 0.28);
-  border-radius: 50%;
-  background: rgba(248, 244, 236, 0.82);
-  color: var(--mellow-orange-red, #D04A2A);
-  box-shadow:
-    inset 0 0 0 0.7rem rgba(255, 253, 247, 0.38),
-    0 1.1rem 2.6rem rgba(0, 51, 2, 0.1);
-  transition: transform 260ms ease;
-}
-
-.mellow-who-its-for__card::before,
-.mellow-who-its-for__card::after,
-.mellow-who-its-for__card-inner::before,
-.mellow-who-its-for__card-inner::after {
-  content: none !important;
-  display: none !important;
-}
-
-.mellow-who-its-for__icon svg {
-  position: relative;
-  z-index: 1;
-  width: var(--mellow-who-icon-svg-size);
-  height: var(--mellow-who-icon-svg-size);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.mellow-who-its-for__icon svg,
-.mellow-who-its-for__icon path,
-.mellow-who-its-for__icon circle {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.mellow-who-its-for__icon--bolt svg {
-  animation: mellow-who-bolt-flicker 3.2s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--target circle:nth-of-type(2) {
-  animation: mellow-who-target-inner-pulse 4.4s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--shield svg {
-  animation: mellow-who-shield-breathe 4.8s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--smoke path:nth-of-type(n + 2) {
-  animation: mellow-who-smoke-drift 5s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--smoke path:nth-of-type(3) {
-  animation-delay: 0.7s;
-}
-
-.mellow-who-its-for__icon--moon svg {
-  animation: mellow-who-moon-float 5s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--fork-knife path {
-  animation: mellow-who-food-warmth 3.8s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--fork-knife path:nth-of-type(2) {
-  animation-delay: 0.35s;
-}
-
-.mellow-who-its-for__icon--droplet path:nth-of-type(2) {
-  animation: mellow-who-droplet-wave 3.6s ease-in-out infinite;
-}
-
-.mellow-who-its-for__icon--pregnancy path:nth-of-type(3) {
-  animation: mellow-who-pregnancy-pulse 4.2s ease-in-out infinite;
-}
-
-@keyframes mellow-who-bolt-flicker {
-  0%,
-  100% {
-    opacity: 0.92;
-    transform: translateY(0);
-  }
-
-  38% {
-    opacity: 1;
-    transform: translateY(-0.16rem);
-  }
-
-  52% {
-    opacity: 0.86;
-    transform: translateY(0.08rem);
-  }
-
-  68% {
-    opacity: 1;
-    transform: translateY(-0.08rem);
-  }
-}
-
-@keyframes mellow-who-target-inner-pulse {
-  0%,
-  100% {
-    opacity: 0.74;
-    stroke-width: 2;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    stroke-width: 2.25;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes mellow-who-shield-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.035);
-  }
-}
-
-@keyframes mellow-who-smoke-drift {
-  0%,
-  100% {
-    opacity: 0.74;
-    transform: translate(0, 0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translate(0.18rem, -0.28rem);
-  }
-}
-
-@keyframes mellow-who-moon-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-0.22rem);
-  }
-}
-
-@keyframes mellow-who-food-warmth {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-0.16rem);
-  }
-}
-
-@keyframes mellow-who-droplet-wave {
-  0%,
-  100% {
-    opacity: 0.72;
-    transform: translateX(-0.06rem);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateX(0.16rem);
-  }
-}
-
-@keyframes mellow-who-pregnancy-pulse {
-  0%,
-  100% {
-    opacity: 0.72;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.06);
-  }
-}
-
-.mellow-who-its-for__card-copy {
-  display: grid;
-  align-content: start;
-  justify-items: start;
-  min-height: 0;
-  width: 100%;
-  max-width: 36rem;
-  gap: 0;
-  margin-top: clamp(0.2rem, 0.5vw, 0.6rem);
-  align-self: start;
-  transform: translateY(10px);
-  transition: transform 260ms ease;
-}
-
-
-.mellow-who-its-for__tag {
-  position: absolute;
-  top: 1.7rem;
-  right: 1.7rem;
-  z-index: 2;
-  max-width: calc(100% - 3.4rem);
-  padding: 0.58rem 0.9rem 0.52rem;
-  border: 0.1rem solid rgba(208, 74, 42, 0.34);
-  border-radius: 0.9rem;
-  background: rgba(208, 74, 42, 0.1);
-  color: var(--mellow-orange-red, #D04A2A);
-  font-size: 11px;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.mellow-who-its-for__card.is-active {
-  z-index: 20;
-  transform: scale(1.09);
-  background: var(--mellow-who-card-hover);
-  background-image: none;
-  opacity: 1;
-  filter: none;
-  border-color: rgba(208, 74, 42, 0.32);
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-}
-
-.mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner {
-  transform: none;
-  opacity: 1;
-  border: 0 !important;
-  background: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-}
-
-.mellow-who-its-for__card.is-active::before,
-.mellow-who-its-for__card.is-active::after,
-.mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner::before,
-.mellow-who-its-for__card.is-active .mellow-who-its-for__card-inner::after {
-  content: none !important;
-  display: none !important;
-}
-
-.mellow-who-its-for__card:not(.is-active) {
-  transform: scale(0.98);
-
-}
-
-.mellow-who-its-for__card:not(.is-active) .mellow-who-its-for__card-inner {
-  transform: none;
-}
-
-@media screen and (min-width: 990px) and (hover: hover) and (pointer: fine) {
-  .mellow-who-its-for__card:hover {
-    transform: scale(1);
-    border-color: rgba(208, 74, 42, 0.34);
-    background: var(--mellow-who-card-hover);
-    background-image: none;
-    box-shadow:
-      var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05)),
-      0 0 3.2rem rgba(208, 74, 42, 0.11);
-  }
-
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-inner,
-  .mellow-who-its-for__card.is-active:hover .mellow-who-its-for__card-inner {
-    transform: none;
-    border: 0 !important;
-    background: transparent !important;
-    background-image: none !important;
-    box-shadow: none !important;
-  }
-
-  .mellow-who-its-for__card.is-active,
-  .mellow-who-its-for__card.is-active:hover {
-    transform: scale(1.09);
-  }
-}
-
-.mellow-who-its-for__card h3 {
-  width: 100%;
-  max-width: 94%;
-  margin: 0 0 12px;
-  color: var(--mellow-forest);
-  font-family: var(--mellow-font-display) !important;
-  font-size: var(--mellow-card-title-size);
-  line-height: var(--mellow-card-title-line-height);
-  font-weight: var(--mellow-card-title-weight);
-  letter-spacing: var(--mellow-card-title-tracking);
-  text-align: left;
-}
-
-.mellow-who-its-for__divider {
-  display: block;
-  width: clamp(4rem, 3vw, 5.2rem);
-  height: 0.2rem;
-  margin-top: 9px;
-  margin-bottom: 15px;
-  border-radius: var(--mellow-radius-pill);
-  background: var(--mellow-orange-red, #D04A2A);
-}
-
-.mellow-who-its-for__card p {
-  max-width: 94%;
-  margin: 0;
-  color: rgba(20, 33, 17, 0.84);
-  font-size: var(--mellow-card-copy-size);
-  line-height: var(--mellow-card-copy-line-height);
-  font-weight: var(--mellow-card-copy-weight);
-  letter-spacing: var(--mellow-card-copy-tracking);
-  text-align: left;
-}
-
-@media screen and (max-width: 989px) and (min-width: 750px) {
-  .mellow-who-its-for {
-    --mellow-who-card-width: clamp(30rem, 40vw, 33rem);
-    --mellow-who-card-height: clamp(29rem, 38vw, 33rem);
-    --mellow-who-card-padding-y: clamp(1.6rem, 2.4vw, 2.2rem);
-    --mellow-who-card-padding-x: clamp(1.6rem, 2.4vw, 2.2rem);
-    --mellow-who-icon-size: clamp(5.8rem, 7vw, 6.4rem);
-    --mellow-who-icon-svg-size: clamp(2.6rem, 3.4vw, 3rem);
-    padding-top: clamp(56px, 8vw, 80px);
-    padding-bottom: clamp(56px, 8vw, 88px);
-  }
-
-  .mellow-who-its-for__header-wrap {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 2.6rem;
-  }
-
-  .mellow-who-its-for__header-actions,
-  .mellow-who-its-for__quiz-action {
-    justify-self: start;
-    align-self: start;
-    margin-inline-end: 0;
-  }
-
-  .mellow-who-its-for__carousel-wrap {
-    margin-top: 0;
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .mellow-who-its-for {
-    --mellow-who-card-width: min(80vw, 31rem);
-    --mellow-who-card-height: clamp(30rem, 48vh, 33rem);
-    --mellow-who-card-padding-y: clamp(1.8rem, 5vw, 2.4rem);
-    --mellow-who-card-padding-x: clamp(1.8rem, 5vw, 2.4rem);
-    --mellow-who-icon-size: clamp(5.8rem, 15vw, 6.4rem);
-    --mellow-who-icon-svg-size: clamp(2.6rem, 7vw, 3rem);
-    padding-top: clamp(48px, 10vw, 64px);
-    padding-bottom: clamp(56px, 10vw, 80px);
-  }
-
-  .mellow-who-its-for__header-wrap {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 2.4rem;
-  }
-
-  .mellow-who-its-for__eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.145em;
-  }
-
-  .mellow-who-its-for__heading {
-    font-size: clamp(36px, 9.5vw, 46px);
-    line-height: 1;
-    letter-spacing: -0.032em;
-  }
-
-  .mellow-who-its-for__text {
-    max-width: 360px;
-    font-size: 16px;
-    line-height: 1.45;
-    text-wrap: pretty;
-  }
-
-  .mellow-who-its-for__header-actions,
-  .mellow-who-its-for__quiz-action {
-    justify-self: start;
-    align-self: start;
-    margin-inline-end: 0;
-  }
-
-  .mellow-who-its-for__carousel-wrap {
-    margin-top: 0;
-  }
-
-  .mellow-who-its-for__card-inner {
-    row-gap: 1.3rem;
-    box-shadow: none !important;
-  }
-
-  .mellow-who-its-for__card h3 {
-    font-size: var(--mellow-card-title-size);
-    line-height: var(--mellow-card-title-line-height);
-    letter-spacing: var(--mellow-card-title-tracking);
-  }
-
-  .mellow-who-its-for__card p {
-    font-size: var(--mellow-card-copy-size);
-    line-height: var(--mellow-card-copy-line-height);
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mellow-who-its-for__carousel,
-  .mellow-who-its-for__track,
-  .mellow-who-its-for__card,
-  .mellow-who-its-for__card-inner,
-  .mellow-who-its-for__icon,
-  .mellow-who-its-for__card-copy {
-    animation: none !important;
-    scroll-behavior: auto !important;
-    transition: none !important;
-  }
-
-  .mellow-who-its-for__carousel,
-  .mellow-who-its-for__card:hover,
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-inner,
-  .mellow-who-its-for__card:hover .mellow-who-its-for__icon,
-  .mellow-who-its-for__card:hover .mellow-who-its-for__card-copy {
-    transform: none;
-  }
-}
-
-/* Mellow AG1-style sticky product page */
-.mellow-product-shell {
-  background: var(--mellow-cream);
-  color: var(--mellow-ink);
-  padding: clamp(24px, 3vw, 40px) var(--mellow-section-axis-pad) clamp(72px, 7vw, 112px);
-}
-
-.mellow-product-shell__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
-  gap: var(--mellow-feature-gap);
-  align-items: start;
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-.mellow-product-gallery {
-  position: sticky;
-  top: calc(var(--mellow-announcement-height, 36px) + var(--mellow-header-height, 76px) + 24px);
-  align-self: start;
-  height: fit-content;
-}
-
-.mellow-product-gallery__frame {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(14px, 1.5vw, 22px);
-  align-items: stretch;
-  width: 100%;
-}
-
-.mellow-product-gallery__frame--has-thumbs {
-  grid-template-columns: 76px minmax(0, 1fr);
-}
-
-.mellow-product-gallery__thumbs {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-}
-
-.mellow-product-gallery__thumb {
-  display: block;
-  overflow: hidden;
-  aspect-ratio: 1;
-  border: 1px solid rgba(0, 51, 2, 0.14);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.48);
-  transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.mellow-product-gallery__thumb.is-active,
-.mellow-product-gallery__thumb:hover {
-  border-color: rgba(0, 51, 2, 0.5);
-  transform: translateY(-1px);
-}
-
-.mellow-product-gallery__thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.mellow-product-gallery__main {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-width: 0;
-  min-height: clamp(520px, 66vh, 760px);
-  overflow: hidden;
-  border: 1px solid rgba(0, 51, 2, 0.1);
-  border-radius: var(--mellow-radius-card);
-  background:
-    radial-gradient(circle at 50% 35%, rgba(252, 251, 247, 0.78), rgba(248, 244, 236, 0.82) 48%, rgba(248, 244, 236, 0.72) 100%);
-  box-shadow: var(--mellow-card-shadow, 0 22px 60px rgba(0, 51, 2, 0.05));
-}
-
-.mellow-product-gallery__image {
-  display: grid;
-  place-items: center;
-  width: min(88%, 640px);
-  height: clamp(360px, 56vh, 640px);
-  min-height: 0;
-}
-
-.mellow-product-gallery__image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.mellow-product-gallery__placeholder {
-  display: grid;
-  place-items: center;
-  gap: 12px;
-  width: min(86%, 620px);
-  min-height: clamp(340px, 46vh, 560px);
-  padding: var(--mellow-card-pad-airy);
-  border: 1px dashed rgba(0, 51, 2, 0.22);
-  border-radius: min(var(--mellow-radius-card), 30px);
-  background: rgba(255, 255, 255, 0.38);
-  color: var(--mellow-green);
-  text-align: center;
-}
-
-.mellow-product-gallery__placeholder-mark {
-  display: grid;
-  place-items: center;
-  width: 72px;
-  height: 72px;
-  border: 1px solid rgba(0, 51, 2, 0.16);
-  border-radius: 50%;
-  background: rgba(252, 251, 247, 0.82);
-  font-family: var(--mellow-font-heading);
-  font-size: 3.2rem;
-  font-weight: 650;
-  line-height: 1;
-}
-
-.mellow-product-gallery__placeholder-title {
-  font-family: var(--mellow-font-heading);
-  font-size: clamp(2.8rem, 3.6vw, 4.6rem);
-  font-weight: 620;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-.mellow-product-gallery__placeholder-copy {
-  max-width: 300px;
-  color: var(--mellow-muted);
-  font-size: 1.44rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.mellow-product-gallery__badge {
-  position: absolute;
-  top: 22px;
-  left: 22px;
-  z-index: 1;
-  border: 1px solid rgba(0, 51, 2, 0.16);
-  border-radius: 999px;
-  background: rgba(252, 251, 247, 0.86);
-  color: var(--mellow-green);
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  line-height: 1;
-  padding: 10px 13px;
-  text-transform: uppercase;
-}
-
-.mellow-product-info {
-  min-width: 0;
-}
-
-.mellow-product-purchase {
-  padding-top: clamp(8px, 1.2vw, 20px);
-}
-
-.mellow-product-purchase__eyebrow,
-.mellow-product-purchase__proof,
-.mellow-product-purchase__microcopy,
-.mellow-product-flavors__label {
-  margin: 0;
-}
-
-.mellow-product-purchase__eyebrow {
-  color: var(--mellow-green);
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.mellow-product-purchase__proof {
-  margin-top: 14px;
-  color: var(--mellow-muted);
-  font-size: 1.38rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.mellow-product-purchase__title {
-  max-width: 620px;
-  margin: 18px 0 0;
-  color: var(--mellow-green);
-  font-family: var(--mellow-font-heading);
-  font-size: clamp(4.2rem, 4.8vw, 6.8rem);
-  font-weight: 620;
-  letter-spacing: -0.048em;
-  line-height: 0.96;
-}
-
-.mellow-product-purchase__subhead {
-  max-width: 620px;
-  margin: 18px 0 0;
-  color: var(--mellow-muted);
-  font-size: clamp(1.7rem, 1.4vw, 2rem);
-  line-height: 1.45;
-}
-
-.mellow-product-flavors {
-  margin-top: clamp(22px, 2.2vw, 32px);
-}
-
-.mellow-product-flavors__label {
-  color: var(--mellow-green);
-  font-size: 1.28rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.mellow-product-flavors__pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.mellow-product-flavors__pill {
-  appearance: none;
-  border: 1px solid rgba(0, 51, 2, 0.16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.42);
-  color: var(--mellow-green);
-  cursor: pointer;
-  font: inherit;
-  font-size: 1.28rem;
-  font-weight: 750;
-  line-height: 1;
-  padding: 9px 13px;
-}
-
-.mellow-product-flavors__pill.is-selected {
-  background: var(--mellow-green);
-  border-color: var(--mellow-green);
-  color: var(--mellow-cream);
-}
-
-.mellow-purchase-options {
-  display: grid;
-  gap: var(--mellow-offer-card-gap);
-  margin-top: 18px;
-}
-
-.mellow-purchase-option {
-  display: block;
-  cursor: pointer;
-}
-
-.mellow-purchase-option input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.mellow-purchase-option__content {
-  display: block;
-  border: 1px solid rgba(0, 51, 2, 0.14);
-  border-radius: var(--mellow-offer-card-radius);
-  background: rgba(255, 255, 255, 0.44);
-  padding: var(--mellow-offer-card-pad);
-  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-}
-
-.mellow-purchase-option.is-selected .mellow-purchase-option__content,
-.mellow-purchase-option input:checked + .mellow-purchase-option__content,
-.mellow-purchase-option:hover .mellow-purchase-option__content {
-  background: rgba(255, 255, 255, 0.76);
-  border-color: rgba(0, 51, 2, 0.5);
-  box-shadow: 0 16px 36px rgba(0, 51, 2, 0.08);
-}
-
-.mellow-purchase-option__topline,
-.mellow-purchase-option__body {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.mellow-purchase-option__topline {
-  align-items: center;
-}
-
-.mellow-purchase-option__body {
-  align-items: flex-end;
-  margin-top: var(--mellow-offer-card-gap);
-}
-
-.mellow-purchase-option__name {
-  color: var(--mellow-green);
-  font-size: 1.72rem;
-  font-weight: 850;
-  letter-spacing: -0.02em;
-}
-
-.mellow-purchase-option__badge {
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: rgba(208, 74, 42, 0.12);
-  color: var(--mellow-orange-red);
-  font-size: 1.05rem;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  padding: 7px 9px;
-  text-transform: uppercase;
-}
-
-.mellow-purchase-option__body > span:first-child {
-  display: grid;
-  gap: 4px;
-  color: var(--mellow-muted);
-  font-size: 1.4rem;
-  line-height: 1.34;
-}
-
-.mellow-purchase-option__body strong {
-  color: var(--mellow-green);
-}
-
-.mellow-purchase-option__price {
-  display: grid;
-  flex: 0 0 auto;
-  gap: 2px;
-  min-width: 96px;
-  text-align: right;
-}
-
-.mellow-purchase-option__price strong {
-  font-size: 2.8rem;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-.mellow-purchase-option__price small {
-  color: var(--mellow-muted);
-  font-size: 1.16rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.mellow-product-form {
-  margin-top: 18px;
-}
-
-.mellow-product-cta {
-  --mellow-section-cta-bg: var(--mellow-green);
-  --mellow-section-cta-border: var(--mellow-green);
-  --mellow-section-cta-color: var(--mellow-cream);
-  --mellow-section-cta-hover-bg: var(--mellow-orange-red);
-  --mellow-section-cta-hover-border: var(--mellow-orange-red);
-  --mellow-section-cta-hover-color: var(--mellow-cream);
-  --mellow-section-cta-width: 100%;
-
-  width: 100%;
-  cursor: pointer;
-  font-family: var(--mellow-font-body);
-}
-
-.mellow-product-cta[disabled],
-.mellow-product-cta[aria-disabled='true'] {
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-.mellow-product-shell .mellow-section-cta.button,
-.mellow-product-shell .mellow-product-cta {
-  box-shadow: none;
-}
-
-.mellow-product-shell .mellow-section-cta.button::after,
-.mellow-product-shell .mellow-product-cta::after {
-  content: none !important;
-  display: none !important;
-  box-shadow: none !important;
-}
-
-.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta,
-.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta {
-  transform: translateZ(0) !important;
-  transition:
-    background-color var(--mellow-section-cta-color-duration) ease,
-    border-color var(--mellow-section-cta-color-duration) ease,
-    color var(--mellow-section-cta-color-duration) ease !important;
-}
-
-.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover,
-.animate--hover-3d-lift .mellow-product-shell .mellow-section-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):active,
-.animate--hover-3d-lift .mellow-product-shell .mellow-product-cta:not([disabled]):active,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):active {
-  transform: translateZ(0) !important;
-}
-
-.animate--hover-vertical-lift .mellow-product-shell .button:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-section-cta:not([disabled]):hover::after,
-.animate--hover-vertical-lift .mellow-product-shell .mellow-product-cta:not([disabled]):hover::after {
-  box-shadow: none !important;
-}
-
-.mellow-product-purchase__secondary {
-  display: block;
-  margin-top: 14px;
-  color: var(--mellow-green);
-  font-size: 1.4rem;
-  font-weight: 800;
-  text-align: center;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.mellow-product-purchase__microcopy {
-  margin-top: 12px;
-  color: var(--mellow-muted);
-  font-size: 1.26rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.mellow-product-education {
-  display: grid;
-  gap: var(--mellow-list-gap);
-  margin-top: clamp(38px, 4vw, 64px);
-  padding-bottom: clamp(20px, 3vw, 48px);
-}
-
-.mellow-product-detail {
-  border-top: 1px solid rgba(0, 51, 2, 0.14);
-}
-
-.mellow-product-detail:last-child {
-  border-bottom: 1px solid rgba(0, 51, 2, 0.14);
-}
-
-.mellow-product-detail summary {
-  color: var(--mellow-green);
-  cursor: pointer;
-  font-size: 1.88rem;
-  font-weight: 850;
-  letter-spacing: -0.02em;
-  list-style: none;
-  padding: var(--mellow-list-row-pad-y) 0;
-}
-
-.mellow-product-detail summary::-webkit-details-marker {
-  display: none;
-}
-
-.mellow-product-detail summary::after {
-  content: '+';
-  float: right;
-  font-weight: 650;
-}
-
-.mellow-product-detail[open] summary::after {
-  content: '–';
-}
-
-.mellow-product-detail p,
-.mellow-product-detail ul {
-  max-width: 620px;
-  margin: 12px 0 0;
-  padding-bottom: var(--mellow-accordion-content-pad-bottom);
-  color: var(--mellow-muted);
-  font-size: 1.52rem;
-  line-height: 1.5;
-}
-
-.mellow-product-detail ul {
-  padding-left: 20px;
-}
-
-@media screen and (max-width: 989px) {
-  .mellow-product-shell {
-    padding-top: 18px;
-  }
-
-  .mellow-product-shell__inner {
-    display: block;
-  }
-
-  .mellow-product-gallery {
-    position: static;
-  }
-
-  .mellow-product-gallery__frame,
-  .mellow-product-gallery__frame--has-thumbs {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .mellow-product-gallery__thumbs {
-    order: 2;
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-
-  .mellow-product-gallery__thumb {
-    flex: 0 0 68px;
-  }
-
-  .mellow-product-gallery__main {
-    min-height: clamp(360px, 82vw, 560px);
-  }
-
-  .mellow-product-info {
-    margin-top: 32px;
-  }
-}
-
-@media screen and (max-width: 549px) {
-  .mellow-product-shell {
-    padding-inline: 18px;
-  }
-
-  .mellow-product-gallery__badge {
-    top: 14px;
-    left: 14px;
-    font-size: 0.94rem;
-  }
-
-  .mellow-purchase-option__topline,
-  .mellow-purchase-option__body {
-    display: grid;
-    gap: 10px;
-  }
-
-  .mellow-purchase-option__price {
-    min-width: 0;
-    text-align: left;
-  }
-}
+  </div>
+
+  <div class="mellow-expert-proof__shelf">
+    <div class="mellow-section-axis">
+      <div class="mellow-expert-proof__bleed">
+        <div class="mellow-expert-proof__scroller" data-expert-scroller>
+          <div class="mellow-expert-proof__track" data-expert-track>
+            {%- for card_loop in (1..3) -%}
+              {%- assign is_original_set = false -%}
+              {%- if card_loop == 2 -%}
+                {%- assign is_original_set = true -%}
+              {%- endif -%}
+
+              <div
+                class="mellow-expert-proof__card-set"
+                {% if is_original_set %}
+                  data-expert-card-set
+                {% else %}
+                  data-expert-card-set-duplicate
+                  aria-hidden="true"
+                {% endif %}
+              >
+                {%- for card_index in (1..4) -%}
+                  {%- liquid
+                    assign image_key = 'card_' | append: card_index | append: '_image'
+                    assign letter_key = 'card_' | append: card_index | append: '_letter'
+                    assign role_key = 'card_' | append: card_index | append: '_role'
+                    assign quote_key = 'card_' | append: card_index | append: '_quote'
+                    assign name_key = 'card_' | append: card_index | append: '_name'
+                    assign title_key = 'card_' | append: card_index | append: '_title'
+                    assign fallback_letters = 'A,B,C,D,E,F' | split: ','
+                    assign fallback_letter = fallback_letters[forloop.index0]
+                    assign image_loading = 'lazy'
+                    if card_index <= 3 and card_loop <= 2
+                      assign image_loading = 'eager'
+                    endif
+                  -%}
+
+                  <article
+                    class="mellow-expert-proof__card"
+                    {% if is_original_set %}
+                      data-expert-card
+                    {% endif %}
+                    data-expert-index="{{ forloop.index0 }}"
+                  >
+                    <div class="mellow-expert-proof__visual">
+                      {%- if section.settings[image_key] != blank -%}
+                        {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: image_loading, sizes: '(min-width: 1480px) 340px, (min-width: 990px) 23vw, (min-width: 815px) 44vw, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
+                      {%- else -%}
+                        <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings[letter_key] | default: fallback_letter | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="mellow-expert-proof__content">
+                      <span class="mellow-expert-proof__role">{{ section.settings[role_key] | escape }}</span>
+                      <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings[quote_key] | escape }}</p>
+                      <div class="mellow-expert-proof__person">
+                        <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings[name_key] | escape }}</h3>
+                        <p class="mellow-card-copy mellow-expert-proof__title">{{ section.settings[title_key] | default: section.settings[role_key] | escape }}</p>
+                      </div>
+                    </div>
+                  </article>
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initExpertProof = (section) => {
+      const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
+
+      const releaseSectionReady = () => {
+        if (section) {
+          section.classList.add('is-mellow-section-ready');
+        }
+
+        if (releaseReadyHold) {
+          releaseReadyHold();
+        }
+      };
+
+      if (!section || section.dataset.mellowExpertProofReady === 'true') {
+        releaseSectionReady();
+        return;
+      }
+
+      const scroller = section.querySelector('[data-expert-scroller]');
+      const track = section.querySelector('[data-expert-track]');
+      const cardSet = section.querySelector('[data-expert-card-set]');
+      const cards = cardSet ? Array.from(cardSet.querySelectorAll('[data-expert-card]')) : [];
+      const prev = section.querySelector('[data-expert-prev]');
+      const next = section.querySelector('[data-expert-next]');
+
+      if (!scroller || !track || !cardSet || !cards.length || !prev || !next) {
+        releaseSectionReady();
+        return;
+      }
+
+      const marqueeDuration = 84000;
+      const nudgeDuration = 420;
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const nativeScrollQuery = window.matchMedia('(max-width: 749px)');
+      let setWidth = 0;
+      let cardWidth = 0;
+      let cardPitch = 0;
+      let offset = 0;
+      let animationFrame = null;
+      let nudgeFrame = null;
+      let lastFrameTime = null;
+      let resizeObserver = null;
+      let isReducedMotion = reducedMotionQuery.matches;
+      let isNativeScroll = isReducedMotion || nativeScrollQuery.matches;
+
+      const setCarouselMode = () => {
+        isNativeScroll = isReducedMotion || nativeScrollQuery.matches;
+        section.classList.toggle('is-reduced-motion', isReducedMotion);
+        section.classList.toggle('is-native-scroll', isNativeScroll);
+        prev.disabled = false;
+        next.disabled = false;
+        prev.setAttribute('aria-disabled', 'false');
+        next.setAttribute('aria-disabled', 'false');
+      };
+
+      const applySafeOffset = () => {
+        if (setWidth <= 0) {
+          return;
+        }
+
+        while (offset <= setWidth * -2) {
+          offset += setWidth;
+        }
+
+        while (offset > 0) {
+          offset -= setWidth;
+        }
+      };
+
+      const updateTrackPosition = () => {
+        track.style.transform = isNativeScroll ? 'none' : `translate3d(${offset}px, 0, 0)`;
+      };
+
+      const stopNudge = () => {
+        if (nudgeFrame) {
+          cancelAnimationFrame(nudgeFrame);
+          nudgeFrame = null;
+        }
+      };
+
+      const stopMarquee = () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+          animationFrame = null;
+        }
+
+        stopNudge();
+        lastFrameTime = null;
+      };
+
+      const measureCarousel = () => {
+        const trackStyles = window.getComputedStyle(track);
+        const cardSetStyles = window.getComputedStyle(cardSet);
+        const trackGap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+        const cardGap = parseFloat(cardSetStyles.columnGap || cardSetStyles.gap) || 0;
+        const firstCard = cards[0];
+
+        cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+        cardPitch = cardWidth + cardGap;
+        setWidth = cardSet.getBoundingClientRect().width + trackGap;
+
+        if (setWidth <= 0) {
+          return;
+        }
+
+        offset = 0;
+        track.style.setProperty('--expert-track-width', `${setWidth}px`);
+        updateTrackPosition();
+      };
+
+      const animate = (timestamp) => {
+        if (isNativeScroll) {
+          stopMarquee();
+          updateTrackPosition();
+          return;
+        }
+
+        if (setWidth > 0 && !nudgeFrame) {
+          if (lastFrameTime === null) {
+            lastFrameTime = timestamp;
+          }
+
+          const elapsed = timestamp - lastFrameTime;
+          const pixelsPerMillisecond = setWidth / marqueeDuration;
+
+          offset -= pixelsPerMillisecond * elapsed;
+          applySafeOffset();
+          updateTrackPosition();
+          lastFrameTime = timestamp;
+        } else if (nudgeFrame) {
+          lastFrameTime = timestamp;
+        }
+
+        animationFrame = requestAnimationFrame(animate);
+      };
+
+      const startMarquee = () => {
+        if (isNativeScroll || animationFrame) {
+          return;
+        }
+
+        animationFrame = requestAnimationFrame(animate);
+      };
+
+      const easeInOutCubic = (progress) => {
+        return progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      };
+
+      const nudgeMarquee = (direction) => {
+        if (cardPitch <= 0) {
+          return;
+        }
+
+        if (isNativeScroll) {
+          scroller.scrollBy({ left: cardPitch * direction, behavior: isReducedMotion ? 'auto' : 'smooth' });
+          return;
+        }
+
+        stopNudge();
+
+        const startOffset = offset;
+        const targetOffset = startOffset - cardPitch * direction;
+        const startTime = performance.now();
+
+        const step = (timestamp) => {
+          const progress = Math.min(1, (timestamp - startTime) / nudgeDuration);
+          const easedProgress = easeInOutCubic(progress);
+
+          offset = startOffset + (targetOffset - startOffset) * easedProgress;
+          applySafeOffset();
+          updateTrackPosition();
+
+          if (progress < 1) {
+            nudgeFrame = requestAnimationFrame(step);
+            return;
+          }
+
+          nudgeFrame = null;
+          lastFrameTime = null;
+        };
+
+        nudgeFrame = requestAnimationFrame(step);
+      };
+
+      const normalizeWheelDelta = (delta, deltaMode) => {
+        if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
+          return delta * 16;
+        }
+
+        if (deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+          return delta * scroller.clientWidth;
+        }
+
+        return delta;
+      };
+
+      const handleWheel = (event) => {
+        if (isNativeScroll) {
+          return;
+        }
+
+        const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
+        const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
+        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.05;
+
+        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
+          return;
+        }
+
+        event.preventDefault();
+        stopNudge();
+        offset -= horizontalDelta;
+        applySafeOffset();
+        updateTrackPosition();
+        lastFrameTime = null;
+      };
+
+      const handleResize = () => {
+        lastFrameTime = null;
+        measureCarousel();
+      };
+
+      const handleMotionPreferenceChange = (event) => {
+        isReducedMotion = event.matches;
+        setCarouselMode();
+        stopMarquee();
+        measureCarousel();
+        startMarquee();
+      };
+
+      const handleNativeScrollPreferenceChange = () => {
+        setCarouselMode();
+        stopMarquee();
+        measureCarousel();
+        startMarquee();
+      };
+
+      const handleNextClick = () => nudgeMarquee(1);
+      const handlePrevClick = () => nudgeMarquee(-1);
+
+      next.addEventListener('click', handleNextClick);
+      prev.addEventListener('click', handlePrevClick);
+      scroller.addEventListener('wheel', handleWheel, { passive: false });
+
+      setCarouselMode();
+      measureCarousel();
+
+      if ('ResizeObserver' in window) {
+        resizeObserver = new ResizeObserver(handleResize);
+        resizeObserver.observe(cardSet);
+        resizeObserver.observe(scroller);
+      } else {
+        window.addEventListener('resize', handleResize);
+      }
+
+      if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+      } else if (typeof reducedMotionQuery.addListener === 'function') {
+        reducedMotionQuery.addListener(handleMotionPreferenceChange);
+      }
+
+      if (typeof nativeScrollQuery.addEventListener === 'function') {
+        nativeScrollQuery.addEventListener('change', handleNativeScrollPreferenceChange);
+      } else if (typeof nativeScrollQuery.addListener === 'function') {
+        nativeScrollQuery.addListener(handleNativeScrollPreferenceChange);
+      }
+
+      startMarquee();
+      section.dataset.mellowExpertProofReady = 'true';
+      window.requestAnimationFrame(releaseSectionReady);
+
+      section.mellowExpertProofCleanup = () => {
+        stopMarquee();
+        scroller.removeEventListener('wheel', handleWheel);
+        next.removeEventListener('click', handleNextClick);
+        prev.removeEventListener('click', handlePrevClick);
+
+        if (!resizeObserver) {
+          window.removeEventListener('resize', handleResize);
+        }
+
+        if (typeof reducedMotionQuery.removeEventListener === 'function') {
+          reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
+        } else if (typeof reducedMotionQuery.removeListener === 'function') {
+          reducedMotionQuery.removeListener(handleMotionPreferenceChange);
+        }
+
+        if (typeof nativeScrollQuery.removeEventListener === 'function') {
+          nativeScrollQuery.removeEventListener('change', handleNativeScrollPreferenceChange);
+        } else if (typeof nativeScrollQuery.removeListener === 'function') {
+          nativeScrollQuery.removeListener(handleNativeScrollPreferenceChange);
+        }
+
+        if (resizeObserver) {
+          resizeObserver.disconnect();
+        }
+      };
+    };
+
+    const initCurrentSection = () => {
+      initExpertProof(document.getElementById('MellowExpertProof-{{ section.id }}'));
+    };
+
+    initCurrentSection();
+
+    document.addEventListener('shopify:section:load', (event) => {
+      initExpertProof(event.target.querySelector('[data-mellow-expert-proof]'));
+    });
+
+    document.addEventListener('shopify:section:unload', (event) => {
+      const section = event.target.querySelector('[data-mellow-expert-proof]');
+
+      if (section && typeof section.mellowExpertProofCleanup === 'function') {
+        section.mellowExpertProofCleanup();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Mellow expert proof",
+  "tag": "section",
+  "class": "section section-mellow-expert-proof",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "PRACTITIONER-BACKED PROOF"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by practitioners|who understand reflux."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subhead",
+      "default": "Real-world guidance from digestive health and wellness practitioners."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Shop Mellow"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_letter",
+      "label": "Letter",
+      "default": "A"
+    },
+    {
+      "type": "text",
+      "id": "card_1_name",
+      "label": "Name",
+      "default": "Noah R."
+    },
+    {
+      "type": "text",
+      "id": "card_1_role",
+      "label": "Role",
+      "default": "WELLNESS PRACTITIONER"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "Wellness Practitioner"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_quote",
+      "label": "Quote",
+      "default": "“Most of my clients have been chasing reflux with antacids for years and never feel ahead of it. The raft-forming mechanism is genuinely different — and when something is this easy to use, people actually stick with it.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_letter",
+      "label": "Letter",
+      "default": "B"
+    },
+    {
+      "type": "text",
+      "id": "card_2_name",
+      "label": "Name",
+      "default": "Priya S."
+    },
+    {
+      "type": "text",
+      "id": "card_2_role",
+      "label": "Role",
+      "default": "FUNCTIONAL NUTRITIONIST"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "Functional Nutritionist"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_quote",
+      "label": "Quote",
+      "default": "“I’m particular about what I recommend. Sodium alginate has decades of published research behind it, and Mellow’s formula is clean — no ingredients I’d question for daily use. That matters more than the marketing.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_3_letter",
+      "label": "Letter",
+      "default": "C"
+    },
+    {
+      "type": "text",
+      "id": "card_3_name",
+      "label": "Name",
+      "default": "Dr. Marcus Bell"
+    },
+    {
+      "type": "text",
+      "id": "card_3_role",
+      "label": "Role",
+      "default": "DIGESTIVE HEALTH ADVISOR"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "Digestive Health Advisor"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_quote",
+      "label": "Quote",
+      "default": "“Alginate raft therapy is well-documented in the GI literature. What’s been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_4_letter",
+      "label": "Letter",
+      "default": "D"
+    },
+    {
+      "type": "text",
+      "id": "card_4_name",
+      "label": "Name",
+      "default": "Talia W."
+    },
+    {
+      "type": "text",
+      "id": "card_4_role",
+      "label": "Role",
+      "default": "WELLNESS CLINICIAN"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Title",
+      "default": "Wellness Clinician"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_quote",
+      "label": "Quote",
+      "default": "“Consistency is the hardest part of any routine. Mellow is simple enough to take an evening without feeling like a chore — that’s exactly why I think people love it.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_5_letter",
+      "label": "Letter",
+      "default": "E"
+    },
+    {
+      "type": "text",
+      "id": "card_5_name",
+      "label": "Name",
+      "default": "Dr. Marcus Bell"
+    },
+    {
+      "type": "text",
+      "id": "card_5_role",
+      "label": "Role",
+      "default": "Digestive Health Advisor"
+    },
+    {
+      "type": "textarea",
+      "id": "card_5_quote",
+      "label": "Quote",
+      "default": "“Alginate raft therapy is well-documented in the GI literature. What's been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_6_letter",
+      "label": "Letter",
+      "default": "F"
+    },
+    {
+      "type": "text",
+      "id": "card_6_name",
+      "label": "Name",
+      "default": "Talia W."
+    },
+    {
+      "type": "text",
+      "id": "card_6_role",
+      "label": "Role",
+      "default": "Wellness Clinician"
+    },
+    {
+      "type": "textarea",
+      "id": "card_6_quote",
+      "label": "Quote",
+      "default": "“Consistency is the hardest part of any wellness routine. Mellow is simple enough to fit into an evening without feeling clinical — which is exactly why I think people keep using it.”"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mellow expert proof"
+    }
+  ]
+}
+{% endschema %}
