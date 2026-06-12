@@ -300,12 +300,12 @@
 
   @media screen and (max-width: 989px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: clamp(286px, 43vw, 330px);
+      --mellow-expert-proof-card-width: clamp(280px, 42vw, 316px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       grid-template-columns: 1fr;
-      gap: clamp(24px, 4vw, 38px);
+      gap: clamp(20px, 3.4vw, 30px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
@@ -325,42 +325,47 @@
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: min(82vw, 324px);
-      --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
+      --mellow-expert-proof-card-width: min(81vw, 308px);
+      --mellow-expert-proof-card-pad: 18px;
+      --mellow-carousel-card-gap: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
-      padding-top: 34px;
-      padding-bottom: 34px;
+      padding-top: 28px;
+      padding-bottom: 30px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
-      gap: 22px;
+      gap: 18px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
+      max-width: 340px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
       flex-wrap: wrap;
       width: 100%;
-      gap: 14px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 28px;
-      padding-bottom: 64px;
+      padding-top: 24px;
+      padding-bottom: 58px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 540px;
+      min-height: 512px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 184px;
+      height: 176px;
     }
   }
 </style>
@@ -519,6 +524,7 @@
         return;
       }
 
+      const autoplayMarquee = false;
       const marqueeDuration = 84000;
       const nudgeDuration = 420;
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -626,7 +632,7 @@
       };
 
       const startMarquee = () => {
-        if (isNativeScroll || animationFrame) {
+        if (!autoplayMarquee || isNativeScroll || animationFrame) {
           return;
         }
 
