@@ -1,6 +1,6 @@
 {% comment %}
   Mellow Expert Proof section.
-  Built on the global Mellow section system with a simple scroll row.
+  Built on the global Mellow section system with a contained four-card rail.
 {% endcomment %}
 
 <style>
@@ -9,7 +9,6 @@
     --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
     --mellow-expert-proof-rail: min(100%, 1390px);
-    --mellow-expert-proof-card-width: clamp(288px, calc((100vw - (var(--mellow-section-axis-pad) * 2) - (var(--mellow-carousel-card-gap) * 3)) / 4), 330px);
     --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
     --mellow-carousel-card-gap: clamp(24px, 2.35vw, 38px);
     background: var(--mellow-expert-proof-shelf);
@@ -32,7 +31,7 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(24px, 2vw, 34px);
+    padding-top: clamp(32px, 2.6vw, 46px);
     padding-bottom: clamp(40px, 4vw, 64px);
   }
 
@@ -121,7 +120,7 @@
     color: var(--mellow-cream, #FCFBF7);
     cursor: pointer;
     box-shadow: none;
-    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):hover,
@@ -149,40 +148,30 @@
     overflow-x: hidden;
     overflow-y: visible;
     background: var(--mellow-expert-proof-shelf);
+    position: relative;
   }
 
-  #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
-    overflow-x: auto;
-    scroll-behavior: auto;
-  }
-
-  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__scroller {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-  }
-
-  #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__track {
-    transform: none !important;
-    will-change: auto;
-  }
-
-  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__track {
-    transform: none !important;
-    will-change: auto;
-  }
-
-  #MellowExpertProof-{{ section.id }}.is-native-scroll .mellow-expert-proof__card-set[data-expert-card-set-duplicate] {
-    display: none;
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 26px;
+    width: clamp(28px, 4vw, 56px);
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(252, 251, 247, 0), var(--mellow-expert-proof-shelf));
+    z-index: 2;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: visible;
     scrollbar-width: none;
     box-sizing: border-box;
     padding: 0 0 26px;
     scroll-padding-inline: 0;
+    scroll-snap-type: x proximity;
     background: var(--mellow-expert-proof-shelf);
   }
 
@@ -190,33 +179,24 @@
     display: none;
   }
 
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
-    display: flex;
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--mellow-carousel-card-gap);
     align-items: stretch;
-    width: max-content;
-    max-width: none;
-    will-change: transform;
-    background: var(--mellow-expert-proof-shelf);
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
-    display: flex;
-    gap: var(--mellow-carousel-card-gap);
-    align-items: stretch;
-    flex: 0 0 auto;
+    width: 100%;
     background: var(--mellow-expert-proof-shelf);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-    flex: 0 0 var(--mellow-expert-proof-card-width);
-    width: var(--mellow-expert-proof-card-width);
+    width: 100%;
     display: flex;
     flex-direction: column;
-    min-height: clamp(470px, 31vw, 520px);
+    min-height: clamp(500px, 34vw, 560px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
+    scroll-snap-align: start;
     border-radius: 16px;
     border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
     background: var(--mellow-card-cream, #F8F4EC);
@@ -228,7 +208,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(172px, 12vw, 200px);
+    height: clamp(190px, 13.2vw, 220px);
     overflow: hidden;
     border-radius: 16px 16px 0 0;
     background:
@@ -309,24 +289,20 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 22px;
+      padding-top: 32px;
       padding-bottom: 42px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 455px;
+      min-height: 500px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 168px;
+      height: 190px;
     }
   }
 
   @media screen and (max-width: 989px) {
-    #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
-    }
-
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       grid-template-columns: 1fr;
       gap: clamp(24px, 4vw, 36px);
@@ -342,11 +318,15 @@
     #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
       justify-content: flex-start;
     }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
+      grid-template-columns: repeat(4, clamp(300px, 44vw, 340px));
+      width: max-content;
+    }
   }
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-width: min(82vw, 330px);
       --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
     }
 
@@ -378,6 +358,10 @@
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
       padding-top: 22px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
+      grid-template-columns: repeat(4, min(82vw, 330px));
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
@@ -426,7 +410,7 @@
             {%- endif -%}
 
             <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
-              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" aria-disabled="false" data-expert-prev>
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" aria-disabled="true" data-expert-prev>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                   <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -447,63 +431,36 @@
     <div class="mellow-section-axis">
       <div class="mellow-expert-proof__bleed">
         <div class="mellow-expert-proof__scroller" data-expert-scroller>
-          <div class="mellow-expert-proof__track" data-expert-track>
-            {%- for card_loop in (1..3) -%}
-              {%- assign is_original_set = false -%}
-              {%- if card_loop == 2 -%}
-                {%- assign is_original_set = true -%}
-              {%- endif -%}
+          <div class="mellow-expert-proof__rail" data-expert-rail>
+            {%- for card_index in (1..4) -%}
+              {%- liquid
+                assign image_key = 'card_' | append: card_index | append: '_image'
+                assign letter_key = 'card_' | append: card_index | append: '_letter'
+                assign role_key = 'card_' | append: card_index | append: '_role'
+                assign quote_key = 'card_' | append: card_index | append: '_quote'
+                assign name_key = 'card_' | append: card_index | append: '_name'
+                assign title_key = 'card_' | append: card_index | append: '_title'
+                assign fallback_letters = 'A,B,C,D' | split: ','
+                assign fallback_letter = fallback_letters[forloop.index0]
+              -%}
 
-              <div
-                class="mellow-expert-proof__card-set"
-                {% if is_original_set %}
-                  data-expert-card-set
-                {% else %}
-                  data-expert-card-set-duplicate
-                  aria-hidden="true"
-                {% endif %}
-              >
-                {%- for card_index in (1..4) -%}
-                  {%- liquid
-                    assign image_key = 'card_' | append: card_index | append: '_image'
-                    assign letter_key = 'card_' | append: card_index | append: '_letter'
-                    assign role_key = 'card_' | append: card_index | append: '_role'
-                    assign quote_key = 'card_' | append: card_index | append: '_quote'
-                    assign name_key = 'card_' | append: card_index | append: '_name'
-                    assign title_key = 'card_' | append: card_index | append: '_title'
-                    assign fallback_letters = 'A,B,C,D,E,F' | split: ','
-                    assign fallback_letter = fallback_letters[forloop.index0]
-                    assign image_loading = 'lazy'
-                    if card_index <= 3 and card_loop <= 2
-                      assign image_loading = 'eager'
-                    endif
-                  -%}
-
-                  <article
-                    class="mellow-expert-proof__card"
-                    {% if is_original_set %}
-                      data-expert-card
-                    {% endif %}
-                    data-expert-index="{{ forloop.index0 }}"
-                  >
-                    <div class="mellow-expert-proof__visual">
-                      {%- if section.settings[image_key] != blank -%}
-                        {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: image_loading, sizes: '(min-width: 1480px) 340px, (min-width: 990px) 23vw, (min-width: 815px) 44vw, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
-                      {%- else -%}
-                        <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings[letter_key] | default: fallback_letter | escape }}</span>
-                      {%- endif -%}
-                    </div>
-                    <div class="mellow-expert-proof__content">
-                      <span class="mellow-expert-proof__role">{{ section.settings[role_key] | escape }}</span>
-                      <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings[quote_key] | escape }}</p>
-                      <div class="mellow-expert-proof__person">
-                        <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings[name_key] | escape }}</h3>
-                        <p class="mellow-card-copy mellow-expert-proof__title">{{ section.settings[title_key] | default: section.settings[role_key] | escape }}</p>
-                      </div>
-                    </div>
-                  </article>
-                {%- endfor -%}
-              </div>
+              <article class="mellow-expert-proof__card" data-expert-card data-expert-index="{{ forloop.index0 }}">
+                <div class="mellow-expert-proof__visual">
+                  {%- if section.settings[image_key] != blank -%}
+                    {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', sizes: '(min-width: 1480px) 319px, (min-width: 990px) 23vw, (min-width: 815px) 340px, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
+                  {%- else -%}
+                    <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings[letter_key] | default: fallback_letter | escape }}</span>
+                  {%- endif -%}
+                </div>
+                <div class="mellow-expert-proof__content">
+                  <span class="mellow-expert-proof__role">{{ section.settings[role_key] | escape }}</span>
+                  <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings[quote_key] | escape }}</p>
+                  <div class="mellow-expert-proof__person">
+                    <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings[name_key] | escape }}</h3>
+                    <p class="mellow-card-copy mellow-expert-proof__title">{{ section.settings[title_key] | default: section.settings[role_key] | escape }}</p>
+                  </div>
+                </div>
+              </article>
             {%- endfor -%}
           </div>
         </div>
@@ -533,239 +490,64 @@
       }
 
       const scroller = section.querySelector('[data-expert-scroller]');
-      const track = section.querySelector('[data-expert-track]');
-      const cardSet = section.querySelector('[data-expert-card-set]');
-      const cards = cardSet ? Array.from(cardSet.querySelectorAll('[data-expert-card]')) : [];
+      const rail = section.querySelector('[data-expert-rail]');
+      const cards = rail ? Array.from(rail.querySelectorAll('[data-expert-card]')) : [];
       const prev = section.querySelector('[data-expert-prev]');
       const next = section.querySelector('[data-expert-next]');
 
-      if (!scroller || !track || !cardSet || !cards.length || !prev || !next) {
+      if (!scroller || !rail || !cards.length || !prev || !next) {
         releaseSectionReady();
         return;
       }
 
-      const marqueeDuration = 84000;
-      const nudgeDuration = 420;
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const nativeScrollQuery = window.matchMedia('(max-width: 749px)');
-      let setWidth = 0;
-      let cardWidth = 0;
-      let cardPitch = 0;
-      let offset = 0;
-      let animationFrame = null;
-      let nudgeFrame = null;
-      let lastFrameTime = null;
       let resizeObserver = null;
-      let isReducedMotion = reducedMotionQuery.matches;
-      let isNativeScroll = isReducedMotion || nativeScrollQuery.matches;
 
-      const setCarouselMode = () => {
-        isNativeScroll = isReducedMotion || nativeScrollQuery.matches;
-        section.classList.toggle('is-reduced-motion', isReducedMotion);
-        section.classList.toggle('is-native-scroll', isNativeScroll);
-        prev.disabled = false;
-        next.disabled = false;
-        prev.setAttribute('aria-disabled', 'false');
-        next.setAttribute('aria-disabled', 'false');
-      };
-
-      const applySafeOffset = () => {
-        if (setWidth <= 0) {
-          return;
-        }
-
-        while (offset <= setWidth * -2) {
-          offset += setWidth;
-        }
-
-        while (offset > 0) {
-          offset -= setWidth;
-        }
-      };
-
-      const updateTrackPosition = () => {
-        track.style.transform = isNativeScroll ? 'none' : `translate3d(${offset}px, 0, 0)`;
-      };
-
-      const stopNudge = () => {
-        if (nudgeFrame) {
-          cancelAnimationFrame(nudgeFrame);
-          nudgeFrame = null;
-        }
-      };
-
-      const stopMarquee = () => {
-        if (animationFrame) {
-          cancelAnimationFrame(animationFrame);
-          animationFrame = null;
-        }
-
-        stopNudge();
-        lastFrameTime = null;
-      };
-
-      const measureCarousel = () => {
-        const trackStyles = window.getComputedStyle(track);
-        const cardSetStyles = window.getComputedStyle(cardSet);
-        const trackGap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
-        const cardGap = parseFloat(cardSetStyles.columnGap || cardSetStyles.gap) || 0;
+      const getCardPitch = () => {
+        const railStyles = window.getComputedStyle(rail);
+        const cardGap = parseFloat(railStyles.columnGap || railStyles.gap) || 0;
         const firstCard = cards[0];
 
-        cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
-        cardPitch = cardWidth + cardGap;
-        setWidth = cardSet.getBoundingClientRect().width + trackGap;
-
-        if (setWidth <= 0) {
-          return;
-        }
-
-        offset = 0;
-        track.style.setProperty('--expert-track-width', `${setWidth}px`);
-        updateTrackPosition();
+        return firstCard ? firstCard.getBoundingClientRect().width + cardGap : 0;
       };
 
-      const animate = (timestamp) => {
-        if (isNativeScroll) {
-          stopMarquee();
-          updateTrackPosition();
-          return;
-        }
+      const updateControls = () => {
+        const maxScrollLeft = Math.max(0, scroller.scrollWidth - scroller.clientWidth - 1);
+        const atStart = scroller.scrollLeft <= 1;
+        const atEnd = scroller.scrollLeft >= maxScrollLeft;
 
-        if (setWidth > 0 && !nudgeFrame) {
-          if (lastFrameTime === null) {
-            lastFrameTime = timestamp;
-          }
-
-          const elapsed = timestamp - lastFrameTime;
-          const pixelsPerMillisecond = setWidth / marqueeDuration;
-
-          offset -= pixelsPerMillisecond * elapsed;
-          applySafeOffset();
-          updateTrackPosition();
-          lastFrameTime = timestamp;
-        } else if (nudgeFrame) {
-          lastFrameTime = timestamp;
-        }
-
-        animationFrame = requestAnimationFrame(animate);
+        prev.disabled = atStart;
+        next.disabled = atEnd;
+        prev.setAttribute('aria-disabled', String(atStart));
+        next.setAttribute('aria-disabled', String(atEnd));
       };
 
-      const startMarquee = () => {
-        if (isNativeScroll || animationFrame) {
-          return;
-        }
+      const scrollCards = (direction) => {
+        const cardPitch = getCardPitch();
 
-        animationFrame = requestAnimationFrame(animate);
-      };
-
-      const easeInOutCubic = (progress) => {
-        return progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      };
-
-      const nudgeMarquee = (direction) => {
         if (cardPitch <= 0) {
           return;
         }
 
-        if (isNativeScroll) {
-          scroller.scrollBy({ left: cardPitch * direction, behavior: isReducedMotion ? 'auto' : 'smooth' });
-          return;
-        }
-
-        stopNudge();
-
-        const startOffset = offset;
-        const targetOffset = startOffset - cardPitch * direction;
-        const startTime = performance.now();
-
-        const step = (timestamp) => {
-          const progress = Math.min(1, (timestamp - startTime) / nudgeDuration);
-          const easedProgress = easeInOutCubic(progress);
-
-          offset = startOffset + (targetOffset - startOffset) * easedProgress;
-          applySafeOffset();
-          updateTrackPosition();
-
-          if (progress < 1) {
-            nudgeFrame = requestAnimationFrame(step);
-            return;
-          }
-
-          nudgeFrame = null;
-          lastFrameTime = null;
-        };
-
-        nudgeFrame = requestAnimationFrame(step);
+        scroller.scrollBy({
+          left: cardPitch * direction,
+          behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
+        });
       };
 
-      const normalizeWheelDelta = (delta, deltaMode) => {
-        if (deltaMode === WheelEvent.DOM_DELTA_LINE) {
-          return delta * 16;
-        }
-
-        if (deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-          return delta * scroller.clientWidth;
-        }
-
-        return delta;
-      };
-
-      const handleWheel = (event) => {
-        if (isNativeScroll) {
-          return;
-        }
-
-        const horizontalDelta = normalizeWheelDelta(event.deltaX, event.deltaMode);
-        const verticalDelta = normalizeWheelDelta(event.deltaY, event.deltaMode);
-        const isIntentionalHorizontalScroll = Math.abs(horizontalDelta) > Math.abs(verticalDelta) * 1.05;
-
-        if (!isIntentionalHorizontalScroll || setWidth <= 0) {
-          return;
-        }
-
-        event.preventDefault();
-        stopNudge();
-        offset -= horizontalDelta;
-        applySafeOffset();
-        updateTrackPosition();
-        lastFrameTime = null;
-      };
-
-      const handleResize = () => {
-        lastFrameTime = null;
-        measureCarousel();
-      };
-
-      const handleMotionPreferenceChange = (event) => {
-        isReducedMotion = event.matches;
-        setCarouselMode();
-        stopMarquee();
-        measureCarousel();
-        startMarquee();
-      };
-
-      const handleNativeScrollPreferenceChange = () => {
-        setCarouselMode();
-        stopMarquee();
-        measureCarousel();
-        startMarquee();
-      };
-
-      const handleNextClick = () => nudgeMarquee(1);
-      const handlePrevClick = () => nudgeMarquee(-1);
+      const handleNextClick = () => scrollCards(1);
+      const handlePrevClick = () => scrollCards(-1);
+      const handleScroll = () => window.requestAnimationFrame(updateControls);
+      const handleResize = () => updateControls();
+      const handleMotionPreferenceChange = () => updateControls();
 
       next.addEventListener('click', handleNextClick);
       prev.addEventListener('click', handlePrevClick);
-      scroller.addEventListener('wheel', handleWheel, { passive: false });
-
-      setCarouselMode();
-      measureCarousel();
+      scroller.addEventListener('scroll', handleScroll, { passive: true });
 
       if ('ResizeObserver' in window) {
         resizeObserver = new ResizeObserver(handleResize);
-        resizeObserver.observe(cardSet);
+        resizeObserver.observe(rail);
         resizeObserver.observe(scroller);
       } else {
         window.addEventListener('resize', handleResize);
@@ -777,19 +559,12 @@
         reducedMotionQuery.addListener(handleMotionPreferenceChange);
       }
 
-      if (typeof nativeScrollQuery.addEventListener === 'function') {
-        nativeScrollQuery.addEventListener('change', handleNativeScrollPreferenceChange);
-      } else if (typeof nativeScrollQuery.addListener === 'function') {
-        nativeScrollQuery.addListener(handleNativeScrollPreferenceChange);
-      }
-
-      startMarquee();
+      updateControls();
       section.dataset.mellowExpertProofReady = 'true';
       window.requestAnimationFrame(releaseSectionReady);
 
       section.mellowExpertProofCleanup = () => {
-        stopMarquee();
-        scroller.removeEventListener('wheel', handleWheel);
+        scroller.removeEventListener('scroll', handleScroll);
         next.removeEventListener('click', handleNextClick);
         prev.removeEventListener('click', handlePrevClick);
 
@@ -801,12 +576,6 @@
           reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
         } else if (typeof reducedMotionQuery.removeListener === 'function') {
           reducedMotionQuery.removeListener(handleMotionPreferenceChange);
-        }
-
-        if (typeof nativeScrollQuery.removeEventListener === 'function') {
-          nativeScrollQuery.removeEventListener('change', handleNativeScrollPreferenceChange);
-        } else if (typeof nativeScrollQuery.removeListener === 'function') {
-          nativeScrollQuery.removeListener(handleNativeScrollPreferenceChange);
         }
 
         if (resizeObserver) {
