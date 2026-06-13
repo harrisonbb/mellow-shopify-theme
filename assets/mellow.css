@@ -64,7 +64,7 @@
   --mellow-eyebrow-weight: 700;
   --mellow-eyebrow-tracking: 0.16em;
 
-  --mellow-heading-size: clamp(36px, 3vw, 45px);
+  --mellow-heading-size: clamp(38px, 3.2vw, 50px);
   --mellow-heading-line-height: 0.98;
   --mellow-heading-weight: 600;
   --mellow-heading-tracking: -0.028em;
@@ -1758,7 +1758,6 @@ input[type="reset"] {
   }
 
   .mellow-who-its-for__heading {
-    font-size: clamp(36px, 9.5vw, 46px);
     line-height: 1;
     letter-spacing: -0.032em;
   }

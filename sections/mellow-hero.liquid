@@ -45,6 +45,7 @@
 
   #MellowHero-{{ section.id }} .mellow-hero__heading {
     max-width: var(--mellow-header-max);
+    font-size: clamp(36px, 3vw, 45px);
     text-wrap: balance;
   }
 
@@ -153,6 +154,10 @@
       min-height: auto;
       padding-top: var(--mellow-section-pad-top);
       padding-bottom: var(--mellow-section-content-gap-compact);
+    }
+
+    #MellowHero-{{ section.id }} .mellow-hero__heading {
+      font-size: clamp(34px, 9vw, 42px);
     }
 
     #MellowHero-{{ section.id }} .mellow-hero__actions {
