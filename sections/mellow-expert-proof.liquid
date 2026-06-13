@@ -60,15 +60,14 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
     position: relative;
-    align-self: center;
+    align-self: stretch;
     justify-self: start;
     width: 100%;
-    max-width: 460px;
-    padding-left: clamp(34px, 3.2vw, 52px);
+    max-width: 500px;
+    padding-left: clamp(30px, 3vw, 48px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions::before {
@@ -77,7 +76,7 @@
     left: 0;
     top: 50%;
     width: 1px;
-    height: clamp(90px, 8vw, 120px);
+    height: clamp(118px, 10vw, 158px);
     background: rgba(252, 251, 247, 0.34);
     transform: translateY(-50%);
   }
@@ -86,9 +85,9 @@
     max-width: 390px;
     margin: 0;
     color: rgba(252, 251, 247, 0.9);
-    font-size: clamp(15px, 1.1vw, 19px);
-    line-height: 1.28;
-    letter-spacing: -0.025em;
+    font-size: clamp(18px, 1.35vw, 24px);
+    line-height: 1.32;
+    letter-spacing: -0.04em;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
@@ -96,7 +95,7 @@
     align-items: center;
     gap: clamp(14px, 1.3vw, 22px);
     width: auto;
-    margin-top: clamp(14px, 1.1vw, 18px);
+    margin-top: clamp(18px, 1.6vw, 26px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
@@ -112,9 +111,7 @@
     --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
     --mellow-section-cta-width: clamp(170px, 11.5vw, 198px);
-    min-height: 54px;
-    font-size: clamp(14px, 0.95vw, 16px);
-    letter-spacing: -0.01em;
+    min-height: 50px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrows {
@@ -127,8 +124,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(42px, 3vw, 48px);
-    height: clamp(42px, 3vw, 48px);
+    width: clamp(44px, 3.2vw, 50px);
+    height: clamp(44px, 3.2vw, 50px);
     padding: 0;
     border: 1px solid rgba(252, 251, 247, 0.62);
     border-radius: 999px;
@@ -191,7 +188,7 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: clamp(500px, 36vw, 560px);
+    min-height: clamp(430px, 31vw, 492px);
     overflow: hidden;
     isolation: isolate;
     border-radius: 14px;
@@ -205,7 +202,7 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
     position: relative;
     display: block;
-    height: clamp(200px, 15.5vw, 248px);
+    height: clamp(150px, 11.2vw, 182px);
     overflow: hidden;
     border-radius: 14px 14px 0 0;
     background:
@@ -226,7 +223,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 12%;
+    object-position: center 24%;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__letter {
@@ -370,20 +367,20 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
-      font-size: 16px;
-      line-height: 1.3;
+      font-size: 18px;
+      line-height: 1.36;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
       flex-wrap: wrap;
       width: 100%;
       gap: 12px;
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
@@ -397,11 +394,11 @@
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 480px;
+      min-height: 448px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 200px;
+      height: 148px;
     }
   }
 </style>
@@ -623,7 +620,7 @@
       "type": "textarea",
       "id": "card_1_quote",
       "label": "Quote",
-      "default": "\u201cMost of my clients have been chasing reflux with antacids for years and never feel ahead of it. The raft-forming mechanism is genuinely different \u2014 and when something is this easy to use, people actually stick with it.\u201d"
+      "default": "“Most of my clients have been chasing reflux with antacids for years and never feel ahead of it. The raft-forming mechanism is genuinely different — and when something is this easy to use, people actually stick with it.”"
     },
     {
       "type": "header",
@@ -662,7 +659,7 @@
       "type": "textarea",
       "id": "card_2_quote",
       "label": "Quote",
-      "default": "\u201cI\u2019m particular about what I recommend. Sodium alginate has decades of published research behind it, and Mellow\u2019s formula is clean \u2014 no ingredients I\u2019d question for daily use. That matters more than the marketing.\u201d"
+      "default": "“I’m particular about what I recommend. Sodium alginate has decades of published research behind it, and Mellow’s formula is clean — no ingredients I’d question for daily use. That matters more than the marketing.”"
     },
     {
       "type": "header",
@@ -701,7 +698,7 @@
       "type": "textarea",
       "id": "card_3_quote",
       "label": "Quote",
-      "default": "\u201cAlginate raft therapy is well-documented in the GI literature. What\u2019s been missing is a format designed for real daily use. Mellow closes that gap \u2014 the science is solid and the delivery actually supports consistency.\u201d"
+      "default": "“Alginate raft therapy is well-documented in the GI literature. What’s been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
     },
     {
       "type": "header",
@@ -740,7 +737,7 @@
       "type": "textarea",
       "id": "card_4_quote",
       "label": "Quote",
-      "default": "\u201cConsistency is the hardest part of any routine. Mellow is simple enough to take an evening without feeling like a chore \u2014 that\u2019s exactly why I think people love it.\u201d"
+      "default": "“Consistency is the hardest part of any routine. Mellow is simple enough to take an evening without feeling like a chore — that’s exactly why I think people love it.”"
     }
   ],
   "presets": [
