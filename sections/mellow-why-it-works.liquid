@@ -35,9 +35,12 @@
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__inner {
-    width: 100%;
-    max-width: none;
-    margin: 0;
+    width: min(calc(100% - (var(--mellow-section-axis-pad, 22px) * 2)), var(--mellow-axis-max, 1200px));
+    max-width: var(--mellow-axis-max, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
   }
 

@@ -40,11 +40,12 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__inner {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    width: min(calc(100% - (var(--mellow-section-axis-pad, 22px) * 2)), var(--mellow-axis-max, 1200px));
+    max-width: var(--mellow-axis-max, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
   }
 
@@ -140,10 +141,10 @@
     overflow-x: auto;
     overflow-y: visible;
     margin: 0;
-    padding: 0 var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding: 0 var(--mellow-axis-inset, var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)));
     position: relative;
     z-index: 1;
-    scroll-padding-inline: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    scroll-padding-inline: var(--mellow-axis-inset, var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)));
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
