@@ -64,7 +64,7 @@
   --mellow-eyebrow-weight: 700;
   --mellow-eyebrow-tracking: 0.16em;
 
-  --mellow-heading-size: clamp(40px, 3.7vw, 56px);
+  --mellow-heading-size: clamp(36px, 3vw, 45px);
   --mellow-heading-line-height: 0.98;
   --mellow-heading-weight: 600;
   --mellow-heading-tracking: -0.028em;
@@ -675,7 +675,7 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   }
 
   .mellow-section-heading {
-    font-size: clamp(36px, 9.5vw, 46px);
+    font-size: clamp(34px, 9vw, 42px);
     line-height: 1;
     letter-spacing: -0.032em;
   }
@@ -933,7 +933,7 @@ input[type="reset"] {
 
 @media screen and (max-width: 749px) {
   .mellow-section-heading {
-    font-size: clamp(36px, 9.5vw, 46px);
+    font-size: clamp(34px, 9vw, 42px);
     line-height: 1;
     letter-spacing: -0.032em;
   }
