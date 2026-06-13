@@ -5,16 +5,17 @@
 
 <style>
   #MellowWhoItsFor-{{ section.id }} {
-    --mellow-who-intro-pad-top: clamp(44px, 4.1vw, 62px);
-    --mellow-who-intro-pad-bottom: clamp(44px, 4.1vw, 62px);
-    --mellow-who-shelf-pad-top: clamp(28px, 3vw, 42px);
+    --mellow-who-axis-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    --mellow-who-intro-pad-top: clamp(64px, 5vw, 80px);
+    --mellow-who-intro-pad-bottom: clamp(64px, 5vw, 80px);
+    --mellow-who-shelf-pad-top: clamp(48px, 4vw, 64px);
     --mellow-who-shelf-pad-bottom: clamp(44px, 4vw, 64px);
-    --mellow-who-card-gap: clamp(18px, 1.55vw, 24px);
-    --mellow-who-icon-size: clamp(58px, 4.6vw, 70px);
-    --mellow-who-icon-svg-size: clamp(27px, 2vw, 34px);
+    --mellow-who-card-gap: clamp(28px, 2.3vw, 36px);
+    --mellow-who-icon-size: clamp(78px, 5.4vw, 88px);
+    --mellow-who-icon-svg-size: clamp(32px, 2.35vw, 38px);
     --mellow-who-card-surface: var(--mellow-card-cream, #FAF7EF);
     --mellow-who-card-border: rgba(18, 51, 8, 0.12);
-    --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.82) inset, 0 14px 34px rgba(47, 33, 16, 0.08);
+    --mellow-who-card-shadow: 0 1px 0 rgba(255, 255, 255, 0.82) inset, 0 18px 42px rgba(47, 33, 16, 0.1);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -25,7 +26,9 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__intro {
-    background: var(--mellow-section-green, var(--mellow-forest, #003302));
+    background:
+      radial-gradient(circle at 22% 8%, rgba(252, 251, 247, 0.1), rgba(252, 251, 247, 0) 34%),
+      var(--mellow-section-green, var(--mellow-forest, #003302));
     color: var(--mellow-cream, #FCFBF7);
     padding-top: var(--mellow-who-intro-pad-top);
     padding-bottom: var(--mellow-who-intro-pad-bottom);
@@ -43,16 +46,16 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-    padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding-left: var(--mellow-who-axis-pad);
+    padding-right: var(--mellow-who-axis-pad);
     box-sizing: border-box;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__header-wrap {
     display: grid;
-    grid-template-columns: minmax(0, 0.98fr) minmax(1px, auto) minmax(320px, 0.74fr);
+    grid-template-columns: minmax(0, 1.38fr) minmax(1px, auto) minmax(300px, 1fr);
     align-items: center;
-    gap: clamp(36px, 4.8vw, 76px);
+    gap: clamp(34px, 4.4vw, 70px);
     margin-bottom: 0;
   }
 
@@ -140,10 +143,10 @@
     overflow-x: auto;
     overflow-y: visible;
     margin: 0;
-    padding: 0 var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    padding: 0 var(--mellow-who-axis-pad);
     position: relative;
     z-index: 1;
-    scroll-padding-inline: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+    scroll-padding-inline: var(--mellow-who-axis-pad);
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -156,8 +159,9 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__track {
     display: flex;
-    width: max-content;
-    max-width: none;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     gap: var(--mellow-who-card-gap);
     align-items: center;
     will-change: auto;
@@ -167,23 +171,25 @@
     display: flex;
     gap: var(--mellow-who-card-gap);
     align-items: center;
-    flex: 0 0 auto;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
-    flex: 0 0 auto;
+    flex: 0 0 calc((100% - (var(--mellow-who-card-gap) * 3)) / 4);
     position: relative;
     display: flex;
     box-sizing: border-box;
-    width: clamp(300px, 22.6vw, 332px);
-    min-height: clamp(320px, 25.8vw, 372px);
-    padding: clamp(24px, 2.05vw, 32px);
+    width: auto;
+    min-height: clamp(430px, 31vw, 470px);
+    padding: clamp(34px, 2.55vw, 42px);
     scroll-snap-align: start;
 
     background: var(--mellow-who-card-surface, #FAF7EF) !important;
     background-image: none !important;
     border: 1px solid var(--mellow-who-card-border, rgba(0, 51, 2, 0.14)) !important;
-    border-radius: min(var(--mellow-radius-card, 28px), 20px) !important;
+    border-radius: min(var(--mellow-radius-card, 28px), 26px) !important;
     outline: 0 !important;
     box-shadow: var(--mellow-who-card-shadow, 0 26px 70px rgba(0, 24, 2, 0.11));
     background-clip: border-box;
@@ -211,7 +217,7 @@
     outline: 0 !important;
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.82) inset,
-      0 18px 42px rgba(47, 33, 16, 0.11),
+      0 20px 46px rgba(47, 33, 16, 0.12),
       0 0 0 1px rgba(208, 74, 42, 0.07);
     background-clip: border-box;
     filter: none;
@@ -295,7 +301,7 @@
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy {
-    margin-top: 8px;
+    margin-top: clamp(10px, 1vw, 14px);
   }
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-copy h3 {
@@ -329,8 +335,8 @@
 
   #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card-arrow {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: clamp(2px, 0.4vw, 6px);
+    bottom: clamp(2px, 0.4vw, 6px);
     color: var(--mellow-forest, #003302);
     font-size: clamp(24px, 1.8vw, 31px);
     line-height: 1;
@@ -340,6 +346,21 @@
   @media (prefers-reduced-motion: reduce) {
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
       transition: none;
+    }
+  }
+
+  @media screen and (min-width: 990px) and (max-height: 820px) {
+    #MellowWhoItsFor-{{ section.id }} {
+      --mellow-who-intro-pad-top: clamp(52px, 6.8vh, 64px);
+      --mellow-who-intro-pad-bottom: clamp(52px, 6.8vh, 64px);
+    }
+  }
+
+  @media screen and (max-width: 1099px) {
+    #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
+      flex: 0 0 clamp(300px, 44vw, 360px);
+      width: clamp(300px, 44vw, 360px);
+      min-height: clamp(380px, 48vw, 430px);
     }
   }
 
@@ -368,7 +389,7 @@
     #MellowWhoItsFor-{{ section.id }} {
       --mellow-who-intro-pad-top: clamp(40px, 10vw, 52px);
       --mellow-who-intro-pad-bottom: clamp(38px, 10vw, 54px);
-      --mellow-who-shelf-pad-top: 22px;
+      --mellow-who-shelf-pad-top: 28px;
       --mellow-who-shelf-pad-bottom: 48px;
       --mellow-who-card-gap: 16px;
       --mellow-who-icon-size: 56px;
@@ -411,8 +432,9 @@
     }
 
     #MellowWhoItsFor-{{ section.id }} .mellow-who-its-for__card {
-      width: min(80vw, 300px);
-      min-height: 306px;
+      flex: 0 0 min(84vw, 340px);
+      width: min(84vw, 340px);
+      min-height: 330px;
       padding: 22px;
       transform: none !important;
     }
