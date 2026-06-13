@@ -1,6 +1,8 @@
 {% comment %}
   Mellow Expert Proof section.
-  Built on the global Mellow section system with a contained four-card rail.
+  Compact practitioner carousel.
+  Shows 4 cards on desktop, scrolls through 6 cards.
+  Tuned for MacBook 13 viewport height.
 {% endcomment %}
 
 <style>
@@ -9,8 +11,12 @@
     --mellow-expert-proof-bg: var(--mellow-section-green, #123308);
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
     --mellow-expert-proof-rail: min(100%, 1390px);
-    --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
-    --mellow-carousel-card-gap: clamp(24px, 2.35vw, 38px);
+    --mellow-expert-proof-card-pad: clamp(16px, 1.15vw, 21px);
+    --mellow-carousel-card-gap: clamp(18px, 1.8vw, 28px);
+    --mellow-expert-proof-card-width: calc(
+      (100% - (var(--mellow-carousel-card-gap) * 3)) / 4
+    );
+
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
     overflow-x: hidden;
@@ -21,24 +27,24 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
     width: 100%;
     background:
-      radial-gradient(circle at 54% 45%, rgba(3, 95, 34, 0.72) 0%, rgba(3, 77, 29, 0.38) 24%, rgba(18, 51, 8, 0) 54%),
-      linear-gradient(90deg, #092c12 0%, var(--mellow-expert-proof-bg) 48%, #0b3214 100%);
+      radial-gradient(circle at 52% 48%, rgba(6, 85, 34, 0.42) 0%, rgba(5, 64, 27, 0.18) 30%, rgba(4, 44, 19, 0) 58%),
+      linear-gradient(90deg, #022610 0%, var(--mellow-expert-proof-bg) 52%, #032a12 100%);
     color: var(--mellow-cream, #FCFBF7);
-    padding-top: clamp(34px, 3.2vw, 58px);
-    padding-bottom: clamp(34px, 3.2vw, 58px);
+    padding-top: clamp(34px, 3.8vw, 56px);
+    padding-bottom: clamp(34px, 3.8vw, 56px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
     background: var(--mellow-expert-proof-shelf);
-    padding-top: clamp(32px, 2.6vw, 46px);
-    padding-bottom: clamp(40px, 4vw, 64px);
+    padding-top: clamp(24px, 2.2vw, 34px);
+    padding-bottom: clamp(44px, 4vw, 68px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.58fr);
+    grid-template-columns: minmax(0, 660px) minmax(340px, 0.68fr);
     align-items: center;
-    gap: clamp(44px, 5.4vw, 84px);
+    gap: clamp(34px, 4vw, 64px);
     margin-bottom: 0;
   }
 
@@ -48,40 +54,57 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-eyebrow {
     margin-bottom: var(--mellow-section-header-gap);
+    color: var(--mellow-orange, #D04A2A);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
-    max-width: 760px;
+    max-width: 660px;
     color: var(--mellow-cream, #FCFBF7);
-    font-size: clamp(44px, 4.25vw, 68px);
+    font-size: clamp(42px, 4vw, 64px);
     line-height: 1.02;
-    letter-spacing: 0;
+    letter-spacing: -0.04em;
     text-wrap: balance;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
-    align-self: center;
-    justify-self: end;
+    position: relative;
+    align-self: stretch;
+    justify-self: start;
     width: 100%;
-    padding-left: clamp(36px, 4.6vw, 64px);
-    border-left: 1px solid rgba(240, 235, 224, 0.30);
+    max-width: 500px;
+    padding-left: clamp(30px, 3vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 0;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: clamp(118px, 10vw, 158px);
+    background: rgba(252, 251, 247, 0.34);
+    transform: translateY(-50%);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
-    max-width: 520px;
+    max-width: 390px;
     margin: 0;
-    font-size: clamp(18px, 1.52vw, 24px);
-    line-height: 1.45;
-    letter-spacing: 0;
-    color: rgba(252, 251, 247, 0.88);
+    color: rgba(252, 251, 247, 0.9);
+    font-size: clamp(18px, 1.35vw, 24px);
+    line-height: 1.32;
+    letter-spacing: -0.04em;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
     display: flex;
     align-items: center;
-    gap: clamp(18px, 2vw, 30px);
+    gap: clamp(14px, 1.3vw, 22px);
     width: auto;
-    margin-top: var(--mellow-section-content-gap-compact, clamp(26px, 2.4vw, 40px));
+    margin-top: clamp(18px, 1.6vw, 26px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__cta {
@@ -91,9 +114,9 @@
     --mellow-section-cta-hover-bg: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-border: var(--mellow-orange-red, #D04A2A);
     --mellow-section-cta-hover-color: var(--mellow-cream, #FCFBF7);
-    --mellow-section-cta-width: clamp(220px, 17vw, 260px);
-    min-height: 72px;
-    font-size: clamp(18px, 1.24vw, 22px);
+    --mellow-section-cta-width: clamp(170px, 11.5vw, 198px);
+    min-height: 50px;
+    font-size: clamp(15px, 1vw, 18px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-section-cta-wrap {
@@ -104,17 +127,17 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrows {
     display: flex;
     align-items: center;
-    gap: var(--mellow-card-gap-tight, clamp(12px, 1vw, 18px));
+    gap: clamp(12px, 1vw, 16px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    height: 72px;
+    width: clamp(44px, 3.2vw, 50px);
+    height: clamp(44px, 3.2vw, 50px);
     padding: 0;
-    border: 1px solid rgba(252, 251, 247, 0.72);
+    border: 1px solid rgba(252, 251, 247, 0.62);
     border-radius: 999px;
     background: transparent;
     color: var(--mellow-cream, #FCFBF7);
@@ -132,47 +155,33 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:disabled {
     cursor: default;
-    opacity: 0.42;
+    opacity: 0.38;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed {
+    position: relative;
     width: 100%;
     max-width: var(--mellow-expert-proof-rail);
     margin-left: auto;
     margin-right: auto;
-    overflow-x: hidden;
-    overflow-y: visible;
-    background: var(--mellow-expert-proof-shelf);
-    position: relative;
-  }
-
-  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__bleed::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 26px;
-    width: clamp(28px, 4vw, 56px);
-    pointer-events: none;
-    background: linear-gradient(90deg, rgba(252, 251, 247, 0), var(--mellow-expert-proof-shelf));
-    z-index: 2;
+    overflow: visible;
+    background: transparent;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller {
     width: 100%;
     overflow-x: auto;
     overflow-y: visible;
+    padding: 0 0 12px;
+    background: transparent;
     scrollbar-width: none;
-    box-sizing: border-box;
-    padding: 0 0 26px;
-    scroll-padding-inline: 0;
     scroll-snap-type: x proximity;
-    background: var(--mellow-expert-proof-shelf);
+    scroll-behavior: smooth;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller::-webkit-scrollbar {
@@ -180,27 +189,30 @@
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--mellow-carousel-card-gap);
+    display: flex;
     align-items: stretch;
-    width: 100%;
-    background: var(--mellow-expert-proof-shelf);
+    gap: var(--mellow-carousel-card-gap);
+    width: max-content;
+    min-width: 100%;
+    background: transparent;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-    width: 100%;
+    flex: 0 0 var(--mellow-expert-proof-card-width);
+    width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
-    min-height: clamp(500px, 34vw, 560px);
+    min-height: clamp(430px, 31vw, 492px);
     min-width: 0;
     overflow: hidden;
     isolation: isolate;
     scroll-snap-align: start;
-    border-radius: 16px;
-    border: 1px solid var(--mellow-card-border, rgba(18, 51, 8, 0.10));
-    background: var(--mellow-card-cream, #F8F4EC);
-    box-shadow: 0 18px 36px rgba(18, 51, 8, 0.16);
+    border-radius: 14px;
+    border: 1px solid rgba(18, 51, 8, 0.07);
+    background: #F8F3EA;
+    box-shadow:
+      0 18px 34px rgba(18, 51, 8, 0.10),
+      0 2px 8px rgba(18, 51, 8, 0.04);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
@@ -208,12 +220,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(190px, 13.2vw, 220px);
+    height: clamp(150px, 11.2vw, 182px);
     overflow: hidden;
-    border-radius: 16px 16px 0 0;
+    border-radius: 14px 14px 0 0;
     background:
-      radial-gradient(circle at 24% 14%, rgba(208, 74, 42, 0.18), transparent 32%),
-      linear-gradient(135deg, #DCE4DF 0%, #F8F4EC 58%, #E8D5C2 100%);
+      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.72), transparent 36%),
+      linear-gradient(135deg, #DCE3DA 0%, #F7F3EA 56%, #EEE5D8 100%);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual--fallback {
+    background:
+      radial-gradient(circle at 50% 34%, rgba(18, 51, 8, 0.12) 0 13%, transparent 14%),
+      radial-gradient(ellipse at 50% 105%, rgba(18, 51, 8, 0.10) 0 32%, transparent 33%),
+      radial-gradient(circle at 50% 16%, rgba(255, 255, 255, 0.7), transparent 36%),
+      linear-gradient(135deg, #DDE5DA 0%, #F7F3EA 58%, #EEE5D6 100%);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__image {
@@ -221,97 +241,146 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center 34%;
+    object-position: center 24%;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__letter {
     color: rgba(18, 51, 8, 0.34);
     font-family: var(--mellow-font-display);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     font-size: clamp(44px, 4.5vw, 72px);
     font-weight: 650;
     line-height: .78;
     letter-spacing: 0;
-    opacity: 0;
+    opacity: 1;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    padding: var(--mellow-expert-proof-card-pad);
-    border-radius: 0 0 16px 16px;
+    padding: clamp(16px, 1.15vw, 21px) clamp(18px, 1.25vw, 22px) clamp(18px, 1.35vw, 24px);
+    border-radius: 0 0 14px 14px;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
     display: block;
-    margin: 0 0 clamp(12px, .9vw, 16px);
+    margin: 0 0 10px;
     color: var(--mellow-orange, #D04A2A);
-    font-size: clamp(10px, .68vw, 12px);
-    font-weight: var(--mellow-eyebrow-weight, 700);
-    line-height: var(--mellow-eyebrow-line-height, 1);
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: clamp(14px, 0.9vw, 16px);
-    line-height: 1.55;
-    letter-spacing: 0;
+    max-width: 98%;
+    font-size: clamp(13.5px, .86vw, 15.5px);
+    line-height: 1.48;
+    letter-spacing: -0.01em;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(22px, 1.8vw, 28px);
+    padding-top: clamp(16px, 1.4vw, 24px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__name {
     margin: 0;
     color: var(--mellow-forest, #123308);
-    font-size: clamp(18px, 1.2vw, 22px);
-    line-height: 1.02;
+    font-size: clamp(17px, 1.1vw, 20px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__title {
-    margin: 6px 0 0;
-    color: rgba(18, 51, 8, 0.64);
-    font-size: clamp(14px, .95vw, 16px);
-    line-height: 1.22;
+    margin: 5px 0 0;
+    color: rgba(18, 51, 8, 0.66);
+    font-size: clamp(13px, .82vw, 15px);
+    line-height: 1.2;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance {
+    position: absolute;
+    z-index: 4;
+    right: clamp(-24px, -1.6vw, -16px);
+    top: 45%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(52px, 4vw, 62px);
+    height: clamp(52px, 4vw, 62px);
+    border-radius: 999px;
+    border: 0;
+    background: #FCFBF7;
+    color: var(--mellow-forest, #123308);
+    box-shadow: 0 12px 30px rgba(18, 51, 8, 0.14);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance svg {
+    width: 18px;
+    height: 18px;
   }
 
   @media screen and (min-width: 990px) and (max-height: 820px) {
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
-      padding-top: 34px;
-      padding-bottom: 34px;
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 32px;
-      padding-bottom: 42px;
+      padding-top: 24px;
+      padding-bottom: 40px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
+      font-size: clamp(40px, 3.7vw, 58px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 500px;
+      min-height: 430px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 190px;
+      height: 150px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__quote {
+      font-size: 13.5px;
+      line-height: 1.44;
     }
   }
 
   @media screen and (max-width: 989px) {
+    #MellowExpertProof-{{ section.id }} {
+      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
+    }
+
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       grid-template-columns: 1fr;
-      gap: clamp(24px, 4vw, 36px);
+      gap: clamp(20px, 3.4vw, 30px);
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions {
       padding-left: 0;
-      border-left: 0;
       justify-self: start;
+      align-self: auto;
+      max-width: 560px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__actions::before {
+      content: none;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row,
@@ -319,57 +388,61 @@
       justify-content: flex-start;
     }
 
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
-      grid-template-columns: repeat(4, clamp(300px, 44vw, 340px));
-      width: max-content;
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance {
+      display: none;
     }
   }
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
-      --mellow-expert-proof-card-pad: var(--mellow-carousel-card-pad, 18px);
+      --mellow-expert-proof-card-width: min(82vw, 330px);
+      --mellow-expert-proof-card-pad: 18px;
+      --mellow-carousel-card-gap: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
-      padding-top: 42px;
-      padding-bottom: 42px;
+      padding-top: 28px;
+      padding-bottom: 30px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
-      gap: 22px;
+      gap: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__heading {
+      max-width: 340px;
       font-size: clamp(36px, 9.5vw, 46px);
       line-height: 1;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__text {
+      font-size: 18px;
+      line-height: 1.36;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__action-row {
       flex-wrap: wrap;
       width: 100%;
-      gap: 16px;
-      margin-top: 22px;
+      gap: 12px;
+      margin-top: 18px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
-      padding-top: 22px;
-    }
-
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__rail {
-      grid-template-columns: repeat(4, min(82vw, 330px));
+      padding-top: 24px;
+      padding-bottom: 58px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-      min-height: 512px;
+      min-height: 448px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 178px;
+      height: 148px;
     }
   }
 </style>
@@ -391,7 +464,6 @@
               {%- endfor -%}
             </h2>
           {%- endif -%}
-
         </div>
 
         <div class="mellow-section-actions mellow-expert-proof__actions">
@@ -410,11 +482,12 @@
             {%- endif -%}
 
             <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
-              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" aria-disabled="true" data-expert-prev>
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" data-expert-prev>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                   <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
+
               <button class="mellow-expert-proof__arrow" type="button" aria-label="Next expert quote" data-expert-next>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                   <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -432,7 +505,7 @@
       <div class="mellow-expert-proof__bleed">
         <div class="mellow-expert-proof__scroller" data-expert-scroller>
           <div class="mellow-expert-proof__rail" data-expert-rail>
-            {%- for card_index in (1..4) -%}
+            {%- for card_index in (1..6) -%}
               {%- liquid
                 assign image_key = 'card_' | append: card_index | append: '_image'
                 assign letter_key = 'card_' | append: card_index | append: '_letter'
@@ -440,30 +513,61 @@
                 assign quote_key = 'card_' | append: card_index | append: '_quote'
                 assign name_key = 'card_' | append: card_index | append: '_name'
                 assign title_key = 'card_' | append: card_index | append: '_title'
-                assign fallback_letters = 'A,B,C,D' | split: ','
+                assign fallback_letters = 'A,B,C,D,E,F' | split: ','
                 assign fallback_letter = fallback_letters[forloop.index0]
               -%}
 
               <article class="mellow-expert-proof__card" data-expert-card data-expert-index="{{ forloop.index0 }}">
-                <div class="mellow-expert-proof__visual">
+                <div class="mellow-expert-proof__visual{% if section.settings[image_key] == blank %} mellow-expert-proof__visual--fallback{% endif %}">
                   {%- if section.settings[image_key] != blank -%}
-                    {{ section.settings[image_key] | image_url: width: 1000 | image_tag: decoding: 'async', class: 'mellow-expert-proof__image', loading: 'eager', sizes: '(min-width: 1480px) 319px, (min-width: 990px) 23vw, (min-width: 815px) 340px, (min-width: 750px) 304px, 84vw', widths: '320, 480, 640, 800, 1000', alt: section.settings[name_key] }}
+                    {{ section.settings[image_key]
+                      | image_url: width: 1000
+                      | image_tag:
+                        decoding: 'async',
+                        class: 'mellow-expert-proof__image',
+                        loading: 'eager',
+                        sizes: '(min-width: 1480px) 320px, (min-width: 990px) 23vw, (min-width: 750px) 45vw, 90vw',
+                        widths: '320, 480, 640, 800, 1000',
+                        alt: section.settings[name_key]
+                    }}
                   {%- else -%}
-                    <span class="mellow-expert-proof__letter" aria-hidden="true">{{ section.settings[letter_key] | default: fallback_letter | escape }}</span>
+                    <span class="mellow-expert-proof__letter" aria-hidden="true">
+                      {{ section.settings[letter_key] | default: fallback_letter | escape }}
+                    </span>
                   {%- endif -%}
                 </div>
+
                 <div class="mellow-expert-proof__content">
-                  <span class="mellow-expert-proof__role">{{ section.settings[role_key] | escape }}</span>
-                  <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings[quote_key] | escape }}</p>
+                  {%- if section.settings[role_key] != blank -%}
+                    <span class="mellow-expert-proof__role">{{ section.settings[role_key] | escape }}</span>
+                  {%- endif -%}
+
+                  {%- if section.settings[quote_key] != blank -%}
+                    <p class="mellow-card-copy mellow-expert-proof__quote">{{ section.settings[quote_key] | escape }}</p>
+                  {%- endif -%}
+
                   <div class="mellow-expert-proof__person">
-                    <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings[name_key] | escape }}</h3>
-                    <p class="mellow-card-copy mellow-expert-proof__title">{{ section.settings[title_key] | default: section.settings[role_key] | escape }}</p>
+                    {%- if section.settings[name_key] != blank -%}
+                      <h3 class="mellow-card-title mellow-expert-proof__name">{{ section.settings[name_key] | escape }}</h3>
+                    {%- endif -%}
+
+                    {%- if section.settings[title_key] != blank or section.settings[role_key] != blank -%}
+                      <p class="mellow-card-copy mellow-expert-proof__title">
+                        {{ section.settings[title_key] | default: section.settings[role_key] | escape }}
+                      </p>
+                    {%- endif -%}
                   </div>
                 </div>
               </article>
             {%- endfor -%}
           </div>
         </div>
+
+        <span class="mellow-expert-proof__edge-affordance" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" focusable="false">
+            <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
       </div>
     </div>
   </div>
@@ -502,6 +606,7 @@
 
       const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       let resizeObserver = null;
+      let scrollRaf = null;
 
       const getCardPitch = () => {
         const railStyles = window.getComputedStyle(rail);
@@ -515,11 +620,24 @@
         const maxScrollLeft = Math.max(0, scroller.scrollWidth - scroller.clientWidth - 1);
         const atStart = scroller.scrollLeft <= 1;
         const atEnd = scroller.scrollLeft >= maxScrollLeft;
+        const canScroll = maxScrollLeft > 1;
 
-        prev.disabled = atStart;
-        next.disabled = atEnd;
-        prev.setAttribute('aria-disabled', String(atStart));
-        next.setAttribute('aria-disabled', String(atEnd));
+        prev.disabled = !canScroll || atStart;
+        next.disabled = !canScroll || atEnd;
+
+        prev.setAttribute('aria-disabled', String(!canScroll || atStart));
+        next.setAttribute('aria-disabled', String(!canScroll || atEnd));
+      };
+
+      const requestUpdateControls = () => {
+        if (scrollRaf) {
+          window.cancelAnimationFrame(scrollRaf);
+        }
+
+        scrollRaf = window.requestAnimationFrame(() => {
+          updateControls();
+          scrollRaf = null;
+        });
       };
 
       const scrollCards = (direction) => {
@@ -537,9 +655,9 @@
 
       const handleNextClick = () => scrollCards(1);
       const handlePrevClick = () => scrollCards(-1);
-      const handleScroll = () => window.requestAnimationFrame(updateControls);
-      const handleResize = () => updateControls();
-      const handleMotionPreferenceChange = () => updateControls();
+      const handleScroll = () => requestUpdateControls();
+      const handleResize = () => requestUpdateControls();
+      const handleMotionPreferenceChange = () => requestUpdateControls();
 
       next.addEventListener('click', handleNextClick);
       prev.addEventListener('click', handlePrevClick);
@@ -567,6 +685,10 @@
         scroller.removeEventListener('scroll', handleScroll);
         next.removeEventListener('click', handleNextClick);
         prev.removeEventListener('click', handlePrevClick);
+
+        if (scrollRaf) {
+          window.cancelAnimationFrame(scrollRaf);
+        }
 
         if (!resizeObserver) {
           window.removeEventListener('resize', handleResize);
@@ -820,19 +942,25 @@
       "type": "text",
       "id": "card_5_name",
       "label": "Name",
-      "default": "Dr. Marcus Bell"
+      "default": "Avery M."
     },
     {
       "type": "text",
       "id": "card_5_role",
       "label": "Role",
+      "default": "DIGESTIVE HEALTH ADVISOR"
+    },
+    {
+      "type": "text",
+      "id": "card_5_title",
+      "label": "Title",
       "default": "Digestive Health Advisor"
     },
     {
       "type": "textarea",
       "id": "card_5_quote",
       "label": "Quote",
-      "default": "“Alginate raft therapy is well-documented in the GI literature. What's been missing is a format designed for real daily use. Mellow closes that gap — the science is solid and the delivery actually supports consistency.”"
+      "default": "“For people who want something simple after meals, the format matters. A product can have strong science behind it, but it still needs to fit into normal life.”"
     },
     {
       "type": "header",
@@ -853,19 +981,25 @@
       "type": "text",
       "id": "card_6_name",
       "label": "Name",
-      "default": "Talia W."
+      "default": "Mina K."
     },
     {
       "type": "text",
       "id": "card_6_role",
       "label": "Role",
+      "default": "WELLNESS CLINICIAN"
+    },
+    {
+      "type": "text",
+      "id": "card_6_title",
+      "label": "Title",
       "default": "Wellness Clinician"
     },
     {
       "type": "textarea",
       "id": "card_6_quote",
       "label": "Quote",
-      "default": "“Consistency is the hardest part of any wellness routine. Mellow is simple enough to fit into an evening without feeling clinical — which is exactly why I think people keep using it.”"
+      "default": "“The best routines are the ones people actually repeat. Mellow feels approachable, which is a big part of why I think people can stay consistent with it.”"
     }
   ],
   "presets": [
