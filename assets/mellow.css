@@ -135,7 +135,7 @@
 
   /* Legacy rail token kept for older sections; alias to the locked section rail by default. */
   --mellow-axis-pad: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-  --mellow-axis-max: 1360px;
+  --mellow-axis-max: 1200px;
   --mellow-page-width: var(--mellow-axis-max);
   --mellow-page-gutter: var(--mellow-axis-pad);
   --mellow-axis-inset: max(var(--mellow-axis-pad), calc((100vw - var(--mellow-axis-max)) / 2));
@@ -409,12 +409,12 @@ html:not(.mellow-ready) .mellow-who-its-for__track {
   </section>
 */
 .mellow-section-axis {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
-  padding-right: var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px));
+  width: min(calc(100% - (var(--mellow-section-axis-pad, 22px) * 2)), var(--mellow-axis-max, 1200px));
+  max-width: var(--mellow-axis-max, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
 }
 
