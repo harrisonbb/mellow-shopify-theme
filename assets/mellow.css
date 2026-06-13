@@ -64,10 +64,10 @@
   --mellow-eyebrow-weight: 700;
   --mellow-eyebrow-tracking: 0.16em;
 
-  --mellow-heading-size: clamp(38px, 3.2vw, 50px);
-  --mellow-heading-line-height: 0.98;
+  --mellow-heading-size: clamp(40px, 3.45vw, 54px);
+  --mellow-heading-line-height: 1.02;
   --mellow-heading-weight: 600;
-  --mellow-heading-tracking: -0.028em;
+  --mellow-heading-tracking: -0.018em;
 
   --mellow-subhead-size: clamp(18px, 1.32vw, 20px);
   --mellow-subhead-line-height: 1.46;
