@@ -1,7 +1,7 @@
 {% comment %}
   Mellow Expert Proof section.
-  Compact four-card editorial proof section.
-  Tuned for MacBook 13 viewport height.
+  Compact practitioner proof carousel.
+  Shows 4 cards on desktop and scrolls through 6 cards.
 {% endcomment %}
 
 <style>
@@ -9,12 +9,10 @@
     --mellow-orange: var(--mellow-orange-red, #D04A2A);
     --mellow-expert-proof-bg: #042c13;
     --mellow-expert-proof-shelf: var(--mellow-cream, #FCFBF7);
-    --mellow-expert-proof-rail: min(
-      calc(100vw - (var(--mellow-section-axis-pad, clamp(28px, 4vw, 64px)) * 2)),
-      var(--mellow-axis-max, 1360px)
-    );
-    --mellow-carousel-card-gap: clamp(18px, 1.8vw, 28px);
-    --mellow-expert-proof-card-pad: clamp(18px, 1.25vw, 22px);
+    --mellow-expert-proof-rail: min(100%, 1390px);
+    --mellow-carousel-card-gap: clamp(24px, 2.35vw, 38px);
+    --mellow-expert-proof-card-width: calc((100% - (var(--mellow-carousel-card-gap) * 3)) / 4);
+    --mellow-expert-proof-card-pad: clamp(20px, 1.45vw, 24px);
 
     background: var(--mellow-expert-proof-shelf);
     color: var(--mellow-forest, #123308);
@@ -22,8 +20,6 @@
     padding: 0;
     scroll-margin-top: calc(var(--header-height, 68px) + 12px);
   }
-
-  /* ---------- GREEN HEADER BAND ---------- */
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__band {
     width: 100%;
@@ -131,17 +127,27 @@
     border-radius: 999px;
     background: transparent;
     color: var(--mellow-cream, #FCFBF7);
-    cursor: default;
+    cursor: pointer;
     box-shadow: none;
-    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):hover,
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:not(:disabled):focus-visible {
+    border-color: var(--mellow-cream, #FCFBF7);
+    background: var(--mellow-cream, #FCFBF7);
+    color: var(--mellow-forest, #123308);
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow:disabled {
+    cursor: default;
+    opacity: 0.38;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__arrow svg {
     width: 16px;
     height: 16px;
   }
-
-  /* ---------- CARD SHELF ---------- */
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__shelf {
     width: 100%;
@@ -156,41 +162,55 @@
     max-width: var(--mellow-expert-proof-rail);
     margin-left: auto;
     margin-right: auto;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
+    background: var(--mellow-expert-proof-shelf);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller {
     width: 100%;
-    overflow: visible;
-    padding: 0;
-    background: transparent;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    box-sizing: border-box;
+    padding: 0 0 26px;
+    scroll-padding-inline: 0;
+    background: var(--mellow-expert-proof-shelf);
+  }
+
+  #MellowExpertProof-{{ section.id }}.is-reduced-motion .mellow-expert-proof__scroller {
+    scroll-behavior: auto;
+  }
+
+  #MellowExpertProof-{{ section.id }} .mellow-expert-proof__scroller::-webkit-scrollbar {
+    display: none;
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__track {
-    display: block;
     width: 100%;
-    background: transparent;
-    transform: none !important;
-    will-change: auto;
+    background: var(--mellow-expert-proof-shelf);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(18px, 1.8vw, 28px);
+    display: flex;
+    gap: var(--mellow-carousel-card-gap);
+    align-items: stretch;
     width: 100%;
-    background: transparent;
+    background: var(--mellow-expert-proof-shelf);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
-    width: auto;
-    flex: initial;
+    flex: 0 0 var(--mellow-expert-proof-card-width);
+    width: var(--mellow-expert-proof-card-width);
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: clamp(430px, 31vw, 492px);
+    min-height: clamp(520px, 36vw, 560px);
     overflow: hidden;
     isolation: isolate;
+    scroll-snap-align: start;
     border-radius: 14px;
     border: 1px solid rgba(18, 51, 8, 0.07);
     background: #F8F3EA;
@@ -202,11 +222,11 @@
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
     position: relative;
     display: block;
-    height: clamp(150px, 11.2vw, 182px);
+    height: clamp(220px, 15vw, 250px);
     overflow: hidden;
     border-radius: 14px 14px 0 0;
     background:
-      radial-gradient(circle at 50% 20%, rgba(255,255,255,.72), transparent 36%),
+      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.72), transparent 36%),
       linear-gradient(135deg, #DCE3DA 0%, #F7F3EA 56%, #EEE5D8 100%);
   }
 
@@ -244,7 +264,7 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    padding: clamp(16px, 1.15vw, 21px) clamp(18px, 1.25vw, 22px) clamp(18px, 1.35vw, 24px);
+    padding: clamp(22px, 1.8vw, 30px) var(--mellow-expert-proof-card-pad) clamp(22px, 1.6vw, 26px);
   }
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__role {
@@ -269,7 +289,7 @@
 
   #MellowExpertProof-{{ section.id }} .mellow-expert-proof__person {
     margin-top: auto;
-    padding-top: clamp(16px, 1.4vw, 24px);
+    padding-top: clamp(18px, 1.45vw, 24px);
     border-top: 1px solid rgba(18, 51, 8, 0.13);
   }
 
@@ -313,9 +333,26 @@
     height: 18px;
   }
 
-  /* ---------- TABLET ---------- */
+  @media screen and (min-width: 990px) and (max-height: 820px) {
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+      min-height: 500px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      height: clamp(210px, 14vw, 230px);
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__content {
+      padding-top: clamp(20px, 1.6vw, 26px);
+    }
+  }
 
   @media screen and (max-width: 989px) {
+    #MellowExpertProof-{{ section.id }} {
+      --mellow-expert-proof-card-width: clamp(300px, 44vw, 340px);
+      --mellow-carousel-card-gap: 20px;
+    }
+
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__header-grid {
       grid-template-columns: 1fr;
       gap: clamp(20px, 3.4vw, 30px);
@@ -336,19 +373,22 @@
       justify-content: flex-start;
     }
 
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__edge-affordance {
       display: none;
     }
-  }
 
-  /* ---------- MOBILE ---------- */
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
+      min-height: 500px;
+    }
+
+    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
+      height: clamp(180px, 25vw, 210px);
+    }
+  }
 
   @media screen and (max-width: 749px) {
     #MellowExpertProof-{{ section.id }} {
+      --mellow-expert-proof-card-width: min(82vw, 330px);
       --mellow-expert-proof-card-pad: 18px;
       --mellow-carousel-card-gap: 18px;
     }
@@ -388,17 +428,12 @@
       padding-bottom: 58px;
     }
 
-    #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card-set {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__card {
       min-height: 448px;
     }
 
     #MellowExpertProof-{{ section.id }} .mellow-expert-proof__visual {
-      height: 148px;
+      height: 160px;
     }
   }
 </style>
@@ -437,13 +472,14 @@
               </div>
             {%- endif -%}
 
-            <div class="mellow-expert-proof__arrows" aria-hidden="true">
-              <button class="mellow-expert-proof__arrow" type="button" tabindex="-1" aria-label="Previous expert quote">
+            <div class="mellow-expert-proof__arrows" aria-label="Expert proof scroll controls">
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Previous expert quote" data-expert-prev>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                   <path d="M10 3.5 5.5 8 10 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
-              <button class="mellow-expert-proof__arrow" type="button" tabindex="-1" aria-label="Next expert quote">
+
+              <button class="mellow-expert-proof__arrow" type="button" aria-label="Next expert quote" data-expert-next>
                 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
                   <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -458,10 +494,10 @@
   <div class="mellow-expert-proof__shelf">
     <div class="mellow-section-axis">
       <div class="mellow-expert-proof__bleed">
-        <div class="mellow-expert-proof__scroller">
-          <div class="mellow-expert-proof__track">
-            <div class="mellow-expert-proof__card-set">
-              {%- for card_index in (1..4) -%}
+        <div class="mellow-expert-proof__scroller" data-expert-scroller>
+          <div class="mellow-expert-proof__track" data-expert-track>
+            <div class="mellow-expert-proof__card-set" data-expert-card-set>
+              {%- for card_index in (1..6) -%}
                 {%- liquid
                   assign image_key = 'card_' | append: card_index | append: '_image'
                   assign letter_key = 'card_' | append: card_index | append: '_letter'
@@ -469,11 +505,19 @@
                   assign quote_key = 'card_' | append: card_index | append: '_quote'
                   assign name_key = 'card_' | append: card_index | append: '_name'
                   assign title_key = 'card_' | append: card_index | append: '_title'
-                  assign fallback_letters = 'A,B,C,D' | split: ','
+                  assign fallback_letters = 'A,B,C,D,E,F' | split: ','
                   assign fallback_letter = fallback_letters[forloop.index0]
+                  assign image_loading = 'lazy'
+                  if forloop.first
+                    assign image_loading = 'eager'
+                  endif
                 -%}
 
-                <article class="mellow-expert-proof__card">
+                <article
+                  class="mellow-expert-proof__card"
+                  data-expert-card
+                  data-expert-index="{{ forloop.index0 }}"
+                >
                   <div class="mellow-expert-proof__visual{% if section.settings[image_key] == blank %} mellow-expert-proof__visual--fallback{% endif %}">
                     {%- if section.settings[image_key] != blank -%}
                       {{ section.settings[image_key]
@@ -481,8 +525,8 @@
                         | image_tag:
                           decoding: 'async',
                           class: 'mellow-expert-proof__image',
-                          loading: 'eager',
-                          sizes: '(min-width: 1480px) 320px, (min-width: 990px) 23vw, (min-width: 750px) 45vw, 90vw',
+                          loading: image_loading,
+                          sizes: '(min-width: 1480px) 340px, (min-width: 990px) 23vw, (min-width: 815px) 44vw, (min-width: 750px) 304px, 84vw',
                           widths: '320, 480, 640, 800, 1000',
                           alt: section.settings[name_key]
                       }}
@@ -532,13 +576,149 @@
 
 <script>
   (() => {
-    const section = document.getElementById('MellowExpertProof-{{ section.id }}');
+    const initExpertProof = (section) => {
+      const releaseReadyHold = window.MellowReadyGate ? window.MellowReadyGate.hold() : null;
 
-    if (section) {
-      window.requestAnimationFrame(() => {
-        section.classList.add('is-mellow-section-ready');
-      });
-    }
+      const releaseSectionReady = () => {
+        if (section) {
+          section.classList.add('is-mellow-section-ready');
+        }
+
+        if (releaseReadyHold) {
+          releaseReadyHold();
+        }
+      };
+
+      if (!section || section.dataset.mellowExpertProofReady === 'true') {
+        releaseSectionReady();
+        return;
+      }
+
+      const scroller = section.querySelector('[data-expert-scroller]');
+      const cardSet = section.querySelector('[data-expert-card-set]');
+      const cards = cardSet ? Array.from(cardSet.querySelectorAll('[data-expert-card]')) : [];
+      const prev = section.querySelector('[data-expert-prev]');
+      const next = section.querySelector('[data-expert-next]');
+
+      if (!scroller || !cardSet || !cards.length || !prev || !next) {
+        releaseSectionReady();
+        return;
+      }
+
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let cardPitch = 0;
+      let resizeObserver = null;
+      let isReducedMotion = reducedMotionQuery.matches;
+
+      const setArrowState = (button, disabled) => {
+        button.disabled = disabled;
+        button.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+      };
+
+      const updateDisabledState = () => {
+        const maxScrollLeft = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        const scrollLeft = Math.max(0, scroller.scrollLeft);
+        const tolerance = 2;
+
+        setArrowState(prev, scrollLeft <= tolerance);
+        setArrowState(next, scrollLeft >= maxScrollLeft - tolerance);
+      };
+
+      const measureCardPitch = () => {
+        const cardSetStyles = window.getComputedStyle(cardSet);
+        const cardGap = parseFloat(cardSetStyles.columnGap || cardSetStyles.gap) || 0;
+        const firstCard = cards[0];
+
+        cardPitch = firstCard ? firstCard.getBoundingClientRect().width + cardGap : 0;
+        updateDisabledState();
+      };
+
+      const scrollByCard = (direction) => {
+        if (cardPitch <= 0) {
+          return;
+        }
+
+        scroller.scrollBy({
+          left: cardPitch * direction,
+          behavior: isReducedMotion ? 'auto' : 'smooth'
+        });
+      };
+
+      const handleResize = () => {
+        measureCardPitch();
+      };
+
+      const handleMotionPreferenceChange = (event) => {
+        isReducedMotion = event.matches;
+        section.classList.toggle('is-reduced-motion', isReducedMotion);
+      };
+
+      const handleNextClick = () => scrollByCard(1);
+      const handlePrevClick = () => scrollByCard(-1);
+
+      scroller.scrollLeft = 0;
+      next.addEventListener('click', handleNextClick);
+      prev.addEventListener('click', handlePrevClick);
+      scroller.addEventListener('scroll', updateDisabledState, { passive: true });
+
+      section.classList.toggle('is-reduced-motion', isReducedMotion);
+      measureCardPitch();
+
+      if ('ResizeObserver' in window) {
+        resizeObserver = new ResizeObserver(handleResize);
+        resizeObserver.observe(cardSet);
+        resizeObserver.observe(scroller);
+      } else {
+        window.addEventListener('resize', handleResize);
+      }
+
+      if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+      } else if (typeof reducedMotionQuery.addListener === 'function') {
+        reducedMotionQuery.addListener(handleMotionPreferenceChange);
+      }
+
+      section.dataset.mellowExpertProofReady = 'true';
+      window.requestAnimationFrame(releaseSectionReady);
+
+      section.mellowExpertProofCleanup = () => {
+        scroller.removeEventListener('scroll', updateDisabledState);
+        next.removeEventListener('click', handleNextClick);
+        prev.removeEventListener('click', handlePrevClick);
+
+        if (!resizeObserver) {
+          window.removeEventListener('resize', handleResize);
+        }
+
+        if (typeof reducedMotionQuery.removeEventListener === 'function') {
+          reducedMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
+        } else if (typeof reducedMotionQuery.removeListener === 'function') {
+          reducedMotionQuery.removeListener(handleMotionPreferenceChange);
+        }
+
+        if (resizeObserver) {
+          resizeObserver.disconnect();
+        }
+      };
+    };
+
+    const initCurrentSection = () => {
+      initExpertProof(document.getElementById('MellowExpertProof-{{ section.id }}'));
+    };
+
+    initCurrentSection();
+
+    document.addEventListener('shopify:section:load', (event) => {
+      initExpertProof(event.target.querySelector('[data-mellow-expert-proof]'));
+    });
+
+    document.addEventListener('shopify:section:unload', (event) => {
+      const section = event.target.querySelector('[data-mellow-expert-proof]');
+
+      if (section && typeof section.mellowExpertProofCleanup === 'function') {
+        section.mellowExpertProofCleanup();
+      }
+    });
   })();
 </script>
 
@@ -738,6 +918,84 @@
       "id": "card_4_quote",
       "label": "Quote",
       "default": "“Consistency is the hardest part of any routine. Mellow is simple enough to take an evening without feeling like a chore — that’s exactly why I think people love it.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_5_letter",
+      "label": "Letter",
+      "default": "E"
+    },
+    {
+      "type": "text",
+      "id": "card_5_name",
+      "label": "Name",
+      "default": "Avery M."
+    },
+    {
+      "type": "text",
+      "id": "card_5_role",
+      "label": "Role",
+      "default": "DIGESTIVE HEALTH ADVISOR"
+    },
+    {
+      "type": "text",
+      "id": "card_5_title",
+      "label": "Title",
+      "default": "Digestive Health Advisor"
+    },
+    {
+      "type": "textarea",
+      "id": "card_5_quote",
+      "label": "Quote",
+      "default": "“For people who want something simple after meals, the format matters. A product can have strong science behind it, but it still needs to fit into normal life.”"
+    },
+    {
+      "type": "header",
+      "content": "Card 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "card_6_letter",
+      "label": "Letter",
+      "default": "F"
+    },
+    {
+      "type": "text",
+      "id": "card_6_name",
+      "label": "Name",
+      "default": "Mina K."
+    },
+    {
+      "type": "text",
+      "id": "card_6_role",
+      "label": "Role",
+      "default": "WELLNESS CLINICIAN"
+    },
+    {
+      "type": "text",
+      "id": "card_6_title",
+      "label": "Title",
+      "default": "Wellness Clinician"
+    },
+    {
+      "type": "textarea",
+      "id": "card_6_quote",
+      "label": "Quote",
+      "default": "“The best routines are the ones people actually repeat. Mellow feels approachable, which is a big part of why I think people can stay consistent with it.”"
     }
   ],
   "presets": [
