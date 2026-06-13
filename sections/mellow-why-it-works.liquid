@@ -25,11 +25,11 @@
     overflow-x: hidden;
     background: var(--mellow-why-it-works-ivory) !important;
     background-color: var(--mellow-why-it-works-ivory) !important;
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} :where(.mellow-why-it-works__header, .mellow-why-it-works__heading, .mellow-why-it-works__subheading, .mellow-why-it-works__step, .mellow-why-it-works__step-title, .mellow-why-it-works__step-copy) {
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -53,6 +53,7 @@
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__header-main,
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__header-right {
     min-width: 0;
+    color: var(--mellow-forest, #123308) !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__eyebrow {
@@ -63,7 +64,7 @@
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__heading {
     display: block;
     max-width: var(--mellow-header-max, 760px);
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     font-size: var(--mellow-section-heading-size, var(--mellow-heading-size, clamp(40px, 3.7vw, 56px)));
     line-height: var(--mellow-section-heading-line-height, var(--mellow-heading-line-height, 0.98));
     font-weight: var(--mellow-section-heading-weight, var(--mellow-heading-weight, 600));
@@ -74,7 +75,7 @@
     display: block;
     max-width: var(--mellow-copy-max, 620px);
     margin: 0;
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     font-family: var(--font-body-family, inherit);
     font-size: var(--mellow-subhead-size, clamp(18px, 1.32vw, 20px));
     line-height: var(--mellow-subhead-line-height, 1.46);
@@ -356,7 +357,7 @@
     align-items: flex-start;
     gap: 16px;
     margin-top: var(--mellow-section-heading-gap, clamp(14px, 1.35vw, 20px));
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -380,14 +381,14 @@
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-body {
     display: block;
     min-width: 0;
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-title {
     margin: 0;
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     font-family: var(--mellow-font-display, var(--font-heading-family, inherit)) !important;
     font-size: var(--mellow-card-title-size, clamp(25px, 1.8vw, 30px));
     line-height: var(--mellow-card-title-line-height, 1.04);
@@ -398,7 +399,7 @@
 
   #MellowWhyItWorks-{{ section.id }} .mellow-why-it-works__step-copy {
     margin: 6px 0 0;
-    color: var(--mellow-why-it-works-text) !important;
+    color: var(--mellow-forest, #123308) !important;
     font-size: var(--mellow-card-copy-size, clamp(16px, 1.03vw, 17px));
     line-height: var(--mellow-card-copy-line-height, 1.48);
     letter-spacing: var(--mellow-card-copy-tracking, -0.006em);
